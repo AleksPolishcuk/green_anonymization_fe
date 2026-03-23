@@ -12,10 +12,7 @@ export default function ExampleHomePage() {
     <>
       <Header />
       <Container>
-        {/* // example of using a styled component in the home page. see styles.tsx
-        for more details. */}
         <HomePageTitle variant="h1">{t("exampleHomePage.title")}</HomePageTitle>
-        {/* example of default MUI typography component. Basic css is defined in theme/theme.ts  */}
         <Typography variant="body1">{t("exampleHomePage.text")}</Typography>
         <ExampleForm />
       </Container>

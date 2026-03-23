@@ -1,8 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// example of a custom theme with breakpoints, palette, typography, spacing,
-// shape and component overrides. will be changed later to fit the design system
-// of the project
 export const theme = createTheme({
   breakpoints: {
     values: {

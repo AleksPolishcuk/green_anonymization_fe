@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { Button, Typography } from "@mui/material";
 
-//example of stules for the example form component. see index.tsx for more details.
-
 export const ExampleWorkFormWrapper = styled.form`
   display: flex;
   flex-direction: column;

@@ -9,8 +9,6 @@ import {
 import { useExampleForm } from "./hooks/exampleFormHooks";
 import { Controller } from "react-hook-form";
 
-// example of a form with styled components and react hook form.
-// will be changed later to fit the needs of the project
 export const ExampleForm = () => {
   const { t } = useTranslation();
   const { control, handleSubmit, onSubmit } = useExampleForm();

@@ -1,5 +1,3 @@
-//example of a custom hook for the example form component. see index.tsx for more details.
-
 import { useForm } from "react-hook-form";
 
 type FormValues = {
