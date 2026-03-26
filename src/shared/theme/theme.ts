@@ -12,71 +12,73 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#1976d2",
+      main: "#155dfc",
     },
     secondary: {
-      main: "#9c27b0",
+      main: "#eff6ff",
     },
     background: {
-      default: "#f8f9fb",
+      default: "#fff",
+      paper: "#fff",
     },
     text: {
-      primary: "#1a1a1a",
-      secondary: "#666666",
+      primary: "#101828",
+      secondary: "#6a7282",
     },
   },
   typography: {
-    fontFamily: `'Inter', 'Roboto', sans-serif`,
+    fontFamily: `'Inter', sans-serif`,
     h1: {
-      fontWeight: 700,
-      fontSize: "40px",
-      lineHeight: 1.2,
+      fontFamily: "'DM Serif Display', serif",
+      fontWeight: 400,
+      fontSize: "64px",
+      lineHeight: 1.08,
     },
     h2: {
-      fontWeight: 700,
-      fontSize: "32px",
-      lineHeight: 1.25,
+      fontFamily: "'DM Serif Display', serif",
+      fontWeight: 400,
+      fontSize: "56px",
+      lineHeight: 1.09,
     },
     h3: {
-      fontWeight: 600,
-      fontSize: "28px",
-      lineHeight: 1.3,
+      fontFamily: "'DM Serif Display', serif",
+      fontWeight: 400,
+      fontSize: "38px",
+      lineHeight: 1.16,
     },
     h4: {
-      fontWeight: 600,
-      fontSize: "24px",
-      lineHeight: 1.33,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      fontSize: "18px",
+      lineHeight: 1.5,
     },
     h5: {
+      fontFamily: "'Inter', sans-serif",
       fontWeight: 600,
-      fontSize: "20px",
-      lineHeight: 1.4,
+      fontSize: "16px",
+      lineHeight: 1.38,
     },
     h6: {
+      fontFamily: "'DM Serif Display', serif",
       fontWeight: 600,
-      fontSize: "18px",
+      fontSize: "14px",
       lineHeight: 1.4,
     },
     body1: {
+      fontFamily: "'Inter', sans-serif",
       fontWeight: 400,
       fontSize: "16px",
-      lineHeight: 1.5,
-    },
-    body2: {
-      fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: 1.43,
+      lineHeight: 1.75,
     },
     button: {
       fontWeight: 600,
-      fontSize: "14px",
-      lineHeight: 1.2,
-      textTransform: "none",
+      fontSize: "16px",
+      lineHeight: 1.5,
     },
   },
   spacing: 4,
   shape: {
-    borderRadius: 12,
+    borderRadius: 16,
   },
   components: {
     MuiCssBaseline: {
@@ -108,17 +110,9 @@ export const theme = createTheme({
           width: "100%",
           maxWidth: "1440px",
           margin: "0 auto",
-          paddingLeft: "16px",
-          paddingRight: "16px",
+          paddingLeft: "24px",
+          paddingRight: "24px",
 
-          "@media (min-width:375px)": {
-            paddingLeft: "16px",
-            paddingRight: "16px",
-          },
-          "@media (min-width:787px)": {
-            paddingLeft: "24px",
-            paddingRight: "24px",
-          },
           "@media (min-width:1440px)": {
             paddingLeft: "32px",
             paddingRight: "32px",
@@ -143,9 +137,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 10,
-          padding: "10px 20px",
-          boxShadow: "none",
+          borderRadius: 14,
         },
       },
     },
