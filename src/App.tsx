@@ -1,20 +1,21 @@
 import { Provider } from "react-redux";
-import { store } from "./store";
-
-import { ThemeProvider } from "@mui/material/styles";
-
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { RouterProvider } from "react-router-dom";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
-import { theme } from "shared/theme/theme";
+import { store } from "./store";
 import { router } from "./router";
+import { theme } from "shared/theme/theme";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </ThemeProvider>
+    <MuiThemeProvider theme={theme}>
+      <StyledThemeProvider theme={theme}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </StyledThemeProvider>
+    </MuiThemeProvider>
   );
 }
 

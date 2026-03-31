@@ -1,6 +1,7 @@
-import React from "react";
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
+
+import { heroAssets, heroStatsKeys } from "shared/constants/hero";
 
 import {
   Actions,
@@ -24,7 +25,7 @@ import {
   Visual,
 } from "./styles";
 
-const Hero: React.FC = () => {
+const Hero = () => {
   const { t } = useTranslation("hero");
 
   return (
@@ -43,7 +44,7 @@ const Hero: React.FC = () => {
               <TitleAccent>
                 {t("titleLine2")}
                 <TitleAccentImage
-                  src="/img/hero/icon.png"
+                  src={heroAssets.titleAccentIcon}
                   alt=""
                   aria-hidden="true"
                 />
@@ -56,37 +57,24 @@ const Hero: React.FC = () => {
 
             <Actions>
               <PrimaryButton variant="contained" disableElevation>
-                {t("ctaPrimary")} →
+                {t("ctaPrimary")}
               </PrimaryButton>
             </Actions>
 
             <StatsRow>
-              <StatItem>
-                <StatValue>{t("stats.hipaa.value")}</StatValue>
-                <StatLabel>{t("stats.hipaa.label")}</StatLabel>
-              </StatItem>
-
-              <StatItem>
-                <StatValue>{t("stats.eugdpr.value")}</StatValue>
-                <StatLabel>{t("stats.eugdpr.label")}</StatLabel>
-              </StatItem>
-
-              <StatItem>
-                <StatValue>{t("stats.ukgdpr.value")}</StatValue>
-                <StatLabel>{t("stats.ukgdpr.label")}</StatLabel>
-              </StatItem>
-
-              <StatItem>
-                <StatValue>{t("stats.FADP.value")}</StatValue>
-                <StatLabel>{t("stats.FADP.label")}</StatLabel>
-              </StatItem>
+              {heroStatsKeys.map((statKey) => (
+                <StatItem key={statKey}>
+                  <StatValue>{t(`${statKey}.value`)}</StatValue>
+                  <StatLabel>{t(`${statKey}.label`)}</StatLabel>
+                </StatItem>
+              ))}
             </StatsRow>
           </Content>
 
           <Visual>
             <ShieldAnimationWrap>
               <ShieldFloatLayer>
-                <ShieldImage src="/img/hero/shield.png" alt="Shield" />
+                <ShieldImage src={heroAssets.shield} alt={t("shieldAlt")} />
               </ShieldFloatLayer>
             </ShieldAnimationWrap>
           </Visual>

@@ -13,6 +13,8 @@ export const theme = createTheme({
   palette: {
     primary: {
       main: "#155dfc",
+      dark: "#1447e6",
+      contrastText: "#ffffff",
     },
     secondary: {
       main: "#eff6ff",
@@ -25,6 +27,7 @@ export const theme = createTheme({
       primary: "#101828",
       secondary: "#6a7282",
     },
+    divider: "#e5e7eb",
   },
   typography: {
     fontFamily: `'Inter', sans-serif`,

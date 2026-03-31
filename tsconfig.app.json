@@ -14,7 +14,9 @@
       "pages/*": ["pages/*"],
       "components/*": ["components/*"],
       "features/*": ["features/*"],
-      "shared/*": ["shared/*"]
+      "shared/*": ["shared/*"],
+      "constants/*": ["constants/*"],
+      "theme/*": ["theme/*"]
     },
 
     /* Bundler mode */
