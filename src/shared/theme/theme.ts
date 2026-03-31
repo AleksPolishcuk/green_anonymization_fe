@@ -34,8 +34,13 @@ export const theme = createTheme({
     h1: {
       fontFamily: "'DM Serif Display', serif",
       fontWeight: 400,
-      fontSize: "64px",
-      lineHeight: 1.08,
+      fontSize: "32px",
+      lineHeight: "128%",
+
+      "@media (min-width:787px)": {
+        fontSize: "64px",
+        lineHeight: 1.08,
+      },
     },
     h2: {
       fontFamily: "'DM Serif Display', serif",

@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { heroAssets, heroStatsKeys } from "shared/constants/hero";
 
 import {
-  Actions,
   Content,
   Description,
   HeroGrid,
@@ -55,11 +54,9 @@ const Hero = () => {
 
             <Description variant="body1">{t("description")}</Description>
 
-            <Actions>
-              <PrimaryButton variant="contained" disableElevation>
-                {t("ctaPrimary")}
-              </PrimaryButton>
-            </Actions>
+            <PrimaryButton variant="contained" disableElevation>
+              {t("ctaPrimary")}
+            </PrimaryButton>
 
             <StatsRow>
               {heroStatsKeys.map((statKey) => (

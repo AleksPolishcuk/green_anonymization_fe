@@ -164,15 +164,9 @@ export const Title = styled(Typography)`
   && {
     margin: 0;
     max-width: 100%;
-    font-family: ${({ theme }) => theme.typography.h1.fontFamily};
-    font-weight: ${({ theme }) => theme.typography.h1.fontWeight};
-    font-size: ${heroTypography.titleMobileFontSize};
-    line-height: ${heroTypography.titleMobileLineHeight};
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.values.lg}px) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.values.md}px) {
       max-width: ${heroLayout.titleDesktopMaxWidth}px;
-      font-size: ${({ theme }) => theme.typography.h1.fontSize};
-      line-height: ${({ theme }) => theme.typography.h1.lineHeight};
     }
   }
 `;
@@ -212,17 +206,11 @@ export const Description = styled(Typography)`
   }
 `;
 
-export const Actions = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${heroLayout.actionGap}px;
-  margin-top: ${heroLayout.actionsMarginTop}px;
-`;
-
 const buttonBase = css`
   && {
     text-transform: none;
     font-size: ${heroTypography.primaryButtonFontSizeMobile};
+    margin-top: ${heroLayout.actionsMarginTop}px;
   }
 `;
 

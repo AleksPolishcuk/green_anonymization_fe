@@ -89,9 +89,6 @@ export const heroRadii = {
 };
 
 export const heroTypography = {
-  titleMobileFontSize: "32px",
-  titleMobileLineHeight: "128%",
-
   pillFontSize: "12px",
   pillLineHeight: "158%",
   pillLetterSpacing: "-0.01em",
