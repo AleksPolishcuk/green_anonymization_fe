@@ -88,8 +88,8 @@ export const HeroGrid = styled.div`
     grid-template-columns: minmax(0, 684px) minmax(0, 583px);
     justify-content: space-between;
     column-gap: 37px;
-    padding-left: 44px;
-    padding-right: 44px;
+    padding-left: 112px;
+    padding-right: 112px;
     padding-top: 208px;
     padding-bottom: 193px;
   }
