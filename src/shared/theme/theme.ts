@@ -1,116 +1,164 @@
 import { createTheme } from "@mui/material/styles";
 
+const mainFontFamily = "'Inter', sans-serif";
+const headingFontFamily = "'DM Serif Display', serif";
+
+const regular = 400;
+const semiBold = 600;
+const bold = 700;
+
+const h1SizeDesktop = "64px";
+const h1SizeMobile = "32px";
+const h2SizeDesktop = "56px";
+const h2SizeMobile = "35px";
+const h3SizeDesktop = "44px";
+const h3SizeMobile = "28px";
+const h4Size = "18px";
+const h5Size = "16px";
+const h6Size = "14px";
+const bodySize = "16px";
+
+const h1Line = 1.08;
+const h2Line = 1.09;
+const h3LineDesktop = 1.16;
+const h3LineMobile = 1.18;
+const bodyLine = 1.75;
+
+const primaryColor = "#155dfc";
+const primaryDark = "#1447e6";
+const primaryContrast = "#ffffff";
+const secondaryColor = "#eff6ff";
+const subtleBg = "#f8fafc";
+const bgDefault = "#ffffff";
+const textPrimary = "#101828";
+const textSecondary = "#6a7282";
+
+const mainRadius = 16;
+const buttonRadius = 14;
+
+const md = 787;
+const lg = 1440;
+
 export const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
       sm: 375,
-      md: 787,
-      lg: 1440,
+      md,
+      lg,
       xl: 1920,
     },
   },
+
   palette: {
     primary: {
-      main: "#155dfc",
+      main: primaryColor,
+      dark: primaryDark,
+      contrastText: primaryContrast,
     },
     secondary: {
-      main: "#eff6ff",
+      main: secondaryColor,
     },
     background: {
-      default: "#fff",
-      paper: "#fff",
+      default: bgDefault,
+      paper: bgDefault,
     },
     text: {
-      primary: "#101828",
-      secondary: "#6a7282",
+      primary: textPrimary,
+      secondary: textSecondary,
+    },
+    subtle: {
+      bg: subtleBg,
     },
   },
+
   typography: {
-    fontFamily: `'Inter', sans-serif`,
+    fontFamily: mainFontFamily,
+
     h1: {
-      fontFamily: "'DM Serif Display', serif",
-      fontWeight: 400,
-      fontSize: "64px",
-      lineHeight: 1.08,
+      fontFamily: headingFontFamily,
+      fontWeight: regular,
+      fontSize: h1SizeMobile,
+      lineHeight: h1Line,
+      [`@media (min-width:${md}px)`]: {
+        fontSize: h1SizeDesktop,
+      },
     },
+
     h2: {
-      fontFamily: "'DM Serif Display', serif",
-      fontWeight: 400,
-      fontSize: "35px",
-      lineHeight: 1.09,
-
-      "@media (min-width:787px)": {
-        fontSize: "56px",
-        lineHeight: 1.09,
+      fontFamily: headingFontFamily,
+      fontWeight: regular,
+      fontSize: h2SizeMobile,
+      lineHeight: h2Line,
+      [`@media (min-width:${md}px)`]: {
+        fontSize: h2SizeDesktop,
       },
     },
+
     h3: {
-      fontFamily: "'DM Serif Display', serif",
-      fontWeight: 400,
-      fontSize: "28px",
-      lineHeight: "118%",
-
-      "@media (min-width:787px)": {
-        fontSize: "44px",
-        lineHeight: "116%",
+      fontFamily: headingFontFamily,
+      fontWeight: regular,
+      fontSize: h3SizeMobile,
+      lineHeight: h3LineMobile,
+      [`@media (min-width:${md}px)`]: {
+        fontSize: h3SizeDesktop,
+        lineHeight: h3LineDesktop,
       },
     },
+
     h4: {
-      fontFamily: "'Inter', sans-serif",
-      fontWeight: 700,
-      fontSize: "18px",
+      fontFamily: mainFontFamily,
+      fontWeight: bold,
+      fontSize: h4Size,
       lineHeight: 1.5,
     },
+
     h5: {
-      fontFamily: "'Inter', sans-serif",
-      fontWeight: 600,
-      fontSize: "16px",
+      fontFamily: mainFontFamily,
+      fontWeight: semiBold,
+      fontSize: h5Size,
       lineHeight: 1.38,
     },
+
     h6: {
-      fontFamily: "'DM Serif Display', serif",
-      fontWeight: 600,
-      fontSize: "14px",
+      fontFamily: headingFontFamily,
+      fontWeight: semiBold,
+      fontSize: h6Size,
       lineHeight: 1.4,
     },
+
     body1: {
-      fontFamily: "'Inter', sans-serif",
-      fontWeight: 400,
-      fontSize: "16px",
-      lineHeight: 1.75,
+      fontFamily: mainFontFamily,
+      fontWeight: regular,
+      fontSize: bodySize,
+      lineHeight: bodyLine,
     },
+
     button: {
-      fontWeight: 600,
-      fontSize: "16px",
+      fontFamily: mainFontFamily,
+      fontWeight: semiBold,
+      fontSize: bodySize,
       lineHeight: 1.5,
+      textTransform: "none",
     },
   },
+
   spacing: 4,
+
   shape: {
-    borderRadius: 16,
+    borderRadius: mainRadius,
   },
+
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        html: {
-          width: "100%",
-          height: "100%",
-        },
-        body: {
-          width: "100%",
-          minHeight: "100%",
-          margin: 0,
-        },
-        "#root": {
-          width: "100%",
-          minHeight: "100vh",
-        },
-        "*": {
-          boxSizing: "border-box",
-        },
+        html: { width: "100%", height: "100%" },
+        body: { width: "100%", minHeight: "100%", margin: 0 },
+        "#root": { width: "100%", minHeight: "100vh" },
+        "*": { boxSizing: "border-box" },
       },
     },
+
     MuiContainer: {
       defaultProps: {
         maxWidth: false,
@@ -122,14 +170,14 @@ export const theme = createTheme({
           margin: "0 auto",
           paddingLeft: "24px",
           paddingRight: "24px",
-
-          "@media (min-width:1440px)": {
+          [`@media (min-width:${lg}px)`]: {
             paddingLeft: "32px",
             paddingRight: "32px",
           },
         },
       },
     },
+
     MuiTypography: {
       defaultProps: {
         variantMapping: {
@@ -144,16 +192,12 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 14,
+          borderRadius: buttonRadius,
         },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        fullWidth: true,
       },
     },
   },
