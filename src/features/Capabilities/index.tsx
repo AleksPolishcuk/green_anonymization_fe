@@ -9,7 +9,6 @@ import {
   IconWrapper,
 } from "./styles";
 
-// Массив конфигурации карточек для чистоты компонента
 const CARDS_DATA = [
   {
     id: "pii",
@@ -38,19 +37,18 @@ const CARDS_DATA = [
 ];
 
 export const Capabilities = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("capabilities");
 
   return (
     <CapabilitiesSection id="capabilities">
-      {/* Container из MUI уже настроен в вашей теме (maxWidth: 1440px) */}
       <Container>
         <TitleSectionBlock>
-          <Subtitle variant="h5">{t("landing.capabilities.subtitle")}</Subtitle>
+          <Subtitle variant="h5">{t("capabilities.subtitle")}</Subtitle>
           <Typography variant="h2" sx={{ mb: 2 }}>
-            {t("landing.capabilities.title")}
+            {t("capabilities.title")}
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            {t("landing.capabilities.description")}
+            {t("capabilities.description")}
           </Typography>
         </TitleSectionBlock>
 

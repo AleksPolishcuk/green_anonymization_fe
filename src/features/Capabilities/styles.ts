@@ -1,26 +1,23 @@
-// 1. Импортируем styled из Material UI вместо styled-components
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 
-// 2. Импорт Theme больше не нужен, встроенный styled уже типизирован
+export const CapabilitiesSection = styled("section")({
+  backgroundColor: "#f8fafc",
+  padding: "80px 0",
+  width: "100%",
+});
 
-export const CapabilitiesSection = styled("section")`
-  backgroundColor: '#f8fafc',
-  padding: 80px 0;
-  width: 100%;
-`;
-
-export const TitleSectionBlock = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 64px auto;
-`;
+export const TitleSectionBlock = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  maxWidth: "760px",
+  margin: "0 auto 64px auto",
+});
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main, // #155dfc из вашей темы
+  color: theme.palette.primary.main,
   fontWeight: 700,
   letterSpacing: "0.05em",
   marginBottom: "16px",
@@ -29,17 +26,16 @@ export const Subtitle = styled(Typography)(({ theme }) => ({
 
 export const CardsList = styled(Box)(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-  gap: "24px",
-  // Используем ваш брейкпоинт md (787px) из theme.ts
+  gridTemplateColumns: "repeat(2, 1fr)",
+  gap: "20px",
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
   },
 }));
 
 export const CardItem = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper, // #fff
-  borderRadius: theme.shape.borderRadius, // 16px из вашей темы
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: theme.shape.borderRadius,
   padding: "32px",
   display: "flex",
   flexDirection: "column",
@@ -48,17 +44,17 @@ export const CardItem = styled(Box)(({ theme }) => ({
 }));
 
 export const IconWrapper = styled(Box)(({ theme }) => ({
-  width: "48px",
-  height: "48px",
+  width: "44px",
+  height: "44px",
   borderRadius: "8px",
-  backgroundColor: theme.palette.secondary.main, // #eff6ff из вашей темы
+  backgroundColor: theme.palette.secondary.main,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: theme.palette.primary.main, // #155dfc
+  color: theme.palette.primary.main,
   "& svg": {
     width: "20px",
     height: "20px",
-    fill: "currentColor", // Автоматически красится в primary.main
+    fill: "currentColor",
   },
 }));
