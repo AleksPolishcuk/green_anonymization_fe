@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { HomePageTitle } from "./styles";
@@ -12,13 +12,12 @@ export default function ExampleHomePage() {
   return (
     <>
       <Header />
-      <Container>
+      <main>
         <HomePageTitle variant="h1">{t("exampleHomePage.title")}</HomePageTitle>
         <Typography variant="body1">{t("exampleHomePage.text")}</Typography>
         <ExampleForm />
-
         <Capabilities />
-      </Container>
+      </main>
     </>
   );
 }

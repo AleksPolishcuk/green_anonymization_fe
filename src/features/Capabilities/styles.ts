@@ -1,11 +1,22 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 export const CapabilitiesSection = styled("section")({
   backgroundColor: "#f8fafc",
   padding: "80px 0",
   width: "100%",
 });
+
+export const SectionContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: "68px",
+    paddingRight: "68px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: "144px",
+    paddingRight: "144px",
+  },
+}));
 
 export const TitleSectionBlock = styled(Box)({
   display: "flex",

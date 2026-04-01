@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import {
   CapabilitiesSection,
@@ -7,6 +7,7 @@ import {
   CardsList,
   CardItem,
   IconWrapper,
+  SectionContainer,
 } from "./styles";
 
 const CARDS_DATA = [
@@ -41,7 +42,7 @@ export const Capabilities = () => {
 
   return (
     <CapabilitiesSection id="capabilities">
-      <Container>
+      <SectionContainer>
         <TitleSectionBlock>
           <Subtitle variant="h5">{t("capabilities.subtitle")}</Subtitle>
           <Typography variant="h2" sx={{ mb: 2 }}>
@@ -67,7 +68,7 @@ export const Capabilities = () => {
             </CardItem>
           ))}
         </CardsList>
-      </Container>
+      </SectionContainer>
     </CapabilitiesSection>
   );
 };
