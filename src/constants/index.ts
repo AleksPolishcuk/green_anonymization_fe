@@ -1,32 +1,50 @@
-const HIPAA_COLORS = {
-  accentColor: "#2563eb",
-  badgeBg: "#dbeafe",
-  badgeColor: "#1d4ed8",
-} as const;
+const mainBlue = "#2563eb";
+const lightBlue = "#dbeafe";
+const darkBlue = "#1d4ed8";
 
-const EU_GDPR_COLORS = {
-  accentColor: "#16a34a",
-  badgeBg: "#dcfce7",
-  badgeColor: "#15803d",
-} as const;
+const mainGreen = "#16a34a";
+const lightGreen = "#dcfce7";
+const darkGreen = "#15803d";
 
-const UK_DPI_COLORS = {
-  accentColor: "#d97706",
-  badgeBg: "#fef3c7",
-  badgeColor: "#b45309",
-} as const;
+const mainAmber = "#d97706";
+const lightAmber = "#fef3c7";
+const darkAmber = "#b45309";
 
-const SWISS_FADP_COLORS = {
-  accentColor: "#dc2626",
-  badgeBg: "#fee2e2",
-  badgeColor: "#b91c1c",
-} as const;
+const mainRed = "#dc2626";
+const lightRed = "#fee2e2";
+const darkRed = "#b91c1c";
+
+export const CARD_BORDER_COLOR = "#e5e7eb";
 
 export const COMPLIANCE_CARDS = [
-  { id: "hipaa", ...HIPAA_COLORS, entityCount: 17 },
-  { id: "euGdpr", ...EU_GDPR_COLORS, entityCount: 11 },
-  { id: "ukDpi", ...UK_DPI_COLORS, entityCount: 9 },
-  { id: "swissFadp", ...SWISS_FADP_COLORS, entityCount: 8 },
+  {
+    id: "hipaa",
+    accentColor: mainBlue,
+    badgeBg: lightBlue,
+    badgeColor: darkBlue,
+    entityCount: 17,
+  },
+  {
+    id: "euGdpr",
+    accentColor: mainGreen,
+    badgeBg: lightGreen,
+    badgeColor: darkGreen,
+    entityCount: 11,
+  },
+  {
+    id: "ukDpi",
+    accentColor: mainAmber,
+    badgeBg: lightAmber,
+    badgeColor: darkAmber,
+    entityCount: 9,
+  },
+  {
+    id: "swissFadp",
+    accentColor: mainRed,
+    badgeBg: lightRed,
+    badgeColor: darkRed,
+    entityCount: 8,
+  },
 ] as const;
 
 // Temporary font size values — replace with theme typography
@@ -35,4 +53,10 @@ export const COMPLIANCE_FONT_SIZE = {
   badge: "12px",
   entityCount: "14px",
   title: "16px",
+} as const;
+
+export const FONT_WEIGHT = {
+  regular: 400,
+  semiBold: 600,
+  bold: 700,
 } as const;

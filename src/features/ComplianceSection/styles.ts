@@ -1,7 +1,11 @@
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
-import { COMPLIANCE_FONT_SIZE } from "constants";
+import {
+  CARD_BORDER_COLOR,
+  COMPLIANCE_FONT_SIZE,
+  FONT_WEIGHT,
+} from "constants";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -36,7 +40,7 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 export const LabelText = styled(Typography)(({ theme }) => ({
   display: "block",
   fontSize: COMPLIANCE_FONT_SIZE.badge,
-  fontWeight: 700,
+  fontWeight: FONT_WEIGHT.bold,
   textTransform: "uppercase",
   color: theme.palette.primary.main,
   marginBottom: theme.spacing(4),
@@ -70,7 +74,7 @@ export const CardsGrid = styled("div")(({ theme }) => ({
 
 export const CardWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(6),
-  border: "1px solid #e5e7eb",
+  border: `1px solid ${CARD_BORDER_COLOR}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
   display: "flex",
@@ -100,14 +104,14 @@ export const CardBadge = styled("span")<{ $bg: string; $color: string }>(
     backgroundColor: $bg,
     color: $color,
     fontSize: COMPLIANCE_FONT_SIZE.badge,
-    fontWeight: 600,
+    fontWeight: FONT_WEIGHT.semiBold,
     width: "fit-content",
   }),
 );
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
   fontSize: COMPLIANCE_FONT_SIZE.title,
-  fontWeight: 700,
+  fontWeight: FONT_WEIGHT.bold,
   color: theme.palette.text.primary,
 }));
 
@@ -154,7 +158,7 @@ export const BannerTextWrapper = styled("div")(({ theme }) => ({
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
   fontSize: COMPLIANCE_FONT_SIZE.title,
-  fontWeight: 700,
+  fontWeight: FONT_WEIGHT.bold,
   color: theme.palette.text.primary,
 }));
 
