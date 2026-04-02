@@ -2,7 +2,7 @@ import { Container, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { HomePageTitle } from "./styles";
-import Header from "components/ExampleHeader";
+import Header from "components/Header";
 import { ExampleForm } from "features/ExampleForm";
 
 export default function ExampleHomePage() {

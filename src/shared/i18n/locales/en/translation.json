@@ -3,6 +3,24 @@
     "exampleHeader": {
         "title": "Example header"
     },
+    "header": {
+        "nav": {
+            "solution": "Solution",
+            "contactUs": "Contact Us"
+        },
+        "actions": {
+            "signIn": "Sign In",
+            "getStarted": "Get Started"
+        },
+        "logoAlt": "Clinical Data Studio — home",
+        "aria": {
+            "homeLink": "Go to home page",
+            "desktopNavigation": "Main navigation",
+            "openMenu": "Open menu",
+            "closeMenu": "Close menu",
+            "mobileMenu": "Mobile navigation menu"
+        }
+    },
     "exampleHomePage": {
         "title": "Example home page",
         "text": "Example home page"
