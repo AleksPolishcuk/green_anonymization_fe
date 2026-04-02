@@ -7,22 +7,24 @@ const regular = 400;
 const semiBold = 600;
 const bold = 700;
 
-const h1SizeDesktop = "64px";
-const h1SizeMobile = "32px";
-const h2SizeDesktop = "56px";
-const h2SizeMobile = "35px";
-const h3SizeDesktop = "44px";
-const h3SizeMobile = "28px";
-const h4Size = "18px";
-const h5Size = "16px";
-const h6Size = "14px";
-const bodySize = "16px";
+const size64 = "64px";
+const size56 = "56px";
+const size44 = "44px";
+const size35 = "35px";
+const size32 = "32px";
+const size28 = "28px";
+const size18 = "18px";
+const size16 = "16px";
+const size14 = "14px";
 
-const h1Line = 1.08;
-const h2Line = 1.09;
-const h3LineDesktop = 1.16;
-const h3LineMobile = 1.18;
-const bodyLine = 1.75;
+const lh108 = 1.08;
+const lh109 = 1.09;
+const lh116 = 1.16;
+const lh118 = 1.18;
+const lh150 = 1.5;
+const lh138 = 1.38;
+const lh140 = 1.4;
+const lh175 = 1.75;
 
 const primaryColor = "#155dfc";
 const primaryDark = "#1447e6";
@@ -78,67 +80,67 @@ export const theme = createTheme({
     h1: {
       fontFamily: headingFontFamily,
       fontWeight: regular,
-      fontSize: h1SizeMobile,
-      lineHeight: h1Line,
+      fontSize: size32,
+      lineHeight: lh108,
       [`@media (min-width:${md}px)`]: {
-        fontSize: h1SizeDesktop,
+        fontSize: size64,
       },
     },
 
     h2: {
       fontFamily: headingFontFamily,
       fontWeight: regular,
-      fontSize: h2SizeMobile,
-      lineHeight: h2Line,
+      fontSize: size35,
+      lineHeight: lh109,
       [`@media (min-width:${md}px)`]: {
-        fontSize: h2SizeDesktop,
+        fontSize: size56,
       },
     },
 
     h3: {
       fontFamily: headingFontFamily,
       fontWeight: regular,
-      fontSize: h3SizeMobile,
-      lineHeight: h3LineMobile,
+      fontSize: size28,
+      lineHeight: lh118,
       [`@media (min-width:${md}px)`]: {
-        fontSize: h3SizeDesktop,
-        lineHeight: h3LineDesktop,
+        fontSize: size44,
+        lineHeight: lh116,
       },
     },
 
     h4: {
       fontFamily: mainFontFamily,
       fontWeight: bold,
-      fontSize: h4Size,
-      lineHeight: 1.5,
+      fontSize: size18,
+      lineHeight: lh150,
     },
 
     h5: {
       fontFamily: mainFontFamily,
       fontWeight: semiBold,
-      fontSize: h5Size,
-      lineHeight: 1.38,
+      fontSize: size16,
+      lineHeight: lh138,
     },
 
     h6: {
       fontFamily: headingFontFamily,
       fontWeight: semiBold,
-      fontSize: h6Size,
-      lineHeight: 1.4,
+      fontSize: size14,
+      lineHeight: lh140,
     },
 
     body1: {
       fontFamily: mainFontFamily,
       fontWeight: regular,
-      fontSize: bodySize,
-      lineHeight: bodyLine,
+      fontSize: size16,
+      lineHeight: lh175,
     },
 
     button: {
       fontFamily: mainFontFamily,
       fontWeight: semiBold,
-      fontSize: bodySize,
-      lineHeight: 1.5,
+      fontSize: size16,
+      lineHeight: lh150,
       textTransform: "none",
     },
   },
