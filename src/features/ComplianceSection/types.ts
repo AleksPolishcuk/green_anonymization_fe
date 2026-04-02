@@ -1,4 +1,4 @@
-import type { COMPLIANCE_CARDS } from "./constants/complianceCards";
+import type { COMPLIANCE_CARDS } from "constants";
 
 export type ComplianceCard = (typeof COMPLIANCE_CARDS)[number];
 
