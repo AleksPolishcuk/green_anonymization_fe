@@ -12,6 +12,34 @@
     "submitButton": "Submit",
     "result": "Hello, {{name}}"
   },
+  "complianceSection": {
+    "label": "COMPLIANCE",
+    "title": "Built for Compliance",
+    "description": "Choose from industry-standard regulatory frameworks or create your own custom compliance profile",
+    "entityTypes": "{{count}} entity types",
+    "cards": {
+      "hipaa": {
+        "badge": "HIPAA",
+        "title": "Health Insurance Portability and Accountability Act"
+      },
+      "euGdpr": {
+        "badge": "EU GDPR",
+        "title": "General Data Protection Regulation"
+      },
+      "ukDpi": {
+        "badge": "UK DPI",
+        "title": "UK Data Protection and Investigatory Powers"
+      },
+      "swissFadp": {
+        "badge": "Swiss FADP",
+        "title": "Swiss Federal Act on Data Protection"
+      }
+    },
+    "customProfile": {
+      "title": "Custom Compliance Profiles",
+      "description": "Need specific requirements? Create custom compliance profiles tailored to your organization's unique regulatory needs and data protection policies."
+    }
+  },
   "contactUsPage": {
     "title": "Contact Us",
     "subtitle": "Have questions? We're here to help. Reach out to our team and we'll get back to you shortly.",
