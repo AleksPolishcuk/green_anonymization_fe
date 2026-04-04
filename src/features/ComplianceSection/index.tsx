@@ -1,9 +1,10 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
+import { ClipboardCheckIcon } from "assets/icons/ClipboardCheckIcon";
+
 import { useComplianceSection } from "./hooks/useComplianceSection";
 import { ComplianceCardItem } from "./components/ComplianceCardItem";
-import { ClipboardCheckIcon } from "assets/icons/ClipboardCheckIcon";
 import {
   BannerDescription,
   BannerIconWrapper,
