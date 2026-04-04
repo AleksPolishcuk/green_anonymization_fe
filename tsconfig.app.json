@@ -14,7 +14,10 @@
       "pages/*": ["pages/*"],
       "components/*": ["components/*"],
       "features/*": ["features/*"],
-      "shared/*": ["shared/*"]
+      "shared/*": ["shared/*"],
+      "assets/*": ["assets/*"],
+      "Layouts": ["Layouts/index.tsx"],
+      "constants": ["constants/index.ts"]
     },
 
     /* Bundler mode */
