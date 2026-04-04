@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { HomePageTitle } from "./styles";
 import Header from "components/ExampleHeader";
 import { ExampleForm } from "features/ExampleForm";
+import { ComplianceSection } from "features/ComplianceSection";
 import { Capabilities } from "features/Capabilities";
 
 export default function ExampleHomePage() {
@@ -17,6 +18,7 @@ export default function ExampleHomePage() {
         <Typography variant="body1">{t("exampleHomePage.text")}</Typography>
         <ExampleForm />
         <Capabilities />
+        <ComplianceSection />
       </main>
     </>
   );

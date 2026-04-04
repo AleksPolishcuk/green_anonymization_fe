@@ -1,71 +1,93 @@
 import { styled } from "@mui/material/styles";
-import { Box, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
+import { CAPABILITIES_LAYOUT } from "shared/constants/capabilities";
+import { FONT_WEIGHT } from "constants";
 
-export const CapabilitiesSection = styled("section")({
-  backgroundColor: "#f8fafc",
-  padding: "80px 0",
+export const CapabilitiesSection = styled("section")(({ theme }) => ({
+  backgroundColor: theme.palette.subtle.bg,
+  padding: `${CAPABILITIES_LAYOUT.sectionPaddingY}px 0`,
   width: "100%",
-});
+}));
 
 export const SectionContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
-    paddingLeft: "68px",
-    paddingRight: "68px",
+    paddingLeft: CAPABILITIES_LAYOUT.sidePaddingTablet,
+    paddingRight: CAPABILITIES_LAYOUT.sidePaddingTablet,
   },
   [theme.breakpoints.up("lg")]: {
-    paddingLeft: "144px",
-    paddingRight: "144px",
+    paddingLeft: CAPABILITIES_LAYOUT.sidePaddingDesktop,
+    paddingRight: CAPABILITIES_LAYOUT.sidePaddingDesktop,
   },
 }));
 
-export const TitleSectionBlock = styled(Box)({
+export const TitleSectionBlock = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  maxWidth: "760px",
-  margin: "0 auto 64px auto",
+  maxWidth: CAPABILITIES_LAYOUT.titleBlockMaxWidth,
+  margin: `0 auto ${CAPABILITIES_LAYOUT.titleBlockMarginBottom}px auto`,
 });
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
-  fontWeight: 700,
-  letterSpacing: "0.05em",
-  marginBottom: "16px",
+  display: "block",
+  fontSize: CAPABILITIES_LAYOUT.subtitleFontSize,
+  fontWeight: FONT_WEIGHT.bold,
   textTransform: "uppercase",
+  color: theme.palette.primary.main,
+  marginBottom: theme.spacing(4),
 }));
 
-export const CardsList = styled(Box)(({ theme }) => ({
+export const SectionTitle = styled(Typography)({
+  marginBottom: 8,
+});
+
+export const CardsList = styled("ul")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(2, 1fr)",
-  gap: "20px",
+  gap: CAPABILITIES_LAYOUT.cardsGap,
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
   },
 }));
 
-export const CardItem = styled(Box)(({ theme }) => ({
+export const CardItem = styled("li")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius,
-  padding: "32px",
+  padding: CAPABILITIES_LAYOUT.cardPaddingMobile,
   display: "flex",
   flexDirection: "column",
-  gap: "16px",
-  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.02)",
+  gap: CAPABILITIES_LAYOUT.cardContentGap,
+  boxShadow: CAPABILITIES_LAYOUT.cardBoxShadow,
+
+  opacity: 0,
+  transform: "translateY(24px)",
+  transition: "opacity 1s ease, transform 1s ease",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+  [theme.breakpoints.up("md")]: {
+    padding: CAPABILITIES_LAYOUT.cardPaddingDesktop,
+  },
 }));
 
-export const IconWrapper = styled(Box)(({ theme }) => ({
-  width: "44px",
-  height: "44px",
-  borderRadius: "8px",
-  backgroundColor: theme.palette.secondary.main,
+export const IconWrapper = styled("div")<{ $bg: string }>(({ $bg, theme }) => ({
+  backgroundColor: $bg,
+  width: CAPABILITIES_LAYOUT.iconSize,
+  height: CAPABILITIES_LAYOUT.iconSize,
+  borderRadius: CAPABILITIES_LAYOUT.iconBorderRadius,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   color: theme.palette.primary.main,
   "& svg": {
-    width: "20px",
-    height: "20px",
+    width: CAPABILITIES_LAYOUT.iconSvgSize,
+    height: CAPABILITIES_LAYOUT.iconSvgSize,
     fill: "currentColor",
   },
 }));
