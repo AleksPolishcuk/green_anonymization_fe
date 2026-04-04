@@ -5,12 +5,7 @@ import { DEFAULT_PHONE_COUNTRY_CODE } from "constants";
 
 import { DialCodeOverlay, PhoneInputWrapper } from "../styles";
 import { PhoneInput } from "./PhoneInput";
-
-type PhoneFieldProps = {
-  value: string;
-  onChange: (value: string) => void;
-  placeholder: string;
-};
+import type { PhoneFieldProps } from "../types";
 
 export const PhoneField = ({
   value,

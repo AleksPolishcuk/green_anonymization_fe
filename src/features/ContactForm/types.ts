@@ -5,3 +5,9 @@ export type ContactFormValues = {
   phone: string;
   message: string;
 };
+
+export type PhoneFieldProps = {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+};
