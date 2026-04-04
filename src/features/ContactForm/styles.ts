@@ -6,9 +6,9 @@ import {
   CONTACT_DIAL_CODE_OFFSET,
   CONTACT_FIELD_GAP,
   CONTACT_FIELD_HEIGHT,
-  CONTACT_FONT_SIZE,
   CONTACT_INPUT_BORDER_RADIUS,
   CONTACT_MESSAGE_MIN_HEIGHT,
+  CONTACT_TITLE_FONT_SIZE,
   FONT_WEIGHT,
 } from "constants";
 
@@ -44,13 +44,13 @@ export const EmailIconWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-export const EmailLabel = styled(Typography)({
+export const EmailLabel = styled(Typography)(({ theme }) => ({
   fontWeight: FONT_WEIGHT.bold,
-  fontSize: CONTACT_FONT_SIZE.md,
-});
+  fontSize: theme.typography.body1.fontSize,
+}));
 
 export const EmailAddress = styled(Typography)(({ theme }) => ({
-  fontSize: CONTACT_FONT_SIZE.sm,
+  fontSize: theme.typography.h6.fontSize,
   color: theme.palette.text.secondary,
   lineHeight: 1.6,
 }));
@@ -64,7 +64,7 @@ export const FormCard = styled("div")(({ theme }) => ({
 
 export const FormTitle = styled(Typography)(({ theme }) => ({
   fontWeight: FONT_WEIGHT.semiBold,
-  fontSize: CONTACT_FONT_SIZE.lg,
+  fontSize: CONTACT_TITLE_FONT_SIZE,
   marginBottom: theme.spacing(6),
 }));
 
@@ -85,10 +85,12 @@ export const FormField = styled("div")(({ theme }) => ({
   marginBottom: theme.spacing(4),
 }));
 
-export const FieldLabel = styled(Typography)(({ theme }) => ({
-  fontSize: CONTACT_FONT_SIZE.sm,
+export const FieldLabel = styled("span")(({ theme }) => ({
+  fontSize: theme.typography.h6.fontSize,
   fontWeight: FONT_WEIGHT.semiBold,
   marginBottom: theme.spacing(1.5),
+  fontFamily: theme.typography.fontFamily,
+  color: theme.palette.text.primary,
 }));
 
 export const PhoneInputWrapper = styled("div")(({ theme }) => ({
@@ -97,7 +99,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
   "& .react-tel-input .form-control": {
     width: "100%",
     height: CONTACT_FIELD_HEIGHT,
-    fontSize: CONTACT_FONT_SIZE.sm,
+    fontSize: theme.typography.h6.fontSize,
     borderRadius: CONTACT_INPUT_BORDER_RADIUS,
     border: `1px solid ${CARD_BORDER_COLOR}`,
     fontFamily: theme.typography.fontFamily,
@@ -130,7 +132,7 @@ export const DialCodeOverlay = styled("span")(({ theme }) => ({
   left: CONTACT_DIAL_CODE_OFFSET,
   top: "50%",
   transform: "translateY(-50%)",
-  fontSize: CONTACT_FONT_SIZE.sm,
+  fontSize: theme.typography.h6.fontSize,
   fontFamily: theme.typography.fontFamily,
   pointerEvents: "none",
   zIndex: 2,
@@ -139,7 +141,7 @@ export const DialCodeOverlay = styled("span")(({ theme }) => ({
 export const FieldTextarea = styled("textarea")(({ theme }) => ({
   width: "100%",
   padding: `${theme.spacing(3)} ${theme.spacing(3.5)}`,
-  fontSize: CONTACT_FONT_SIZE.sm,
+  fontSize: theme.typography.h6.fontSize,
   color: theme.palette.text.primary,
   border: `1px solid ${CARD_BORDER_COLOR}`,
   borderRadius: CONTACT_INPUT_BORDER_RADIUS,

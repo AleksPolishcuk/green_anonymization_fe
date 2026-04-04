@@ -47,13 +47,7 @@ export const COMPLIANCE_CARDS = [
   },
 ] as const;
 
-// Temporary font size values — replace with theme typography
-// once the theme PR is approved and merged
-export const COMPLIANCE_FONT_SIZE = {
-  badge: "12px",
-  entityCount: "14px",
-  title: "16px",
-} as const;
+export const COMPLIANCE_BADGE_FONT_SIZE = "12px";
 
 export const FONT_WEIGHT = {
   regular: 400,
@@ -68,8 +62,4 @@ export const CONTACT_INPUT_BORDER_RADIUS = "14px";
 export const CONTACT_DIAL_CODE_OFFSET = "10px";
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
 
-export const CONTACT_FONT_SIZE = {
-  sm: "14px",
-  md: "16px",
-  lg: "20px",
-} as const;
+export const CONTACT_TITLE_FONT_SIZE = "20px";

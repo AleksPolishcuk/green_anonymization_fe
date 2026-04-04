@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 
 import {
   CARD_BORDER_COLOR,
-  COMPLIANCE_FONT_SIZE,
+  COMPLIANCE_BADGE_FONT_SIZE,
   FONT_WEIGHT,
 } from "constants";
 
@@ -39,7 +39,7 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 
 export const LabelText = styled(Typography)(({ theme }) => ({
   display: "block",
-  fontSize: COMPLIANCE_FONT_SIZE.badge,
+  fontSize: COMPLIANCE_BADGE_FONT_SIZE,
   fontWeight: FONT_WEIGHT.bold,
   textTransform: "uppercase",
   color: theme.palette.primary.main,
@@ -103,20 +103,20 @@ export const CardBadge = styled("span")<{ $bg: string; $color: string }>(
     borderRadius: "20px",
     backgroundColor: $bg,
     color: $color,
-    fontSize: COMPLIANCE_FONT_SIZE.badge,
+    fontSize: COMPLIANCE_BADGE_FONT_SIZE,
     fontWeight: FONT_WEIGHT.semiBold,
     width: "fit-content",
   }),
 );
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
-  fontSize: COMPLIANCE_FONT_SIZE.title,
+  fontSize: theme.typography.h5.fontSize,
   fontWeight: FONT_WEIGHT.bold,
   color: theme.palette.text.primary,
 }));
 
 export const CardEntityCount = styled(Typography)(({ theme }) => ({
-  fontSize: COMPLIANCE_FONT_SIZE.entityCount,
+  fontSize: theme.typography.h6.fontSize,
   color: theme.palette.text.secondary,
 }));
 
@@ -157,12 +157,12 @@ export const BannerTextWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
-  fontSize: COMPLIANCE_FONT_SIZE.title,
+  fontSize: theme.typography.h5.fontSize,
   fontWeight: FONT_WEIGHT.bold,
   color: theme.palette.text.primary,
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
-  fontSize: COMPLIANCE_FONT_SIZE.entityCount,
+  fontSize: theme.typography.h6.fontSize,
   color: theme.palette.text.secondary,
 }));
