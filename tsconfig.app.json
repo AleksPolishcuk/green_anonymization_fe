@@ -16,7 +16,9 @@
       "features/*": ["features/*"],
       "shared/*": ["shared/*"],
       "constants/*": ["constants/*"],
-      "theme/*": ["theme/*"]
+      "theme/*": ["theme/*"],
+      "constants": ["constants/index.ts"],
+      "assets/*": ["assets/*"]
     },
 
     /* Bundler mode */
