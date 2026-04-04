@@ -1,22 +1,15 @@
 import { useMemo } from "react";
 
 import Box from "@mui/material/Box";
-import {
-  IconButton,
-  Link,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { IconButton, Link, Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
+import { useFooterLegalLabels } from "components/Footer/hooks/useFooterLegalLabels";
 import { SpriteIcon } from "components/SpriteIcon";
 import {
   footerInternalPaths,
-  footerMainLogoHeightPx,
-  footerMainLogoMaxWidthPx,
+  footerMainLogoPreserveAspectRatio,
   footerNavGroups,
   footerSocialIconButtonPx,
   footerSocialProfileUrls,
@@ -37,6 +30,7 @@ import {
   footerCopyrightSx,
   footerLegalLinkSx,
   footerMainLogoInnerSx,
+  footerMainLogoWrapperSx,
   footerNavColumnStackSx,
   footerNavGridSx,
   footerNavHeadingSx,
@@ -47,19 +41,9 @@ import {
 
 export function Footer() {
   const { t } = useTranslation();
-  const theme = useTheme();
-  const isMobileLayout = useMediaQuery(theme.breakpoints.down("md"));
+  const { privacyLabelKey, termsLabelKey, cookiesLabelKey } =
+    useFooterLegalLabels();
   const copyrightYear = useMemo(() => new Date().getFullYear(), []);
-
-  const privacyLabelKey = isMobileLayout
-    ? "footer.legal.privacyFull"
-    : "footer.legal.privacy";
-  const termsLabelKey = isMobileLayout
-    ? "footer.legal.termsFull"
-    : "footer.legal.terms";
-  const cookiesLabelKey = isMobileLayout
-    ? "footer.legal.cookiesFull"
-    : "footer.legal.cookies";
 
   return (
     <FooterRoot>
@@ -72,21 +56,12 @@ export function Footer() {
                   component="span"
                   role="img"
                   aria-label={t("footer.brandName")}
-                  sx={{
-                    display: "block",
-                    flexShrink: 0,
-                    alignSelf: "flex-start",
-                    width: "100%",
-                    maxWidth: footerMainLogoMaxWidthPx,
-                    height: footerMainLogoHeightPx,
-                    lineHeight: 0,
-                    overflow: "hidden",
-                  }}
+                  sx={footerMainLogoWrapperSx}
                 >
                   <SpriteIcon
                     symbolId={spriteSymbolIds.mainLogo}
                     viewBox={spriteViewBoxes.mainLogo}
-                    preserveAspectRatio="xMinYMid slice"
+                    preserveAspectRatio={footerMainLogoPreserveAspectRatio}
                     decorative
                     sx={footerMainLogoInnerSx}
                   />

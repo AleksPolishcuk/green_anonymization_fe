@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import type { SxProps, Theme } from "@mui/material/styles";
 
-const spriteAssetPath = "/sprite.svg";
+import { spriteSvgPublicPath } from "shared/constants/footer";
 
 export type SpriteIconProps = {
   symbolId: string;
@@ -24,7 +24,7 @@ export function SpriteIcon({
   decorative,
   "aria-label": ariaLabel,
 }: SpriteIconProps) {
-  const href = `${spriteAssetPath}#${symbolId}`;
+  const href = `${spriteSvgPublicPath}#${symbolId}`;
 
   return (
     <Box

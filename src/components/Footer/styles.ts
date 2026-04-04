@@ -9,15 +9,23 @@ import Typography from "@mui/material/Typography";
 import {
   footerBackground,
   footerBodyColor,
-  footerDividerColor,
-  footerRootBorderTopColor,
+  footerBodyFontWeightRegular,
+  footerBodySecondaryFontSizePx,
+  footerBodySecondaryLineHeight,
+  footerDesktopBrandColumnMaxWidthPx,
   footerDesktopContainerMaxWidthPx,
   footerDesktopMainBlockMinHeightPx,
+  footerDividerColor,
   footerHeadingColor,
+  footerLegalCaptionFontSizeRem,
+  footerLegalCaptionLineHeight,
+  footerMainLogoHeightPx,
+  footerMainLogoMaxWidthPx,
+  footerMutedColor,
   footerNavColumnHeadingColor,
   footerNavColumnHeadingFontSizePx,
   footerNavColumnHeadingLineHeight,
-  footerMutedColor,
+  footerRootBorderTopColor,
   footerSocialButtonBackground,
   footerSocialButtonHoverBackground,
   footerSocialIconBorderRadiusPx,
@@ -32,7 +40,6 @@ export const FooterRoot = styled("footer")(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-/** Обмежує ширину до 1152px на десктопі; горизонтальні падінги: 24px до `md`, 12px від `md` (`disableGutters` у `Footer`). */
 export const FooterContainer = styled(Container)(({ theme }) => ({
   width: "100%",
   marginLeft: "auto",
@@ -41,8 +48,8 @@ export const FooterContainer = styled(Container)(({ theme }) => ({
   paddingRight: theme.spacing(6),
   boxSizing: "border-box",
   [theme.breakpoints.up("md")]: {
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   "&&": {
     [theme.breakpoints.up("md")]: {
@@ -51,7 +58,6 @@ export const FooterContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-/** Верх футера + ряд copyright/legal; на `md+` загальна висота блоку = 280px. */
 export const FooterBody = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
   width: "100%",
@@ -79,7 +85,7 @@ export const FooterBrandBlock = styled(Box)(({ theme }) => ({
   maxWidth: "100%",
   [theme.breakpoints.up("md")]: {
     flex: "1 1 36%",
-    maxWidth: 360,
+    maxWidth: footerDesktopBrandColumnMaxWidthPx,
   },
 }));
 
@@ -92,9 +98,9 @@ export const FooterBrandRow = styled(Stack)(({ theme }) => ({
 
 export const FooterDescription = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  fontSize: "14px",
-  lineHeight: 1.64,
-  fontWeight: 400,
+  fontSize: `${footerBodySecondaryFontSizePx}px`,
+  lineHeight: footerBodySecondaryLineHeight,
+  fontWeight: footerBodyFontWeightRegular,
   marginTop: theme.spacing(5),
   [theme.breakpoints.up("md")]: {
     marginTop: theme.spacing(2),
@@ -108,7 +114,6 @@ export const FooterSocialRow = styled(Stack)(({ theme }) => ({
   marginTop: theme.spacing(6),
 }));
 
-/** Колонка навігації: `<Stack component="section">` у `index.tsx`. Відступ заголовок → перше посилання: 20px (`spacing` у темі = 4px/одиницю). */
 export const footerNavColumnStackSx: SxProps<Theme> = (theme) => ({
   gap: theme.spacing(5),
 });
@@ -147,6 +152,17 @@ export const FooterLegalRow = styled(Stack)(({ theme }) => ({
   },
 }));
 
+export const footerMainLogoWrapperSx: SxProps<Theme> = {
+  display: "block",
+  flexShrink: 0,
+  alignSelf: "flex-start",
+  width: "100%",
+  maxWidth: footerMainLogoMaxWidthPx,
+  height: footerMainLogoHeightPx,
+  lineHeight: 0,
+  overflow: "hidden",
+};
+
 export const footerMainLogoInnerSx: SxProps<Theme> = {
   display: "block",
   width: "100%",
@@ -177,7 +193,6 @@ export const footerNavGridSx: SxProps<Theme> = (theme) => ({
   },
 });
 
-/** Підключення `typography.h4` (700, Inter); розмір/line-height футера з макету поверх варіанту. */
 export const footerNavHeadingSx: SxProps<Theme> = {
   margin: 0,
   color: footerNavColumnHeadingColor,
@@ -196,9 +211,9 @@ export const footerNavListSx: SxProps<Theme> = (theme) => ({
 
 export const footerNavLinkSx: SxProps<Theme> = (theme) => ({
   color: theme.palette.text.secondary,
-  fontSize: "14px",
-  lineHeight: 1.64,
-  fontWeight: 400,
+  fontSize: `${footerBodySecondaryFontSizePx}px`,
+  lineHeight: footerBodySecondaryLineHeight,
+  fontWeight: footerBodyFontWeightRegular,
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",
@@ -208,8 +223,8 @@ export const footerNavLinkSx: SxProps<Theme> = (theme) => ({
 
 export const footerCopyrightSx: SxProps<Theme> = (theme) => ({
   color: footerMutedColor,
-  fontSize: "0.75rem",
-  lineHeight: 1.5,
+  fontSize: footerLegalCaptionFontSizeRem,
+  lineHeight: footerLegalCaptionLineHeight,
   textAlign: "center",
   [theme.breakpoints.up("md")]: {
     textAlign: "left",
@@ -218,8 +233,8 @@ export const footerCopyrightSx: SxProps<Theme> = (theme) => ({
 
 export const footerLegalLinkSx: SxProps<Theme> = {
   color: footerMutedColor,
-  fontSize: "0.75rem",
-  lineHeight: 1.5,
+  fontSize: footerLegalCaptionFontSizeRem,
+  lineHeight: footerLegalCaptionLineHeight,
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",

@@ -19,9 +19,22 @@ export const footerSocialIconGapPx = 8;
 export const footerMainLogoMaxWidthPx = 200;
 export const footerMainLogoHeightPx = 36;
 
+export const footerDesktopBrandColumnMaxWidthPx = 360;
+
+export const footerMainLogoPreserveAspectRatio = "xMinYMid slice";
+
+export const footerBodySecondaryFontSizePx = 14;
+export const footerBodySecondaryLineHeight = 1.64;
+export const footerBodyFontWeightRegular = 400;
+
+export const footerLegalCaptionFontSizeRem = "0.75rem";
+export const footerLegalCaptionLineHeight = 1.5;
+
 export const footerDesktopContainerMaxWidthPx = 1152;
 
 export const footerDesktopMainBlockMinHeightPx = 280;
+
+export const spriteSvgPublicPath = "/sprite.svg";
 
 export const spriteSymbolIds = {
   mainLogo: "icon-main-logo",
@@ -39,6 +52,15 @@ export const footerSocialProfileUrls = {
   x: "https://x.com",
   linkedin: "https://www.linkedin.com",
   github: "https://github.com",
+} as const;
+
+export const footerI18nLegalKeys = {
+  privacy: "footer.legal.privacy",
+  privacyFull: "footer.legal.privacyFull",
+  terms: "footer.legal.terms",
+  termsFull: "footer.legal.termsFull",
+  cookies: "footer.legal.cookies",
+  cookiesFull: "footer.legal.cookiesFull",
 } as const;
 
 export const footerInternalPaths = {
