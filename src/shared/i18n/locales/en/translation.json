@@ -39,5 +39,47 @@
       "title": "Custom Compliance Profiles",
       "description": "Need specific requirements? Create custom compliance profiles tailored to your organization's unique regulatory needs and data protection policies."
     }
+  },
+  "footer": {
+    "brandName": "Clinical Data Studio",
+    "description": "Enterprise-grade clinical data de-identification and synthetic data generation platform. Protecting patient privacy while maintaining data utility.",
+    "navAria": "Footer navigation",
+    "copyright": "© {{year}} Clinical Data Studio. All rights reserved.",
+    "columns": {
+      "product": "Product",
+      "resources": "Resources",
+      "company": "Company"
+    },
+    "product": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "api": "API",
+      "integrations": "Integrations"
+    },
+    "resources": {
+      "documentation": "Documentation",
+      "guides": "Guides",
+      "blog": "Blog",
+      "support": "Support"
+    },
+    "company": {
+      "about": "About",
+      "careers": "Careers",
+      "contact": "Contact",
+      "legal": "Legal"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies",
+      "privacyFull": "Privacy Policy",
+      "termsFull": "Terms of Service",
+      "cookiesFull": "Cookie Policy"
+    },
+    "social": {
+      "xAria": "Clinical Data Studio on X",
+      "linkedinAria": "Clinical Data Studio on LinkedIn",
+      "githubAria": "Clinical Data Studio on GitHub"
+    }
   }
 }
