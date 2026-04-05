@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { ContactForm } from "features/ContactForm";
+import { FaqSection } from "features/FaqSection";
 import { PageSubtitle, PageTitle, PageSection } from "./styles";
 
 export default function ContactUsPage() {
@@ -16,6 +17,7 @@ export default function ContactUsPage() {
         </PageSubtitle>
         <ContactForm />
       </Container>
+      <FaqSection />
     </PageSection>
   );
 }

@@ -63,3 +63,4 @@ export const CONTACT_DIAL_CODE_OFFSET = "10px";
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
 
 export const CONTACT_TITLE_FONT_SIZE = "20px";
+export const FAQ_ITEM_HEIGHT = "66px";
