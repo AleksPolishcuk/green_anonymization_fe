@@ -1,34 +1,61 @@
-
 {
-    "exampleHeader": {
-        "title": "Example header"
+  "exampleHeader": {
+    "title": "Example header"
+  },
+  "exampleHomePage": {
+    "title": "Example home page",
+    "text": "Example home page"
+  },
+  "exampleWorkForm": {
+    "title": "Example work form",
+    "nameLabel": "Name",
+    "submitButton": "Submit",
+    "result": "Hello, {{name}}"
+  },
+  "complianceSection": {
+    "label": "COMPLIANCE",
+    "title": "Built for Compliance",
+    "description": "Choose from industry-standard regulatory frameworks or create your own custom compliance profile",
+    "entityTypes": "{{count}} entity types",
+    "cards": {
+      "hipaa": {
+        "badge": "HIPAA",
+        "title": "Health Insurance Portability and Accountability Act"
+      },
+      "euGdpr": {
+        "badge": "EU GDPR",
+        "title": "General Data Protection Regulation"
+      },
+      "ukDpi": {
+        "badge": "UK DPI",
+        "title": "UK Data Protection and Investigatory Powers"
+      },
+      "swissFadp": {
+        "badge": "Swiss FADP",
+        "title": "Swiss Federal Act on Data Protection"
+      }
     },
-    "header": {
-        "nav": {
-            "solution": "Solution",
-            "contactUs": "Contact Us"
-        },
-        "actions": {
-            "signIn": "Sign In",
-            "getStarted": "Get Started"
-        },
-        "logoAlt": "Clinical Data Studio — home",
-        "aria": {
-            "homeLink": "Go to home page",
-            "desktopNavigation": "Main navigation",
-            "openMenu": "Open menu",
-            "closeMenu": "Close menu",
-            "mobileMenu": "Mobile navigation menu"
-        }
-    },
-    "exampleHomePage": {
-        "title": "Example home page",
-        "text": "Example home page"
-    },
-    "exampleWorkForm": {
-        "title": "Example work form",
-        "nameLabel": "Name",
-        "submitButton": "Submit",
-        "result": "Hello, {{name}}"
+    "customProfile": {
+      "title": "Custom Compliance Profiles",
+      "description": "Need specific requirements? Create custom compliance profiles tailored to your organization's unique regulatory needs and data protection policies."
     }
+  },
+  "header": {
+    "nav": {
+      "solution": "Solution",
+      "contactUs": "Contact Us"
+    },
+    "actions": {
+      "signIn": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "logoAlt": "Clinical Data Studio — home",
+    "aria": {
+      "homeLink": "Go to home page",
+      "desktopNavigation": "Main navigation",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "mobileMenu": "Mobile navigation menu"
+    }
+  }
 }
