@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
-import { headerCta, headerInteraction } from "components/Header/constants";
+
+import { headerCta, headerInteraction } from "shared/constants/header";
 import { theme as appTheme } from "shared/theme/theme";
 
 export const AuthActionsRow = styled.div<{ $isCompact: boolean }>`
   display: inline-flex;
   align-items: center;
-  gap: ${headerCta.authActionsGapPx}px;
+  gap: ${appTheme.spacing(4)};
 
   ${({ $isCompact }) =>
     $isCompact &&
@@ -24,21 +25,25 @@ export const SignInLink = styled.a`
   justify-content: center;
   min-height: ${headerCta.getStartedHeightPx}px;
   padding: ${headerCta.getStartedPadding};
-  border-radius: ${headerCta.getStartedBorderRadiusPx}px;
+  border-radius: ${headerCta.buttonBorderRadiusPx}px;
   border: 1px solid transparent;
   background: transparent;
   color: ${headerCta.signInColor};
   font-family: ${appTheme.typography.fontFamily};
   text-decoration: none;
-  font-size: ${headerCta.signInFontSizePx}px;
-  line-height: ${headerCta.signInLineHeight};
-  font-weight: ${headerCta.signInFontWeight};
+  font-size: ${appTheme.typography.h6.fontSize};
+  line-height: ${appTheme.typography.button.lineHeight};
+  font-weight: ${appTheme.typography.fontWeightMedium};
   white-space: nowrap;
   transition:
-    background-color ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard},
-    border-color ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard},
-    box-shadow ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard},
-    color ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard};
+    background-color ${headerInteraction.transitionButtonSeconds}s
+      ${headerInteraction.easingStandard},
+    border-color ${headerInteraction.transitionButtonSeconds}s
+      ${headerInteraction.easingStandard},
+    box-shadow ${headerInteraction.transitionButtonSeconds}s
+      ${headerInteraction.easingStandard},
+    color ${headerInteraction.transitionButtonSeconds}s
+      ${headerInteraction.easingStandard};
 
   &:hover {
     background-color: ${headerCta.getStartedHoverBackground};
@@ -76,14 +81,14 @@ export const GetStartedButton = styled.button<{ $isCompact?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${headerCta.getStartedBorderRadiusPx}px;
+  border-radius: ${headerCta.buttonBorderRadiusPx}px;
   padding: ${headerCta.getStartedPadding};
   background-color: ${appTheme.palette.primary.main};
   color: ${headerCta.getStartedColor};
   font-family: ${appTheme.typography.fontFamily};
-  font-size: ${headerCta.getStartedFontSizePx}px;
-  font-weight: ${headerCta.getStartedFontWeight};
-  line-height: ${headerCta.getStartedLineHeight};
+  font-size: ${appTheme.typography.h6.fontSize};
+  font-weight: ${appTheme.typography.button.fontWeight};
+  line-height: ${appTheme.typography.button.lineHeight};
   white-space: nowrap;
   box-shadow: ${headerCta.getStartedBoxShadow};
   text-transform: none;
@@ -116,7 +121,8 @@ export const GetStartedButton = styled.button<{ $isCompact?: boolean }>`
   }
 
   &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid ${headerCta.getStartedColor};
+    outline: ${headerInteraction.focusRingWidthPx}px solid
+      ${headerCta.getStartedColor};
     outline-offset: ${headerInteraction.focusRingButtonOffsetPx}px;
     box-shadow:
       ${headerCta.getStartedBoxShadow},

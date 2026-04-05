@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { AuthActions } from "components/Header/components/AuthActions";
-import { NavLinks } from "components/Header/components/NavLinks";
+import { useTranslation } from "react-i18next";
+
+import { AuthActions } from "components/Header/AuthActions";
 import {
   CloseButton,
   CloseIcon,
@@ -11,9 +12,13 @@ import {
   ModalNavLink,
   Overlay,
   Panel,
-} from "components/Header/components/BurgerModal/styles";
-import { headerI18nPrefix } from "components/Header/constants";
-import { useTranslation } from "react-i18next";
+} from "components/Header/BurgerModal/styles";
+import { NavLinks } from "components/Header/NavLinks";
+import {
+  headerI18nPrefix,
+  headerSpriteRef,
+  headerSpriteSymbolIds,
+} from "shared/constants/header";
 
 type BurgerModalProps = {
   isOpen: boolean;
@@ -42,9 +47,13 @@ export function BurgerModal({ isOpen, id, onClose }: BurgerModalProps) {
         onClick={(event) => event.stopPropagation()}
       >
         <ModalHeader>
-          <CloseButton ref={closeButtonRef} onClick={onClose} aria-label={t(`${headerI18nPrefix}.aria.closeMenu`)}>
+          <CloseButton
+            ref={closeButtonRef}
+            onClick={onClose}
+            aria-label={t(`${headerI18nPrefix}.aria.closeMenu`)}
+          >
             <CloseIcon aria-hidden="true">
-              <use href="/sprite.svg#icon-close" />
+              <use href={headerSpriteRef(headerSpriteSymbolIds.close)} />
             </CloseIcon>
           </CloseButton>
         </ModalHeader>

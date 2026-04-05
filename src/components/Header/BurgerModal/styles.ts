@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import {
+  headerBar,
   headerBurgerPanelWidthPx,
   headerInteraction,
   headerModal,
-  headerMobileGlassPaddingPx,
+  headerLayoutHorizontalPaddingPx,
   headerMobileTabletBarHeightPx,
   headerTabletBreakpointPx,
-} from "components/Header/constants";
+} from "shared/constants/header";
 import { theme as appTheme } from "shared/theme/theme";
 
 export const Overlay = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: ${headerModal.overlayZIndex};
   display: block;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
@@ -24,18 +25,22 @@ export const Overlay = styled.div<{ $isOpen: boolean }>`
   @media (min-width: ${headerTabletBreakpointPx}px) {
     background: ${headerModal.overlayTabletBg};
     border: none;
-    -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.05);
-    backdrop-filter: blur(28px) saturate(190%) brightness(1.05);
+    -webkit-backdrop-filter: blur(${headerModal.overlayBackdropBlurPx}px)
+      saturate(${headerModal.overlayBackdropSaturatePercent}%)
+      brightness(${headerModal.overlayBackdropBrightness});
+    backdrop-filter: blur(${headerModal.overlayBackdropBlurPx}px)
+      saturate(${headerModal.overlayBackdropSaturatePercent}%)
+      brightness(${headerModal.overlayBackdropBrightness});
   }
 
-  @supports not (backdrop-filter: blur(1px)) {
+  @supports not (backdrop-filter: blur(${headerBar.supportsBlurTestPx}px)) {
     @media (min-width: ${headerTabletBreakpointPx}px) {
       background: ${headerModal.overlayTabletFallbackBg};
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    transition-duration: 0.01ms;
+    transition-duration: ${headerModal.reducedMotionTransitionMs}ms;
   }
 `;
 
@@ -61,7 +66,7 @@ export const Panel = styled.aside<{ $isOpen: boolean }>`
     $isOpen ? "translateX(0)" : "translateX(100%)"};
   transition: transform ${headerInteraction.panelDurationMs}ms
     ${headerInteraction.easing};
-  z-index: 1;
+  z-index: ${headerModal.panelZIndex};
   overflow: hidden;
 
   @media (min-width: ${headerTabletBreakpointPx}px) {
@@ -75,7 +80,7 @@ export const Panel = styled.aside<{ $isOpen: boolean }>`
   }
 
   @media (prefers-reduced-motion: reduce) {
-    transition-duration: 0.01ms;
+    transition-duration: ${headerModal.reducedMotionTransitionMs}ms;
   }
 `;
 
@@ -88,11 +93,11 @@ export const ModalHeader = styled.div`
   width: 100%;
   height: ${headerMobileTabletBarHeightPx}px;
   min-height: ${headerMobileTabletBarHeightPx}px;
-  padding: 0 ${headerMobileGlassPaddingPx}px;
+  padding: 0 ${headerLayoutHorizontalPaddingPx}px;
   background: ${headerModal.headerBg};
 
   @media (min-width: ${headerTabletBreakpointPx}px) {
-    padding: 0 24px;
+    padding: 0 ${appTheme.spacing(6)};
   }
 `;
 
@@ -101,14 +106,14 @@ export const ModalBody = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: ${headerModal.bodyGapPx}px;
+  gap: ${appTheme.spacing(7.5)};
   min-height: 0;
-  padding: ${headerMobileGlassPaddingPx}px;
-  background: ${headerModal.bodyBg};
+  padding: ${headerLayoutHorizontalPaddingPx}px;
+  background: ${appTheme.palette.background.default};
   overflow: auto;
 
   @media (min-width: ${headerTabletBreakpointPx}px) {
-    padding: 24px;
+    padding: ${appTheme.spacing(6)};
   }
 `;
 
@@ -125,9 +130,12 @@ export const CloseButton = styled.button`
   justify-content: center;
   color: inherit;
   transition:
-    background-color ${headerInteraction.transitionFastSeconds}s ${headerInteraction.easingStandard},
-    transform ${headerInteraction.transitionFastSeconds}s ${headerInteraction.easingOut},
-    box-shadow ${headerInteraction.transitionFastSeconds}s ${headerInteraction.easingStandard};
+    background-color ${headerInteraction.transitionFastSeconds}s
+      ${headerInteraction.easingStandard},
+    transform ${headerInteraction.transitionFastSeconds}s
+      ${headerInteraction.easingOut},
+    box-shadow ${headerInteraction.transitionFastSeconds}s
+      ${headerInteraction.easingStandard};
 
   &:hover {
     background-color: ${headerInteraction.closeButtonHoverBg};
@@ -160,7 +168,7 @@ export const CloseIcon = styled.svg`
 export const ModalNav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: ${headerModal.navGapPx}px;
+  gap: ${appTheme.spacing(6)};
 `;
 
 export const ModalNavLink = styled.a`
@@ -172,13 +180,14 @@ export const ModalNavLink = styled.a`
   align-self: flex-start;
   padding: ${headerInteraction.linkPadY}px ${headerInteraction.linkPadX}px;
   font-family: ${appTheme.typography.fontFamily};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: ${headerModal.navLinkColor};
+  font-weight: ${appTheme.typography.body1.fontWeight};
+  font-size: ${appTheme.typography.body1.fontSize};
+  line-height: ${appTheme.typography.button.lineHeight};
+  color: ${appTheme.palette.text.secondary};
   text-decoration: none;
   border-radius: ${headerInteraction.linkFocusRadiusPx}px;
-  transition: color ${headerInteraction.transitionFastSeconds}s ${headerInteraction.easingStandard};
+  transition: color ${headerInteraction.transitionFastSeconds}s
+    ${headerInteraction.easingStandard};
 
   &::after {
     content: "";
@@ -190,7 +199,8 @@ export const ModalNavLink = styled.a`
     background-color: ${headerInteraction.navLinkUnderlineColor};
     transform: scaleX(0);
     transform-origin: left center;
-    transition: transform 0.28s ${headerInteraction.easingOut};
+    transition: transform ${headerInteraction.navLinkUnderlineTransitionSeconds}s
+      ${headerInteraction.easingOut};
   }
 
   &:hover {
@@ -225,5 +235,5 @@ export const ModalNavLink = styled.a`
 export const ModalActions = styled.div`
   margin-top: auto;
   display: grid;
-  gap: 12px;
+  gap: ${appTheme.spacing(3)};
 `;

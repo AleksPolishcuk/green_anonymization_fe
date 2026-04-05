@@ -1,8 +1,8 @@
 import type { ComponentType, HTMLAttributes } from "react";
-
-import { headerI18nPrefix, headerNavItems } from "components/Header/constants";
-import { NavButton } from "components/Header/styles";
 import { useTranslation } from "react-i18next";
+
+import { NavButton } from "components/Header/NavLinks/styles";
+import { headerI18nPrefix, headerNavItems } from "shared/constants/header";
 
 type NavLinksProps = {
   onNavigate?: () => void;

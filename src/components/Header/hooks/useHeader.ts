@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { useMediaQuery } from "@mui/material";
 
-export function useHeaderMenu() {
+import {
+  headerDesktopAuthBreakpointPx,
+  keyboardKey,
+} from "shared/constants/header";
+
+export function useHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openMenu = useCallback(() => {
@@ -11,6 +17,19 @@ export function useHeaderMenu() {
     setIsMenuOpen(false);
   }, []);
 
+  // Burger vs inline auth: `headerDesktopAuthBreakpointPx` (1024), not `headerLgBreakpointPx` / `lg` (1440).
+  const showBurgerMenu = useMediaQuery(
+    `(max-width: ${headerDesktopAuthBreakpointPx - 1}px)`,
+  );
+
+  useEffect(() => {
+    if (!showBurgerMenu) {
+      queueMicrotask(() => {
+        closeMenu();
+      });
+    }
+  }, [showBurgerMenu, closeMenu]);
+
   useEffect(() => {
     if (!isMenuOpen) {
       return undefined;
@@ -20,7 +39,7 @@ export function useHeaderMenu() {
     document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === keyboardKey.escape) {
         setIsMenuOpen(false);
       }
     };
@@ -33,5 +52,10 @@ export function useHeaderMenu() {
     };
   }, [isMenuOpen]);
 
-  return { isMenuOpen, openMenu, closeMenu };
+  return {
+    showBurgerMenu,
+    isMenuOpen,
+    openMenu,
+    closeMenu,
+  };
 }

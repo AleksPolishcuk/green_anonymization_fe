@@ -1,17 +1,43 @@
+import { theme } from "shared/theme/theme";
+
 export const headerNavItems = [
   { key: "solution", href: "#solution" },
   { key: "contactUs", href: "#contact-us" },
 ] as const;
 
-export const headerI18nPrefix = "header";
+export const headerRoutes = {
+  home: "/",
+  signInHash: "#sign-in",
+} as const;
 
-export const headerBreakpoint = 1440;
+export const headerAssetPaths = {
+  sprite: "/sprite.svg",
+} as const;
+
+export const headerSpriteSymbolIds = {
+  burger: "icon-burger",
+  close: "icon-close",
+} as const;
+
+export function headerSpriteRef(symbolId: string): string {
+  return `${headerAssetPaths.sprite}#${symbolId}`;
+}
+
+export const headerI18nPrefix = "header";
 
 export const headerDesktopAuthBreakpointPx = 1024;
 
 export const headerTabletBreakpointPx = 768;
 
-export const headerMobileGlassPaddingPx = 18;
+export const headerLgBreakpointPx = theme.breakpoints.values.lg;
+
+export const headerLayoutHorizontalPaddingPx = 18;
+
+export const headerMobileMenuId = "guest-mobile-menu";
+
+export const keyboardKey = {
+  escape: "Escape",
+} as const;
 
 export const headerBurgerPanelWidthPx = 375;
 
@@ -38,41 +64,31 @@ export const headerLogoDesktop = {
 } as const;
 
 export const headerCta = {
-  authActionsGapPx: 16,
+  buttonBorderRadiusPx: 14,
   signInColor: "#313643",
-  signInFontSizePx: 14,
-  signInFontWeight: 500,
-  signInLineHeight: 1.5,
-  getStartedColor: "#fff",
-  getStartedBorderRadiusPx: 14,
+  getStartedColor: theme.palette.primary.contrastText,
   getStartedPadding: "10px 20px",
   getStartedWidthPx: 119,
   getStartedHeightPx: 41,
-  getStartedFontSizePx: 14,
-  getStartedFontWeight: 600,
-  getStartedLineHeight: 1.5,
   getStartedBoxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
   getStartedHoverBackground: "#114fd8",
   getStartedHoverBoxShadow: "0 6px 14px 0 rgba(59, 130, 246, 0.6)",
 } as const;
 
-/** Hover / focus / motion — aligned with glass header (primary #155dfc). */
 export const headerInteraction = {
-  /** Nav links hover: text + animated underline. */
-  linkNavHoverColor: "#101828",
-  navLinkUnderlineColor: "#155dfc",
+  linkNavHoverColor: theme.palette.text.primary,
+  navLinkUnderlineColor: theme.palette.primary.main,
   navLinkUnderlineHeightPx: 2,
-  /** Modal overlay + panel */
+  navLinkUnderlineTransitionSeconds: 0.28,
   overlayDurationMs: 280,
   panelDurationMs: 300,
   easing: "cubic-bezier(0.32, 0.72, 0, 1)",
   easingStandard: "cubic-bezier(0.4, 0, 0.2, 1)",
   easingOut: "cubic-bezier(0.16, 1, 0.3, 1)",
-  focusRingColor: "#155dfc",
+  focusRingColor: theme.palette.primary.main,
   focusRingWidthPx: 2,
   focusRingOffsetPx: 3,
   focusRingButtonOffsetPx: 2,
-  /** Soft glow so focus is obvious on glass / white */
   focusRingShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
   focusRingStrongShadow: "0 0 0 4px rgba(21, 93, 252, 0.45)",
   linkFocusRadiusPx: 8,
@@ -89,27 +105,35 @@ export const headerInteraction = {
   transitionButtonSeconds: 0.24,
 } as const;
 
+export const headerLayout = {
+  shellZIndex: 20,
+  logoSlotZIndex: 1,
+  desktopNavCenterZIndex: 0,
+} as const;
+
 export const headerModal = {
   overlayMobileBg: "rgba(16, 24, 40, 0.5)",
   overlayTabletBg: "rgba(255, 255, 255, 0.14)",
   overlayTabletFallbackBg: "rgba(248, 250, 255, 0.85)",
   panelTabletShadow: "-12px 0 28px rgba(16, 24, 40, 0.18)",
   headerBg: "#f3f4f6",
-  bodyBg: "#ffffff",
-  navLinkColor: "#4a5565",
-  bodyGapPx: 30,
-  navGapPx: 24,
   closeControlSizePx: 36,
+  overlayZIndex: 30,
+  panelZIndex: 1,
+  overlayBackdropBlurPx: 28,
+  overlayBackdropSaturatePercent: 190,
+  overlayBackdropBrightness: 1.05,
+  reducedMotionTransitionMs: 0.01,
 } as const;
 
-export const headerSurfaceEffect = {
-  borderWidth: 0.07,
-  brightness: 50,
-  opacity: 0.93,
-  blur: 2,
-  displace: 0,
-  backgroundOpacity: 0.12,
-  saturation: 1.8,
-  distortionScale: -150,
-  mixBlendMode: "difference" as const,
+export const headerBar = {
+  backdropBlurPx: 6,
+  saturatePercent: 140,
+  brightness: 1.02,
+  background: "rgba(255, 255, 255, 0.1)",
+  fallbackBackground: "rgba(255, 255, 255, 0.72)",
+  border: "1px solid rgba(255, 255, 255, 0.22)",
+  boxShadow: `0 2px 14px rgba(16, 24, 40, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.28)`,
+  fallbackBoxShadowNoBackdrop: "0 3px 18px rgba(16, 24, 40, 0.065)",
+  supportsBlurTestPx: 1,
 } as const;

@@ -1,60 +1,117 @@
-import { useMediaQuery } from "@mui/material";
-import { useEffect } from "react";
-import { AuthActions } from "components/Header/components/AuthActions";
-import { BurgerButton } from "components/Header/components/BurgerButton";
-import { BurgerModal } from "components/Header/components/BurgerModal";
-import { LiquidShell } from "components/Header/components/LiquidShell";
-import { Logo } from "components/Header/components/Logo";
-import { NavLinks } from "components/Header/components/NavLinks";
-import { headerDesktopAuthBreakpointPx, headerI18nPrefix } from "components/Header/constants";
-import { useHeaderMenu } from "components/Header/hooks/useHeaderMenu";
+import { useTranslation } from "react-i18next";
+
+import { AuthActions } from "components/Header/AuthActions";
+import { BurgerModal } from "components/Header/BurgerModal";
+import { useHeader } from "components/Header/hooks/useHeader";
+import { NavLinks } from "components/Header/NavLinks";
 import {
+  BurgerIcon,
   DesktopNav,
   DesktopNavCenter,
+  HeaderBar,
   HeaderFrame,
   HeaderLayout,
   HeaderShell,
   HeaderTrailing,
+  LogoIcon,
+  LogoLink,
   LogoSlot,
+  MobileOnlyBurgerButton,
 } from "components/Header/styles";
-import { useTranslation } from "react-i18next";
+import {
+  headerI18nPrefix,
+  headerLogoSpriteId,
+  headerLogoViewBox,
+  headerMobileMenuId,
+  headerRoutes,
+  headerSpriteRef,
+  headerSpriteSymbolIds,
+} from "shared/constants/header";
 
-const mobileMenuId = "guest-mobile-menu";
+type HeaderLogoProps = {
+  href?: string;
+  ariaLabel?: string;
+};
+
+type HeaderBurgerButtonProps = {
+  onClick: () => void;
+  expanded: boolean;
+  controls: string;
+  ariaLabel: string;
+};
+
+function HeaderBurgerButton({
+  onClick,
+  expanded,
+  controls,
+  ariaLabel,
+}: HeaderBurgerButtonProps) {
+  return (
+    <MobileOnlyBurgerButton
+      onClick={onClick}
+      aria-expanded={expanded}
+      aria-controls={controls}
+      aria-label={ariaLabel}
+    >
+      <BurgerIcon aria-hidden="true">
+        <use href={headerSpriteRef(headerSpriteSymbolIds.burger)} />
+      </BurgerIcon>
+    </MobileOnlyBurgerButton>
+  );
+}
+
+function HeaderLogo({ href = headerRoutes.home, ariaLabel }: HeaderLogoProps) {
+  const { t } = useTranslation();
+  const vb = headerLogoViewBox;
+  const label = ariaLabel ?? t(`${headerI18nPrefix}.logoAlt`);
+
+  return (
+    <LogoLink href={href} aria-label={label}>
+      <LogoIcon
+        viewBox={`0 0 ${vb.width} ${vb.height}`}
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        <use
+          href={headerSpriteRef(headerLogoSpriteId)}
+          width={vb.width}
+          height={vb.height}
+        />
+      </LogoIcon>
+    </LogoLink>
+  );
+}
 
 export default function Header() {
   const { t } = useTranslation();
-  const { isMenuOpen, openMenu, closeMenu } = useHeaderMenu();
-  const showBurgerMenu = useMediaQuery(
-    `(max-width: ${headerDesktopAuthBreakpointPx - 1}px)`,
-  );
-
-  useEffect(() => {
-    if (!showBurgerMenu) {
-      closeMenu();
-    }
-  }, [showBurgerMenu, closeMenu]);
+  const { showBurgerMenu, isMenuOpen, openMenu, closeMenu } = useHeader();
 
   return (
     <HeaderShell>
       <HeaderLayout>
-        <LiquidShell>
+        <HeaderBar>
           <HeaderFrame>
             <LogoSlot>
-              <Logo href="/" ariaLabel={t(`${headerI18nPrefix}.aria.homeLink`)} />
+              <HeaderLogo
+                href={headerRoutes.home}
+                ariaLabel={t(`${headerI18nPrefix}.aria.homeLink`)}
+              />
             </LogoSlot>
 
             <DesktopNavCenter>
-              <DesktopNav aria-label={t(`${headerI18nPrefix}.aria.desktopNavigation`)}>
+              <DesktopNav
+                aria-label={t(`${headerI18nPrefix}.aria.desktopNavigation`)}
+              >
                 <NavLinks />
               </DesktopNav>
             </DesktopNavCenter>
 
             <HeaderTrailing>
               {showBurgerMenu ? (
-                <BurgerButton
+                <HeaderBurgerButton
                   onClick={openMenu}
                   expanded={isMenuOpen}
-                  controls={mobileMenuId}
+                  controls={headerMobileMenuId}
                   ariaLabel={t(`${headerI18nPrefix}.aria.openMenu`)}
                 />
               ) : (
@@ -62,10 +119,16 @@ export default function Header() {
               )}
             </HeaderTrailing>
           </HeaderFrame>
-        </LiquidShell>
+        </HeaderBar>
       </HeaderLayout>
 
-      {showBurgerMenu ? <BurgerModal id={mobileMenuId} isOpen={isMenuOpen} onClose={closeMenu} /> : null}
+      {showBurgerMenu ? (
+        <BurgerModal
+          id={headerMobileMenuId}
+          isOpen={isMenuOpen}
+          onClose={closeMenu}
+        />
+      ) : null}
     </HeaderShell>
   );
 }
