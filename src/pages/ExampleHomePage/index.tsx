@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { HomePageTitle } from "./styles";
 import { ExampleForm } from "features/ExampleForm";
 import { ComplianceSection } from "features/ComplianceSection";
+import { Loader } from "shared/ui/Loader";
 
 export default function ExampleHomePage() {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export default function ExampleHomePage() {
       <ExampleForm />
 
       <ComplianceSection />
+      <Loader />
     </Container>
   );
 }
