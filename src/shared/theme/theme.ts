@@ -30,6 +30,7 @@ const lh175 = 1.75;
 
 const primaryColor = "#155dfc";
 const primaryDark = "#1447e6";
+const primaryButtonShadow = "#3B82F64D";
 const primaryContrast = "#ffffff";
 const secondaryColor = "#eff6ff";
 const subtleBg = "#f8fafc";
@@ -112,6 +113,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: mainFontFamily,
 
+    headingFontFamily,
     fontSize14: size14,
     fontSize16: size16,
     fontSize18: size18,
@@ -246,6 +248,14 @@ export const theme = createTheme({
         root: {
           borderRadius: buttonRadius,
         },
+        containedPrimary: {
+          backgroundColor: primaryColor,
+          boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          "&:hover": {
+            backgroundColor: primaryDark,
+            boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          },
+        },
       },
     },
 
@@ -255,7 +265,13 @@ export const theme = createTheme({
           height: inputHeight,
         },
         input: {
-          height: inputHeight,
+          height: "100%",
+          boxSizing: "border-box",
+
+          "&:-webkit-autofill": {
+            WebkitBoxShadow: `0 0 0 100px ${bgDefault} inset`,
+            WebkitTextFillColor: textPrimary,
+          },
         },
       },
     },
