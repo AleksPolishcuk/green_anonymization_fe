@@ -1,14 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Typography, Button } from "@mui/material";
 
-import {
-  CARD_BORDER_COLOR,
-  CONTACT_DIAL_CODE_OFFSET,
-  CONTACT_FIELD_GAP,
-  CONTACT_FIELD_HEIGHT,
-  CONTACT_INPUT_BORDER_RADIUS,
-  CONTACT_MESSAGE_MIN_HEIGHT,
-} from "constants";
+import { CARD_BORDER_COLOR } from "constants";
 
 export const ContactLayout = styled("div")(({ theme }) => ({
   display: "grid",
@@ -62,14 +55,13 @@ export const FormCard = styled("div")(({ theme }) => ({
 export const FormTitle = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize28,
-
   marginBottom: theme.spacing(6),
 }));
 
 export const FormGrid = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  gap: CONTACT_FIELD_GAP,
+  gap: "20px",
 
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: "1fr",
@@ -96,22 +88,22 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
   "& .react-tel-input .form-control": {
     width: "100%",
-    height: CONTACT_FIELD_HEIGHT,
+    height: theme.inputHeight,
     fontSize: theme.typography.fontSize14,
-    borderRadius: CONTACT_INPUT_BORDER_RADIUS,
+    borderRadius: "14px",
     border: `1px solid ${CARD_BORDER_COLOR}`,
     fontFamily: theme.typography.fontFamily,
     paddingLeft: "72px",
   },
   "& .react-tel-input .flag-dropdown": {
     width: "68px",
-    borderRadius: `${CONTACT_INPUT_BORDER_RADIUS} 0 0 ${CONTACT_INPUT_BORDER_RADIUS}`,
+    borderRadius: "14px 0 0 14px",
     border: `1px solid ${CARD_BORDER_COLOR}`,
     backgroundColor: "transparent",
   },
   "& .react-tel-input .selected-flag": {
     width: "68px",
-    borderRadius: `${CONTACT_INPUT_BORDER_RADIUS} 0 0 ${CONTACT_INPUT_BORDER_RADIUS}`,
+    borderRadius: "14px 0 0 14px",
     fontFamily: theme.typography.fontFamily,
   },
   "& .react-tel-input .flag": {
@@ -127,7 +119,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
 export const DialCodeOverlay = styled("span")(({ theme }) => ({
   position: "absolute",
-  left: CONTACT_DIAL_CODE_OFFSET,
+  left: "10px",
   top: "50%",
   transform: "translateY(-50%)",
   fontSize: theme.typography.fontSize14,
@@ -142,12 +134,12 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   color: theme.palette.text.primary,
   border: `1px solid ${CARD_BORDER_COLOR}`,
-  borderRadius: CONTACT_INPUT_BORDER_RADIUS,
+  borderRadius: "14px",
   outline: "none",
   fontFamily: theme.typography.fontFamily,
   backgroundColor: theme.palette.background.paper,
   resize: "vertical",
-  minHeight: CONTACT_MESSAGE_MIN_HEIGHT,
+  minHeight: "120px",
 
   "&::placeholder": {
     color: theme.palette.text.secondary,

@@ -17,6 +17,8 @@ const size18 = "18px";
 const size16 = "16px";
 const size14 = "14px";
 
+const inputHeight = "50px";
+
 const lh108 = 1.08;
 const lh109 = 1.09;
 const lh116 = 1.16;
@@ -42,6 +44,8 @@ const md = 787;
 const lg = 1440;
 
 export const theme = createTheme({
+  inputHeight,
+
   breakpoints: {
     values: {
       xs: 0,
@@ -210,6 +214,17 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: buttonRadius,
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          height: inputHeight,
+        },
+        input: {
+          height: inputHeight,
         },
       },
     },

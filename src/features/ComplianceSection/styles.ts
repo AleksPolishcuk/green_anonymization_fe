@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
-import { CARD_BORDER_COLOR, COMPLIANCE_BADGE_FONT_SIZE } from "constants";
+import { CARD_BORDER_COLOR } from "constants";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -35,7 +35,7 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 
 export const LabelText = styled(Typography)(({ theme }) => ({
   display: "block",
-  fontSize: COMPLIANCE_BADGE_FONT_SIZE,
+  fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
   color: theme.palette.primary.main,
@@ -99,7 +99,7 @@ export const CardBadge = styled("span")<{ $bg: string; $color: string }>(
     borderRadius: "20px",
     backgroundColor: $bg,
     color: $color,
-    fontSize: COMPLIANCE_BADGE_FONT_SIZE,
+    fontSize: theme.typography.fontSize14,
     fontWeight: theme.typography.fontWeightSemiBold,
     width: "fit-content",
   }),

@@ -1,6 +1,14 @@
 import "@mui/material/styles";
 
 declare module "@mui/material/styles" {
+  interface Theme {
+    inputHeight: string;
+  }
+
+  interface ThemeOptions {
+    inputHeight?: string;
+  }
+
   interface Palette {
     subtle: {
       bg: string;
