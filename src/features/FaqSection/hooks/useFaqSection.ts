@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import type { FaqItem } from "../types";
+import type { FaqItem, UseFaqSectionReturn } from "../types";
 
 const FAQ_IDS = [
   "whatIndustries",
@@ -9,12 +9,6 @@ const FAQ_IDS = [
   "implementationTime",
   "whatSupport",
 ] as const;
-
-type UseFaqSectionReturn = {
-  items: FaqItem[];
-  expandedId: string | null;
-  onToggle: (id: string) => void;
-};
 
 export const useFaqSection = (): UseFaqSectionReturn => {
   const { t } = useTranslation();
