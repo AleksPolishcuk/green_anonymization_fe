@@ -55,5 +55,3 @@ export const CONTACT_FIELD_GAP = "20px";
 export const CONTACT_INPUT_BORDER_RADIUS = "14px";
 export const CONTACT_DIAL_CODE_OFFSET = "10px";
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
-
-export const CONTACT_TITLE_FONT_SIZE = "25px";

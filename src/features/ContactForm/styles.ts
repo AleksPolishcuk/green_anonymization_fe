@@ -8,7 +8,6 @@ import {
   CONTACT_FIELD_HEIGHT,
   CONTACT_INPUT_BORDER_RADIUS,
   CONTACT_MESSAGE_MIN_HEIGHT,
-  CONTACT_TITLE_FONT_SIZE,
 } from "constants";
 
 export const ContactLayout = styled("div")(({ theme }) => ({
@@ -62,7 +61,8 @@ export const FormCard = styled("div")(({ theme }) => ({
 
 export const FormTitle = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
-  fontSize: CONTACT_TITLE_FONT_SIZE,
+  fontSize: theme.typography.fontSize28,
+
   marginBottom: theme.spacing(6),
 }));
 

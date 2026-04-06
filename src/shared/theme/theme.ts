@@ -80,6 +80,12 @@ export const theme = createTheme({
     fontSize14: size14,
     fontSize16: size16,
     fontSize18: size18,
+    fontSize28: size28,
+    fontSize32: size32,
+    fontSize35: size35,
+    fontSize44: size44,
+    fontSize56: size56,
+    fontSize64: size64,
     fontWeightSemiBold: semiBold,
 
     h1: {
