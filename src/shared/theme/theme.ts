@@ -234,7 +234,13 @@ export const theme = createTheme({
           height: inputHeight,
         },
         input: {
-          height: inputHeight,
+          height: "100%",
+          boxSizing: "border-box",
+
+          "&:-webkit-autofill": {
+            WebkitBoxShadow: `0 0 0 100px ${bgDefault} inset`,
+            WebkitTextFillColor: textPrimary,
+          },
         },
       },
     },
