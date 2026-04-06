@@ -77,6 +77,11 @@ export const theme = createTheme({
   typography: {
     fontFamily: mainFontFamily,
 
+    fontSize14: size14,
+    fontSize16: size16,
+    fontSize18: size18,
+    fontWeightSemiBold: semiBold,
+
     h1: {
       fontFamily: headingFontFamily,
       fontWeight: regular,

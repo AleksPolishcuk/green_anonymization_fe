@@ -12,4 +12,17 @@ declare module "@mui/material/styles" {
       bg?: string;
     };
   }
+  interface TypographyVariants {
+    fontSize14: string;
+    fontSize16: string;
+    fontSize18: string;
+    fontWeightSemiBold: number;
+  }
+
+  interface TypographyVariantsOptions {
+    fontSize14?: string;
+    fontSize16?: string;
+    fontSize18?: string;
+    fontWeightSemiBold?: number;
+  }
 }

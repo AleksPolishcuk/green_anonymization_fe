@@ -1,11 +1,15 @@
 import { useState } from "react";
+import PhoneInputLib from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-import { DEFAULT_PHONE_COUNTRY_CODE } from "constants";
+import { CONTACT_FIELD_HEIGHT, DEFAULT_PHONE_COUNTRY_CODE } from "constants";
 
 import { DialCodeOverlay, PhoneInputWrapper } from "../styles";
-import { PhoneInput } from "./PhoneInput";
 import type { PhoneFieldProps } from "../types";
+
+const PhoneInput =
+  (PhoneInputLib as unknown as { default: typeof PhoneInputLib }).default ??
+  PhoneInputLib;
 
 export const PhoneField = ({
   value,
@@ -27,6 +31,7 @@ export const PhoneField = ({
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        inputStyle={{ height: CONTACT_FIELD_HEIGHT }}
         disableCountryCode={!value}
       />
       <DialCodeOverlay>{countryCode}</DialCodeOverlay>

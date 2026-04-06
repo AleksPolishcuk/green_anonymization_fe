@@ -49,12 +49,6 @@ export const COMPLIANCE_CARDS = [
 
 export const COMPLIANCE_BADGE_FONT_SIZE = "12px";
 
-export const FONT_WEIGHT = {
-  regular: 400,
-  semiBold: 600,
-  bold: 700,
-} as const;
-
 export const CONTACT_MESSAGE_MIN_HEIGHT = "120px";
 export const CONTACT_FIELD_HEIGHT = "50px";
 export const CONTACT_FIELD_GAP = "20px";
@@ -62,4 +56,4 @@ export const CONTACT_INPUT_BORDER_RADIUS = "14px";
 export const CONTACT_DIAL_CODE_OFFSET = "10px";
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
 
-export const CONTACT_TITLE_FONT_SIZE = "20px";
+export const CONTACT_TITLE_FONT_SIZE = "25px";

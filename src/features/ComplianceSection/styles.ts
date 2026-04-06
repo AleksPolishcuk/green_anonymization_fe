@@ -1,11 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
-import {
-  CARD_BORDER_COLOR,
-  COMPLIANCE_BADGE_FONT_SIZE,
-  FONT_WEIGHT,
-} from "constants";
+import { CARD_BORDER_COLOR, COMPLIANCE_BADGE_FONT_SIZE } from "constants";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -40,7 +36,7 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 export const LabelText = styled(Typography)(({ theme }) => ({
   display: "block",
   fontSize: COMPLIANCE_BADGE_FONT_SIZE,
-  fontWeight: FONT_WEIGHT.bold,
+  fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
   color: theme.palette.primary.main,
   marginBottom: theme.spacing(4),
@@ -98,25 +94,25 @@ export const CardAccentLine = styled("span")<{ $color: string }>(
 );
 
 export const CardBadge = styled("span")<{ $bg: string; $color: string }>(
-  ({ $bg, $color }) => ({
+  ({ theme, $bg, $color }) => ({
     padding: "3px 10px",
     borderRadius: "20px",
     backgroundColor: $bg,
     color: $color,
     fontSize: COMPLIANCE_BADGE_FONT_SIZE,
-    fontWeight: FONT_WEIGHT.semiBold,
+    fontWeight: theme.typography.fontWeightSemiBold,
     width: "fit-content",
   }),
 );
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h5.fontSize,
-  fontWeight: FONT_WEIGHT.bold,
+  fontSize: theme.typography.fontSize16,
+  fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.text.primary,
 }));
 
 export const CardEntityCount = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
+  fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
 }));
 
@@ -157,12 +153,12 @@ export const BannerTextWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h5.fontSize,
-  fontWeight: FONT_WEIGHT.bold,
+  fontSize: theme.typography.fontSize16,
+  fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.text.primary,
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
+  fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
 }));
