@@ -99,15 +99,16 @@ export const CardBadge = styled("span")<{ $color: string }>(
     borderRadius: "20px",
     backgroundColor: `${$color}12`,
     color: $color,
+    fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.fontSize14,
-    fontWeight: theme.typography.fontWeightSemiBold,
+    fontWeight: theme.typography.fontWeightBold,
     width: "fit-content",
   }),
 );
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
-  fontWeight: theme.typography.fontWeightBold,
+  fontWeight: theme.typography.fontWeightSemiBold,
   color: theme.palette.text.primary,
 }));
 
