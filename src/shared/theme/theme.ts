@@ -280,7 +280,7 @@ export const theme = createTheme({
           boxSizing: "border-box",
 
           "&:-webkit-autofill": {
-            WebkitBoxShadow: "0 0 0 100px #f9fafb inset",
+            WebkitBoxShadow: `0 0 0 100px ${inputBgColor} inset`,
             WebkitTextFillColor: textPrimary,
           },
         },
