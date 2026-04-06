@@ -29,4 +29,3 @@ export const COMPLIANCE_CARDS = [
 ] as const;
 
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
-export const FAQ_ITEM_HEIGHT = "66px";

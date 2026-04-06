@@ -6,7 +6,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 
-import { CARD_BORDER_COLOR, FAQ_ITEM_HEIGHT, FONT_WEIGHT } from "constants";
+import { CARD_BORDER_COLOR } from "constants";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   marginTop: theme.spacing(20),
@@ -15,7 +15,6 @@ export const SectionWrapper = styled("section")(({ theme }) => ({
 }));
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({
-  fontWeight: FONT_WEIGHT.bold,
   textAlign: "center",
   marginBottom: theme.spacing(12),
 }));
@@ -34,7 +33,7 @@ export const FaqAccordion = styled(Accordion)(({ theme }) => ({
 
 export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
   padding: theme.spacing(0, 6),
-  minHeight: FAQ_ITEM_HEIGHT,
+  minHeight: "66px",
 
   "& .MuiAccordionSummary-content": {
     margin: `${theme.spacing(4)} 0`,
@@ -46,8 +45,7 @@ export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
 }));
 
 export const FaqQuestion = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
-  fontWeight: FONT_WEIGHT.semiBold,
+  fontWeight: theme.typography.fontWeightSemiBold,
   color: theme.palette.text.primary,
 }));
 
@@ -56,7 +54,5 @@ export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
 }));
 
 export const FaqAnswer = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
   color: theme.palette.text.secondary,
-  lineHeight: 1.6,
 }));

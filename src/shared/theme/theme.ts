@@ -81,6 +81,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: mainFontFamily,
 
+    headingFontFamily,
     fontSize14: size14,
     fontSize16: size16,
     fontSize18: size18,
