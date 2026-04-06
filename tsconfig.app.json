@@ -16,7 +16,8 @@
       "features/*": ["features/*"],
       "shared/*": ["shared/*"],
       "constants": ["constants/index.ts"],
-      "assets/*": ["assets/*"]
+      "assets/*": ["assets/*"],
+      "Layouts": ["Layouts/index.tsx"]
     },
 
     /* Bundler mode */

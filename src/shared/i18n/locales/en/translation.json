@@ -26,9 +26,9 @@
         "badge": "EU GDPR",
         "title": "General Data Protection Regulation"
       },
-      "ukDpi": {
-        "badge": "UK DPI",
-        "title": "UK Data Protection and Investigatory Powers"
+      "ukGdpr": {
+        "badge": "UK GDPR",
+        "title": "UK GDPR Protection and Investigatory Powers"
       },
       "swissFadp": {
         "badge": "Swiss FADP",
@@ -80,6 +80,29 @@
       "xAria": "Clinical Data Studio on X",
       "linkedinAria": "Clinical Data Studio on LinkedIn",
       "githubAria": "Clinical Data Studio on GitHub"
+    }
+  },
+  "contactUsPage": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We're here to help. Reach out to our team and we'll get back to you shortly.",
+    "emailCard": {
+      "label": "Email",
+      "infoEmail": "info@clinicaldatastudio.com",
+      "supportEmail": "support@clinicaldatastudio.com"
+    },
+    "form": {
+      "title": "Send us a message",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "john.doe@example.com",
+      "phoneNumber": "Phone number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "message": "Message",
+      "messagePlaceholder": "Tell us more about your needs...",
+      "submitButton": "Send Message"
     }
   }
 }
