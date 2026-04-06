@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import { footerI18nLegalKeys } from "shared/constants/footer";
+import { footerI18nLegalKeys } from "constants/footer";
 
 export function useFooterLegalLabels() {
   const theme = useTheme();

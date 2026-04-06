@@ -16,6 +16,7 @@
       "features/*": ["features/*"],
       "shared/*": ["shared/*"],
       "constants": ["constants/index.ts"],
+      "constants/*": ["constants/*"],
       "assets/*": ["assets/*"],
       "Layouts": ["Layouts/index.tsx"]
     },

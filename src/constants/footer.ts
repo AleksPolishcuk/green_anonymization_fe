@@ -1,39 +1,4 @@
-export const footerBackground = "#F9FAFB";
-
-export const footerRootBorderTopColor = "#F3F4F6";
-export const footerHeadingColor = "#111827";
-
-export const footerNavColumnHeadingColor = "#101828";
-export const footerNavColumnHeadingFontSizePx = 14;
-export const footerNavColumnHeadingLineHeight = 1.53;
-export const footerBodyColor = "#4B5563";
-export const footerMutedColor = "#9CA3AF";
-export const footerSocialButtonBackground = "#F3F4F6";
-export const footerSocialButtonHoverBackground = "#E5E7EB";
-export const footerDividerColor = "#E5E7EB";
-
-export const footerSocialIconButtonPx = 36;
-export const footerSocialIconBorderRadiusPx = 8;
-export const footerSocialIconGapPx = 8;
-
-export const footerMainLogoMaxWidthPx = 200;
-export const footerMainLogoHeightPx = 36;
-
-export const footerDesktopBrandColumnMaxWidthPx = 360;
-
 export const footerMainLogoPreserveAspectRatio = "xMinYMid slice";
-
-export const footerBodySecondaryFontSizePx = 14;
-export const footerBodySecondaryLineHeight = 1.64;
-export const footerBodyFontWeightRegular = 400;
-
-export const footerLegalCaptionFontSizeRem = "0.75rem";
-export const footerLegalCaptionLineHeight = 1.5;
-
-export const footerDesktopContainerMaxWidthPx = 1152;
-
-export const footerDesktopMainBlockMinHeightPx = 280;
-
 export const spriteSvgPublicPath = "/sprite.svg";
 
 export const spriteSymbolIds = {

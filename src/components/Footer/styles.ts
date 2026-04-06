@@ -6,65 +6,23 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import {
-  footerBackground,
-  footerBodyColor,
-  footerBodyFontWeightRegular,
-  footerBodySecondaryFontSizePx,
-  footerBodySecondaryLineHeight,
-  footerDesktopBrandColumnMaxWidthPx,
-  footerDesktopContainerMaxWidthPx,
-  footerDesktopMainBlockMinHeightPx,
-  footerDividerColor,
-  footerHeadingColor,
-  footerLegalCaptionFontSizeRem,
-  footerLegalCaptionLineHeight,
-  footerMainLogoHeightPx,
-  footerMainLogoMaxWidthPx,
-  footerMutedColor,
-  footerNavColumnHeadingColor,
-  footerNavColumnHeadingFontSizePx,
-  footerNavColumnHeadingLineHeight,
-  footerRootBorderTopColor,
-  footerSocialButtonBackground,
-  footerSocialButtonHoverBackground,
-  footerSocialIconBorderRadiusPx,
-  footerSocialIconButtonPx,
-  footerSocialIconGapPx,
-} from "shared/constants/footer";
+export const footerSocialIconSizePx = 36;
 
 export const FooterRoot = styled("footer")(({ theme }) => ({
-  backgroundColor: footerBackground,
-  borderTop: `1px solid ${footerRootBorderTopColor}`,
+  backgroundColor: theme.palette.subtle.bg,
+  borderTop: `1px solid ${theme.palette.divider}`,
   paddingTop: theme.spacing(16),
   paddingBottom: theme.spacing(8),
 }));
 
-export const FooterContainer = styled(Container)(({ theme }) => ({
-  width: "100%",
-  marginLeft: "auto",
-  marginRight: "auto",
-  paddingLeft: theme.spacing(6),
-  paddingRight: theme.spacing(6),
-  boxSizing: "border-box",
-  [theme.breakpoints.up("md")]: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  "&&": {
-    [theme.breakpoints.up("md")]: {
-      maxWidth: footerDesktopContainerMaxWidthPx,
-    },
-  },
-}));
+export const FooterContainer = styled(Container)({});
 
 export const FooterBody = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
   width: "100%",
   boxSizing: "border-box",
   [theme.breakpoints.up("md")]: {
-    height: footerDesktopMainBlockMinHeightPx,
-    minHeight: footerDesktopMainBlockMinHeightPx,
+    minHeight: theme.spacing(70),
   },
 }));
 
@@ -75,7 +33,6 @@ export const FooterTop = styled(Stack)(({ theme }) => ({
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between",
-    gap: theme.spacing(6),
     flex: "1 1 0",
     minHeight: 0,
   },
@@ -85,7 +42,7 @@ export const FooterBrandBlock = styled(Box)(({ theme }) => ({
   maxWidth: "100%",
   [theme.breakpoints.up("md")]: {
     flex: "1 1 36%",
-    maxWidth: footerDesktopBrandColumnMaxWidthPx,
+    maxWidth: theme.spacing(90),
   },
 }));
 
@@ -98,9 +55,9 @@ export const FooterBrandRow = styled(Stack)(({ theme }) => ({
 
 export const FooterDescription = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  fontSize: `${footerBodySecondaryFontSizePx}px`,
-  lineHeight: footerBodySecondaryLineHeight,
-  fontWeight: footerBodyFontWeightRegular,
+  fontSize: theme.typography.body2.fontSize,
+  lineHeight: theme.typography.body2.lineHeight,
+  fontWeight: theme.typography.body2.fontWeight,
   marginTop: theme.spacing(5),
   [theme.breakpoints.up("md")]: {
     marginTop: theme.spacing(2),
@@ -110,12 +67,18 @@ export const FooterDescription = styled(Typography)(({ theme }) => ({
 export const FooterSocialRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
-  gap: `${footerSocialIconGapPx}px`,
+  gap: theme.spacing(2),
   marginTop: theme.spacing(6),
 }));
 
 export const footerNavColumnStackSx: SxProps<Theme> = (theme) => ({
   gap: theme.spacing(5),
+  [theme.breakpoints.up("md")]: {
+    width: "188px",
+    minWidth: "188px",
+    maxWidth: "188px",
+    flex: "0 0 188px",
+  },
 });
 
 export const FooterBottom = styled(Box)(({ theme }) => ({
@@ -128,7 +91,7 @@ export const FooterBottom = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(12),
   paddingTop: theme.spacing(5),
   paddingBottom: 0,
-  borderTop: `1px solid ${footerDividerColor}`,
+  borderTop: `1px solid ${theme.palette.divider}`,
   [theme.breakpoints.up("md")]: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -157,8 +120,8 @@ export const footerMainLogoWrapperSx: SxProps<Theme> = {
   flexShrink: 0,
   alignSelf: "flex-start",
   width: "100%",
-  maxWidth: footerMainLogoMaxWidthPx,
-  height: footerMainLogoHeightPx,
+  maxWidth: "200px",
+  height: "36px",
   lineHeight: 0,
   overflow: "hidden",
 };
@@ -169,17 +132,19 @@ export const footerMainLogoInnerSx: SxProps<Theme> = {
   height: "100%",
 };
 
-export const footerSocialIconButtonSx: SxProps<Theme> = {
-  width: footerSocialIconButtonPx,
-  height: footerSocialIconButtonPx,
+export const footerSocialIconButtonSx: SxProps<Theme> = (theme) => ({
+  width: `${footerSocialIconSizePx}px`,
+  height: `${footerSocialIconSizePx}px`,
   padding: 0,
-  borderRadius: `${footerSocialIconBorderRadiusPx}px`,
-  backgroundColor: footerSocialButtonBackground,
-  color: footerBodyColor,
+  borderRadius: theme.spacing(2),
+  backgroundColor: theme.palette.background.default,
+  color: theme.palette.text.secondary,
+  transition: "transform 180ms ease, background-color 180ms ease",
   "&:hover": {
-    backgroundColor: footerSocialButtonHoverBackground,
+    transform: "scale(1.05)",
+    backgroundColor: theme.palette.divider,
   },
-};
+});
 
 export const footerNavGridSx: SxProps<Theme> = (theme) => ({
   flexDirection: "column",
@@ -188,17 +153,17 @@ export const footerNavGridSx: SxProps<Theme> = (theme) => ({
   [theme.breakpoints.up("md")]: {
     flexDirection: "row",
     flex: "1 1 0",
-    justifyContent: "space-between",
-    gap: theme.spacing(4),
+    justifyContent: "flex-start",
+    gap: theme.spacing(10),
   },
 });
 
-export const footerNavHeadingSx: SxProps<Theme> = {
+export const footerNavHeadingSx: SxProps<Theme> = (theme) => ({
   margin: 0,
-  color: footerNavColumnHeadingColor,
-  fontSize: `${footerNavColumnHeadingFontSizePx}px`,
-  lineHeight: footerNavColumnHeadingLineHeight,
-};
+  color: theme.palette.text.primary,
+  fontSize: theme.typography.fontSize14,
+  lineHeight: 1.53,
+});
 
 export const footerNavListSx: SxProps<Theme> = (theme) => ({
   listStyle: "none",
@@ -211,33 +176,34 @@ export const footerNavListSx: SxProps<Theme> = (theme) => ({
 
 export const footerNavLinkSx: SxProps<Theme> = (theme) => ({
   color: theme.palette.text.secondary,
-  fontSize: `${footerBodySecondaryFontSizePx}px`,
-  lineHeight: footerBodySecondaryLineHeight,
-  fontWeight: footerBodyFontWeightRegular,
+  fontSize: theme.typography.fontSize14,
+  lineHeight: 1.64,
+  fontWeight: theme.typography.fontWeightRegular,
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",
-    color: footerHeadingColor,
+    color: theme.palette.action.active,
   },
 });
 
 export const footerCopyrightSx: SxProps<Theme> = (theme) => ({
-  color: footerMutedColor,
-  fontSize: footerLegalCaptionFontSizeRem,
-  lineHeight: footerLegalCaptionLineHeight,
+  color: theme.palette.text.secondary,
+  fontSize: theme.typography.caption.fontSize,
+  lineHeight: theme.typography.caption.lineHeight,
   textAlign: "center",
   [theme.breakpoints.up("md")]: {
     textAlign: "left",
   },
 });
 
-export const footerLegalLinkSx: SxProps<Theme> = {
-  color: footerMutedColor,
-  fontSize: footerLegalCaptionFontSizeRem,
-  lineHeight: footerLegalCaptionLineHeight,
+export const footerLegalLinkSx: SxProps<Theme> = (theme) => ({
+  color: theme.palette.text.secondary,
+  fontSize: theme.typography.caption.fontSize,
+  lineHeight: theme.typography.caption.lineHeight,
+  fontFamily: theme.typography.caption.fontFamily,
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",
-    color: footerBodyColor,
+    color: theme.palette.action.active,
   },
-};
+});

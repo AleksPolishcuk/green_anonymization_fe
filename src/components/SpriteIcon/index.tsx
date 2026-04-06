@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import type { SxProps, Theme } from "@mui/material/styles";
 
-import { spriteSvgPublicPath } from "shared/constants/footer";
+import { spriteSvgPublicPath } from "constants/footer";
 
 export type SpriteIconProps = {
   symbolId: string;

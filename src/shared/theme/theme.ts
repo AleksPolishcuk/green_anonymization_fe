@@ -36,6 +36,8 @@ const subtleBg = "#f8fafc";
 const bgDefault = "#ffffff";
 const textPrimary = "#101828";
 const textSecondary = "#6a7282";
+const footerDividerColor = "#E5E7EB";
+const footerLinkHoverColor = "#111827";
 
 const mainRadius = 16;
 const buttonRadius = 14;
@@ -72,6 +74,10 @@ export const theme = createTheme({
     text: {
       primary: textPrimary,
       secondary: textSecondary,
+    },
+    divider: footerDividerColor,
+    action: {
+      active: footerLinkHoverColor,
     },
     subtle: {
       bg: subtleBg,

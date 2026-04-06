@@ -11,11 +11,10 @@ import {
   footerInternalPaths,
   footerMainLogoPreserveAspectRatio,
   footerNavGroups,
-  footerSocialIconButtonPx,
   footerSocialProfileUrls,
   spriteSymbolIds,
   spriteViewBoxes,
-} from "shared/constants/footer";
+} from "constants/footer";
 import {
   FooterBody,
   FooterBottom,
@@ -36,6 +35,7 @@ import {
   footerNavHeadingSx,
   footerNavListSx,
   footerNavLinkSx,
+  footerSocialIconSizePx,
   footerSocialIconButtonSx,
 } from "components/Footer/styles";
 
@@ -47,7 +47,7 @@ export function Footer() {
 
   return (
     <FooterRoot>
-      <FooterContainer maxWidth={false} disableGutters>
+      <FooterContainer>
         <FooterBody>
           <FooterTop>
             <FooterBrandBlock>
@@ -82,8 +82,8 @@ export function Footer() {
                   <SpriteIcon
                     symbolId={spriteSymbolIds.twitter}
                     viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconButtonPx}
-                    height={footerSocialIconButtonPx}
+                    width={footerSocialIconSizePx}
+                    height={footerSocialIconSizePx}
                     decorative
                   />
                 </IconButton>
@@ -98,8 +98,8 @@ export function Footer() {
                   <SpriteIcon
                     symbolId={spriteSymbolIds.linkedin}
                     viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconButtonPx}
-                    height={footerSocialIconButtonPx}
+                    width={footerSocialIconSizePx}
+                    height={footerSocialIconSizePx}
                     decorative
                   />
                 </IconButton>
@@ -114,8 +114,8 @@ export function Footer() {
                   <SpriteIcon
                     symbolId={spriteSymbolIds.github}
                     viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconButtonPx}
-                    height={footerSocialIconButtonPx}
+                    width={footerSocialIconSizePx}
+                    height={footerSocialIconSizePx}
                     decorative
                   />
                 </IconButton>
@@ -173,6 +173,7 @@ export function Footer() {
               <Link
                 component={RouterLink}
                 to={footerInternalPaths.privacy}
+                variant="caption"
                 underline="none"
                 sx={footerLegalLinkSx}
               >
@@ -189,6 +190,7 @@ export function Footer() {
               <Link
                 component={RouterLink}
                 to={footerInternalPaths.cookies}
+                variant="caption"
                 underline="none"
                 sx={footerLegalLinkSx}
               >
