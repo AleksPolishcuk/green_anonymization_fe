@@ -35,6 +35,21 @@ const bgDefault = "#ffffff";
 const textPrimary = "#101828";
 const textSecondary = "#6a7282";
 
+const accentBlue = "#3B82F6";
+const accentGreen = "#10B981";
+const accentAmber = "#F59E0B";
+const accentRed = "#EF4444";
+const accentLilac = "#7F22FE";
+
+const accentLightBlue = "#eff6ff";
+const accentLightGreen = "#ecfdf5";
+const accentLightAmber = "#fffbeb";
+const accentLightRed = "#FEF0F0";
+const accentLightLilac = "#F5F3FF";
+
+const footerDividerColor = "#E5E7EB";
+const footerLinkHoverColor = "#111827";
+
 const mainRadius = 16;
 const buttonRadius = 14;
 
@@ -71,6 +86,22 @@ export const theme = createTheme({
     },
     subtle: {
       bg: subtleBg,
+    },
+    accent: {
+      blue: accentBlue,
+      green: accentGreen,
+      amber: accentAmber,
+      red: accentRed,
+      lilac: accentLilac,
+      lightBlue: accentLightBlue,
+      lightGreen: accentLightGreen,
+      lightAmber: accentLightAmber,
+      lightRed: accentLightRed,
+      lightLilac: accentLightLilac,
+    },
+    footer: {
+      divider: footerDividerColor,
+      linkHover: footerLinkHoverColor,
     },
   },
 
