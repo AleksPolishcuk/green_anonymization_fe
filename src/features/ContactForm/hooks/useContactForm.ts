@@ -20,7 +20,7 @@ export const useContactForm = (): UseContactFormReturn => {
   });
 
   const onSubmit = () => {
-    // handle form submission
+    // TODO handle form submission
   };
 
   return { control, handleSubmit, onSubmit };

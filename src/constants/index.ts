@@ -1,66 +1,32 @@
-const mainBlue = "#2563eb";
-const lightBlue = "#dbeafe";
-const darkBlue = "#1d4ed8";
-
-const mainGreen = "#16a34a";
-const lightGreen = "#dcfce7";
-const darkGreen = "#15803d";
-
-const mainAmber = "#d97706";
-const lightAmber = "#fef3c7";
-const darkAmber = "#b45309";
-
-const mainRed = "#dc2626";
-const lightRed = "#fee2e2";
-const darkRed = "#b91c1c";
+const blue = "#3B82F6";
+const green = "#10B981";
+const amber = "#F59E0B";
+const red = "#EF4444";
 
 export const CARD_BORDER_COLOR = "#e5e7eb";
 
 export const COMPLIANCE_CARDS = [
   {
     id: "hipaa",
-    accentColor: mainBlue,
-    badgeBg: lightBlue,
-    badgeColor: darkBlue,
+    accentColor: blue,
     entityCount: 17,
   },
   {
     id: "euGdpr",
-    accentColor: mainGreen,
-    badgeBg: lightGreen,
-    badgeColor: darkGreen,
+    accentColor: green,
     entityCount: 11,
   },
   {
-    id: "ukDpi",
-    accentColor: mainAmber,
-    badgeBg: lightAmber,
-    badgeColor: darkAmber,
+    id: "ukGdpr",
+    accentColor: amber,
     entityCount: 9,
   },
   {
     id: "swissFadp",
-    accentColor: mainRed,
-    badgeBg: lightRed,
-    badgeColor: darkRed,
+    accentColor: red,
     entityCount: 8,
   },
 ] as const;
 
-export const COMPLIANCE_BADGE_FONT_SIZE = "12px";
-
-export const FONT_WEIGHT = {
-  regular: 400,
-  semiBold: 600,
-  bold: 700,
-} as const;
-
-export const CONTACT_MESSAGE_MIN_HEIGHT = "120px";
-export const CONTACT_FIELD_HEIGHT = "50px";
-export const CONTACT_FIELD_GAP = "20px";
-export const CONTACT_INPUT_BORDER_RADIUS = "14px";
-export const CONTACT_DIAL_CODE_OFFSET = "10px";
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
-
-export const CONTACT_TITLE_FONT_SIZE = "20px";
 export const FAQ_ITEM_HEIGHT = "66px";

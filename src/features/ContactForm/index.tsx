@@ -2,8 +2,6 @@ import { useTranslation } from "react-i18next";
 import { Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 
-import { CONTACT_FIELD_HEIGHT } from "constants";
-
 import { SendIcon } from "assets/icons/SendIcon";
 import { useContactForm } from "./hooks/useContactForm";
 import { EmailInfoCard } from "./components/EmailInfoCard";
@@ -18,12 +16,6 @@ import {
   FormTitle,
   SubmitButton,
 } from "./styles";
-
-const fieldSlotProps = {
-  htmlInput: {
-    style: { height: CONTACT_FIELD_HEIGHT, boxSizing: "border-box" as const },
-  },
-};
 
 export const ContactForm = () => {
   const { t } = useTranslation();
@@ -47,7 +39,6 @@ export const ContactForm = () => {
                   <TextField
                     {...field}
                     placeholder={t("contactUsPage.form.firstNamePlaceholder")}
-                    slotProps={fieldSlotProps}
                   />
                 )}
               />
@@ -61,7 +52,6 @@ export const ContactForm = () => {
                   <TextField
                     {...field}
                     placeholder={t("contactUsPage.form.lastNamePlaceholder")}
-                    slotProps={fieldSlotProps}
                   />
                 )}
               />
@@ -78,7 +68,6 @@ export const ContactForm = () => {
                   {...field}
                   type="email"
                   placeholder={t("contactUsPage.form.emailPlaceholder")}
-                  slotProps={fieldSlotProps}
                 />
               )}
             />

@@ -1,16 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Typography, Button } from "@mui/material";
 
-import {
-  CARD_BORDER_COLOR,
-  CONTACT_DIAL_CODE_OFFSET,
-  CONTACT_FIELD_GAP,
-  CONTACT_FIELD_HEIGHT,
-  CONTACT_INPUT_BORDER_RADIUS,
-  CONTACT_MESSAGE_MIN_HEIGHT,
-  CONTACT_TITLE_FONT_SIZE,
-  FONT_WEIGHT,
-} from "constants";
+import { CARD_BORDER_COLOR } from "constants";
 
 export const ContactLayout = styled("div")(({ theme }) => ({
   display: "grid",
@@ -45,14 +36,13 @@ export const EmailIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const EmailLabel = styled(Typography)(({ theme }) => ({
-  fontWeight: FONT_WEIGHT.bold,
-  fontSize: theme.typography.body1.fontSize,
+  fontWeight: theme.typography.fontWeightBold,
+  fontSize: theme.typography.fontSize16,
 }));
 
 export const EmailAddress = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
+  fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
-  lineHeight: 1.6,
 }));
 
 export const FormCard = styled("div")(({ theme }) => ({
@@ -63,15 +53,15 @@ export const FormCard = styled("div")(({ theme }) => ({
 }));
 
 export const FormTitle = styled(Typography)(({ theme }) => ({
-  fontWeight: FONT_WEIGHT.semiBold,
-  fontSize: CONTACT_TITLE_FONT_SIZE,
+  fontWeight: theme.typography.fontWeightSemiBold,
+  fontSize: theme.typography.fontSize28,
   marginBottom: theme.spacing(6),
 }));
 
 export const FormGrid = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  gap: CONTACT_FIELD_GAP,
+  gap: "20px",
 
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: "1fr",
@@ -86,8 +76,8 @@ export const FormField = styled("div")(({ theme }) => ({
 }));
 
 export const FieldLabel = styled("span")(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
-  fontWeight: FONT_WEIGHT.semiBold,
+  fontSize: theme.typography.fontSize14,
+  fontWeight: theme.typography.fontWeightSemiBold,
   marginBottom: theme.spacing(1.5),
   fontFamily: theme.typography.fontFamily,
   color: theme.palette.text.primary,
@@ -98,22 +88,22 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
   "& .react-tel-input .form-control": {
     width: "100%",
-    height: CONTACT_FIELD_HEIGHT,
-    fontSize: theme.typography.h6.fontSize,
-    borderRadius: CONTACT_INPUT_BORDER_RADIUS,
+    height: theme.inputHeight,
+    fontSize: theme.typography.fontSize14,
+    borderRadius: "14px",
     border: `1px solid ${CARD_BORDER_COLOR}`,
     fontFamily: theme.typography.fontFamily,
     paddingLeft: "72px",
   },
   "& .react-tel-input .flag-dropdown": {
     width: "68px",
-    borderRadius: `${CONTACT_INPUT_BORDER_RADIUS} 0 0 ${CONTACT_INPUT_BORDER_RADIUS}`,
+    borderRadius: "14px 0 0 14px",
     border: `1px solid ${CARD_BORDER_COLOR}`,
     backgroundColor: "transparent",
   },
   "& .react-tel-input .selected-flag": {
     width: "68px",
-    borderRadius: `${CONTACT_INPUT_BORDER_RADIUS} 0 0 ${CONTACT_INPUT_BORDER_RADIUS}`,
+    borderRadius: "14px 0 0 14px",
     fontFamily: theme.typography.fontFamily,
   },
   "& .react-tel-input .flag": {
@@ -129,10 +119,10 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
 export const DialCodeOverlay = styled("span")(({ theme }) => ({
   position: "absolute",
-  left: CONTACT_DIAL_CODE_OFFSET,
+  left: "10px",
   top: "50%",
   transform: "translateY(-50%)",
-  fontSize: theme.typography.h6.fontSize,
+  fontSize: theme.typography.fontSize14,
   fontFamily: theme.typography.fontFamily,
   pointerEvents: "none",
   zIndex: 2,
@@ -141,15 +131,18 @@ export const DialCodeOverlay = styled("span")(({ theme }) => ({
 export const FieldTextarea = styled("textarea")(({ theme }) => ({
   width: "100%",
   padding: `${theme.spacing(3)} ${theme.spacing(3.5)}`,
-  fontSize: theme.typography.h6.fontSize,
+  fontSize: theme.typography.fontSize14,
   color: theme.palette.text.primary,
   border: `1px solid ${CARD_BORDER_COLOR}`,
-  borderRadius: CONTACT_INPUT_BORDER_RADIUS,
+  borderRadius: "14px",
   outline: "none",
   fontFamily: theme.typography.fontFamily,
   backgroundColor: theme.palette.background.paper,
-  resize: "vertical",
-  minHeight: CONTACT_MESSAGE_MIN_HEIGHT,
+  resize: "none",
+  minHeight: "120px",
+  maxHeight: "240px",
+  overflowY: "auto",
+  boxSizing: "border-box",
 
   "&::placeholder": {
     color: theme.palette.text.secondary,
