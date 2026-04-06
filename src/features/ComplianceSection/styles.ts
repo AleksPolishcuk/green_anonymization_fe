@@ -154,12 +154,11 @@ export const BannerTextWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.fontSize16,
+  fontSize: theme.typography.fontSize18,
   fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.text.primary,
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
 }));
