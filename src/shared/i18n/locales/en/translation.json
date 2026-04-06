@@ -26,9 +26,9 @@
         "badge": "EU GDPR",
         "title": "General Data Protection Regulation"
       },
-      "ukDpi": {
-        "badge": "UK DPI",
-        "title": "UK Data Protection and Investigatory Powers"
+      "ukGdpr": {
+        "badge": "UK GDPR",
+        "title": "UK GDPR Protection and Investigatory Powers"
       },
       "swissFadp": {
         "badge": "Swiss FADP",

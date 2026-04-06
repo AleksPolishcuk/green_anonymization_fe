@@ -17,7 +17,7 @@ export const COMPLIANCE_CARDS = [
     entityCount: 11,
   },
   {
-    id: "ukDpi",
+    id: "ukGdpr",
     accentColor: amber,
     entityCount: 9,
   },
