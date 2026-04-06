@@ -1,5 +1,12 @@
 import { styled, keyframes } from "@mui/material/styles";
-import { LOADER_STYLES } from "shared/constants/loader";
+
+const LOADER_STYLES = {
+  size: "100px",
+  ringSize: "8em",
+  borderWidth: "1em",
+  duration: "2s",
+  delay: "1s",
+} as const;
 
 const loaderAnimation = keyframes`
   0% {
