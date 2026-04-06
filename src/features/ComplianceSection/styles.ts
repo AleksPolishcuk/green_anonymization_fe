@@ -93,11 +93,11 @@ export const CardAccentLine = styled("span")<{ $color: string }>(
   }),
 );
 
-export const CardBadge = styled("span")<{ $bg: string; $color: string }>(
-  ({ theme, $bg, $color }) => ({
+export const CardBadge = styled("span")<{ $color: string }>(
+  ({ theme, $color }) => ({
     padding: "3px 10px",
     borderRadius: "20px",
-    backgroundColor: $bg,
+    backgroundColor: `${$color}12`,
     color: $color,
     fontSize: theme.typography.fontSize14,
     fontWeight: theme.typography.fontWeightSemiBold,

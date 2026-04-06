@@ -138,8 +138,11 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
   outline: "none",
   fontFamily: theme.typography.fontFamily,
   backgroundColor: theme.palette.background.paper,
-  resize: "vertical",
+  resize: "none",
   minHeight: "120px",
+  maxHeight: "240px",
+  overflowY: "auto",
+  boxSizing: "border-box",
 
   "&::placeholder": {
     color: theme.palette.text.secondary,
