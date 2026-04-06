@@ -52,10 +52,10 @@ export const FormCard = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export const FormTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: theme.typography.headingFontFamily,
-  fontWeight: theme.typography.fontWeightSemiBold,
-  fontSize: theme.typography.fontSize28,
+export const FormTitle = styled("h3")(({ theme }) => ({
+  fontFamily: theme.typography.h3.fontFamily,
+  fontSize: theme.typography.h3.fontSize,
+  fontWeight: theme.typography.h3.fontWeight,
   marginBottom: theme.spacing(6),
 }));
 
@@ -77,8 +77,8 @@ export const FormField = styled("div")(({ theme }) => ({
 }));
 
 export const FieldLabel = styled("span")(({ theme }) => ({
-  fontSize: theme.typography.fontSize14,
-  fontWeight: theme.typography.fontWeightSemiBold,
+  fontSize: theme.typography.h6.fontSize,
+  fontWeight: theme.typography.h6.fontWeight,
   marginBottom: theme.spacing(1.5),
   fontFamily: theme.typography.fontFamily,
   color: theme.palette.text.primary,
@@ -87,25 +87,62 @@ export const FieldLabel = styled("span")(({ theme }) => ({
 export const PhoneInputWrapper = styled("div")(({ theme }) => ({
   position: "relative",
 
+  "& .react-tel-input": {
+    border: `1px solid ${CARD_BORDER_COLOR}`,
+    borderRadius: "14px",
+    backgroundColor: theme.palette.background.input,
+
+    "&:hover": {
+      borderColor: theme.palette.text.primary,
+    },
+
+    "&:focus-within": {
+      borderColor: theme.palette.primary.main,
+    },
+  },
+
   "& .react-tel-input .form-control": {
     width: "100%",
     height: theme.inputHeight,
     fontSize: theme.typography.fontSize14,
     borderRadius: "14px",
-    border: `1px solid ${CARD_BORDER_COLOR}`,
+    border: "none",
+    outline: "none",
     fontFamily: theme.typography.fontFamily,
     paddingLeft: "72px",
+    backgroundColor: "transparent",
+    boxShadow: "none",
+
+    "&:focus": {
+      boxShadow: "none",
+      outline: "none",
+    },
   },
+
   "& .react-tel-input .flag-dropdown": {
     width: "68px",
     borderRadius: "14px 0 0 14px",
-    border: `1px solid ${CARD_BORDER_COLOR}`,
+    border: "none",
+    borderRight: `1px solid ${CARD_BORDER_COLOR}`,
     backgroundColor: "transparent",
+
+    "&:hover, &.open": {
+      backgroundColor: "transparent",
+    },
   },
+
+  "& .react-tel-input .flag-dropdown .selected-flag:hover, & .react-tel-input .flag-dropdown .selected-flag:focus":
+    {
+      backgroundColor: "transparent",
+    },
   "& .react-tel-input .selected-flag": {
     width: "68px",
     borderRadius: "14px 0 0 14px",
     fontFamily: theme.typography.fontFamily,
+
+    "&.open": {
+      borderRadius: "14px 0 0 14px !important",
+    },
   },
   "& .react-tel-input .flag": {
     backgroundImage: "none !important",
@@ -138,7 +175,7 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
   borderRadius: "14px",
   outline: "none",
   fontFamily: theme.typography.fontFamily,
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: theme.palette.background.input,
   resize: "none",
   minHeight: "120px",
   maxHeight: "240px",
@@ -147,6 +184,10 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
 
   "&::placeholder": {
     color: theme.palette.text.secondary,
+  },
+
+  "&:hover": {
+    borderColor: theme.palette.text.primary,
   },
 
   "&:focus": {

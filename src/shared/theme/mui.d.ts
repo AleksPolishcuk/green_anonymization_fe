@@ -20,6 +20,10 @@ declare module "@mui/material/styles" {
       bg?: string;
     };
   }
+
+  interface TypeBackground {
+    input: string;
+  }
   interface TypographyVariants {
     headingFontFamily: string;
     fontSize14: string;

@@ -1,4 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, alpha } from "@mui/material/styles";
+
+import { CARD_BORDER_COLOR } from "constants";
 
 const mainFontFamily = "'Inter', sans-serif";
 const headingFontFamily = "'DM Serif Display', serif";
@@ -35,6 +37,8 @@ const primaryContrast = "#ffffff";
 const secondaryColor = "#eff6ff";
 const subtleBg = "#f8fafc";
 const bgDefault = "#ffffff";
+const inputBgColor = "#F9FAFB";
+const inputBg = alpha(inputBgColor, 0.5);
 const textPrimary = "#101828";
 const textSecondary = "#6a7282";
 
@@ -69,6 +73,7 @@ export const theme = createTheme({
     background: {
       default: bgDefault,
       paper: bgDefault,
+      input: inputBg,
     },
     text: {
       primary: textPrimary,
@@ -232,13 +237,19 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           height: inputHeight,
+          backgroundColor: inputBg,
+
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: CARD_BORDER_COLOR,
+            borderWidth: "1px !important",
+          },
         },
         input: {
           height: "100%",
           boxSizing: "border-box",
 
           "&:-webkit-autofill": {
-            WebkitBoxShadow: `0 0 0 100px ${bgDefault} inset`,
+            WebkitBoxShadow: "0 0 0 100px #f9fafb inset",
             WebkitTextFillColor: textPrimary,
           },
         },
