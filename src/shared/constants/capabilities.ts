@@ -1,11 +1,7 @@
 export const CAPABILITIES_LAYOUT = {
-  sectionPaddingY: 80,
-  sidePaddingTablet: 68,
-  sidePaddingDesktop: 144,
   titleBlockMaxWidth: 760,
   titleBlockMarginBottom: 64,
   subtitleFontSize: "12px",
-  subtitleMarginBottom: 16,
   subtitleLetterSpacing: "0.05em",
   cardsGap: 20,
   cardPaddingMobile: "32px",

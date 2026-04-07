@@ -1,22 +1,24 @@
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
 import { CAPABILITIES_LAYOUT } from "shared/constants/capabilities";
-import { FONT_WEIGHT } from "constants";
 
 export const CapabilitiesSection = styled("section")(({ theme }) => ({
   backgroundColor: theme.palette.subtle.bg,
-  padding: `${CAPABILITIES_LAYOUT.sectionPaddingY}px 0`,
+  padding: "80px 0",
   width: "100%",
+  [theme.breakpoints.up("md")]: {
+    padding: "128px 0",
+  },
 }));
 
 export const SectionContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
-    paddingLeft: CAPABILITIES_LAYOUT.sidePaddingTablet,
-    paddingRight: CAPABILITIES_LAYOUT.sidePaddingTablet,
+    paddingLeft: 68,
+    paddingRight: 68,
   },
   [theme.breakpoints.up("lg")]: {
-    paddingLeft: CAPABILITIES_LAYOUT.sidePaddingDesktop,
-    paddingRight: CAPABILITIES_LAYOUT.sidePaddingDesktop,
+    paddingLeft: 144,
+    paddingRight: 144,
   },
 }));
 
@@ -32,7 +34,7 @@ export const TitleSectionBlock = styled("div")({
 export const Subtitle = styled(Typography)(({ theme }) => ({
   display: "block",
   fontSize: CAPABILITIES_LAYOUT.subtitleFontSize,
-  fontWeight: FONT_WEIGHT.bold,
+  fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
   color: theme.palette.primary.main,
   marginBottom: theme.spacing(4),
