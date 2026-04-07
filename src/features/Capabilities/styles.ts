@@ -78,18 +78,21 @@ export const CardItem = styled("li")(({ theme }) => ({
   },
 }));
 
-export const IconWrapper = styled("div")<{ $bg: string }>(({ $bg, theme }) => ({
-  backgroundColor: $bg,
-  width: CAPABILITIES_LAYOUT.iconSize,
-  height: CAPABILITIES_LAYOUT.iconSize,
-  borderRadius: CAPABILITIES_LAYOUT.iconBorderRadius,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: theme.palette.primary.main,
-  "& svg": {
-    width: CAPABILITIES_LAYOUT.iconSvgSize,
-    height: CAPABILITIES_LAYOUT.iconSvgSize,
-    fill: "currentColor",
-  },
-}));
+export const IconWrapper = styled("div")<{ $bg: string; $stroke: string }>(
+  ({ $bg, $stroke }) => ({
+    backgroundColor: $bg,
+    width: CAPABILITIES_LAYOUT.iconSize,
+    height: CAPABILITIES_LAYOUT.iconSize,
+    borderRadius: CAPABILITIES_LAYOUT.iconBorderRadius,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "& svg": {
+      width: CAPABILITIES_LAYOUT.iconSvgSize,
+      height: CAPABILITIES_LAYOUT.iconSvgSize,
+      fill: "none",
+      stroke: $stroke,
+      strokeWidth: 1,
+    },
+  }),
+);

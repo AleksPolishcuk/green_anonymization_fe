@@ -12,8 +12,7 @@ export const PageSection = styled("section")(({ theme }) => ({
   },
 }));
 
-export const PageTitle = styled(Typography)(({ theme }) => ({
-  fontWeight: theme.typography.fontWeightBold,
+export const PageTitle = styled(Typography)(() => ({
   marginBottom: "16px",
 }));
 

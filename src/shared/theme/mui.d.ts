@@ -13,14 +13,47 @@ declare module "@mui/material/styles" {
     subtle: {
       bg: string;
     };
+    accent: {
+      blue: string;
+      green: string;
+      amber: string;
+      red: string;
+      lilac: string;
+      lightBlue: string;
+      lightGreen: string;
+      lightAmber: string;
+      lightRed: string;
+      lightLilac: string;
+    };
+    footer: {
+      divider: string;
+      linkHover: string;
+    };
   }
 
   interface PaletteOptions {
     subtle?: {
       bg?: string;
     };
+    accent?: {
+      blue?: string;
+      green?: string;
+      amber?: string;
+      red?: string;
+      lilac?: string;
+      lightBlue?: string;
+      lightGreen?: string;
+      lightAmber?: string;
+      lightRed?: string;
+      lightLilac?: string;
+    };
+    footer?: {
+      divider?: string;
+      linkHover?: string;
+    };
   }
   interface TypographyVariants {
+    headingFontFamily: string;
     fontSize14: string;
     fontSize16: string;
     fontSize18: string;
@@ -34,6 +67,7 @@ declare module "@mui/material/styles" {
   }
 
   interface TypographyVariantsOptions {
+    headingFontFamily?: string;
     fontSize14?: string;
     fontSize16?: string;
     fontSize18?: string;

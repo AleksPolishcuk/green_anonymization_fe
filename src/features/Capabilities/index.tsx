@@ -32,7 +32,7 @@ export const Capabilities = () => {
         <CardsList ref={listRef}>
           {CAPABILITIES_CARDS.map((card) => (
             <CardItem key={card.id} className="reveal-card">
-              <IconWrapper $bg={card.iconBg}>
+              <IconWrapper $bg={card.iconBg} $stroke={card.iconStroke}>
                 <svg viewBox="0 0 20 20">
                   <use href={`/capabilities/icons.svg${card.iconId}`} />
                 </svg>

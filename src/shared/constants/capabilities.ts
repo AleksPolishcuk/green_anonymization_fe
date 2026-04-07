@@ -1,3 +1,5 @@
+import { theme } from "shared/theme/theme";
+
 export const CAPABILITIES_LAYOUT = {
   titleBlockMaxWidth: 760,
   titleBlockMarginBottom: 64,
@@ -13,39 +15,36 @@ export const CAPABILITIES_LAYOUT = {
   iconSvgSize: 20,
 } as const;
 
-export const CAPABILITIES_ICON_BACKGROUNDS = {
-  pii: "#eff6ff",
-  synthetic: "#f5f3ff",
-  framework: "#ecfdf5",
-  anonymization: "#fffbeb",
-} as const;
-
 export const CAPABILITIES_CARDS = [
   {
     id: "pii",
     iconId: "#pii",
-    iconBg: CAPABILITIES_ICON_BACKGROUNDS.pii,
+    iconStroke: theme.palette.accent.blue,
+    iconBg: theme.palette.accent.lightBlue,
     titleKey: "capabilities.cards.pii.title",
     descKey: "capabilities.cards.pii.description",
   },
   {
     id: "synthetic",
     iconId: "#synthetic",
-    iconBg: CAPABILITIES_ICON_BACKGROUNDS.synthetic,
+    iconStroke: theme.palette.accent.lilac,
+    iconBg: theme.palette.accent.lightLilac,
     titleKey: "capabilities.cards.synthetic.title",
     descKey: "capabilities.cards.synthetic.description",
   },
   {
     id: "framework",
     iconId: "#framework",
-    iconBg: CAPABILITIES_ICON_BACKGROUNDS.framework,
+    iconStroke: theme.palette.accent.green,
+    iconBg: theme.palette.accent.lightGreen,
     titleKey: "capabilities.cards.framework.title",
     descKey: "capabilities.cards.framework.description",
   },
   {
     id: "anonymization",
     iconId: "#ai-anonymization",
-    iconBg: CAPABILITIES_ICON_BACKGROUNDS.anonymization,
+    iconStroke: theme.palette.accent.amber,
+    iconBg: theme.palette.accent.lightAmber,
     titleKey: "capabilities.cards.anonymization.title",
     descKey: "capabilities.cards.anonymization.description",
   },

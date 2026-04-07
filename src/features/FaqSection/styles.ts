@@ -1,0 +1,58 @@
+import { styled } from "@mui/material/styles";
+import {
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+
+import { CARD_BORDER_COLOR } from "constants";
+
+export const SectionWrapper = styled("section")(({ theme }) => ({
+  marginTop: theme.spacing(20),
+  padding: theme.spacing(20, 0),
+  backgroundColor: theme.palette.subtle?.bg ?? theme.palette.background.default,
+}));
+
+export const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
+  marginBottom: theme.spacing(12),
+}));
+
+export const FaqAccordion = styled(Accordion)(({ theme }) => ({
+  border: `1px solid ${CARD_BORDER_COLOR}`,
+  borderRadius: `${theme.shape.borderRadius}px !important`,
+  boxShadow: "none",
+  marginBottom: theme.spacing(3),
+  backgroundColor: theme.palette.background.paper,
+
+  "&::before": {
+    display: "none",
+  },
+}));
+
+export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
+  padding: theme.spacing(0, 6),
+  minHeight: "66px",
+
+  "& .MuiAccordionSummary-content": {
+    margin: `${theme.spacing(4)} 0`,
+  },
+
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    color: theme.palette.primary.main,
+  },
+}));
+
+export const FaqQuestion = styled(Typography)(({ theme }) => ({
+  fontWeight: theme.typography.fontWeightSemiBold,
+  color: theme.palette.text.primary,
+}));
+
+export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(0, 6, 5),
+}));
+
+export const FaqAnswer = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+}));
