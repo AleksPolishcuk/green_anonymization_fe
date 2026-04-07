@@ -1,135 +1,132 @@
-import styled, { css } from "styled-components";
+import { styled } from "@mui/material/styles";
 
-import { headerCta, headerInteraction } from "shared/constants/header";
-import { theme as appTheme } from "shared/theme/theme";
+const ctaHeightPx = 41;
+const ctaWidthPx = 119;
+const ctaPadding = "10px 20px";
+const ctaRadiusPx = 14;
+const transitionButtonSeconds = 0.24;
+const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 
-export const AuthActionsRow = styled.div<{ $isCompact: boolean }>`
-  display: inline-flex;
-  align-items: center;
-  gap: ${appTheme.spacing(4)};
+export const AuthActionsRow = styled("div", {
+  shouldForwardProp: (prop) => prop !== "$isCompact",
+})<{ $isCompact: boolean }>(({ theme, $isCompact }) => ({
+  display: "inline-flex",
+  alignItems: "center",
+  gap: theme.spacing(4),
+  ...($isCompact && {
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "stretch",
+  }),
+}));
 
-  ${({ $isCompact }) =>
-    $isCompact &&
-    css`
-      width: 100%;
-      flex-direction: column;
-      align-items: stretch;
-    `}
-`;
+export const SignInLink = styled("a")(({ theme }) => ({
+  boxSizing: "border-box",
+  margin: 0,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: `${ctaHeightPx}px`,
+  padding: ctaPadding,
+  borderRadius: `${ctaRadiusPx}px`,
+  border: "1px solid transparent",
+  background: "transparent",
+  color: theme.palette.text.secondary,
+  fontFamily: theme.typography.fontFamily,
+  textDecoration: "none",
+  fontSize: theme.typography.h6.fontSize,
+  lineHeight: theme.typography.button.lineHeight,
+  fontWeight: theme.typography.fontWeightMedium,
+  whiteSpace: "nowrap",
+  transition: [
+    `background-color ${transitionButtonSeconds}s ${easingStandard}`,
+    `border-color ${transitionButtonSeconds}s ${easingStandard}`,
+    `box-shadow ${transitionButtonSeconds}s ${easingStandard}`,
+    `color ${transitionButtonSeconds}s ${easingStandard}`,
+  ].join(", "),
 
-export const SignInLink = styled.a`
-  box-sizing: border-box;
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: ${headerCta.getStartedHeightPx}px;
-  padding: ${headerCta.getStartedPadding};
-  border-radius: ${headerCta.buttonBorderRadiusPx}px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: ${headerCta.signInColor};
-  font-family: ${appTheme.typography.fontFamily};
-  text-decoration: none;
-  font-size: ${appTheme.typography.h6.fontSize};
-  line-height: ${appTheme.typography.button.lineHeight};
-  font-weight: ${appTheme.typography.fontWeightMedium};
-  white-space: nowrap;
-  transition:
-    background-color ${headerInteraction.transitionButtonSeconds}s
-      ${headerInteraction.easingStandard},
-    border-color ${headerInteraction.transitionButtonSeconds}s
-      ${headerInteraction.easingStandard},
-    box-shadow ${headerInteraction.transitionButtonSeconds}s
-      ${headerInteraction.easingStandard},
-    color ${headerInteraction.transitionButtonSeconds}s
-      ${headerInteraction.easingStandard};
+  "&:hover": {
+    backgroundColor: theme.palette.primary.dark,
+    borderColor: theme.palette.primary.dark,
+    boxShadow: "0 6px 14px 0 rgba(59, 130, 246, 0.6)",
+    color: theme.palette.primary.contrastText,
+  },
 
-  &:hover {
-    background-color: ${headerCta.getStartedHoverBackground};
-    border-color: ${headerCta.getStartedHoverBackground};
-    box-shadow: ${headerCta.getStartedHoverBoxShadow};
-    color: ${headerCta.getStartedColor};
-  }
+  "&:active": {
+    backgroundColor: theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
+    boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
+    color: theme.palette.primary.contrastText,
+  },
 
-  &:active {
-    background-color: ${appTheme.palette.primary.main};
-    border-color: ${appTheme.palette.primary.main};
-    box-shadow: ${headerCta.getStartedBoxShadow};
-    color: ${headerCta.getStartedColor};
-  }
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: "3px",
+    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+  },
 
-  &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid
-      ${headerInteraction.focusRingColor};
-    outline-offset: ${headerInteraction.focusRingOffsetPx}px;
-    box-shadow: ${headerInteraction.focusRingShadow};
-  }
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+    boxShadow: "none",
+  },
+}));
 
-  &:focus:not(:focus-visible) {
-    outline: none;
-    box-shadow: none;
-  }
-`;
+export const GetStartedButton = styled("button", {
+  shouldForwardProp: (prop) => prop !== "$isCompact",
+})<{ $isCompact?: boolean }>(({ theme, $isCompact }) => ({
+  boxSizing: "border-box",
+  margin: 0,
+  border: "none",
+  appearance: "none",
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: `${ctaRadiusPx}px`,
+  padding: ctaPadding,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.h6.fontSize,
+  fontWeight: theme.typography.button.fontWeight,
+  lineHeight: theme.typography.button.lineHeight,
+  whiteSpace: "nowrap",
+  boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
+  textTransform: "none",
+  flexShrink: 0,
+  ...($isCompact
+    ? {
+        width: "100%",
+        height: "auto",
+        minHeight: `${ctaHeightPx}px`,
+      }
+    : {
+        width: `${ctaWidthPx}px`,
+        height: `${ctaHeightPx}px`,
+      }),
+  transition: [
+    `background-color ${transitionButtonSeconds}s ${easingStandard}`,
+    `box-shadow ${transitionButtonSeconds}s ${easingStandard}`,
+  ].join(", "),
 
-export const GetStartedButton = styled.button<{ $isCompact?: boolean }>`
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  appearance: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: ${headerCta.buttonBorderRadiusPx}px;
-  padding: ${headerCta.getStartedPadding};
-  background-color: ${appTheme.palette.primary.main};
-  color: ${headerCta.getStartedColor};
-  font-family: ${appTheme.typography.fontFamily};
-  font-size: ${appTheme.typography.h6.fontSize};
-  font-weight: ${appTheme.typography.button.fontWeight};
-  line-height: ${appTheme.typography.button.lineHeight};
-  white-space: nowrap;
-  box-shadow: ${headerCta.getStartedBoxShadow};
-  text-transform: none;
-  flex-shrink: 0;
+  "&:hover": {
+    backgroundColor: theme.palette.primary.dark,
+    boxShadow: "0 6px 14px 0 rgba(59, 130, 246, 0.6)",
+  },
 
-  ${({ $isCompact }) =>
-    $isCompact
-      ? css`
-          width: 100%;
-          height: auto;
-          min-height: ${headerCta.getStartedHeightPx}px;
-        `
-      : css`
-          width: ${headerCta.getStartedWidthPx}px;
-          height: ${headerCta.getStartedHeightPx}px;
-        `}
+  "&:active": {
+    backgroundColor: theme.palette.primary.main,
+    boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
+  },
 
-  transition:
-    background-color ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard},
-    box-shadow ${headerInteraction.transitionButtonSeconds}s ${headerInteraction.easingStandard};
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.contrastText}`,
+    outlineOffset: "2px",
+    boxShadow:
+      "0 4px 14px 0 rgba(59, 130, 246, 0.3), 0 0 0 4px rgba(21, 93, 252, 0.45)",
+  },
 
-  &:hover {
-    background-color: ${headerCta.getStartedHoverBackground};
-    box-shadow: ${headerCta.getStartedHoverBoxShadow};
-  }
-
-  &:active {
-    background-color: ${appTheme.palette.primary.main};
-    box-shadow: ${headerCta.getStartedBoxShadow};
-  }
-
-  &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid
-      ${headerCta.getStartedColor};
-    outline-offset: ${headerInteraction.focusRingButtonOffsetPx}px;
-    box-shadow:
-      ${headerCta.getStartedBoxShadow},
-      ${headerInteraction.focusRingStrongShadow};
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-`;
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+  },
+}));

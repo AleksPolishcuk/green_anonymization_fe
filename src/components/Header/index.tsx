@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-
 import { AuthActions } from "components/Header/AuthActions";
 import { BurgerModal } from "components/Header/BurgerModal";
 import { useHeader } from "components/Header/hooks/useHeader";
@@ -26,7 +25,7 @@ import {
   headerRoutes,
   headerSpriteRef,
   headerSpriteSymbolIds,
-} from "shared/constants/header";
+} from "constants/header";
 
 type HeaderLogoProps = {
   href?: string;

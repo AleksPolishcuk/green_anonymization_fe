@@ -1,239 +1,234 @@
-import styled from "styled-components";
-import {
-  headerBar,
-  headerBurgerPanelWidthPx,
-  headerInteraction,
-  headerModal,
-  headerLayoutHorizontalPaddingPx,
-  headerMobileTabletBarHeightPx,
-  headerTabletBreakpointPx,
-} from "shared/constants/header";
-import { theme as appTheme } from "shared/theme/theme";
+import { styled } from "@mui/material/styles";
+import { headerBreakpoints, headerDimensions } from "constants/header";
+const overlayDurationMs = 280;
+const panelDurationMs = 300;
+const reducedMotionTransitionMs = 0.01;
+const easing = "cubic-bezier(0.32, 0.72, 0, 1)";
+const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
+const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
+const navLinkPadY = 6;
+const navLinkPadX = 10;
+const navLinkRadiusPx = 8;
+const navUnderlineBottomPx = 3;
+const navUnderlineHeightPx = 2;
+const navUnderlineTransitionSeconds = 0.28;
+const transitionFastSeconds = 0.22;
 
-export const Overlay = styled.div<{ $isOpen: boolean }>`
-  position: fixed;
-  inset: 0;
-  z-index: ${headerModal.overlayZIndex};
-  display: block;
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-  visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
-  pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
-  transition: opacity ${headerInteraction.overlayDurationMs}ms
-    ${headerInteraction.easing};
-  background: ${headerModal.overlayMobileBg};
+export const Overlay = styled("div", {
+  shouldForwardProp: (prop) => prop !== "$isOpen",
+})<{ $isOpen: boolean }>(({ $isOpen }) => ({
+  position: "fixed",
+  inset: 0,
+  zIndex: 30,
+  display: "block",
+  opacity: $isOpen ? 1 : 0,
+  visibility: $isOpen ? "visible" : "hidden",
+  pointerEvents: $isOpen ? "auto" : "none",
+  transition: `opacity ${overlayDurationMs}ms ${easing}`,
+  background: "rgba(16, 24, 40, 0.5)",
 
-  @media (min-width: ${headerTabletBreakpointPx}px) {
-    background: ${headerModal.overlayTabletBg};
-    border: none;
-    -webkit-backdrop-filter: blur(${headerModal.overlayBackdropBlurPx}px)
-      saturate(${headerModal.overlayBackdropSaturatePercent}%)
-      brightness(${headerModal.overlayBackdropBrightness});
-    backdrop-filter: blur(${headerModal.overlayBackdropBlurPx}px)
-      saturate(${headerModal.overlayBackdropSaturatePercent}%)
-      brightness(${headerModal.overlayBackdropBrightness});
-  }
+  [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
+    background: "rgba(255, 255, 255, 0.14)",
+    border: "none",
+    WebkitBackdropFilter: "blur(28px) saturate(190%) brightness(1.05)",
+    backdropFilter: "blur(28px) saturate(190%) brightness(1.05)",
+  },
 
-  @supports not (backdrop-filter: blur(${headerBar.supportsBlurTestPx}px)) {
-    @media (min-width: ${headerTabletBreakpointPx}px) {
-      background: ${headerModal.overlayTabletFallbackBg};
-    }
-  }
+  "@supports not (backdrop-filter: blur(1px))": {
+    [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
+      background: "rgba(248, 250, 255, 0.85)",
+    },
+  },
 
-  @media (prefers-reduced-motion: reduce) {
-    transition-duration: ${headerModal.reducedMotionTransitionMs}ms;
-  }
-`;
+  "@media (prefers-reduced-motion: reduce)": {
+    transitionDuration: `${reducedMotionTransitionMs}ms`,
+  },
+}));
 
-export const Panel = styled.aside<{ $isOpen: boolean }>`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  min-height: 100dvh;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  gap: 0;
-  transform: ${({ $isOpen }) =>
-    $isOpen ? "translateX(0)" : "translateX(100%)"};
-  transition: transform ${headerInteraction.panelDurationMs}ms
-    ${headerInteraction.easing};
-  z-index: ${headerModal.panelZIndex};
-  overflow: hidden;
+export const Panel = styled("aside", {
+  shouldForwardProp: (prop) => prop !== "$isOpen",
+})<{ $isOpen: boolean }>(({ $isOpen }) => ({
+  position: "fixed",
+  top: 0,
+  bottom: 0,
+  right: 0,
+  left: 0,
+  boxSizing: "border-box",
+  width: "100%",
+  maxWidth: "100%",
+  height: "100%",
+  minHeight: "100dvh",
+  borderRadius: 0,
+  background: "transparent",
+  boxShadow: "none",
+  display: "flex",
+  flexDirection: "column",
+  padding: 0,
+  gap: 0,
+  transform: $isOpen ? "translateX(0)" : "translateX(100%)",
+  transition: `transform ${panelDurationMs}ms ${easing}`,
+  zIndex: 1,
+  overflow: "hidden",
 
-  @media (min-width: ${headerTabletBreakpointPx}px) {
-    left: auto;
-    width: ${headerBurgerPanelWidthPx}px;
-    max-width: ${headerBurgerPanelWidthPx}px;
-    min-height: 100vh;
-    height: 100vh;
-    box-shadow: ${headerModal.panelTabletShadow};
-    border-radius: 0;
-  }
+  [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
+    left: "auto",
+    width: `${headerDimensions.burgerPanelWidthPx}px`,
+    maxWidth: `${headerDimensions.burgerPanelWidthPx}px`,
+    minHeight: "100vh",
+    height: "100vh",
+    boxShadow: "-12px 0 28px rgba(16, 24, 40, 0.18)",
+    borderRadius: 0,
+  },
 
-  @media (prefers-reduced-motion: reduce) {
-    transition-duration: ${headerModal.reducedMotionTransitionMs}ms;
-  }
-`;
+  "@media (prefers-reduced-motion: reduce)": {
+    transitionDuration: `${reducedMotionTransitionMs}ms`,
+  },
+}));
 
-export const ModalHeader = styled.div`
-  flex-shrink: 0;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  height: ${headerMobileTabletBarHeightPx}px;
-  min-height: ${headerMobileTabletBarHeightPx}px;
-  padding: 0 ${headerLayoutHorizontalPaddingPx}px;
-  background: ${headerModal.headerBg};
+export const ModalHeader = styled("div")(({ theme }) => ({
+  flexShrink: 0,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  width: "100%",
+  height: `${headerDimensions.mobileTabletBarHeightPx}px`,
+  minHeight: `${headerDimensions.mobileTabletBarHeightPx}px`,
+  padding: `0 ${headerDimensions.layoutHorizontalPaddingPx}px`,
+  background: "#f3f4f6",
 
-  @media (min-width: ${headerTabletBreakpointPx}px) {
-    padding: 0 ${appTheme.spacing(6)};
-  }
-`;
+  [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
+    padding: `0 ${theme.spacing(6)}`,
+  },
+}));
 
-export const ModalBody = styled.div`
-  box-sizing: border-box;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: ${appTheme.spacing(7.5)};
-  min-height: 0;
-  padding: ${headerLayoutHorizontalPaddingPx}px;
-  background: ${appTheme.palette.background.default};
-  overflow: auto;
+export const ModalBody = styled("div")(({ theme }) => ({
+  boxSizing: "border-box",
+  flex: "1 1 auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(7.5),
+  minHeight: 0,
+  padding: `${headerDimensions.layoutHorizontalPaddingPx}px`,
+  background: theme.palette.background.default,
+  overflow: "auto",
 
-  @media (min-width: ${headerTabletBreakpointPx}px) {
-    padding: ${appTheme.spacing(6)};
-  }
-`;
+  [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
+    padding: theme.spacing(6),
+  },
+}));
 
-export const CloseButton = styled.button`
-  width: ${headerModal.closeControlSizePx}px;
-  height: ${headerModal.closeControlSizePx}px;
-  border: none;
-  border-radius: ${headerInteraction.iconButtonRadiusPx}px;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-  transition:
-    background-color ${headerInteraction.transitionFastSeconds}s
-      ${headerInteraction.easingStandard},
-    transform ${headerInteraction.transitionFastSeconds}s
-      ${headerInteraction.easingOut},
-    box-shadow ${headerInteraction.transitionFastSeconds}s
-      ${headerInteraction.easingStandard};
+export const CloseButton = styled("button")(({ theme }) => ({
+  width: `${headerDimensions.closeControlSizePx}px`,
+  height: `${headerDimensions.closeControlSizePx}px`,
+  border: "none",
+  borderRadius: "10px",
+  padding: 0,
+  background: "transparent",
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "inherit",
+  transition: [
+    `background-color ${transitionFastSeconds}s ${easingStandard}`,
+    `transform ${transitionFastSeconds}s ${easingOut}`,
+    `box-shadow ${transitionFastSeconds}s ${easingStandard}`,
+  ].join(", "),
 
-  &:hover {
-    background-color: ${headerInteraction.closeButtonHoverBg};
-    transform: scale(${headerInteraction.iconButtonScaleHover});
-  }
+  "&:hover": {
+    backgroundColor: "rgba(16, 24, 40, 0.09)",
+    transform: "scale(1.06)",
+  },
 
-  &:active {
-    transform: scale(${headerInteraction.iconButtonScaleActive});
-    background-color: ${headerInteraction.iconButtonHoverBgActive};
-  }
+  "&:active": {
+    transform: "scale(1)",
+    backgroundColor: "rgba(16, 24, 40, 0.14)",
+  },
 
-  &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid
-      ${headerInteraction.focusRingColor};
-    outline-offset: ${headerInteraction.focusRingOffsetPx}px;
-    box-shadow: ${headerInteraction.focusRingShadow};
-  }
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: "3px",
+    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+  },
 
-  &:focus:not(:focus-visible) {
-    outline: none;
-    box-shadow: none;
-  }
-`;
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+    boxShadow: "none",
+  },
+}));
 
-export const CloseIcon = styled.svg`
-  width: ${headerModal.closeControlSizePx}px;
-  height: ${headerModal.closeControlSizePx}px;
-`;
+export const CloseIcon = styled("svg")({
+  width: `${headerDimensions.closeControlSizePx}px`,
+  height: `${headerDimensions.closeControlSizePx}px`,
+});
 
-export const ModalNav = styled.nav`
-  display: flex;
-  flex-direction: column;
-  gap: ${appTheme.spacing(6)};
-`;
+export const ModalNav = styled("nav")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(6),
+}));
 
-export const ModalNavLink = styled.a`
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  padding: ${headerInteraction.linkPadY}px ${headerInteraction.linkPadX}px;
-  font-family: ${appTheme.typography.fontFamily};
-  font-weight: ${appTheme.typography.body1.fontWeight};
-  font-size: ${appTheme.typography.body1.fontSize};
-  line-height: ${appTheme.typography.button.lineHeight};
-  color: ${appTheme.palette.text.secondary};
-  text-decoration: none;
-  border-radius: ${headerInteraction.linkFocusRadiusPx}px;
-  transition: color ${headerInteraction.transitionFastSeconds}s
-    ${headerInteraction.easingStandard};
+export const ModalNavLink = styled("a")(({ theme }) => ({
+  boxSizing: "border-box",
+  margin: 0,
+  position: "relative",
+  display: "inline-flex",
+  alignItems: "center",
+  alignSelf: "flex-start",
+  padding: `${navLinkPadY}px ${navLinkPadX}px`,
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.body1.fontWeight,
+  fontSize: theme.typography.body1.fontSize,
+  lineHeight: theme.typography.button.lineHeight,
+  color: theme.palette.text.secondary,
+  textDecoration: "none",
+  borderRadius: `${navLinkRadiusPx}px`,
+  transition: `color ${transitionFastSeconds}s ${easingStandard}`,
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: ${headerInteraction.linkPadX}px;
-    right: ${headerInteraction.linkPadX}px;
-    bottom: ${headerInteraction.navLinkUnderlineBottomPx}px;
-    height: ${headerInteraction.navLinkUnderlineHeightPx}px;
-    background-color: ${headerInteraction.navLinkUnderlineColor};
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform ${headerInteraction.navLinkUnderlineTransitionSeconds}s
-      ${headerInteraction.easingOut};
-  }
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: `${navLinkPadX}px`,
+    right: `${navLinkPadX}px`,
+    bottom: `${navUnderlineBottomPx}px`,
+    height: `${navUnderlineHeightPx}px`,
+    backgroundColor: theme.palette.primary.main,
+    transform: "scaleX(0)",
+    transformOrigin: "left center",
+    transition: `transform ${navUnderlineTransitionSeconds}s ${easingOut}`,
+  },
 
-  &:hover {
-    color: ${headerInteraction.linkNavHoverColor};
-  }
+  "&:hover": {
+    color: theme.palette.text.primary,
+  },
 
-  &:hover::after {
-    transform: scaleX(1);
-  }
+  "&:hover::after": {
+    transform: "scaleX(1)",
+  },
 
-  &:active {
-    color: ${headerInteraction.linkNavHoverColor};
-  }
+  "&:active": {
+    color: theme.palette.text.primary,
+  },
 
-  &:active::after {
-    transform: scaleX(1);
-  }
+  "&:active::after": {
+    transform: "scaleX(1)",
+  },
 
-  &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid
-      ${headerInteraction.focusRingColor};
-    outline-offset: ${headerInteraction.focusRingOffsetPx}px;
-    box-shadow: ${headerInteraction.focusRingShadow};
-  }
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: "3px",
+    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+  },
 
-  &:focus:not(:focus-visible) {
-    outline: none;
-    box-shadow: none;
-  }
-`;
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+    boxShadow: "none",
+  },
+}));
 
-export const ModalActions = styled.div`
-  margin-top: auto;
-  display: grid;
-  gap: ${appTheme.spacing(3)};
-`;
+export const ModalActions = styled("div")(({ theme }) => ({
+  marginTop: "auto",
+  display: "grid",
+  gap: theme.spacing(3),
+}));

@@ -1,65 +1,69 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-import { headerCta, headerInteraction } from "shared/constants/header";
-import { theme as appTheme } from "shared/theme/theme";
+const navLinkPadY = 6;
+const navLinkPadX = 10;
+const navLinkRadiusPx = 8;
+const navUnderlineBottomPx = 3;
+const navUnderlineHeightPx = 2;
+const transitionFastSeconds = 0.22;
+const navUnderlineTransitionSeconds = 0.28;
+const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
+const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
 
-export const NavButton = styled.a`
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: ${headerInteraction.linkPadY}px ${headerInteraction.linkPadX}px;
-  color: ${headerCta.signInColor};
-  font-family: ${appTheme.typography.fontFamily};
-  font-size: ${appTheme.typography.h6.fontSize};
-  line-height: ${appTheme.typography.button.lineHeight};
-  font-weight: ${appTheme.typography.fontWeightMedium};
-  text-decoration: none;
-  border-radius: ${headerInteraction.linkFocusRadiusPx}px;
-  transition: color ${headerInteraction.transitionFastSeconds}s
-    ${headerInteraction.easingStandard};
+export const NavButton = styled("a")(({ theme }) => ({
+  boxSizing: "border-box",
+  margin: 0,
+  position: "relative",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: `${navLinkPadY}px ${navLinkPadX}px`,
+  color: theme.palette.text.secondary,
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.h6.fontSize,
+  lineHeight: theme.typography.button.lineHeight,
+  fontWeight: theme.typography.fontWeightMedium,
+  textDecoration: "none",
+  borderRadius: `${navLinkRadiusPx}px`,
+  transition: `color ${transitionFastSeconds}s ${easingStandard}`,
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: ${headerInteraction.linkPadX}px;
-    right: ${headerInteraction.linkPadX}px;
-    bottom: ${headerInteraction.navLinkUnderlineBottomPx}px;
-    height: ${headerInteraction.navLinkUnderlineHeightPx}px;
-    background-color: ${headerInteraction.navLinkUnderlineColor};
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform ${headerInteraction.navLinkUnderlineTransitionSeconds}s
-      ${headerInteraction.easingOut};
-  }
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: `${navLinkPadX}px`,
+    right: `${navLinkPadX}px`,
+    bottom: `${navUnderlineBottomPx}px`,
+    height: `${navUnderlineHeightPx}px`,
+    backgroundColor: theme.palette.primary.main,
+    transform: "scaleX(0)",
+    transformOrigin: "left center",
+    transition: `transform ${navUnderlineTransitionSeconds}s ${easingOut}`,
+  },
 
-  &:hover {
-    color: ${headerInteraction.linkNavHoverColor};
-  }
+  "&:hover": {
+    color: theme.palette.text.primary,
+  },
 
-  &:hover::after {
-    transform: scaleX(1);
-  }
+  "&:hover::after": {
+    transform: "scaleX(1)",
+  },
 
-  &:active {
-    color: ${headerInteraction.linkNavHoverColor};
-  }
+  "&:active": {
+    color: theme.palette.text.primary,
+  },
 
-  &:active::after {
-    transform: scaleX(1);
-  }
+  "&:active::after": {
+    transform: "scaleX(1)",
+  },
 
-  &:focus-visible {
-    outline: ${headerInteraction.focusRingWidthPx}px solid
-      ${headerInteraction.focusRingColor};
-    outline-offset: ${headerInteraction.focusRingOffsetPx}px;
-    box-shadow: ${headerInteraction.focusRingShadow};
-  }
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: "3px",
+    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+  },
 
-  &:focus:not(:focus-visible) {
-    outline: none;
-    box-shadow: none;
-  }
-`;
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+    boxShadow: "none",
+  },
+}));

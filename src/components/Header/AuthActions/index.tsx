@@ -5,7 +5,7 @@ import {
   GetStartedButton,
   SignInLink,
 } from "components/Header/AuthActions/styles";
-import { headerI18nPrefix, headerRoutes } from "shared/constants/header";
+import { headerI18nPrefix, headerRoutes } from "constants/header";
 
 type AuthActionsProps = {
   compact?: boolean;

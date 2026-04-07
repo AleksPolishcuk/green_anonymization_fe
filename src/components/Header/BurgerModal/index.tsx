@@ -18,7 +18,7 @@ import {
   headerI18nPrefix,
   headerSpriteRef,
   headerSpriteSymbolIds,
-} from "shared/constants/header";
+} from "constants/header";
 
 type BurgerModalProps = {
   isOpen: boolean;

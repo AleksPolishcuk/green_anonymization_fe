@@ -1,239 +1,221 @@
 import { IconButton } from "@mui/material";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 import {
-  headerBar,
-  headerDesktopAuthBreakpointPx,
-  headerDesktopBar,
-  headerInteraction,
-  headerLayout,
-  headerLgBreakpointPx,
-  headerLogoDesktop,
-  headerLogoLockBreakpointPx,
+  headerBreakpoints,
+  headerDimensions,
   headerLogoViewBox,
-  headerLayoutHorizontalPaddingPx,
-  headerMobileTabletBarHeightPx,
-  headerModal,
-  headerTabletBreakpointPx,
-} from "shared/constants/header";
-import { theme as appTheme } from "shared/theme/theme";
+} from "constants/header";
 
 const logoViewW = headerLogoViewBox.width;
 const logoViewH = headerLogoViewBox.height;
+const headerLogoLockBreakpointPx = headerBreakpoints.tabletPx;
+const fastTransitionSeconds = 0.22;
+const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
+const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
+export const HeaderShell = styled("header")(({ theme }) => ({
+  position: "sticky",
+  top: 0,
+  zIndex: 20,
+  paddingTop: theme.spacing(4),
+}));
 
-export const HeaderShell = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: ${headerLayout.shellZIndex};
-  padding-top: ${appTheme.spacing(4)};
-`;
+export const HeaderLayout = styled("div")(({ theme }) => ({
+  boxSizing: "border-box",
+  width: "100%",
+  padding: `0 ${headerDimensions.layoutHorizontalPaddingPx}px`,
 
-export const HeaderLayout = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 ${headerLayoutHorizontalPaddingPx}px;
+  [theme.breakpoints.up("md")]: {
+    padding: `0 ${theme.spacing(6)}`,
+  },
 
-  @media (min-width: ${headerTabletBreakpointPx}px) {
-    padding: 0 ${appTheme.spacing(6)};
-  }
+  [theme.breakpoints.up("lg")]: {
+    padding: `0 ${theme.spacing(8)}`,
+  },
+}));
 
-  @media (min-width: ${headerLgBreakpointPx}px) {
-    padding: 0 ${appTheme.spacing(8)};
-  }
-`;
+export const HeaderBar = styled("div")(({ theme }) => ({
+  position: "relative",
+  boxSizing: "border-box",
+  overflow: "hidden",
+  marginLeft: "auto",
+  marginRight: "auto",
+  width: "100%",
+  minHeight: `${headerDimensions.mobileTabletBarHeightPx}px`,
+  borderRadius: `${headerDimensions.barBorderRadiusPx}px`,
+  padding: `${theme.spacing(4)} ${theme.spacing(6)}`,
+  background: "rgba(255, 255, 255, 0.1)",
+  border: "1px solid rgba(255, 255, 255, 0.22)",
+  boxShadow:
+    "0 2px 14px rgba(16, 24, 40, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.28)",
+  WebkitBackdropFilter: "blur(6px) saturate(140%) brightness(1.02)",
+  backdropFilter: "blur(6px) saturate(140%) brightness(1.02)",
 
-export const HeaderBar = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  min-height: ${headerMobileTabletBarHeightPx}px;
-  border-radius: ${headerDesktopBar.borderRadiusPx}px;
-  padding: ${appTheme.spacing(4)} ${appTheme.spacing(6)};
-  background: ${headerBar.background};
-  border: ${headerBar.border};
-  box-shadow: ${headerBar.boxShadow};
-  -webkit-backdrop-filter: blur(${headerBar.backdropBlurPx}px)
-    saturate(${headerBar.saturatePercent}%) brightness(${headerBar.brightness});
-  backdrop-filter: blur(${headerBar.backdropBlurPx}px)
-    saturate(${headerBar.saturatePercent}%) brightness(${headerBar.brightness});
+  "@supports not (backdrop-filter: blur(1px))": {
+    background: "rgba(255, 255, 255, 0.72)",
+    boxShadow: "0 3px 18px rgba(16, 24, 40, 0.065)",
+  },
 
-  @supports not (backdrop-filter: blur(${headerBar.supportsBlurTestPx}px)) {
-    background: ${headerBar.fallbackBackground};
-    box-shadow: ${headerBar.fallbackBoxShadowNoBackdrop};
-  }
+  [theme.breakpoints.up("lg")]: {
+    height: `${headerDimensions.desktopBarHeightPx}px`,
+    maxWidth: `${headerDimensions.desktopBarWidthPx}px`,
+    minHeight: "unset",
+    padding: `${theme.spacing(4)} ${theme.spacing(8)}`,
+  },
+}));
 
-  @media (min-width: ${headerLgBreakpointPx}px) {
-    height: ${headerDesktopBar.heightPx}px;
-    max-width: ${headerDesktopBar.widthPx}px;
-    min-height: unset;
-    padding: ${appTheme.spacing(4)} ${appTheme.spacing(8)};
-  }
-`;
+export const HeaderFrame = styled("div")(({ theme }) => ({
+  position: "relative",
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: theme.spacing(4),
+  width: "100%",
+  minWidth: 0,
+  minHeight: 0,
 
-export const HeaderFrame = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: ${appTheme.spacing(4)};
-  width: 100%;
-  min-width: 0;
-  min-height: 0;
+  [`@media (min-width: ${headerBreakpoints.desktopAuthPx}px)`]: {
+    position: "relative",
+    height: "100%",
+  },
 
-  @media (min-width: ${headerDesktopAuthBreakpointPx}px) {
-    position: relative;
-    height: 100%;
-  }
+  [theme.breakpoints.up("lg")]: {
+    padding: 0,
+  },
+}));
 
-  @media (min-width: ${headerLgBreakpointPx}px) {
-    padding: 0;
-  }
-`;
+export const DesktopNavCenter = styled("div")({
+  display: "none",
+  pointerEvents: "none",
 
-export const DesktopNavCenter = styled.div`
-  display: none;
-  pointer-events: none;
+  [`@media (min-width: ${headerBreakpoints.desktopAuthPx}px)`]: {
+    display: "block",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 0,
+    pointerEvents: "auto",
+  },
+});
 
-  @media (min-width: ${headerDesktopAuthBreakpointPx}px) {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: ${headerLayout.desktopNavCenterZIndex};
-    pointer-events: auto;
-  }
-`;
+export const LogoSlot = styled("div")({
+  position: "relative",
+  zIndex: 1,
+  display: "flex",
+  alignItems: "center",
+  minWidth: 0,
+  flex: "1 1 0",
 
-export const LogoSlot = styled.div`
-  position: relative;
-  z-index: ${headerLayout.logoSlotZIndex};
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  /* Shrink so the burger stays inside the bar (overflow hidden on HeaderBar). */
-  flex: 1 1 0;
+  [`@media (min-width: ${headerLogoLockBreakpointPx}px)`]: {
+    flex: `0 0 ${headerDimensions.logoWidthPx}px`,
+    width: `${headerDimensions.logoWidthPx}px`,
+    minWidth: `${headerDimensions.logoWidthPx}px`,
+    flexShrink: 0,
+  },
+});
 
-  @media (min-width: ${headerLogoLockBreakpointPx}px) {
-    flex: 0 0 ${headerLogoDesktop.widthPx}px;
-    width: ${headerLogoDesktop.widthPx}px;
-    min-width: ${headerLogoDesktop.widthPx}px;
-    flex-shrink: 0;
-  }
-`;
+export const HeaderTrailing = styled("div")(({ theme }) => ({
+  position: "relative",
+  zIndex: 1,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  gap: theme.spacing(3),
+  flexShrink: 0,
+  flexGrow: 0,
+}));
 
-export const HeaderTrailing = styled.div`
-  position: relative;
-  z-index: ${headerLayout.logoSlotZIndex};
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: ${appTheme.spacing(3)};
-  flex-shrink: 0;
-  flex-grow: 0;
-`;
+export const DesktopNav = styled("nav")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: theme.spacing(5.5),
+}));
 
-export const DesktopNav = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${appTheme.spacing(5.5)};
-`;
+export const LogoLink = styled("a")({
+  display: "inline-flex",
+  alignItems: "center",
+  minWidth: 0,
+  maxWidth: `${headerDimensions.logoWidthPx}px`,
+  width: "100%",
+  textDecoration: "none",
+  lineHeight: 0,
+  outline: "none",
 
-export const LogoLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  min-width: 0;
-  max-width: ${headerLogoDesktop.widthPx}px;
-  width: 100%;
-  text-decoration: none;
-  line-height: 0;
-  outline: none;
+  "&:focus, &:focus-visible": {
+    outline: "none",
+  },
 
-  &:focus,
-  &:focus-visible {
-    outline: none;
-  }
+  flexShrink: 1,
 
-  flex-shrink: 1;
+  [`@media (min-width: ${headerLogoLockBreakpointPx}px)`]: {
+    width: `${headerDimensions.logoWidthPx}px`,
+    maxWidth: "none",
+    height: `${headerDimensions.logoHeightPx}px`,
+    flexShrink: 0,
+  },
+});
 
-  @media (min-width: ${headerLogoLockBreakpointPx}px) {
-    width: ${headerLogoDesktop.widthPx}px;
-    max-width: none;
-    height: ${headerLogoDesktop.heightPx}px;
-    flex-shrink: 0;
-  }
-`;
+export const LogoIcon = styled("svg")({
+  display: "block",
+  overflow: "visible",
+  width: "100%",
+  maxWidth: `${headerDimensions.logoWidthPx}px`,
+  height: "auto",
+  aspectRatio: `${logoViewW} / ${logoViewH}`,
+  flexShrink: 1,
 
-export const LogoIcon = styled.svg`
-  && {
-    display: block;
-    overflow: visible;
-    width: 100%;
-    max-width: ${headerLogoDesktop.widthPx}px;
-    height: auto;
-    aspect-ratio: ${logoViewW} / ${logoViewH};
-    flex-shrink: 1;
+  [`@media (min-width: ${headerLogoLockBreakpointPx}px)`]: {
+    width: `${headerDimensions.logoWidthPx}px`,
+    minWidth: `${headerDimensions.logoWidthPx}px`,
+    height: `${headerDimensions.logoHeightPx}px`,
+    minHeight: `${headerDimensions.logoHeightPx}px`,
+    maxWidth: "none",
+    flexShrink: 0,
+    aspectRatio: "unset",
+  },
+});
 
-    @media (min-width: ${headerLogoLockBreakpointPx}px) {
-      width: ${headerLogoDesktop.widthPx}px;
-      min-width: ${headerLogoDesktop.widthPx}px;
-      height: ${headerLogoDesktop.heightPx}px;
-      min-height: ${headerLogoDesktop.heightPx}px;
-      max-width: none;
-      flex-shrink: 0;
-      aspect-ratio: unset;
-    }
-  }
-`;
+export const MobileOnlyBurgerButton = styled(IconButton)(({ theme }) => ({
+  flexShrink: 0,
+  padding: 0,
+  borderRadius: "10px",
+  color: "inherit",
+  transition: [
+    `background-color ${fastTransitionSeconds}s ${easingStandard}`,
+    `transform ${fastTransitionSeconds}s ${easingOut}`,
+    `box-shadow ${fastTransitionSeconds}s ${easingStandard}`,
+  ].join(", "),
 
-export const MobileOnlyBurgerButton = styled(IconButton)`
-  &.MuiIconButton-root {
-    flex-shrink: 0;
-    padding: 0;
-    border-radius: ${headerInteraction.iconButtonRadiusPx}px;
-    color: inherit;
-    transition:
-      background-color ${headerInteraction.transitionFastSeconds}s
-        ${headerInteraction.easingStandard},
-      transform ${headerInteraction.transitionFastSeconds}s
-        ${headerInteraction.easingOut},
-      box-shadow ${headerInteraction.transitionFastSeconds}s
-        ${headerInteraction.easingStandard};
+  "&:hover": {
+    backgroundColor: "rgba(16, 24, 40, 0.1)",
+    transform: "scale(1.06)",
+  },
 
-    &:hover {
-      background-color: ${headerInteraction.iconButtonHoverBg};
-      transform: scale(${headerInteraction.iconButtonScaleHover});
-    }
+  "&:active": {
+    transform: "scale(1)",
+    backgroundColor: "rgba(16, 24, 40, 0.14)",
+  },
 
-    &:active {
-      transform: scale(${headerInteraction.iconButtonScaleActive});
-      background-color: ${headerInteraction.iconButtonHoverBgActive};
-    }
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: "3px",
+    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+  },
 
-    &:focus-visible {
-      outline: ${headerInteraction.focusRingWidthPx}px solid
-        ${headerInteraction.focusRingColor};
-      outline-offset: ${headerInteraction.focusRingOffsetPx}px;
-      box-shadow: ${headerInteraction.focusRingShadow};
-    }
+  "&:focus:not(:focus-visible)": {
+    outline: "none",
+    boxShadow: "none",
+  },
 
-    &:focus:not(:focus-visible) {
-      outline: none;
-      box-shadow: none;
-    }
+  [`@media (min-width: ${headerBreakpoints.desktopAuthPx}px)`]: {
+    display: "none",
+  },
+}));
 
-    @media (min-width: ${headerDesktopAuthBreakpointPx}px) {
-      display: none !important;
-    }
-  }
-`;
-
-export const BurgerIcon = styled.svg`
-  width: ${headerModal.closeControlSizePx}px;
-  height: ${headerModal.closeControlSizePx}px;
-`;
+export const BurgerIcon = styled("svg")({
+  width: `${headerDimensions.closeControlSizePx}px`,
+  height: `${headerDimensions.closeControlSizePx}px`,
+});

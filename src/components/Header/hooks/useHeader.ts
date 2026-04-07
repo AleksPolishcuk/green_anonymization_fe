@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "@mui/material";
 
-import {
-  headerDesktopAuthBreakpointPx,
-  keyboardKey,
-} from "shared/constants/header";
+import { headerBreakpoints, keyboardKey } from "constants/header";
 
 export function useHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +14,9 @@ export function useHeader() {
     setIsMenuOpen(false);
   }, []);
 
-  // Burger vs inline auth: `headerDesktopAuthBreakpointPx` (1024), not `headerLgBreakpointPx` / `lg` (1440).
+  // Burger vs inline auth uses the dedicated desktop auth breakpoint.
   const showBurgerMenu = useMediaQuery(
-    `(max-width: ${headerDesktopAuthBreakpointPx - 1}px)`,
+    `(max-width: ${headerBreakpoints.desktopAuthPx - 1}px)`,
   );
 
   useEffect(() => {

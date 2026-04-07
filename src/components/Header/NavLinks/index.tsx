@@ -2,7 +2,7 @@ import type { ComponentType, HTMLAttributes } from "react";
 import { useTranslation } from "react-i18next";
 
 import { NavButton } from "components/Header/NavLinks/styles";
-import { headerI18nPrefix, headerNavItems } from "shared/constants/header";
+import { headerI18nPrefix, headerNavItems } from "constants/header";
 
 type NavLinksProps = {
   onNavigate?: () => void;
