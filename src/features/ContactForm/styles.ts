@@ -37,7 +37,7 @@ export const EmailIconWrapper = styled("div")(({ theme }) => ({
 
 export const EmailLabel = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightBold,
-  fontSize: theme.typography.fontSize16,
+  fontSize: theme.typography.fontSize18,
 }));
 
 export const EmailAddress = styled(Typography)(({ theme }) => ({
@@ -53,6 +53,7 @@ export const FormCard = styled("div")(({ theme }) => ({
 }));
 
 export const FormTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: theme.typography.headingFontFamily,
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize28,
   marginBottom: theme.spacing(6),

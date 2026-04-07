@@ -66,50 +66,7 @@ export const heroLayout = {
   titleAccentImageBottomOffset: -4,
 };
 
-export const heroRadii = {
-  pill: 9999,
-  button: 14,
-  dot: "50%",
-};
-
-export const heroTypography = {
-  pillFontSize: "12px",
-  pillLineHeight: "158%",
-  pillLetterSpacing: "-0.01em",
-  descriptionLineHeight: "167%",
-  statValueFontSizeDesktop: "22px",
-  statValueLineHeight: 1.4,
-  statValueLetterSpacing: "0.05em",
-  statLabelFontSizeMobile: "11px",
-  statLabelLineHeight: 1.5,
-};
-
-export const heroAnimation = {
-  enterDuration: "2.8s",
-  floatDuration: "4.8s",
-  floatDelay: "2.8s",
-  enterEasing: "cubic-bezier(0.22, 1, 0.36, 1)",
-  floatEasing: "ease-in-out",
-
-  enterTranslateX: "190px",
-  enterTranslateY: "150px",
-  enterRotateStart: "-55deg",
-  enterRotateEnd: "360deg",
-  enterScaleStart: 0.187,
-  enterScaleEnd: 1,
-
-  floatOffsetStart: "0px",
-  floatOffsetMiddle: "-10px",
-  floatOffsetEnd: "10px",
-};
-
 export const heroBreakpoints = {
   laptopMin: 1025,
   laptopMax: 1439,
-};
-
-export const heroShadows = {
-  primaryButton: `0 4px 8px ${heroColors.buttonShadow}`,
-  primaryButtonHover: `0 4px 8px ${heroColors.buttonHoverShadow}`,
-  shield: `drop-shadow(0 34px 70px ${heroColors.shieldShadow})`,
 };

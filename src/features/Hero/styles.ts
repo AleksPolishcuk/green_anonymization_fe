@@ -2,44 +2,40 @@ import { styled, keyframes } from "@mui/material/styles";
 import { Button, Typography } from "@mui/material";
 
 import {
-  heroAnimation,
   heroAssets,
   heroBreakpoints,
   heroColors,
   heroLayout,
-  heroRadii,
-  heroShadows,
-  heroTypography,
 } from "shared/constants/hero";
 
 const enterAnimation = keyframes`
   0% {
     transform:
-      translate(${heroAnimation.enterTranslateX}, ${heroAnimation.enterTranslateY})
-      rotate(${heroAnimation.enterRotateStart})
-      scale(${heroAnimation.enterScaleStart});
+      translate(190px, 150px)
+      rotate(-55deg)
+      scale(0.187);
     opacity: 0.98;
   }
   55% {
     transform:
       translate(0, 0)
-      rotate(${heroAnimation.enterRotateEnd})
-      scale(${heroAnimation.enterScaleEnd});
+      rotate(360deg)
+      scale(1);
     opacity: 1;
   }
   100% {
     transform:
       translate(0, 0)
-      rotate(${heroAnimation.enterRotateEnd})
-      scale(${heroAnimation.enterScaleEnd});
+      rotate(360deg)
+      scale(1);
     opacity: 1;
   }
 `;
 
 const floatAnimation = keyframes`
-  0%   { transform: translateY(${heroAnimation.floatOffsetStart}); }
-  50%  { transform: translateY(${heroAnimation.floatOffsetMiddle}); }
-  100% { transform: translateY(${heroAnimation.floatOffsetEnd}); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(10px); }
 `;
 
 export const Section = styled("section")({
@@ -110,22 +106,21 @@ export const Pill = styled("div")(({ theme }) => ({
   gap: 8,
   marginBottom: heroLayout.pillMarginBottom,
   padding: "9px 17px",
-  borderRadius: heroRadii.pill,
+  borderRadius: 9999,
   background: heroColors.pillBackground,
   border: `1px solid ${heroColors.pillBorder}`,
   color: theme.palette.primary.dark,
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightMedium,
-  fontSize: heroTypography.pillFontSize,
-  lineHeight: heroTypography.pillLineHeight,
-  letterSpacing: heroTypography.pillLetterSpacing,
+  fontSize: theme.typography.fontSize12,
+  lineHeight: theme.typography.lineHeight158,
 }));
 
 export const PillDot = styled("span")(({ theme }) => ({
   titleAccentImageBottomOffset: -4,
   width: 8,
   height: 8,
-  borderRadius: heroRadii.dot,
+  borderRadius: "50%",
   flexShrink: 0,
   background: theme.palette.primary.dark,
 }));
@@ -173,7 +168,7 @@ export const Description = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize18,
-  lineHeight: heroTypography.descriptionLineHeight,
+  lineHeight: theme.typography.lineHeight167,
   maxWidth: heroLayout.descriptionMobileMaxWidth,
 
   [theme.breakpoints.up("md")]: {
@@ -194,11 +189,11 @@ export const PrimaryButton = styled(Button)(({ theme }) => ({
   padding: "14px 24px",
   background: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
-  boxShadow: heroShadows.primaryButton,
+  boxShadow: `0 4px 8px ${heroColors.buttonHoverShadow}`,
 
   "&:hover": {
     background: theme.palette.primary.dark,
-    boxShadow: heroShadows.primaryButtonHover,
+    boxShadow: `0 4px 8px ${heroColors.buttonHoverShadow}`,
   },
 
   [theme.breakpoints.up("md")]: {
@@ -289,28 +284,28 @@ export const StatValue = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.h1.fontFamily,
   fontWeight: theme.typography.h1.fontWeight,
   fontSize: theme.typography.fontSize16,
-  lineHeight: heroTypography.statValueLineHeight,
-  letterSpacing: heroTypography.statValueLetterSpacing,
+  lineHeight: theme.typography.lineHeight140,
+  letterSpacing: "0.05em",
 
   [theme.breakpoints.up("md")]: {
     fontSize: theme.typography.fontSize18,
   },
 
   [theme.breakpoints.up("lg")]: {
-    fontSize: heroTypography.statValueFontSizeDesktop,
+    fontSize: theme.typography.fontSize22,
   },
 }));
 
 export const StatLabel = styled(Typography)(({ theme }) => ({
   margin: 0,
   color: theme.palette.text.secondary,
-  fontSize: heroTypography.statLabelFontSizeMobile,
-  lineHeight: heroTypography.statLabelLineHeight,
+  fontSize: theme.typography.fontSize11,
+  lineHeight: theme.typography.lineHeight150,
   wordBreak: "normal",
   overflowWrap: "anywhere",
 
   [theme.breakpoints.up("md")]: {
-    fontSize: heroTypography.pillFontSize,
+    fontSize: theme.typography.fontSize12,
   },
 }));
 
@@ -348,15 +343,15 @@ export const ShieldAnimationWrap = styled("div")({
   inset: 0,
   background: "transparent",
   transformOrigin: "center center",
-  animation: `${enterAnimation} ${heroAnimation.enterDuration} ${heroAnimation.enterEasing} forwards`,
+  animation: `${enterAnimation} 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
 });
 
 export const ShieldFloatLayer = styled("div")({
   width: "100%",
   height: "100%",
   background: "transparent",
-  filter: heroShadows.shield,
-  animation: `${floatAnimation} ${heroAnimation.floatDuration} ${heroAnimation.floatEasing} ${heroAnimation.floatDelay} infinite alternate`,
+  filter: `drop-shadow(0 34px 70px ${heroColors.shieldShadow})`,
+  animation: `${floatAnimation} 4.8s ease-in-out 2.8s infinite alternate`,
 });
 
 export const ShieldImage = styled("img")(({ theme }) => ({

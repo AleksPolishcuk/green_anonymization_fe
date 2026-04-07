@@ -40,6 +40,27 @@
       "description": "Need specific requirements? Create custom compliance profiles tailored to your organization's unique regulatory needs and data protection policies."
     }
   },
+  "faqSection": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "whatIndustries": {
+        "question": "What industries do you serve?",
+        "answer": "We serve a wide range of industries including healthcare, finance, legal, and technology. Our anonymization solutions are tailored to meet the specific compliance requirements of each sector."
+      },
+      "customSolutions": {
+        "question": "Do you offer custom solutions?",
+        "answer": "Yes, we offer customized solutions tailored to your specific compliance requirements and data protection needs."
+      },
+      "implementationTime": {
+        "question": "How long does implementation take?",
+        "answer": "Implementation typically takes 1–4 weeks depending on the complexity of your data environment and the level of customization required."
+      },
+      "whatSupport": {
+        "question": "What support do you provide?",
+        "answer": "We provide 24/7 technical support, onboarding assistance, and dedicated account management to ensure your success with our platform."
+      }
+    }
+  },
   "contactUsPage": {
     "title": "Contact Us",
     "subtitle": "Have questions? We're here to help. Reach out to our team and we'll get back to you shortly.",

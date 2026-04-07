@@ -13,9 +13,12 @@ const size44 = "44px";
 const size35 = "35px";
 const size32 = "32px";
 const size28 = "28px";
+const size22 = "22px";
 const size18 = "18px";
 const size16 = "16px";
 const size14 = "14px";
+const size12 = "12px";
+const size11 = "11px";
 
 const inputHeight = "50px";
 
@@ -26,16 +29,34 @@ const lh118 = 1.18;
 const lh150 = 1.5;
 const lh138 = 1.38;
 const lh140 = 1.4;
+const lh158 = 1.58;
+const lh167 = 1.67;
 const lh175 = 1.75;
 
 const primaryColor = "#155dfc";
 const primaryDark = "#1447e6";
+const primaryButtonShadow = "#3B82F64D";
 const primaryContrast = "#ffffff";
 const secondaryColor = "#eff6ff";
 const subtleBg = "#f8fafc";
 const bgDefault = "#ffffff";
 const textPrimary = "#101828";
 const textSecondary = "#6a7282";
+
+const accentBlue = "#3B82F6";
+const accentGreen = "#10B981";
+const accentAmber = "#F59E0B";
+const accentRed = "#EF4444";
+const accentLilac = "#7F22FE";
+
+const accentLightBlue = "#eff6ff";
+const accentLightGreen = "#ecfdf5";
+const accentLightAmber = "#fffbeb";
+const accentLightRed = "#FEF0F0";
+const accentLightLilac = "#F5F3FF";
+
+const footerDividerColor = "#E5E7EB";
+const footerLinkHoverColor = "#111827";
 
 const mainRadius = 16;
 const buttonRadius = 14;
@@ -76,21 +97,55 @@ export const theme = createTheme({
     subtle: {
       bg: subtleBg,
     },
+    accent: {
+      blue: accentBlue,
+      green: accentGreen,
+      amber: accentAmber,
+      red: accentRed,
+      lilac: accentLilac,
+      lightBlue: accentLightBlue,
+      lightGreen: accentLightGreen,
+      lightAmber: accentLightAmber,
+      lightRed: accentLightRed,
+      lightLilac: accentLightLilac,
+    },
+    footer: {
+      divider: footerDividerColor,
+      linkHover: footerLinkHoverColor,
+    },
   },
 
   typography: {
     fontFamily: mainFontFamily,
 
+    headingFontFamily,
+    fontSize11: size11,
+    fontSize12: size12,
     fontSize14: size14,
     fontSize16: size16,
     fontSize18: size18,
+    fontSize22: size22,
     fontSize28: size28,
     fontSize32: size32,
     fontSize35: size35,
     fontSize44: size44,
     fontSize56: size56,
     fontSize64: size64,
-    fontWeightSemiBold: semiBold,
+
+    fontWeightRegular: regular,
+    fontWeightMedium: semiBold,
+    fontWeightBold: bold,
+
+    lineHeight108: lh108,
+    lineHeight109: lh109,
+    lineHeight116: lh116,
+    lineHeight118: lh118,
+    lineHeight150: lh150,
+    lineHeight138: lh138,
+    lineHeight140: lh140,
+    lineHeight158: lh158,
+    lineHeight167: lh167,
+    lineHeight175: lh175,
 
     h1: {
       fontFamily: headingFontFamily,
@@ -215,6 +270,14 @@ export const theme = createTheme({
         root: {
           borderRadius: buttonRadius,
         },
+        containedPrimary: {
+          backgroundColor: primaryColor,
+          boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          "&:hover": {
+            backgroundColor: primaryDark,
+            boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          },
+        },
       },
     },
 
@@ -224,7 +287,13 @@ export const theme = createTheme({
           height: inputHeight,
         },
         input: {
-          height: inputHeight,
+          height: "100%",
+          boxSizing: "border-box",
+
+          "&:-webkit-autofill": {
+            WebkitBoxShadow: `0 0 0 100px ${bgDefault} inset`,
+            WebkitTextFillColor: textPrimary,
+          },
         },
       },
     },
