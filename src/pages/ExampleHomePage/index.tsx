@@ -5,6 +5,7 @@ import { HomePageTitle } from "./styles";
 import Header from "components/Header";
 import { ExampleForm } from "features/ExampleForm";
 import { ComplianceSection } from "features/ComplianceSection";
+import { Loader } from "shared/ui/Loader";
 
 export default function ExampleHomePage() {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ export default function ExampleHomePage() {
         <ExampleForm />
 
         <ComplianceSection />
+        <Loader />
       </Container>
     </>
   );
