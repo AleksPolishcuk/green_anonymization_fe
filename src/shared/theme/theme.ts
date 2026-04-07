@@ -76,7 +76,6 @@ export const theme = createTheme({
     subtle: {
       bg: subtleBg,
     },
-    divider: "#e5e7eb",
   },
 
   typography: {
