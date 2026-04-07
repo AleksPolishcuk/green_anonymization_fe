@@ -19,7 +19,7 @@ export const ComplianceCardItem = ({ card }: ComplianceCardItemProps) => {
   return (
     <CardWrapper>
       <CardAccentLine $color={card.accentColor} />
-      <CardBadge $bg={card.badgeBg} $color={card.badgeColor}>
+      <CardBadge $color={card.accentColor}>
         {t(`complianceSection.cards.${card.id}.badge`)}
       </CardBadge>
       <CardTitle>{t(`complianceSection.cards.${card.id}.title`)}</CardTitle>

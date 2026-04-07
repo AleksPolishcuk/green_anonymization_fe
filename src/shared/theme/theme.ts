@@ -17,6 +17,8 @@ const size18 = "18px";
 const size16 = "16px";
 const size14 = "14px";
 
+const inputHeight = "50px";
+
 const lh108 = 1.08;
 const lh109 = 1.09;
 const lh116 = 1.16;
@@ -42,6 +44,8 @@ const md = 768;
 const lg = 1440;
 
 export const theme = createTheme({
+  inputHeight,
+
   breakpoints: {
     values: {
       xs: 0,
@@ -77,6 +81,17 @@ export const theme = createTheme({
 
   typography: {
     fontFamily: mainFontFamily,
+
+    fontSize14: size14,
+    fontSize16: size16,
+    fontSize18: size18,
+    fontSize28: size28,
+    fontSize32: size32,
+    fontSize35: size35,
+    fontSize44: size44,
+    fontSize56: size56,
+    fontSize64: size64,
+    fontWeightSemiBold: semiBold,
 
     h1: {
       fontFamily: headingFontFamily,
@@ -200,6 +215,17 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: buttonRadius,
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          height: inputHeight,
+        },
+        input: {
+          height: inputHeight,
         },
       },
     },

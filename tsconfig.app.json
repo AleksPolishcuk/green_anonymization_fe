@@ -18,7 +18,8 @@
       "constants/*": ["constants/*"],
       "theme/*": ["theme/*"],
       "constants": ["constants/index.ts"],
-      "assets/*": ["assets/*"]
+      "assets/*": ["assets/*"],
+      "Layouts": ["Layouts/index.tsx"]
     },
 
     /* Bundler mode */

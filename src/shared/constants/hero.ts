@@ -29,7 +29,7 @@ export const heroLayout = {
   contentDesktopMaxWidth: 684,
   titleDesktopMaxWidth: 720,
   descriptionMobileMaxWidth: 302,
-  descriptionTabletMaxWidth: 520,
+  descriptionTabletMaxWidth: 420,
   descriptionDesktopMaxWidth: 500,
 
   visualTabletMinWidth: 320,
@@ -63,23 +63,7 @@ export const heroLayout = {
   statDividerHeightMobile: 24,
   statDividerHeightTablet: 28,
   statDividerHeightDesktop: 32,
-
-  pillGap: 8,
-  pillPaddingY: 9,
-  pillPaddingX: 17,
   titleAccentImageBottomOffset: -4,
-
-  actionGap: 12,
-  primaryButtonPaddingYMobile: 14,
-  primaryButtonPaddingXMobile: 24,
-  primaryButtonPaddingYTablet: 17,
-  primaryButtonPaddingXTablet: 27,
-
-  visualGridSecondaryMinWidth: 360,
-  visualGridSecondaryFraction: "0.9fr",
-  contentGridPrimaryFraction: "1.1fr",
-  laptopVisualMinWidth: 420,
-  laptopVisualMaxWidth: 520,
 };
 
 export const heroRadii = {
@@ -92,20 +76,11 @@ export const heroTypography = {
   pillFontSize: "12px",
   pillLineHeight: "158%",
   pillLetterSpacing: "-0.01em",
-
-  descriptionFontSize: "18px",
   descriptionLineHeight: "167%",
-
-  primaryButtonFontSizeMobile: "14px",
-
-  statValueFontSizeMobile: "16px",
-  statValueFontSizeTablet: "18px",
   statValueFontSizeDesktop: "22px",
   statValueLineHeight: 1.4,
   statValueLetterSpacing: "0.05em",
-
   statLabelFontSizeMobile: "11px",
-  statLabelFontSizeTablet: "12px",
   statLabelLineHeight: 1.5,
 };
 

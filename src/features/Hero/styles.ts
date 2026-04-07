@@ -107,23 +107,24 @@ export const Content = styled("div")(({ theme }) => ({
 export const Pill = styled("div")(({ theme }) => ({
   display: "inline-flex",
   alignItems: "center",
-  gap: heroLayout.pillGap,
+  gap: 8,
   marginBottom: heroLayout.pillMarginBottom,
-  padding: `${heroLayout.pillPaddingY}px ${heroLayout.pillPaddingX}px`,
+  padding: "9px 17px",
   borderRadius: heroRadii.pill,
   background: heroColors.pillBackground,
   border: `1px solid ${heroColors.pillBorder}`,
   color: theme.palette.primary.dark,
   fontFamily: theme.typography.fontFamily,
-  fontWeight: 600,
+  fontWeight: theme.typography.fontWeightMedium,
   fontSize: heroTypography.pillFontSize,
   lineHeight: heroTypography.pillLineHeight,
   letterSpacing: heroTypography.pillLetterSpacing,
 }));
 
 export const PillDot = styled("span")(({ theme }) => ({
-  width: heroLayout.pillGap,
-  height: heroLayout.pillGap,
+  titleAccentImageBottomOffset: -4,
+  width: 8,
+  height: 8,
   borderRadius: heroRadii.dot,
   flexShrink: 0,
   background: theme.palette.primary.dark,
@@ -170,27 +171,27 @@ export const TitleAccentImage = styled("img")(({ theme }) => ({
 export const Description = styled(Typography)(({ theme }) => ({
   margin: `${heroLayout.descriptionMarginTop}px 0 0`,
   color: theme.palette.text.secondary,
-  fontWeight: 400,
-  fontSize: heroTypography.descriptionFontSize,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize18,
   lineHeight: heroTypography.descriptionLineHeight,
   maxWidth: heroLayout.descriptionMobileMaxWidth,
 
   [theme.breakpoints.up("md")]: {
     maxWidth: 420,
-    fontSize: "16px",
+    fontSize: theme.typography.fontSize16,
   },
 
   [theme.breakpoints.up("lg")]: {
     maxWidth: heroLayout.descriptionDesktopMaxWidth,
-    fontSize: heroTypography.descriptionFontSize,
+    fontSize: theme.typography.fontSize18,
   },
 }));
 
 export const PrimaryButton = styled(Button)(({ theme }) => ({
   textTransform: "none",
-  fontSize: heroTypography.primaryButtonFontSizeMobile,
+  fontSize: theme.typography.fontSize14,
   marginTop: heroLayout.actionsMarginTop,
-  padding: `${heroLayout.primaryButtonPaddingYMobile}px ${heroLayout.primaryButtonPaddingXMobile}px`,
+  padding: "14px 24px",
   background: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
   boxShadow: heroShadows.primaryButton,
@@ -201,8 +202,8 @@ export const PrimaryButton = styled(Button)(({ theme }) => ({
   },
 
   [theme.breakpoints.up("md")]: {
-    padding: `${heroLayout.primaryButtonPaddingYTablet}px ${heroLayout.primaryButtonPaddingXTablet}px`,
-    fontSize: "15px",
+    padding: "17px 27px",
+    fontSize: theme.typography.fontSize16,
   },
 
   [theme.breakpoints.up("lg")]: {
@@ -216,11 +217,11 @@ export const StatsRow = styled("div")(({ theme }) => ({
   alignItems: "flex-start",
   gap: 12,
   marginTop: heroLayout.statsMarginTopMobile,
-  maxWidth: 460,
+  maxWidth: 240,
 
   [theme.breakpoints.up("md")]: {
     gap: 14,
-    maxWidth: 380,
+    maxWidth: "none",
   },
 
   [theme.breakpoints.up("lg")]: {
@@ -238,12 +239,28 @@ export const StatItem = styled("div")(({ theme }) => ({
   maxWidth: 110,
 
   [theme.breakpoints.up("md")]: {
+    position: "relative",
     minWidth: 82,
     maxWidth: 96,
+
+    "&:not(:last-of-type)": {
+      marginRight: 14,
+      paddingRight: 14,
+    },
+
+    "&:not(:last-of-type)::after": {
+      content: '""',
+      position: "absolute",
+      top: "50%",
+      right: 0,
+      width: 1,
+      height: heroLayout.statDividerHeightDesktop,
+      background: theme.palette.divider,
+      transform: "translateY(-50%)",
+    },
   },
 
   [theme.breakpoints.up("lg")]: {
-    position: "relative",
     flex: "0 1 auto",
     minWidth: 0,
     maxWidth: "none",
@@ -271,12 +288,12 @@ export const StatValue = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: theme.typography.h1.fontFamily,
   fontWeight: theme.typography.h1.fontWeight,
-  fontSize: heroTypography.statValueFontSizeMobile,
+  fontSize: theme.typography.fontSize16,
   lineHeight: heroTypography.statValueLineHeight,
   letterSpacing: heroTypography.statValueLetterSpacing,
 
   [theme.breakpoints.up("md")]: {
-    fontSize: heroTypography.statValueFontSizeTablet,
+    fontSize: theme.typography.fontSize18,
   },
 
   [theme.breakpoints.up("lg")]: {
@@ -293,7 +310,7 @@ export const StatLabel = styled(Typography)(({ theme }) => ({
   overflowWrap: "anywhere",
 
   [theme.breakpoints.up("md")]: {
-    fontSize: heroTypography.statLabelFontSizeTablet,
+    fontSize: heroTypography.pillFontSize,
   },
 }));
 
