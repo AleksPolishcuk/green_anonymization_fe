@@ -1,11 +1,13 @@
 import { ComplianceSection } from "features/ComplianceSection";
+import Hero from "features/Hero";
 import { Loader } from "shared/ui/Loader";
-import { Capabilities } from "features/Capabilities";
+import Header from "components/ExampleHeader";
 
 export default function ExampleHomePage() {
   return (
     <>
-      <Capabilities />
+      <Header />
+      <Hero />
       <ComplianceSection />
       <Loader />
     </>

@@ -13,9 +13,12 @@ const size44 = "44px";
 const size35 = "35px";
 const size32 = "32px";
 const size28 = "28px";
+const size22 = "22px";
 const size18 = "18px";
 const size16 = "16px";
 const size14 = "14px";
+const size12 = "12px";
+const size11 = "11px";
 
 const inputHeight = "50px";
 
@@ -26,6 +29,8 @@ const lh118 = 1.18;
 const lh150 = 1.5;
 const lh138 = 1.38;
 const lh140 = 1.4;
+const lh158 = 1.58;
+const lh167 = 1.67;
 const lh175 = 1.75;
 
 const primaryColor = "#155dfc";
@@ -56,7 +61,7 @@ const footerLinkHoverColor = "#111827";
 const mainRadius = 16;
 const buttonRadius = 14;
 
-const md = 787;
+const md = 768;
 const lg = 1440;
 
 export const theme = createTheme({
@@ -118,16 +123,33 @@ export const theme = createTheme({
     fontFamily: mainFontFamily,
 
     headingFontFamily,
+    fontSize11: size11,
+    fontSize12: size12,
     fontSize14: size14,
     fontSize16: size16,
     fontSize18: size18,
+    fontSize22: size22,
     fontSize28: size28,
     fontSize32: size32,
     fontSize35: size35,
     fontSize44: size44,
     fontSize56: size56,
     fontSize64: size64,
-    fontWeightSemiBold: semiBold,
+
+    fontWeightRegular: regular,
+    fontWeightMedium: semiBold,
+    fontWeightBold: bold,
+
+    lineHeight108: lh108,
+    lineHeight109: lh109,
+    lineHeight116: lh116,
+    lineHeight118: lh118,
+    lineHeight150: lh150,
+    lineHeight138: lh138,
+    lineHeight140: lh140,
+    lineHeight158: lh158,
+    lineHeight167: lh167,
+    lineHeight175: lh175,
 
     h1: {
       fontFamily: headingFontFamily,
