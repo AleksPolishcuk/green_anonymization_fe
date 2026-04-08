@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import Box from "@mui/material/Box";
-import { IconButton, Link, Stack, Typography } from "@mui/material";
+import { Container, IconButton, Link, Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -20,7 +20,6 @@ import {
   FooterBottom,
   FooterBrandBlock,
   FooterBrandRow,
-  FooterContainer,
   FooterDescription,
   FooterLegalRow,
   FooterRoot,
@@ -47,7 +46,7 @@ export function Footer() {
 
   return (
     <FooterRoot>
-      <FooterContainer>
+      <Container>
         <FooterBody>
           <FooterTop>
             <FooterBrandBlock>
@@ -199,7 +198,7 @@ export function Footer() {
             </FooterLegalRow>
           </FooterBottom>
         </FooterBody>
-      </FooterContainer>
+      </Container>
     </FooterRoot>
   );
 }

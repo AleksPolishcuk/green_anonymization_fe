@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { CAPABILITIES_LAYOUT } from "shared/constants/capabilities";
 
 export const CapabilitiesSection = styled("section")(({ theme }) => ({
@@ -8,17 +8,6 @@ export const CapabilitiesSection = styled("section")(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.up("md")]: {
     padding: "128px 0",
-  },
-}));
-
-export const SectionContainer = styled(Container)(({ theme }) => ({
-  [theme.breakpoints.up("md")]: {
-    paddingLeft: 68,
-    paddingRight: 68,
-  },
-  [theme.breakpoints.up("lg")]: {
-    paddingLeft: 144,
-    paddingRight: 144,
   },
 }));
 
