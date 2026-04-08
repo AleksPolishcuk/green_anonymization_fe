@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { useComplianceSection } from "./hooks/useComplianceSection";
@@ -10,6 +10,7 @@ import {
   HeaderRow,
   LabelText,
   SectionWrapper,
+  ComplianceContainer,
 } from "./styles";
 
 export const ComplianceSection = () => {
@@ -18,7 +19,7 @@ export const ComplianceSection = () => {
 
   return (
     <SectionWrapper id="compliance">
-      <Container>
+      <ComplianceContainer>
         <HeaderRow>
           <div>
             <LabelText>{t("complianceSection.label")}</LabelText>
@@ -36,7 +37,7 @@ export const ComplianceSection = () => {
             <ComplianceCardItem key={card.id} card={card} />
           ))}
         </CardsGrid>
-      </Container>
+      </ComplianceContainer>
     </SectionWrapper>
   );
 };

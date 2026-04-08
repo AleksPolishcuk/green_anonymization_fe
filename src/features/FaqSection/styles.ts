@@ -4,12 +4,24 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Container,
 } from "@mui/material";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   marginTop: theme.spacing(20),
   padding: theme.spacing(20, 0),
   backgroundColor: theme.palette.subtle?.bg ?? theme.palette.background.default,
+}));
+
+export const FaqContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: 68,
+    paddingRight: 68,
+  },
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: 144,
+    paddingRight: 144,
+  },
 }));
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({

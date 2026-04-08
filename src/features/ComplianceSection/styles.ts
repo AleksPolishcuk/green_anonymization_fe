@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -7,6 +7,17 @@ export const SectionWrapper = styled("section")(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(10, 0),
+  },
+}));
+
+export const ComplianceContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: 68,
+    paddingRight: 68,
+  },
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: 144,
+    paddingRight: 144,
   },
 }));
 

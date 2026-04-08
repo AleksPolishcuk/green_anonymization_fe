@@ -229,14 +229,6 @@ export const theme = createTheme({
           margin: "0 auto",
           paddingLeft: "24px",
           paddingRight: "24px",
-          [`@media (min-width:${md}px)`]: {
-            paddingLeft: "68px",
-            paddingRight: "68px",
-          },
-          [`@media (min-width:${lg}px)`]: {
-            paddingLeft: "144px",
-            paddingRight: "144px",
-          },
         },
       },
     },

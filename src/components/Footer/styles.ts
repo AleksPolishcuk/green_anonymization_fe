@@ -2,6 +2,7 @@ import type { SxProps, Theme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
@@ -13,6 +14,8 @@ export const FooterRoot = styled("footer")(({ theme }) => ({
   paddingTop: theme.spacing(16),
   paddingBottom: theme.spacing(8),
 }));
+
+export const FooterContainer = styled(Container)({});
 
 export const FooterBody = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
