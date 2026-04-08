@@ -17,8 +17,7 @@ export default defineConfig({
       shared: path.resolve(__dirname, "src/shared"),
       assets: path.resolve(__dirname, "src/assets"),
       Layouts: path.resolve(__dirname, "src/Layouts/index.tsx"),
-      constants: path.resolve(__dirname, "src/constants/index.ts"),
-      assets: path.resolve(__dirname, "src/assets"),
+      constants: path.resolve(__dirname, "src/constants"),
     },
   },
 });

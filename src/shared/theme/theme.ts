@@ -94,6 +94,10 @@ export const theme = createTheme({
       primary: charcoal,
       secondary: textSecondary,
     },
+    divider: footerDividerColor,
+    action: {
+      active: footerLinkHoverColor,
+    },
     subtle: {
       bg: subtleBg,
     },
