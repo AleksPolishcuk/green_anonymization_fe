@@ -53,6 +53,7 @@ declare module "@mui/material/styles" {
     };
   }
   interface TypographyVariants {
+    headingFontFamily: string;
     fontSize14: string;
     fontSize16: string;
     fontSize18: string;
@@ -66,6 +67,7 @@ declare module "@mui/material/styles" {
   }
 
   interface TypographyVariantsOptions {
+    headingFontFamily?: string;
     fontSize14?: string;
     fontSize16?: string;
     fontSize18?: string;
