@@ -1,8 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
-import { CARD_BORDER_COLOR } from "constants";
-
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
   backgroundColor: theme.palette.background.default,
@@ -38,7 +36,7 @@ export const LabelText = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
-  color: theme.palette.primary.main,
+  color: theme.palette.color.blue,
   marginBottom: theme.spacing(4),
 }));
 
@@ -70,7 +68,7 @@ export const CardsGrid = styled("div")(({ theme }) => ({
 
 export const CardWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(6),
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
   display: "flex",
@@ -127,7 +125,7 @@ export const CustomBanner = styled("div")(({ theme }) => ({
   gap: theme.spacing(5),
   padding: theme.spacing(8),
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: theme.palette.color.lightBlue,
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(5),
@@ -144,7 +142,7 @@ export const BannerIconWrapper = styled("div")(({ theme }) => ({
   width: theme.spacing(12),
   height: theme.spacing(12),
   borderRadius: "12px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.color.blue,
 }));
 
 export const BannerTextWrapper = styled("div")(({ theme }) => ({

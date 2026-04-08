@@ -1,6 +1,4 @@
-import { createTheme, alpha } from "@mui/material/styles";
-
-import { CARD_BORDER_COLOR } from "constants";
+import { createTheme } from "@mui/material/styles";
 
 const mainFontFamily = "'Inter', sans-serif";
 const headingFontFamily = "'DM Serif Display', serif";
@@ -19,8 +17,6 @@ const size18 = "18px";
 const size16 = "16px";
 const size14 = "14px";
 
-const inputHeight = "50px";
-
 const lh108 = 1.08;
 const lh109 = 1.09;
 const lh116 = 1.16;
@@ -30,16 +26,16 @@ const lh138 = 1.38;
 const lh140 = 1.4;
 const lh175 = 1.75;
 
-const primaryColor = "#155dfc";
-const primaryDark = "#1447e6";
-const primaryButtonShadow = "#3B82F64D";
-const primaryContrast = "#ffffff";
-const secondaryColor = "#eff6ff";
+const blue = "#155dfc";
+const darkBlue = "#1447e6";
+const blueShadow = "#3B82F64D";
+const white = "#ffffff";
+const lightBlue = "#eff6ff";
 const subtleBg = "#f8fafc";
-const bgDefault = "#ffffff";
-const inputBgColor = "#F9FAFB";
-const inputBg = alpha(inputBgColor, 0.5);
-const textPrimary = "#101828";
+const mediumGray = "#9ca3af";
+const lightGray = "#fcfdfd";
+const softGray = "#f3f4f6";
+const charcoal = "#101828";
 const textSecondary = "#6a7282";
 
 const accentBlue = "#3B82F6";
@@ -64,8 +60,6 @@ const md = 787;
 const lg = 1440;
 
 export const theme = createTheme({
-  inputHeight,
-
   breakpoints: {
     values: {
       xs: 0,
@@ -77,21 +71,27 @@ export const theme = createTheme({
   },
 
   palette: {
+    color: {
+      blue,
+      darkBlue,
+      lightBlue,
+      white,
+    },
     primary: {
-      main: primaryColor,
-      dark: primaryDark,
-      contrastText: primaryContrast,
+      main: blue,
     },
     secondary: {
-      main: secondaryColor,
+      main: lightBlue,
     },
     background: {
-      default: bgDefault,
-      paper: bgDefault,
-      input: inputBg,
+      default: white,
+      paper: white,
+      lightGray: lightGray,
+      softGray: softGray,
+      mediumGray: mediumGray,
     },
     text: {
-      primary: textPrimary,
+      primary: charcoal,
       secondary: textSecondary,
     },
     subtle: {
@@ -254,11 +254,11 @@ export const theme = createTheme({
           borderRadius: buttonRadius,
         },
         containedPrimary: {
-          backgroundColor: primaryColor,
-          boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          backgroundColor: blue,
+          boxShadow: `0px 4px 14px 0px ${blueShadow}`,
           "&:hover": {
-            backgroundColor: primaryDark,
-            boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+            backgroundColor: darkBlue,
+            boxShadow: `0px 4px 14px 0px ${blueShadow}`,
           },
         },
       },
@@ -267,12 +267,19 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          height: inputHeight,
-          backgroundColor: inputBg,
+          backgroundColor: lightGray,
 
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: CARD_BORDER_COLOR,
+            borderColor: mediumGray,
             borderWidth: "1px !important",
+          },
+
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: mediumGray,
+          },
+
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: blue,
           },
         },
         input: {
@@ -280,8 +287,8 @@ export const theme = createTheme({
           boxSizing: "border-box",
 
           "&:-webkit-autofill": {
-            WebkitBoxShadow: `0 0 0 100px ${inputBgColor} inset`,
-            WebkitTextFillColor: textPrimary,
+            WebkitBoxShadow: `0 0 0 100px ${lightGray} inset  !important`,
+            WebkitTextFillColor: charcoal,
           },
         },
       },

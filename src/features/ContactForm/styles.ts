@@ -1,8 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Typography, Button } from "@mui/material";
 
-import { CARD_BORDER_COLOR } from "constants";
-
 export const ContactLayout = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "280px 1fr",
@@ -16,7 +14,7 @@ export const ContactLayout = styled("div")(({ theme }) => ({
 
 export const EmailCard = styled("div")(({ theme }) => ({
   padding: theme.spacing(6),
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
   display: "flex",
@@ -31,8 +29,8 @@ export const EmailIconWrapper = styled("div")(({ theme }) => ({
   width: theme.spacing(10),
   height: theme.spacing(10),
   borderRadius: theme.spacing(3),
-  backgroundColor: theme.palette.secondary.main,
-  color: theme.palette.primary.main,
+  backgroundColor: theme.palette.color.lightBlue,
+  color: theme.palette.color.blue,
 }));
 
 export const EmailLabel = styled(Typography)(({ theme }) => ({
@@ -47,7 +45,7 @@ export const EmailAddress = styled(Typography)(({ theme }) => ({
 
 export const FormCard = styled("div")(({ theme }) => ({
   padding: theme.spacing(8),
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
 }));
@@ -77,8 +75,8 @@ export const FormField = styled("div")(({ theme }) => ({
 }));
 
 export const FieldLabel = styled("span")(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
-  fontWeight: theme.typography.h6.fontWeight,
+  fontSize: theme.typography.fontSize14,
+  fontWeight: theme.typography.fontWeightSemiBold,
   marginBottom: theme.spacing(1.5),
   fontFamily: theme.typography.fontFamily,
   color: theme.palette.text.primary,
@@ -88,22 +86,22 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
   position: "relative",
 
   "& .react-tel-input": {
-    border: `1px solid ${CARD_BORDER_COLOR}`,
+    border: `1px solid ${theme.palette.background.mediumGray}`,
     borderRadius: "14px",
-    backgroundColor: theme.palette.background.input,
+    backgroundColor: `${theme.palette.background.lightGray}`,
 
     "&:hover": {
-      borderColor: theme.palette.text.primary,
+      borderColor: theme.palette.background.mediumGray,
     },
 
     "&:focus-within": {
-      borderColor: theme.palette.primary.main,
+      borderColor: theme.palette.color.blue,
     },
   },
 
   "& .react-tel-input .form-control": {
     width: "100%",
-    height: theme.inputHeight,
+    height: "50px",
     fontSize: theme.typography.fontSize14,
     borderRadius: "14px",
     border: "none",
@@ -123,7 +121,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
     width: "68px",
     borderRadius: "14px 0 0 14px",
     border: "none",
-    borderRight: `1px solid ${CARD_BORDER_COLOR}`,
+    borderRight: `1px solid ${theme.palette.background.mediumGray}`,
     backgroundColor: "transparent",
 
     "&:hover, &.open": {
@@ -142,6 +140,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
     "&.open": {
       borderRadius: "14px 0 0 14px !important",
+      backgroundColor: `${theme.palette.background.lightGray}`,
     },
   },
   "& .react-tel-input .flag": {
@@ -171,11 +170,11 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
   padding: `${theme.spacing(3)} ${theme.spacing(3.5)}`,
   fontSize: theme.typography.fontSize14,
   color: theme.palette.text.primary,
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.mediumGray}`,
   borderRadius: "14px",
   outline: "none",
   fontFamily: theme.typography.fontFamily,
-  backgroundColor: theme.palette.background.input,
+  backgroundColor: theme.palette.background.lightGray,
   resize: "none",
   minHeight: "120px",
   maxHeight: "240px",
@@ -187,11 +186,11 @@ export const FieldTextarea = styled("textarea")(({ theme }) => ({
   },
 
   "&:hover": {
-    borderColor: theme.palette.text.primary,
+    borderColor: theme.palette.background.mediumGray,
   },
 
   "&:focus": {
-    borderColor: theme.palette.primary.main,
+    borderColor: theme.palette.color.blue,
   },
 }));
 

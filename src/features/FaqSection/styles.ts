@@ -6,8 +6,6 @@ import {
   AccordionDetails,
 } from "@mui/material";
 
-import { CARD_BORDER_COLOR } from "constants";
-
 export const SectionWrapper = styled("section")(({ theme }) => ({
   marginTop: theme.spacing(20),
   padding: theme.spacing(20, 0),
@@ -20,7 +18,7 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const FaqAccordion = styled(Accordion)(({ theme }) => ({
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.lightGray}`,
   borderRadius: `${theme.shape.borderRadius}px !important`,
   boxShadow: "none",
   marginBottom: theme.spacing(3),
@@ -40,7 +38,7 @@ export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
   },
 
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-    color: theme.palette.primary.main,
+    color: theme.palette.color.blue,
   },
 }));
 
