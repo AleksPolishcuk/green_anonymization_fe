@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import Footer from "components/Footer";
+
 type LayoutProps = {
   children: ReactNode;
 };
@@ -9,7 +11,7 @@ export const MainLayout = ({ children }: LayoutProps) => {
     <>
       {/* <Header /> */}
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

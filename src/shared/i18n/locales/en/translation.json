@@ -80,6 +80,8 @@
       "xAria": "Clinical Data Studio on X",
       "linkedinAria": "Clinical Data Studio on LinkedIn",
       "githubAria": "Clinical Data Studio on GitHub"
+    }
+  },
   "faqSection": {
     "title": "Frequently Asked Questions",
     "items": {
