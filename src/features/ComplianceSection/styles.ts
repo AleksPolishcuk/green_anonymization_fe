@@ -1,7 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
-
-import { CARD_BORDER_COLOR } from "constants";
+import { Container, Typography } from "@mui/material";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -9,6 +7,17 @@ export const SectionWrapper = styled("section")(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(10, 0),
+  },
+}));
+
+export const ComplianceContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: 68,
+    paddingRight: 68,
+  },
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: 144,
+    paddingRight: 144,
   },
 }));
 
@@ -38,7 +47,7 @@ export const LabelText = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
-  color: theme.palette.primary.main,
+  color: theme.palette.color.blue,
   marginBottom: theme.spacing(4),
 }));
 
@@ -70,7 +79,7 @@ export const CardsGrid = styled("div")(({ theme }) => ({
 
 export const CardWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(6),
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
   display: "flex",
@@ -118,47 +127,5 @@ export const CardEntityCount = styled(Typography)(({ theme }) => ({
 }));
 
 export const HeaderDescription = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
-}));
-
-export const CustomBanner = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: theme.spacing(5),
-  padding: theme.spacing(8),
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.secondary.main,
-
-  [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(5),
-    gap: theme.spacing(4),
-    alignItems: "flex-start",
-  },
-}));
-
-export const BannerIconWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexShrink: 0,
-  width: theme.spacing(12),
-  height: theme.spacing(12),
-  borderRadius: "12px",
-  backgroundColor: theme.palette.primary.main,
-}));
-
-export const BannerTextWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: theme.spacing(1),
-}));
-
-export const BannerTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.fontSize18,
-  fontWeight: theme.typography.fontWeightBold,
-  color: theme.palette.text.primary,
-}));
-
-export const BannerDescription = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));

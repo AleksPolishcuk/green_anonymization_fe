@@ -1,15 +1,27 @@
 import "@mui/material/styles";
 
 declare module "@mui/material/styles" {
-  interface Theme {
-    inputHeight: string;
+  interface PaletteColor {
+    blue?: string;
+    darkBlue?: string;
+    lightBlue?: string;
+    white?: string;
   }
 
-  interface ThemeOptions {
-    inputHeight?: string;
+  interface PaletteColorOptions {
+    blue?: string;
+    darkBlue?: string;
+    lightBlue?: string;
+    white?: string;
   }
 
   interface Palette {
+    color: {
+      blue: string;
+      darkBlue: string;
+      lightBlue: string;
+      white: string;
+    };
     subtle: {
       bg: string;
     };
@@ -32,6 +44,12 @@ declare module "@mui/material/styles" {
   }
 
   interface PaletteOptions {
+    color?: {
+      blue?: string;
+      darkBlue?: string;
+      lightBlue?: string;
+      white?: string;
+    };
     subtle?: {
       bg?: string;
     };
@@ -51,6 +69,12 @@ declare module "@mui/material/styles" {
       divider?: string;
       linkHover?: string;
     };
+  }
+
+  interface TypeBackground {
+    lightGray: string;
+    softGray: string;
+    mediumGray: string;
   }
   interface TypographyVariants {
     headingFontFamily: string;

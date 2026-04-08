@@ -20,8 +20,6 @@ const size14 = "14px";
 const size12 = "12px";
 const size11 = "11px";
 
-const inputHeight = "50px";
-
 const lh108 = 1.08;
 const lh109 = 1.09;
 const lh116 = 1.16;
@@ -33,14 +31,16 @@ const lh158 = 1.58;
 const lh167 = 1.67;
 const lh175 = 1.75;
 
-const primaryColor = "#155dfc";
-const primaryDark = "#1447e6";
-const primaryButtonShadow = "#3B82F64D";
-const primaryContrast = "#ffffff";
-const secondaryColor = "#eff6ff";
+const blue = "#155dfc";
+const darkBlue = "#1447e6";
+const blueShadow = "#3B82F64D";
+const white = "#ffffff";
+const lightBlue = "#eff6ff";
 const subtleBg = "#f8fafc";
-const bgDefault = "#ffffff";
-const textPrimary = "#101828";
+const mediumGray = "#9ca3af";
+const lightGray = "#fcfdfd";
+const softGray = "#f3f4f6";
+const charcoal = "#101828";
 const textSecondary = "#6a7282";
 
 const accentBlue = "#3B82F6";
@@ -65,8 +65,6 @@ const md = 768;
 const lg = 1440;
 
 export const theme = createTheme({
-  inputHeight,
-
   breakpoints: {
     values: {
       xs: 0,
@@ -78,20 +76,27 @@ export const theme = createTheme({
   },
 
   palette: {
+    color: {
+      blue,
+      darkBlue,
+      lightBlue,
+      white,
+    },
     primary: {
-      main: primaryColor,
-      dark: primaryDark,
-      contrastText: primaryContrast,
+      main: blue,
     },
     secondary: {
-      main: secondaryColor,
+      main: lightBlue,
     },
     background: {
-      default: bgDefault,
-      paper: bgDefault,
+      default: white,
+      paper: white,
+      lightGray: lightGray,
+      softGray: softGray,
+      mediumGray: mediumGray,
     },
     text: {
-      primary: textPrimary,
+      primary: charcoal,
       secondary: textSecondary,
     },
     divider: footerDividerColor,
@@ -246,10 +251,6 @@ export const theme = createTheme({
           margin: "0 auto",
           paddingLeft: "24px",
           paddingRight: "24px",
-          [`@media (min-width:${lg}px)`]: {
-            paddingLeft: "32px",
-            paddingRight: "32px",
-          },
         },
       },
     },
@@ -275,11 +276,11 @@ export const theme = createTheme({
           borderRadius: buttonRadius,
         },
         containedPrimary: {
-          backgroundColor: primaryColor,
-          boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+          backgroundColor: blue,
+          boxShadow: `0px 4px 14px 0px ${blueShadow}`,
           "&:hover": {
-            backgroundColor: primaryDark,
-            boxShadow: `0px 4px 14px 0px ${primaryButtonShadow}`,
+            backgroundColor: darkBlue,
+            boxShadow: `0px 4px 14px 0px ${blueShadow}`,
           },
         },
       },
@@ -288,15 +289,28 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          height: inputHeight,
+          backgroundColor: lightGray,
+
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: mediumGray,
+            borderWidth: "1px !important",
+          },
+
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: mediumGray,
+          },
+
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: blue,
+          },
         },
         input: {
           height: "100%",
           boxSizing: "border-box",
 
           "&:-webkit-autofill": {
-            WebkitBoxShadow: `0 0 0 100px ${bgDefault} inset`,
-            WebkitTextFillColor: textPrimary,
+            WebkitBoxShadow: `0 0 0 100px ${lightGray} inset  !important`,
+            WebkitTextFillColor: charcoal,
           },
         },
       },
