@@ -1,10 +1,12 @@
 import { ComplianceSection } from "features/ComplianceSection";
-import { Capabilities } from "features/Capabilities";
+import Hero from "features/Hero";
+import Header from "components/ExampleHeader";
 
 export default function HomePage() {
   return (
     <>
-      <Capabilities />
+      <Header />
+      <Hero />
       <ComplianceSection />
     </>
   );
