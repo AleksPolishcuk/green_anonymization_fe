@@ -89,6 +89,10 @@ export const theme = createTheme({
       primary: textPrimary,
       secondary: textSecondary,
     },
+    divider: footerDividerColor,
+    action: {
+      active: footerLinkHoverColor,
+    },
     subtle: {
       bg: subtleBg,
     },
