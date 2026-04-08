@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "@mui/material";
 
-import { headerBreakpoints, keyboardKey } from "constants/header";
+import { headerBreakpoints } from "constants/header";
 
 export function useHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,6 @@ export function useHeader() {
     setIsMenuOpen(false);
   }, []);
 
-  // Burger vs inline auth uses the dedicated desktop auth breakpoint.
   const showBurgerMenu = useMediaQuery(
     `(max-width: ${headerBreakpoints.desktopAuthPx - 1}px)`,
   );
@@ -35,17 +34,8 @@ export function useHeader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === keyboardKey.escape) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
     };
   }, [isMenuOpen]);
 

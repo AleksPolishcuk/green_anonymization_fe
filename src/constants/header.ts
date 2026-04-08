@@ -1,6 +1,6 @@
 export const headerNavItems = [
   { key: "solution", href: "#solution" },
-  { key: "contactUs", href: "#contact-us" },
+  { key: "contactUs", href: "/contactus" },
 ] as const;
 
 export const headerRoutes = {
@@ -29,10 +29,6 @@ export const headerBreakpoints = {
 } as const;
 
 export const headerMobileMenuId = "guest-mobile-menu";
-
-export const keyboardKey = {
-  escape: "Escape",
-} as const;
 
 export const headerDimensions = {
   layoutHorizontalPaddingPx: 18,
