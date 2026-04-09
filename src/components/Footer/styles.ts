@@ -15,7 +15,12 @@ export const FooterRoot = styled("footer")(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-export const FooterContainer = styled(Container)({});
+export const FooterContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: theme.spacing(36),
+    paddingRight: theme.spacing(36),
+  },
+}));
 
 export const FooterBody = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
