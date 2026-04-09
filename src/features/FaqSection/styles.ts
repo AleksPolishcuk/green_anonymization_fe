@@ -4,14 +4,24 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Container,
 } from "@mui/material";
-
-import { CARD_BORDER_COLOR } from "constants";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   marginTop: theme.spacing(20),
   padding: theme.spacing(20, 0),
   backgroundColor: theme.palette.subtle?.bg ?? theme.palette.background.default,
+}));
+
+export const FaqContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: 68,
+    paddingRight: 68,
+  },
+  [theme.breakpoints.up("lg")]: {
+    paddingLeft: 144,
+    paddingRight: 144,
+  },
 }));
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -20,7 +30,7 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const FaqAccordion = styled(Accordion)(({ theme }) => ({
-  border: `1px solid ${CARD_BORDER_COLOR}`,
+  border: `1px solid ${theme.palette.background.lightGray}`,
   borderRadius: `${theme.shape.borderRadius}px !important`,
   boxShadow: "none",
   marginBottom: theme.spacing(3),
@@ -40,7 +50,7 @@ export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
   },
 
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-    color: theme.palette.primary.main,
+    color: theme.palette.color.blue,
   },
 }));
 

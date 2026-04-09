@@ -3,8 +3,6 @@ const green = "#10B981";
 const amber = "#F59E0B";
 const red = "#EF4444";
 
-export const CARD_BORDER_COLOR = "#e5e7eb";
-
 export const COMPLIANCE_CARDS = [
   {
     id: "hipaa",

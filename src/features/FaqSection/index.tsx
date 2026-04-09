@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Container } from "@mui/material";
 import { ChevronDownIcon } from "assets/icons/ChevronDownIcon";
 
 import { useFaqSection } from "./hooks/useFaqSection";
@@ -11,6 +10,7 @@ import {
   FaqSummary,
   SectionTitle,
   SectionWrapper,
+  FaqContainer,
 } from "./styles";
 
 export const FaqSection = () => {
@@ -19,7 +19,7 @@ export const FaqSection = () => {
 
   return (
     <SectionWrapper>
-      <Container>
+      <FaqContainer>
         <SectionTitle variant="h3">{t("faqSection.title")}</SectionTitle>
         {items.map((item) => (
           <FaqAccordion
@@ -36,7 +36,7 @@ export const FaqSection = () => {
             </FaqDetails>
           </FaqAccordion>
         ))}
-      </Container>
+      </FaqContainer>
     </SectionWrapper>
   );
 };
