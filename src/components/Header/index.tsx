@@ -32,6 +32,10 @@ type HeaderLogoProps = {
   ariaLabel?: string;
 };
 
+type HeaderProps = {
+  overlay?: boolean;
+};
+
 type HeaderBurgerButtonProps = {
   onClick: () => void;
   expanded: boolean;
@@ -81,12 +85,12 @@ function HeaderLogo({ href = headerRoutes.home, ariaLabel }: HeaderLogoProps) {
   );
 }
 
-export default function Header() {
+export default function Header({ overlay = false }: HeaderProps) {
   const { t } = useTranslation();
   const { showBurgerMenu, isMenuOpen, openMenu, closeMenu } = useHeader();
 
   return (
-    <HeaderShell>
+    <HeaderShell $isOverlay={overlay}>
       <HeaderLayout>
         <HeaderBar>
           <HeaderFrame>

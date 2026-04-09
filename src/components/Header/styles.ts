@@ -13,11 +13,20 @@ const headerLogoLockBreakpointPx = headerBreakpoints.tabletPx;
 const fastTransitionSeconds = 0.22;
 const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
-export const HeaderShell = styled("header")(({ theme }) => ({
+export const HeaderShell = styled("header", {
+  shouldForwardProp: (prop) => prop !== "$isOverlay",
+})<{ $isOverlay?: boolean }>(({ theme, $isOverlay }) => ({
   position: "sticky",
   top: 0,
   zIndex: 20,
   paddingTop: theme.spacing(4),
+  ...($isOverlay && {
+    marginBottom: "-84px",
+
+    [theme.breakpoints.up("lg")]: {
+      marginBottom: "-90px",
+    },
+  }),
 }));
 
 export const HeaderLayout = styled("div")(({ theme }) => ({

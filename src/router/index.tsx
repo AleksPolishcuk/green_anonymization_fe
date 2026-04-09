@@ -7,7 +7,7 @@ import { MainLayout } from "Layouts";
 export const router = createBrowserRouter([
   {
     element: (
-      <MainLayout>
+      <MainLayout headerOverlay>
         <HomePage />
       </MainLayout>
     ),
