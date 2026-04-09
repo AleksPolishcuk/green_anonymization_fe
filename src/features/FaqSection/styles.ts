@@ -56,7 +56,7 @@ export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
 
 export const FaqQuestion = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
-  color: theme.palette.text.primary,
+  color: theme.palette.color.charcoal,
 }));
 
 export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
@@ -64,5 +64,5 @@ export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
 }));
 
 export const FaqAnswer = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));

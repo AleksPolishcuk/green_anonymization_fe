@@ -15,6 +15,7 @@ export const PhoneField = ({
   value,
   onChange,
   placeholder,
+  disabled = false,
 }: PhoneFieldProps) => {
   const [countryCode, setCountryCode] = useState(DEFAULT_PHONE_COUNTRY_CODE);
 
@@ -32,6 +33,7 @@ export const PhoneField = ({
         onChange={handleChange}
         placeholder={placeholder}
         disableCountryCode={!value}
+        disabled={disabled}
       />
       <DialCodeOverlay>{countryCode}</DialCodeOverlay>
     </PhoneInputWrapper>

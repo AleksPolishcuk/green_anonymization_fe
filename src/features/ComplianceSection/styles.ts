@@ -118,14 +118,14 @@ export const CardBadge = styled("span")<{ $color: string }>(
 export const CardTitle = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
   fontWeight: theme.typography.fontWeightSemiBold,
-  color: theme.palette.text.primary,
+  color: theme.palette.color.charcoal,
 }));
 
 export const CardEntityCount = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));
 
 export const HeaderDescription = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));

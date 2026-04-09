@@ -27,3 +27,7 @@ export const COMPLIANCE_CARDS = [
 ] as const;
 
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
+
+// Form validation regexes
+export const EMAIL_REGEX = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+export const PHONE_REGEX = /^\+?[\d\s\-()]{7,}$/;

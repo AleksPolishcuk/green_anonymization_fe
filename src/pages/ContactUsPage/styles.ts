@@ -28,7 +28,7 @@ export const PageTitle = styled(Typography)(() => ({
 }));
 
 export const PageSubtitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   marginBottom: theme.spacing(10),
   maxWidth: "480px",
 }));
