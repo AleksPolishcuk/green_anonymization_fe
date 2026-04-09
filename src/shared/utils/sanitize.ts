@@ -39,14 +39,3 @@ export const isValidLength = (
   const trimmed = input.trim();
   return trimmed.length >= min && trimmed.length <= max;
 };
-
-/**
- * Get field constraints
- */
-export const FIELD_CONSTRAINTS = {
-  firstName: { min: 2, max: 50 },
-  lastName: { min: 2, max: 50 },
-  email: { min: 5, max: 100 },
-  phoneNumber: { min: 7, max: 30 },
-  message: { min: 10, max: 5000 },
-} as const;

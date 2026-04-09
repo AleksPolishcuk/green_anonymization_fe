@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { ChevronDownIcon } from "assets/icons/ChevronDownIcon";
 
-import { useFaqSection } from "./hooks/useFaqSection";
+import { useFaqSection } from "./useFaqSection";
 import {
   FaqAccordion,
   FaqAnswer,

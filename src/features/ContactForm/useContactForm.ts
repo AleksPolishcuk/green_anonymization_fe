@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { ValidationError } from "yup";
 
-import type { ContactFormValues, UseContactFormReturn } from "../types";
+import type { ContactFormValues, UseContactFormReturn } from "./types";
 import { contactService } from "services/contact";
-import { validateFormData, sanitizeFormData } from "../utils/validation";
+import { sanitizeInput } from "shared/utils/sanitize";
+import { contactFormSchema } from "constants/validations";
 
 export const useContactForm = (): UseContactFormReturn => {
   const { t } = useTranslation();
@@ -23,22 +25,37 @@ export const useContactForm = (): UseContactFormReturn => {
         message: "",
       },
       resolver: async (data) => {
-        const sanitized = sanitizeFormData(data);
-        const validationErrors = validateFormData(sanitized);
+        try {
+          const values = await contactFormSchema.validate(data, {
+            abortEarly: false,
+          });
 
-        const errors: Record<string, { message: string }> = {};
-        (
-          Object.keys(validationErrors) as Array<keyof ContactFormValues>
-        ).forEach((field) => {
-          errors[field] = {
-            message: t(`contactUsPage.form.errors.${validationErrors[field]}`),
+          const sanitized: ContactFormValues = {
+            firstName: sanitizeInput(values.firstName),
+            lastName: sanitizeInput(values.lastName),
+            email: sanitizeInput(values.email),
+            phoneNumber: sanitizeInput(values.phoneNumber),
+            message: sanitizeInput(values.message),
           };
-        });
 
-        return {
-          values: Object.keys(errors).length === 0 ? sanitized : {},
-          errors,
-        };
+          return { values: sanitized, errors: {} };
+        } catch (error) {
+          if (error instanceof ValidationError) {
+            const errors: Record<string, { message: string }> = {};
+
+            error.inner.forEach((err) => {
+              if (err.path) {
+                errors[err.path] = {
+                  message: t(err.message),
+                };
+              }
+            });
+
+            return { values: {}, errors };
+          }
+
+          return { values: {}, errors: {} };
+        }
       },
     });
 

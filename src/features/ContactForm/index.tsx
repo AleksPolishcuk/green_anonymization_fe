@@ -3,9 +3,9 @@ import { Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 
 import { SendIcon } from "assets/icons/SendIcon";
-import { useContactForm } from "./hooks/useContactForm";
-import { EmailInfoCard } from "./components/EmailInfoCard";
-import { PhoneField } from "./components/PhoneField";
+import { useContactForm } from "./useContactForm";
+import { EmailInfoCard } from "./EmailInfoCard";
+import { PhoneField } from "./PhoneField";
 import {
   ContactLayout,
   FieldLabel,

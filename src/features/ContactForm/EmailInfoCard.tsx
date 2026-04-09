@@ -6,7 +6,7 @@ import {
   EmailCard,
   EmailIconWrapper,
   EmailLabel,
-} from "../styles";
+} from "./styles";
 
 export const EmailInfoCard = () => {
   const { t } = useTranslation();
