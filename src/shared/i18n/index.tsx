@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 import enTranslation from "./locales/en/translation.json";
 import enHero from "./locales/en/hero.json";
 import enCapabilities from "./locales/en/capabilities.json";
+import enReadyToProtect from "./locales/en/readyToProtect.json";
 
 void i18n.use(initReactI18next).init({
   resources: {
@@ -11,6 +12,7 @@ void i18n.use(initReactI18next).init({
       translation: enTranslation,
       hero: enHero,
       capabilities: enCapabilities,
+      readyToProtect: enReadyToProtect,
     },
   },
   lng: "en",

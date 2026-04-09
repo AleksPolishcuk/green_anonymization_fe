@@ -1,0 +1,10 @@
+{
+  "readyToProtect": {
+    "title": "Ready to Protect Your Clinical Data?",
+    "description": "Start de-identifying and synthesizing healthcare data in minutes with our enterprise-grade platform",
+    "actions": {
+      "primary": "Start →",
+      "secondary": "Contact Sales"
+    }
+  }
+}
