@@ -31,7 +31,7 @@ export const SignInLink = styled("a")(({ theme }) => ({
   borderRadius: `${ctaRadiusPx}px`,
   border: "1px solid transparent",
   background: "transparent",
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   textDecoration: "none",
   fontSize: theme.typography.fontSize14,
