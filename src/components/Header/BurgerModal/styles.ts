@@ -181,10 +181,9 @@ export const ModalNavLink = styled("a")(({ theme }) => ({
   fontWeight: theme.typography.body1.fontWeight,
   fontSize: theme.typography.body1.fontSize,
   lineHeight: theme.typography.button.lineHeight,
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
   textDecoration: "none",
   borderRadius: `${navLinkRadiusPx}px`,
-  transition: `color ${transitionFastSeconds}s ${easingStandard}`,
 
   "&::after": {
     content: '""',
@@ -199,16 +198,8 @@ export const ModalNavLink = styled("a")(({ theme }) => ({
     transition: `transform ${navUnderlineTransitionSeconds}s ${easingOut}`,
   },
 
-  "&:hover": {
-    color: theme.palette.text.primary,
-  },
-
   "&:hover::after": {
     transform: "scaleX(1)",
-  },
-
-  "&:active": {
-    color: theme.palette.text.primary,
   },
 
   "&:active::after": {

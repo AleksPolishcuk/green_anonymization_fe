@@ -1,6 +1,8 @@
 import type { SxProps, Theme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 
+import { footerBrandBlockWidthTabletPx } from "constants/footer";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
@@ -16,6 +18,10 @@ export const FooterRoot = styled("footer")(({ theme }) => ({
 }));
 
 export const FooterContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: "68px",
+    paddingRight: "68px",
+  },
   [theme.breakpoints.up("lg")]: {
     paddingLeft: theme.spacing(36),
     paddingRight: theme.spacing(36),
@@ -45,17 +51,35 @@ export const FooterTop = styled(Stack)(({ theme }) => ({
 
 export const FooterBrandBlock = styled(Box)(({ theme }) => ({
   maxWidth: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
   [theme.breakpoints.up("md")]: {
+    alignItems: "flex-start",
+    textAlign: "left",
     flex: "1 1 36%",
     maxWidth: theme.spacing(90),
+  },
+  [`@media (min-width: 768px) and (max-width: 1024px)`]: {
+    flex: `0 0 ${footerBrandBlockWidthTabletPx}px`,
+    width: `${footerBrandBlockWidthTabletPx}px`,
+    minWidth: `${footerBrandBlockWidthTabletPx}px`,
+    maxWidth: `${footerBrandBlockWidthTabletPx}px`,
   },
 }));
 
 export const FooterBrandRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "center",
   gap: theme.spacing(1.5),
   maxWidth: "100%",
+  width: "100%",
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "flex-start",
+    width: "auto",
+  },
 }));
 
 export const FooterDescription = styled(Typography)(({ theme }) => ({
@@ -64,25 +88,32 @@ export const FooterDescription = styled(Typography)(({ theme }) => ({
   lineHeight: theme.typography.body2.lineHeight,
   fontWeight: theme.typography.body2.fontWeight,
   marginTop: theme.spacing(5),
+  textAlign: "center",
   [theme.breakpoints.up("md")]: {
     marginTop: theme.spacing(2),
+    textAlign: "left",
   },
 }));
 
 export const FooterSocialRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "center",
   gap: theme.spacing(2),
   marginTop: theme.spacing(6),
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "flex-start",
+  },
 }));
 
 export const footerNavColumnStackSx: SxProps<Theme> = (theme) => ({
   gap: theme.spacing(5),
+  alignItems: "center",
   [theme.breakpoints.up("md")]: {
-    width: "188px",
-    minWidth: "188px",
-    maxWidth: "188px",
-    flex: "0 0 188px",
+    alignItems: "flex-start",
+    flex: "1 1 0",
+    minWidth: 0,
+    maxWidth: "100%",
   },
 });
 
@@ -120,16 +151,19 @@ export const FooterLegalRow = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const footerMainLogoWrapperSx: SxProps<Theme> = {
+export const footerMainLogoWrapperSx: SxProps<Theme> = (theme) => ({
   display: "block",
   flexShrink: 0,
-  alignSelf: "flex-start",
+  alignSelf: "center",
   width: "100%",
   maxWidth: "200px",
   height: "36px",
   lineHeight: 0,
   overflow: "hidden",
-};
+  [theme.breakpoints.up("md")]: {
+    alignSelf: "flex-start",
+  },
+});
 
 export const footerMainLogoInnerSx: SxProps<Theme> = {
   display: "block",
@@ -153,13 +187,20 @@ export const footerSocialIconButtonSx: SxProps<Theme> = (theme) => ({
 
 export const footerNavGridSx: SxProps<Theme> = (theme) => ({
   flexDirection: "column",
+  alignItems: "center",
   gap: theme.spacing(4),
   width: "100%",
   [theme.breakpoints.up("md")]: {
     flexDirection: "row",
     flex: "1 1 0",
     justifyContent: "flex-start",
-    gap: theme.spacing(10),
+    flexWrap: "nowrap",
+    alignItems: "flex-start",
+    columnGap: theme.spacing(8),
+    rowGap: 0,
+  },
+  [theme.breakpoints.up("lg")]: {
+    columnGap: theme.spacing(10),
   },
 });
 
@@ -168,6 +209,10 @@ export const footerNavHeadingSx: SxProps<Theme> = (theme) => ({
   color: theme.palette.text.primary,
   fontSize: theme.typography.fontSize14,
   lineHeight: 1.53,
+  textAlign: "center",
+  [theme.breakpoints.up("md")]: {
+    textAlign: "left",
+  },
 });
 
 export const footerNavListSx: SxProps<Theme> = (theme) => ({
@@ -176,7 +221,11 @@ export const footerNavListSx: SxProps<Theme> = (theme) => ({
   padding: 0,
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   gap: theme.spacing(3),
+  [theme.breakpoints.up("md")]: {
+    alignItems: "stretch",
+  },
 });
 
 export const footerNavLinkSx: SxProps<Theme> = (theme) => ({

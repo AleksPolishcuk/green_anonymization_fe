@@ -31,7 +31,7 @@ export const headerBreakpoints = {
 export const headerMobileMenuId = "guest-mobile-menu";
 
 export const headerDimensions = {
-  layoutHorizontalPaddingPx: 18,
+  layoutHorizontalPaddingPx: 12,
   burgerPanelWidthPx: 375,
   mobileTabletBarHeightPx: 68,
   desktopBarWidthPx: 1216,
