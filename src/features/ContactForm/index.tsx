@@ -4,6 +4,7 @@ import { TextField } from "@mui/material";
 
 import { SendIcon } from "assets/icons/SendIcon";
 import { useContactForm } from "./useContactForm";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { EmailInfoCard } from "./EmailInfoCard";
 import { PhoneField } from "./PhoneField";
 import {
@@ -35,12 +36,13 @@ export const ContactForm = () => {
     submitSuccess,
   } = useContactForm();
   const { errors } = formState;
+  const layoutRef = useScrollReveal();
 
   return (
-    <ContactLayout>
-      <EmailInfoCard />
+    <ContactLayout ref={layoutRef}>
+      <EmailInfoCard className="reveal-item" />
 
-      <FormCard>
+      <FormCard className="reveal-item">
         <FormTitle>{t("contactUsPage.form.title")}</FormTitle>
 
         <form onSubmit={handleSubmit(onSubmit)}>

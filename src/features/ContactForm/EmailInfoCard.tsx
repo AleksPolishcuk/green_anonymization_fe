@@ -8,11 +8,15 @@ import {
   EmailLabel,
 } from "./styles";
 
-export const EmailInfoCard = () => {
+type EmailInfoCardProps = {
+  className?: string;
+};
+
+export const EmailInfoCard = ({ className }: EmailInfoCardProps) => {
   const { t } = useTranslation();
 
   return (
-    <EmailCard>
+    <EmailCard className={className}>
       <EmailIconWrapper>
         <EmailIcon />
       </EmailIconWrapper>

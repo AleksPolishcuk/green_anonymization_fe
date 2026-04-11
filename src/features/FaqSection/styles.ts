@@ -36,6 +36,15 @@ export const FaqAccordion = styled(Accordion)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   backgroundColor: theme.palette.background.paper,
 
+  opacity: 0,
+  transform: "translateY(16px)",
+  transition: "opacity 0.5s ease, transform 0.5s ease",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+
   "&::before": {
     display: "none",
   },

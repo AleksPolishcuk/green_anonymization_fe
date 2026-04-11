@@ -17,7 +17,7 @@ export const ComplianceCardItem = ({ card }: ComplianceCardItemProps) => {
   const { t } = useTranslation();
 
   return (
-    <CardWrapper>
+    <CardWrapper className="reveal-card">
       <CardAccentLine $color={card.accentColor} />
       <CardBadge $color={card.accentColor}>
         {t(`complianceSection.cards.${card.id}.badge`)}

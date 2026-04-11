@@ -20,6 +20,15 @@ export const EmailCard = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(4),
+
+  opacity: 0,
+  transform: "translateY(24px)",
+  transition: "opacity 0.6s ease, transform 0.6s ease",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
 }));
 
 export const EmailIconWrapper = styled("div")(({ theme }) => ({
@@ -48,6 +57,15 @@ export const FormCard = styled("div")(({ theme }) => ({
   border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
+
+  opacity: 0,
+  transform: "translateY(24px)",
+  transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
 }));
 
 export const FormTitle = styled("h3")(({ theme }) => ({
