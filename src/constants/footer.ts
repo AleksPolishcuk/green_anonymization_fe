@@ -13,6 +13,9 @@ export const spriteViewBoxes = {
   social: "0 0 32 32",
 } as const;
 
+/** Brand + description column width on tablet (768px–1024px). */
+export const footerBrandBlockWidthTabletPx = 204;
+
 export const footerSocialProfileUrls = {
   x: "https://x.com",
   linkedin: "https://www.linkedin.com",

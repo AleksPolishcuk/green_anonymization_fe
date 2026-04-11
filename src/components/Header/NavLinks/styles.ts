@@ -5,9 +5,7 @@ const navLinkPadX = 10;
 const navLinkRadiusPx = 8;
 const navUnderlineBottomPx = 3;
 const navUnderlineHeightPx = 2;
-const transitionFastSeconds = 0.22;
 const navUnderlineTransitionSeconds = 0.28;
-const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 export const NavButton = styled("a")(({ theme }) => ({
@@ -18,14 +16,13 @@ export const NavButton = styled("a")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   padding: `${navLinkPadY}px ${navLinkPadX}px`,
-  color: theme.palette.text.secondary,
+  color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.h6.fontSize,
   lineHeight: theme.typography.button.lineHeight,
   fontWeight: theme.typography.fontWeightMedium,
   textDecoration: "none",
   borderRadius: `${navLinkRadiusPx}px`,
-  transition: `color ${transitionFastSeconds}s ${easingStandard}`,
 
   "&::after": {
     content: '""',
@@ -40,16 +37,8 @@ export const NavButton = styled("a")(({ theme }) => ({
     transition: `transform ${navUnderlineTransitionSeconds}s ${easingOut}`,
   },
 
-  "&:hover": {
-    color: theme.palette.text.primary,
-  },
-
   "&:hover::after": {
     transform: "scaleX(1)",
-  },
-
-  "&:active": {
-    color: theme.palette.text.primary,
   },
 
   "&:active::after": {
