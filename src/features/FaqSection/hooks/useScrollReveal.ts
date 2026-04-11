@@ -9,8 +9,9 @@ export const useScrollReveal = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.querySelectorAll(".reveal-item").forEach((item, i) => {
-              (item as HTMLElement).style.transitionDelay = `${i * 0.15}s`;
-              item.classList.add("visible");
+              const element = item as HTMLElement;
+              element.style.transitionDelay = `${i * 0.15}s`;
+              element.classList.add("firstVisible");
             });
             observer.disconnect();
           }

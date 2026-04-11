@@ -29,21 +29,23 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(12),
 }));
 
+export const FaqAccordionWrapper = styled("div")({
+  opacity: 0,
+  transform: "translateY(16px)",
+  transition: "opacity 0.5s ease, transform 0.5s ease",
+
+  "&.firstVisible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+});
+
 export const FaqAccordion = styled(Accordion)(({ theme }) => ({
   border: `1px solid ${theme.palette.background.lightGray}`,
   borderRadius: `${theme.shape.borderRadius}px !important`,
   boxShadow: "none",
   marginBottom: theme.spacing(3),
   backgroundColor: theme.palette.background.paper,
-
-  opacity: 0,
-  transform: "translateY(16px)",
-  transition: "opacity 0.5s ease, transform 0.5s ease",
-
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
 
   "&::before": {
     display: "none",

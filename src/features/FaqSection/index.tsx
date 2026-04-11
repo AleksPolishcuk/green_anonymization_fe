@@ -5,6 +5,7 @@ import { useFaqSection } from "./useFaqSection";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 import {
   FaqAccordion,
+  FaqAccordionWrapper,
   FaqAnswer,
   FaqDetails,
   FaqQuestion,
@@ -24,20 +25,20 @@ export const FaqSection = () => {
       <FaqContainer ref={containerRef}>
         <SectionTitle variant="h3">{t("faqSection.title")}</SectionTitle>
         {items.map((item) => (
-          <FaqAccordion
-            className="reveal-item"
-            key={item.id}
-            expanded={expandedId === item.id}
-            onChange={() => onToggle(item.id)}
-            disableGutters
-          >
-            <FaqSummary expandIcon={<ChevronDownIcon />}>
-              <FaqQuestion>{item.question}</FaqQuestion>
-            </FaqSummary>
-            <FaqDetails>
-              <FaqAnswer>{item.answer}</FaqAnswer>
-            </FaqDetails>
-          </FaqAccordion>
+          <FaqAccordionWrapper key={item.id} className="reveal-item">
+            <FaqAccordion
+              expanded={expandedId === item.id}
+              onChange={() => onToggle(item.id)}
+              disableGutters
+            >
+              <FaqSummary expandIcon={<ChevronDownIcon />}>
+                <FaqQuestion>{item.question}</FaqQuestion>
+              </FaqSummary>
+              <FaqDetails>
+                <FaqAnswer>{item.answer}</FaqAnswer>
+              </FaqDetails>
+            </FaqAccordion>
+          </FaqAccordionWrapper>
         ))}
       </FaqContainer>
     </SectionWrapper>
