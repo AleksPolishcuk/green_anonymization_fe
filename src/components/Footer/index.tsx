@@ -20,7 +20,6 @@ import {
   FooterBottom,
   FooterBrandBlock,
   FooterBrandRow,
-  FooterContainer,
   FooterDescription,
   FooterLegalRow,
   FooterRoot,
@@ -37,6 +36,7 @@ import {
   footerNavLinkSx,
   footerSocialIconSizePx,
   footerSocialIconButtonSx,
+  FooterContainer,
 } from "components/Footer/styles";
 
 export function Footer() {

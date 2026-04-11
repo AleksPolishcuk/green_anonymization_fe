@@ -1,4 +1,4 @@
-export const footerMainLogoPreserveAspectRatio = "xMinYMid slice";
+export const footerMainLogoPreserveAspectRatio = "xMinYMid meet";
 export const spriteSvgPublicPath = "/sprite.svg";
 
 export const spriteSymbolIds = {
@@ -9,9 +9,12 @@ export const spriteSymbolIds = {
 } as const;
 
 export const spriteViewBoxes = {
-  mainLogo: "7 0 100 32",
+  mainLogo: "0 0 200 36",
   social: "0 0 32 32",
 } as const;
+
+/** Brand + description column width on tablet (768px–1024px). */
+export const footerBrandBlockWidthTabletPx = 204;
 
 export const footerSocialProfileUrls = {
   x: "https://x.com",

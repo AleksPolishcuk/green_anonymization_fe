@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import ExampleHomePage from "pages/ExampleHomePage";
+import HomePage from "pages/HomePage";
 import ContactUsPage from "pages/ContactUsPage";
 import { MainLayout } from "Layouts";
 import { NotFound } from "pages/NotFoundPage";
@@ -8,8 +8,8 @@ import { NotFound } from "pages/NotFoundPage";
 export const router = createBrowserRouter([
   {
     element: (
-      <MainLayout>
-        <ExampleHomePage />
+      <MainLayout headerOverlay>
+        <HomePage />
       </MainLayout>
     ),
     path: "/",
@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: (
+      <MainLayout>
+        <NotFound />
+      </MainLayout>
+    ),
   },
 ]);
