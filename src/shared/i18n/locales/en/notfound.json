@@ -1,0 +1,9 @@
+{
+  "notFound": {
+    "subtitle": "Page not found",
+    "title": "Oops! We lost this page",
+    "description": "The page you're looking for doesn't exist or has been moved. Your data is still safe — just the route is missing.",
+    "goHome": "Home Page",
+    "goBack": "Go Back"
+  }
+}

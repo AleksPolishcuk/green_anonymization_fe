@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import ExampleHomePage from "pages/ExampleHomePage";
 import ContactUsPage from "pages/ContactUsPage";
 import { MainLayout } from "Layouts";
+import { NotFound } from "pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <ExampleHomePage />,
+    element: <NotFound />,
   },
 ]);
