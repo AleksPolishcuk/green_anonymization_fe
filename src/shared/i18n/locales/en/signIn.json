@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title1": "Welcome back to",
+    "title2": "Clinical Data Studio",
+    "description": "Enterprise-grade PII detection and anonymization for healthcare data.<lineBreak />Protect patient privacy while preserving analytical value."
+  },
+  "stats": {
+    "clients": {
+      "value": "50+",
+      "label": "Clients"
+    },
+    "records": {
+      "value": "2B+",
+      "label": "Records"
+    },
+    "uptime": {
+      "value": "99.9%",
+      "label": "Uptime"
+    }
+  },
+  "heading": "Sign In",
+  "subtext": "Enter your email to get a sign-in link.",
+  "emailLabel": "Email",
+  "emailPlaceholder": "john.doe@example.com",
+  "submitButton": "Sign In",
+  "validation": {
+    "required": "Email is required"
+  },
+  "status": {
+    "successTitle": "Email Sent!",
+    "successDescription": "Check your inbox for the sign-in link.",
+    "errorTitle": "Failed to Send Email!",
+    "errorDescription": "{{error}}"
+  },
+  "bottomText": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
+}

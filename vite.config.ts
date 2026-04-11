@@ -22,6 +22,7 @@ export default defineConfig({
       assets: path.resolve(__dirname, "src/assets"),
       Layouts: path.resolve(__dirname, "src/Layouts/index.tsx"),
       constants: path.resolve(__dirname, "src/constants"),
+      store: path.resolve(__dirname, "src/store"),
     },
   },
 });

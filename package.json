@@ -25,8 +25,10 @@
     "@emotion/styled": "^11.14.1",
     "@fontsource/dm-serif-display": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
+    "@mui/icons-material": "^7.3.10",
     "@mui/material": "^7.3.9",
     "@reduxjs/toolkit": "^2.11.2",
+    "express": "^4.21.1",
     "i18next": "^25.8.20",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -36,8 +38,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.1",
     "styled-components": "^6.3.12",
-    "tslib": "^2.8.1",
-    "express": "^4.21.1"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
