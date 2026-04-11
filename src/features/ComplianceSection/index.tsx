@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { useComplianceSection } from "./hooks/useComplianceSection";
-import { useScrollReveal } from "./hooks/useScrollReveal";
-import { ComplianceCardItem } from "./components/ComplianceCardItem";
+import { useComplianceSection } from "./useComplianceSection";
+import { useScrollReveal } from "./useScrollReveal";
+import { ComplianceCardItem } from "./ComplianceCardItem";
 import {
   CardsGrid,
   HeaderDescription,

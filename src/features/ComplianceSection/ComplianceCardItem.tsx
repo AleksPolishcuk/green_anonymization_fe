@@ -6,8 +6,8 @@ import {
   CardEntityCount,
   CardTitle,
   CardWrapper,
-} from "../styles";
-import type { ComplianceCard } from "../types";
+} from "./styles";
+import type { ComplianceCard } from "./types";
 
 type ComplianceCardItemProps = {
   card: ComplianceCard;

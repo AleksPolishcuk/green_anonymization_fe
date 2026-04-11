@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 
 import { SendIcon } from "assets/icons/SendIcon";
 import { useContactForm } from "./useContactForm";
-import { useScrollReveal } from "./hooks/useScrollReveal";
+import { useScrollReveal } from "./useScrollReveal";
 import { EmailInfoCard } from "./EmailInfoCard";
 import { PhoneField } from "./PhoneField";
 import {
