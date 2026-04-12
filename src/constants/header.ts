@@ -1,5 +1,5 @@
 export const headerNavItems = [
-  { key: "solution", to: "/#compliance" as const },
+  { key: "solution", to: "/#solution" as const },
   { key: "contactUs", to: "/contactus" as const },
 ] as const;
 
