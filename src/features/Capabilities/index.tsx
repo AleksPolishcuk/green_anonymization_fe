@@ -19,7 +19,7 @@ export const Capabilities = () => {
   const listRef = useScrollReveal();
 
   return (
-    <CapabilitiesSection id="capabilities">
+    <CapabilitiesSection id="solution">
       <SectionContainer>
         <TitleSectionBlock>
           <Subtitle variant="h5">{t("capabilities.subtitle")}</Subtitle>

@@ -83,7 +83,7 @@ export const FooterBrandRow = styled(Stack)(({ theme }) => ({
 }));
 
 export const FooterDescription = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   fontSize: theme.typography.body2.fontSize,
   lineHeight: theme.typography.body2.lineHeight,
   fontWeight: theme.typography.body2.fontWeight,
@@ -177,7 +177,7 @@ export const footerSocialIconButtonSx: SxProps<Theme> = (theme) => ({
   padding: 0,
   borderRadius: theme.spacing(2),
   backgroundColor: theme.palette.background.default,
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   transition: "transform 180ms ease, background-color 180ms ease",
   "&:hover": {
     transform: "scale(1.05)",
@@ -206,7 +206,7 @@ export const footerNavGridSx: SxProps<Theme> = (theme) => ({
 
 export const footerNavHeadingSx: SxProps<Theme> = (theme) => ({
   margin: 0,
-  color: theme.palette.text.primary,
+  color: theme.palette.color.charcoal,
   fontSize: theme.typography.fontSize14,
   lineHeight: 1.53,
   textAlign: "center",
@@ -229,7 +229,7 @@ export const footerNavListSx: SxProps<Theme> = (theme) => ({
 });
 
 export const footerNavLinkSx: SxProps<Theme> = (theme) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   fontSize: theme.typography.fontSize14,
   lineHeight: 1.64,
   fontWeight: theme.typography.fontWeightRegular,
@@ -241,7 +241,7 @@ export const footerNavLinkSx: SxProps<Theme> = (theme) => ({
 });
 
 export const footerCopyrightSx: SxProps<Theme> = (theme) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   fontSize: theme.typography.caption.fontSize,
   lineHeight: theme.typography.caption.lineHeight,
   textAlign: "center",
@@ -251,7 +251,7 @@ export const footerCopyrightSx: SxProps<Theme> = (theme) => ({
 });
 
 export const footerLegalLinkSx: SxProps<Theme> = (theme) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
   fontSize: theme.typography.caption.fontSize,
   lineHeight: theme.typography.caption.lineHeight,
   fontFamily: theme.typography.caption.fontFamily,

@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { ChevronDownIcon } from "assets/icons/ChevronDownIcon";
 
-import { useFaqSection } from "./hooks/useFaqSection";
+import { useFaqSection } from "./useFaqSection";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import {
   FaqAccordion,
   FaqAnswer,
@@ -16,13 +17,15 @@ import {
 export const FaqSection = () => {
   const { t } = useTranslation();
   const { items, expandedId, onToggle } = useFaqSection();
+  const containerRef = useScrollReveal();
 
   return (
     <SectionWrapper>
-      <FaqContainer>
+      <FaqContainer ref={containerRef}>
         <SectionTitle variant="h3">{t("faqSection.title")}</SectionTitle>
         {items.map((item) => (
           <FaqAccordion
+            className="reveal-item"
             key={item.id}
             expanded={expandedId === item.id}
             onChange={() => onToggle(item.id)}

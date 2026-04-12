@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import type { FaqItem, UseFaqSectionReturn } from "../types";
+import type { FaqItem, UseFaqSectionReturn } from "./types";
 
 const FAQ_IDS = [
   "whatIndustries",

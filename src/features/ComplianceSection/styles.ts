@@ -85,11 +85,21 @@ export const CardWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(3),
-  transition: "box-shadow 0.2s ease, transform 0.2s ease",
 
-  "&:hover": {
-    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
-    transform: "translateY(-4px)",
+  opacity: 0,
+  transform: "translateY(20px)",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+    transition: "opacity 0.6s ease, transform 0.6s ease",
+
+    "&:hover": {
+      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
+      transform: "translateY(-4px)",
+      transition: "box-shadow 0.2s ease, transform 0.2s ease !important",
+      transitionDelay: "0s !important",
+    },
   },
 }));
 
@@ -118,14 +128,14 @@ export const CardBadge = styled("span")<{ $color: string }>(
 export const CardTitle = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
   fontWeight: theme.typography.fontWeightSemiBold,
-  color: theme.palette.text.primary,
+  color: theme.palette.color.charcoal,
 }));
 
 export const CardEntityCount = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));
 
 export const HeaderDescription = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));
