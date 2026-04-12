@@ -6,8 +6,8 @@ import {
   CardEntityCount,
   CardTitle,
   CardWrapper,
-} from "../styles";
-import type { ComplianceCard } from "../types";
+} from "./styles";
+import type { ComplianceCard } from "./types";
 
 type ComplianceCardItemProps = {
   card: ComplianceCard;
@@ -17,7 +17,7 @@ export const ComplianceCardItem = ({ card }: ComplianceCardItemProps) => {
   const { t } = useTranslation();
 
   return (
-    <CardWrapper>
+    <CardWrapper className="reveal-card">
       <CardAccentLine $color={card.accentColor} />
       <CardBadge $color={card.accentColor}>
         {t(`complianceSection.cards.${card.id}.badge`)}

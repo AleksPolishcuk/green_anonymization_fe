@@ -76,7 +76,7 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   boxShadow: `0px ${theme.spacing(1)} ${theme.spacing(3.5)} 0px ${alpha(
     theme.palette.accent.blue,
-    0.3
+    0.3,
   )}`,
 
   color: theme.palette.color.white,
@@ -95,7 +95,7 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
 
   transition: theme.transitions.create(
     ["transform", "box-shadow", "background-color"],
-    { duration: theme.transitions.duration.shorter }
+    { duration: theme.transitions.duration.shorter },
   ),
 
   "&:hover": {
@@ -103,7 +103,7 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
     transform: "translateY(-2px)",
     boxShadow: `0px ${theme.spacing(2.5)} ${theme.spacing(5)} 0px ${alpha(
       theme.palette.accent.blue,
-      0.3
+      0.3,
     )}`,
   },
 
@@ -114,7 +114,7 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
   "&:focus-visible": {
     outline: `${theme.spacing(0.75)} solid ${alpha(
       theme.palette.primary.main,
-      0.4
+      0.4,
     )}`,
     outlineOffset: theme.spacing(0.5),
   },

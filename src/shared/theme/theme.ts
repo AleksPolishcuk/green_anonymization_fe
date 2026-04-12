@@ -41,7 +41,7 @@ const mediumGray = "#9ca3af";
 const lightGray = "#fcfdfd";
 const softGray = "#f3f4f6";
 const charcoal = "#101828";
-const textSecondary = "#6a7282";
+const grayDark = "#6a7282";
 
 const accentBlue = "#3B82F6";
 const accentGreen = "#10B981";
@@ -81,6 +81,8 @@ export const theme = createTheme({
       darkBlue,
       lightBlue,
       white,
+      charcoal,
+      grayDark,
     },
     primary: {
       main: blue,
@@ -97,7 +99,7 @@ export const theme = createTheme({
     },
     text: {
       primary: charcoal,
-      secondary: textSecondary,
+      secondary: grayDark,
     },
     divider: footerDividerColor,
     action: {

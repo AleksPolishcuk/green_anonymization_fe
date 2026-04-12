@@ -1,20 +1,20 @@
 import { keyframes, styled, TextField } from "@mui/material";
 
 export const AUTH_ENDPOINTS = {
-    login: "/auth/login",
-    refresh: "/auth/refresh",
-    verify: "/auth/verify?token=",
-  } as const;
-  
-  export const STORAGE_KEYS = {
-    accessToken: "accessToken",
-    refreshToken: "refreshToken",
-  } as const;
-  
-  export const USER_ENDPOINTS = {
-    register: "/user/register",
-    me: "/user/me",
-  } as const;
+  login: "/auth/login",
+  refresh: "/auth/refresh",
+  verify: "/auth/verify?token=",
+} as const;
+
+export const STORAGE_KEYS = {
+  accessToken: "accessToken",
+  refreshToken: "refreshToken",
+} as const;
+
+export const USER_ENDPOINTS = {
+  register: "/user/register",
+  me: "/user/me",
+} as const;
 
 export const AUTH_STATUS = {
   idle: "idle",
@@ -24,30 +24,28 @@ export const AUTH_STATUS = {
   error: "error",
 } as const;
 
-export type AuthStatus = typeof AUTH_STATUS[keyof typeof AUTH_STATUS];
+export type AuthStatus = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];
 
-
-export  const signinStats = [
-      {
-        valueKey: "stats.clients.value",
-        labelKey: "stats.clients.label",
-      },
-      {
-        valueKey: "stats.records.value",
-        labelKey: "stats.records.label",
-      },
-      {
-        valueKey: "stats.uptime.value",
-        labelKey: "stats.uptime.label",
-      },
-    ] as const;
-    
+export const signinStats = [
+  {
+    valueKey: "stats.clients.value",
+    labelKey: "stats.clients.label",
+  },
+  {
+    valueKey: "stats.records.value",
+    labelKey: "stats.records.label",
+  },
+  {
+    valueKey: "stats.uptime.value",
+    labelKey: "stats.uptime.label",
+  },
+] as const;
 
 export const shieldGrowDuration = 1200;
 
 export const headingDelay = 150;
 export const paragraphDelay = 300;
-    
+
 export const statsDelayOne = 450;
 export const statsDelayTwo = 600;
 export const statsDelayThree = 750;
@@ -70,7 +68,6 @@ export const fadeUp = keyframes`
     transform: translateY(0);
   }
 `;
-
 
 export const FormInputField = styled(TextField)(({ theme }) => ({
   width: "100%",
@@ -106,9 +103,9 @@ export const FormInputField = styled(TextField)(({ theme }) => ({
     },
 
     "& input:-webkit-autofill": {
-        WebkitBoxShadow: `0 0 0 100px ${theme.palette.color.lightBlue} inset !important`,
-        WebkitTextFillColor: theme.palette.text.primary,
-        transition: "background-color 9999s ease-out 0s",
+      WebkitBoxShadow: `0 0 0 100px ${theme.palette.color.lightBlue} inset !important`,
+      WebkitTextFillColor: theme.palette.text.primary,
+      transition: "background-color 9999s ease-out 0s",
     },
   },
 

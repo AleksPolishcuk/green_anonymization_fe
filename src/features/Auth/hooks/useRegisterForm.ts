@@ -12,23 +12,20 @@ type RegisterFormValues = {
 };
 
 export const useRegisterForm = () => {
-  const { control, handleSubmit, reset } =
-    useForm<RegisterFormValues>({
-      defaultValues: {
-        firstName: "",
-        lastName: "",
-        companyName: "",
-      },
-    });
+  const { control, handleSubmit, reset } = useForm<RegisterFormValues>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      companyName: "",
+    },
+  });
 
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<RegisterFormValues> = async (
-    formData,
-  ) => {
+  const onSubmit: SubmitHandler<RegisterFormValues> = async (formData) => {
     setMessage(null);
     setError(null);
     setLoading(true);

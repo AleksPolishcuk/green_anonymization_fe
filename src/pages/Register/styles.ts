@@ -37,7 +37,6 @@ export const RightSection = styled(Box)(({ theme }) => ({
 
   background: "linear-gradient(135deg, #0EA5E9 0%, #3B82F6 50%, #1E40AF 100%)",
 
-
   [theme.breakpoints.down("md")]: {
     display: "none",
   },

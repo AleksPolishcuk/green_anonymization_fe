@@ -2,7 +2,6 @@ import { alpha, Box, styled, Typography } from "@mui/material";
 import { OkCheckmarkIcon } from "assets/icons/auth/OkCheckmarkIcon";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-
 export const EmailSentMsg = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -76,4 +75,3 @@ export const ErrorStatusDescriptionText = styled(Typography)(({ theme }) => ({
     fontSize: theme.typography.fontSize14,
   },
 }));
-

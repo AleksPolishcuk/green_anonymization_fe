@@ -15,13 +15,12 @@ export default function AuthCallback() {
       const token = params.get("token");
 
       const res = await fetch(
-        `${API_BASE_URL}${AUTH_ENDPOINTS.verify}${token}`
+        `${API_BASE_URL}${AUTH_ENDPOINTS.verify}${token}`,
       );
 
       const data = await res.json();
 
       setTokens(data.accessToken, data.refreshToken);
- 
 
       if (data.isRegistered) {
         navigate("/dashboard");

@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-
 export const Page = styled(Box)(({ theme }) => ({
   display: "flex",
   minHeight: "100vh",
@@ -29,23 +28,23 @@ export const LeftSection = styled(Box)(({ theme }) => ({
 }));
 
 export const RightSection = styled(Box)(({ theme }) => ({
-    flex: "1 1 55%",
-    display: "flex",
+  flex: "1 1 55%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: theme.palette.background.default,
+  padding: theme.spacing(6),
+
+  [theme.breakpoints.down("md")]: {
+    flex: 1,
+    width: "100%",
+    minHeight: "100dvh",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(6),
-  
-    [theme.breakpoints.down("md")]: {
-      flex: 1,
-      width: "100%",
-      minHeight: "100dvh",  
-      alignItems: "center", 
-      justifyContent: "center",
-      padding: theme.spacing(8, 3),
-    },
-  }));
-  
+    padding: theme.spacing(8, 3),
+  },
+}));
+
 export const LeftContent = styled(Box)(({ theme }) => ({
   width: "100%",
   maxWidth: theme.spacing(112),
@@ -71,5 +70,3 @@ export const RightContent = styled(Box)(({ theme }) => ({
     gap: theme.spacing(5),
   },
 }));
-
-

@@ -49,10 +49,6 @@ export const EmailLabel = styled("label")(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-
-
-
-
 export const SigninBtn = styled(Button)(({ theme }) => ({
   width: "100%",
   minHeight: theme.spacing(13),
@@ -70,9 +66,12 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
   lineHeight: theme.typography.lineHeight150,
   textTransform: "none",
-  transition: theme.transitions.create(["transform", "box-shadow", "background-color"], {
-    duration: theme.transitions.duration.shorter,
-  }),
+  transition: theme.transitions.create(
+    ["transform", "box-shadow", "background-color"],
+    {
+      duration: theme.transitions.duration.shorter,
+    },
+  ),
 
   "&:hover": {
     backgroundColor: theme.palette.color.darkBlue,
@@ -90,24 +89,23 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   },
 }));
 
-
 export const BottomText = styled("span")(({ theme }) => ({
-    display: "block",
-    margin: 0,
-    padding: 0,
-    textAlign: "center",
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.fontSize12,
-    lineHeight: theme.typography.lineHeight150,
-    color: theme.palette.text.secondary,
-  
-    [theme.breakpoints.down("md")]: {
-      marginTop: theme.spacing(8),
-    },
-  }));
-  
-  export const BottomLinkText = styled("span")(({ theme }) => ({
-    textDecoration: "underline",
-    color: theme.palette.text.primary,
-  }));
+  display: "block",
+  margin: 0,
+  padding: 0,
+  textAlign: "center",
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize12,
+  lineHeight: theme.typography.lineHeight150,
+  color: theme.palette.text.secondary,
+
+  [theme.breakpoints.down("md")]: {
+    marginTop: theme.spacing(8),
+  },
+}));
+
+export const BottomLinkText = styled("span")(({ theme }) => ({
+  textDecoration: "underline",
+  color: theme.palette.text.primary,
+}));
