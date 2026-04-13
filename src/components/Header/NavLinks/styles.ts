@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const navLinkPadY = 6;
 const navLinkPadX = 10;
@@ -8,7 +9,7 @@ const navUnderlineHeightPx = 2;
 const navUnderlineTransitionSeconds = 0.28;
 const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
 
-export const NavButton = styled("a")(({ theme }) => ({
+export const NavButton = styled(Link)(({ theme }) => ({
   boxSizing: "border-box",
   margin: 0,
   position: "relative",
