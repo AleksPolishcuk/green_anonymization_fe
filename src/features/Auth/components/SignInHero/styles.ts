@@ -7,10 +7,10 @@ import {
   statsDelayTwo,
   statsDelayThree,
   heroRevealDuration,
-  fadeUp,
-  staggerItem,
 } from "constants/auth";
 import { keyframes, styled } from "@mui/material/styles";
+import staggerItem from "features/Auth/utils/staggerItem";
+import { fadeUp } from "features/Auth/components/styles";
 
 const shieldGrow = keyframes`
   0% {

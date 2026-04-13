@@ -1,5 +1,5 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
-import { staggerItem } from "constants/auth";
+import staggerItem from "features/Auth/utils/staggerItem";
 
 export const SigninHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),

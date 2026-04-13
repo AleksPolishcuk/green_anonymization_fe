@@ -21,30 +21,32 @@ type Props = {
 };
 
 export default function SignInForm({ form }: Props) {
-  const { t } = useTranslation("signIn");
+  const { t } = useTranslation();
 
   return (
     <>
-      <SigninHeading>{t("heading")}</SigninHeading>
+      <SigninHeading>{t("signIn.heading")}</SigninHeading>
 
-      <SigninSubtext variant="body1">{t("subtext")}</SigninSubtext>
+      <SigninSubtext variant="body1">{t("signIn.subtext")}</SigninSubtext>
 
       <SigninFormBox>
         <form onSubmit={form.handleSubmit(form.onSubmit)} noValidate>
-          <EmailLabel htmlFor="signin-email">{t("emailLabel")}</EmailLabel>
+          <EmailLabel htmlFor="signin-email">
+            {t("signIn.emailLabel")}
+          </EmailLabel>
 
           <Controller
             name="email"
             control={form.control}
             defaultValue=""
-            rules={{ required: t("validation.required") }}
+            rules={{ required: t("signIn.validation.required") }}
             render={({ field }) => (
               <FormInputField
                 {...field}
                 id="signin-email"
                 fullWidth
                 type="email"
-                placeholder={t("emailPlaceholder")}
+                placeholder={t("signIn.emailPlaceholder")}
                 slotProps={{
                   input: {
                     startAdornment: (
@@ -62,7 +64,7 @@ export default function SignInForm({ form }: Props) {
           />
 
           <SigninBtn type="submit" fullWidth>
-            {t("submitButton")}
+            {t("signIn.submitButton")}
             <RightArrowIcon />
           </SigninBtn>
         </form>
@@ -73,7 +75,7 @@ export default function SignInForm({ form }: Props) {
       {!form.loading && !form.status && !form.error && (
         <BottomText>
           <Trans
-            i18nKey={t("bottomText")}
+            i18nKey={t("signIn.bottomText")}
             components={{
               terms: <BottomLinkText as="span" />,
               privacy: <BottomLinkText as="span" />,

@@ -1,5 +1,5 @@
 import { Box, styled, Typography, alpha } from "@mui/material";
-import { staggerItem } from "constants/auth";
+import staggerItem from "features/Auth/utils/staggerItem";
 
 export const TestimonialCard = styled(Box)(({ theme }) => ({
   ...staggerItem(420),

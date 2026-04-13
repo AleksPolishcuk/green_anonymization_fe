@@ -32,7 +32,7 @@ type Props = {
 };
 
 export default function RegisterForm({ form }: Props) {
-  const { t } = useTranslation("register");
+  const { t } = useTranslation();
 
   return (
     <>
@@ -42,20 +42,20 @@ export default function RegisterForm({ form }: Props) {
           <NamesRow>
             <FieldWrapper>
               <NameLabel htmlFor="firstName">
-                {t("form.firstNameLabel")}
+                {t("register.form.firstNameLabel")}
               </NameLabel>
               <Controller
                 name="firstName"
                 control={form.control}
                 defaultValue=""
-                rules={{ required: t("form.firstNameRequired") }}
+                rules={{ required: t("register.form.firstNameRequired") }}
                 render={({ field }) => (
                   <FormInputField
                     {...field}
                     id="firstName"
                     fullWidth
                     type="text"
-                    placeholder={t("form.firstNamePlaceholder")}
+                    placeholder={t("register.form.firstNamePlaceholder")}
                     slotProps={{
                       input: {
                         startAdornment: (
@@ -75,20 +75,20 @@ export default function RegisterForm({ form }: Props) {
 
             <FieldWrapper>
               <NameLabel htmlFor="lastName">
-                {t("form.lastNameLabel")}
+                {t("register.form.lastNameLabel")}
               </NameLabel>
               <Controller
                 name="lastName"
                 control={form.control}
                 defaultValue=""
-                rules={{ required: t("form.lastNameRequired") }}
+                rules={{ required: t("register.form.lastNameRequired") }}
                 render={({ field }) => (
                   <FormInputField
                     {...field}
                     id="lastName"
                     fullWidth
                     type="text"
-                    placeholder={t("form.lastNamePlaceholder")}
+                    placeholder={t("register.form.lastNamePlaceholder")}
                     slotProps={{
                       input: {
                         startAdornment: (
@@ -109,20 +109,20 @@ export default function RegisterForm({ form }: Props) {
 
           <CompanyRow>
             <NameLabel htmlFor="companyName">
-              {t("form.companyLabel")}
+              {t("register.form.companyLabel")}
             </NameLabel>
             <Controller
               name="companyName"
               control={form.control}
               defaultValue=""
-              rules={{ required: t("form.companyRequired") }}
+              rules={{ required: t("register.form.companyRequired") }}
               render={({ field }) => (
                 <FormInputField
                   {...field}
                   id="companyName"
                   fullWidth
                   type="text"
-                  placeholder={t("form.companyPlaceholder")}
+                  placeholder={t("register.form.companyPlaceholder")}
                   slotProps={{
                     input: {
                       startAdornment: (
@@ -140,7 +140,7 @@ export default function RegisterForm({ form }: Props) {
             />
           </CompanyRow>
           <RegisterButton type="submit" fullWidth>
-            {t("form.submitButton")} <RightArrowIcon />
+            {t("register.form.submitButton")} <RightArrowIcon />
           </RegisterButton>
         </form>
         {form.loading && <Loader />}
@@ -150,9 +150,11 @@ export default function RegisterForm({ form }: Props) {
               <SuccessStatusIcon />
             </StatusIconWrapper>
             <StatusContent>
-              <StatusTitleText>{t("status.successTitle")}</StatusTitleText>
+              <StatusTitleText>
+                {t("register.status.successTitle")}
+              </StatusTitleText>
               <SuccessStatusDescriptionText>
-                {t("status.successDescription")}
+                {t("register.status.successDescription")}
               </SuccessStatusDescriptionText>
             </StatusContent>
           </EmailSentMsg>
@@ -164,9 +166,11 @@ export default function RegisterForm({ form }: Props) {
               <ErrorStatusIcon />
             </StatusIconWrapper>
             <StatusContent>
-              <StatusTitleText>{t("status.errorTitle")}</StatusTitleText>
+              <StatusTitleText>
+                {t("register.status.errorTitle")}
+              </StatusTitleText>
               <ErrorStatusDescriptionText>
-                {t("status.errorDescription")} {form.error}
+                {t("register.status.errorDescription")} {form.error}
               </ErrorStatusDescriptionText>
             </StatusContent>
           </EmailSentMsg>

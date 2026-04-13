@@ -12,21 +12,21 @@ import {
 } from "./styles";
 
 export default function SignInHero() {
-  const { t } = useTranslation("signIn");
+  const { t } = useTranslation();
   return (
     <>
       <ShieldLogo>
         <ShieldIcon />
       </ShieldLogo>
       <WelcomeHeading>
-        {t("hero.title1")}
+        {t("signIn.hero.title1")}
         <br />
-        {t("hero.title2")}
+        {t("signIn.hero.title2")}
       </WelcomeHeading>
 
       <EnterpriseParagraph variant="body1">
         <Trans
-          i18nKey={t("hero.description")}
+          i18nKey={t("signIn.hero.description")}
           components={{ lineBreak: <br /> }}
         />
       </EnterpriseParagraph>

@@ -17,7 +17,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 export default function RegisterHero() {
-  const { t } = useTranslation("register");
+  const { t } = useTranslation();
 
   return (
     <>
@@ -25,23 +25,27 @@ export default function RegisterHero() {
         <ShieldIcon />
       </ShieldLogo>
       <WelcomeHeading>
-        {t("hero.title1")}
+        {t("register.hero.title1")}
         <br />
-        {t("hero.title2")}
+        {t("register.hero.title2")}
       </WelcomeHeading>
 
-      <EnterpriseParagraph>{t("hero.description")}</EnterpriseParagraph>
+      <EnterpriseParagraph>
+        {t("register.hero.description")}
+      </EnterpriseParagraph>
       <TestimonialCard>
-        <TestimonialText>{t("testimonial.text")}</TestimonialText>
+        <TestimonialText>{t("register.testimonial.text")}</TestimonialText>
 
         <ProfileRow>
           <ProfileCircle>
-            <ProfileInitials>{t("testimonial.initials")}</ProfileInitials>
+            <ProfileInitials>
+              {t("register.testimonial.initials")}
+            </ProfileInitials>
           </ProfileCircle>
 
           <ProfileTextContainer>
-            <ProfileName>{t("testimonial.author")}</ProfileName>
-            <ProfileRole>{t("testimonial.role")}</ProfileRole>
+            <ProfileName>{t("register.testimonial.author")}</ProfileName>
+            <ProfileRole>{t("register.testimonial.role")}</ProfileRole>
           </ProfileTextContainer>
         </ProfileRow>
       </TestimonialCard>

@@ -18,7 +18,7 @@ type Props = {
 };
 
 export default function EmailStatus({ form }: Props) {
-  const { t } = useTranslation("signIn");
+  const { t } = useTranslation();
   return (
     <>
       {form.loading && <Loader />}
@@ -29,10 +29,10 @@ export default function EmailStatus({ form }: Props) {
           </StatusIconWrapper>
           <StatusContent>
             <StatusTitleText variant="h6">
-              {t("status.successTitle")}
+              {t("signIn.status.successTitle")}
             </StatusTitleText>
             <SuccessStatusDescriptionText variant="body2">
-              {t("status.successDescription")}
+              {t("signIn.status.successDescription")}
             </SuccessStatusDescriptionText>
           </StatusContent>
         </EmailSentMsg>
@@ -49,10 +49,10 @@ export default function EmailStatus({ form }: Props) {
           </StatusIconWrapper>
           <StatusContent>
             <StatusTitleText variant="h6">
-              {t("status.errorTitle")}
+              {t("signIn.status.errorTitle")}
             </StatusTitleText>
             <ErrorStatusDescriptionText variant="body2">
-              {t("status.errorDescription", { error: form.error ?? "" })}
+              {t("signIn.status.errorDescription", { error: form.error ?? "" })}
             </ErrorStatusDescriptionText>
           </StatusContent>
         </EmailSentMsg>
