@@ -1,19 +1,8 @@
 import { keyframes, styled, TextField } from "@mui/material";
 
-export const AUTH_ENDPOINTS = {
-  login: "/auth/login",
-  refresh: "/auth/refresh",
-  verify: "/auth/verify?token=",
-} as const;
-
 export const STORAGE_KEYS = {
   accessToken: "accessToken",
   refreshToken: "refreshToken",
-} as const;
-
-export const USER_ENDPOINTS = {
-  register: "/user/register",
-  me: "/user/me",
 } as const;
 
 export const AUTH_STATUS = {

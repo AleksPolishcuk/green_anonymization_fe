@@ -1,7 +1,6 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "constants";
-import { AUTH_ENDPOINTS } from "constants/auth";
+import { API_BASE_URL, ENDPOINTS } from "constants";
 
 export const useEmailLoginForm = () => {
   const { control, handleSubmit, reset } = useForm<{ email: string }>();
@@ -26,7 +25,7 @@ export const useEmailLoginForm = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}${AUTH_ENDPOINTS.login}`, {
+      const res = await fetch(`${API_BASE_URL}${ENDPOINTS.login}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

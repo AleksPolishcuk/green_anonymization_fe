@@ -1,5 +1,4 @@
-import { API_BASE_URL } from "constants";
-import { AUTH_ENDPOINTS } from "constants/auth";
+import { API_BASE_URL, ENDPOINTS } from "constants";
 import {
   getAccessToken,
   getRefreshToken,
@@ -27,7 +26,7 @@ const authFetch = async (url: string, options: RequestInit = {}) => {
       return { status: 401, data: null };
     }
 
-    const refreshRes = await fetch(`${API_BASE_URL}${AUTH_ENDPOINTS.refresh}`, {
+    const refreshRes = await fetch(`${API_BASE_URL}${ENDPOINTS.refresh}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refreshToken }),

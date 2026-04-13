@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
-import { API_BASE_URL } from "constants";
-import { AUTH_ENDPOINTS } from "constants/auth";
+import { API_BASE_URL, ENDPOINTS } from "constants";
 import { setTokens } from "features/Auth/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,9 +13,7 @@ export default function AuthCallback() {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
 
-      const res = await fetch(
-        `${API_BASE_URL}${AUTH_ENDPOINTS.verify}${token}`,
-      );
+      const res = await fetch(`${API_BASE_URL}${ENDPOINTS.verify}${token}`);
 
       const data = await res.json();
 

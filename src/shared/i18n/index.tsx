@@ -5,8 +5,8 @@ import enTranslation from "./locales/en/translation.json";
 import enHero from "./locales/en/hero.json";
 import enCapabilities from "./locales/en/capabilities.json";
 import enReadyToProtect from "./locales/en/readyToProtect.json";
-import enSignIn from "./locales/en/signIn.json";
-import enRegister from "./locales/en/register.json";
+// import enSignIn from "./locales/en/signIn.json";
+// import enRegister from "./locales/en/register.json";
 
 void i18n.use(initReactI18next).init({
   resources: {
@@ -15,8 +15,8 @@ void i18n.use(initReactI18next).init({
       hero: enHero,
       capabilities: enCapabilities,
       readyToProtect: enReadyToProtect,
-      signIn: enSignIn,
-      register: enRegister,
+      //   signIn: enSignIn,
+      //   register: enRegister,
     },
   },
   lng: "en",

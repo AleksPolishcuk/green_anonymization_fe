@@ -1,15 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_BASE_URL } from "constants";
-import { AUTH_STATUS, USER_ENDPOINTS, type AuthStatus } from "constants/auth";
+import { API_BASE_URL, ENDPOINTS } from "constants";
+import { AUTH_STATUS, type AuthStatus } from "constants/auth";
 import type User from "shared/interfaces/User";
 import authFetch from "features/Auth/authFetch";
 
 export const fetchMe = createAsyncThunk(
   "auth/me",
   async (_, { rejectWithValue }) => {
-    const { status, data } = await authFetch(
-      `${API_BASE_URL}${USER_ENDPOINTS.me}`,
-    );
+    const { status, data } = await authFetch(`${API_BASE_URL}${ENDPOINTS.me}`);
 
     if (status === 401) return rejectWithValue(AUTH_STATUS.unauthenticated);
     if (status === 403) return rejectWithValue(AUTH_STATUS.unregistered);

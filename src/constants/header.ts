@@ -5,7 +5,7 @@ export const headerNavItems = [
 
 export const headerRoutes = {
   home: "/",
-  signInHash: "#sign-in",
+  signInHash: "sign-in",
 } as const;
 
 export const headerAssetPaths = {
