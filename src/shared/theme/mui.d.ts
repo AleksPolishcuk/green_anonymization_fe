@@ -21,6 +21,8 @@ declare module "@mui/material/styles" {
       darkBlue: string;
       lightBlue: string;
       white: string;
+      charcoal: string;
+      grayDark: string;
     };
     subtle: {
       bg: string;
@@ -49,6 +51,8 @@ declare module "@mui/material/styles" {
       darkBlue?: string;
       lightBlue?: string;
       white?: string;
+      charcoal?: string;
+      grayDark?: string;
     };
     subtle?: {
       bg?: string;

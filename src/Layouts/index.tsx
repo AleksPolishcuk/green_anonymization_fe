@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import Header from "components/Header";
 import Footer from "components/Footer";
+import { ScrollToTop } from "components/ScrollToTop";
 
 type LayoutProps = {
   children: ReactNode;
@@ -14,6 +15,7 @@ export const MainLayout = ({
 }: LayoutProps) => {
   return (
     <>
+      <ScrollToTop />
       <Header overlay={headerOverlay} />
       <main>{children}</main>
       <Footer />

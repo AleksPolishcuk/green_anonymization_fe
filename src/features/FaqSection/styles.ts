@@ -36,6 +36,15 @@ export const FaqAccordion = styled(Accordion)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   backgroundColor: theme.palette.background.paper,
 
+  opacity: 0,
+  transform: "translateY(16px)",
+  transition: "opacity 0.5s ease, transform 0.5s ease",
+
+  "&.visible": {
+    opacity: 1,
+    transform: "translateY(0)",
+  },
+
   "&::before": {
     display: "none",
   },
@@ -56,7 +65,7 @@ export const FaqSummary = styled(AccordionSummary)(({ theme }) => ({
 
 export const FaqQuestion = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
-  color: theme.palette.text.primary,
+  color: theme.palette.color.charcoal,
 }));
 
 export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
@@ -64,5 +73,5 @@ export const FaqDetails = styled(AccordionDetails)(({ theme }) => ({
 }));
 
 export const FaqAnswer = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.color.grayDark,
 }));
