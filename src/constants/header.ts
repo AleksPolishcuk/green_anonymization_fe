@@ -1,11 +1,11 @@
 export const headerNavItems = [
-  { key: "solution", href: "#solution" },
-  { key: "contactUs", href: "/contactus" },
+  { key: "solution", to: "/#solution" as const },
+  { key: "contactUs", to: "/contactus" as const },
 ] as const;
 
 export const headerRoutes = {
   home: "/",
-  signInHash: "sign-in",
+  signIn: "/sign-in",
 } as const;
 
 export const headerAssetPaths = {
