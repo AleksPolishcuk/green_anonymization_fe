@@ -22,12 +22,11 @@ export const EmailCard = styled("div")(({ theme }) => ({
   gap: theme.spacing(4),
 
   opacity: 0,
-  transform: "translateY(24px)",
-  transition: "opacity 0.6s ease, transform 0.6s ease",
+  animation: "fadeSlideIn 0.6s ease forwards",
 
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
+  "@keyframes fadeSlideIn": {
+    from: { opacity: 0, transform: "translateY(24px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
   },
 }));
 
@@ -59,13 +58,7 @@ export const FormCard = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 
   opacity: 0,
-  transform: "translateY(24px)",
-  transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
-
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
+  animation: "fadeSlideIn 0.6s ease 0.2s forwards",
 }));
 
 export const FormTitle = styled("h3")(({ theme }) => ({
