@@ -1,10 +1,13 @@
 ## Describe your changes
+
 - I did an awesome feature.
 
 ## Issue ticket code (and/or) and link
+
 - [Link to JIRA ticket](https://ticket-url)
 
 ## Git rules
+
 1. Each PR should be independent, created from `develop` branch, and only from `develop`.
 2. `master` or `main` is only for init commit and production. Development is only in `develop`.
 3. Delete remote branches if they are not in use.
@@ -15,6 +18,7 @@
 Stick to these rules if you want three PRs to pass the test and not have to redo the work.
 
 ### General
+
 - [ ] Assigned myself to the PR
 - [ ] Assigned the appropriate labels to the PR
 - [ ] Assigned the appropriate reviewers to the PR
@@ -40,6 +44,7 @@ Stick to these rules if you want three PRs to pass the test and not have to redo
 - [ ] Strings are moved to constants where appropriate
 
 ### Frontend
+
 - [ ] Components and business logic are separated
 - [ ] Colors, font size, and font family are in theme or constants
 - [ ] No text in components, use i18n
@@ -48,6 +53,7 @@ Stick to these rules if you want three PRs to pass the test and not have to redo
 - [ ] Attach a screenshot if PR has visual changes
 
 ### Backend
+
 - [ ] Swagger documentation updated
 - [ ] Database requests are optimized and not redundant
 - [ ] Unit tests written
@@ -56,4 +62,3 @@ Stick to these rules if you want three PRs to pass the test and not have to redo
 - [ ] Use `@index` decorator for frequently requested data
 - [ ] Use REST API naming conventions
 - [ ] Use UUIDs for primary keys
-

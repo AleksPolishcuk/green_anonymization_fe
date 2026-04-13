@@ -7,6 +7,7 @@ import AuthCallback from "pages/AuthCallback";
 import Dashboard from "pages/Dashboard";
 import Register from "pages/Register";
 import SignIn from "pages/SignIn";
+import { NotFound } from "pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +28,27 @@ export const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <HomePage />,
+    element: (
+      <MainLayout>
+        <NotFound />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "auth-callback",
+    element: <AuthCallback />,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "sign-in",
+    element: <SignIn />,
   },
   {
     path: "register",
