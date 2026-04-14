@@ -36,7 +36,7 @@ export default function RegisterForm({ form }: Props) {
 
   return (
     <>
-      <RegisterHeading> {t("heading")}</RegisterHeading>
+      <RegisterHeading> {t("register.heading")}</RegisterHeading>
       <RegisterFormBox>
         <form onSubmit={form.handleSubmit(form.onSubmit)} noValidate>
           <NamesRow>
