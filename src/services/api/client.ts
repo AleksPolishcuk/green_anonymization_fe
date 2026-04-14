@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios";
-import type { AxiosInstance } from "axios";
-import type { ApiResponse } from "./typing/common";
+import type { AxiosInstance, AxiosResponse } from "axios";
 import { ApiError } from "./typing/common";
 import { getErrorMessage } from "shared/utils/error-messages";
 
@@ -41,6 +40,14 @@ const handleApiError = (error: AxiosError): never => {
   throw createApiError(userMessage, status);
 };
 
+const extractData = <T>(data: unknown): T => {
+  if (data && typeof data === "object" && "data" in data) {
+    return (data as { data: T }).data;
+  }
+
+  return data as T;
+};
+
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
@@ -56,64 +63,38 @@ axiosInstance.interceptors.response.use(
   },
 );
 
+const request = async <T>(
+  promise: Promise<AxiosResponse<unknown>>,
+): Promise<T> => {
+  try {
+    const response = await promise;
+    return extractData<T>(response.data);
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      handleApiError(error);
+    }
+
+    throw createApiError(
+      error instanceof Error ? error.message : "An unexpected error occurred",
+      500,
+    );
+  }
+};
+
 export const apiClient = {
-  async get<T>(path: string): Promise<T> {
-    try {
-      const response = await axiosInstance.get<ApiResponse<T>>(path);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  get<T>(path: string): Promise<T> {
+    return request<T>(axiosInstance.get(path));
   },
 
-  async post<T, D>(path: string, body: D): Promise<T> {
-    try {
-      const response = await axiosInstance.post<ApiResponse<T>>(path, body);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  post<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.post(path, body));
   },
 
-  async put<T, D>(path: string, body: D): Promise<T> {
-    try {
-      const response = await axiosInstance.put<ApiResponse<T>>(path, body);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  put<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.put(path, body));
   },
 
-  async delete<T>(path: string): Promise<T> {
-    try {
-      const response = await axiosInstance.delete<ApiResponse<T>>(path);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  delete<T>(path: string): Promise<T> {
+    return request<T>(axiosInstance.delete(path));
   },
 };

@@ -16,7 +16,11 @@ export const getErrorMessage = (
     503: "Service temporarily unavailable. Please try again later.",
   };
 
-  return statusMessages[statusCode] || defaultMessage;
+  return (
+    defaultMessage ||
+    statusMessages[statusCode] ||
+    "An unexpected error occurred."
+  );
 };
 
 /**
