@@ -58,22 +58,24 @@ export const CardsGrid = styled("div")(({ theme }) => ({
   gap: theme.spacing(6),
   marginBottom: theme.spacing(6),
 
-  "& > *:nth-child(2)": {
-    marginTop: theme.spacing(10),
+  [theme.breakpoints.up("lg")]: {
+    "& > *:nth-child(2)": {
+      marginTop: theme.spacing(10),
+    },
+
+    "& > *:nth-child(4)": {
+      marginTop: theme.spacing(10),
+    },
   },
 
-  "& > *:nth-child(4)": {
-    marginTop: theme.spacing(10),
+  [theme.breakpoints.down("lg")]: {
+    gridTemplateColumns: "repeat(2, 1fr)",
+    alignItems: "unset",
+    gap: theme.spacing(4),
   },
 
   [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
-    alignItems: "unset",
-    gap: theme.spacing(4),
-
-    "& > *:nth-child(n)": {
-      marginTop: 0,
-    },
   },
 }));
 
