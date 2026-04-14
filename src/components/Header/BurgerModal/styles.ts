@@ -1,4 +1,6 @@
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+
 import { headerBreakpoints, headerDimensions } from "constants/header";
 const overlayDurationMs = 280;
 const panelDurationMs = 300;
@@ -169,7 +171,7 @@ export const ModalNav = styled("nav")(({ theme }) => ({
   gap: theme.spacing(6),
 }));
 
-export const ModalNavLink = styled("a")(({ theme }) => ({
+export const ModalNavLink = styled(Link)(({ theme }) => ({
   boxSizing: "border-box",
   margin: 0,
   position: "relative",

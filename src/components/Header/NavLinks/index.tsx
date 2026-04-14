@@ -1,14 +1,13 @@
-import type { ComponentType, HTMLAttributes } from "react";
+import type { ComponentType } from "react";
 import { useTranslation } from "react-i18next";
+import type { LinkProps } from "react-router-dom";
 
 import { NavButton } from "components/Header/NavLinks/styles";
 import { headerI18nPrefix, headerNavItems } from "constants/header";
 
 type NavLinksProps = {
   onNavigate?: () => void;
-  LinkComponent?: ComponentType<
-    HTMLAttributes<HTMLAnchorElement> & { href: string }
-  >;
+  LinkComponent?: ComponentType<LinkProps>;
 };
 
 export function NavLinks({
@@ -16,14 +15,14 @@ export function NavLinks({
   LinkComponent = NavButton,
 }: NavLinksProps) {
   const { t } = useTranslation();
-  const Link = LinkComponent;
+  const LinkEl = LinkComponent;
 
   return (
     <>
       {headerNavItems.map((item) => (
-        <Link key={item.key} href={item.href} onClick={onNavigate}>
+        <LinkEl key={item.key} to={item.to} onClick={onNavigate}>
           {t(`${headerI18nPrefix}.nav.${item.key}`)}
-        </Link>
+        </LinkEl>
       ))}
     </>
   );

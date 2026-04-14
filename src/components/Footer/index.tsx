@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import Box from "@mui/material/Box";
 import { IconButton, Link, Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { Link as RouterLink } from "react-router-dom";
 
 import { useFooterLegalLabels } from "components/Footer/hooks/useFooterLegalLabels";
 import { SpriteIcon } from "components/SpriteIcon";
@@ -146,12 +145,14 @@ export function Footer() {
                     </Typography>
                     <Box component="ul" sx={footerNavListSx}>
                       {group.links.map((item) => (
-                        <Box component="li" key={item.to}>
+                        <Box component="li" key={item.labelKey}>
                           <Link
-                            component={RouterLink}
-                            to={item.to}
+                            component="a"
+                            href={item.to}
                             variant="body2"
                             underline="none"
+                            aria-disabled
+                            onClick={(event) => event.preventDefault()}
                             sx={footerNavLinkSx}
                           >
                             {t(item.labelKey)}
@@ -171,27 +172,33 @@ export function Footer() {
             </Typography>
             <FooterLegalRow>
               <Link
-                component={RouterLink}
-                to={footerInternalPaths.privacy}
+                component="a"
+                href={footerInternalPaths.privacy}
                 variant="caption"
                 underline="none"
+                aria-disabled
+                onClick={(event) => event.preventDefault()}
                 sx={footerLegalLinkSx}
               >
                 {t(privacyLabelKey)}
               </Link>
               <Link
-                component={RouterLink}
-                to={footerInternalPaths.terms}
+                component="a"
+                href={footerInternalPaths.terms}
                 underline="none"
+                aria-disabled
+                onClick={(event) => event.preventDefault()}
                 sx={footerLegalLinkSx}
               >
                 {t(termsLabelKey)}
               </Link>
               <Link
-                component={RouterLink}
-                to={footerInternalPaths.cookies}
+                component="a"
+                href={footerInternalPaths.cookies}
                 variant="caption"
                 underline="none"
+                aria-disabled
+                onClick={(event) => event.preventDefault()}
                 sx={footerLegalLinkSx}
               >
                 {t(cookiesLabelKey)}

@@ -20,9 +20,11 @@ export const AuthActionsRow = styled("div", {
   }),
 }));
 
-export const SignInLink = styled("a")(({ theme }) => ({
+export const SignInButton = styled("button")(({ theme }) => ({
   boxSizing: "border-box",
   margin: 0,
+  appearance: "none",
+  cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
