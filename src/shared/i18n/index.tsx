@@ -5,7 +5,7 @@ import enTranslation from "./locales/en/translation.json";
 import enHero from "./locales/en/hero.json";
 import enCapabilities from "./locales/en/capabilities.json";
 import enReadyToProtect from "./locales/en/readyToProtect.json";
-import enNotFound from "./locales/en/notFound.json";
+import enNotFound from "./locales/en/notfound.json";
 
 void i18n.use(initReactI18next).init({
   resources: {
