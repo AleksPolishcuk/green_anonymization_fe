@@ -92,6 +92,10 @@ export const apiClient = {
     return request<T>(axiosInstance.put(path, body));
   },
 
+  patch<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.patch(path, body));
+  },
+
   delete<T>(path: string): Promise<T> {
     return request<T>(axiosInstance.delete(path));
   },
