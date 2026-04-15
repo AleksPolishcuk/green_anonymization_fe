@@ -12,7 +12,6 @@ const parseErrorResponse = (data: unknown): string => {
 
   const errorData = data as Record<string, unknown>;
 
-  // Handle array of error messages
   if (Array.isArray(errorData.message)) {
     return errorData.message.join(", ");
   }
@@ -55,7 +54,6 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-// Response interceptor for error handling
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {

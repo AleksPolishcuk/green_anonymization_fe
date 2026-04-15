@@ -1,6 +1,3 @@
-/**
- * Map HTTP status codes to user-friendly error messages
- */
 export const getErrorMessage = (
   statusCode: number,
   defaultMessage: string,
@@ -23,7 +20,4 @@ export const getErrorMessage = (
   );
 };
 
-/**
- * Check if error is rate limit (429)
- */
 export const isRateLimitError = (status: number): boolean => status === 429;
