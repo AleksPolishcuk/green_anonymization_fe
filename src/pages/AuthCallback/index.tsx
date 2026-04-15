@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
 import { API_BASE_URL, ENDPOINTS } from "constants";
-import { setTokens } from "features/Auth/authTokens";
+import { setTokens } from "features/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "shared/ui/Loader";
@@ -10,35 +9,51 @@ export default function AuthCallback() {
 
   useEffect(() => {
     const run = async () => {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get("token");
+      try {
+        const token = new URLSearchParams(window.location.search).get("token");
 
-      const res = await fetch(`${API_BASE_URL}${ENDPOINTS.verify}${token}`);
+        if (!token) {
+          navigate("/sign-in");
+          return;
+        }
 
-      const data = await res.json();
+        const res = await fetch(`${API_BASE_URL}${ENDPOINTS.verify}${token}`);
 
-      setTokens(data.accessToken, data.refreshToken);
+        const data = await res.json();
 
-      if (data.isRegistered) {
+        if (!res.ok || !data?.accessToken || !data?.refreshToken) {
+          navigate("/sign-in");
+          return;
+        }
+
+        setTokens(data.accessToken, data.refreshToken);
+
+        const sessionRes = await fetch(`${API_BASE_URL}${ENDPOINTS.session}`, {
+          headers: {
+            Authorization: `Bearer ${data.accessToken}`,
+          },
+        });
+
+        const session = await sessionRes.json();
+
+        if (!session?.authenticated) {
+          navigate("/sign-in");
+          return;
+        }
+
+        if (!session.registered) {
+          navigate("/register");
+          return;
+        }
+
         navigate("/dashboard");
-      } else {
-        navigate("/register");
+      } catch {
+        navigate("/sign-in");
       }
     };
 
     run();
   }, [navigate]);
 
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <Loader />
-    </Box>
-  );
+  return <Loader />;
 }

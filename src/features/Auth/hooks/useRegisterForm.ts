@@ -2,7 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL, ENDPOINTS } from "constants";
-import authFetch from "features/Auth/authFetch";
+import authFetch from "features/Auth/utils/authFetch";
 
 type RegisterFormValues = {
   firstName: string;

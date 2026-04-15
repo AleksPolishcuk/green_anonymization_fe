@@ -1,8 +1,7 @@
-import { AUTH_STATUS } from "constants/auth";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store/hooks";
-import { fetchMe } from "store/slices/authSlice";
+import { fetchSession } from "store/slices/authSlice";
 
 export const useAuthGuard = (mode: "registered" | "unregistered") => {
   const dispatch = useAppDispatch();
@@ -11,38 +10,26 @@ export const useAuthGuard = (mode: "registered" | "unregistered") => {
 
   useEffect(() => {
     const check = async () => {
-      const result = await dispatch(fetchMe());
+      const result = await dispatch(fetchSession());
 
-      if (fetchMe.rejected.match(result)) {
-        const reason = result.payload;
-
-        if (reason === AUTH_STATUS.unauthenticated) {
-          navigate("/sign-in");
-          return;
-        }
-
-        if (reason === AUTH_STATUS.unregistered) {
-          if (mode === "registered") {
-            navigate("/register");
-            return;
-          }
-
-          setLoading(false);
-          return;
-        }
-
-        setLoading(false);
+      if (fetchSession.rejected.match(result)) {
+        navigate("/sign-in");
         return;
       }
 
-      if (fetchMe.fulfilled.match(result)) {
-        if (mode === "unregistered") {
-          navigate("/dashboard");
-          return;
-        }
+      const { registered } = result.payload;
 
-        setLoading(false);
+      if (mode === "registered" && !registered) {
+        navigate("/register");
+        return;
       }
+
+      if (mode === "unregistered" && registered) {
+        navigate("/dashboard");
+        return;
+      }
+
+      setLoading(false);
     };
 
     check();

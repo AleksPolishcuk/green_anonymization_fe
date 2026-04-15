@@ -36,4 +36,5 @@ export const ENDPOINTS = {
   verify: "/auth/verify?token=",
   register: "/user/register",
   me: "/user/me",
+  session: "/user/session",
 } as const;
