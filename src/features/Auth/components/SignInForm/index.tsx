@@ -14,7 +14,7 @@ import {
 } from "./styles";
 import EmailStatus from "../EmailStatus";
 import { Trans, useTranslation } from "react-i18next";
-import { FormInputField } from "constants/auth";
+import { FormInputField } from "../styles";
 
 type Props = {
   form: ReturnType<typeof useEmailLoginForm>;

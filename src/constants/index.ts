@@ -29,12 +29,3 @@ export const COMPLIANCE_CARDS = [
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
 
 export const API_BASE_URL = import.meta.env.VITE_API_URL;
-
-export const ENDPOINTS = {
-  login: "/auth/login",
-  refresh: "/auth/refresh",
-  verify: "/auth/verify?token=",
-  register: "/user/register",
-  me: "/user/me",
-  session: "/user/session",
-} as const;

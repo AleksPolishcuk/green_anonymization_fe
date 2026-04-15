@@ -1,4 +1,4 @@
-import { API_BASE_URL, ENDPOINTS } from "constants";
+import { API_BASE_URL } from "constants";
 import { setTokens } from "features/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function AuthCallback() {
           return;
         }
 
-        const res = await fetch(`${API_BASE_URL}${ENDPOINTS.verify}${token}`);
+        const res = await fetch(`${API_BASE_URL}/auth/verify?token=${token}`);
 
         const data = await res.json();
 
@@ -28,7 +28,7 @@ export default function AuthCallback() {
 
         setTokens(data.accessToken, data.refreshToken);
 
-        const sessionRes = await fetch(`${API_BASE_URL}${ENDPOINTS.session}`, {
+        const sessionRes = await fetch(`${API_BASE_URL}/user/session`, {
           headers: {
             Authorization: `Bearer ${data.accessToken}`,
           },

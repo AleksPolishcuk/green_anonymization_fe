@@ -25,7 +25,7 @@ import {
   RegisterButton,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import { FormInputField } from "constants/auth";
+import { FormInputField } from "../styles";
 
 type Props = {
   form: ReturnType<typeof useRegisterForm>;

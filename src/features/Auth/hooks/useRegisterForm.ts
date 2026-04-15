@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL, ENDPOINTS } from "constants";
+import { API_BASE_URL } from "constants";
 import authFetch from "features/Auth/utils/authFetch";
 
 type RegisterFormValues = {
@@ -37,7 +37,7 @@ export const useRegisterForm = () => {
       };
 
       const { status, data } = await authFetch(
-        `${API_BASE_URL}${ENDPOINTS.register}`,
+        `${API_BASE_URL}/user/register`,
         {
           method: "POST",
           body: JSON.stringify(payload),
