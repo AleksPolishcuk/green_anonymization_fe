@@ -235,7 +235,7 @@ export const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        html: { width: "100%", height: "100%" },
+        html: { width: "100%", height: "100%", scrollBehavior: "smooth" },
         body: { width: "100%", minHeight: "100%", margin: 0 },
         "#root": { width: "100%", minHeight: "100vh" },
         "*": { boxSizing: "border-box" },
@@ -245,6 +245,7 @@ export const theme = createTheme({
     MuiContainer: {
       defaultProps: {
         maxWidth: false,
+        disableGutters: true,
       },
       styleOverrides: {
         root: {
