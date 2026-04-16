@@ -39,14 +39,6 @@ const handleApiError = (error: AxiosError): never => {
   throw createApiError(userMessage, status);
 };
 
-const extractData = <T>(data: unknown): T => {
-  if (data && typeof data === "object" && "data" in data) {
-    return (data as { data: T }).data;
-  }
-
-  return data as T;
-};
-
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
@@ -66,7 +58,7 @@ const request = async <T>(
 ): Promise<T> => {
   try {
     const response = await promise;
-    return extractData<T>(response.data);
+    return response.data as T;
   } catch (error) {
     if (error instanceof AxiosError) {
       handleApiError(error);
