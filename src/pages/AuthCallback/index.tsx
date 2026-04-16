@@ -36,11 +36,6 @@ export default function AuthCallback() {
 
         const session = await sessionRes.json();
 
-        if (!session?.authenticated) {
-          navigate("/sign-in");
-          return;
-        }
-
         if (!session.registered) {
           navigate("/register");
           return;
