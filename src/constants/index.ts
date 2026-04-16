@@ -27,3 +27,5 @@ export const COMPLIANCE_CARDS = [
 ] as const;
 
 export const DEFAULT_PHONE_COUNTRY_CODE = "US";
+
+export const API_BASE_URL = import.meta.env.VITE_API_URL;
