@@ -1,7 +1,7 @@
-import { API_BASE_URL } from "constants";
 import { setTokens } from "features/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { authService } from "services/api/auth";
 import { Loader } from "shared/ui/Loader";
 
 export default function AuthCallback() {
@@ -17,24 +17,16 @@ export default function AuthCallback() {
           return;
         }
 
-        const res = await fetch(`${API_BASE_URL}/auth/verify?token=${token}`);
+        const data = await authService.verify(token);
 
-        const data = await res.json();
-
-        if (!res.ok || !data?.accessToken || !data?.refreshToken) {
+        if (!data?.accessToken || !data?.refreshToken) {
           navigate("/sign-in");
           return;
         }
 
         setTokens(data.accessToken, data.refreshToken);
 
-        const sessionRes = await fetch(`${API_BASE_URL}/user/session`, {
-          headers: {
-            Authorization: `Bearer ${data.accessToken}`,
-          },
-        });
-
-        const session = await sessionRes.json();
+        const session = await authService.getSession();
 
         if (!session.registered) {
           navigate("/register");

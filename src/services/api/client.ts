@@ -1,9 +1,22 @@
 import axios, { AxiosError } from "axios";
-import type { AxiosInstance, AxiosResponse } from "axios";
+import type {
+  AxiosInstance,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { ApiError } from "./typing/common";
 import { getErrorMessage } from "shared/utils/error-messages";
+import {
+  clearTokens,
+  getAccessToken,
+  getRefreshToken,
+  setTokens,
+} from "features/Auth/utils/authTokens";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+let isRefreshing = false;
+let refreshPromise: Promise<string | null> | null = null;
 
 const parseErrorResponse = (data: unknown): string => {
   if (!data || typeof data !== "object") {
@@ -46,9 +59,71 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
+const tryRefresh = async (): Promise<string | null> => {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) return null;
+
+  try {
+    const res = await axios.post(`${API_URL}/auth/refresh`, {
+      refreshToken,
+    });
+
+    const data = res.data;
+
+    if (!data?.accessToken) return null;
+
+    setTokens(data.accessToken, data.refreshToken || refreshToken);
+
+    return data.accessToken;
+  } catch {
+    return null;
+  }
+};
+
+axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token = getAccessToken();
+
+  if (token && !config.headers?.Authorization) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean;
+    };
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      if (!isRefreshing) {
+        isRefreshing = true;
+        refreshPromise = tryRefresh().finally(() => {
+          isRefreshing = false;
+        });
+      }
+
+      const newAccessToken = await refreshPromise;
+
+      if (!newAccessToken) {
+        clearTokens();
+        return Promise.reject(error);
+      }
+
+      if (originalRequest.headers) {
+        originalRequest.headers.set(
+          "Authorization",
+          `Bearer ${newAccessToken}`,
+        );
+      }
+
+      return axiosInstance(originalRequest);
+    }
+
     handleApiError(error);
   },
 );

@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authFetch from "features/Auth/utils/authFetch";
-import { API_BASE_URL } from "constants";
 import type User from "shared/interfaces/User";
 import { clearTokens } from "features/Auth/utils/authTokens";
 import { AUTH_STATUS } from "constants/auth";
+import { authService } from "services/api/auth";
 
 type SessionResponse = {
   registered: boolean;
@@ -15,13 +14,11 @@ export const fetchSession = createAsyncThunk<
   void,
   { rejectValue: string }
 >("auth/session", async (_, { rejectWithValue }) => {
-  const { status, data } = await authFetch(`${API_BASE_URL}/user/session`);
-
-  if (status === 401 || !data) {
-    return rejectWithValue(AUTH_STATUS.unauthenticated);
+  try {
+    return await authService.getSession();
+  } catch (err) {
+    return rejectWithValue(`${AUTH_STATUS.unauthenticated}, error: ${err}`);
   }
-
-  return data as SessionResponse;
 });
 
 interface AuthState {
