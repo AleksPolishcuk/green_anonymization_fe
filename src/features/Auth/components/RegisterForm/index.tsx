@@ -65,7 +65,7 @@ export default function RegisterForm({ form }: Props) {
                         ),
                       },
                       htmlInput: {
-                        autoComplete: "email",
+                        autoComplete: "given-name",
                       },
                     }}
                   />
@@ -98,7 +98,7 @@ export default function RegisterForm({ form }: Props) {
                         ),
                       },
                       htmlInput: {
-                        autoComplete: "name",
+                        autoComplete: "family-name",
                       },
                     }}
                   />
@@ -132,7 +132,7 @@ export default function RegisterForm({ form }: Props) {
                       ),
                     },
                     htmlInput: {
-                      autoComplete: "text",
+                      autoComplete: "organization",
                     },
                   }}
                 />

@@ -1,6 +1,3 @@
-/**
- * Map HTTP status codes to user-friendly error messages
- */
 export const getErrorMessage = (
   statusCode: number,
   defaultMessage: string,
@@ -16,10 +13,11 @@ export const getErrorMessage = (
     503: "Service temporarily unavailable. Please try again later.",
   };
 
-  return statusMessages[statusCode] || defaultMessage;
+  return (
+    defaultMessage ||
+    statusMessages[statusCode] ||
+    "An unexpected error occurred."
+  );
 };
 
-/**
- * Check if error is rate limit (429)
- */
 export const isRateLimitError = (status: number): boolean => status === 429;
