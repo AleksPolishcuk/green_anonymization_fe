@@ -72,7 +72,7 @@ const tryRefresh = async (): Promise<string | null> => {
 
     if (!data?.accessToken) return null;
 
-    setTokens(data.accessToken, data.refreshToken || refreshToken);
+    setTokens(data.accessToken, refreshToken);
 
     return data.accessToken;
   } catch {

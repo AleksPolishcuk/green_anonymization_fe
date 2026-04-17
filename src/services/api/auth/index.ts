@@ -15,7 +15,7 @@ export const authService = {
   },
 
   refresh(refreshToken: string) {
-    return apiClient.post<VerifyResponse, { refreshToken: string }>(
+    return apiClient.post<{ accessTokenL: string }, { refreshToken: string }>(
       "/auth/refresh",
       { refreshToken },
     );
