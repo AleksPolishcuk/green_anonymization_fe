@@ -1,16 +1,15 @@
 import { useMemo } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 import Box from "@mui/material/Box";
-import { IconButton, Link, Stack, Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { useFooterLegalLabels } from "components/Footer/hooks/useFooterLegalLabels";
 import { SpriteIcon } from "components/SpriteIcon";
 import {
-  footerInternalPaths,
+  footerNavColumnTitleKey,
   footerMainLogoPreserveAspectRatio,
-  footerNavGroups,
-  footerSocialProfileUrls,
+  footerNavLinks,
   spriteSymbolIds,
   spriteViewBoxes,
 } from "constants/footer";
@@ -20,28 +19,21 @@ import {
   FooterBrandBlock,
   FooterBrandRow,
   FooterDescription,
-  FooterLegalRow,
   FooterRoot,
-  FooterSocialRow,
+  FooterTextBlock,
   FooterTop,
   footerCopyrightSx,
-  footerLegalLinkSx,
   footerMainLogoInnerSx,
   footerMainLogoWrapperSx,
-  footerNavColumnStackSx,
   footerNavGridSx,
   footerNavHeadingSx,
   footerNavListSx,
   footerNavLinkSx,
-  footerSocialIconSizePx,
-  footerSocialIconButtonSx,
   FooterContainer,
 } from "components/Footer/styles";
 
 export function Footer() {
   const { t } = useTranslation();
-  const { privacyLabelKey, termsLabelKey, cookiesLabelKey } =
-    useFooterLegalLabels();
   const copyrightYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
@@ -66,144 +58,44 @@ export function Footer() {
                   />
                 </Box>
               </FooterBrandRow>
+            </FooterBrandBlock>
+
+            <FooterTextBlock>
               <FooterDescription variant="body2">
                 {t("footer.description")}
               </FooterDescription>
-              <FooterSocialRow>
-                <IconButton
-                  component="a"
-                  href={footerSocialProfileUrls.x}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={t("footer.social.xAria")}
-                  sx={footerSocialIconButtonSx}
-                >
-                  <SpriteIcon
-                    symbolId={spriteSymbolIds.twitter}
-                    viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconSizePx}
-                    height={footerSocialIconSizePx}
-                    decorative
-                  />
-                </IconButton>
-                <IconButton
-                  component="a"
-                  href={footerSocialProfileUrls.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={t("footer.social.linkedinAria")}
-                  sx={footerSocialIconButtonSx}
-                >
-                  <SpriteIcon
-                    symbolId={spriteSymbolIds.linkedin}
-                    viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconSizePx}
-                    height={footerSocialIconSizePx}
-                    decorative
-                  />
-                </IconButton>
-                <IconButton
-                  component="a"
-                  href={footerSocialProfileUrls.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={t("footer.social.githubAria")}
-                  sx={footerSocialIconButtonSx}
-                >
-                  <SpriteIcon
-                    symbolId={spriteSymbolIds.github}
-                    viewBox={spriteViewBoxes.social}
-                    width={footerSocialIconSizePx}
-                    height={footerSocialIconSizePx}
-                    decorative
-                  />
-                </IconButton>
-              </FooterSocialRow>
-            </FooterBrandBlock>
+            </FooterTextBlock>
 
-            <Stack
+            <Box
               component="nav"
               aria-label={t("footer.navAria")}
               sx={footerNavGridSx}
             >
-              {footerNavGroups.map((group) => {
-                const sectionHeadingId = `footer-nav-${group.columnTitleKey.replace(/\./g, "-")}`;
-                return (
-                  <Stack
-                    key={group.columnTitleKey}
-                    component="section"
-                    aria-labelledby={sectionHeadingId}
-                    sx={footerNavColumnStackSx}
-                  >
-                    <Typography
-                      variant="h4"
-                      component="h2"
-                      id={sectionHeadingId}
-                      sx={footerNavHeadingSx}
+              <Typography variant="h4" component="h2" sx={footerNavHeadingSx}>
+                {t(footerNavColumnTitleKey)}
+              </Typography>
+              <Box component="ul" sx={footerNavListSx}>
+                {footerNavLinks.map((item) => (
+                  <Box component="li" key={item.labelKey}>
+                    <Link
+                      component={RouterLink}
+                      to={item.to}
+                      variant="body2"
+                      underline="none"
+                      sx={footerNavLinkSx}
                     >
-                      {t(group.columnTitleKey)}
-                    </Typography>
-                    <Box component="ul" sx={footerNavListSx}>
-                      {group.links.map((item) => (
-                        <Box component="li" key={item.labelKey}>
-                          <Link
-                            component="a"
-                            href={item.to}
-                            variant="body2"
-                            underline="none"
-                            aria-disabled
-                            onClick={(event) => event.preventDefault()}
-                            sx={footerNavLinkSx}
-                          >
-                            {t(item.labelKey)}
-                          </Link>
-                        </Box>
-                      ))}
-                    </Box>
-                  </Stack>
-                );
-              })}
-            </Stack>
+                      {t(item.labelKey)}
+                    </Link>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
           </FooterTop>
 
           <FooterBottom>
             <Typography variant="caption" component="p" sx={footerCopyrightSx}>
               {t("footer.copyright", { year: copyrightYear })}
             </Typography>
-            <FooterLegalRow>
-              <Link
-                component="a"
-                href={footerInternalPaths.privacy}
-                variant="caption"
-                underline="none"
-                aria-disabled
-                onClick={(event) => event.preventDefault()}
-                sx={footerLegalLinkSx}
-              >
-                {t(privacyLabelKey)}
-              </Link>
-              <Link
-                component="a"
-                href={footerInternalPaths.terms}
-                underline="none"
-                aria-disabled
-                onClick={(event) => event.preventDefault()}
-                sx={footerLegalLinkSx}
-              >
-                {t(termsLabelKey)}
-              </Link>
-              <Link
-                component="a"
-                href={footerInternalPaths.cookies}
-                variant="caption"
-                underline="none"
-                aria-disabled
-                onClick={(event) => event.preventDefault()}
-                sx={footerLegalLinkSx}
-              >
-                {t(cookiesLabelKey)}
-              </Link>
-            </FooterLegalRow>
           </FooterBottom>
         </FooterBody>
       </FooterContainer>
