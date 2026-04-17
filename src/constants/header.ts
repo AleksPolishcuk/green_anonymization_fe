@@ -8,7 +8,7 @@ export const headerRoutes = {
   signIn: "/sign-in",
 } as const;
 
-export const headerAssetPaths = {
+const headerAssetPaths = {
   sprite: "/sprite.svg",
 } as const;
 
