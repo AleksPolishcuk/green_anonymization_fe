@@ -4,11 +4,7 @@ import HomePage from "pages/HomePage";
 import ContactUsPage from "pages/ContactUsPage";
 import { ComplianceSection } from "features/ComplianceSection";
 import { MainLayout, WorkspaceLayout } from "Layouts";
-import AuthCallback from "pages/AuthCallback";
-import Dashboard from "pages/Dashboard";
-import Register from "pages/Register";
-import SignIn from "pages/SignIn";
-import { MainLayout } from "Layouts";
+
 import { NotFound } from "pages/NotFoundPage";
 import DeidentificationPage from "pages/DeidentificationPage";
 
