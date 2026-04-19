@@ -1,9 +1,11 @@
 import { Box, Chip, Paper, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { BOX_SHADOW, CHIP_COLOR_PRESETS } from "constants/DeidPage";
+import { BOX_SHADOW, CHIP_COLOR_PRESETS, TOP_LINE } from "constants/DeidPage";
 
 export const FrameworkSectionRoot = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
+  position: "relative",
+
+  padding: theme.spacing(6),
   backgroundColor: theme.palette.background.default,
   borderRadius: theme.shape.borderRadius,
   border: `1px solid ${theme.palette.divider}`,
@@ -11,6 +13,18 @@ export const FrameworkSectionRoot = styled(Paper)(({ theme }) => ({
   minHeight: 308,
   marginTop: theme.spacing(8),
   marginBottom: theme.spacing(5),
+
+  overflow: "hidden",
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: 3,
+    background: TOP_LINE,
+  },
 }));
 
 export const FrameworkSectionStack = styled(Stack)({

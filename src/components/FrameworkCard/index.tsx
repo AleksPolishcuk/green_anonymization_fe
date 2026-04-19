@@ -7,7 +7,6 @@ import {
   CardHeader,
   FrameworkChip,
   SecondaryText,
-  FrameworkCardItem,
 } from "./styles";
 import { frameworkToneMap } from "constants/DeidPage";
 
@@ -21,28 +20,26 @@ export default function FrameworkCard({ framework, selected, onClick }: Props) {
   const { t } = useTranslation();
 
   return (
-    <FrameworkCardItem>
-      <CardRoot elevation={0} $selected={selected} onClick={onClick}>
-        <CardStack>
-          <CardHeader>
-            <FrameworkChip
-              label={framework.name}
-              size="small"
-              $tone={
-                frameworkToneMap[
-                  framework.code as keyof typeof frameworkToneMap
-                ] ?? "gray"
-              }
-            />
+    <CardRoot elevation={0} $selected={selected} onClick={onClick}>
+      <CardStack>
+        <CardHeader>
+          <FrameworkChip
+            label={framework.name}
+            size="small"
+            $tone={
+              frameworkToneMap[
+                framework.code as keyof typeof frameworkToneMap
+              ] ?? "gray"
+            }
+          />
 
-            <SecondaryText variant="body2">
-              {framework.entityTypesCount} {t("frameworks.entityTypes")}
-            </SecondaryText>
-          </CardHeader>
+          <SecondaryText variant="body2">
+            {framework.entityTypesCount} {t("frameworks.entityTypes")}
+          </SecondaryText>
+        </CardHeader>
 
-          <SecondaryText variant="body2">{framework.description}</SecondaryText>
-        </CardStack>
-      </CardRoot>
-    </FrameworkCardItem>
+        <SecondaryText variant="body2">{framework.description}</SecondaryText>
+      </CardStack>
+    </CardRoot>
   );
 }

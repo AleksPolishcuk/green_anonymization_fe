@@ -5,6 +5,9 @@ export const BORDER_OFF = "rgba(208, 213, 221, 0.6)";
 export const BORDER_ON = "rgba(37, 99, 235, 0.22)";
 export const BOX_SHADOW_ON =
   "0 4px 12px 0 rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.22)";
+export const BOX_SHADOW_NAV = "0 4px 16px 0 rgba(37, 99, 235, 0.16)";
+export const TOP_LINE =
+  "linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, rgba(14, 165, 233, 0.3) 100%)";
 
 export const CHIP_COLOR_PRESETS = {
   blue: {

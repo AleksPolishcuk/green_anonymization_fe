@@ -1,7 +1,8 @@
+import { Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { BOX_SHADOW } from "constants/DeidPage";
+import { NavLink, Link } from "react-router-dom";
+import { BG_OFF, BG_ON, BOX_SHADOW, BOX_SHADOW_NAV } from "constants/DeidPage";
+import { theme } from "shared/theme/theme";
 
 const SIDEBAR_WIDTH = 272;
 const LOGO_BOX_SIZE = 40;
@@ -61,3 +62,57 @@ export const SidebarTitle = styled(Typography)({
 });
 
 export const SidebarSubtitle = styled(Typography)({});
+
+export const SidebarSectionTitle = styled(Typography)(({ theme }) => ({
+  paddingLeft: theme.spacing(2),
+  marginTop: theme.spacing(3),
+  marginBottom: theme.spacing(3),
+  fontSize: theme.typography.fontSize11,
+  fontWeight: theme.typography.fontWeightBold,
+  textTransform: "uppercase",
+  color: theme.palette.text.secondary,
+}));
+
+export const SidebarNav = styled(Stack)(({ theme }) => ({
+  gap: theme.spacing(1),
+}));
+
+export const SidebarNavItem = styled(NavLink)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(3),
+  padding: theme.spacing(2.5, 3),
+  borderRadius: 12,
+  textDecoration: "none",
+  color: theme.palette.text.secondary,
+  transition: "all 0.2s ease",
+
+  "&.active": {
+    backgroundColor: BG_ON,
+    color: theme.palette.text.primary,
+    boxShadow: BOX_SHADOW_NAV,
+  },
+
+  "&:hover": {
+    backgroundColor: BG_OFF,
+  },
+}));
+
+export const SidebarNavIconBox = styled(Box)({
+  width: 28,
+  height: 28,
+  borderRadius: "8px",
+  backgroundColor: theme.palette.background.softGray,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexShrink: 0,
+});
+
+export const SidebarNavIcon = styled("svg")({
+  width: 15,
+  height: 15,
+  display: "block",
+  fill: "none",
+  stroke: theme.palette.text.secondary,
+});

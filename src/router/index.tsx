@@ -37,44 +37,24 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "*",
+    path: "sign-in",
+    element: <SignIn />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "auth-callback",
+    element: <AuthCallback />,
+  },
+  {
+    path: "dashboard",
     element: (
-      <MainLayout>
-        <NotFound />
-      </MainLayout>
+      <WorkspaceLayout>
+        <Dashboard />
+      </WorkspaceLayout>
     ),
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
   },
   {
     path: "deidentification",
@@ -82,6 +62,14 @@ export const router = createBrowserRouter([
       <WorkspaceLayout>
         <DeidentificationPage />
       </WorkspaceLayout>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <MainLayout>
+        <NotFound />
+      </MainLayout>
     ),
   },
 ]);

@@ -204,6 +204,10 @@
   },
   "sidebar": {
     "title": "Clinical Data Studio",
-    "subtitle": "De-ID & Synthesis"
+    "subtitle": "De-ID & Synthesis",
+    "workspace": "Workspace",
+    "dashboard": "Dashboard",
+    "deidentify": "De-Identify",
+    "syntheticData": "Synthetic Data"
   }
 }

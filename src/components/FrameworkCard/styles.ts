@@ -19,10 +19,6 @@ type ChipProps = {
   $tone: ChipColorPreset;
 };
 
-export const FrameworkCardItem = styled("li")({
-  listStyle: "none",
-});
-
 export const CardRoot = styled(Paper, {
   shouldForwardProp: (prop) => prop !== "$selected",
 })<CardProps>(({ theme, $selected }) => ({
