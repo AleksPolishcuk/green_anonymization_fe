@@ -1,10 +1,22 @@
 import axios, { AxiosError } from "axios";
-import type { AxiosInstance } from "axios";
-import type { ApiResponse } from "./typing/common";
+import type {
+  AxiosInstance,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { ApiError } from "./typing/common";
 import { getErrorMessage } from "shared/utils/error-messages";
+import {
+  clearTokens,
+  getAccessToken,
+  getRefreshToken,
+  setTokens,
+} from "features/Auth/utils/authTokens";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+let isRefreshing = false;
+let refreshPromise: Promise<string | null> | null = null;
 
 const parseErrorResponse = (data: unknown): string => {
   if (!data || typeof data !== "object") {
@@ -13,7 +25,6 @@ const parseErrorResponse = (data: unknown): string => {
 
   const errorData = data as Record<string, unknown>;
 
-  // Handle array of error messages
   if (Array.isArray(errorData.message)) {
     return errorData.message.join(", ");
   }
@@ -48,72 +59,111 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-// Response interceptor for error handling
+const tryRefresh = async (): Promise<string | null> => {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) return null;
+
+  try {
+    const res = await axios.post(`${API_URL}/auth/refresh`, {
+      refreshToken,
+    });
+
+    const data = res.data;
+
+    if (!data?.accessToken) return null;
+
+    setTokens(data.accessToken, refreshToken);
+
+    return data.accessToken;
+  } catch {
+    return null;
+  }
+};
+
+axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token = getAccessToken();
+
+  if (token && !config.headers?.Authorization) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean;
+    };
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      if (!isRefreshing) {
+        isRefreshing = true;
+        refreshPromise = tryRefresh().finally(() => {
+          isRefreshing = false;
+        });
+      }
+
+      const newAccessToken = await refreshPromise;
+
+      if (!newAccessToken) {
+        clearTokens();
+        return Promise.reject(error);
+      }
+
+      if (originalRequest.headers) {
+        originalRequest.headers.set(
+          "Authorization",
+          `Bearer ${newAccessToken}`,
+        );
+      }
+
+      return axiosInstance(originalRequest);
+    }
+
     handleApiError(error);
   },
 );
 
+const request = async <T>(
+  promise: Promise<AxiosResponse<unknown>>,
+): Promise<T> => {
+  try {
+    const response = await promise;
+    return response.data as T;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      handleApiError(error);
+    }
+
+    throw createApiError(
+      error instanceof Error ? error.message : "An unexpected error occurred",
+      500,
+    );
+  }
+};
+
 export const apiClient = {
-  async get<T>(path: string): Promise<T> {
-    try {
-      const response = await axiosInstance.get<ApiResponse<T>>(path);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  get<T>(path: string): Promise<T> {
+    return request<T>(axiosInstance.get(path));
   },
 
-  async post<T, D>(path: string, body: D): Promise<T> {
-    try {
-      const response = await axiosInstance.post<ApiResponse<T>>(path, body);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  post<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.post(path, body));
   },
 
-  async put<T, D>(path: string, body: D): Promise<T> {
-    try {
-      const response = await axiosInstance.put<ApiResponse<T>>(path, body);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  put<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.put(path, body));
   },
 
-  async delete<T>(path: string): Promise<T> {
-    try {
-      const response = await axiosInstance.delete<ApiResponse<T>>(path);
-      return response.data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        handleApiError(error);
-      }
-      throw createApiError(
-        error instanceof Error ? error.message : "An unexpected error occurred",
-        500,
-      );
-    }
+  patch<T, D>(path: string, body: D): Promise<T> {
+    return request<T>(axiosInstance.patch(path, body));
+  },
+
+  delete<T>(path: string): Promise<T> {
+    return request<T>(axiosInstance.delete(path));
   },
 };

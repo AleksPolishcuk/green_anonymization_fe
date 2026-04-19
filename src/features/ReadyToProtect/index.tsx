@@ -16,7 +16,8 @@ import { useReadyToProtect } from "./hooks/useReadyToProtect";
 
 const ReadyToProtect = () => {
   const { t } = useTranslation("readyToProtect");
-  const { handleContactSalesClick } = useReadyToProtect();
+  const { handleGetStartedClick, handleContactSalesClick } =
+    useReadyToProtect();
 
   return (
     <Section>
@@ -29,7 +30,11 @@ const ReadyToProtect = () => {
           </Description>
 
           <Actions>
-            <PrimaryButton variant="contained" disableElevation>
+            <PrimaryButton
+              variant="contained"
+              disableElevation
+              onClick={handleGetStartedClick}
+            >
               {t(readyToProtectActionKeys.primary)}
             </PrimaryButton>
 

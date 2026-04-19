@@ -29,21 +29,29 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(12),
 }));
 
+export const FaqAccordionWrapper = styled("div")({
+  opacity: 0,
+  animation: "fadeSlideIn 0.5s ease forwards",
+
+  "@keyframes fadeSlideIn": {
+    from: { opacity: 0, transform: "translateY(16px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+  },
+
+  "&:nth-of-type(1)": { animationDelay: "0s" },
+  "&:nth-of-type(2)": { animationDelay: "0.15s" },
+  "&:nth-of-type(3)": { animationDelay: "0.30s" },
+  "&:nth-of-type(4)": { animationDelay: "0.45s" },
+  "&:nth-of-type(5)": { animationDelay: "0.60s" },
+  "&:nth-of-type(6)": { animationDelay: "0.75s" },
+});
+
 export const FaqAccordion = styled(Accordion)(({ theme }) => ({
   border: `1px solid ${theme.palette.background.lightGray}`,
   borderRadius: `${theme.shape.borderRadius}px !important`,
   boxShadow: "none",
   marginBottom: theme.spacing(3),
   backgroundColor: theme.palette.background.paper,
-
-  opacity: 0,
-  transform: "translateY(16px)",
-  transition: "opacity 0.5s ease, transform 0.5s ease",
-
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
 
   "&::before": {
     display: "none",

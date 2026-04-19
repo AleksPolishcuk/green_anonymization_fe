@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
+import { headerRoutes } from "constants/header";
 import { heroAssets, heroStatsKeys } from "shared/constants/hero";
+import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 
 import {
   Content,
@@ -26,6 +28,7 @@ import {
 
 const Hero = () => {
   const { t } = useTranslation("hero");
+  const handleGetStartedClick = useCtaNavigate({ target: headerRoutes.signIn });
 
   return (
     <Section>
@@ -54,7 +57,11 @@ const Hero = () => {
 
             <Description variant="body1">{t("description")}</Description>
 
-            <PrimaryButton variant="contained" disableElevation>
+            <PrimaryButton
+              variant="contained"
+              disableElevation
+              onClick={handleGetStartedClick}
+            >
               {t("ctaPrimary")}
             </PrimaryButton>
 

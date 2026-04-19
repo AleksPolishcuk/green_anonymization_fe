@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const ctaHeightPx = 41;
@@ -9,10 +10,9 @@ const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 
 export const AuthActionsRow = styled("div", {
   shouldForwardProp: (prop) => prop !== "$isCompact",
-})<{ $isCompact: boolean }>(({ theme, $isCompact }) => ({
+})<{ $isCompact: boolean }>(({ $isCompact }) => ({
   display: "inline-flex",
   alignItems: "center",
-  gap: theme.spacing(4),
   ...($isCompact && {
     width: "100%",
     flexDirection: "column",
@@ -20,65 +20,11 @@ export const AuthActionsRow = styled("div", {
   }),
 }));
 
-export const SignInButton = styled("button")(({ theme }) => ({
-  boxSizing: "border-box",
-  margin: 0,
-  appearance: "none",
-  cursor: "pointer",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minHeight: `${ctaHeightPx}px`,
-  padding: ctaPadding,
-  borderRadius: `${ctaRadiusPx}px`,
-  border: "1px solid transparent",
-  background: "transparent",
-  color: theme.palette.text.primary,
-  fontFamily: theme.typography.fontFamily,
-  textDecoration: "none",
-  fontSize: theme.typography.fontSize14,
-  fontWeight: theme.typography.fontWeightMedium,
-  whiteSpace: "nowrap",
-  transition: [
-    `background-color ${transitionButtonSeconds}s ${easingStandard}`,
-    `border-color ${transitionButtonSeconds}s ${easingStandard}`,
-    `box-shadow ${transitionButtonSeconds}s ${easingStandard}`,
-    `color ${transitionButtonSeconds}s ${easingStandard}`,
-  ].join(", "),
-
-  "&:hover": {
-    backgroundColor: theme.palette.primary.dark,
-    borderColor: theme.palette.primary.dark,
-    boxShadow: "0 6px 14px 0 rgba(59, 130, 246, 0.6)",
-    color: theme.palette.primary.contrastText,
-  },
-
-  "&:active": {
-    backgroundColor: theme.palette.primary.main,
-    borderColor: theme.palette.primary.main,
-    boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
-    color: theme.palette.primary.contrastText,
-  },
-
-  "&:focus-visible": {
-    outline: `2px solid ${theme.palette.primary.main}`,
-    outlineOffset: "3px",
-    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
-  },
-
-  "&:focus:not(:focus-visible)": {
-    outline: "none",
-    boxShadow: "none",
-  },
-}));
-
-export const GetStartedButton = styled("button", {
+export const GetStartedButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "$isCompact",
 })<{ $isCompact?: boolean }>(({ theme, $isCompact }) => ({
   boxSizing: "border-box",
   margin: 0,
-  border: "none",
-  appearance: "none",
   cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",
@@ -94,6 +40,7 @@ export const GetStartedButton = styled("button", {
   boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
   textTransform: "none",
   flexShrink: 0,
+  minWidth: "unset",
   ...($isCompact
     ? {
         width: "100%",

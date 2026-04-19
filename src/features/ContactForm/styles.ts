@@ -22,12 +22,20 @@ export const EmailCard = styled("div")(({ theme }) => ({
   gap: theme.spacing(4),
 
   opacity: 0,
-  transform: "translateY(24px)",
-  transition: "opacity 0.6s ease, transform 0.6s ease",
+  animation: "fadeSlideIn 0.6s ease forwards",
 
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
+  "@keyframes fadeSlideIn": {
+    from: { opacity: 0, transform: "translateY(24px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+  },
+
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(4),
+    gap: theme.spacing(3),
+  },
+
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(2),
   },
 }));
 
@@ -59,12 +67,14 @@ export const FormCard = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 
   opacity: 0,
-  transform: "translateY(24px)",
-  transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
+  animation: "fadeSlideIn 0.6s ease 0.2s forwards",
 
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
+  [theme.breakpoints.down("lg")]: {
+    padding: theme.spacing(5),
+  },
+
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(2),
   },
 }));
 
@@ -75,15 +85,11 @@ export const FormTitle = styled("h3")(({ theme }) => ({
   marginBottom: theme.spacing(6),
 }));
 
-export const FormGrid = styled("div")(({ theme }) => ({
+export const FormGrid = styled("div")({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
   gap: "20px",
-
-  [theme.breakpoints.down("sm")]: {
-    gridTemplateColumns: "1fr",
-  },
-}));
+});
 
 export const FormField = styled("div")(({ theme }) => ({
   display: "flex",

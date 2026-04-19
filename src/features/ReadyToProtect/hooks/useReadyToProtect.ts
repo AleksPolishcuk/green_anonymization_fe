@@ -1,14 +1,12 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { headerRoutes } from "constants/header";
+import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 
 export const useReadyToProtect = () => {
-  const navigate = useNavigate();
-
-  const handleContactSalesClick = useCallback(() => {
-    navigate("/contactus");
-  }, [navigate]);
+  const handleGetStartedClick = useCtaNavigate({ target: headerRoutes.signIn });
+  const handleContactSalesClick = useCtaNavigate({ target: "/contactus" });
 
   return {
+    handleGetStartedClick,
     handleContactSalesClick,
   };
 };
