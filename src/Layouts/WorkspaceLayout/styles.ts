@@ -10,6 +10,5 @@ export const workspaceLayoutStyles = (theme: Theme) => ({
   content: {
     flex: 1,
     minWidth: 0,
-    padding: theme.spacing(0, 8),
   },
 });

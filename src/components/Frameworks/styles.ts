@@ -4,7 +4,8 @@ import { BOX_SHADOW, CHIP_COLOR_PRESETS, TOP_LINE } from "constants/DeidPage";
 
 export const FrameworkSectionRoot = styled(Paper)(({ theme }) => ({
   position: "relative",
-
+  marginLeft: theme.spacing(8),
+  marginRight: theme.spacing(8),
   padding: theme.spacing(6),
   backgroundColor: theme.palette.background.default,
   borderRadius: theme.shape.borderRadius,

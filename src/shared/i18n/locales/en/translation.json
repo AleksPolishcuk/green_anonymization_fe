@@ -209,5 +209,9 @@
     "dashboard": "Dashboard",
     "deidentify": "De-Identify",
     "syntheticData": "Synthetic Data"
+  },
+  "deidHeader": {
+    "title": "De-Identification Workflow",
+    "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
   }
 }
