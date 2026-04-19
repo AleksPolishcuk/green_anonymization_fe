@@ -65,7 +65,7 @@ export const SidebarSubtitle = styled(Typography)({});
 
 export const SidebarSectionTitle = styled(Typography)(({ theme }) => ({
   paddingLeft: theme.spacing(2),
-  marginTop: theme.spacing(3),
+  marginTop: theme.spacing(8),
   marginBottom: theme.spacing(3),
   fontSize: theme.typography.fontSize11,
   fontWeight: theme.typography.fontWeightBold,

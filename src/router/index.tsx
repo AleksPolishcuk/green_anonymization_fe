@@ -10,6 +10,7 @@ import Register from "pages/Register";
 import SignIn from "pages/SignIn";
 import { NotFound } from "pages/NotFoundPage";
 import DeidentificationPage from "pages/DeidentificationPage";
+import SyntheticDataPage from "pages/SyntheticDataPage";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ export const router = createBrowserRouter([
     element: (
       <WorkspaceLayout>
         <DeidentificationPage />
+      </WorkspaceLayout>
+    ),
+  },
+  {
+    path: "syntheticdata",
+    element: (
+      <WorkspaceLayout>
+        <SyntheticDataPage />
       </WorkspaceLayout>
     ),
   },

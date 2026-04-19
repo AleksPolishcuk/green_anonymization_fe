@@ -61,7 +61,7 @@ export default function Sidebar() {
           <Typography variant="body1">{t("sidebar.deidentify")}</Typography>
         </SidebarNavItem>
 
-        <SidebarNavItem to="/synthetic-data">
+        <SidebarNavItem to="/syntheticdata">
           <SidebarNavIconBox>
             <SidebarNavIcon aria-hidden="true">
               <use href={headerSpriteRef("synthetic")} />
