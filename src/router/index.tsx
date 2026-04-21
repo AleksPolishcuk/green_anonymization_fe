@@ -36,43 +36,27 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/auth-callback",
+    element: <AuthCallback />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "/sign-in",
+    element: <SignIn />,
+  },
+  {
     path: "*",
     element: (
       <MainLayout>
         <NotFound />
       </MainLayout>
     ),
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
   },
 ]);
