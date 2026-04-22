@@ -34,7 +34,7 @@ export const Capabilities = () => {
             <CardItem key={card.id} className="reveal-card">
               <IconWrapper $bg={card.iconBg} $stroke={card.iconStroke}>
                 <svg viewBox="0 0 20 20">
-                  <use href={`/capabilities/icons.svg${card.iconId}`} />
+                  <use href={`sprite.svg${card.iconId}`} />
                 </svg>
               </IconWrapper>
               <Typography variant="h4">{t(card.titleKey)}</Typography>

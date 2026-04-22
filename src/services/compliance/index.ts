@@ -14,14 +14,12 @@ export const complianceService = {
     payload: SelectComplianceRequest,
   ): Promise<ComplianceSelectionResponse> {
     return apiClient.post<ComplianceSelectionResponse, SelectComplianceRequest>(
-      "/compliance/select",
+      "/compliance/selection",
       payload,
     );
   },
 
-  async getSelection(userId: string): Promise<ComplianceSelectionResponse> {
-    return apiClient.get<ComplianceSelectionResponse>(
-      `/compliance/selection/${userId}`,
-    );
+  async getSelection(): Promise<ComplianceSelectionResponse> {
+    return apiClient.get<ComplianceSelectionResponse>(`/compliance/selection`);
   },
 };

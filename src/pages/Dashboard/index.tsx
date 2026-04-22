@@ -1,18 +1,8 @@
-import { DashboardView } from "features/Dashboard";
-import { DashboardFrame, DashboardShell } from "features/Dashboard/styles";
+import { Dashboard } from "components/Dashboard";
 import { useAuthGuard } from "shared/hooks/useAuthGuard";
 
-import { TempSidebar } from "./_TempSidebar";
-
-export default function Dashboard() {
+export default function DashboardPage() {
   useAuthGuard("registered");
 
-  return (
-    <DashboardShell>
-      <DashboardFrame>
-        <TempSidebar />
-        <DashboardView />
-      </DashboardFrame>
-    </DashboardShell>
-  );
+  return <Dashboard />;
 }
