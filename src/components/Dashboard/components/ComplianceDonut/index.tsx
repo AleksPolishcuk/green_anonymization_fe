@@ -20,7 +20,7 @@ import {
   ChartSubtitle,
   ChartTitle,
   TooltipDark,
-} from "../ChartCard/styles";
+} from "components/Dashboard/components/ChartCard/styles";
 import {
   DonutWrapper,
   LegendDot,
@@ -28,7 +28,7 @@ import {
   LegendLabel,
   LegendList,
   LegendValue,
-} from "./styles";
+} from "components/Dashboard/components/ComplianceDonut/styles";
 
 const CustomTooltip = ({ active, payload }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;

@@ -35,7 +35,7 @@ import {
   ChartSubtitle,
   ChartTitle,
   TooltipDark,
-} from "../ChartCard/styles";
+} from "components/Dashboard/components/ChartCard/styles";
 
 const CustomTooltip = ({
   active,

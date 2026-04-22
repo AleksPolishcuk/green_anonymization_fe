@@ -26,13 +26,13 @@ import {
   ChartCard,
   ChartSubtitle,
   ChartTitle,
-} from "../ChartCard/styles";
+} from "components/Dashboard/components/ChartCard/styles";
 import {
   ActiveBarLabel,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
-} from "../shared/barShapes";
+} from "components/Dashboard/components/shared/barShapes";
 
 type Props = { data: EntityTypeDatum[] };
 

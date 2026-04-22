@@ -32,7 +32,7 @@ import {
   ChartCard,
   ChartSubtitle,
   ChartTitle,
-} from "../ChartCard/styles";
+} from "components/Dashboard/components/ChartCard/styles";
 import {
   ChartBodyInner,
   LegendCircle,
@@ -42,7 +42,7 @@ import {
   TooltipDot,
   TooltipLight,
   TooltipRow,
-} from "./styles";
+} from "components/Dashboard/components/ProcessingHistoryChart/styles";
 
 const CustomTooltip = ({
   active,

@@ -4,7 +4,11 @@ import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
 import { headerSpriteRef } from "constants/header";
 import type { RecentActivityItem } from "components/Dashboard/types";
 
-import { ChartCard, ChartSubtitle, ChartTitle } from "../ChartCard/styles";
+import {
+  ChartCard,
+  ChartSubtitle,
+  ChartTitle,
+} from "components/Dashboard/components/ChartCard/styles";
 import {
   ActivityList,
   ActivityRow,
@@ -12,7 +16,7 @@ import {
   FileMeta,
   FileName,
   IconDot,
-} from "./styles";
+} from "components/Dashboard/components/RecentActivity/styles";
 
 type Props = {
   data: RecentActivityItem[];

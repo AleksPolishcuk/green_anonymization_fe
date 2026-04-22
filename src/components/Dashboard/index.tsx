@@ -1,14 +1,18 @@
 import { useAppSelector } from "store/hooks";
 
-import { ComplianceDonut } from "./components/ComplianceDonut";
-import { ConfidenceScoreChart } from "./components/ConfidenceScoreChart";
-import { DashboardHeader } from "./components/DashboardHeader";
-import { DeIdMethodChart } from "./components/DeIdMethodChart";
-import { EntityTypesChart } from "./components/EntityTypesChart";
-import { ProcessingHistoryChart } from "./components/ProcessingHistoryChart";
-import { RecentActivity } from "./components/RecentActivity";
-import { StatCards } from "./components/StatCards";
-import { ChartsLayout, ChartRow, MainContent } from "./styles";
+import { ComplianceDonut } from "components/Dashboard/components/ComplianceDonut";
+import { ConfidenceScoreChart } from "components/Dashboard/components/ConfidenceScoreChart";
+import { DashboardHeader } from "components/Dashboard/components/DashboardHeader";
+import { DeIdMethodChart } from "components/Dashboard/components/DeIdMethodChart";
+import { EntityTypesChart } from "components/Dashboard/components/EntityTypesChart";
+import { ProcessingHistoryChart } from "components/Dashboard/components/ProcessingHistoryChart";
+import { RecentActivity } from "components/Dashboard/components/RecentActivity";
+import { StatCards } from "components/Dashboard/components/StatCards";
+import {
+  ChartsLayout,
+  ChartRow,
+  MainContent,
+} from "components/Dashboard/styles";
 
 export const Dashboard = () => {
   const data = useAppSelector((state) => state.dashboard.data);
