@@ -10,7 +10,12 @@ import {
 } from "recharts";
 import { useTranslation } from "react-i18next";
 
-import { CHART_COLORS } from "constants/dashboard";
+import {
+  CHART_COLORS,
+  CHART_GRID_DASHARRAY,
+  CHART_GRID_STROKE,
+  tickStyleSm,
+} from "constants/dashboard";
 import type { ProcessingHistoryPoint } from "features/Dashboard/types";
 
 import {
@@ -19,13 +24,16 @@ import {
   ChartSubtitle,
   ChartTitle,
 } from "../ChartCard/styles";
-import { LegendItem, LegendRoot } from "./styles";
-
-const tickStyle = {
-  fontSize: 10,
-  fill: "#9ca3af",
-  fontFamily: "Inter, sans-serif",
-};
+import {
+  ChartBodyInner,
+  LegendCircle,
+  LegendItem,
+  LegendRoot,
+  TooltipDate,
+  TooltipDot,
+  TooltipLight,
+  TooltipRow,
+} from "./styles";
 
 const CustomTooltip = ({
   active,
@@ -34,44 +42,15 @@ const CustomTooltip = ({
 }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;
   return (
-    <div
-      style={{
-        background: "#fff",
-        border: "1px solid #e9edf2",
-        borderRadius: 10,
-        padding: "10px 14px",
-        fontFamily: "Inter, sans-serif",
-        fontSize: 12,
-        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-      }}
-    >
-      <div style={{ color: "#6a7282", marginBottom: 6, fontSize: 11 }}>
-        {label}
-      </div>
+    <TooltipLight>
+      <TooltipDate>{label}</TooltipDate>
       {payload.map((entry) => (
-        <div
-          key={String(entry.dataKey)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            color: "#101828",
-          }}
-        >
-          <span
-            style={{
-              display: "inline-block",
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: entry.color ?? CHART_COLORS.primary,
-              flexShrink: 0,
-            }}
-          />
+        <TooltipRow key={String(entry.dataKey)}>
+          <TooltipDot $color={entry.color ?? CHART_COLORS.primary} />
           {entry.name}: <strong>{entry.value}</strong>
-        </div>
+        </TooltipRow>
       ))}
-    </div>
+    </TooltipLight>
   );
 };
 
@@ -86,70 +65,85 @@ export const ProcessingHistoryChart = ({ data }: Props) => {
       <ChartSubtitle>{t("charts.processingHistory.subtitle")}</ChartSubtitle>
 
       <ChartBody>
-        <ResponsiveContainer width="100%" height={220}>
-          <ComposedChart
-            data={data}
-            margin={{ top: 8, right: 36, left: -20, bottom: 0 }}
-          >
-            <CartesianGrid vertical={false} stroke="#F3F4F6" />
-            <XAxis
-              dataKey="date"
-              tick={tickStyle}
-              axisLine={false}
-              tickLine={false}
-            />
-            <YAxis
-              yAxisId="left"
-              tick={tickStyle}
-              axisLine={false}
-              tickLine={false}
-              tickCount={5}
-            />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-              tick={tickStyle}
-              axisLine={false}
-              tickLine={false}
-              tickCount={5}
-            />
-            <Tooltip content={<CustomTooltip />} />
+        <ChartBodyInner>
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart
+              data={data}
+              margin={{ top: 8, right: 4, left: -20, bottom: 0 }}
+            >
+              <CartesianGrid
+                stroke={CHART_GRID_STROKE}
+                strokeWidth={1}
+                strokeDasharray={CHART_GRID_DASHARRAY}
+              />
+              <XAxis
+                dataKey="date"
+                tick={tickStyleSm}
+                axisLine={false}
+                tickLine={false}
+              />
+              <YAxis
+                yAxisId="left"
+                tick={tickStyleSm}
+                axisLine={false}
+                tickLine={false}
+                tickCount={5}
+              />
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                tick={tickStyleSm}
+                axisLine={false}
+                tickLine={false}
+                tickCount={5}
+                width={36}
+              />
+              <Tooltip content={<CustomTooltip />} />
 
-            <Line
-              yAxisId="left"
-              type="monotone"
-              dataKey="documents"
-              name={t("charts.processingHistory.documents")}
-              stroke={CHART_COLORS.primary}
-              strokeWidth={2}
-              dot={{ r: 3, fill: CHART_COLORS.primary, strokeWidth: 0 }}
-              activeDot={{ r: 5 }}
-            />
+              <Line
+                yAxisId="left"
+                type="monotone"
+                dataKey="documents"
+                name={t("charts.processingHistory.documents")}
+                stroke={CHART_COLORS.primary}
+                strokeWidth={2}
+                dot={{
+                  r: 5,
+                  fill: "#fff",
+                  stroke: CHART_COLORS.primary,
+                  strokeWidth: 2,
+                }}
+                activeDot={{ r: 6 }}
+              />
 
-            <Line
-              yAxisId="right"
-              type="monotone"
-              dataKey="entities"
-              name={t("charts.processingHistory.entities")}
-              stroke={CHART_COLORS.primary}
-              strokeWidth={2}
-              strokeDasharray="5 4"
-              dot={{
-                r: 3,
-                fill: "#fff",
-                stroke: CHART_COLORS.primary,
-                strokeWidth: 2,
-              }}
-              activeDot={{ r: 5 }}
-            />
-          </ComposedChart>
-        </ResponsiveContainer>
+              <Line
+                yAxisId="right"
+                type="monotone"
+                dataKey="entities"
+                name={t("charts.processingHistory.entities")}
+                stroke={CHART_COLORS.primary}
+                strokeWidth={2}
+                strokeDasharray="5 4"
+                dot={{
+                  r: 5,
+                  fill: "#fff",
+                  stroke: CHART_COLORS.primary,
+                  strokeWidth: 2,
+                  strokeDasharray: "3 2",
+                }}
+                activeDot={{ r: 6 }}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        </ChartBodyInner>
 
         <LegendRoot>
-          <LegendItem $color={CHART_COLORS.primary}>
+          <LegendItem>
+            <LegendCircle $color={CHART_COLORS.primary} />
             {t("charts.processingHistory.documents")}
           </LegendItem>
-          <LegendItem $dashed $color={CHART_COLORS.primary}>
+          <LegendItem>
+            <LegendCircle $dashed $color={CHART_COLORS.primary} />
             {t("charts.processingHistory.entities")}
           </LegendItem>
         </LegendRoot>

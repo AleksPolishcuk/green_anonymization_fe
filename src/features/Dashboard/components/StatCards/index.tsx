@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { headerSpriteRef } from "constants/header";
 import {
+  STAT_CARD_IDS,
   STAT_CARD_SPRITE_IDS,
   STAT_CARD_TREND_ARROW_SPRITE_ID,
 } from "constants/dashboard";
@@ -67,10 +68,10 @@ export const StatCards = ({ data }: StatCardsProps) => {
   const { t } = useTranslation("dashboard");
 
   const labelKeys: Record<string, string> = {
-    "total-docs": t("statCards.totalDocuments"),
-    entities: t("statCards.entitiesDetected"),
-    "avg-entities": t("statCards.avgEntitiesPerDoc"),
-    "success-rate": t("statCards.successRate"),
+    [STAT_CARD_IDS.totalDocs]: t("statCards.totalDocuments"),
+    [STAT_CARD_IDS.entities]: t("statCards.entitiesDetected"),
+    [STAT_CARD_IDS.avgEntities]: t("statCards.avgEntitiesPerDoc"),
+    [STAT_CARD_IDS.successRate]: t("statCards.successRate"),
   };
 
   const cards = data.map((card) => ({

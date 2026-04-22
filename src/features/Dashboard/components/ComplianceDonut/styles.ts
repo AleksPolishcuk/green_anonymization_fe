@@ -6,6 +6,9 @@ export const DonutWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(10),
+  flex: 1,
+  minHeight: 0,
+  overflow: "hidden",
   "@media (max-width: 900px)": {
     flexDirection: "column",
     alignItems: "flex-start",

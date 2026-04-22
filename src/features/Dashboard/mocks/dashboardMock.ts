@@ -1,8 +1,4 @@
-import {
-  COMPLIANCE_COLORS,
-  DEID_METHOD_COLORS,
-  ENTITY_TYPE_COLORS,
-} from "constants/dashboard";
+import { COMPLIANCE_COLORS } from "constants/dashboard";
 import type { DashboardStats } from "features/Dashboard/types";
 
 const entityRows = [
@@ -52,10 +48,7 @@ export const DASHBOARD_MOCK: DashboardStats = {
     },
   ],
 
-  entityTypes: entityRows.map((row) => ({
-    ...row,
-    color: ENTITY_TYPE_COLORS[row.name] ?? ENTITY_TYPE_COLORS.OTHER,
-  })),
+  entityTypes: entityRows.map((row) => ({ ...row })),
 
   complianceFrameworks: [
     { name: "HIPAA", value: 52.1, color: COMPLIANCE_COLORS.HIPAA },
@@ -75,11 +68,11 @@ export const DASHBOARD_MOCK: DashboardStats = {
   ],
 
   deIdMethods: [
-    { method: "Redact", count: 220, color: DEID_METHOD_COLORS.Redact },
-    { method: "Replace", count: 195, color: DEID_METHOD_COLORS.Replace },
-    { method: "Mask", count: 140, color: DEID_METHOD_COLORS.Mask },
-    { method: "Hash", count: 140, color: DEID_METHOD_COLORS.Hash },
-    { method: "Synthetic", count: 75, color: DEID_METHOD_COLORS.Synthetic },
+    { method: "Redact", count: 220 },
+    { method: "Replace", count: 195 },
+    { method: "Mask", count: 140 },
+    { method: "Hash", count: 140 },
+    { method: "Synthetic", count: 75 },
   ],
 
   confidenceScores: [
@@ -96,35 +89,30 @@ export const DASHBOARD_MOCK: DashboardStats = {
       filename: "patient_notes_march.txt",
       entities: 47,
       timeAgo: "2 min ago",
-      iconColor: "teal",
     },
     {
       id: "2",
       filename: "clinical_records_Q1.txt",
       entities: 123,
       timeAgo: "18 min ago",
-      iconColor: "blue",
     },
     {
       id: "3",
       filename: "discharge_summary.txt",
       entities: 31,
       timeAgo: "1 hr ago",
-      iconColor: "amber",
     },
     {
       id: "4",
       filename: "lab_results_batch.txt",
       entities: 89,
       timeAgo: "3 hrs ago",
-      iconColor: "lilac",
     },
     {
       id: "5",
       filename: "surgery_report_april.txt",
       entities: 55,
       timeAgo: "5 hrs ago",
-      iconColor: "teal",
     },
   ],
 };

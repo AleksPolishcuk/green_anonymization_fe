@@ -2,7 +2,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Cell,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -11,7 +10,15 @@ import {
 } from "recharts";
 import { useTranslation } from "react-i18next";
 
-import { CONFIDENCE_BAR_COLORS } from "constants/dashboard";
+import {
+  ACTIVE_GRADIENT_END,
+  ACTIVE_GRADIENT_START,
+  CHART_GRID_DASHARRAY,
+  CHART_GRID_STROKE,
+  CONFIDENCE_GRADIENT_ID,
+  tickStyle as tickY,
+  tickStyleSm as tickX,
+} from "constants/dashboard";
 import type { ConfidenceRangeData } from "features/Dashboard/types";
 
 import {
@@ -19,18 +26,8 @@ import {
   ChartCard,
   ChartSubtitle,
   ChartTitle,
+  TooltipDark,
 } from "../ChartCard/styles";
-
-const tickX = {
-  fontSize: 10,
-  fill: "#9ca3af",
-  fontFamily: "Inter, sans-serif",
-};
-const tickY = {
-  fontSize: 11,
-  fill: "#6a7282",
-  fontFamily: "Inter, sans-serif",
-};
 
 const CustomTooltip = ({
   active,
@@ -39,20 +36,9 @@ const CustomTooltip = ({
 }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;
   return (
-    <div
-      style={{
-        background: "#111827",
-        color: "#fff",
-        borderRadius: 8,
-        padding: "6px 12px",
-        fontSize: 13,
-        fontFamily: "Inter, sans-serif",
-        fontWeight: 600,
-        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-      }}
-    >
+    <TooltipDark>
       {label}: {payload[0].value}
-    </div>
+    </TooltipDark>
   );
 };
 
@@ -64,22 +50,36 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
 
   return (
-    <ChartCard>
+    <ChartCard $tall>
       <ChartTitle>{t("charts.confidence.title")}</ChartTitle>
       <ChartSubtitle>{t("charts.confidence.subtitle")}</ChartSubtitle>
 
       <ChartBody>
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart
             layout="vertical"
             data={data}
             margin={{ top: 0, right: 16, left: 0, bottom: 0 }}
             barCategoryGap="25%"
           >
+            <defs>
+              <linearGradient
+                id={CONFIDENCE_GRADIENT_ID}
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="0"
+              >
+                <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
+                <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
+              </linearGradient>
+            </defs>
+
             <CartesianGrid
               horizontal={false}
-              stroke="#F3F4F6"
-              strokeDasharray="0"
+              stroke={CHART_GRID_STROKE}
+              strokeWidth={1}
+              strokeDasharray={CHART_GRID_DASHARRAY}
             />
             <XAxis
               type="number"
@@ -94,20 +94,15 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
               tick={tickY}
               axisLine={false}
               tickLine={false}
-              width={56}
+              width={72}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: "#F3F4F6" }} />
-            <Bar dataKey="count" radius={[0, 4, 4, 0]}>
-              {data.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={
-                    CONFIDENCE_BAR_COLORS[index] ??
-                    CONFIDENCE_BAR_COLORS[CONFIDENCE_BAR_COLORS.length - 1]
-                  }
-                />
-              ))}
-            </Bar>
+            <Bar
+              dataKey="count"
+              barSize={36}
+              radius={[10, 10, 10, 10]}
+              fill={`url(#${CONFIDENCE_GRADIENT_ID})`}
+            />
           </BarChart>
         </ResponsiveContainer>
       </ChartBody>

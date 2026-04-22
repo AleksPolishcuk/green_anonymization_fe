@@ -8,9 +8,19 @@ import {
   type TooltipProps,
 } from "recharts";
 
+import {
+  HIPAA_GRADIENT_END,
+  HIPAA_GRADIENT_ID,
+  HIPAA_GRADIENT_START,
+} from "constants/dashboard";
 import type { ComplianceFrameworkData } from "features/Dashboard/types";
 
-import { ChartCard, ChartSubtitle, ChartTitle } from "../ChartCard/styles";
+import {
+  ChartCard,
+  ChartSubtitle,
+  ChartTitle,
+  TooltipDark,
+} from "../ChartCard/styles";
 import {
   DonutWrapper,
   LegendDot,
@@ -24,19 +34,9 @@ const CustomTooltip = ({ active, payload }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;
   const entry = payload[0];
   return (
-    <div
-      style={{
-        background: "#111827",
-        color: "#fff",
-        borderRadius: 8,
-        padding: "6px 12px",
-        fontSize: 13,
-        fontFamily: "Inter, sans-serif",
-        fontWeight: 600,
-      }}
-    >
+    <TooltipDark>
       {entry.name}: {entry.value}%
-    </div>
+    </TooltipDark>
   );
 };
 
@@ -53,8 +53,29 @@ export const ComplianceDonut = ({ data }: Props) => {
       <ChartSubtitle>{t("charts.compliance.subtitle")}</ChartSubtitle>
 
       <DonutWrapper>
-        <ResponsiveContainer width={180} height={260}>
+        <ResponsiveContainer width={180} height="100%">
           <PieChart>
+            <defs>
+              <linearGradient
+                id={HIPAA_GRADIENT_ID}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop
+                  offset="0%"
+                  stopColor={HIPAA_GRADIENT_START}
+                  stopOpacity={1}
+                />
+                <stop
+                  offset="100%"
+                  stopColor={HIPAA_GRADIENT_END}
+                  stopOpacity={0.6}
+                />
+              </linearGradient>
+            </defs>
+
             <Tooltip content={<CustomTooltip />} />
             <Pie
               data={data}
@@ -69,7 +90,14 @@ export const ComplianceDonut = ({ data }: Props) => {
               cornerRadius={4}
             >
               {data.map((entry) => (
-                <Cell key={entry.name} fill={entry.color} />
+                <Cell
+                  key={entry.name}
+                  fill={
+                    entry.name === "HIPAA"
+                      ? `url(#${HIPAA_GRADIENT_ID})`
+                      : entry.color
+                  }
+                />
               ))}
             </Pie>
           </PieChart>

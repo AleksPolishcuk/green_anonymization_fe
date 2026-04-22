@@ -17,46 +17,47 @@ export const DashboardFrame = styled(Box)(({ theme }) => ({
   width: "100%",
   maxWidth: DASHBOARD_LAYOUT_MAX_WIDTH_PX,
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   alignItems: "stretch",
   flex: "1 0 auto",
   minWidth: 0,
   boxSizing: "border-box",
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
   },
 }));
 
 export const MainContent = styled(Box)(({ theme }) => ({
   flex: "1 1 0",
   minWidth: 0,
-  padding: theme.spacing(8, 8, 10),
+  padding: theme.spacing(3, 2, 5),
   boxSizing: "border-box",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.up("sm")]: {
     padding: theme.spacing(4, 3, 6),
   },
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(3, 2, 5),
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(8, 8, 10),
   },
 }));
 
 export const ChartsLayout = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(4),
+  gap: theme.spacing(3),
+  [theme.breakpoints.up("md")]: {
+    gap: theme.spacing(4),
+  },
 }));
 
 export const ChartRow = styled(Box, {
   shouldForwardProp: (prop) => prop !== "$cols",
-})<{
-  $cols?: string;
-}>(({ theme, $cols = "1fr 1fr" }) => ({
+})<{ $cols?: string }>(({ theme, $cols = "1fr 1fr" }) => ({
   display: "grid",
-  gridTemplateColumns: $cols,
-  gap: theme.spacing(4),
+  gridTemplateColumns: "1fr",
+  gap: theme.spacing(3),
   alignItems: "start",
-
-  [theme.breakpoints.down("md")]: {
-    gridTemplateColumns: "1fr",
+  [theme.breakpoints.up("md")]: {
+    gridTemplateColumns: $cols,
+    gap: theme.spacing(4),
   },
 }));

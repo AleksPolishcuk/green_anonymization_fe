@@ -7,47 +7,34 @@ import { DeIdMethodChart } from "./components/DeIdMethodChart";
 import { EntityTypesChart } from "./components/EntityTypesChart";
 import { ProcessingHistoryChart } from "./components/ProcessingHistoryChart";
 import { RecentActivity } from "./components/RecentActivity";
-import { SidebarSlot } from "./components/SidebarSlot";
 import { StatCards } from "./components/StatCards";
-import {
-  ChartsLayout,
-  ChartRow,
-  DashboardFrame,
-  DashboardShell,
-  MainContent,
-} from "./styles";
+import { ChartsLayout, ChartRow, MainContent } from "./styles";
 
 export const DashboardView = () => {
   const data = useAppSelector((state) => state.dashboard.data);
 
   return (
-    <DashboardShell>
-      <DashboardFrame>
-        <SidebarSlot />
+    <MainContent>
+      <DashboardHeader />
 
-        <MainContent>
-          <DashboardHeader />
+      <StatCards data={data.statCards} />
 
-          <StatCards data={data.statCards} />
+      <ChartsLayout>
+        <ChartRow $cols="1.70fr 1fr">
+          <EntityTypesChart data={data.entityTypes} />
+          <ComplianceDonut data={data.complianceFrameworks} />
+        </ChartRow>
 
-          <ChartsLayout>
-            <ChartRow $cols="1.70fr 1fr">
-              <EntityTypesChart data={data.entityTypes} />
-              <ComplianceDonut data={data.complianceFrameworks} />
-            </ChartRow>
+        <ChartRow $cols="1fr 1fr">
+          <ProcessingHistoryChart data={data.processingHistory} />
+          <DeIdMethodChart data={data.deIdMethods} />
+        </ChartRow>
 
-            <ChartRow $cols="1fr 1fr">
-              <ProcessingHistoryChart data={data.processingHistory} />
-              <DeIdMethodChart data={data.deIdMethods} />
-            </ChartRow>
-
-            <ChartRow $cols="1.55fr 1fr">
-              <ConfidenceScoreChart data={data.confidenceScores} />
-              <RecentActivity data={data.recentActivity} />
-            </ChartRow>
-          </ChartsLayout>
-        </MainContent>
-      </DashboardFrame>
-    </DashboardShell>
+        <ChartRow $cols="1.55fr 1fr">
+          <ConfidenceScoreChart data={data.confidenceScores} />
+          <RecentActivity data={data.recentActivity} />
+        </ChartRow>
+      </ChartsLayout>
+    </MainContent>
   );
 };

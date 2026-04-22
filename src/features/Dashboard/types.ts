@@ -1,7 +1,5 @@
 export type TrendType = "up" | "down" | "stable" | "excellent";
 
-export type ActivityIconColor = "teal" | "blue" | "amber" | "lilac";
-
 export type StatCardIconId =
   | "icon-document"
   | "icon-shield"
@@ -20,7 +18,6 @@ export interface StatCardData {
 export interface EntityTypeDatum {
   name: string;
   count: number;
-  color: string;
 }
 
 export interface ComplianceFrameworkData {
@@ -38,7 +35,6 @@ export interface ProcessingHistoryPoint {
 export interface DeIdMethodData {
   method: string;
   count: number;
-  color: string;
 }
 
 export interface ConfidenceRangeData {
@@ -51,7 +47,6 @@ export interface RecentActivityItem {
   filename: string;
   entities: number;
   timeAgo: string;
-  iconColor: ActivityIconColor;
 }
 
 export interface DashboardStats {

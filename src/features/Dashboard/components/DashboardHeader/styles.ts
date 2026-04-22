@@ -14,6 +14,9 @@ export const HeaderRoot = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   gap: theme.spacing(2),
   marginBottom: theme.spacing(3),
+  [theme.breakpoints.up("md")]: {
+    marginBottom: theme.spacing(4),
+  },
 }));
 
 export const HeaderTextGroup = styled(Box)(({ theme }) => ({
@@ -30,16 +33,22 @@ export const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightMedium,
-  fontSize: theme.typography.fontSize32,
+  fontSize: theme.typography.fontSize22,
   lineHeight: theme.typography.lineHeight108,
+  [theme.breakpoints.up("md")]: {
+    fontSize: theme.typography.fontSize32,
+  },
 }));
 
 export const HeaderSubtitle = styled(Typography)(({ theme }) => ({
   margin: 0,
   color: theme.palette.text.secondary,
   fontWeight: theme.typography.fontWeightRegular,
-  fontSize: theme.typography.fontSize16,
+  fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight175,
+  [theme.breakpoints.up("md")]: {
+    fontSize: theme.typography.fontSize16,
+  },
 }));
 
 export const StartDeIdButton = styled(Button)(({ theme }) => ({
@@ -51,10 +60,13 @@ export const StartDeIdButton = styled(Button)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: theme.spacing(1.5),
-  minWidth: 237,
-  width: 237,
+  width: "100%",
   height: 40,
-  padding: "0 20px",
+  padding: theme.spacing(0, 2.5),
+  [theme.breakpoints.up("sm")]: {
+    width: 237,
+    minWidth: 237,
+  },
   borderRadius: 12,
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
