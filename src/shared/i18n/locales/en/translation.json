@@ -1,17 +1,4 @@
 {
-  "exampleHeader": {
-    "title": "Example header"
-  },
-  "exampleHomePage": {
-    "title": "Example home page",
-    "text": "Example home page"
-  },
-  "exampleWorkForm": {
-    "title": "Example work form",
-    "nameLabel": "Name",
-    "submitButton": "Submit",
-    "result": "Hello, {{name}}"
-  },
   "complianceSection": {
     "label": "COMPLIANCE",
     "title": "Built for Compliance",
@@ -208,5 +195,23 @@
       "role": "Chief Medical Officer, MedTech Corp",
       "initials": "SC"
     }
+  },
+  "frameworks": {
+    "title": "Compliance Framework",
+    "subtitle": "Choose which regulatory frameworks to comply with",
+    "step": "STEP 1",
+    "entityTypes": "entity types"
+  },
+  "sidebar": {
+    "title": "Clinical Data Studio",
+    "subtitle": "De-ID & Synthesis",
+    "workspace": "Workspace",
+    "dashboard": "Dashboard",
+    "deidentify": "De-Identify",
+    "syntheticData": "Synthetic Data"
+  },
+  "deidHeader": {
+    "title": "De-Identification Workflow",
+    "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
   }
 }

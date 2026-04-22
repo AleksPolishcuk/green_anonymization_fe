@@ -3,12 +3,14 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "pages/HomePage";
 import ContactUsPage from "pages/ContactUsPage";
 import { ComplianceSection } from "features/ComplianceSection";
-import { MainLayout } from "Layouts";
+import { MainLayout, WorkspaceLayout } from "Layouts";
 import AuthCallback from "pages/AuthCallback";
 import Dashboard from "pages/Dashboard";
 import Register from "pages/Register";
 import SignIn from "pages/SignIn";
 import { NotFound } from "pages/NotFoundPage";
+import DeidentificationPage from "pages/DeidentificationPage";
+import SyntheticDataPage from "pages/SyntheticDataPage";
 
 export const router = createBrowserRouter([
   {
@@ -36,43 +38,47 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "sign-in",
+    element: <SignIn />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "auth-callback",
+    element: <AuthCallback />,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <WorkspaceLayout>
+        <Dashboard />
+      </WorkspaceLayout>
+    ),
+  },
+  {
+    path: "deidentification",
+    element: (
+      <WorkspaceLayout>
+        <DeidentificationPage />
+      </WorkspaceLayout>
+    ),
+  },
+  {
+    path: "syntheticdata",
+    element: (
+      <WorkspaceLayout>
+        <SyntheticDataPage />
+      </WorkspaceLayout>
+    ),
+  },
+  {
     path: "*",
     element: (
       <MainLayout>
         <NotFound />
       </MainLayout>
     ),
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-  },
-  {
-    path: "auth-callback",
-    element: <AuthCallback />,
-  },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "sign-in",
-    element: <SignIn />,
   },
 ]);
