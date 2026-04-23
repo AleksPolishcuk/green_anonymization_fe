@@ -53,8 +53,8 @@ export const InputSectionHeaderRow = styled(Box)(({ theme }) => ({
 export const InputSectionIconBox = styled(Box)(({ theme }) => ({
   width: theme.spacing(9),
   height: theme.spacing(9),
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.primary.main,
+  borderRadius: 12,
+  backgroundColor: "#0EA5E9",
   color: theme.palette.common.white,
   display: "flex",
   alignItems: "center",
@@ -63,17 +63,18 @@ export const InputSectionIconBox = styled(Box)(({ theme }) => ({
 }));
 
 export const InputLogoIcon = styled("svg")(({ theme }) => ({
-  width: theme.spacing(4),
-  height: theme.spacing(4),
+  width: 16,
+  height: 16,
   display: "block",
-  fill: theme.palette.primary.main,
-  stroke: theme.palette.common.white,
+  fill: "none",
+  stroke: theme.palette.color.white,
 }));
 
 export const InputSectionTitleRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: theme.spacing(2),
+  color: "#344054",
 }));
 
 export const InputSectionSubtitle = styled(Typography)(({ theme }) => ({
@@ -110,14 +111,10 @@ export const InputForm = styled("form")(({ theme }) => ({
   flexDirection: "column",
   gap: theme.spacing(7),
 
-  border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
 
-  opacity: 0,
   animation: `${fadeSlideIn} 0.6s ease 0.2s forwards`,
-
-  padding: theme.spacing(4),
 
   [theme.breakpoints.down("lg")]: {
     padding: theme.spacing(7),
@@ -206,12 +203,12 @@ export const FileDropHeading = styled("span")(({ theme }) => ({
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.text.primary,
+  color: "#344054",
 }));
 
 export const FileDropSubtitle = styled("span")(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.fontWeightRegular,
+  fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize11,
   lineHeight: theme.typography.lineHeight150,
   color: theme.palette.text.secondary,
