@@ -14,51 +14,57 @@ export const useInputForm = (): UseInputFormReturn => {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const { control, handleSubmit, formState, reset } = useForm<InputFormValues>({
-    mode: "onBlur",
-    defaultValues: {
-      text: "",
-      file: undefined,
-    },
-    resolver: async (data) => {
-      try {
-        const values = await inputFormSchema.validate(data, {
-          abortEarly: false,
-        });
-
-        const sanitized: InputFormValues = {
-          text: sanitizeInput(values.text),
-          file: values.file,
-        };
-
-        return { values: sanitized, errors: {} };
-      } catch (error) {
-        if (error instanceof ValidationError) {
-          const errors: Record<string, { message: string }> = {};
-
-          error.inner.forEach((err) => {
-            if (err.path) {
-              errors[err.path] = {
-                message: t(err.message),
-              };
-            }
+  const { control, handleSubmit, formState, reset, setValue } =
+    useForm<InputFormValues>({
+      mode: "onBlur",
+      defaultValues: {
+        text: "",
+        file: null,
+      },
+      resolver: async (data) => {
+        try {
+          const values = await inputFormSchema.validate(data, {
+            abortEarly: false,
           });
 
-          return { values: {}, errors };
+          const sanitized: InputFormValues = {
+            text: sanitizeInput(values.text),
+            file: values.file,
+          };
+
+          return { values: sanitized, errors: {} };
+        } catch (error) {
+          if (error instanceof ValidationError) {
+            const errors: Record<string, { message: string }> = {};
+
+            error.inner.forEach((err) => {
+              if (err.path) {
+                errors[err.path] = {
+                  message: t(err.message),
+                };
+              }
+            });
+
+            return { values: {}, errors };
+          }
+
+          return { values: {}, errors: {} };
         }
-
-        return { values: {}, errors: {} };
-      }
-    },
-  });
-
+      },
+    });
   const onSubmit = async (data: InputFormValues): Promise<void> => {
     try {
       setIsSubmitting(true);
       setSubmitError(null);
       setSubmitSuccess(false);
 
-      await inputService.submitForm(data);
+      const payload = {
+        text: data.file ? "" : data.text,
+        file: data.file || null,
+      };
+
+      alert(JSON.stringify(payload));
+      await inputService.submitForm(payload);
 
       setSubmitSuccess(true);
       reset();
@@ -67,6 +73,7 @@ export const useInputForm = (): UseInputFormReturn => {
         error instanceof Error
           ? error.message
           : t("input.form.errors.submissionFailed") || "Submission failed";
+
       setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
@@ -81,5 +88,6 @@ export const useInputForm = (): UseInputFormReturn => {
     isSubmitting,
     submitError,
     submitSuccess,
+    setValue,
   };
 };

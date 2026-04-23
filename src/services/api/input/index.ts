@@ -3,9 +3,19 @@ import type { InputFormRequest, InputFormResponse } from "./typing";
 
 export const inputService = {
   async submitForm(data: InputFormRequest): Promise<InputFormResponse> {
-    return apiClient.post<InputFormResponse, InputFormRequest>(
+    const formData = new FormData();
+
+    if (data.file) {
+      formData.append("file", data.file);
+    }
+
+    if (data.text) {
+      formData.append("text", data.text);
+    }
+
+    return apiClient.post<InputFormResponse, FormData>(
       "/anonymization/anonymize",
-      data,
+      formData,
     );
   },
 };

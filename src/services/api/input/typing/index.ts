@@ -1,8 +1,9 @@
 export type InputFormRequest = {
   text: string;
-  file: File;
+  file: File | null;
 };
 
 export type InputFormResponse = {
-  tmp: string;
+  originalText: string;
+  anonymizedText: string;
 };

@@ -1,8 +1,12 @@
-import type { UseFormReturn, UseFormHandleSubmit } from "react-hook-form";
+import type {
+  UseFormReturn,
+  UseFormHandleSubmit,
+  UseFormSetValue,
+} from "react-hook-form";
 
 export type InputFormValues = {
   text: string;
-  file: File;
+  file: File | null;
 };
 
 export type UseInputFormReturn = {
@@ -13,4 +17,5 @@ export type UseInputFormReturn = {
   isSubmitting: boolean;
   submitError: string | null;
   submitSuccess: boolean;
+  setValue: UseFormSetValue<InputFormValues>;
 };

@@ -39,28 +39,33 @@ export const contactFormSchema = yup.object().shape({
     .max(5000, "contactUsPage.form.errors.messageMaxLength"),
 }) as yup.ObjectSchema<ContactFormValues>;
 
-export const inputFormSchema = yup.object().shape({
-  text: yup
-    .string()
-    .nullable()
-    .notRequired()
-    .max(5000, "input.form.errors.messageMaxLength"),
+export const inputFormSchema = yup
+  .object()
+  .shape({
+    text: yup
+      .string()
+      .nullable()
+      .notRequired()
+      .max(5000, "input.form.errors.messageMaxLength"),
 
-  file: yup
-    .mixed<File>()
-    .nullable()
-    .notRequired()
-    .test("fileSize", "File is too large", (file) => {
-      if (!file) return true;
-      return file.size <= 50 * 1024 * 1024; // 50MB
-    })
-    .test("fileType", "Unsupported file format", (file) => {
-      if (!file) return true;
-      return [
-        "text/plane",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "application/pdf",
-      ].includes(file.type);
-    }),
-}) as yup.ObjectSchema<InputFormValues>;
+    file: yup
+      .mixed<File>()
+      .nullable()
+      .notRequired()
+      .test("fileSize", "File is too large", (file) => {
+        if (!file) return true;
+        return file.size <= 50 * 1024 * 1024; // 50MB
+      })
+      .test("fileType", "Unsupported file format", (file) => {
+        if (!file) return true;
+        return [
+          "text/plain",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "application/pdf",
+        ].includes(file.type);
+      }),
+  })
+  .test("text-or-file", "Provide either text or file", (values) => {
+    return !!values?.text || !!values?.file;
+  }) as yup.ObjectSchema<InputFormValues>;

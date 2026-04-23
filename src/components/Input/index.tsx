@@ -19,21 +19,15 @@ import {
   InputPlayIcon,
 } from "./styles";
 import { headerSpriteRef } from "constants/header";
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
-import { FormResultContainer, FormAlert } from "features/ContactForm/styles";
 
 export default function Input() {
   const { t } = useTranslation();
-  const {
-    control,
-    handleSubmit,
-    formState,
-    onSubmit,
-    submitError,
-    submitSuccess,
-  } = useInputForm();
+  const { control, handleSubmit, formState, onSubmit, isSubmitting, setValue } =
+    useInputForm();
   const { errors } = formState;
+  const fileValue = useWatch({ control, name: "file" });
 
   return (
     <InputSectionRoot>
@@ -67,6 +61,13 @@ export default function Input() {
               <>
                 <TextInput
                   {...field}
+                  disabled={!!fileValue}
+                  value={fileValue ? "" : field.value}
+                  onChange={(e) => {
+                    if (!fileValue) {
+                      field.onChange(e);
+                    }
+                  }}
                   id="textInput"
                   multiline
                   fullWidth
@@ -74,17 +75,7 @@ export default function Input() {
                   type="text"
                   error={!!errors.text}
                   placeholder={t("input.form.textPlaceholder")}
-                  slotProps={{
-                    htmlInput: {
-                      autoComplete: "text",
-                    },
-                  }}
                 />
-                {/* <ErrorMessageContainer>
-                      {errors.text && (
-                        <ErrorMessage>{errors.text.message}</ErrorMessage>
-                      )}
-                    </ErrorMessageContainer>                 */}
               </>
             )}
           />
@@ -92,11 +83,20 @@ export default function Input() {
             name="file"
             control={control}
             render={({ field }) => (
-              <FileDropZone value={field.value} onChange={field.onChange} />
+              <FileDropZone
+                value={field.value}
+                onChange={(file) => {
+                  field.onChange(file);
+
+                  if (file) {
+                    setValue("text", "");
+                  }
+                }}
+              />
             )}
           />
           <SubmitWrapper>
-            <InputSubmitButton type="submit">
+            <InputSubmitButton type="submit" disabled={isSubmitting}>
               <InputPlayIcon>
                 <use href={headerSpriteRef("input-submit-play-icon")} />
               </InputPlayIcon>
@@ -111,15 +111,6 @@ export default function Input() {
             <Estimate>{t("input.form.estimated")}</Estimate>
           </SubmitWrapper>
         </InputForm>
-        <FormResultContainer>
-          {submitError && <FormAlert $type="error">{submitError}</FormAlert>}
-          {submitSuccess && (
-            <FormAlert $type="success">
-              {t("contactUsPage.form.success")}
-            </FormAlert>
-          )}
-        </FormResultContainer>
-        {/* </InputFormWrapper> */}
       </InputSectionStack>
     </InputSectionRoot>
   );
