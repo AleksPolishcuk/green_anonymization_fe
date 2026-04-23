@@ -1,15 +1,25 @@
-import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import { keyframes } from "@mui/material/styles";
 import {
   Cell,
   Pie,
   PieChart,
   ResponsiveContainer,
+  Sector,
   Tooltip,
   type TooltipProps,
 } from "recharts";
+import type { SectorProps } from "recharts";
+import { useTranslation } from "react-i18next";
 
 import {
   COMPLIANCE_COLORS,
+  DONUT_ACTIVE_OUTER_RADIUS,
+  DONUT_CORNER_RADIUS,
+  DONUT_INNER_RADIUS,
+  DONUT_OUTER_RADIUS,
+  DONUT_PADDING_ANGLE,
+  DONUT_SECTOR_ANIMATION_DURATION,
   HIPAA_GRADIENT_END,
   HIPAA_GRADIENT_ID,
 } from "constants/DashboardPage";
@@ -30,6 +40,29 @@ import {
   LegendValue,
 } from "components/Dashboard/components/ComplianceDonut/styles";
 
+const scaleFrom = DONUT_OUTER_RADIUS / DONUT_ACTIVE_OUTER_RADIUS;
+
+const sectorGrow = keyframes`
+  from { transform: scale(${scaleFrom}); }
+  to   { transform: scale(1); }
+`;
+
+const ActiveSector = ({ cx = 0, cy = 0, ...props }: SectorProps) => (
+  <g
+    style={{
+      transformOrigin: `${cx}px ${cy}px`,
+      animation: `${sectorGrow} ${DONUT_SECTOR_ANIMATION_DURATION}s ease forwards`,
+    }}
+  >
+    <Sector
+      cx={cx}
+      cy={cy}
+      {...props}
+      outerRadius={DONUT_ACTIVE_OUTER_RADIUS}
+    />
+  </g>
+);
+
 const CustomTooltip = ({ active, payload }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;
   const entry = payload[0];
@@ -46,6 +79,7 @@ type Props = {
 
 export const ComplianceDonut = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard>
@@ -81,13 +115,17 @@ export const ComplianceDonut = ({ data }: Props) => {
               data={data}
               cx="50%"
               cy="50%"
-              innerRadius={35}
-              outerRadius={70}
-              paddingAngle={2}
+              innerRadius={DONUT_INNER_RADIUS}
+              outerRadius={DONUT_OUTER_RADIUS}
+              paddingAngle={DONUT_PADDING_ANGLE}
               dataKey="value"
               startAngle={90}
               endAngle={-270}
-              cornerRadius={4}
+              cornerRadius={DONUT_CORNER_RADIUS}
+              activeIndex={activeIndex ?? undefined}
+              activeShape={ActiveSector}
+              onMouseEnter={(_, index) => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
             >
               {data.map((entry) => (
                 <Cell

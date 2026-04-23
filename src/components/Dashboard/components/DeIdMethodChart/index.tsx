@@ -3,7 +3,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Cell,
   ResponsiveContainer,
   XAxis,
   YAxis,
@@ -12,11 +11,11 @@ import { useTranslation } from "react-i18next";
 
 import {
   ACTIVE_GRADIENT_END,
+  ACTIVE_GRADIENT_HOVER_ID,
   ACTIVE_GRADIENT_ID,
   ACTIVE_GRADIENT_START,
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
-  INACTIVE_COLOR,
   tickStyle,
 } from "constants/DashboardPage";
 import type { DeIdMethodData } from "components/Dashboard/types";
@@ -64,6 +63,16 @@ export const DeIdMethodChart = ({ data }: Props) => {
                 <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
                 <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
               </linearGradient>
+              <linearGradient
+                id={ACTIVE_GRADIENT_HOVER_ID}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
+                <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
+              </linearGradient>
             </defs>
 
             <CartesianGrid
@@ -101,18 +110,7 @@ export const DeIdMethodChart = ({ data }: Props) => {
                   activeIndex={activeIndex}
                 />
               )}
-            >
-              {data.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={
-                    index === activeIndex
-                      ? `url(#${ACTIVE_GRADIENT_ID})`
-                      : INACTIVE_COLOR
-                  }
-                />
-              ))}
-            </Bar>
+            />
           </BarChart>
         </ResponsiveContainer>
       </ChartBody>

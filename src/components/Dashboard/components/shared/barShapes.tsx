@@ -1,8 +1,11 @@
 import {
+  ACTIVE_GRADIENT_HOVER_ID,
   ACTIVE_GRADIENT_ID,
   BAR_RADIUS,
   BAR_WIDTH,
-  INACTIVE_COLOR,
+  CHART_BAR_HOVER_TRANSITION,
+  CONFIDENCE_GRADIENT_HOVER_ID,
+  CONFIDENCE_GRADIENT_ID,
   PILL_BG_COLOR,
   PILL_FONT_SIZE,
   PILL_GRADIENT_END_OPACITY,
@@ -30,7 +33,6 @@ export const RoundedBar = (props: RoundedBarProps) => {
 
   const isActive = index === activeIndex;
   const r = Math.min(BAR_RADIUS, width / 2, height);
-  const fill = isActive ? `url(#${ACTIVE_GRADIENT_ID})` : INACTIVE_COLOR;
 
   const offsetX = (width - BAR_WIDTH) / 2;
   const bx = x + offsetX;
@@ -50,7 +52,75 @@ export const RoundedBar = (props: RoundedBarProps) => {
     "Z",
   ].join(" ");
 
-  return <path d={path} fill={fill} />;
+  return (
+    <g>
+      <path
+        d={path}
+        fill={`url(#${ACTIVE_GRADIENT_ID})`}
+        style={{
+          opacity: isActive ? 0 : 1,
+          transition: CHART_BAR_HOVER_TRANSITION,
+        }}
+      />
+      <path
+        d={path}
+        fill={`url(#${ACTIVE_GRADIENT_HOVER_ID})`}
+        style={{
+          opacity: isActive ? 1 : 0,
+          transition: CHART_BAR_HOVER_TRANSITION,
+        }}
+      />
+    </g>
+  );
+};
+
+export interface ConfidenceBarProps {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  index?: number;
+  activeIndex: number | null;
+}
+
+export const ConfidenceRoundedBar = (props: ConfidenceBarProps) => {
+  const { x = 0, y = 0, width = 0, height = 0, index, activeIndex } = props;
+
+  if (width <= 0 || height <= 0) return null;
+
+  const isActive = index === activeIndex;
+  const r = Math.min(BAR_RADIUS, height / 2, width);
+
+  return (
+    <g>
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        rx={r}
+        ry={r}
+        fill={`url(#${CONFIDENCE_GRADIENT_ID})`}
+        style={{
+          opacity: isActive ? 0 : 1,
+          transition: CHART_BAR_HOVER_TRANSITION,
+        }}
+      />
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        rx={r}
+        ry={r}
+        fill={`url(#${CONFIDENCE_GRADIENT_HOVER_ID})`}
+        style={{
+          opacity: isActive ? 1 : 0,
+          transition: CHART_BAR_HOVER_TRANSITION,
+        }}
+      />
+    </g>
+  );
 };
 
 export interface ActiveBarLabelProps {

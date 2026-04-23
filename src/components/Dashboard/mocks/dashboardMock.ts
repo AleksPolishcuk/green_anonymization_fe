@@ -76,14 +76,38 @@ export const DASHBOARD_MOCK: DashboardStats = {
   ],
 
   confidenceScores: [
-    { range: "90-100%", count: 360 },
+    { range: "90-100%", count: 125 },
     { range: "80-90%", count: 270 },
-    { range: "70-80%", count: 180 },
+    { range: "70-80%", count: 164 },
     { range: "60-70%", count: 90 },
     { range: "<60%", count: 40 },
   ],
 
   recentActivity: [
+    {
+      id: "1",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "1",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "1",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "1",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
     {
       id: "1",
       filename: "patient_notes_march.txt",

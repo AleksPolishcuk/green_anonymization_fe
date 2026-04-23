@@ -33,10 +33,14 @@ export const BAR_WIDTH = 58;
 export const BAR_RADIUS = 10;
 export const INACTIVE_COLOR = "rgba(0, 0, 0, 0.24)";
 export const ACTIVE_GRADIENT_ID = "activeBarGradient";
+export const ACTIVE_GRADIENT_HOVER_ID = "activeBarGradientHover";
 export const ACTIVE_GRADIENT_START = "#306bec";
 export const ACTIVE_GRADIENT_END = "#7ca1f3";
 export const CONFIDENCE_GRADIENT_ID = "confidenceBarGradient";
+export const CONFIDENCE_GRADIENT_HOVER_ID = "confidenceBarGradientHover";
 export const ACTIVITY_SUCCESS_SPRITE_ID = "icon-IconSuccess";
+
+export const CHART_BAR_HOVER_TRANSITION = "opacity 0.3s ease";
 
 export const CHART_GRID_STROKE = "rgba(208, 213, 221, 0.6)";
 export const CHART_GRID_DASHARRAY = "4 4";
@@ -101,6 +105,13 @@ export const PILL_GRADIENT_END_OPACITY = 0.4;
 
 export const HIPAA_GRADIENT_ID = "hipaaSegmentGradient";
 export const HIPAA_GRADIENT_END = "#1c1c1c";
+
+export const DONUT_INNER_RADIUS = 35;
+export const DONUT_OUTER_RADIUS = 70;
+export const DONUT_ACTIVE_OUTER_RADIUS = 76;
+export const DONUT_PADDING_ANGLE = 2;
+export const DONUT_CORNER_RADIUS = 4;
+export const DONUT_SECTOR_ANIMATION_DURATION = 0.2;
 
 export const tickStyle = {
   fontSize: 12,

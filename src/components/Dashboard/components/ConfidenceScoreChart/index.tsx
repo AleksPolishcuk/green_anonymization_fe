@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Bar,
   BarChart,
@@ -13,7 +14,6 @@ import { useTranslation } from "react-i18next";
 import {
   ACTIVE_GRADIENT_END,
   ACTIVE_GRADIENT_START,
-  BAR_RADIUS,
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
   CHART_GRID_STROKE_WIDTH,
@@ -21,12 +21,12 @@ import {
   CONFIDENCE_BAR_CATEGORY_GAP,
   CONFIDENCE_BAR_SIZE,
   CONFIDENCE_CHART_MARGIN,
+  CONFIDENCE_GRADIENT_HOVER_ID,
   CONFIDENCE_GRADIENT_ID,
   CONFIDENCE_Y_AXIS_WIDTH,
   tickStyle as tickY,
   tickStyleSm as tickX,
 } from "constants/DashboardPage";
-import { theme } from "shared/theme/theme";
 import type { ConfidenceRangeData } from "components/Dashboard/types";
 
 import {
@@ -36,6 +36,10 @@ import {
   ChartTitle,
   TooltipDark,
 } from "components/Dashboard/components/ChartCard/styles";
+import {
+  ConfidenceRoundedBar,
+  type ConfidenceBarProps,
+} from "components/Dashboard/components/shared/barShapes";
 
 const CustomTooltip = ({
   active,
@@ -56,6 +60,7 @@ type Props = {
 
 export const ConfidenceScoreChart = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard $tall>
@@ -69,6 +74,7 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
             data={data}
             margin={CONFIDENCE_CHART_MARGIN}
             barCategoryGap={CONFIDENCE_BAR_CATEGORY_GAP}
+            onMouseLeave={() => setActiveIndex(null)}
           >
             <defs>
               <linearGradient
@@ -80,6 +86,16 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
               >
                 <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
                 <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
+              </linearGradient>
+              <linearGradient
+                id={CONFIDENCE_GRADIENT_HOVER_ID}
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="0"
+              >
+                <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
+                <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
               </linearGradient>
             </defs>
 
@@ -104,15 +120,17 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
               tickLine={false}
               width={CONFIDENCE_Y_AXIS_WIDTH}
             />
-            <Tooltip
-              content={<CustomTooltip />}
-              cursor={{ fill: theme.palette.background.softGray }}
-            />
+            <Tooltip content={<CustomTooltip />} cursor={false} />
             <Bar
               dataKey="count"
               barSize={CONFIDENCE_BAR_SIZE}
-              radius={[BAR_RADIUS, BAR_RADIUS, BAR_RADIUS, BAR_RADIUS]}
-              fill={`url(#${CONFIDENCE_GRADIENT_ID})`}
+              shape={(shapeProps: unknown) => (
+                <ConfidenceRoundedBar
+                  {...(shapeProps as ConfidenceBarProps)}
+                  activeIndex={activeIndex}
+                />
+              )}
+              onMouseEnter={(_, index) => setActiveIndex(index)}
             />
           </BarChart>
         </ResponsiveContainer>
