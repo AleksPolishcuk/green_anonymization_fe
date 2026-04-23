@@ -1,0 +1,168 @@
+import { styled } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
+import { BOX_SHADOW, CHIP_COLOR_PRESETS, TOP_LINE } from "constants/DeidPage";
+
+export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
+  position: "relative",
+  margin: theme.spacing(8, 8, 5, 8),
+}));
+
+export const DeidOutputSectionStack = styled(Box)({
+  display: "flex",
+  gap: 16,
+});
+
+export const DeidOutputSectionCard = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.lightGray,
+  borderRadius: theme.shape.borderRadius,
+  border: `1px solid ${theme.palette.divider}`,
+  boxShadow: BOX_SHADOW,
+  minHeight: 308,
+  width: "100%",
+  minWidth: 308,
+  overflow: "hidden",
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: 3,
+    background: TOP_LINE,
+  },
+}));
+
+export const CardHeader = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  marginBottom: theme.spacing(2),
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  backgroundColor: theme.palette.background.default,
+}));
+
+export const CardHeaderTextSection = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+  padding: theme.spacing(4),
+}));
+
+export const CardTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: theme.typography.fontWeightSemiBold,
+  fontSize: theme.typography.fontSize16,
+}));
+
+export const CardSubtitle = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize12,
+  color: theme.palette.text.secondary,
+}));
+
+export const ComplianceBadge = styled(Box)(({ theme }) => {
+  const style = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: theme.spacing(0.5),
+    padding: theme.spacing(0.75, 1.5),
+    margin: theme.spacing(4),
+    color: style.color,
+    backgroundColor: style.bg,
+    border: `1px solid ${style.border}`,
+    borderRadius: theme.spacing(2),
+    fontSize: theme.typography.fontSize11,
+    fontWeight: theme.typography.fontWeightBold,
+  };
+});
+
+export const DetectedEntityNumberBadge = styled(Box)(({ theme }) => {
+  const style = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: theme.spacing(0.5),
+    padding: theme.spacing(0.75, 1.5),
+    margin: theme.spacing(4),
+    color: style.color,
+    backgroundColor: style.bg,
+    border: `1px solid ${style.border}`,
+    borderRadius: theme.spacing(2),
+    fontSize: theme.typography.fontSize11,
+    fontWeight: theme.typography.fontWeightBold,
+  };
+});
+
+export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing(1),
+  marginTop: "auto",
+  margin: `${theme.spacing(2)}`,
+  padding: theme.spacing(2),
+  borderTop: `1px solid ${theme.palette.divider}`,
+  width: "100%",
+  backgroundColor: theme.palette.background.default,
+}));
+
+export const ActionButton = styled(Button)(({ theme }) => ({
+  textTransform: "none",
+  fontSize: theme.typography.fontSize12,
+  fontWeight: theme.typography.fontWeightMedium,
+  padding: theme.spacing(1, 1.5),
+  border: `1px solid ${theme.palette.divider}`,
+  backgroundColor: theme.palette.background.paper,
+  color: theme.palette.text.primary,
+  borderRadius: theme.spacing(2),
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
+export const CardContent = styled(Box)(({ theme }) => ({
+  flex: 1,
+  padding: theme.spacing(4),
+  overflowY: "auto",
+}));
+
+export const TextContent = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize12,
+  lineHeight: 1.6,
+  whiteSpace: "pre-wrap",
+  wordBreak: "break-word",
+  fontFamily: "'Courier New', monospace",
+}));
+
+export const EntityHighlight = styled("span")(({ theme }) => {
+  const style = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    color: style.color,
+    backgroundColor: style.bg,
+    border: `1px solid ${style.border}`,
+    padding: theme.spacing(0.25, 0.75),
+    borderRadius: theme.spacing(1),
+    fontSize: "inherit",
+    fontWeight: theme.typography.fontWeightMedium,
+    cursor: "default",
+  };
+});
+
+export const RedactedContent = styled("span")(({ theme }) => {
+  const style = CHIP_COLOR_PRESETS.gray;
+
+  return {
+    backgroundColor: style.bg,
+    color: style.color,
+    padding: theme.spacing(0.25, 0.75),
+    borderRadius: theme.spacing(1),
+    fontSize: "inherit",
+    fontWeight: theme.typography.fontWeightMedium,
+    border: `1px solid ${style.border}`,
+    cursor: "default",
+  };
+});
