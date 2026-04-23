@@ -242,6 +242,30 @@ export const FileInput = styled("input")(({ theme }) => ({
   },
 }));
 
+export const FileRemoveButton = styled("button")(() => ({
+  width: 24,
+  height: 24,
+  borderRadius: 6,
+  border: "none",
+  cursor: "pointer",
+
+  background: "rgba(239, 68, 68, 0.1)",
+  color: "rgba(239, 68, 68, 1)",
+
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  fontSize: 14,
+  fontWeight: 600,
+
+  transition: "0.2s ease",
+
+  "&:hover": {
+    background: "rgba(239, 68, 68, 0.2)",
+  },
+}));
+
 export const InputSubmitButton = styled(Button)(({ theme }) => ({
   width: 250,
   height: 45,

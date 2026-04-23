@@ -2,6 +2,7 @@ import { useDropzone } from "react-dropzone";
 import {
   FileDropHeading,
   FileDropSubtitle,
+  FileRemoveButton,
   FileTextBlock,
   FileUploadIcon,
   FileWrapper,
@@ -29,6 +30,11 @@ export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
     },
   });
 
+  const handleRemove = (e: React.MouseEvent) => {
+    e.stopPropagation(); // prevents opening file dialog
+    onChange(null);
+  };
+
   return (
     <FileWrapper {...getRootProps()}>
       <input {...getInputProps()} />
@@ -50,9 +56,18 @@ export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
       </FileTextBlock>
 
       {value && (
-        <FileDropHeading style={{ marginLeft: "auto" }}>
-          {value.name}
-        </FileDropHeading>
+        <div
+          style={{
+            marginLeft: "auto",
+            display: "flex",
+            gap: 8,
+            alignItems: "center",
+          }}
+        >
+          <FileDropHeading>{value.name}</FileDropHeading>
+
+          <FileRemoveButton onClick={handleRemove}>✕</FileRemoveButton>
+        </div>
       )}
     </FileWrapper>
   );
