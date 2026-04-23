@@ -19,3 +19,8 @@ export type UseInputFormReturn = {
   submitSuccess: boolean;
   setValue: UseFormSetValue<InputFormValues>;
 };
+
+export type FileDropZoneProps = {
+  value?: File | null;
+  onChange: (file: File | null) => void;
+};

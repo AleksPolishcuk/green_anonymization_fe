@@ -1,41 +1,26 @@
-import { useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
+import { useFileDropzone } from "components/Input/hooks/useFileDropzone";
+import { fileDropzoneOptions } from "constants/DeidPage";
+import { headerSpriteRef } from "constants/header";
 import {
+  FileWrapper,
+  FileUploadIcon,
+  FileTextBlock,
   FileDropHeading,
   FileDropSubtitle,
+  FileTextWrapper,
   FileRemoveButton,
-  FileTextBlock,
-  FileUploadIcon,
-  FileWrapper,
 } from "../styles";
-import { headerSpriteRef } from "constants/header";
-import { useTranslation } from "react-i18next";
-
-type FileDropZoneProps = {
-  value?: File | null;
-  onChange: (file: File | null) => void;
-};
+import type { FileDropZoneProps } from "components/Input/types";
 
 export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
   const { t } = useTranslation();
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    multiple: false,
-    maxSize: 50 * 1024 * 1024,
-    accept: {
-      "text/plain": [],
-      "application/pdf": [],
-      "application/msword": [],
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-        [],
-    },
-    onDrop: (acceptedFiles) => {
-      onChange(acceptedFiles[0] || null);
-    },
-  });
 
-  const handleRemove = (e: React.MouseEvent) => {
-    e.stopPropagation(); // prevents opening file dialog
-    onChange(null);
-  };
+  const { getRootProps, getInputProps, isDragActive, handleRemove } =
+    useFileDropzone({
+      onChange,
+      options: fileDropzoneOptions,
+    });
 
   return (
     <FileWrapper {...getRootProps()}>
@@ -48,26 +33,19 @@ export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
       <FileTextBlock>
         <FileDropHeading>
           {isDragActive
-            ? "Drop file here..."
-            : "Drop file here, or click to browse"}
+            ? t("input.form.fileDragActive")
+            : t("input.form.fileDragInactive")}
         </FileDropHeading>
 
         <FileDropSubtitle>{t("input.form.fileSupport")}</FileDropSubtitle>
       </FileTextBlock>
 
       {value && (
-        <div
-          style={{
-            marginLeft: "auto",
-            display: "flex",
-            gap: 8,
-            alignItems: "center",
-          }}
-        >
+        <FileTextWrapper>
           <FileDropHeading>{value.name}</FileDropHeading>
 
           <FileRemoveButton onClick={handleRemove}>✕</FileRemoveButton>
-        </div>
+        </FileTextWrapper>
       )}
     </FileWrapper>
   );

@@ -1,3 +1,5 @@
+import type { DropzoneOptions } from "react-dropzone";
+
 export const BOX_SHADOW = "0 2px 20px 0 rgba(16, 24, 40, 0.06)";
 export const BG_OFF = "rgba(249, 250, 251, 0.6)";
 export const BG_ON = "rgba(37, 99, 235, 0.12)";
@@ -38,3 +40,35 @@ export const frameworkToneMap = {
   GDPR_UK: "cyan",
   FADP_CH: "gray",
 } as const;
+
+export const fileDropzoneOptions: Omit<DropzoneOptions, "onDrop"> = {
+  multiple: false,
+  maxSize: 50 * 1024 * 1024,
+  accept: {
+    "text/plain": [],
+    "application/pdf": [],
+    "application/msword": [],
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+      [],
+  },
+};
+
+export const MAX_FILE_UPLOAD_SIZE = 50 * 1024 * 1024;
+
+export const ALLOWED_FILE_TYPES = [
+  "text/plain",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/pdf",
+];
+
+export const InputFormStyles = {
+  textInput: {
+    boxShadow: "4px 0px 32px 0px rgba(16, 24, 40, 0.06)",
+  },
+  fileWrapper: {
+    border: "2px dashed rgba(208, 213, 221, 0.8)",
+    background: "rgba(249, 250, 251, 0.5)",
+    hoverBackground: "rgba(249, 250, 251, 0.8)",
+  },
+};

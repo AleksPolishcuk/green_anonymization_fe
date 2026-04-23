@@ -19,8 +19,13 @@ import {
   InputPlayIcon,
 } from "./styles";
 import { headerSpriteRef } from "constants/header";
-import { Controller, useWatch } from "react-hook-form";
+import {
+  Controller,
+  useWatch,
+  type ControllerRenderProps,
+} from "react-hook-form";
 import FileDropZone from "./FileDropZone";
+import type { InputFormValues } from "./types";
 
 export default function Input() {
   const { t } = useTranslation();
@@ -28,6 +33,49 @@ export default function Input() {
     useInputForm();
   const { errors } = formState;
   const fileValue = useWatch({ control, name: "file" });
+  const renderTextInput = ({
+    field,
+  }: {
+    field: ControllerRenderProps<InputFormValues, "text">;
+  }) => {
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!fileValue) {
+        field.onChange(e);
+      }
+    };
+
+    return (
+      <TextInput
+        {...field}
+        disabled={!!fileValue}
+        value={fileValue ? "" : field.value}
+        onChange={handleTextChange}
+        id="textInput"
+        multiline
+        fullWidth
+        rows={11}
+        type="text"
+        error={!!errors.text}
+        placeholder={t("input.form.textPlaceholder")}
+      />
+    );
+  };
+
+  type FileFieldRender = {
+    field: ControllerRenderProps<InputFormValues, "file">;
+  };
+
+  const renderFileInput = ({ field }: FileFieldRender) => {
+    const handleFileChange = (file: File | null) => {
+      field.onChange(file);
+
+      if (file) {
+        setValue("text", "");
+      }
+    };
+
+    return <FileDropZone value={field.value} onChange={handleFileChange} />;
+  };
 
   return (
     <InputSectionRoot>
@@ -56,44 +104,9 @@ export default function Input() {
             name="text"
             control={control}
             defaultValue=""
-            render={({ field }) => (
-              <>
-                <TextInput
-                  {...field}
-                  disabled={!!fileValue}
-                  value={fileValue ? "" : field.value}
-                  onChange={(e) => {
-                    if (!fileValue) {
-                      field.onChange(e);
-                    }
-                  }}
-                  id="textInput"
-                  multiline
-                  fullWidth
-                  rows={11}
-                  type="text"
-                  error={!!errors.text}
-                  placeholder={t("input.form.textPlaceholder")}
-                />
-              </>
-            )}
+            render={renderTextInput}
           />
-          <Controller
-            name="file"
-            control={control}
-            render={({ field }) => (
-              <FileDropZone
-                value={field.value}
-                onChange={(file) => {
-                  field.onChange(file);
-
-                  if (file) {
-                    setValue("text", "");
-                  }
-                }}
-              />
-            )}
-          />
+          <Controller name="file" control={control} render={renderFileInput} />
           <SubmitWrapper>
             <InputSubmitButton type="submit" disabled={isSubmitting}>
               <InputPlayIcon>

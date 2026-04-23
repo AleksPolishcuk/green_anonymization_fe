@@ -7,8 +7,12 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { keyframes, styled } from "@mui/material/styles";
-import { BOX_SHADOW, CHIP_COLOR_PRESETS } from "constants/DeidPage";
+import { alpha, keyframes, styled } from "@mui/material/styles";
+import {
+  BOX_SHADOW,
+  CHIP_COLOR_PRESETS,
+  InputFormStyles,
+} from "constants/DeidPage";
 
 export const InputSectionRoot = styled(Paper)(({ theme }) => ({
   position: "relative",
@@ -54,7 +58,7 @@ export const InputSectionIconBox = styled(Box)(({ theme }) => ({
   width: theme.spacing(9),
   height: theme.spacing(9),
   borderRadius: 12,
-  backgroundColor: "#0EA5E9",
+  backgroundColor: CHIP_COLOR_PRESETS.cyan.color,
   color: theme.palette.common.white,
   display: "flex",
   alignItems: "center",
@@ -74,7 +78,6 @@ export const InputSectionTitleRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: theme.spacing(2),
-  color: "#344054",
 }));
 
 export const InputSectionSubtitle = styled(Typography)(({ theme }) => ({
@@ -129,7 +132,7 @@ export const TextInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-root": {
     backgroundColor: theme.palette.background.lightGray,
 
-    boxShadow: "4px 0px 32px 0px rgba(16, 24, 40, 0.06)",
+    boxShadow: InputFormStyles.textInput.boxShadow,
     borderRadius: theme.shape.borderRadius,
 
     alignItems: "flex-start",
@@ -161,7 +164,7 @@ export const FileUploadIcon = styled("svg")(({ theme }) => ({
 
   borderRadius: 8,
 
-  background: theme.palette.primary.main + "14",
+  background: theme.palette.accent.lightLilac,
   border: `1px solid ${theme.palette.primary.main}26`,
 
   flexShrink: 0,
@@ -179,14 +182,14 @@ export const FileWrapper = styled("div")(({ theme }) => ({
 
   borderRadius: theme.shape.borderRadius,
 
-  background: "rgba(249, 250, 251, 0.5)",
-  border: "2px dashed rgba(208, 213, 221, 0.8)",
+  background: InputFormStyles.fileWrapper.background,
+  border: InputFormStyles.fileWrapper.border,
 
   cursor: "pointer",
   transition: "all 0.2s ease",
 
   "&:hover": {
-    background: "rgba(249, 250, 251, 0.8)",
+    background: InputFormStyles.fileWrapper.hoverBackground,
     borderColor: theme.palette.primary.main,
   },
 }));
@@ -196,6 +199,13 @@ export const FileTextBlock = styled("div")(() => ({
   flexDirection: "column",
   justifyContent: "center",
   height: 41,
+}));
+
+export const FileTextWrapper = styled("div")(() => ({
+  marginLeft: "auto",
+  display: "flex",
+  gap: 8,
+  alignItems: "center",
 }));
 
 export const FileDropHeading = styled("span")(({ theme }) => ({
@@ -221,8 +231,8 @@ export const FileRemoveButton = styled("button")(({ theme }) => ({
   border: "none",
   cursor: "pointer",
 
-  background: theme.palette.accent.red + "1A",
-  color: theme.palette.accent.red,
+  background: theme.palette.accent.red,
+  color: theme.palette.common.white,
 
   display: "flex",
   alignItems: "center",
@@ -234,7 +244,9 @@ export const FileRemoveButton = styled("button")(({ theme }) => ({
   transition: "0.2s ease",
 
   "&:hover": {
-    background: theme.palette.accent.red + "33",
+    background: theme.palette.accent.lightRed,
+    color: theme.palette.accent.red,
+    border: InputFormStyles.fileWrapper.border,
   },
 }));
 
@@ -262,11 +274,43 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
 
   boxShadow: `
       inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
-      0px 4px 16px 0px rgba(37, 99, 235, 0.35)
+      0px 4px 16px 0px ${alpha(theme.palette.primary.main, 0.35)}
     `,
 
   minWidth: "unset",
   minHeight: "unset",
+
+  transition: theme.transitions.create(
+    ["transform", "box-shadow", "background"],
+    {
+      duration: theme.transitions.duration.shorter,
+    },
+  ),
+
+  "&.MuiButton-root": {
+    color: theme.palette.common.white,
+  },
+
+  "&:hover": {
+    background: `linear-gradient(135deg, ${theme.palette.color.darkBlue} 0%, ${theme.palette.primary.main} 100%)`,
+    transform: "translateY(-2px)",
+    boxShadow: `
+        inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
+        0px 8px 24px 0px ${alpha(theme.palette.primary.main, 0.4)}
+      `,
+  },
+
+  "&:active": {
+    transform: "translateY(0) scale(0.98)",
+  },
+
+  "&:focus-visible": {
+    outline: `${theme.spacing(0.75)} solid ${alpha(
+      theme.palette.primary.main,
+      0.4,
+    )}`,
+    outlineOffset: theme.spacing(0.5),
+  },
 }));
 
 export const InputPlayIcon = styled("svg")(({ theme }) => ({

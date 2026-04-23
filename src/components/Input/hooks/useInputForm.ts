@@ -5,7 +5,10 @@ import { ValidationError } from "yup";
 
 import { sanitizeInput } from "shared/utils/sanitize";
 import { inputFormSchema } from "constants/validations";
-import type { InputFormValues, UseInputFormReturn } from "../types";
+import type {
+  InputFormValues,
+  UseInputFormReturn,
+} from "components/Input/types";
 import { inputService } from "services/api/input";
 
 export const useInputForm = (): UseInputFormReturn => {
@@ -71,7 +74,7 @@ export const useInputForm = (): UseInputFormReturn => {
       const errorMessage =
         error instanceof Error
           ? error.message
-          : t("input.form.errors.submissionFailed") || "Submission failed";
+          : t("input.form.errors.submissionFailed");
 
       setSubmitError(errorMessage);
     } finally {

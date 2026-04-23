@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import type { ContactFormValues } from "features/ContactForm/types";
 import type { InputFormValues } from "components/Input/types";
+import { ALLOWED_FILE_TYPES, MAX_FILE_UPLOAD_SIZE } from "./DeidPage";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^\+?[\d\s\-()]{7,}$/;
@@ -52,20 +53,15 @@ export const inputFormSchema = yup
       .mixed<File>()
       .nullable()
       .notRequired()
-      .test("fileSize", "File is too large", (file) => {
+      .test("fileSize", "input.form.errors.fileTooLarge", (file) => {
         if (!file) return true;
-        return file.size <= 50 * 1024 * 1024;
+        return file.size <= MAX_FILE_UPLOAD_SIZE;
       })
-      .test("fileType", "Unsupported file format", (file) => {
+      .test("fileType", "input.form.errors.fileWrongFormat", (file) => {
         if (!file) return true;
-        return [
-          "text/plain",
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-          "application/pdf",
-        ].includes(file.type);
+        return ALLOWED_FILE_TYPES.includes(file.type);
       }),
   })
-  .test("text-or-file", "Provide either text or file", (values) => {
+  .test("text-or-file", "input.form.errors.noData", (values) => {
     return !!values?.text || !!values?.file;
   }) as yup.ObjectSchema<InputFormValues>;
