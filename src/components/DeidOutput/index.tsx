@@ -19,6 +19,10 @@ import {
   parseTextWithRedactions,
   type Entity,
 } from "./utils/parsers";
+import ExclamationMarkIcon from "assets/icons/ExclamationMarkIcon";
+import ComplianceSafeIcon from "assets/icons/ComplianceSafeIcon";
+import CopyIcon from "assets/icons/CopyIcon";
+import DownloadIcon from "assets/icons/DownloadIcon";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("deIdentify");
@@ -65,6 +69,7 @@ export default function DeidOutputSection() {
             </CardHeaderTextSection>
 
             <DetectedEntityNumberBadge>
+              <ExclamationMarkIcon />
               {entityCount + " " + t("output.originalText.entities")}
             </DetectedEntityNumberBadge>
           </CardHeader>
@@ -83,6 +88,7 @@ export default function DeidOutputSection() {
               </CardSubtitle>
             </CardHeaderTextSection>
             <ComplianceBadge>
+              <ComplianceSafeIcon />
               {/* TODO: Make dynamic based on selected framework */}
               {t("output.deIdentifiedOutput.hipaaCompliant")}
             </ComplianceBadge>
@@ -93,11 +99,18 @@ export default function DeidOutputSection() {
           </CardContent>
 
           <ActionButtonsContainer>
-            <ActionButton>{t("output.deIdentifiedOutput.copy")}</ActionButton>
             <ActionButton>
+              <CopyIcon />
+              {t("output.deIdentifiedOutput.copy")}
+            </ActionButton>
+
+            <ActionButton>
+              <DownloadIcon />
               {t("output.deIdentifiedOutput.downloadTxt")}
             </ActionButton>
+
             <ActionButton>
+              <DownloadIcon />
               {t("output.deIdentifiedOutput.downloadJson")}
             </ActionButton>
           </ActionButtonsContainer>
