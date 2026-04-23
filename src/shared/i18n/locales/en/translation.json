@@ -213,5 +213,19 @@
   "deidHeader": {
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
+  },
+  "input": {
+    "title": "Input Clinical Text",
+    "subtitle": "Paste clinical text or upload a document for analysis",
+    "step": "STEP 2",
+
+    "form": {
+      "errors": {
+        "messageMaxLength": "Message must not exceed 5000 characters"
+      },
+      "estimated": "Estimated processing time: ~2s",
+      "submitButton": "Analyze & De-Identify",
+      "textPlaceholder": "Patient: Dr. Sarah Johnson\nDate of Visit: March 15, 2026\nMedical Record Number: MRN789456123\n\nChief Complaint:\nThe patient is a 45-year-old female presenting with persistent headaches.\n\nHistory:\nPatient reports headaches started approximately 2 weeks ago. Previous medical records from 02/28/2026 indicate hypertension management. Patient can be reached at 555-123-4567 or sarah.johnson@email.com.\n\nPhysical Address: 123 Medical Center Drive, Springfield Assessment: Recommend follow-up imaging and blood pressure monitoring. Social Security: 123-45-6789 Patient ID: 987654321 Next appointment scheduled for April 1, 2026 at 10:00 AM."
+    }
   }
 }
