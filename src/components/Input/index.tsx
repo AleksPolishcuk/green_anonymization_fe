@@ -51,7 +51,6 @@ export default function Input() {
             </InputSectionSubtitle>
           </div>
         </InputSectionHeaderRow>
-        {/* <InputFormWrapper> */}
         <InputForm onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="text"

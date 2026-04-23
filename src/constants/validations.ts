@@ -54,7 +54,7 @@ export const inputFormSchema = yup
       .notRequired()
       .test("fileSize", "File is too large", (file) => {
         if (!file) return true;
-        return file.size <= 50 * 1024 * 1024; // 50MB
+        return file.size <= 50 * 1024 * 1024;
       })
       .test("fileType", "Unsupported file format", (file) => {
         if (!file) return true;

@@ -161,7 +161,6 @@ export const apiClient = {
           : undefined,
       }),
     );
-    // return request<T>(axiosInstance.post(path, body));
   },
 
   put<T, D>(path: string, body: D): Promise<T> {

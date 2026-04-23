@@ -137,21 +137,17 @@ export const TextInput = styled(TextField)(({ theme }) => ({
     letterSpacing: "0px",
     background: "rgba(249, 250, 251, 0.8)",
 
-    // height: 278,
     borderRadius: theme.spacing(2),
     gap: 10,
     angle: "0 deg",
     opacity: 1,
     borderWidth: 1,
-    // minHeight: 278,
     resize: "none",
     scrollBehavior: "smooth",
     color: "rgba(0, 0, 0, 1)",
   },
 
   "& textarea": {
-    // height: 278,
-
     padding: theme.spacing(0, 8),
   },
 }));
