@@ -23,6 +23,7 @@ import ExclamationMarkIcon from "assets/icons/ExclamationMarkIcon";
 import ComplianceSafeIcon from "assets/icons/ComplianceSafeIcon";
 import CopyIcon from "assets/icons/CopyIcon";
 import DownloadIcon from "assets/icons/DownloadIcon";
+import { useDownloadRedactedTextCopy } from "./hooks/useDownloadRedactedTextCopy";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("deIdentify");
@@ -57,6 +58,21 @@ export default function DeidOutputSection() {
 
   const originalSegments = parseTextWithEntities(originalText, mockEntities);
   const redactedSegments = parseTextWithRedactions(originalText, mockEntities);
+
+  const { downloadAsJson, downloadAsText, copyToClipboard } =
+    useDownloadRedactedTextCopy();
+
+  const handleDownloadJson = () => {
+    downloadAsJson(redactedSegments, "de-identified-output");
+  };
+
+  const handleDownloadText = () => {
+    downloadAsText(redactedSegments, "de-identified-output");
+  };
+
+  const handleCopyText = () => {
+    copyToClipboard(redactedSegments);
+  };
 
   return (
     <DeidOutputSectionRoot>
@@ -99,17 +115,17 @@ export default function DeidOutputSection() {
           </CardContent>
 
           <ActionButtonsContainer>
-            <ActionButton>
+            <ActionButton onClick={handleCopyText}>
               <CopyIcon />
               {t("output.deIdentifiedOutput.copy")}
             </ActionButton>
 
-            <ActionButton>
+            <ActionButton onClick={handleDownloadText}>
               <DownloadIcon />
               {t("output.deIdentifiedOutput.downloadTxt")}
             </ActionButton>
 
-            <ActionButton>
+            <ActionButton onClick={handleDownloadJson}>
               <DownloadIcon />
               {t("output.deIdentifiedOutput.downloadJson")}
             </ActionButton>
