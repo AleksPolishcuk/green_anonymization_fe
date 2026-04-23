@@ -63,7 +63,6 @@ export const useInputForm = (): UseInputFormReturn => {
         file: data.file || null,
       };
 
-      alert(JSON.stringify(payload));
       await inputService.submitForm(payload);
 
       setSubmitSuccess(true);
