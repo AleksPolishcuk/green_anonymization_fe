@@ -14,16 +14,18 @@ export const InputSectionRoot = styled(Paper)(({ theme }) => ({
   position: "relative",
   marginLeft: theme.spacing(8),
   marginRight: theme.spacing(8),
+  marginTop: theme.spacing(8),
+  marginBottom: theme.spacing(5),
+
   padding: theme.spacing(6),
+
   backgroundColor: theme.palette.background.default,
   borderRadius: theme.shape.borderRadius,
   border: `1px solid ${theme.palette.divider}`,
   boxShadow: BOX_SHADOW,
+
   minHeight: 550,
   maxHeight: 570,
-  marginTop: theme.spacing(8),
-  marginBottom: theme.spacing(5),
-
   overflow: "hidden",
 
   "&::before": {
@@ -44,16 +46,16 @@ export const InputSectionStack = styled(Stack)(({ theme }) => ({
 
 export const InputSectionHeaderRow = styled(Box)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(3),
   alignItems: "center",
+  gap: theme.spacing(3),
 }));
 
 export const InputSectionIconBox = styled(Box)(({ theme }) => ({
-  width: 36,
-  height: 36,
-  borderRadius: "12px",
-  backgroundColor: "#0EA5E9",
-  color: theme.palette.color.white,
+  width: theme.spacing(9),
+  height: theme.spacing(9),
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.common.white,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -61,17 +63,17 @@ export const InputSectionIconBox = styled(Box)(({ theme }) => ({
 }));
 
 export const InputLogoIcon = styled("svg")(({ theme }) => ({
-  width: 16,
-  height: 16,
+  width: theme.spacing(4),
+  height: theme.spacing(4),
   display: "block",
-  fill: "#0EA5E9",
-  stroke: theme.palette.color.white,
+  fill: theme.palette.primary.main,
+  stroke: theme.palette.common.white,
 }));
 
 export const InputSectionTitleRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  gap: theme.spacing(2),
   alignItems: "center",
+  gap: theme.spacing(2),
 }));
 
 export const InputSectionSubtitle = styled(Typography)(({ theme }) => ({
@@ -86,31 +88,36 @@ export const StepChip = styled(Chip)(({ theme }) => {
     backgroundColor: style.bg,
     border: `1px solid ${style.border}`,
     borderRadius: 8,
+
     fontWeight: theme.typography.fontWeightBold,
     fontSize: theme.typography.fontSize11,
   };
 });
 
 const fadeSlideIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
 
 export const InputForm = styled("form")(({ theme }) => ({
-  border: `1px solid ${theme.palette.background.softGray}`,
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.background.paper,
-  opacity: 0,
-  animation: `${fadeSlideIn} 0.6s ease 0.2s forwards`,
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(7),
+
+  border: `1px solid ${theme.palette.background.softGray}`,
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme.palette.background.paper,
+
+  opacity: 0,
+  animation: `${fadeSlideIn} 0.6s ease 0.2s forwards`,
+
+  padding: theme.spacing(4),
 
   [theme.breakpoints.down("lg")]: {
     padding: theme.spacing(7),
@@ -123,28 +130,20 @@ export const InputForm = styled("form")(({ theme }) => ({
 
 export const TextInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-root": {
-    borderRight: "1px solid rgba(208, 213, 221, 0.8)",
-    border: "rgba(208, 213, 221, 0.8)",
+    backgroundColor: theme.palette.background.lightGray,
+
     boxShadow: "4px 0px 32px 0px rgba(16, 24, 40, 0.06)",
+    borderRadius: theme.shape.borderRadius,
+
     alignItems: "flex-start",
     padding: 0,
-    fontFamily: "Courier New",
-    fontWeight: 400,
-    fontStyle: "Regular",
-    fontSize: "12px",
-    leadingTrim: "NONE",
-    lineHeight: "25px",
-    letterSpacing: "0px",
-    background: "rgba(249, 250, 251, 0.8)",
 
-    borderRadius: theme.spacing(2),
-    gap: 10,
-    angle: "0 deg",
-    opacity: 1,
-    borderWidth: 1,
-    resize: "none",
-    scrollBehavior: "smooth",
-    color: "rgba(0, 0, 0, 1)",
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.fontSize12,
+    lineHeight: theme.typography.lineHeight175,
+
+    color: theme.palette.text.primary,
   },
 
   "& textarea": {
@@ -165,14 +164,15 @@ export const FileUploadIcon = styled("svg")(({ theme }) => ({
 
   borderRadius: 8,
 
-  background: "rgba(37, 99, 235, 0.08)",
-  border: "1px solid rgba(37, 99, 235, 0.15)",
+  background: theme.palette.primary.main + "14",
+  border: `1px solid ${theme.palette.primary.main}26`,
 
   flexShrink: 0,
 }));
 
 export const FileWrapper = styled("div")(({ theme }) => ({
   height: theme.spacing(19),
+
   paddingLeft: theme.spacing(4),
   paddingRight: theme.spacing(4),
 
@@ -180,10 +180,9 @@ export const FileWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(3),
 
-  borderRadius: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius,
 
   background: "rgba(249, 250, 251, 0.5)",
-
   border: "2px dashed rgba(208, 213, 221, 0.8)",
 
   cursor: "pointer",
@@ -191,7 +190,7 @@ export const FileWrapper = styled("div")(({ theme }) => ({
 
   "&:hover": {
     background: "rgba(249, 250, 251, 0.8)",
-    borderColor: "rgba(37, 99, 235, 0.4)",
+    borderColor: theme.palette.primary.main,
   },
 }));
 
@@ -199,66 +198,46 @@ export const FileTextBlock = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-
   height: 41,
 }));
 
-export const FileDropHeading = styled("span")(() => ({
-  fontFamily: "Inter",
-  fontWeight: 500,
-  fontSize: 13,
-  lineHeight: "19px",
-  letterSpacing: 0,
-
-  color: "rgba(52, 64, 84, 1)",
+export const FileDropHeading = styled("span")(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.fontSize14,
+  lineHeight: theme.typography.lineHeight150,
+  color: theme.palette.text.primary,
 }));
 
-export const FileDropSubtitle = styled("span")(() => ({
-  fontFamily: "Inter",
-  fontWeight: 400,
-  fontSize: 11,
-  lineHeight: "16px",
-  letterSpacing: 0,
-
-  color: "rgba(102, 112, 133, 1)",
+export const FileDropSubtitle = styled("span")(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize11,
+  lineHeight: theme.typography.lineHeight150,
+  color: theme.palette.text.secondary,
 }));
 
-export const FileInput = styled("input")(({ theme }) => ({
-  border: `2px dashed ${theme.palette.primary.main}`,
-  borderRadius: 12,
-  padding: theme.spacing(3),
-  textAlign: "center",
-  cursor: "pointer",
-  backgroundColor: theme.palette.background.default,
-  transition: "all 0.2s ease",
-
-  "&:hover": {
-    backgroundColor: theme.palette.action.hover,
-    borderColor: theme.palette.primary.dark,
-  },
-}));
-
-export const FileRemoveButton = styled("button")(() => ({
+export const FileRemoveButton = styled("button")(({ theme }) => ({
   width: 24,
   height: 24,
   borderRadius: 6,
   border: "none",
   cursor: "pointer",
 
-  background: "rgba(239, 68, 68, 0.1)",
-  color: "rgba(239, 68, 68, 1)",
+  background: theme.palette.accent.red + "1A",
+  color: theme.palette.accent.red,
 
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 
   fontSize: 14,
-  fontWeight: 600,
+  fontWeight: theme.typography.fontWeightBold,
 
   transition: "0.2s ease",
 
   "&:hover": {
-    background: "rgba(239, 68, 68, 0.2)",
+    background: theme.palette.accent.red + "33",
   },
 }));
 
@@ -267,24 +246,23 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
   height: 45,
   padding: "0 24px",
 
-  background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-  color: theme.palette.color.white,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #1D4ED8 100%)`,
+  color: theme.palette.common.white,
 
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-
   gap: 10,
 
   textTransform: "none",
 
-  fontFamily: "Inter",
-  fontWeight: 600,
-  fontSize: 14,
-  lineHeight: "21px",
-  letterSpacing: 0,
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightBold,
+  fontSize: theme.typography.fontSize14,
+  lineHeight: theme.typography.lineHeight150,
 
-  borderRadius: 12,
+  borderRadius: theme.shape.borderRadius,
+
   boxShadow: `
       inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
       0px 4px 16px 0px rgba(37, 99, 235, 0.35)
@@ -299,7 +277,7 @@ export const InputPlayIcon = styled("svg")(({ theme }) => ({
   height: 15,
   display: "block",
   fill: "none",
-  stroke: theme.palette.color.white,
+  stroke: theme.palette.common.white,
 }));
 
 export const InputArrowIcon = styled("svg")(({ theme }) => ({
@@ -307,23 +285,20 @@ export const InputArrowIcon = styled("svg")(({ theme }) => ({
   height: 14,
   display: "block",
   fill: "none",
-  stroke: theme.palette.color.white,
+  stroke: theme.palette.common.white,
 }));
 
-export const Estimate = styled("span")(() => ({
-  fontFamily: "Inter",
-  fontWeight: 400,
-  fontSize: 12,
-  lineHeight: "18px",
-  letterSpacing: 0,
-
-  color: "rgba(102, 112, 133, 1)",
-
+export const Estimate = styled("span")(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize12,
+  lineHeight: theme.typography.lineHeight150,
+  color: theme.palette.text.secondary,
   whiteSpace: "nowrap",
 }));
 
-export const SubmitWrapper = styled("div")(() => ({
+export const SubmitWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: 12,
+  gap: theme.spacing(3),
 }));

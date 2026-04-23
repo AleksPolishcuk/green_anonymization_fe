@@ -8,6 +8,7 @@ import {
   FileWrapper,
 } from "../styles";
 import { headerSpriteRef } from "constants/header";
+import { useTranslation } from "react-i18next";
 
 type FileDropZoneProps = {
   value?: File | null;
@@ -15,6 +16,7 @@ type FileDropZoneProps = {
 };
 
 export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
+  const { t } = useTranslation();
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     multiple: false,
     maxSize: 50 * 1024 * 1024,
@@ -50,9 +52,7 @@ export default function FileDropZone({ value, onChange }: FileDropZoneProps) {
             : "Drop file here, or click to browse"}
         </FileDropHeading>
 
-        <FileDropSubtitle>
-          Supports: txt, pdf, docx — max 50 MB
-        </FileDropSubtitle>
+        <FileDropSubtitle>{t("input.form.fileSupport")}</FileDropSubtitle>
       </FileTextBlock>
 
       {value && (
