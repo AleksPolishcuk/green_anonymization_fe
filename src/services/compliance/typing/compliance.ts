@@ -8,7 +8,6 @@ export interface ComplianceFramework {
 
 export interface SelectComplianceRequest {
   frameworkCode: string;
-  userId: string;
 }
 
 export interface ComplianceSelection {
