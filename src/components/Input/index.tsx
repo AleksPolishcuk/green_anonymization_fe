@@ -24,6 +24,7 @@ import {
 import { headerSpriteRef } from "constants/header";
 import { Controller } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
+import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 
 export default function Input() {
   const { t } = useTranslation();
@@ -39,8 +40,6 @@ export default function Input() {
   } = useInputForm();
 
   const { errors } = formState;
-  const textError = errors.text?.message;
-  const fileError = errors.file?.message;
 
   return (
     <InputSectionRoot>
@@ -74,9 +73,9 @@ export default function Input() {
                 disabled={isFileUploaded}
                 multiline
                 fullWidth
-                rows={11}
-                error={!isFileUploaded && !!textError}
-                helperText={!isFileUploaded ? textError : ""}
+                rows={INPUT_SECTION_CONSTANTS.TEXTAREA_ROWS}
+                error={!isFileUploaded && !!errors.text?.message}
+                helperText={!isFileUploaded ? errors.text?.message : ""}
                 placeholder={t("input.form.textPlaceholder")}
                 $fileMode={isFileUploaded}
               />
@@ -90,8 +89,8 @@ export default function Input() {
               <FileDropZone
                 value={field.value}
                 onChange={field.onChange}
-                error={!!fileError}
-                helperText={fileError}
+                error={!!errors.file?.message}
+                helperText={errors.file?.message}
               />
             )}
           />

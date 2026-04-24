@@ -7,11 +7,11 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { alpha, keyframes, styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import {
   BOX_SHADOW,
   CHIP_COLOR_PRESETS,
-  InputFormStyles,
+  INPUT_SECTION_STYLES,
 } from "constants/DeidPage";
 
 export const InputSectionRoot = styled(Paper)(({ theme }) => ({
@@ -37,8 +37,7 @@ export const InputSectionRoot = styled(Paper)(({ theme }) => ({
     left: 0,
     width: "100%",
     height: 3,
-    background:
-      "linear-gradient(90deg, #0EA5E9 0%, #06B6D4 50%, rgba(6, 182, 212, 0.2) 100%)",
+    background: INPUT_SECTION_STYLES.topLineBackground,
   },
 }));
 
@@ -96,17 +95,6 @@ export const StepChip = styled(Chip)(({ theme }) => {
   };
 });
 
-const fadeSlideIn = keyframes`
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `;
-
 export const InputForm = styled("form")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -115,7 +103,7 @@ export const InputForm = styled("form")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
 
-  animation: `${fadeSlideIn} 0.6s ease 0.2s forwards`,
+  animation: INPUT_SECTION_STYLES.fadeSlideIn,
 
   [theme.breakpoints.down("lg")]: {
     padding: theme.spacing(7),
@@ -131,7 +119,7 @@ export const TextInput = styled(TextField, {
 })<{ $fileMode?: boolean }>(({ theme, $fileMode }) => ({
   "& .MuiInputBase-root": {
     backgroundColor: theme.palette.background.lightGray,
-    boxShadow: InputFormStyles.textInput.boxShadow,
+    boxShadow: INPUT_SECTION_STYLES.textInput.boxShadow,
     borderRadius: theme.shape.borderRadius,
   },
 
@@ -148,35 +136,31 @@ export const TextInput = styled(TextField, {
       borderColor: theme.palette.error.main,
     },
 
-  // keep cursor logic
   "& textarea": {
-    overflow: $fileMode ? "hidden !important" : "auto",
+    overflow: $fileMode ? "hidden" : "auto",
     resize: "none",
     padding: theme.spacing(0, 8),
-    cursor: $fileMode ? "not-allowed !important" : "text",
+    cursor: $fileMode ? "not-allowed" : "text",
   },
 }));
 
 export const FileUploadIcon = styled("svg")(({ theme }) => ({
   width: theme.spacing(8),
   height: theme.spacing(8),
-
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
-
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-
   borderRadius: 8,
-
   background: theme.palette.accent.lightLilac,
-  border: `1px solid ${theme.palette.primary.main}26`,
-
+  border: `1px solid ${theme.palette.primary.main}`,
   flexShrink: 0,
 }));
 
-export const FileWrapper = styled("div")(({ theme }) => ({
+export const FileWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "$hasError",
+})<{ $hasError?: boolean }>(({ theme, $hasError }) => ({
   height: theme.spacing(19),
 
   paddingLeft: theme.spacing(4),
@@ -188,15 +172,19 @@ export const FileWrapper = styled("div")(({ theme }) => ({
 
   borderRadius: theme.shape.borderRadius,
 
-  background: InputFormStyles.fileWrapper.background,
-  border: InputFormStyles.fileWrapper.border,
+  background: INPUT_SECTION_STYLES.fileWrapper.background,
+  border: INPUT_SECTION_STYLES.fileWrapper.border,
 
   cursor: "pointer",
-  transition: "all 0.2s ease",
+  transition: INPUT_SECTION_STYLES.transition,
+
+  borderColor: $hasError ? theme.palette.error.main : undefined,
 
   "&:hover": {
-    background: InputFormStyles.fileWrapper.hoverBackground,
-    borderColor: theme.palette.primary.main,
+    background: INPUT_SECTION_STYLES.fileWrapper.hoverBackground,
+    borderColor: $hasError
+      ? theme.palette.error.main
+      : theme.palette.primary.main,
   },
 }));
 
@@ -219,7 +207,6 @@ export const FileDropHeading = styled("span")(({ theme }) => ({
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight150,
-  color: "#344054",
 }));
 
 export const FileDropSubtitle = styled("span")(({ theme }) => ({
@@ -227,7 +214,7 @@ export const FileDropSubtitle = styled("span")(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize11,
   lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.text.secondary,
+  color: theme.palette.accent.red,
 }));
 
 export const FileRemoveButton = styled("button")(({ theme }) => ({
@@ -247,12 +234,12 @@ export const FileRemoveButton = styled("button")(({ theme }) => ({
   fontSize: 14,
   fontWeight: theme.typography.fontWeightBold,
 
-  transition: "0.2s ease",
+  transition: INPUT_SECTION_STYLES.transition,
 
   "&:hover": {
     background: theme.palette.accent.lightRed,
     color: theme.palette.accent.red,
-    border: InputFormStyles.fileWrapper.border,
+    border: INPUT_SECTION_STYLES.fileWrapper.border,
   },
 }));
 
@@ -273,14 +260,13 @@ export const FormStatusInline = styled(Box)(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export const BORDER_ON = "rgba(37, 99, 235, 0.22)";
-
 export const InputSubmitButton = styled(Button)(({ theme }) => ({
-  width: 250,
-  height: 45,
+  width: INPUT_SECTION_STYLES.submitButton.width,
+  height: INPUT_SECTION_STYLES.submitButton.height,
   padding: "0 24px",
 
-  background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #1D4ED8 100%)`,
+  background: INPUT_SECTION_STYLES.submitButton.background,
+
   color: theme.palette.common.white,
   border: "2px solid transparent",
 
@@ -299,8 +285,8 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 
   boxShadow: `
-    inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
-    0px 4px 16px 0px ${alpha(theme.palette.primary.main, 0.35)}
+    ${INPUT_SECTION_STYLES.submitButton.insetBoxShadow},
+    ${INPUT_SECTION_STYLES.submitButton.boxShadowSize} ${alpha(theme.palette.primary.main, 0.35)}
   `,
 
   transition: theme.transitions.create(
@@ -319,8 +305,8 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
     background: `linear-gradient(135deg, ${theme.palette.color.darkBlue} 0%, ${theme.palette.primary.main} 100%)`,
     transform: "translateY(-2px)",
     boxShadow: `
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
-      0px 8px 24px 0px ${alpha(theme.palette.primary.main, 0.4)}
+    ${INPUT_SECTION_STYLES.submitButton.insetBoxShadow},
+    ${INPUT_SECTION_STYLES.submitButton.boxShadowSize}  ${alpha(theme.palette.primary.main, 0.4)}
     `,
   },
 
@@ -328,15 +314,15 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
     cursor: "not-allowed",
     pointerEvents: "auto",
 
-    background: "rgba(37, 99, 235, 0.12)",
+    background: INPUT_SECTION_STYLES.submitButton.disabledBtnBg,
     color: theme.palette.color.grayDark,
-    border: `2px solid ${BORDER_ON}`,
+    border: INPUT_SECTION_STYLES.submitButton.disabledBtnBorder,
     fontWeight: theme.typography.fontWeightLight,
     boxShadow: "none",
   },
 
   "&:active": {
-    transform: "translateY(0) scale(0.98)",
+    transform: INPUT_SECTION_STYLES.submitButton.clickTransform,
   },
 
   "&:focus-visible": {

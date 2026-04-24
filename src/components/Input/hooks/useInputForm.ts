@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { inputService } from "services/api/input";
 import { ValidationError } from "yup";
 import type { InputFormValues } from "../types";
+import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 
 export const useInputForm = () => {
   const { t } = useTranslation();
@@ -78,7 +79,7 @@ export const useInputForm = () => {
 
       setTimeout(() => {
         setSubmitSuccess(false);
-      }, 3000);
+      }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
     } catch (error) {
       const message =
         error instanceof Error

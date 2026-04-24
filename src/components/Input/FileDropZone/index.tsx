@@ -12,7 +12,11 @@ import {
 } from "../styles";
 
 import type { FileDropZoneProps } from "components/Input/types";
-import { ALLOWED_FILE_TYPES, MAX_FILE_UPLOAD_SIZE } from "constants/DeidPage";
+import {
+  ALLOWED_FILE_TYPES,
+  INPUT_SECTION_CONSTANTS,
+  MAX_FILE_UPLOAD_SIZE,
+} from "constants/DeidPage";
 
 type Props = FileDropZoneProps & {
   error?: boolean;
@@ -52,7 +56,7 @@ export default function FileDropZone({
 
       setTimeout(() => {
         setLocalError(null);
-      }, 3000);
+      }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
 
       return;
     }
@@ -81,9 +85,7 @@ export default function FileDropZone({
         }}
         onDragLeave={() => setIsDragActive(false)}
         onDrop={handleDrop}
-        style={{
-          borderColor: error || localError ? "#d32f2f" : undefined,
-        }}
+        $hasError={Boolean(error || localError)}
       >
         <input
           ref={inputRef}
@@ -120,9 +122,7 @@ export default function FileDropZone({
       </FileWrapper>
 
       {(localError || (error && helperText)) && (
-        <FileDropSubtitle style={{ color: "#d32f2f" }}>
-          {localError || helperText}
-        </FileDropSubtitle>
+        <FileDropSubtitle>{localError || helperText}</FileDropSubtitle>
       )}
     </div>
   );
