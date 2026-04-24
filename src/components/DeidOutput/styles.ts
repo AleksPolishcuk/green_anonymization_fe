@@ -102,7 +102,6 @@ export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(1),
   marginTop: "auto",
-  margin: `${theme.spacing(2)}`,
   padding: theme.spacing(2),
   borderTop: `1px solid ${theme.palette.divider}`,
   width: "100%",
