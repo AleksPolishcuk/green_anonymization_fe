@@ -220,6 +220,7 @@
     "step": "STEP 2",
 
     "form": {
+      "successMessage": "Request submitted successfully",
       "errors": {
         "messageMaxLength": "Message must not exceed 5000 characters",
         "fileTooLarge": "File is too large",

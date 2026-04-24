@@ -1,82 +1,91 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { ValidationError } from "yup";
-
-import { sanitizeInput } from "shared/utils/sanitize";
 import { inputFormSchema } from "constants/validations";
-import type {
-  InputFormValues,
-  UseInputFormReturn,
-} from "components/Input/types";
+import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { inputService } from "services/api/input";
+import { ValidationError } from "yup";
+import type { InputFormValues } from "../types";
 
-export const useInputForm = (): UseInputFormReturn => {
+export const useInputForm = () => {
   const { t } = useTranslation();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const { control, handleSubmit, formState, reset, setValue } =
-    useForm<InputFormValues>({
-      mode: "onBlur",
-      defaultValues: {
-        text: "",
-        file: null,
-      },
-      resolver: async (data) => {
-        try {
-          const values = await inputFormSchema.validate(data, {
-            abortEarly: false,
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const {
+    control,
+    handleSubmit,
+    formState,
+    reset,
+    setValue,
+    setError,
+    clearErrors,
+  } = useForm<InputFormValues>({
+    mode: "onChange",
+    defaultValues: {
+      text: "",
+      file: null,
+    },
+    resolver: async (data) => {
+      try {
+        const values = await inputFormSchema.validate(data, {
+          abortEarly: false,
+        });
+
+        return { values, errors: {} };
+      } catch (error) {
+        if (error instanceof ValidationError) {
+          const errors: Record<string, { message: string }> = {};
+
+          error.inner.forEach((err) => {
+            if (err.path) {
+              errors[err.path] = {
+                message: t(err.message),
+              };
+            } else {
+              errors.root = {
+                message: t(err.message),
+              };
+            }
           });
 
-          const sanitized: InputFormValues = {
-            text: sanitizeInput(values.text),
-            file: values.file,
-          };
-
-          return { values: sanitized, errors: {} };
-        } catch (error) {
-          if (error instanceof ValidationError) {
-            const errors: Record<string, { message: string }> = {};
-
-            error.inner.forEach((err) => {
-              if (err.path) {
-                errors[err.path] = {
-                  message: t(err.message),
-                };
-              }
-            });
-
-            return { values: {}, errors };
-          }
-
-          return { values: {}, errors: {} };
+          return { values: {}, errors };
         }
-      },
-    });
-  const onSubmit = async (data: InputFormValues): Promise<void> => {
+
+        return { values: {}, errors: {} };
+      }
+    },
+  });
+
+  const values = useWatch({ control });
+  const isFileUploaded = !!values.file;
+  const isTextValid = !!values.text && values.text.length <= 5000;
+  const isSubmitDisabled = isSubmitting || (!isFileUploaded && !isTextValid);
+
+  const onSubmit = async (data: InputFormValues) => {
     try {
       setIsSubmitting(true);
-      setSubmitError(null);
       setSubmitSuccess(false);
-
-      const payload = {
-        text: data.file ? "" : data.text,
-        file: data.file || null,
-      };
+      const payload = data.file
+        ? { file: data.file, text: null }
+        : { text: data.text, file: null };
 
       await inputService.submitForm(payload);
 
       setSubmitSuccess(true);
-      reset();
+
+      reset({ text: "", file: null });
+
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 3000);
     } catch (error) {
-      const errorMessage =
+      const message =
         error instanceof Error
           ? error.message
-          : t("input.form.errors.submissionFailed");
+          : t("input.form.errors.submissionFailed") || "Submission failed";
 
-      setSubmitError(errorMessage);
+      setSubmitError(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -88,8 +97,12 @@ export const useInputForm = (): UseInputFormReturn => {
     formState,
     onSubmit,
     isSubmitting,
-    submitError,
     submitSuccess,
+    submitError,
     setValue,
+    setError,
+    clearErrors,
+    isFileUploaded,
+    isSubmitDisabled,
   };
 };

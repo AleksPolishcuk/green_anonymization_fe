@@ -1,5 +1,5 @@
 export type InputFormRequest = {
-  text: string;
+  text: string | null;
   file: File | null;
 };
 

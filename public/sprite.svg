@@ -65,11 +65,11 @@
 <path d="M10.6663 11.3334H5.33301" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="input-submit-right-arrow" viewBox="0 0 14 14">
-    <path d="M2.91699 7H11.0837" stroke="white" stroke-opacity="0.7" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M7 2.91675L11.0833 7.00008L7 11.0834" stroke="white" stroke-opacity="0.7" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.91699 7H11.0837" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7 2.91675L11.0833 7.00008L7 11.0834" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="input-submit-play-icon" viewBox="0 0 15 15">
-    <path d="M3.75 1.875L12.5 7.5L3.75 13.125V1.875Z" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.75 1.875L12.5 7.5L3.75 13.125V1.875Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="upload-file-icon" viewBox="0 0 15 15" fill="none">
 <path d="M13.125 9.375V11.875C13.125 12.2065 12.9933 12.5245 12.7589 12.7589C12.5245 12.9933 12.2065 13.125 11.875 13.125H3.125C2.79348 13.125 2.47554 12.9933 2.24112 12.7589C2.0067 12.5245 1.875 12.2065 1.875 11.875V9.375" stroke="#2563EB" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>

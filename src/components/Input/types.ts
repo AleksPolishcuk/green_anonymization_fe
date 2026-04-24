@@ -1,26 +1,25 @@
 import type {
-  UseFormReturn,
+  Control,
   UseFormHandleSubmit,
-  UseFormSetValue,
+  UseFormReturn,
 } from "react-hook-form";
 
 export type InputFormValues = {
-  text: string;
+  text: string | null;
   file: File | null;
 };
 
 export type UseInputFormReturn = {
-  control: UseFormReturn<InputFormValues>["control"];
+  control: Control<InputFormValues>;
   handleSubmit: UseFormHandleSubmit<InputFormValues>;
   formState: UseFormReturn<InputFormValues>["formState"];
   onSubmit: (data: InputFormValues) => Promise<void>;
   isSubmitting: boolean;
-  submitError: string | null;
   submitSuccess: boolean;
-  setValue: UseFormSetValue<InputFormValues>;
+  submitError: string | null;
 };
 
 export type FileDropZoneProps = {
-  value?: File | null;
+  value: File | null;
   onChange: (file: File | null) => void;
 };

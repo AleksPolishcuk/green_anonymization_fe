@@ -29,8 +29,6 @@ export const InputSectionRoot = styled(Paper)(({ theme }) => ({
   boxShadow: BOX_SHADOW,
 
   minHeight: 550,
-  maxHeight: 570,
-  overflow: "hidden",
 
   "&::before": {
     content: '""',
@@ -128,26 +126,34 @@ export const InputForm = styled("form")(({ theme }) => ({
   },
 }));
 
-export const TextInput = styled(TextField)(({ theme }) => ({
+export const TextInput = styled(TextField, {
+  shouldForwardProp: (prop) => prop !== "$fileMode",
+})<{ $fileMode?: boolean }>(({ theme, $fileMode }) => ({
   "& .MuiInputBase-root": {
     backgroundColor: theme.palette.background.lightGray,
-
     boxShadow: InputFormStyles.textInput.boxShadow,
     borderRadius: theme.shape.borderRadius,
-
-    alignItems: "flex-start",
-    padding: 0,
-
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.fontSize12,
-    lineHeight: theme.typography.lineHeight175,
-
-    color: theme.palette.text.primary,
   },
 
+  "& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline": {
+    borderColor: theme.palette.error.main,
+  },
+
+  "& .MuiOutlinedInput-root.Mui-error:hover .MuiOutlinedInput-notchedOutline": {
+    borderColor: theme.palette.error.main,
+  },
+
+  "& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline":
+    {
+      borderColor: theme.palette.error.main,
+    },
+
+  // keep cursor logic
   "& textarea": {
+    overflow: $fileMode ? "hidden !important" : "auto",
+    resize: "none",
     padding: theme.spacing(0, 8),
+    cursor: $fileMode ? "not-allowed !important" : "text",
   },
 }));
 
@@ -250,6 +256,25 @@ export const FileRemoveButton = styled("button")(({ theme }) => ({
   },
 }));
 
+export const SubmitMetaRow = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: theme.spacing(3),
+  flexWrap: "wrap",
+}));
+
+export const FormStatusInline = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(2),
+  flex: 1,
+  minWidth: 0,
+  justifyContent: "flex-end",
+}));
+
+export const BORDER_ON = "rgba(37, 99, 235, 0.22)";
+
 export const InputSubmitButton = styled(Button)(({ theme }) => ({
   width: 250,
   height: 45,
@@ -257,6 +282,7 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
 
   background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #1D4ED8 100%)`,
   color: theme.palette.common.white,
+  border: "2px solid transparent",
 
   display: "flex",
   alignItems: "center",
@@ -273,17 +299,15 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 
   boxShadow: `
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
-      0px 4px 16px 0px ${alpha(theme.palette.primary.main, 0.35)}
-    `,
-
-  minWidth: "unset",
-  minHeight: "unset",
+    inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
+    0px 4px 16px 0px ${alpha(theme.palette.primary.main, 0.35)}
+  `,
 
   transition: theme.transitions.create(
-    ["transform", "box-shadow", "background"],
+    ["transform", "box-shadow", "background", "color", "border", "opacity"],
     {
-      duration: theme.transitions.duration.shorter,
+      duration: 300,
+      easing: theme.transitions.easing.easeInOut,
     },
   ),
 
@@ -295,9 +319,20 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
     background: `linear-gradient(135deg, ${theme.palette.color.darkBlue} 0%, ${theme.palette.primary.main} 100%)`,
     transform: "translateY(-2px)",
     boxShadow: `
-        inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
-        0px 8px 24px 0px ${alpha(theme.palette.primary.main, 0.4)}
-      `,
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15),
+      0px 8px 24px 0px ${alpha(theme.palette.primary.main, 0.4)}
+    `,
+  },
+
+  "&.Mui-disabled": {
+    cursor: "not-allowed",
+    pointerEvents: "auto",
+
+    background: "rgba(37, 99, 235, 0.12)",
+    color: theme.palette.color.grayDark,
+    border: `2px solid ${BORDER_ON}`,
+    fontWeight: theme.typography.fontWeightLight,
+    boxShadow: "none",
   },
 
   "&:active": {
@@ -342,4 +377,48 @@ export const SubmitWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(3),
+}));
+
+export const FormStatusAlert = styled(Box)<{ $type: "error" | "success" }>(
+  ({ theme, $type }) => ({
+    width: "100%",
+    padding: theme.spacing(3.5),
+    borderRadius: theme.shape.borderRadius,
+
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(2),
+
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.fontSize14,
+    lineHeight: theme.typography.lineHeight150,
+
+    backgroundColor:
+      $type === "error"
+        ? alpha(theme.palette.error.main, 0.08)
+        : alpha(theme.palette.success.main, 0.08),
+
+    border:
+      $type === "error"
+        ? `1px solid ${alpha(theme.palette.error.main, 0.3)}`
+        : `1px solid ${alpha(theme.palette.success.main, 0.3)}`,
+
+    color:
+      $type === "error" ? theme.palette.error.main : theme.palette.success.main,
+  }),
+);
+
+export const FormStatusIcon = styled(Box)(({ theme }) => ({
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexShrink: 0,
+}));
+
+export const FormStatusText = styled(Typography)(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize14,
+  fontWeight: theme.typography.fontWeightMedium,
 }));

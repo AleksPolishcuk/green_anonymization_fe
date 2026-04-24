@@ -1,7 +1,6 @@
 import * as yup from "yup";
 import type { ContactFormValues } from "features/ContactForm/types";
 import type { InputFormValues } from "components/Input/types";
-import { ALLOWED_FILE_TYPES, MAX_FILE_UPLOAD_SIZE } from "./DeidPage";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^\+?[\d\s\-()]{7,}$/;
@@ -40,28 +39,19 @@ export const contactFormSchema = yup.object().shape({
     .max(5000, "contactUsPage.form.errors.messageMaxLength"),
 }) as yup.ObjectSchema<ContactFormValues>;
 
-export const inputFormSchema = yup
-  .object()
-  .shape({
-    text: yup
-      .string()
-      .nullable()
-      .notRequired()
-      .max(5000, "input.form.errors.messageMaxLength"),
+export const inputFormSchema = yup.object({
+  text: yup
+    .string()
+    .nullable()
+    .transform((v) => (v?.trim() === "" ? null : v))
+    .when("file", {
+      is: (file: File | null) => !file,
+      then: (schema) =>
+        schema
+          .required("input.form.errors.required")
+          .max(5000, "input.form.errors.messageMaxLength"),
+      otherwise: (schema) => schema.nullable(),
+    }),
 
-    file: yup
-      .mixed<File>()
-      .nullable()
-      .notRequired()
-      .test("fileSize", "input.form.errors.fileTooLarge", (file) => {
-        if (!file) return true;
-        return file.size <= MAX_FILE_UPLOAD_SIZE;
-      })
-      .test("fileType", "input.form.errors.fileWrongFormat", (file) => {
-        if (!file) return true;
-        return ALLOWED_FILE_TYPES.includes(file.type);
-      }),
-  })
-  .test("text-or-file", "input.form.errors.noData", (values) => {
-    return !!values?.text || !!values?.file;
-  }) as yup.ObjectSchema<InputFormValues>;
+  file: yup.mixed<File>().nullable(),
+}) as yup.ObjectSchema<InputFormValues>;

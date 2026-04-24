@@ -17,65 +17,30 @@ import {
   SubmitWrapper,
   InputArrowIcon,
   InputPlayIcon,
+  SubmitMetaRow,
+  FormStatusAlert,
+  FormStatusText,
 } from "./styles";
 import { headerSpriteRef } from "constants/header";
-import {
-  Controller,
-  useWatch,
-  type ControllerRenderProps,
-} from "react-hook-form";
+import { Controller } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
-import type { InputFormValues } from "./types";
 
 export default function Input() {
   const { t } = useTranslation();
-  const { control, handleSubmit, formState, onSubmit, isSubmitting, setValue } =
-    useInputForm();
+
+  const {
+    control,
+    handleSubmit,
+    formState,
+    onSubmit,
+    submitSuccess,
+    isFileUploaded,
+    isSubmitDisabled,
+  } = useInputForm();
+
   const { errors } = formState;
-  const fileValue = useWatch({ control, name: "file" });
-  const renderTextInput = ({
-    field,
-  }: {
-    field: ControllerRenderProps<InputFormValues, "text">;
-  }) => {
-    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!fileValue) {
-        field.onChange(e);
-      }
-    };
-
-    return (
-      <TextInput
-        {...field}
-        disabled={!!fileValue}
-        value={fileValue ? "" : field.value}
-        onChange={handleTextChange}
-        id="textInput"
-        multiline
-        fullWidth
-        rows={11}
-        type="text"
-        error={!!errors.text}
-        placeholder={t("input.form.textPlaceholder")}
-      />
-    );
-  };
-
-  type FileFieldRender = {
-    field: ControllerRenderProps<InputFormValues, "file">;
-  };
-
-  const renderFileInput = ({ field }: FileFieldRender) => {
-    const handleFileChange = (file: File | null) => {
-      field.onChange(file);
-
-      if (file) {
-        setValue("text", "");
-      }
-    };
-
-    return <FileDropZone value={field.value} onChange={handleFileChange} />;
-  };
+  const textError = errors.text?.message;
+  const fileError = errors.file?.message;
 
   return (
     <InputSectionRoot>
@@ -90,7 +55,6 @@ export default function Input() {
           <div>
             <InputSectionTitleRow>
               <Typography variant="h5">{t("input.title")}</Typography>
-
               <StepChip label={t("input.step")} size="small" />
             </InputSectionTitleRow>
 
@@ -99,29 +63,66 @@ export default function Input() {
             </InputSectionSubtitle>
           </div>
         </InputSectionHeaderRow>
+
         <InputForm onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="text"
             control={control}
-            defaultValue=""
-            render={renderTextInput}
+            render={({ field }) => (
+              <TextInput
+                {...field}
+                disabled={isFileUploaded}
+                multiline
+                fullWidth
+                rows={11}
+                error={!isFileUploaded && !!textError}
+                helperText={!isFileUploaded ? textError : ""}
+                placeholder={t("input.form.textPlaceholder")}
+                $fileMode={isFileUploaded}
+              />
+            )}
           />
-          <Controller name="file" control={control} render={renderFileInput} />
-          <SubmitWrapper>
-            <InputSubmitButton type="submit" disabled={isSubmitting}>
-              <InputPlayIcon>
-                <use href={headerSpriteRef("input-submit-play-icon")} />
-              </InputPlayIcon>
 
-              <span>{t("input.form.submitButton")}</span>
+          <Controller
+            name="file"
+            control={control}
+            render={({ field }) => (
+              <FileDropZone
+                value={field.value}
+                onChange={field.onChange}
+                error={!!fileError}
+                helperText={fileError}
+              />
+            )}
+          />
 
-              <InputArrowIcon>
-                <use href={headerSpriteRef("input-submit-right-arrow")} />
-              </InputArrowIcon>
-            </InputSubmitButton>
+          <SubmitMetaRow>
+            {submitSuccess && (
+              <FormStatusAlert $type="success">
+                <FormStatusText>
+                  {t("input.form.successMessage")}
+                </FormStatusText>
+              </FormStatusAlert>
+            )}
 
-            <Estimate>{t("input.form.estimated")}</Estimate>
-          </SubmitWrapper>
+            {!submitSuccess && (
+              <SubmitWrapper>
+                <InputSubmitButton type="submit" disabled={isSubmitDisabled}>
+                  <InputPlayIcon>
+                    <use href={headerSpriteRef("input-submit-play-icon")} />
+                  </InputPlayIcon>
+
+                  <span>{t("input.form.submitButton")}</span>
+
+                  <InputArrowIcon>
+                    <use href={headerSpriteRef("input-submit-right-arrow")} />
+                  </InputArrowIcon>
+                </InputSubmitButton>
+
+                <Estimate>{t("input.form.estimated")}</Estimate>
+              </SubmitWrapper>
+            )}
+          </SubmitMetaRow>
         </InputForm>
       </InputSectionStack>
     </InputSectionRoot>
