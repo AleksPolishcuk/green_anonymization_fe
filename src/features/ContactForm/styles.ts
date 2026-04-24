@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Typography, Button } from "@mui/material";
+import { cardShadows } from "shared/constants/capabilities";
 
 export const ContactLayout = styled("div")(({ theme }) => ({
   display: "grid",
@@ -23,6 +24,9 @@ export const EmailCard = styled("div")(({ theme }) => ({
 
   opacity: 0,
   animation: "fadeSlideIn 0.6s ease forwards",
+
+  boxShadow:
+    theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
 
   "@keyframes fadeSlideIn": {
     from: { opacity: 0, transform: "translateY(24px)" },
@@ -65,6 +69,9 @@ export const FormCard = styled("div")(({ theme }) => ({
   border: `1px solid ${theme.palette.background.softGray}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
+
+  boxShadow:
+    theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
 
   opacity: 0,
   animation: "fadeSlideIn 0.6s ease 0.2s forwards",

@@ -1,9 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice";
-
-const exampleReducer = (state = { message: "Hello world" }) => state;
+import authReducer from "store/slices/authSlice";
+import themeReducer from "store/slices/themeSlice";
 
 export const rootReducer = combineReducers({
-  exampleWork: exampleReducer,
   auth: authReducer,
+  theme: themeReducer,
 });

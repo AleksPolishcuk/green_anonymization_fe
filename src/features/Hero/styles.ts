@@ -1,12 +1,17 @@
-import { styled, keyframes } from "@mui/material/styles";
+import { styled, keyframes, type Theme } from "@mui/material/styles";
 import { Button, Typography } from "@mui/material";
+import { TaskAlt as TaskAltIcon } from "@mui/icons-material";
 
 import {
   heroAssets,
   heroBreakpoints,
   heroColors,
+  heroDarkColors,
   heroLayout,
 } from "shared/constants/hero";
+
+const getHeroColors = (theme: Theme) =>
+  theme.palette.mode === "dark" ? heroDarkColors : heroColors;
 
 const enterAnimation = keyframes`
   0% {
@@ -38,17 +43,24 @@ const floatAnimation = keyframes`
   100% { transform: translateY(10px); }
 `;
 
-export const Section = styled("section")({
-  position: "relative",
-  padding: 0,
-  overflow: "hidden",
-  background: `
-    url("${heroAssets.waveBottom}") bottom center / 100% auto no-repeat,
-    radial-gradient(ellipse at 0% 0%, ${heroColors.radialTopLeft} 0%, transparent 60%),
-    radial-gradient(ellipse at 100% 100%, ${heroColors.radialBottomRight} 0%, transparent 55%),
-    radial-gradient(ellipse at 55% 40%, ${heroColors.radialCenter} 0%, transparent 45%),
-    linear-gradient(135deg, ${heroColors.gradientStart} 0%, ${heroColors.gradientMiddle} 50%, ${heroColors.gradientEnd} 100%)
-  `,
+export const Section = styled("section")(({ theme }: { theme: Theme }) => {
+  const colors = getHeroColors(theme);
+  const isDark = theme.palette.mode === "dark";
+
+  const wave = isDark ? heroAssets.waveBottomDark : heroAssets.waveBottom;
+
+  return {
+    position: "relative",
+    padding: 0,
+    overflow: "hidden",
+    background: `
+      url("${wave}") bottom center / 100% auto no-repeat,
+      radial-gradient(ellipse at 0% 0%, ${colors.radialTopLeft} 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 100%, ${colors.radialBottomRight} 0%, transparent 55%),
+      radial-gradient(ellipse at 55% 40%, ${colors.radialCenter} 0%, transparent 45%),
+      linear-gradient(135deg, ${colors.gradientStart} 0%, ${colors.gradientMiddle} 50%, ${colors.gradientEnd} 100%)
+    `,
+  };
 });
 
 export const HeroGrid = styled("div")(({ theme }) => ({
@@ -82,7 +94,7 @@ export const HeroGrid = styled("div")(({ theme }) => ({
       minmax(0, ${heroLayout.visualDesktopWidth}px)
     `,
     justifyContent: "space-between",
-    columnGap: heroLayout.columnGapDesktop,
+    columnGap: theme.spacing(9),
     paddingTop: heroLayout.heroTopPaddingDesktop,
     paddingBottom: heroLayout.heroBottomPaddingDesktop,
     alignItems: "start",
@@ -100,29 +112,46 @@ export const Content = styled("div")(({ theme }) => ({
   },
 }));
 
-export const Pill = styled("div")(({ theme }) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 8,
-  marginBottom: heroLayout.pillMarginBottom,
-  padding: "9px 17px",
-  borderRadius: 9999,
-  background: heroColors.pillBackground,
-  border: `1px solid ${heroColors.pillBorder}`,
-  color: theme.palette.primary.dark,
-  fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.fontWeightMedium,
-  fontSize: theme.typography.fontSize12,
-  lineHeight: theme.typography.lineHeight158,
-}));
+export const Pill = styled("div")(({ theme }) => {
+  const colors = getHeroColors(theme);
+
+  return {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: theme.spacing(8),
+    padding: "9px 17px",
+    borderRadius: 9999,
+
+    background: colors.pillBackground,
+    border: `1px solid ${colors.pillBorder}`,
+
+    color: theme.palette.primary.main,
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: theme.typography.fontWeightMedium,
+    fontSize: theme.typography.fontSize12,
+    lineHeight: theme.typography.lineHeight158,
+
+    backdropFilter: theme.palette.mode === "dark" ? "blur(6px)" : "none",
+
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? `
+          0 0 0 1px ${colors.pillGlowBorder},
+          0 0 12px ${colors.pillGlow}
+        `
+        : "none",
+
+    transition: "all 0.2s ease",
+  };
+});
 
 export const PillDot = styled("span")(({ theme }) => ({
-  titleAccentImageBottomOffset: -4,
   width: 8,
   height: 8,
   borderRadius: "50%",
   flexShrink: 0,
-  background: theme.palette.primary.dark,
+  background: theme.palette.primary.main,
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
@@ -132,6 +161,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   wordBreak: "normal",
   overflowWrap: "normal",
   hyphens: "none",
+  color: theme.palette.text.primary,
 
   [theme.breakpoints.up("lg")]: {
     maxWidth: heroLayout.titleDesktopMaxWidth,
@@ -146,7 +176,7 @@ export const TitleAccent = styled("span")({
 export const TitleAccentImage = styled("img")(({ theme }) => ({
   position: "absolute",
   left: 0,
-  bottom: heroLayout.titleAccentImageBottomOffset,
+  bottom: -4,
   display: "block",
   width: "100%",
   maxWidth: "100%",
@@ -159,12 +189,12 @@ export const TitleAccentImage = styled("img")(({ theme }) => ({
   },
 
   [theme.breakpoints.up("lg")]: {
-    bottom: heroLayout.titleAccentImageBottomOffset,
+    bottom: -4,
   },
 }));
 
 export const Description = styled(Typography)(({ theme }) => ({
-  margin: `${heroLayout.descriptionMarginTop}px 0 0`,
+  margin: theme.spacing(6, 0, 0),
   color: theme.palette.text.secondary,
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize18,
@@ -182,130 +212,84 @@ export const Description = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const PrimaryButton = styled(Button)(({ theme }) => ({
-  textTransform: "none",
-  fontSize: theme.typography.fontSize14,
-  marginTop: heroLayout.actionsMarginTop,
-  padding: "14px 24px",
-  background: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-  boxShadow: `0 4px 8px ${heroColors.buttonHoverShadow}`,
+export const PrimaryButton = styled(Button)(({ theme }) => {
+  const colors = getHeroColors(theme);
 
-  "&:hover": {
-    background: theme.palette.primary.dark,
-    boxShadow: `0 4px 8px ${heroColors.buttonHoverShadow}`,
-  },
+  return {
+    textTransform: "none",
+    fontSize: theme.typography.fontSize14,
+    marginTop: theme.spacing(10.5),
+    padding: "14px 24px",
+    background: theme.palette.primary.main,
+    color: "#ffffff",
+    boxShadow: `0 4px 8px ${colors.buttonHoverShadow}`,
 
-  [theme.breakpoints.up("md")]: {
-    padding: "17px 27px",
-    fontSize: theme.typography.fontSize16,
-  },
+    "&:hover": {
+      background: theme.palette.color.darkBlue,
+      boxShadow: `0 4px 8px ${colors.buttonHoverShadow}`,
+    },
 
-  [theme.breakpoints.up("lg")]: {
-    fontSize: theme.typography.button.fontSize,
-  },
-}));
+    [theme.breakpoints.up("md")]: {
+      padding: "17px 27px",
+      fontSize: theme.typography.fontSize16,
+    },
+
+    [theme.breakpoints.up("lg")]: {
+      fontSize: theme.typography.button.fontSize,
+    },
+  };
+});
 
 export const StatsRow = styled("div")(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
-  alignItems: "flex-start",
-  gap: 12,
-  marginTop: heroLayout.statsMarginTopMobile,
-  maxWidth: 240,
-
-  [theme.breakpoints.up("md")]: {
-    gap: 14,
-    maxWidth: "none",
-  },
+  alignItems: "center",
+  gap: theme.spacing(5),
+  marginTop: theme.spacing(10),
 
   [theme.breakpoints.up("lg")]: {
-    flexWrap: "nowrap",
-    gap: 0,
-    maxWidth: "none",
-    marginTop: heroLayout.statsMarginTopDesktop,
+    gap: theme.spacing(7),
+    marginTop: theme.spacing(14),
   },
 }));
 
 export const StatItem = styled("div")(({ theme }) => ({
   display: "flex",
-  flexDirection: "column",
-  minWidth: 84,
-  maxWidth: 110,
+  alignItems: "center",
+  gap: theme.spacing(1.6),
+}));
 
-  [theme.breakpoints.up("md")]: {
-    position: "relative",
-    minWidth: 82,
-    maxWidth: 96,
+export const TaskAlt = styled(TaskAltIcon)(({ theme }) => ({
+  fontSize: 20,
+  color: theme.palette.primary.main,
+  flexShrink: 0,
 
-    "&:not(:last-of-type)": {
-      marginRight: 14,
-      paddingRight: 14,
-    },
+  display: "flex",
+  alignItems: "center",
 
-    "&:not(:last-of-type)::after": {
-      content: '""',
-      position: "absolute",
-      top: "50%",
-      right: 0,
-      width: 1,
-      height: heroLayout.statDividerHeightDesktop,
-      background: theme.palette.divider,
-      transform: "translateY(-50%)",
-    },
-  },
+  transition: "transform 0.2s ease, filter 0.2s ease",
 
-  [theme.breakpoints.up("lg")]: {
-    flex: "0 1 auto",
-    minWidth: 0,
-    maxWidth: "none",
+  filter:
+    theme.palette.mode === "dark"
+      ? `
+      drop-shadow(0 0 6px rgba(59,130,246,0.4))
+      drop-shadow(0 0 12px rgba(59,130,246,0.3))
+      drop-shadow(0 0 20px rgba(59,130,246,0.2))
+    `
+      : "none",
 
-    "&:not(:last-of-type)": {
-      marginRight: heroLayout.statItemGapDesktop,
-      paddingRight: heroLayout.statItemGapDesktop,
-    },
-
-    "&:not(:last-of-type)::after": {
-      content: '""',
-      position: "absolute",
-      top: "50%",
-      right: 0,
-      width: 1,
-      height: heroLayout.statDividerHeightDesktop,
-      background: theme.palette.divider,
-      transform: "translateY(-50%)",
-    },
+  "&:hover": {
+    transform: "scale(1.1)",
   },
 }));
 
-export const StatValue = styled(Typography)(({ theme }) => ({
+export const StatText = styled(Typography)(({ theme }) => ({
   margin: 0,
-  color: theme.palette.text.primary,
-  fontFamily: theme.typography.h1.fontFamily,
-  fontWeight: theme.typography.h1.fontWeight,
-  fontSize: theme.typography.fontSize16,
-  lineHeight: theme.typography.lineHeight140,
-  letterSpacing: "0.05em",
+  whiteSpace: "nowrap",
+  letterSpacing: "0.09em",
 
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("lg")]: {
     fontSize: theme.typography.fontSize18,
-  },
-
-  [theme.breakpoints.up("lg")]: {
-    fontSize: theme.typography.fontSize22,
-  },
-}));
-
-export const StatLabel = styled(Typography)(({ theme }) => ({
-  margin: 0,
-  color: theme.palette.text.secondary,
-  fontSize: theme.typography.fontSize11,
-  lineHeight: theme.typography.lineHeight150,
-  wordBreak: "normal",
-  overflowWrap: "anywhere",
-
-  [theme.breakpoints.up("md")]: {
-    fontSize: theme.typography.fontSize12,
   },
 }));
 
@@ -346,12 +330,16 @@ export const ShieldAnimationWrap = styled("div")({
   animation: `${enterAnimation} 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
 });
 
-export const ShieldFloatLayer = styled("div")({
-  width: "100%",
-  height: "100%",
-  background: "transparent",
-  filter: `drop-shadow(0 34px 70px ${heroColors.shieldShadow})`,
-  animation: `${floatAnimation} 4.8s ease-in-out 2.8s infinite alternate`,
+export const ShieldFloatLayer = styled("div")(({ theme }) => {
+  const colors = getHeroColors(theme);
+
+  return {
+    width: "100%",
+    height: "100%",
+    background: "transparent",
+    filter: `drop-shadow(0 34px 70px ${colors.shieldShadow})`,
+    animation: `${floatAnimation} 4.8s ease-in-out 2.8s infinite alternate`,
+  };
 });
 
 export const ShieldImage = styled("img")(({ theme }) => ({

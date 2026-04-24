@@ -1,50 +1,56 @@
-import { theme } from "shared/theme/theme";
+export const ACCENT_KEYS = ["blue", "green", "amber", "red", "lilac"] as const;
+export type AccentKey = (typeof ACCENT_KEYS)[number];
 
-export const CAPABILITIES_LAYOUT = {
-  titleBlockMaxWidth: 760,
-  titleBlockMarginBottom: 64,
-  subtitleFontSize: "12px",
-  subtitleLetterSpacing: "0.05em",
-  cardsGap: 20,
-  cardPaddingMobile: "32px",
-  cardPaddingDesktop: "32px 128px 32px 32px",
-  cardContentGap: 16,
-  cardBoxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.04)",
-  iconSize: 44,
-  iconBorderRadius: 8,
-  iconSvgSize: 20,
+export type AccentLightKey =
+  | "lightBlue"
+  | "lightGreen"
+  | "lightAmber"
+  | "lightRed"
+  | "lightLilac";
+
+export const ACCENT_LIGHT_MAP: Record<AccentKey, AccentLightKey> = {
+  blue: "lightBlue",
+  green: "lightGreen",
+  amber: "lightAmber",
+  red: "lightRed",
+  lilac: "lightLilac",
+};
+
+export const cardShadows = {
+  card: "0 1px 3px 0 rgba(0, 0, 0, 0.04)",
+  cardDark: `
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(97, 154, 241, 0.22)
+  `,
 } as const;
 
 export const CAPABILITIES_CARDS = [
   {
     id: "pii",
     iconId: "#pii",
-    iconStroke: theme.palette.accent.blue,
-    iconBg: theme.palette.accent.lightBlue,
+    accentKey: "blue",
     titleKey: "capabilities.cards.pii.title",
     descKey: "capabilities.cards.pii.description",
   },
   {
     id: "synthetic",
     iconId: "#synthetic",
-    iconStroke: theme.palette.accent.lilac,
-    iconBg: theme.palette.accent.lightLilac,
+    accentKey: "lilac",
     titleKey: "capabilities.cards.synthetic.title",
     descKey: "capabilities.cards.synthetic.description",
   },
   {
     id: "framework",
     iconId: "#framework",
-    iconStroke: theme.palette.accent.green,
-    iconBg: theme.palette.accent.lightGreen,
+    accentKey: "green",
     titleKey: "capabilities.cards.framework.title",
     descKey: "capabilities.cards.framework.description",
   },
   {
     id: "anonymization",
     iconId: "#ai-anonymization",
-    iconStroke: theme.palette.accent.amber,
-    iconBg: theme.palette.accent.lightAmber,
+    accentKey: "amber",
     titleKey: "capabilities.cards.anonymization.title",
     descKey: "capabilities.cards.anonymization.description",
   },

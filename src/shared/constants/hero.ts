@@ -1,5 +1,6 @@
 export const heroAssets = {
   waveBottom: "/img/hero/wave-bottom.png",
+  waveBottomDark: "/img/hero/dark-wave.png",
   titleAccentIcon: "/img/hero/icon.png",
   shield: "/img/hero/shield.png",
 };
@@ -23,6 +24,24 @@ export const heroColors = {
   gradientStart: "#e8eaf6",
   gradientMiddle: "#f0f2ff",
   gradientEnd: "#ede8f5",
+  pillGlowBorder: "transparent",
+  pillGlow: "transparent",
+};
+
+export const heroDarkColors = {
+  pillBackground: "rgba(59, 130, 246, 0.12)",
+  pillBorder: "rgba(59, 130, 246, 0.25)",
+  buttonShadow: "rgba(59, 130, 246, 0.4)",
+  buttonHoverShadow: "rgba(59, 130, 246, 0.5)",
+  shieldShadow: "rgba(80, 110, 255, 0.35)",
+  radialTopLeft: "rgba(30, 41, 80, 0.6)",
+  radialBottomRight: "rgba(40, 30, 70, 0.5)",
+  radialCenter: "rgba(15, 23, 42, 0.7)",
+  gradientStart: "#081654",
+  gradientMiddle: "#050c2e",
+  gradientEnd: "#020617",
+  pillGlowBorder: "rgba(59,130,246,0.15)",
+  pillGlow: "rgba(59,130,246,0.25)",
 };
 
 export const heroLayout = {
@@ -42,28 +61,6 @@ export const heroLayout = {
   heroBottomPaddingMobile: 126,
   heroTopPaddingDesktop: 208,
   heroBottomPaddingDesktop: 193,
-
-  sidePaddingTablet: 44,
-  sidePaddingDesktop: 112,
-
-  columnGapTablet: 24,
-  columnGapLaptop: 20,
-  columnGapDesktop: 37,
-
-  statsMarginTopMobile: 40,
-  statsMarginTopDesktop: 56,
-  actionsMarginTop: 42,
-  pillMarginBottom: 32,
-  descriptionMarginTop: 24,
-
-  statItemGapMobile: 16,
-  statItemGapTablet: 18,
-  statItemGapDesktop: 28,
-
-  statDividerHeightMobile: 24,
-  statDividerHeightTablet: 28,
-  statDividerHeightDesktop: 32,
-  titleAccentImageBottomOffset: -4,
 };
 
 export const heroBreakpoints = {

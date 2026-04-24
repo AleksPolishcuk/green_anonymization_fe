@@ -12,11 +12,11 @@ import {
   Subtitle,
   TitleSectionBlock,
 } from "./styles";
-import { useScrollReveal } from "./hooks/useScrollReveal";
+import { useScrollReveal } from "../../shared/hooks/useScrollReveal";
 
 export const Capabilities = () => {
-  const { t } = useTranslation("capabilities");
-  const listRef = useScrollReveal();
+  const { t } = useTranslation();
+  const { ref: listRef, revealed } = useScrollReveal();
 
   return (
     <CapabilitiesSection id="solution">
@@ -30,9 +30,9 @@ export const Capabilities = () => {
         </TitleSectionBlock>
 
         <CardsList ref={listRef}>
-          {CAPABILITIES_CARDS.map((card) => (
-            <CardItem key={card.id} className="reveal-card">
-              <IconWrapper $bg={card.iconBg} $stroke={card.iconStroke}>
+          {CAPABILITIES_CARDS.map((card, index) => (
+            <CardItem key={card.id} $revealed={revealed} $index={index}>
+              <IconWrapper $accentKey={card.accentKey}>
                 <svg viewBox="0 0 20 20">
                   <use href={`sprite.svg${card.iconId}`} />
                 </svg>

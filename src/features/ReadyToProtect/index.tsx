@@ -15,7 +15,7 @@ import {
 import { useReadyToProtect } from "./hooks/useReadyToProtect";
 
 const ReadyToProtect = () => {
-  const { t } = useTranslation("readyToProtect");
+  const { t } = useTranslation();
   const { handleGetStartedClick, handleContactSalesClick } =
     useReadyToProtect();
 
