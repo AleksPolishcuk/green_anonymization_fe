@@ -15,6 +15,8 @@ const headerAssetPaths = {
 export const headerSpriteSymbolIds = {
   burger: "icon-burger",
   close: "icon-close",
+  dashboardDeIdShield: "dashboard-deid-shield",
+  dashboardDeIdArrow: "dashboard-deid-arrow",
 } as const;
 
 export function headerSpriteRef(symbolId: string): string {
