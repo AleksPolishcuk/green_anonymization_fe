@@ -1,5 +1,4 @@
 import { useAuthGuard } from "shared/hooks/useAuthGuard";
-import { useRegisterForm } from "features/Auth/hooks/useRegisterForm";
 import {
   Page,
   LeftSection,
@@ -9,17 +8,16 @@ import {
 } from "./styles";
 import RegisterForm from "features/Auth/components/RegisterForm";
 import RegisterHero from "features/Auth/components/RegisterHero";
+import { Loader } from "shared/ui/Loader";
 
 export default function Register() {
-  useAuthGuard("unregistered");
-
-  const form = useRegisterForm();
-
+  const { loading } = useAuthGuard("unregistered");
+  if (loading) return <Loader />;
   return (
     <Page>
       <LeftSection>
         <LeftContent>
-          <RegisterForm form={form} />
+          <RegisterForm />
         </LeftContent>
       </LeftSection>
 

@@ -1,4 +1,17 @@
-import { keyframes, styled, TextField } from "@mui/material";
+import {
+  alpha,
+  Button,
+  keyframes,
+  styled,
+  TextField,
+  Typography,
+} from "@mui/material";
+import {
+  shieldGrowDuration,
+  headingDelay,
+  paragraphDelay,
+} from "constants/auth";
+import staggerItem from "../utils/staggerItem";
 
 export const fadeUp = keyframes`
   from {
@@ -12,9 +25,86 @@ export const fadeUp = keyframes`
   }
 `;
 
-export const submitButton = {
-  width: 250,
-  height: 45,
+const shieldGrow = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
+export const ShieldLogo = styled("div")(({ theme }) => ({
+  width: theme.spacing(16),
+  height: theme.spacing(16),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transformOrigin: "center",
+  animation: `${shieldGrow} ${shieldGrowDuration}ms cubic-bezier(0.2, 0.9, 0.2, 1) both`,
+  borderRadius: theme.spacing(4),
+  background: alpha(theme.palette.color.white, 0.15),
+  border: `1px solid ${alpha(theme.palette.color.white, 0.2)}`,
+}));
+
+export const WelcomeHeading = styled(Typography)(({ theme }) => ({
+  ...staggerItem(headingDelay),
+
+  margin: 0,
+  fontFamily: theme.typography.headingFontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize32,
+  lineHeight: theme.typography.lineHeight108,
+  color: theme.palette.color.white,
+
+  [theme.breakpoints.down("md")]: {
+    fontSize: theme.typography.fontSize28,
+  },
+}));
+
+export const EnterpriseParagraph = styled(Typography)(({ theme }) => ({
+  ...staggerItem(paragraphDelay),
+
+  margin: 0,
+  maxWidth: theme.spacing(80.5),
+  textAlign: "center",
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize16,
+  lineHeight: theme.typography.lineHeight167,
+  color: theme.palette.accent.lightBlue,
+
+  [theme.breakpoints.down("md")]: {
+    maxWidth: theme.spacing(80.5),
+    fontSize: theme.typography.fontSize14,
+  },
+}));
+
+export const ShieldIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(8),
+  height: theme.spacing(8),
+  display: "block",
+  fill: "none",
+  color: theme.palette.common.white,
+}));
+
+export const RightArrowIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+  display: "block",
+  fill: "none",
+}));
+
+export const submitButtonStyles = {
+  width: "100%",
   background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
   disabledBtnBorder: "2px solid rgba(37, 99, 235, 0.22)",
   disabledBtnBg: "rgba(37, 99, 235, 0.12)",
@@ -22,6 +112,80 @@ export const submitButton = {
   boxShadowSize: "0px 4px 16px 0px",
   clickTransform: "translateY(0) scale(0.95)",
 };
+
+export const SubmitButton = styled(Button)(({ theme }) => ({
+  width: submitButtonStyles.width,
+  height: theme.spacing(13),
+  padding: "0 24px",
+
+  background: submitButtonStyles.background,
+
+  color: theme.palette.common.white,
+  border: "2px solid transparent",
+
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 10,
+
+  textTransform: "none",
+
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightBold,
+  fontSize: theme.typography.fontSize16,
+  lineHeight: theme.typography.lineHeight150,
+
+  borderRadius: theme.shape.borderRadius,
+
+  boxShadow: `
+    ${submitButtonStyles.insetBoxShadow},
+    ${submitButtonStyles.boxShadowSize} ${alpha(theme.palette.primary.main, 0.35)}
+  `,
+
+  transition: theme.transitions.create(
+    ["transform", "box-shadow", "background", "color", "border", "opacity"],
+    {
+      duration: 300,
+      easing: theme.transitions.easing.easeInOut,
+    },
+  ),
+
+  "&.MuiButton-root": {
+    color: theme.palette.common.white,
+  },
+
+  "&:hover": {
+    background: `linear-gradient(135deg, ${theme.palette.color.darkBlue} 0%, ${theme.palette.primary.main} 100%)`,
+    transform: "translateY(-2px)",
+    boxShadow: `
+    ${submitButtonStyles.insetBoxShadow},
+    ${submitButtonStyles.boxShadowSize}  ${alpha(theme.palette.primary.main, 0.4)}
+    `,
+  },
+
+  "&.Mui-disabled": {
+    cursor: "not-allowed",
+    pointerEvents: "auto",
+
+    background: submitButtonStyles.disabledBtnBg,
+    color: theme.palette.color.grayDark,
+    border: submitButtonStyles.disabledBtnBorder,
+    fontWeight: theme.typography.fontWeightLight,
+    boxShadow: "none",
+  },
+
+  "&:active": {
+    transform: submitButtonStyles.clickTransform,
+  },
+
+  "&:focus-visible": {
+    outline: `${theme.spacing(0.75)} solid ${alpha(
+      theme.palette.primary.main,
+      0.4,
+    )}`,
+    outlineOffset: theme.spacing(0.5),
+  },
+}));
 
 export const FormInputField = styled(TextField)(({ theme }) => ({
   width: "100%",

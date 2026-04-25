@@ -51,8 +51,20 @@ export const signInSchema = yup.object({
 export const registerSchema = yup.object({
   firstName: yup
     .string()
-    .required("contactUsPage.form.errors.emailRequired")
-    .max(256, "Entered First name is too long"),
+    .required("register.form.errors.firstNameRequired")
+    .min(2, "register.form.errors.firstNameMinLength")
+    .max(200, "register.form.errors.firstNameMaxLength"),
+
+  lastName: yup
+    .string()
+    .required("register.form.errors.lastNameRequired")
+    .min(2, "register.form.errors.lastNameMinLength")
+    .max(200, "register.form.errors.lastNameMaxLength"),
+
+  companyName: yup
+    .string()
+    .required("register.form.errors.companyRequired")
+    .max(500, "register.form.errors.companyMaxLength"),
 });
 
 export const inputFormSchema = yup.object({

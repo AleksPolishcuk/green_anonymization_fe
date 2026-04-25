@@ -1,6 +1,6 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
 import staggerItem from "features/Auth/utils/staggerItem";
-import { submitButton } from "../styles";
+import { submitButtonStyles } from "../styles";
 
 export const RegisterHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),
@@ -120,9 +120,9 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
     cursor: "not-allowed",
     pointerEvents: "auto",
 
-    background: submitButton.disabledBtnBg,
+    background: submitButtonStyles.disabledBtnBg,
     color: theme.palette.color.grayDark,
-    border: submitButton.disabledBtnBorder,
+    border: submitButtonStyles.disabledBtnBorder,
     fontWeight: theme.typography.fontWeightLight,
     boxShadow: "none",
   },

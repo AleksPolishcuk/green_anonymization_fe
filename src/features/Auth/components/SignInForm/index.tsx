@@ -1,5 +1,4 @@
 import { InputAdornment } from "@mui/material";
-import { RightArrowIcon } from "assets/icons/auth/RightArrowIcon";
 import { useEmailLoginForm } from "features/Auth/hooks/useEmailLoginForm";
 import { Controller } from "react-hook-form";
 import {
@@ -7,14 +6,17 @@ import {
   SigninSubtext,
   SigninFormBox,
   EmailLabel,
-  SigninBtn,
   BottomText,
   BottomLinkText,
   EmailIcon,
 } from "./styles";
 import EmailStatus from "../EmailStatus";
 import { Trans, useTranslation } from "react-i18next";
-import { FormInputField } from "features/Auth/components/styles";
+import {
+  FormInputField,
+  RightArrowIcon,
+  SubmitButton,
+} from "features/Auth/components/styles";
 import { headerSpriteRef } from "constants/header";
 
 export default function SignInForm() {
@@ -61,10 +63,16 @@ export default function SignInForm() {
               />
             )}
           />
-          <SigninBtn type="submit" disabled={form.isSubmitDisabled} fullWidth>
-            {t("signIn.form.submitButton")}
-            <RightArrowIcon />
-          </SigninBtn>
+          <SubmitButton
+            type="submit"
+            disabled={form.isSubmitDisabled}
+            fullWidth
+          >
+            <span>{t("signIn.form.submitButton")}</span>
+            <RightArrowIcon>
+              <use href={headerSpriteRef("right-arrow-icon")} />
+            </RightArrowIcon>
+          </SubmitButton>
         </form>
 
         <EmailStatus form={form} />

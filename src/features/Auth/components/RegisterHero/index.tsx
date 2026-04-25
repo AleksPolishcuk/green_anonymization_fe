@@ -1,9 +1,3 @@
-import { ShieldIcon } from "assets/icons/auth/ShieldIcon";
-import {
-  ShieldLogo,
-  WelcomeHeading,
-  EnterpriseParagraph,
-} from "../SignInHero/styles";
 import {
   TestimonialCard,
   TestimonialText,
@@ -15,6 +9,13 @@ import {
   ProfileRole,
 } from "./styles";
 import { useTranslation } from "react-i18next";
+import { headerSpriteRef } from "constants/header";
+import {
+  EnterpriseParagraph,
+  ShieldIcon,
+  ShieldLogo,
+  WelcomeHeading,
+} from "../styles";
 
 export default function RegisterHero() {
   const { t } = useTranslation();
@@ -22,7 +23,9 @@ export default function RegisterHero() {
   return (
     <>
       <ShieldLogo>
-        <ShieldIcon />
+        <ShieldIcon>
+          <use href={headerSpriteRef("shield-icon")} />
+        </ShieldIcon>
       </ShieldLogo>
       <WelcomeHeading>
         {t("register.hero.title1")}

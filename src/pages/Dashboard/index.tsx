@@ -1,8 +1,6 @@
-import { useAuthGuard } from "shared/hooks/useAuthGuard";
 import { useAppSelector } from "store/hooks";
 
 export default function Dashboard() {
-  useAuthGuard("registered");
   const user = useAppSelector((state) => state.auth?.user);
 
   return (

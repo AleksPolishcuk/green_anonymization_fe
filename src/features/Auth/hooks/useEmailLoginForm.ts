@@ -70,7 +70,7 @@ export const useEmailLoginForm = () => {
       const message =
         err instanceof Error
           ? err.message
-          : t("signIn.status.errorDescription", { error: "" });
+          : t("signIn.form.status.errorDescription", { error: "" });
 
       setError(message);
     } finally {

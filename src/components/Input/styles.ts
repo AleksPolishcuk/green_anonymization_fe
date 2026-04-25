@@ -366,19 +366,19 @@ export const InputSubmitButton = styled(Button)(({ theme }) => ({
 }));
 
 export const InputPlayIcon = styled("svg")(({ theme }) => ({
-  width: 15,
-  height: 15,
+  width: theme.spacing(4),
+  height: theme.spacing(4),
   display: "block",
   fill: "none",
   stroke: theme.palette.common.white,
 }));
 
 export const InputArrowIcon = styled("svg")(({ theme }) => ({
-  width: 14,
-  height: 14,
+  width: theme.spacing(3.5),
+  height: theme.spacing(3.5),
   display: "block",
   fill: "none",
-  stroke: theme.palette.common.white,
+  color: theme.palette.common.white,
 }));
 
 export const Estimate = styled("span")(({ theme }) => ({
