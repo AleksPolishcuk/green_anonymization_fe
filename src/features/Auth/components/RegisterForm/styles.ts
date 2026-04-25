@@ -1,5 +1,6 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
 import staggerItem from "features/Auth/utils/staggerItem";
+import { submitButton } from "../styles";
 
 export const RegisterHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),
@@ -65,6 +66,23 @@ export const NameLabel = styled("label")(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
+export const CompanyIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
+  display: "block",
+  fill: "none",
+  color: theme.palette.background.mediumGray,
+}));
+
+export const PersonIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
+  display: "block",
+  fill: "none",
+  opacity: 1,
+  color: theme.palette.background.mediumGray,
+}));
+
 export const RegisterButton = styled(Button)(({ theme }) => ({
   ...staggerItem(620),
 
@@ -97,6 +115,17 @@ export const RegisterButton = styled(Button)(({ theme }) => ({
     ["transform", "box-shadow", "background-color"],
     { duration: theme.transitions.duration.shorter },
   ),
+
+  "&.Mui-disabled": {
+    cursor: "not-allowed",
+    pointerEvents: "auto",
+
+    background: submitButton.disabledBtnBg,
+    color: theme.palette.color.grayDark,
+    border: submitButton.disabledBtnBorder,
+    fontWeight: theme.typography.fontWeightLight,
+    boxShadow: "none",
+  },
 
   "&:hover": {
     backgroundColor: theme.palette.color.darkBlue,

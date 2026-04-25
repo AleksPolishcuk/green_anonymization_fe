@@ -1,6 +1,4 @@
 import { InputAdornment } from "@mui/material";
-import { CompanyIcon } from "assets/icons/auth/CompanyIcon";
-import { PersonIcon } from "assets/icons/auth/PersonIcon";
 import { RightArrowIcon } from "assets/icons/auth/RightArrowIcon";
 import type { useRegisterForm } from "features/Auth/hooks/useRegisterForm";
 import { Controller } from "react-hook-form";
@@ -23,9 +21,12 @@ import {
   NameLabel,
   CompanyRow,
   RegisterButton,
+  CompanyIcon,
+  PersonIcon,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FormInputField } from "features/Auth/components/styles";
+import { headerSpriteRef } from "constants/header";
 
 type Props = {
   form: ReturnType<typeof useRegisterForm>;
@@ -60,7 +61,9 @@ export default function RegisterForm({ form }: Props) {
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonIcon />
+                            <PersonIcon>
+                              <use href={headerSpriteRef("person-icon")} />
+                            </PersonIcon>
                           </InputAdornment>
                         ),
                       },
@@ -93,7 +96,9 @@ export default function RegisterForm({ form }: Props) {
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonIcon />
+                            <PersonIcon>
+                              <use href={headerSpriteRef("person-icon")} />
+                            </PersonIcon>
                           </InputAdornment>
                         ),
                       },
@@ -127,7 +132,9 @@ export default function RegisterForm({ form }: Props) {
                     input: {
                       startAdornment: (
                         <InputAdornment position="start">
-                          <CompanyIcon />
+                          <CompanyIcon>
+                            <use href={headerSpriteRef("company-icon")} />
+                          </CompanyIcon>
                         </InputAdornment>
                       ),
                     },

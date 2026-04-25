@@ -39,6 +39,22 @@ export const contactFormSchema = yup.object().shape({
     .max(5000, "contactUsPage.form.errors.messageMaxLength"),
 }) as yup.ObjectSchema<ContactFormValues>;
 
+export const signInSchema = yup.object({
+  email: yup
+    .string()
+    .required("signIn.form.status.emailRequired")
+    .matches(EMAIL_REGEX, "signIn.form.status.emailInvalid")
+    .min(5, "signIn.form.status.emailTooShort")
+    .max(100, "signIn.form.status.emailTooLong"),
+});
+
+export const registerSchema = yup.object({
+  firstName: yup
+    .string()
+    .required("contactUsPage.form.errors.emailRequired")
+    .max(256, "Entered First name is too long"),
+});
+
 export const inputFormSchema = yup.object({
   text: yup
     .string()

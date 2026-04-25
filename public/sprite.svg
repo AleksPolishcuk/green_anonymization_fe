@@ -57,6 +57,41 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6657" d="M26.657 15.994h-6.664c-0.736 0-1.333 0.597-1.333 1.333v9.33c0 0.736 0.597 1.333 1.333 1.333h6.664c0.736 0 1.333-0.597 1.333-1.333v-9.33c0-0.736-0.597-1.333-1.333-1.333z"></path>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6657" d="M11.995 21.326h-6.664c-0.736 0-1.333 0.597-1.333 1.333v3.998c0 0.736 0.597 1.333 1.333 1.333h6.664c0.736 0 1.333-0.597 1.333-1.333v-3.998c0-0.736-0.597-1.333-1.333-1.333z"></path>
     </symbol>
+    <symbol id="company-icon" viewBox="0 0 18 18">
+<g clip-path="url(#clip0_160_8410)">
+<path d="M4.5 16.5V3C4.5 2.60218 4.65804 2.22064 4.93934 1.93934C5.22064 1.65804 5.60218 1.5 6 1.5H12C12.3978 1.5 12.7794 1.65804 13.0607 1.93934C13.342 2.22064 13.5 2.60218 13.5 3V16.5H4.5Z" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.5 9H3C2.60218 9 2.22064 9.15804 1.93934 9.43934C1.65804 9.72064 1.5 10.1022 1.5 10.5V15C1.5 15.3978 1.65804 15.7794 1.93934 16.0607C2.22064 16.342 2.60218 16.5 3 16.5H4.5" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.5 6.75H15C15.3978 6.75 15.7794 6.90804 16.0607 7.18934C16.342 7.47064 16.5 7.85218 16.5 8.25V15C16.5 15.3978 16.342 15.7794 16.0607 16.0607C15.7794 16.342 15.3978 16.5 15 16.5H13.5" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.5 4.5H10.4992" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.5 7.5H10.4992" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.5 10.5H10.4992" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.5 13.5H10.4992" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_160_8410">
+<rect width="18" height="18" fill="white"/>
+</clipPath>
+</defs>
+
+    </symbol>
+    <symbol id="email-icon">
+<path d="M15 3H3C2.17157 3 1.5 3.67157 1.5 4.5V13.5C1.5 14.3284 2.17157 15 3 15H15C15.8284 15 16.5 14.3284 16.5 13.5V4.5C16.5 3.67157 15.8284 3 15 3Z" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5 5.25L9.7725 9.525C9.54095 9.67007 9.27324 9.74701 9 9.74701C8.72676 9.74701 8.45905 9.67007 8.2275 9.525L1.5 5.25" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+
+    </symbol>
+    <symbol id="ok-checkmark-icon">
+    
+    </symbol>
+    <symbol id="person-icon" viewBox="0 0 18 18" >
+<path d="M14.25 15.75V14.25C14.25 13.4544 13.9339 12.6913 13.3713 12.1287C12.8087 11.5661 12.0456 11.25 11.25 11.25H6.75C5.95435 11.25 5.19129 11.5661 4.62868 12.1287C4.06607 12.6913 3.75 13.4544 3.75 14.25V15.75" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 8.25C10.6569 8.25 12 6.90685 12 5.25C12 3.59315 10.6569 2.25 9 2.25C7.34315 2.25 6 3.59315 6 5.25C6 6.90685 7.34315 8.25 9 8.25Z" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+    <symbol id="right-arrow-icon">
+    
+    </symbol>
+    <symbol id="shield-icon">
+    
+    </symbol>
     <symbol id="icon-input" viewBox="0 0 16 16">
 <path d="M10.0003 1.33337H4.00033C3.6467 1.33337 3.30756 1.47385 3.05752 1.7239C2.80747 1.97395 2.66699 2.31309 2.66699 2.66671V13.3334C2.66699 13.687 2.80747 14.0261 3.05752 14.2762C3.30756 14.5262 3.6467 14.6667 4.00033 14.6667H12.0003C12.3539 14.6667 12.6931 14.5262 12.9431 14.2762C13.1932 14.0261 13.3337 13.687 13.3337 13.3334V4.66671L10.0003 1.33337Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M9.33301 1.33337V4.00004C9.33301 4.35366 9.47348 4.6928 9.72353 4.94285C9.97358 5.1929 10.3127 5.33337 10.6663 5.33337H13.333" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>

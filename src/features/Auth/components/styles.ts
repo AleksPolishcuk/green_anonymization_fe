@@ -12,9 +12,19 @@ export const fadeUp = keyframes`
   }
 `;
 
+export const submitButton = {
+  width: 250,
+  height: 45,
+  background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+  disabledBtnBorder: "2px solid rgba(37, 99, 235, 0.22)",
+  disabledBtnBg: "rgba(37, 99, 235, 0.12)",
+  insetBoxShadow: "inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15)",
+  boxShadowSize: "0px 4px 16px 0px",
+  clickTransform: "translateY(0) scale(0.95)",
+};
+
 export const FormInputField = styled(TextField)(({ theme }) => ({
   width: "100%",
-  maxWidth: theme.typography.pxToRem(448),
   marginBottom: theme.spacing(5),
 
   [theme.breakpoints.down("md")]: {
@@ -55,6 +65,10 @@ export const FormInputField = styled(TextField)(({ theme }) => ({
   "& input": {
     padding: 0,
     transition: `background-color 200ms ease`,
+  },
+
+  "& .MuiFormHelperText-root.Mui-error": {
+    color: theme.palette.error.main,
   },
 
   "& input::placeholder": {

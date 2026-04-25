@@ -7,12 +7,43 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { alpha, styled } from "@mui/material/styles";
-import {
-  BOX_SHADOW,
-  CHIP_COLOR_PRESETS,
-  INPUT_SECTION_STYLES,
-} from "constants/DeidPage";
+import { alpha, keyframes, styled } from "@mui/material/styles";
+import { BOX_SHADOW, CHIP_COLOR_PRESETS } from "constants/DeidPage";
+
+const INPUT_SECTION_STYLES = {
+  topLineBackground:
+    "linear-gradient(90deg, #0EA5E9 0%, #06B6D4 50%, rgba(6, 182, 212, 0.2) 100%)",
+  textInput: {
+    boxShadow: "4px 0px 32px 0px rgba(16, 24, 40, 0.06)",
+  },
+  fileWrapper: {
+    border: "2px dashed rgba(208, 213, 221, 0.8)",
+    background: "rgba(249, 250, 251, 0.5)",
+    hoverBackground: "rgba(249, 250, 251, 0.8)",
+  },
+  submitButton: {
+    width: 250,
+    height: 45,
+    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+    disabledBtnBorder: "2px solid rgba(37, 99, 235, 0.22)",
+    disabledBtnBg: "rgba(37, 99, 235, 0.12)",
+    insetBoxShadow: "inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15)",
+    boxShadowSize: "0px 4px 16px 0px",
+    clickTransform: "translateY(0) scale(0.95)",
+  },
+  fadeSlideIn: keyframes`
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      0.6s ease 0.2s forwards
+    `,
+  transition: "0.2s ease",
+};
 
 export const InputSectionRoot = styled(Paper)(({ theme }) => ({
   position: "relative",
@@ -214,7 +245,7 @@ export const FileDropSubtitle = styled("span")(({ theme }) => ({
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize11,
   lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.accent.red,
+  color: theme.palette.color.grayDark,
 }));
 
 export const FileRemoveButton = styled("button")(({ theme }) => ({
