@@ -25,7 +25,7 @@ import {
   headerRoutes,
   headerSpriteRef,
   headerSpriteSymbolIds,
-} from "constants/header";
+} from "constants/MainPages";
 
 type HeaderLogoProps = {
   href?: string;

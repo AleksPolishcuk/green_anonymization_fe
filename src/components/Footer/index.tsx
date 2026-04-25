@@ -6,13 +6,7 @@ import { Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { SpriteIcon } from "components/SpriteIcon";
-import {
-  footerNavColumnTitleKey,
-  footerMainLogoPreserveAspectRatio,
-  footerNavLinks,
-  spriteSymbolIds,
-  spriteViewBoxes,
-} from "constants/footer";
+
 import {
   FooterBody,
   FooterBottom,
@@ -31,6 +25,13 @@ import {
   footerNavLinkSx,
   FooterContainer,
 } from "components/Footer/styles";
+import {
+  footerMainLogoPreserveAspectRatio,
+  footerNavColumnTitleKey,
+  footerNavLinks,
+  spriteSymbolIds,
+  spriteViewBoxes,
+} from "constants/MainPages";
 
 export function Footer() {
   const { t } = useTranslation();

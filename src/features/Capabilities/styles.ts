@@ -4,7 +4,7 @@ import {
   ACCENT_LIGHT_MAP,
   cardShadows,
   type AccentKey,
-} from "shared/constants/capabilities";
+} from "constants/MainPages";
 
 export const CapabilitiesSection = styled("section")(({ theme }) => ({
   backgroundColor: theme.palette.subtle.bg,

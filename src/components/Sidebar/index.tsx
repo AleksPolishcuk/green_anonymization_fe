@@ -1,8 +1,6 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { headerSpriteRef } from "constants/header";
-
 import {
   SidebarLogoBox,
   SidebarLogoIcon,
@@ -17,6 +15,7 @@ import {
   SidebarTextBlock,
   SidebarTitle,
 } from "./styles";
+import { headerSpriteRef } from "constants/MainPages";
 
 export default function Sidebar() {
   const { t } = useTranslation();

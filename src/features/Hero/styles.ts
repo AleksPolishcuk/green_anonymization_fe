@@ -1,14 +1,13 @@
 import { styled, keyframes, type Theme } from "@mui/material/styles";
 import { Button, Typography } from "@mui/material";
 import { TaskAlt as TaskAltIcon } from "@mui/icons-material";
-
 import {
   heroAssets,
   heroBreakpoints,
   heroColors,
   heroDarkColors,
   heroLayout,
-} from "shared/constants/hero";
+} from "constants/MainPages";
 
 const getHeroColors = (theme: Theme) =>
   theme.palette.mode === "dark" ? heroDarkColors : heroColors;

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { LinkProps } from "react-router-dom";
 
 import { NavButton } from "components/Header/NavLinks/styles";
-import { headerI18nPrefix, headerNavItems } from "constants/header";
+import { headerI18nPrefix, headerNavItems } from "constants/MainPages";
 
 type NavLinksProps = {
   onNavigate?: () => void;

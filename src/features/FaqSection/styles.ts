@@ -6,6 +6,7 @@ import {
   AccordionDetails,
   Container,
 } from "@mui/material";
+import { cardShadowsLight } from "constants/MainPages";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   marginTop: theme.spacing(20),
@@ -43,9 +44,13 @@ export const FaqAccordionWrapper = styled("div")(({ theme }) => ({
 export const FaqAccordion = styled(Accordion)(({ theme }) => ({
   border: `1px solid ${theme.palette.background.lightGray}`,
   borderRadius: `${theme.shape.borderRadius}px !important`,
-  boxShadow: "none",
+
   margin: 0,
   backgroundColor: theme.palette.background.paper,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? cardShadowsLight.cardDark
+      : cardShadowsLight.card,
 
   "&::before": {
     display: "none",

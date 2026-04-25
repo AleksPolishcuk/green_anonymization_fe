@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { CAPABILITIES_CARDS } from "shared/constants/capabilities";
 import {
   CapabilitiesSection,
   CardItem,
@@ -13,6 +12,7 @@ import {
   TitleSectionBlock,
 } from "./styles";
 import { useScrollReveal } from "../../shared/hooks/useScrollReveal";
+import { CAPABILITIES_CARDS } from "constants/MainPages";
 
 export const Capabilities = () => {
   const { t } = useTranslation();

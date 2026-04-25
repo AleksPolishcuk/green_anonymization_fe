@@ -1,10 +1,9 @@
 import { Button, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
 import {
   readyToProtectColors,
   readyToProtectDarkColors,
-} from "shared/constants/readyToProtect";
+} from "constants/MainPages";
 
 export const Section = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),

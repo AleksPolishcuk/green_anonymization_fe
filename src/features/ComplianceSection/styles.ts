@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
-import type { AccentKey } from "constants/index";
-import { cardShadows } from "shared/constants/capabilities";
+import { cardShadows, type AccentKey } from "constants/MainPages";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),

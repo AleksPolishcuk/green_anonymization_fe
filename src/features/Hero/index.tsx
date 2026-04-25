@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { headerRoutes } from "constants/header";
-import { heroAssets, heroStatsKeys } from "shared/constants/hero";
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
+
+import { headerRoutes, heroAssets, heroStatsKeys } from "constants/MainPages";
 
 import {
   Content,

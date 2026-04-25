@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Typography, Button } from "@mui/material";
-import { cardShadows } from "shared/constants/capabilities";
+import { cardShadows } from "constants/MainPages";
 
 export const ContactLayout = styled("div")(({ theme }) => ({
   display: "grid",

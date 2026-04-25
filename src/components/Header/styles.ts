@@ -1,11 +1,10 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
 import {
   headerBreakpoints,
   headerDimensions,
   headerLogoViewBox,
-} from "constants/header";
+} from "constants/MainPages";
 
 const logoViewW = headerLogoViewBox.width;
 const logoViewH = headerLogoViewBox.height;
