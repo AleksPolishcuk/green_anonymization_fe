@@ -57,6 +57,11 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6657" d="M26.657 15.994h-6.664c-0.736 0-1.333 0.597-1.333 1.333v9.33c0 0.736 0.597 1.333 1.333 1.333h6.664c0.736 0 1.333-0.597 1.333-1.333v-9.33c0-0.736-0.597-1.333-1.333-1.333z"></path>
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6657" d="M11.995 21.326h-6.664c-0.736 0-1.333 0.597-1.333 1.333v3.998c0 0.736 0.597 1.333 1.333 1.333h6.664c0.736 0 1.333-0.597 1.333-1.333v-3.998c0-0.736-0.597-1.333-1.333-1.333z"></path>
     </symbol>
+    <symbol id="icon-exit" viewBox="0 0 20 20">
+<path d="M7 17H3.66667C3.22464 17 2.80072 16.8244 2.48816 16.5118C2.17559 16.1993 2 15.7754 2 15.3333V3.66667C2 3.22464 2.17559 2.80072 2.48816 2.48816C2.80072 2.17559 3.22464 2 3.66667 2H7" stroke="currentColor" stroke-width="1.6663" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13 13L17 9L13 5" stroke="currentColor" stroke-width="1.6663" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 9H7" stroke="currentColor" stroke-width="1.6663" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
     <symbol id="company-icon" viewBox="0 0 18 18">
 <g clip-path="url(#clip0_160_8410)">
 <path d="M4.5 16.5V3C4.5 2.60218 4.65804 2.22064 4.93934 1.93934C5.22064 1.65804 5.60218 1.5 6 1.5H12C12.3978 1.5 12.7794 1.65804 13.0607 1.93934C13.342 2.22064 13.5 2.60218 13.5 3V16.5H4.5Z" stroke="currentColor" stroke-width="1.49959" stroke-linecap="round" stroke-linejoin="round"/>
