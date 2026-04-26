@@ -15,7 +15,7 @@ type AuthActionsProps = {
 export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
   const { t } = useTranslation();
   const handleGetStartedClick = useCtaNavigate({
-    target: headerRoutes.signIn,
+    target: headerRoutes.dashboard,
     beforeNavigate: onAction,
   });
 
