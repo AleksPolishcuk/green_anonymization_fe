@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice";
 
-const exampleReducer = (state = { message: "Hello world" }) => state;
+import authReducer from "./slices/authSlice";
+import dashboardReducer from "components/Dashboard/store/dashboardSlice";
 
 export const rootReducer = combineReducers({
-  exampleWork: exampleReducer,
   auth: authReducer,
+  dashboard: dashboardReducer,
 });

@@ -10,6 +10,14 @@ export const useAuthGuard = (mode: "registered" | "unregistered") => {
 
   useEffect(() => {
     const check = async () => {
+      if (
+        import.meta.env.DEV &&
+        import.meta.env.VITE_DEV_AUTH_BYPASS === "true"
+      ) {
+        setLoading(false);
+        return;
+      }
+
       const result = await dispatch(fetchSession());
 
       if (fetchSession.rejected.match(result)) {
