@@ -220,7 +220,7 @@ export const PrimaryButton = styled(Button)(({ theme }) => {
     marginTop: theme.spacing(10.5),
     padding: "14px 24px",
     background: theme.palette.primary.main,
-    color: "#ffffff",
+    color: theme.palette.common.white,
     boxShadow: `0 4px 8px ${colors.buttonHoverShadow}`,
 
     "&:hover": {
