@@ -40,6 +40,9 @@ export const ChartCard = styled(Box, {
       padding: theme.spacing(6),
       height: $tall ? CHART_CARD_HEIGHT_MD_TALL : CHART_CARD_HEIGHT_MD,
     },
+    [theme.breakpoints.up("xl")]: {
+      height: CHART_CARD_HEIGHT_MD_TALL,
+    },
   };
 });
 
