@@ -91,7 +91,7 @@ export const FooterBrandRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  gap: theme.spacing(1.5),
+  gap: "10px",
   maxWidth: "100%",
   width: "100%",
   [theme.breakpoints.up("md")]: {
@@ -138,25 +138,29 @@ export const FooterBottom = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const footerMainLogoWrapperSx: SxProps<Theme> = (theme) => ({
+export const footerMainLogoWrapperSx: SxProps<Theme> = {
   display: "block",
   flexShrink: 0,
-  alignSelf: "center",
-  width: "100%",
-  maxWidth: "200px",
+  width: "36px",
   height: "36px",
   lineHeight: 0,
   overflow: "hidden",
-  [theme.breakpoints.up("md")]: {
-    alignSelf: "flex-start",
-  },
-});
+};
 
 export const footerMainLogoInnerSx: SxProps<Theme> = {
   display: "block",
   width: "100%",
   height: "100%",
 };
+
+export const footerLogoTextSx: SxProps<Theme> = (theme) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize16,
+  fontWeight: theme.typography.fontWeightBold,
+  color: theme.palette.text.primary,
+  lineHeight: 1,
+  whiteSpace: "nowrap",
+});
 
 export const footerNavGridSx: SxProps<Theme> = (theme) => ({
   width: "100%",

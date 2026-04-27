@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import { useTranslation } from "react-i18next";
 
+import type { EntityTypeDatum } from "components/Dashboard/types";
 import {
   ACTIVE_GRADIENT_END,
   ACTIVE_GRADIENT_HOVER_ID,
@@ -18,31 +19,30 @@ import {
   CHART_GRID_STROKE,
   tickStyle,
 } from "constants/DashboardPage";
-import type { DeIdMethodData } from "components/Dashboard/types";
 
 import {
   ChartBody,
   ChartCard,
   ChartSubtitle,
   ChartTitle,
-} from "components/Dashboard/components/ChartCard/styles";
+} from "components/Dashboard/charts/ChartCard/styles";
 import {
   ActiveBarLabel,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
-} from "components/Dashboard/components/shared/barShapes";
+} from "components/Dashboard/charts/shared/barShapes";
 
-type Props = { data: DeIdMethodData[] };
+type Props = { data: EntityTypeDatum[] };
 
-export const DeIdMethodChart = ({ data }: Props) => {
+export const EntityTypesChart = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.deIdMethod.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.deIdMethod.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("charts.entityTypes.title")}</ChartTitle>
+      <ChartSubtitle>{t("charts.entityTypes.subtitle")}</ChartSubtitle>
 
       <ChartBody>
         <ResponsiveContainer width="100%" height="100%">
@@ -83,7 +83,7 @@ export const DeIdMethodChart = ({ data }: Props) => {
             />
 
             <XAxis
-              dataKey="method"
+              dataKey="name"
               tick={tickStyle}
               axisLine={false}
               tickLine={false}

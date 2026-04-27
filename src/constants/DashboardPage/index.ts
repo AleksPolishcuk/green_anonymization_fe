@@ -1,7 +1,7 @@
 import { theme } from "shared/theme/theme";
 
 export const COMPLIANCE_COLORS: Record<string, string> = {
-  HIPAA: "#000000",
+  HIPAA: "#6366F1",
   "EU GDPR": "#92bfff",
   "UK GDPR": "#94e9b8",
   FADP: "#aec7ed",

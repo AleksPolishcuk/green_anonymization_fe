@@ -1,14 +1,8 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import {
-  headerBreakpoints,
-  headerDimensions,
-  headerLogoViewBox,
-} from "constants/header";
+import { headerBreakpoints, headerDimensions } from "constants/header";
 
-const logoViewW = headerLogoViewBox.width;
-const logoViewH = headerLogoViewBox.height;
 const headerLogoLockBreakpointPx = headerBreakpoints.tabletPx;
 const fastTransitionSeconds = 0.22;
 const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
@@ -21,11 +15,7 @@ export const HeaderShell = styled("header", {
   zIndex: 20,
   paddingTop: theme.spacing(4),
   ...($isOverlay && {
-    marginBottom: "-84px",
-
-    [theme.breakpoints.up("lg")]: {
-      marginBottom: "-90px",
-    },
+    marginBottom: "-92px",
   }),
 }));
 
@@ -146,46 +136,34 @@ export const DesktopNav = styled("nav")(({ theme }) => ({
 export const LogoLink = styled("a")({
   display: "inline-flex",
   alignItems: "center",
-  minWidth: 0,
-  maxWidth: `${headerDimensions.logoWidthPx}px`,
-  width: "100%",
+  gap: "10px",
+  width: `${headerDimensions.logoWidthPx}px`,
+  height: `${headerDimensions.logoHeightPx}px`,
   textDecoration: "none",
-  lineHeight: 0,
   outline: "none",
+  flexShrink: 0,
 
   "&:focus, &:focus-visible": {
     outline: "none",
-  },
-
-  flexShrink: 1,
-
-  [`@media (min-width: ${headerLogoLockBreakpointPx}px)`]: {
-    width: `${headerDimensions.logoWidthPx}px`,
-    maxWidth: "none",
-    height: `${headerDimensions.logoHeightPx}px`,
-    flexShrink: 0,
   },
 });
 
 export const LogoIcon = styled("svg")({
   display: "block",
-  overflow: "visible",
-  width: "100%",
-  maxWidth: `${headerDimensions.logoWidthPx}px`,
-  height: "auto",
-  aspectRatio: `${logoViewW} / ${logoViewH}`,
-  flexShrink: 1,
-
-  [`@media (min-width: ${headerLogoLockBreakpointPx}px)`]: {
-    width: `${headerDimensions.logoWidthPx}px`,
-    minWidth: `${headerDimensions.logoWidthPx}px`,
-    height: `${headerDimensions.logoHeightPx}px`,
-    minHeight: `${headerDimensions.logoHeightPx}px`,
-    maxWidth: "none",
-    flexShrink: 0,
-    aspectRatio: "unset",
-  },
+  width: `${headerDimensions.logoHeightPx}px`,
+  height: `${headerDimensions.logoHeightPx}px`,
+  flexShrink: 0,
 });
+
+export const LogoText = styled("span")(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize16,
+  fontWeight: theme.typography.fontWeightBold,
+  color: theme.palette.text.primary,
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+}));
 
 export const MobileOnlyBurgerButton = styled(IconButton)(({ theme }) => ({
   flexShrink: 0,
