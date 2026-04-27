@@ -13,35 +13,38 @@ import {
   CHART_CARD_SHADOW,
   TOOLTIP_DARK_SHADOW,
 } from "constants/DashboardPage";
-import { BOX_SHADOW_NAV } from "constants/DeidPage";
+import { deidColors, deidDarkColors } from "constants/DeidPage";
 
 export const ChartCard = styled(Box, {
   shouldForwardProp: (prop) => prop !== "$tall",
-})<{ $tall?: boolean }>(({ theme, $tall }) => ({
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: CHART_CARD_SHADOW,
-  borderRadius: CHART_CARD_BORDER_RADIUS,
-  padding: theme.spacing(3),
-  display: "flex",
-  flexDirection: "column",
-  overflow: "hidden",
-  height: $tall ? CHART_CARD_HEIGHT_TALL : CHART_CARD_HEIGHT,
-  transition: "box-shadow 0.2s ease",
-  "&:hover": {
-    boxShadow: BOX_SHADOW_NAV,
-  },
-  [theme.breakpoints.up("sm")]: {
-    padding: theme.spacing(4),
-    height: $tall ? CHART_CARD_HEIGHT_SM_TALL : CHART_CARD_HEIGHT_SM,
-  },
-  [theme.breakpoints.up("md")]: {
-    padding: theme.spacing(6),
-    height: $tall ? CHART_CARD_HEIGHT_MD_TALL : CHART_CARD_HEIGHT_MD,
-  },
-  [theme.breakpoints.up("xl")]: {
-    height: CHART_CARD_HEIGHT_MD_TALL,
-  },
-}));
+})<{ $tall?: boolean }>(({ theme, $tall }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+  return {
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: CHART_CARD_SHADOW,
+    borderRadius: CHART_CARD_BORDER_RADIUS,
+    padding: theme.spacing(3),
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
+    height: $tall ? CHART_CARD_HEIGHT_TALL : CHART_CARD_HEIGHT,
+    transition: "box-shadow 0.2s ease",
+    "&:hover": {
+      boxShadow: colors.boxShadowNav,
+    },
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(4),
+      height: $tall ? CHART_CARD_HEIGHT_SM_TALL : CHART_CARD_HEIGHT_SM,
+    },
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(6),
+      height: $tall ? CHART_CARD_HEIGHT_MD_TALL : CHART_CARD_HEIGHT_MD,
+    },
+    [theme.breakpoints.up("xl")]: {
+      height: CHART_CARD_HEIGHT_MD_TALL,
+    },
+  };
+});
 
 export const ChartTitle = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize18,

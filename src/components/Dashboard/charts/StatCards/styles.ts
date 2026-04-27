@@ -7,7 +7,7 @@ import {
   STAT_CARD_TREND_PERCENT_COLOR,
   STAT_CARD_TREND_SUFFIX_COLOR,
 } from "constants/DashboardPage";
-import { BOX_SHADOW_NAV } from "constants/DeidPage";
+import { deidColors, deidDarkColors } from "constants/DeidPage";
 
 export const CardsGrid = styled(Box)(({ theme }) => ({
   display: "grid",
@@ -23,24 +23,27 @@ export const CardsGrid = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Card = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  border: `1px solid ${theme.palette.divider}`,
-  borderRadius: 12,
-  padding: theme.spacing(4),
-  boxShadow: STAT_CARD_SHADOW,
-  display: "flex",
-  flexDirection: "column",
-  boxSizing: "border-box",
-  minWidth: 0,
-  transition: "box-shadow 0.2s ease",
-  "&:hover": {
-    boxShadow: BOX_SHADOW_NAV,
-  },
-  [theme.breakpoints.up("md")]: {
-    padding: theme.spacing(6),
-  },
-}));
+export const Card = styled(Box)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+  return {
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 12,
+    padding: theme.spacing(4),
+    boxShadow: STAT_CARD_SHADOW,
+    display: "flex",
+    flexDirection: "column",
+    boxSizing: "border-box",
+    minWidth: 0,
+    transition: "box-shadow 0.2s ease",
+    "&:hover": {
+      boxShadow: colors.boxShadowNav,
+    },
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(6),
+    },
+  };
+});
 
 export const CardTopRow = styled(Box)(({ theme }) => ({
   display: "flex",

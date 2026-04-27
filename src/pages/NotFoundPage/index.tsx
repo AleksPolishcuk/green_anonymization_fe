@@ -13,7 +13,7 @@ import {
 } from "./styles";
 
 export const NotFound = () => {
-  const { t } = useTranslation("notFound");
+  const { t } = useTranslation();
   const { handleGoHome } = useNotFound();
 
   return (

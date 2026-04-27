@@ -11,15 +11,21 @@ import type { ComplianceCard } from "./types";
 
 type ComplianceCardItemProps = {
   card: ComplianceCard;
+  $revealed: boolean;
+  $index: number;
 };
 
-export const ComplianceCardItem = ({ card }: ComplianceCardItemProps) => {
+export const ComplianceCardItem = ({
+  card,
+  $revealed,
+  $index,
+}: ComplianceCardItemProps) => {
   const { t } = useTranslation();
 
   return (
-    <CardWrapper className="reveal-card">
-      <CardAccentLine $color={card.accentColor} />
-      <CardBadge $color={card.accentColor}>
+    <CardWrapper $revealed={$revealed} $index={$index}>
+      <CardAccentLine $accentKey={card.accentKey} />
+      <CardBadge $accentKey={card.accentKey}>
         {t(`complianceSection.cards.${card.id}.badge`)}
       </CardBadge>
       <CardTitle>{t(`complianceSection.cards.${card.id}.title`)}</CardTitle>

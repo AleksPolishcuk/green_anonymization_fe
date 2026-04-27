@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "@mui/material";
-
-import { headerBreakpoints } from "constants/header";
+import { headerBreakpoints } from "constants/MainPages";
 
 export function useHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

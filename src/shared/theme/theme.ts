@@ -34,6 +34,7 @@ const lh175 = 1.75;
 const blue = "#155dfc";
 const darkBlue = "#1447e6";
 const blueShadow = "#3B82F64D";
+
 const white = "#ffffff";
 const lightBlue = "#eff6ff";
 const subtleBg = "#f8fafc";
@@ -58,24 +59,148 @@ const accentLightLilac = "#F5F3FF";
 const footerDividerColor = "#E5E7EB";
 const footerLinkHoverColor = "#111827";
 
+// DARK COLORS
+const darkBgPrimary = "#020617";
+const darkBgSecondary = "#0F172A";
+const darkBgTertiary = "#111827";
+
+const darkTextPrimary = "#F9FAFB";
+const darkTextSecondary = "#9CA3AF";
+
+const darkBorder = "#334155";
+const darkDivider = "#1E293B";
+
+const darkSubtleBg = "#020617";
+
+const darkFooterDivider = "#1E293B";
+const darkFooterLinkHover = "#F9FAFB";
+
+const darkAccentLightBlue = "#172554";
+const darkAccentLightGreen = "#022C22";
+const darkAccentLightAmber = "#451A03";
+const darkAccentLightRed = "#450A0A";
+const darkAccentLightLilac = "#2E1065";
+
 const mainRadius = 16;
 const buttonRadius = 14;
 
 const md = 768;
 const lg = 1440;
 
-export const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 375,
-      md,
-      lg,
-      xl: 1920,
+const typography = {
+  fontFamily: mainFontFamily,
+
+  headingFontFamily,
+  fontSize11: size11,
+  fontSize12: size12,
+  fontSize14: size14,
+  fontSize16: size16,
+  fontSize18: size18,
+  fontSize22: size22,
+  fontSize28: size28,
+  fontSize32: size32,
+  fontSize35: size35,
+  fontSize44: size44,
+  fontSize56: size56,
+  fontSize64: size64,
+
+  fontWeightRegular: regular,
+  fontWeightMedium: semiBold,
+  fontWeightBold: bold,
+
+  lineHeight108: lh108,
+  lineHeight109: lh109,
+  lineHeight116: lh116,
+  lineHeight118: lh118,
+  lineHeight150: lh150,
+  lineHeight138: lh138,
+  lineHeight140: lh140,
+  lineHeight158: lh158,
+  lineHeight167: lh167,
+  lineHeight175: lh175,
+
+  h1: {
+    fontFamily: headingFontFamily,
+    fontWeight: regular,
+    fontSize: size32,
+    lineHeight: lh108,
+    [`@media (min-width:${md}px)`]: {
+      fontSize: size64,
     },
   },
 
+  h2: {
+    fontFamily: headingFontFamily,
+    fontWeight: regular,
+    fontSize: size35,
+    lineHeight: lh109,
+    [`@media (min-width:${md}px)`]: {
+      fontSize: size56,
+    },
+  },
+
+  h3: {
+    fontFamily: headingFontFamily,
+    fontWeight: regular,
+    fontSize: size28,
+    lineHeight: lh118,
+    [`@media (min-width:${md}px)`]: {
+      fontSize: size44,
+      lineHeight: lh116,
+    },
+  },
+
+  h4: {
+    fontFamily: mainFontFamily,
+    fontWeight: bold,
+    fontSize: size18,
+    lineHeight: lh150,
+  },
+
+  h5: {
+    fontFamily: mainFontFamily,
+    fontWeight: semiBold,
+    fontSize: size16,
+    lineHeight: lh138,
+  },
+
+  h6: {
+    fontFamily: headingFontFamily,
+    fontWeight: semiBold,
+    fontSize: size14,
+    lineHeight: lh140,
+  },
+
+  body1: {
+    fontFamily: mainFontFamily,
+    fontWeight: regular,
+    fontSize: size16,
+    lineHeight: lh175,
+  },
+
+  button: {
+    fontFamily: mainFontFamily,
+    fontWeight: semiBold,
+    fontSize: size16,
+    lineHeight: lh150,
+    textTransform: "none" as const,
+  },
+};
+
+const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 375,
+    md,
+    lg,
+    xl: 1920,
+  },
+};
+
+export const lightTheme = createTheme({
+  breakpoints,
   palette: {
+    mode: "light",
     color: {
       blue,
       darkBlue,
@@ -93,9 +218,9 @@ export const theme = createTheme({
     background: {
       default: white,
       paper: white,
-      lightGray: lightGray,
-      softGray: softGray,
-      mediumGray: mediumGray,
+      lightGray,
+      softGray,
+      mediumGray,
     },
     text: {
       primary: charcoal,
@@ -126,105 +251,7 @@ export const theme = createTheme({
     },
   },
 
-  typography: {
-    fontFamily: mainFontFamily,
-
-    headingFontFamily,
-    fontSize11: size11,
-    fontSize12: size12,
-    fontSize14: size14,
-    fontSize16: size16,
-    fontSize18: size18,
-    fontSize22: size22,
-    fontSize28: size28,
-    fontSize32: size32,
-    fontSize35: size35,
-    fontSize44: size44,
-    fontSize56: size56,
-    fontSize64: size64,
-
-    fontWeightRegular: regular,
-    fontWeightMedium: semiBold,
-    fontWeightBold: bold,
-
-    lineHeight108: lh108,
-    lineHeight109: lh109,
-    lineHeight116: lh116,
-    lineHeight118: lh118,
-    lineHeight150: lh150,
-    lineHeight138: lh138,
-    lineHeight140: lh140,
-    lineHeight158: lh158,
-    lineHeight167: lh167,
-    lineHeight175: lh175,
-
-    h1: {
-      fontFamily: headingFontFamily,
-      fontWeight: regular,
-      fontSize: size32,
-      lineHeight: lh108,
-      [`@media (min-width:${md}px)`]: {
-        fontSize: size64,
-      },
-    },
-
-    h2: {
-      fontFamily: headingFontFamily,
-      fontWeight: regular,
-      fontSize: size35,
-      lineHeight: lh109,
-      [`@media (min-width:${md}px)`]: {
-        fontSize: size56,
-      },
-    },
-
-    h3: {
-      fontFamily: headingFontFamily,
-      fontWeight: regular,
-      fontSize: size28,
-      lineHeight: lh118,
-      [`@media (min-width:${md}px)`]: {
-        fontSize: size44,
-        lineHeight: lh116,
-      },
-    },
-
-    h4: {
-      fontFamily: mainFontFamily,
-      fontWeight: bold,
-      fontSize: size18,
-      lineHeight: lh150,
-    },
-
-    h5: {
-      fontFamily: mainFontFamily,
-      fontWeight: semiBold,
-      fontSize: size16,
-      lineHeight: lh138,
-    },
-
-    h6: {
-      fontFamily: headingFontFamily,
-      fontWeight: semiBold,
-      fontSize: size14,
-      lineHeight: lh140,
-    },
-
-    body1: {
-      fontFamily: mainFontFamily,
-      fontWeight: regular,
-      fontSize: size16,
-      lineHeight: lh175,
-    },
-
-    button: {
-      fontFamily: mainFontFamily,
-      fontWeight: semiBold,
-      fontSize: size16,
-      lineHeight: lh150,
-      textTransform: "none",
-    },
-  },
+  typography,
 
   spacing: 4,
 
@@ -312,7 +339,7 @@ export const theme = createTheme({
           boxSizing: "border-box",
 
           "&:-webkit-autofill": {
-            WebkitBoxShadow: `0 0 0 100px ${lightGray} inset  !important`,
+            WebkitBoxShadow: `0 0 0 100px ${lightGray} inset !important`,
             WebkitTextFillColor: charcoal,
           },
         },
@@ -320,3 +347,163 @@ export const theme = createTheme({
     },
   },
 });
+
+export const darkTheme = createTheme({
+  breakpoints,
+  palette: {
+    mode: "dark",
+    color: {
+      blue,
+      darkBlue,
+      lightBlue: darkBgSecondary,
+      white: darkBgPrimary,
+      charcoal: darkTextPrimary,
+      grayDark: darkTextSecondary,
+    },
+    primary: {
+      main: blue,
+    },
+    secondary: {
+      main: darkBgSecondary,
+    },
+    background: {
+      default: darkBgPrimary,
+      paper: darkBgPrimary,
+      lightGray: darkBgSecondary,
+      softGray: darkBgTertiary,
+      mediumGray: darkBorder,
+    },
+    text: {
+      primary: darkTextPrimary,
+      secondary: darkTextSecondary,
+    },
+    divider: darkDivider,
+    action: {
+      active: darkFooterLinkHover,
+    },
+    subtle: {
+      bg: darkSubtleBg,
+    },
+    accent: {
+      blue: accentBlue,
+      green: accentGreen,
+      amber: accentAmber,
+      red: accentRed,
+      lilac: accentLilac,
+      lightBlue: darkAccentLightBlue,
+      lightGreen: darkAccentLightGreen,
+      lightAmber: darkAccentLightAmber,
+      lightRed: darkAccentLightRed,
+      lightLilac: darkAccentLightLilac,
+    },
+    footer: {
+      divider: darkFooterDivider,
+      linkHover: darkFooterLinkHover,
+    },
+  },
+
+  typography,
+
+  spacing: 4,
+
+  shape: {
+    borderRadius: mainRadius,
+  },
+
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: { width: "100%", height: "100%", scrollBehavior: "smooth" },
+        body: {
+          width: "100%",
+          minHeight: "100%",
+          margin: 0,
+          backgroundColor: darkBgPrimary,
+          color: darkTextPrimary,
+        },
+        "#root": { width: "100%", minHeight: "100vh" },
+        "*": { boxSizing: "border-box" },
+      },
+    },
+
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: false,
+        disableGutters: true,
+      },
+      styleOverrides: {
+        root: {
+          width: "100%",
+          maxWidth: "1440px",
+          margin: "0 auto",
+          paddingLeft: "24px",
+          paddingRight: "24px",
+        },
+      },
+    },
+
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          h1: "h1",
+          h2: "h2",
+          h3: "h3",
+          h4: "h4",
+          h5: "h5",
+          h6: "h6",
+          body1: "p",
+          body2: "p",
+        },
+      },
+    },
+
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: buttonRadius,
+        },
+        containedPrimary: {
+          backgroundColor: blue,
+          boxShadow: `0px 4px 14px 0px ${blueShadow}`,
+          "&:hover": {
+            backgroundColor: darkBlue,
+            boxShadow: `0px 4px 14px 0px ${blueShadow}`,
+          },
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: darkBgSecondary,
+
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: darkBorder,
+            borderWidth: "1px !important",
+          },
+
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: darkTextSecondary,
+          },
+
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: blue,
+          },
+        },
+        input: {
+          height: "100%",
+          boxSizing: "border-box",
+          color: darkTextPrimary,
+
+          "&:-webkit-autofill": {
+            WebkitBoxShadow: `0 0 0 100px ${darkBgSecondary} inset !important`,
+            WebkitTextFillColor: darkTextPrimary,
+          },
+        },
+      },
+    },
+  },
+});
+
+export const theme = lightTheme;

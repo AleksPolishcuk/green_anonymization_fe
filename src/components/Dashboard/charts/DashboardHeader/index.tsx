@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import { headerSpriteRef, headerSpriteSymbolIds } from "constants/header";
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 
 import {
@@ -11,6 +10,7 @@ import {
   HeaderTitle,
   StartDeIdButton,
 } from "./styles";
+import { headerSpriteRef, headerSpriteSymbolIds } from "constants/MainPages";
 
 export const DashboardHeader = () => {
   const { t } = useTranslation("dashboard");

@@ -6,13 +6,6 @@ import { Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import {
-  footerNavColumnTitleKey,
-  footerNavLinks,
-  spriteSymbolIds,
-  spriteViewBoxes,
-  spriteSvgPublicPath,
-} from "constants/footer";
-import {
   FooterBody,
   FooterBottom,
   FooterBrandBlock,
@@ -30,6 +23,13 @@ import {
   footerNavLinkSx,
   FooterContainer,
 } from "components/Footer/styles";
+import {
+  footerNavColumnTitleKey,
+  footerNavLinks,
+  spriteSvgPublicPath,
+  spriteSymbolIds,
+  spriteViewBoxes,
+} from "constants/MainPages";
 
 export function Footer() {
   const { t } = useTranslation();

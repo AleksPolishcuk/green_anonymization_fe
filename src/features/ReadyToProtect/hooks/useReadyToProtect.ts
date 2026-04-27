@@ -1,4 +1,4 @@
-import { headerRoutes } from "constants/header";
+import { headerRoutes } from "constants/MainPages";
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 
 export const useReadyToProtect = () => {

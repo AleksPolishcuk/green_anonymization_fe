@@ -24,7 +24,7 @@ export const GetStartedButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "$isCompact",
 })<{ $isCompact?: boolean }>(({ theme, $isCompact }) => ({
   boxSizing: "border-box",
-  margin: 0,
+  marginLeft: 8,
   cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",

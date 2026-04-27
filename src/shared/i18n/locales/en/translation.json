@@ -45,6 +45,63 @@
       "mobileMenu": "Mobile navigation menu"
     }
   },
+  "hero": {
+    "badge": "De-ID & Synthesis Platform",
+    "titleLine1": "Clinical Data",
+    "titleLine2": "De-Identification",
+    "titleLine3": "& Synthetic Data Studio",
+    "description": "Enterprise-grade PII detection and anonymization for healthcare data. Protect patient privacy while preserving analytical value.",
+    "ctaPrimary": "Get Started",
+    "stats": {
+      "hipaa": {
+        "value": "HIPAA",
+        "label": "Compliant"
+      },
+      "eugdpr": {
+        "value": "EU GDPR",
+        "label": "Compliant"
+      },
+      "ukgdpr": {
+        "value": "UK GDPR",
+        "label": "Compliant"
+      },
+      "fadp": {
+        "value": "Swiss FADP",
+        "label": "Compliant"
+      }
+    }
+  },
+  "capabilities": {
+    "subtitle": "CAPABILITIES",
+    "title": "Protect Patient Privacy Without Compromising Data Value",
+    "description": "Comprehensive tools for healthcare organizations to securely manage and utilize clinical data",
+    "cards": {
+      "pii": {
+        "title": "Advanced PII Detection",
+        "description": "Automatically identify and protect sensitive patient information across structured and unstructured clinical data."
+      },
+      "synthetic": {
+        "title": "Synthetic Data Generation",
+        "description": "Create realistic, privacy-preserving synthetic datasets for research, testing, and development purposes."
+      },
+      "framework": {
+        "title": "Multi-Framework Compliance",
+        "description": "Ensure compliance with HIPAA, GDPR, CCPA, and custom regulatory requirements simultaneously."
+      },
+      "anonymization": {
+        "title": "Intelligent Anonymization",
+        "description": "Apply sophisticated de-identification techniques while maintaining data utility for analysis."
+      }
+    }
+  },
+  "readyToProtect": {
+    "title": "Ready to Protect Your Clinical Data?",
+    "description": "Start de-identifying and synthesizing healthcare data in minutes with our enterprise-grade platform",
+    "actions": {
+      "primary": "Start →",
+      "secondary": "Contact Sales"
+    }
+  },
   "footer": {
     "brandName": "Clinical Data Studio",
     "description": "Enterprise-grade clinical data de-identification and synthetic data generation platform. Protecting patient privacy while maintaining data utility.",
@@ -214,5 +271,12 @@
   "deidHeader": {
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
+  },
+  "notFound": {
+    "subtitle": "Page not found",
+    "title": "Oops! We lost this page",
+    "description": "The page you're looking for doesn't exist or has been moved. Your data is still safe — just the route is missing.",
+    "goHome": "Home Page",
+    "goBack": "Go Back"
   }
 }
