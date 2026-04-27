@@ -35,11 +35,11 @@ import {
   ChartSubtitle,
   ChartTitle,
   TooltipDark,
-} from "components/Dashboard/components/ChartCard/styles";
+} from "components/Dashboard/charts/ChartCard/styles";
 import {
   ConfidenceRoundedBar,
   type ConfidenceBarProps,
-} from "components/Dashboard/components/shared/barShapes";
+} from "components/Dashboard/charts/shared/barShapes";
 
 const CustomTooltip = ({
   active,

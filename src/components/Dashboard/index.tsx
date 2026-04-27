@@ -1,13 +1,13 @@
 import { useAppSelector } from "store/hooks";
 
-import { ComplianceDonut } from "components/Dashboard/components/ComplianceDonut";
-import { ConfidenceScoreChart } from "components/Dashboard/components/ConfidenceScoreChart";
-import { DashboardHeader } from "components/Dashboard/components/DashboardHeader";
-import { DeIdMethodChart } from "components/Dashboard/components/DeIdMethodChart";
-import { EntityTypesChart } from "components/Dashboard/components/EntityTypesChart";
-import { ProcessingHistoryChart } from "components/Dashboard/components/ProcessingHistoryChart";
-import { RecentActivity } from "components/Dashboard/components/RecentActivity";
-import { StatCards } from "components/Dashboard/components/StatCards";
+import { ComplianceDonut } from "components/Dashboard/charts/ComplianceDonut";
+import { ConfidenceScoreChart } from "components/Dashboard/charts/ConfidenceScoreChart";
+import { DashboardHeader } from "components/Dashboard/charts/DashboardHeader";
+import { DeIdMethodChart } from "components/Dashboard/charts/DeIdMethodChart";
+import { EntityTypesChart } from "components/Dashboard/charts/EntityTypesChart";
+import { ProcessingHistoryChart } from "components/Dashboard/charts/ProcessingHistoryChart";
+import { RecentActivity } from "components/Dashboard/charts/RecentActivity";
+import { StatCards } from "components/Dashboard/charts/StatCards";
 import {
   ChartsLayout,
   ChartRow,
