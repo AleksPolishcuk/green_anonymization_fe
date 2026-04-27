@@ -30,7 +30,7 @@ import {
   ChartSubtitle,
   ChartTitle,
   TooltipDark,
-} from "components/Dashboard/components/ChartCard/styles";
+} from "components/Dashboard/charts/ChartCard/styles";
 import {
   DonutWrapper,
   LegendDot,
@@ -38,7 +38,7 @@ import {
   LegendLabel,
   LegendList,
   LegendValue,
-} from "components/Dashboard/components/ComplianceDonut/styles";
+} from "components/Dashboard/charts/ComplianceDonut/styles";
 
 const scaleFrom = DONUT_OUTER_RADIUS / DONUT_ACTIVE_OUTER_RADIUS;
 

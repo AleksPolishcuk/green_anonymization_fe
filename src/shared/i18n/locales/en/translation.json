@@ -36,6 +36,7 @@
       "getStarted": "Get Started"
     },
     "logoAlt": "Clinical Data Studio — home",
+    "logoText": "Clinical Data Studio",
     "aria": {
       "homeLink": "Go to home page",
       "desktopNavigation": "Main navigation",

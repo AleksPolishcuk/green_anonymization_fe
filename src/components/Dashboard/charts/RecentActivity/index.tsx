@@ -9,7 +9,7 @@ import {
   ChartCard,
   ChartSubtitle,
   ChartTitle,
-} from "components/Dashboard/components/ChartCard/styles";
+} from "components/Dashboard/charts/ChartCard/styles";
 import {
   ActivityList,
   ActivityRow,
@@ -19,7 +19,7 @@ import {
   IconDot,
   ScrollIndicator,
   ScrollWrapper,
-} from "components/Dashboard/components/RecentActivity/styles";
+} from "components/Dashboard/charts/RecentActivity/styles";
 
 type Props = {
   data: RecentActivityItem[];
