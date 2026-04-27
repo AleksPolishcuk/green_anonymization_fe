@@ -248,6 +248,17 @@ export const FileDropSubtitle = styled("span")(({ theme }) => ({
   color: theme.palette.color.grayDark,
 }));
 
+export const FileDropHelperText = styled("span")(({ theme }) => ({
+  marginTop: theme.spacing(1),
+
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.fontSize11,
+  lineHeight: theme.typography.lineHeight150,
+
+  color: theme.palette.error.main,
+}));
+
 export const FileRemoveButton = styled("button")(({ theme }) => ({
   width: 24,
   height: 24,

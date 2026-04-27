@@ -9,6 +9,7 @@ import {
   FileDropSubtitle,
   FileTextWrapper,
   FileRemoveButton,
+  FileDropHelperText,
 } from "../styles";
 
 import type { FileDropZoneProps } from "components/Input/types";
@@ -122,7 +123,7 @@ export default function FileDropZone({
       </FileWrapper>
 
       {(localError || (error && helperText)) && (
-        <FileDropSubtitle>{localError || helperText}</FileDropSubtitle>
+        <FileDropHelperText>{localError || helperText}</FileDropHelperText>
       )}
     </div>
   );
