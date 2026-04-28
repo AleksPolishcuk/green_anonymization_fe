@@ -13,7 +13,7 @@ export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
 
 export const DeidOutputSectionStack = styled(Box)({
   display: "flex",
-  gap: 16,
+  gap: 32,
 });
 
 export const DeidOutputSectionCard = styled(Box)(({ theme }) => {
