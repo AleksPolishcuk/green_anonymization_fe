@@ -10,5 +10,10 @@ export const workspaceLayoutStyles = (theme: Theme) => ({
   content: {
     flex: 1,
     minWidth: 0,
+    marginLeft: "72px",
+
+    [theme.breakpoints.up("md")]: {
+      marginLeft: 0,
+    },
   },
 });
