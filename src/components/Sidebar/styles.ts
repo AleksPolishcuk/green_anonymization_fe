@@ -32,7 +32,6 @@ export const SidebarRoot = styled("aside", {
 
     [theme.breakpoints.up("md")]: {
       width: SIDEBAR_WIDTH,
-      minWidth: SIDEBAR_WIDTH,
       position: "sticky",
     },
   };
