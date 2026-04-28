@@ -27,7 +27,7 @@ import { headerSpriteRef } from "constants/MainPages";
 import { useDownloadRedactedTextCopy } from "./hooks/useDownloadRedactedTextCopy";
 
 export default function DeidOutputSection() {
-  const { t } = useTranslation("deIdentify");
+  const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
 
   // TODO: Replace with state saved in Redux from previous step
   const originalText =
@@ -81,8 +81,8 @@ export default function DeidOutputSection() {
         <DeidOutputSectionCard>
           <CardHeader>
             <CardHeaderTextSection>
-              <CardTitle>{t("output.originalText.title")}</CardTitle>
-              <CardSubtitle>{t("output.originalText.subtitle")}</CardSubtitle>
+              <CardTitle>{t("originalText.title")}</CardTitle>
+              <CardSubtitle>{t("originalText.subtitle")}</CardSubtitle>
             </CardHeaderTextSection>
 
             <DetectedEntityNumberBadge>
@@ -92,7 +92,7 @@ export default function DeidOutputSection() {
               >
                 <use href={headerSpriteRef("icon-IconExclamationMark")} />
               </ExclamationMarkIconWrapper>
-              {entityCount + " " + t("output.originalText.entities")}
+              {entityCount + " " + t("originalText.entities")}
             </DetectedEntityNumberBadge>
           </CardHeader>
 
@@ -104,17 +104,15 @@ export default function DeidOutputSection() {
         <DeidOutputSectionCard>
           <CardHeader>
             <CardHeaderTextSection>
-              <CardTitle>{t("output.deIdentifiedOutput.title")}</CardTitle>
-              <CardSubtitle>
-                {t("output.deIdentifiedOutput.subtitle")}
-              </CardSubtitle>
+              <CardTitle>{t("deIdentifiedOutput.title")}</CardTitle>
+              <CardSubtitle>{t("deIdentifiedOutput.subtitle")}</CardSubtitle>
             </CardHeaderTextSection>
             <ComplianceBadge>
               <ComplianceSafeIconWrapper viewBox="0 0 11 11" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconComplianceSafe")} />
               </ComplianceSafeIconWrapper>
               {/* TODO: Make dynamic based on selected framework */}
-              {t("output.deIdentifiedOutput.hipaaCompliant")}
+              {t("deIdentifiedOutput.hipaaCompliant")}
             </ComplianceBadge>
           </CardHeader>
 
@@ -127,21 +125,21 @@ export default function DeidOutputSection() {
               <CopyIconWrapper viewBox="0 0 13 13" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconCopy")} />
               </CopyIconWrapper>
-              {t("output.deIdentifiedOutput.copy")}
+              {t("deIdentifiedOutput.copy")}
             </ActionButton>
 
             <ActionButton onClick={handleDownloadText}>
               <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </DownloadIconWrapper>
-              {t("output.deIdentifiedOutput.downloadTxt")}
+              {t("deIdentifiedOutput.downloadTxt")}
             </ActionButton>
 
             <ActionButton onClick={handleDownloadJson}>
               <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </DownloadIconWrapper>
-              {t("output.deIdentifiedOutput.downloadJson")}
+              {t("deIdentifiedOutput.downloadJson")}
             </ActionButton>
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
