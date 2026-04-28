@@ -12,6 +12,10 @@ import {
   ActionButtonsContainer,
   ActionButton,
   DetectedEntityNumberBadge,
+  ExclamationMarkIconWrapper,
+  ComplianceSafeIconWrapper,
+  CopyIconWrapper,
+  DownloadIconWrapper,
 } from "./styles";
 import { TaggedText } from "./taggedText";
 import {
@@ -19,10 +23,7 @@ import {
   parseTextWithRedactions,
   type Entity,
 } from "./utils/parsers";
-import ExclamationMarkIcon from "assets/icons/ExclamationMarkIcon";
-import ComplianceSafeIcon from "assets/icons/ComplianceSafeIcon";
-import CopyIcon from "assets/icons/CopyIcon";
-import DownloadIcon from "assets/icons/DownloadIcon";
+import { headerSpriteRef } from "constants/MainPages";
 import { useDownloadRedactedTextCopy } from "./hooks/useDownloadRedactedTextCopy";
 
 export default function DeidOutputSection() {
@@ -85,7 +86,12 @@ export default function DeidOutputSection() {
             </CardHeaderTextSection>
 
             <DetectedEntityNumberBadge>
-              <ExclamationMarkIcon />
+              <ExclamationMarkIconWrapper
+                viewBox="0 0 11 11"
+                aria-hidden="true"
+              >
+                <use href={headerSpriteRef("icon-IconExclamationMark")} />
+              </ExclamationMarkIconWrapper>
               {entityCount + " " + t("output.originalText.entities")}
             </DetectedEntityNumberBadge>
           </CardHeader>
@@ -104,7 +110,9 @@ export default function DeidOutputSection() {
               </CardSubtitle>
             </CardHeaderTextSection>
             <ComplianceBadge>
-              <ComplianceSafeIcon />
+              <ComplianceSafeIconWrapper viewBox="0 0 11 11" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconComplianceSafe")} />
+              </ComplianceSafeIconWrapper>
               {/* TODO: Make dynamic based on selected framework */}
               {t("output.deIdentifiedOutput.hipaaCompliant")}
             </ComplianceBadge>
@@ -116,17 +124,23 @@ export default function DeidOutputSection() {
 
           <ActionButtonsContainer>
             <ActionButton onClick={handleCopyText}>
-              <CopyIcon />
+              <CopyIconWrapper viewBox="0 0 13 13" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconCopy")} />
+              </CopyIconWrapper>
               {t("output.deIdentifiedOutput.copy")}
             </ActionButton>
 
             <ActionButton onClick={handleDownloadText}>
-              <DownloadIcon />
+              <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconDownload")} />
+              </DownloadIconWrapper>
               {t("output.deIdentifiedOutput.downloadTxt")}
             </ActionButton>
 
             <ActionButton onClick={handleDownloadJson}>
-              <DownloadIcon />
+              <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconDownload")} />
+              </DownloadIconWrapper>
               {t("output.deIdentifiedOutput.downloadJson")}
             </ActionButton>
           </ActionButtonsContainer>

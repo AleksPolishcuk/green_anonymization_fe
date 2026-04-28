@@ -1,6 +1,10 @@
 import { styled } from "@mui/material";
 import { Box, Typography, Button } from "@mui/material";
-import { BOX_SHADOW, CHIP_COLOR_PRESETS, TOP_LINE } from "constants/DeidPage";
+import {
+  CHIP_COLOR_PRESETS,
+  deidColors,
+  deidDarkColors,
+} from "constants/DeidPage";
 
 export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -12,29 +16,36 @@ export const DeidOutputSectionStack = styled(Box)({
   gap: 16,
 });
 
-export const DeidOutputSectionCard = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.background.lightGray,
-  borderRadius: theme.shape.borderRadius,
-  border: `1px solid ${theme.palette.divider}`,
-  boxShadow: BOX_SHADOW,
-  minHeight: 308,
-  width: "100%",
-  minWidth: 308,
-  overflow: "hidden",
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
+export const DeidOutputSectionCard = styled(Box)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
+  return {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
+
+    minHeight: 308,
+    minWidth: 308,
     width: "100%",
-    height: 3,
-    background: TOP_LINE,
-  },
-}));
+
+    backgroundColor: theme.palette.background.lightGray,
+    borderRadius: theme.shape.borderRadius,
+    border: `1px solid ${theme.palette.divider}`,
+
+    boxShadow: colors.boxShadow,
+
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: 3,
+      background: colors.topLine,
+    },
+  };
+});
 
 export const CardHeader = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -164,4 +175,35 @@ export const RedactedContent = styled("span")(({ theme }) => {
     border: `1px solid ${style.border}`,
     cursor: "default",
   };
+});
+
+export const IconWrapper = styled("svg")({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "currentColor",
+});
+
+export const ExclamationMarkIconWrapper = styled(IconWrapper)({
+  width: 11,
+  height: 11,
+  marginRight: 2,
+});
+
+export const ComplianceSafeIconWrapper = styled(IconWrapper)({
+  width: 11,
+  height: 11,
+  marginRight: 2,
+});
+
+export const CopyIconWrapper = styled(IconWrapper)({
+  width: 13,
+  height: 13,
+  marginRight: 5,
+});
+
+export const DownloadIconWrapper = styled(IconWrapper)({
+  width: 13,
+  height: 13,
+  marginRight: 5,
 });
