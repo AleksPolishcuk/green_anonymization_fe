@@ -75,7 +75,7 @@ export const parseTextWithRedactions = (
 
     segments.push({
       type: "redacted",
-      content: "[REDACTED]",
+      content: "[" + entity.entity_type + "]",
       entity,
     });
 
