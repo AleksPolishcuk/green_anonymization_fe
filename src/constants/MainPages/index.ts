@@ -15,8 +15,8 @@ const headerAssetPaths = {
 export const headerSpriteSymbolIds = {
   burger: "icon-burger",
   close: "icon-close",
-  dashboardDeIdShield: "dashboard-deid-shield",
-  dashboardDeIdArrow: "dashboard-deid-arrow",
+  dashboardDeIdShield: "icon-WhiteShild",
+  dashboardDeIdArrow: "icon-IconArrow",
 } as const;
 
 export function headerSpriteRef(symbolId: string): string {
@@ -262,7 +262,7 @@ export const spriteSymbolIds = {
 } as const;
 
 export const spriteViewBoxes = {
-  mainLogo: "0 0 200 36",
+  mainLogo: "0 0 36 36",
 } as const;
 const footerInternalPaths = {
   pricing: "/pricing",
