@@ -15,17 +15,17 @@ import {
   LogoIcon,
   LogoLink,
   LogoSlot,
+  LogoText,
   MobileOnlyBurgerButton,
 } from "components/Header/styles";
 import {
   headerI18nPrefix,
   headerLogoSpriteId,
-  headerLogoViewBox,
   headerMobileMenuId,
   headerRoutes,
   headerSpriteRef,
   headerSpriteSymbolIds,
-} from "constants/header";
+} from "constants/MainPages";
 
 type HeaderLogoProps = {
   href?: string;
@@ -65,22 +65,18 @@ function HeaderBurgerButton({
 
 function HeaderLogo({ href = headerRoutes.home, ariaLabel }: HeaderLogoProps) {
   const { t } = useTranslation();
-  const vb = headerLogoViewBox;
   const label = ariaLabel ?? t(`${headerI18nPrefix}.logoAlt`);
 
   return (
     <LogoLink href={href} aria-label={label}>
-      <LogoIcon
-        viewBox={`0 0 ${vb.width} ${vb.height}`}
-        preserveAspectRatio="none"
-        aria-hidden
-      >
+      <LogoIcon viewBox="0 0 36 36" aria-hidden>
         <use
           href={headerSpriteRef(headerLogoSpriteId)}
-          width={vb.width}
-          height={vb.height}
+          width="36"
+          height="36"
         />
       </LogoIcon>
+      <LogoText>{t(`${headerI18nPrefix}.logoText`)}</LogoText>
     </LogoLink>
   );
 }

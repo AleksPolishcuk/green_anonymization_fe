@@ -13,12 +13,10 @@ export const WorkspaceLayout = ({ children }: WorkspaceLayoutProps) => {
   const styles = workspaceLayoutStyles(theme);
 
   return (
-    <Box sx={styles.wrapper}>
-      <Box sx={styles.root}>
-        <Sidebar />
-        <Box component="main" sx={styles.content}>
-          {children}
-        </Box>
+    <Box sx={styles.root}>
+      <Sidebar />
+      <Box component="main" sx={styles.content}>
+        {children}
       </Box>
     </Box>
   );

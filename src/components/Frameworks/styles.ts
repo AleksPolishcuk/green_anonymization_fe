@@ -1,36 +1,48 @@
 import { Box, Chip, Paper, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { BOX_SHADOW, CHIP_COLOR_PRESETS, TOP_LINE } from "constants/DeidPage";
+import {
+  CHIP_COLOR_PRESETS,
+  deidColors,
+  deidDarkColors,
+} from "constants/DeidPage";
 
-export const FrameworkSectionRoot = styled(Paper)(({ theme }) => ({
-  position: "relative",
-  marginLeft: theme.spacing(8),
-  marginRight: theme.spacing(8),
-  padding: theme.spacing(6),
-  backgroundColor: theme.palette.background.default,
-  borderRadius: theme.shape.borderRadius,
-  border: `1px solid ${theme.palette.divider}`,
-  boxShadow: BOX_SHADOW,
-  minHeight: 308,
-  marginTop: theme.spacing(8),
-  marginBottom: theme.spacing(5),
+export const FrameworkSectionRoot = styled(Paper)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  overflow: "hidden",
+  return {
+    position: "relative",
 
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: 3,
-    background: TOP_LINE,
-  },
-}));
+    marginLeft: theme.spacing(8),
+    marginRight: theme.spacing(8),
 
-export const FrameworkSectionStack = styled(Stack)({
-  gap: 20,
+    padding: theme.spacing(6),
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(5),
+
+    backgroundColor: theme.palette.background.default,
+    borderRadius: theme.shape.borderRadius,
+    border: `1px solid ${theme.palette.divider}`,
+
+    boxShadow: colors.boxShadow,
+
+    minHeight: 308,
+    overflow: "hidden",
+
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: 3,
+      background: colors.topLine,
+    },
+  };
 });
+
+export const FrameworkSectionStack = styled(Stack)(({ theme }) => ({
+  gap: theme.spacing(5),
+}));
 
 export const FrameworkSectionHeaderRow = styled(Box)(({ theme }) => ({
   display: "flex",

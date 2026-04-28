@@ -1,19 +1,10 @@
 import type { Theme } from "@mui/material";
 
 export const workspaceLayoutStyles = (theme: Theme) => ({
-  wrapper: {
-    width: "100%",
-    minHeight: "100vh",
-    backgroundColor: theme.palette.background.lightGray,
-    display: "flex",
-    justifyContent: "center",
-  },
-
   root: {
-    width: "100%",
-    maxWidth: theme.breakpoints.values.lg,
+    minHeight: "100vh",
     display: "flex",
-    alignItems: "flex-start",
+    backgroundColor: theme.palette.background.lightGray,
   },
 
   content: {

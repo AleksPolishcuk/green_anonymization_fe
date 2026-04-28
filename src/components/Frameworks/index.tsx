@@ -15,8 +15,9 @@ import {
   FrameworksLogoIcon,
   StepChip,
 } from "./styles";
-import { headerSpriteRef } from "constants/header";
+
 import { Loader } from "shared/ui/Loader";
+import { headerSpriteRef } from "constants/MainPages";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();

@@ -1,13 +1,11 @@
 import { Chip, Paper, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
-  BG_OFF,
-  BG_ON,
-  BORDER_OFF,
-  BORDER_ON,
-  BOX_SHADOW_ON,
+  deidColors,
+  deidDarkColors,
   CHIP_COLOR_PRESETS,
 } from "constants/DeidPage";
+import { theme } from "shared/theme/theme";
 
 export type ChipColorPreset = keyof typeof CHIP_COLOR_PRESETS;
 
@@ -21,22 +19,28 @@ type ChipProps = {
 
 export const CardRoot = styled(Paper, {
   shouldForwardProp: (prop) => prop !== "$selected",
-})<CardProps>(({ theme, $selected }) => ({
-  padding: theme.spacing(4.5),
-  borderRadius: 8,
-  border: `2px solid ${$selected ? BORDER_ON : BORDER_OFF}`,
-  backgroundColor: $selected ? BG_ON : BG_OFF,
-  cursor: "pointer",
-  transition: "all 0.2s ease",
-  boxShadow: $selected ? BOX_SHADOW_ON : "none",
+})<CardProps>(({ theme, $selected }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  "&:hover": {
-    borderColor: theme.palette.primary.main,
-  },
-}));
+  return {
+    padding: theme.spacing(4.5),
+    borderRadius: theme.shape.borderRadius,
+    border: `2px solid ${$selected ? colors.borderOn : colors.borderOff}`,
+    backgroundColor: $selected ? colors.bgOn : colors.bgOff,
+    cursor: "pointer",
+    transition:
+      "border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
+    boxShadow: $selected ? colors.boxShadowOn : colors.boxShadow,
+
+    "&:hover": {
+      borderColor: theme.palette.primary.main,
+      transform: "translateY(-1px)",
+    },
+  };
+});
 
 export const CardStack = styled(Stack)({
-  gap: 16,
+  gap: theme.spacing(4),
 });
 
 export const CardHeader = styled(Stack)({

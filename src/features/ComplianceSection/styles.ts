@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
+import { cardShadows, type AccentKey } from "constants/MainPages";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -44,14 +45,15 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 
 export const LabelText = styled(Typography)(({ theme }) => ({
   display: "block",
-  fontSize: theme.typography.fontSize14,
+  fontSize: theme.typography.fontSize12,
+  letterSpacing: "0.05em",
   fontWeight: theme.typography.fontWeightBold,
   textTransform: "uppercase",
   color: theme.palette.color.blue,
   marginBottom: theme.spacing(4),
 }));
 
-export const CardsGrid = styled("div")(({ theme }) => ({
+export const CardsGrid = styled("ul")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
   alignItems: "start",
@@ -79,53 +81,69 @@ export const CardsGrid = styled("div")(({ theme }) => ({
   },
 }));
 
-export const CardWrapper = styled("div")(({ theme }) => ({
+export const CardWrapper = styled("li", {
+  shouldForwardProp: (prop) => prop !== "$revealed" && prop !== "$index",
+})<{
+  $revealed: boolean;
+  $index: number;
+}>(({ theme, $revealed, $index }) => ({
   padding: theme.spacing(6),
-  border: `1px solid ${theme.palette.background.softGray}`,
+  border: `1px solid ${theme.palette.divider}`,
   borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.paper,
+
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(3),
 
-  opacity: 0,
-  transform: "translateY(20px)",
+  boxShadow:
+    theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
 
-  "&.visible": {
-    opacity: 1,
-    transform: "translateY(0)",
-    transition: "opacity 0.6s ease, transform 0.6s ease",
+  opacity: $revealed ? 1 : 0,
+  transform: $revealed ? "translateY(0)" : "translateY(20px)",
 
-    "&:hover": {
-      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
-      transform: "translateY(-4px)",
-      transition: "box-shadow 0.2s ease, transform 0.2s ease !important",
-      transitionDelay: "0s !important",
-    },
-  },
+  transition: "opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease",
+  transitionDelay: $revealed ? `${$index * 0.15}s` : "0s",
 }));
 
-export const CardAccentLine = styled("span")<{ $color: string }>(
-  ({ $color }) => ({
-    width: "40px",
-    height: "4px",
-    backgroundColor: $color,
-    borderRadius: "2px",
-  }),
-);
+export const CardAccentLine = styled("span")<{
+  $accentKey: AccentKey;
+}>(({ theme, $accentKey }) => ({
+  width: "40px",
+  height: "4px",
+  backgroundColor: theme.palette.accent[$accentKey],
+  borderRadius: "2px",
 
-export const CardBadge = styled("span")<{ $color: string }>(
-  ({ theme, $color }) => ({
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? `0 0 16px ${theme.palette.accent[$accentKey]}66`
+      : "none",
+}));
+
+const getLightKey = (key: AccentKey) =>
+  `light${key.charAt(0).toUpperCase()}${key.slice(1)}` as
+    | "lightBlue"
+    | "lightGreen"
+    | "lightAmber"
+    | "lightRed"
+    | "lightLilac";
+
+export const CardBadge = styled("span")<{
+  $accentKey: AccentKey;
+}>(({ theme, $accentKey }) => {
+  const lightKey = getLightKey($accentKey);
+
+  return {
     padding: "3px 10px",
     borderRadius: "20px",
-    backgroundColor: `${$color}12`,
-    color: $color,
+    backgroundColor: theme.palette.accent[lightKey],
+    color: theme.palette.accent[$accentKey],
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.fontSize14,
     fontWeight: theme.typography.fontWeightBold,
     width: "fit-content",
-  }),
-);
+  };
+});
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,

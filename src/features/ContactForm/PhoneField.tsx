@@ -2,10 +2,9 @@ import { useState } from "react";
 import PhoneInputLib from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-import { DEFAULT_PHONE_COUNTRY_CODE } from "constants";
-
 import { DialCodeOverlay, PhoneInputWrapper } from "./styles";
 import type { PhoneFieldProps } from "./types";
+import { DEFAULT_PHONE_COUNTRY_CODE } from "constants/MainPages";
 
 const PhoneInput =
   (PhoneInputLib as unknown as { default: typeof PhoneInputLib }).default ??

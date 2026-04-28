@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { headerRoutes } from "constants/header";
-import { heroAssets, heroStatsKeys } from "shared/constants/hero";
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
+
+import { headerRoutes, heroAssets, heroStatsKeys } from "constants/MainPages";
 
 import {
   Content,
@@ -17,9 +17,9 @@ import {
   ShieldFloatLayer,
   ShieldImage,
   StatItem,
-  StatLabel,
-  StatValue,
+  StatText,
   StatsRow,
+  TaskAlt,
   Title,
   TitleAccent,
   TitleAccentImage,
@@ -27,7 +27,7 @@ import {
 } from "./styles";
 
 const Hero = () => {
-  const { t } = useTranslation("hero");
+  const { t } = useTranslation();
   const handleGetStartedClick = useCtaNavigate({ target: headerRoutes.signIn });
 
   return (
@@ -37,14 +37,14 @@ const Hero = () => {
           <Content>
             <Pill>
               <PillDot />
-              {t("badge")}
+              {t("hero.badge")}
             </Pill>
 
             <Title variant="h1">
-              {t("titleLine1")}
+              {t("hero.titleLine1")}
               <br />
               <TitleAccent>
-                {t("titleLine2")}
+                {t("hero.titleLine2")}
                 <TitleAccentImage
                   src={heroAssets.titleAccentIcon}
                   alt=""
@@ -52,24 +52,24 @@ const Hero = () => {
                 />
               </TitleAccent>
               <br />
-              {t("titleLine3")}
+              {t("hero.titleLine3")}
             </Title>
 
-            <Description variant="body1">{t("description")}</Description>
+            <Description variant="body1">{t("hero.description")}</Description>
 
             <PrimaryButton
               variant="contained"
               disableElevation
               onClick={handleGetStartedClick}
             >
-              {t("ctaPrimary")}
+              {t("hero.ctaPrimary")}
             </PrimaryButton>
 
             <StatsRow>
               {heroStatsKeys.map((statKey) => (
                 <StatItem key={statKey}>
-                  <StatValue>{t(`${statKey}.value`)}</StatValue>
-                  <StatLabel>{t(`${statKey}.label`)}</StatLabel>
+                  <TaskAlt />
+                  <StatText variant="h6">{t(`hero.${statKey}.value`)}</StatText>
                 </StatItem>
               ))}
             </StatsRow>

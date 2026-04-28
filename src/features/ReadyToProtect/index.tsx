@@ -1,7 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import { readyToProtectActionKeys } from "shared/constants/readyToProtect";
-
 import {
   Actions,
   Description,
@@ -13,9 +11,10 @@ import {
   Wrapper,
 } from "./styles";
 import { useReadyToProtect } from "./hooks/useReadyToProtect";
+import { readyToProtectActionKeys } from "constants/MainPages";
 
 const ReadyToProtect = () => {
-  const { t } = useTranslation("readyToProtect");
+  const { t } = useTranslation();
   const { handleGetStartedClick, handleContactSalesClick } =
     useReadyToProtect();
 

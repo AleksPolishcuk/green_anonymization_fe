@@ -5,14 +5,6 @@ import Box from "@mui/material/Box";
 import { Link, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { SpriteIcon } from "components/SpriteIcon";
-import {
-  footerNavColumnTitleKey,
-  footerMainLogoPreserveAspectRatio,
-  footerNavLinks,
-  spriteSymbolIds,
-  spriteViewBoxes,
-} from "constants/footer";
 import {
   FooterBody,
   FooterBottom,
@@ -23,7 +15,7 @@ import {
   FooterTextBlock,
   FooterTop,
   footerCopyrightSx,
-  footerMainLogoInnerSx,
+  footerLogoTextSx,
   footerMainLogoWrapperSx,
   footerNavGridSx,
   footerNavHeadingSx,
@@ -31,6 +23,13 @@ import {
   footerNavLinkSx,
   FooterContainer,
 } from "components/Footer/styles";
+import {
+  footerNavColumnTitleKey,
+  footerNavLinks,
+  spriteSvgPublicPath,
+  spriteSymbolIds,
+  spriteViewBoxes,
+} from "constants/MainPages";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -44,19 +43,20 @@ export function Footer() {
             <FooterBrandBlock>
               <FooterBrandRow>
                 <Box
-                  component="span"
-                  role="img"
-                  aria-label={t("footer.brandName")}
+                  component="svg"
+                  viewBox={spriteViewBoxes.mainLogo}
+                  aria-hidden="true"
                   sx={footerMainLogoWrapperSx}
                 >
-                  <SpriteIcon
-                    symbolId={spriteSymbolIds.mainLogo}
-                    viewBox={spriteViewBoxes.mainLogo}
-                    preserveAspectRatio={footerMainLogoPreserveAspectRatio}
-                    decorative
-                    sx={footerMainLogoInnerSx}
+                  <use
+                    href={`${spriteSvgPublicPath}#${spriteSymbolIds.mainLogo}`}
+                    width="36"
+                    height="36"
                   />
                 </Box>
+                <Typography component="span" sx={footerLogoTextSx}>
+                  {t("footer.brandName")}
+                </Typography>
               </FooterBrandRow>
             </FooterBrandBlock>
 

@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { useComplianceSection } from "./useComplianceSection";
-import { useScrollReveal } from "./useScrollReveal";
 import { ComplianceCardItem } from "./ComplianceCardItem";
 import {
   CardsGrid,
@@ -13,11 +12,12 @@ import {
   SectionWrapper,
   ComplianceContainer,
 } from "./styles";
+import { useScrollReveal } from "shared/hooks/useScrollReveal";
 
 export const ComplianceSection = () => {
   const { t } = useTranslation();
   const { cards } = useComplianceSection();
-  const gridRef = useScrollReveal();
+  const { ref: listRef, revealed } = useScrollReveal();
 
   return (
     <SectionWrapper id="compliance">
@@ -34,9 +34,14 @@ export const ComplianceSection = () => {
           </HeaderRight>
         </HeaderRow>
 
-        <CardsGrid ref={gridRef}>
-          {cards.map((card) => (
-            <ComplianceCardItem key={card.id} card={card} />
+        <CardsGrid ref={listRef}>
+          {cards.map((card, index) => (
+            <ComplianceCardItem
+              key={card.id}
+              card={card}
+              $revealed={revealed}
+              $index={index}
+            />
           ))}
         </CardsGrid>
       </ComplianceContainer>

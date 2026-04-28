@@ -21,6 +21,11 @@ export const ChartsLayout = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     gap: theme.spacing(4),
   },
+  [theme.breakpoints.up("xl")]: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    alignItems: "start",
+  },
 }));
 
 export const ChartRow = styled(Box, {
@@ -35,5 +40,8 @@ export const ChartRow = styled(Box, {
   },
   [theme.breakpoints.up("lg")]: {
     gridTemplateColumns: $cols,
+  },
+  [theme.breakpoints.up("xl")]: {
+    display: "contents",
   },
 }));
