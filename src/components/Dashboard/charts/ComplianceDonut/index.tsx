@@ -135,6 +135,7 @@ export const ComplianceDonut = ({ data }: Props) => {
                       ? `url(#${HIPAA_GRADIENT_ID})`
                       : entry.color
                   }
+                  stroke={entry.color}
                 />
               ))}
             </Pie>
