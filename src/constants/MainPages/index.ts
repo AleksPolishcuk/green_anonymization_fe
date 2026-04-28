@@ -262,7 +262,7 @@ export const spriteSymbolIds = {
 } as const;
 
 export const spriteViewBoxes = {
-  mainLogo: "0 0 200 36",
+  mainLogo: "0 0 36 36",
 } as const;
 const footerInternalPaths = {
   pricing: "/pricing",
