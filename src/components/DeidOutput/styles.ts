@@ -141,10 +141,7 @@ export const CardContent = styled(Box)(({ theme }) => ({
 
 export const TextContent = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize12,
-  lineHeight: 1.6,
-  whiteSpace: "pre-wrap",
-  wordBreak: "break-word",
-  fontFamily: "'Courier New', monospace",
+  fontFamily: theme.typography.monospace.fontFamily,
 }));
 
 export const EntityHighlight = styled("span")(({ theme }) => {
