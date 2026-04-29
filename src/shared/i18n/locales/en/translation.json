@@ -272,6 +272,22 @@
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
   },
+  "deidOutput": {
+    "originalText": {
+      "title": "Original Text",
+      "subtitle": "Detected entities highlighted",
+      "entities": "entities"
+    },
+    "deIdentifiedOutput": {
+      "title": "De-Identified Output",
+      "subtitle": "Sensitive data removed",
+      "hipaaCompliant": "HIPAA Safe",
+      "copy": "Copy",
+      "downloadTxt": "Download .txt",
+      "downloadJson": "Download .json",
+      "redactedContentTooltip": "Redacted information"
+    }
+  },
   "notFound": {
     "subtitle": "Page not found",
     "title": "Oops! We lost this page",
