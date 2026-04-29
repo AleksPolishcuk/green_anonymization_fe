@@ -2,12 +2,15 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AuthActions } from "components/Header/AuthActions";
+import { ThemeToggle } from "components/ThemeToggle";
 import {
   CloseButton,
   CloseIcon,
   ModalActions,
   ModalBody,
   ModalHeader,
+  ModalHeaderActions,
+  ModalLogoIcon,
   ModalNav,
   ModalNavLink,
   Overlay,
@@ -16,6 +19,7 @@ import {
 import { NavLinks } from "components/Header/NavLinks";
 import {
   headerI18nPrefix,
+  headerLogoSpriteId,
   headerSpriteRef,
   headerSpriteSymbolIds,
 } from "constants/MainPages";
@@ -47,6 +51,17 @@ export function BurgerModal({ isOpen, id, onClose }: BurgerModalProps) {
         onClick={(event) => event.stopPropagation()}
       >
         <ModalHeader>
+          <ModalHeaderActions>
+            <ModalLogoIcon viewBox="0 0 36 36" aria-hidden="true">
+              <use
+                href={headerSpriteRef(headerLogoSpriteId)}
+                width={36}
+                height={36}
+              />
+            </ModalLogoIcon>
+            <ThemeToggle />
+          </ModalHeaderActions>
+
           <CloseButton
             ref={closeButtonRef}
             onClick={onClose}
@@ -60,7 +75,11 @@ export function BurgerModal({ isOpen, id, onClose }: BurgerModalProps) {
 
         <ModalBody>
           <ModalNav>
-            <NavLinks LinkComponent={ModalNavLink} onNavigate={onClose} />
+            <NavLinks
+              LinkComponent={ModalNavLink}
+              onNavigate={onClose}
+              showIcons
+            />
           </ModalNav>
 
           <ModalActions>

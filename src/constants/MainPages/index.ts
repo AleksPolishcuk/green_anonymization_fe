@@ -46,6 +46,16 @@ export const headerDimensions = {
 
 export const headerLogoSpriteId = "icon-main-logo";
 
+export const HEADER_ICON_DARK_COLOR = "#2563FF";
+export const MODAL_HEADER_DARK_BG = "#101D46";
+export const BUTTON_HOVER_SHADOW_DARK = "0 0 0 2px rgba(79, 140, 255, 0.35)";
+export const BUTTON_HOVER_SHADOW_LIGHT = "0 0 0 2px #DCE3F8";
+export const BUTTON_HOVER_BG_DARK = "rgba(255, 255, 255, 0.08)";
+export const BUTTON_HOVER_BG_LIGHT = "rgba(16, 24, 40, 0.09)";
+export const BUTTON_ACTIVE_BG_DARK = "rgba(255, 255, 255, 0.14)";
+export const BUTTON_ACTIVE_BG_LIGHT = "rgba(16, 24, 40, 0.14)";
+export const boxShadow = "0 0 0 4px rgba(21, 93, 252, 0.22)";
+
 export const headerLogoViewBox = {
   width: headerDimensions.logoWidthPx,
   height: headerDimensions.logoHeightPx,

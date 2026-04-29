@@ -1,5 +1,16 @@
 import { styled } from "@mui/material/styles";
-import { headerBreakpoints, headerDimensions } from "constants/MainPages";
+import {
+  headerBreakpoints,
+  headerDimensions,
+  HEADER_ICON_DARK_COLOR,
+  MODAL_HEADER_DARK_BG,
+  BUTTON_HOVER_SHADOW_DARK,
+  BUTTON_HOVER_SHADOW_LIGHT,
+  BUTTON_HOVER_BG_DARK,
+  BUTTON_HOVER_BG_LIGHT,
+  BUTTON_ACTIVE_BG_DARK,
+  BUTTON_ACTIVE_BG_LIGHT,
+} from "constants/MainPages";
 import { Link } from "react-router-dom";
 
 const overlayDurationMs = 280;
@@ -8,12 +19,6 @@ const reducedMotionTransitionMs = 0.01;
 const easing = "cubic-bezier(0.32, 0.72, 0, 1)";
 const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
-const navLinkPadY = 6;
-const navLinkPadX = 10;
-const navLinkRadiusPx = 8;
-const navUnderlineBottomPx = 3;
-const navUnderlineHeightPx = 2;
-const navUnderlineTransitionSeconds = 0.28;
 const transitionFastSeconds = 0.22;
 
 export const Overlay = styled("div", {
@@ -92,16 +97,32 @@ export const ModalHeader = styled("div")(({ theme }) => ({
   boxSizing: "border-box",
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
+  justifyContent: "space-between",
   width: "100%",
   height: `${headerDimensions.mobileTabletBarHeightPx}px`,
   minHeight: `${headerDimensions.mobileTabletBarHeightPx}px`,
   padding: `0 ${headerDimensions.layoutHorizontalPaddingPx}px`,
-  background: "#f3f4f6",
+  background:
+    theme.palette.mode === "dark"
+      ? MODAL_HEADER_DARK_BG
+      : theme.palette.background.softGray,
 
   [`@media (min-width: ${headerBreakpoints.tabletPx}px)`]: {
     padding: `0 ${theme.spacing(6)}`,
   },
+}));
+
+export const ModalLogoIcon = styled("svg")({
+  display: "block",
+  flexShrink: 0,
+  width: `${headerDimensions.logoHeightPx}px`,
+  height: `${headerDimensions.logoHeightPx}px`,
+});
+
+export const ModalHeaderActions = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(1),
 }));
 
 export const ModalBody = styled("div")(({ theme }) => ({
@@ -139,79 +160,84 @@ export const CloseButton = styled("button")(({ theme }) => ({
   ].join(", "),
 
   "&:hover": {
-    backgroundColor: "rgba(16, 24, 40, 0.09)",
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_BG_DARK
+        : BUTTON_HOVER_BG_LIGHT,
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_SHADOW_DARK
+        : BUTTON_HOVER_SHADOW_LIGHT,
     transform: "scale(1.06)",
   },
 
   "&:active": {
     transform: "scale(1)",
-    backgroundColor: "rgba(16, 24, 40, 0.14)",
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? BUTTON_ACTIVE_BG_DARK
+        : BUTTON_ACTIVE_BG_LIGHT,
   },
 
   "&:focus-visible": {
     outline: `2px solid ${theme.palette.primary.main}`,
     outlineOffset: "3px",
-    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+    boxShadow: BUTTON_HOVER_SHADOW_DARK,
   },
 
   "&:focus:not(:focus-visible)": {
     outline: "none",
     boxShadow: "none",
   },
+
+  "&:focus:not(:focus-visible):hover": {
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_SHADOW_DARK
+        : BUTTON_HOVER_SHADOW_LIGHT,
+  },
 }));
 
-export const CloseIcon = styled("svg")({
+export const CloseIcon = styled("svg")(({ theme }) => ({
   width: `${headerDimensions.closeControlSizePx}px`,
   height: `${headerDimensions.closeControlSizePx}px`,
-});
+  ...(theme.palette.mode === "dark" && {
+    ["--close-stroke" as string]: HEADER_ICON_DARK_COLOR,
+  }),
+}));
 
 export const ModalNav = styled("nav")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(6),
+  alignItems: "stretch",
+  marginTop: theme.spacing(6.5),
 }));
 
 export const ModalNavLink = styled(Link)(({ theme }) => ({
   boxSizing: "border-box",
   margin: 0,
-  position: "relative",
-  display: "inline-flex",
+  display: "flex",
   alignItems: "center",
-  alignSelf: "flex-start",
-  padding: `${navLinkPadY}px ${navLinkPadX}px`,
+  gap: theme.spacing(2.5),
+  width: "100%",
+  padding: `${theme.spacing(5)} ${theme.spacing(5)}`,
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.body1.fontWeight,
   fontSize: theme.typography.body1.fontSize,
   lineHeight: theme.typography.button.lineHeight,
   color: theme.palette.text.primary,
   textDecoration: "none",
-  borderRadius: `${navLinkRadiusPx}px`,
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  transition: `border-bottom-color 0.28s ${easingOut}`,
 
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: `${navLinkPadX}px`,
-    right: `${navLinkPadX}px`,
-    bottom: `${navUnderlineBottomPx}px`,
-    height: `${navUnderlineHeightPx}px`,
-    backgroundColor: theme.palette.primary.main,
-    transform: "scaleX(0)",
-    transformOrigin: "left center",
-    transition: `transform ${navUnderlineTransitionSeconds}s ${easingOut}`,
-  },
-
-  "&:hover::after": {
-    transform: "scaleX(1)",
-  },
-
-  "&:active::after": {
-    transform: "scaleX(1)",
+  "&:hover": {
+    borderBottomColor: theme.palette.primary.main,
   },
 
   "&:focus-visible": {
     outline: `2px solid ${theme.palette.primary.main}`,
-    outlineOffset: "3px",
-    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+    outlineOffset: "-2px",
+    boxShadow: BUTTON_HOVER_SHADOW_DARK,
   },
 
   "&:focus:not(:focus-visible)": {
@@ -222,6 +248,7 @@ export const ModalNavLink = styled(Link)(({ theme }) => ({
 
 export const ModalActions = styled("div")(({ theme }) => ({
   marginTop: "auto",
+  marginBottom: theme.spacing(6),
   display: "grid",
   gap: theme.spacing(3),
 }));

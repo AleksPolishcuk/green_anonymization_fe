@@ -1,22 +1,23 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { boxShadow } from "constants/MainPages";
 
-const ctaHeightPx = 41;
-const ctaWidthPx = 119;
-const ctaPadding = "10px 20px";
-const ctaRadiusPx = 14;
 const transitionButtonSeconds = 0.24;
 const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
+const boxShadowHover = "0 6px 14px 0 rgba(59, 130, 246, 0.6)";
+const boxShadowHoverDark = "0 6px 14px 0 rgba(59, 130, 246, 0.3)";
 
 export const AuthActionsRow = styled("div", {
   shouldForwardProp: (prop) => prop !== "$isCompact",
-})<{ $isCompact: boolean }>(({ $isCompact }) => ({
+})<{ $isCompact: boolean }>(({ $isCompact, theme }) => ({
   display: "inline-flex",
   alignItems: "center",
   ...($isCompact && {
-    width: "100%",
+    width: "80%",
     flexDirection: "column",
-    alignItems: "stretch",
+    alignItems: "center",
+    margin: "0 auto",
+    gap: theme.spacing(3),
   }),
 }));
 
@@ -24,20 +25,20 @@ export const GetStartedButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "$isCompact",
 })<{ $isCompact?: boolean }>(({ theme, $isCompact }) => ({
   boxSizing: "border-box",
-  marginLeft: 8,
+  marginLeft: $isCompact ? 0 : 8,
   cursor: "pointer",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: `${ctaRadiusPx}px`,
-  padding: ctaPadding,
+  borderRadius: theme.shape.borderRadius,
+  padding: theme.spacing(2.5, 5),
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.button.fontWeight,
   whiteSpace: "nowrap",
-  boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
+  boxShadow: boxShadowHoverDark,
   textTransform: "none",
   flexShrink: 0,
   minWidth: "unset",
@@ -45,11 +46,11 @@ export const GetStartedButton = styled(Button, {
     ? {
         width: "100%",
         height: "auto",
-        minHeight: `${ctaHeightPx}px`,
+        minHeight: theme.spacing(5),
       }
     : {
-        width: `${ctaWidthPx}px`,
-        height: `${ctaHeightPx}px`,
+        width: theme.spacing(30),
+        height: theme.spacing(10),
       }),
   transition: [
     `background-color ${transitionButtonSeconds}s ${easingStandard}`,
@@ -58,19 +59,18 @@ export const GetStartedButton = styled(Button, {
 
   "&:hover": {
     backgroundColor: theme.palette.primary.dark,
-    boxShadow: "0 6px 14px 0 rgba(59, 130, 246, 0.6)",
+    boxShadow: boxShadowHover,
   },
 
   "&:active": {
     backgroundColor: theme.palette.primary.main,
-    boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.3)",
+    boxShadow: boxShadowHoverDark,
   },
 
   "&:focus-visible": {
-    outline: `2px solid ${theme.palette.primary.contrastText}`,
-    outlineOffset: "2px",
-    boxShadow:
-      "0 4px 14px 0 rgba(59, 130, 246, 0.3), 0 0 0 4px rgba(21, 93, 252, 0.45)",
+    outline: `1px solid ${theme.palette.primary.main}`,
+    outlineOffset: "-2px",
+    boxShadow: boxShadow,
   },
 
   "&:focus:not(:focus-visible)": {
