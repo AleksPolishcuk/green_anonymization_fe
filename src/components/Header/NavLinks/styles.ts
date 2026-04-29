@@ -1,6 +1,26 @@
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
+export const NavIconBox = styled("span")(({ theme }) => ({
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 28,
+  height: 28,
+  borderRadius: 8,
+  flexShrink: 0,
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? "rgba(37, 99, 255, 0.12)"
+      : theme.palette.accent.lightBlue,
+  color: theme.palette.primary.main,
+  "& svg": {
+    width: 16,
+    height: 16,
+    display: "block",
+  },
+}));
+
 const navLinkPadY = 6;
 const navLinkPadX = 10;
 const navLinkRadiusPx = 8;

@@ -91,7 +91,7 @@ export const FooterBrandRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  gap: "10px",
+  gap: theme.spacing(2.5),
   maxWidth: "100%",
   width: "100%",
   [theme.breakpoints.up("md")]: {
