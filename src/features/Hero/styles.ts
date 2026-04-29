@@ -2,7 +2,6 @@ import { styled, keyframes, type Theme } from "@mui/material/styles";
 import { Button, Typography } from "@mui/material";
 import { TaskAlt as TaskAltIcon } from "@mui/icons-material";
 import {
-  heroAssets,
   heroBreakpoints,
   heroColors,
   heroDarkColors,
@@ -42,23 +41,47 @@ const floatAnimation = keyframes`
   100% { transform: translateY(10px); }
 `;
 
+const waveAnimation = keyframes`
+  0%   { background-position-x: 0; }
+  100% { background-position-x: 1600px; }
+`;
+
+const wavePath =
+  "M0,35 C267,15 533,55 800,30 C1067,5 1333,50 1600,35 L1600,70 L0,70 Z";
+
 export const Section = styled("section")(({ theme }: { theme: Theme }) => {
   const colors = getHeroColors(theme);
-  const isDark = theme.palette.mode === "dark";
-
-  const wave = isDark ? heroAssets.waveBottomDark : heroAssets.waveBottom;
+  const makeSvgUrl = (path: string, fill: string) =>
+    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 70' preserveAspectRatio='none'%3E%3Cpath d='${path}' fill='${encodeURIComponent(fill)}'/%3E%3C/svg%3E")`;
 
   return {
     position: "relative",
     padding: 0,
     overflow: "hidden",
     background: `
-      url("${wave}") bottom center / 100% auto no-repeat,
       radial-gradient(ellipse at 0% 0%, ${colors.radialTopLeft} 0%, transparent 60%),
       radial-gradient(ellipse at 100% 100%, ${colors.radialBottomRight} 0%, transparent 55%),
       radial-gradient(ellipse at 55% 40%, ${colors.radialCenter} 0%, transparent 45%),
       linear-gradient(135deg, ${colors.gradientStart} 0%, ${colors.gradientMiddle} 50%, ${colors.gradientEnd} 100%)
     `,
+
+    "&::before, &::after": {
+      content: '""',
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "200%",
+      height: 50,
+      backgroundRepeat: "repeat-x",
+      backgroundSize: "1600px 70px",
+      pointerEvents: "none",
+      zIndex: 0,
+    },
+
+    "&::before": {
+      backgroundImage: makeSvgUrl(wavePath, colors.waveFill),
+      animation: `${waveAnimation} 12s linear infinite`,
+    },
   };
 });
 

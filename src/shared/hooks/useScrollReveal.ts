@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useScrollReveal = () => {
+export const useScrollReveal = (totalItems = 4) => {
   const ref = useRef<HTMLUListElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const [animDone, setAnimDone] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -23,5 +24,18 @@ export const useScrollReveal = () => {
     return () => observer.disconnect();
   }, [revealed]);
 
-  return { ref, revealed };
+  useEffect(() => {
+    if (!revealed) return;
+
+    const lastCardDelay = (totalItems - 1) * 0.15;
+    const animationDuration = 0.6;
+    const timeout = window.setTimeout(
+      () => setAnimDone(true),
+      (lastCardDelay + animationDuration) * 1000,
+    );
+
+    return () => clearTimeout(timeout);
+  }, [revealed, totalItems]);
+
+  return { ref, revealed, animDone };
 };

@@ -16,7 +16,11 @@ import { CAPABILITIES_CARDS } from "constants/MainPages";
 
 export const Capabilities = () => {
   const { t } = useTranslation();
-  const { ref: listRef, revealed } = useScrollReveal();
+  const {
+    ref: listRef,
+    revealed,
+    animDone,
+  } = useScrollReveal(CAPABILITIES_CARDS.length);
 
   return (
     <CapabilitiesSection id="solution">
@@ -31,7 +35,12 @@ export const Capabilities = () => {
 
         <CardsList ref={listRef}>
           {CAPABILITIES_CARDS.map((card, index) => (
-            <CardItem key={card.id} $revealed={revealed} $index={index}>
+            <CardItem
+              key={card.id}
+              $revealed={revealed}
+              $animDone={animDone}
+              $index={index}
+            >
               <IconWrapper $accentKey={card.accentKey}>
                 <svg viewBox="0 0 20 20">
                   <use href={`sprite.svg${card.iconId}`} />
