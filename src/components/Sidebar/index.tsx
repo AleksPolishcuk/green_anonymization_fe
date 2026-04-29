@@ -16,7 +16,7 @@ import {
   SidebarTitle,
 } from "./styles";
 import { headerSpriteRef } from "constants/MainPages";
-import { useSidebar } from "./hooks/useSidebar";
+import { useSidebar } from "./useSidebar";
 
 export default function Sidebar() {
   const { t } = useTranslation();
