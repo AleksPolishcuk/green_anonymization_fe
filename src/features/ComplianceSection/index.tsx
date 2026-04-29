@@ -1,61 +1,50 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { ClipboardCheckIcon } from "assets/icons/ClipboardCheckIcon";
-
-import { useComplianceSection } from "./hooks/useComplianceSection";
-import { ComplianceCardItem } from "./components/ComplianceCardItem";
+import { useComplianceSection } from "./useComplianceSection";
+import { ComplianceCardItem } from "./ComplianceCardItem";
 import {
-  BannerDescription,
-  BannerIconWrapper,
-  BannerTextWrapper,
-  BannerTitle,
   CardsGrid,
-  CustomBanner,
   HeaderDescription,
   HeaderRight,
   HeaderRow,
   LabelText,
   SectionWrapper,
+  ComplianceContainer,
 } from "./styles";
+import { useScrollReveal } from "shared/hooks/useScrollReveal";
 
 export const ComplianceSection = () => {
   const { t } = useTranslation();
   const { cards } = useComplianceSection();
+  const { ref: listRef, revealed } = useScrollReveal();
 
   return (
-    <SectionWrapper>
-      <HeaderRow>
-        <div>
-          <LabelText>{t("complianceSection.label")}</LabelText>
-          <Typography variant="h3">{t("complianceSection.title")}</Typography>
-        </div>
-        <HeaderRight>
-          <HeaderDescription variant="body1">
-            {t("complianceSection.description")}
-          </HeaderDescription>
-        </HeaderRight>
-      </HeaderRow>
+    <SectionWrapper id="compliance">
+      <ComplianceContainer>
+        <HeaderRow>
+          <div>
+            <LabelText>{t("complianceSection.label")}</LabelText>
+            <Typography variant="h3">{t("complianceSection.title")}</Typography>
+          </div>
+          <HeaderRight>
+            <HeaderDescription variant="body1">
+              {t("complianceSection.description")}
+            </HeaderDescription>
+          </HeaderRight>
+        </HeaderRow>
 
-      <CardsGrid>
-        {cards.map((card) => (
-          <ComplianceCardItem key={card.id} card={card} />
-        ))}
-      </CardsGrid>
-
-      <CustomBanner>
-        <BannerIconWrapper>
-          <ClipboardCheckIcon />
-        </BannerIconWrapper>
-        <BannerTextWrapper>
-          <BannerTitle>
-            {t("complianceSection.customProfile.title")}
-          </BannerTitle>
-          <BannerDescription>
-            {t("complianceSection.customProfile.description")}
-          </BannerDescription>
-        </BannerTextWrapper>
-      </CustomBanner>
+        <CardsGrid ref={listRef}>
+          {cards.map((card, index) => (
+            <ComplianceCardItem
+              key={card.id}
+              card={card}
+              $revealed={revealed}
+              $index={index}
+            />
+          ))}
+        </CardsGrid>
+      </ComplianceContainer>
     </SectionWrapper>
   );
 };

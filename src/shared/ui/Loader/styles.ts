@@ -30,7 +30,7 @@ export const LoaderWrapper = styled("div")({
 });
 
 export const LoaderRoot = styled("div")(({ theme }) => ({
-  "--loader-color": theme.palette.primary.main,
+  "--loader-color": theme.palette.color.blue,
   position: "relative",
   display: "flex",
   alignItems: "center",

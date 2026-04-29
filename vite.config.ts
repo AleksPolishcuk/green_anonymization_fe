@@ -1,6 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,10 +19,11 @@ export default defineConfig({
       app: path.resolve(__dirname, "src/app"),
       features: path.resolve(__dirname, "src/features"),
       shared: path.resolve(__dirname, "src/shared"),
+      services: path.resolve(__dirname, "src/services"),
       assets: path.resolve(__dirname, "src/assets"),
       Layouts: path.resolve(__dirname, "src/Layouts/index.tsx"),
-      constants: path.resolve(__dirname, "src/constants/index.ts"),
-      assets: path.resolve(__dirname, "src/assets"),
+      constants: path.resolve(__dirname, "src/constants"),
+      store: path.resolve(__dirname, "src/store"),
     },
   },
 });
