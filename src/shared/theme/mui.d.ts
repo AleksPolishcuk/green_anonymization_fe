@@ -105,6 +105,12 @@ declare module "@mui/material/styles" {
     lineHeight158: number;
     lineHeight167: number;
     lineHeight175: number;
+    monospace: {
+      fontFamily: string;
+      lineHeight: number;
+      whiteSpace: string;
+      wordBreak: string;
+    };
   }
 
   interface TypographyVariantsOptions {
@@ -133,5 +139,11 @@ declare module "@mui/material/styles" {
     lineHeight158?: number;
     lineHeight167?: number;
     lineHeight175?: number;
+    monospace?: {
+      fontFamily?: string;
+      lineHeight?: number;
+      whiteSpace?: string;
+      wordBreak?: string;
+    };
   }
 }

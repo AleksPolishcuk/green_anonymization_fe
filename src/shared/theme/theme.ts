@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const mainFontFamily = "'Inter', sans-serif";
 const headingFontFamily = "'DM Serif Display', serif";
+const monospaceFontFamily = "'Courier New', monospace";
 
 const regular = 400;
 const semiBold = 600;
@@ -184,6 +185,13 @@ const typography = {
     fontSize: size16,
     lineHeight: lh150,
     textTransform: "none" as const,
+  },
+
+  monospace: {
+    fontFamily: monospaceFontFamily,
+    lineHeight: lh158,
+    whiteSpace: "pre-wrap" as const,
+    wordBreak: "break-word" as const,
   },
 };
 
