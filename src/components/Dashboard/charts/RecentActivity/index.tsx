@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
-import { headerSpriteRef } from "constants/header";
+
 import type { RecentActivityItem } from "components/Dashboard/types";
 
 import {
@@ -20,6 +20,7 @@ import {
   ScrollIndicator,
   ScrollWrapper,
 } from "components/Dashboard/charts/RecentActivity/styles";
+import { headerSpriteRef } from "constants/MainPages";
 
 type Props = {
   data: RecentActivityItem[];

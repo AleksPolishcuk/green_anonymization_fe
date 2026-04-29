@@ -4,8 +4,10 @@ import {
   AuthActionsRow,
   GetStartedButton,
 } from "components/Header/AuthActions/styles";
-import { headerI18nPrefix, headerRoutes } from "constants/header";
+
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
+import { ThemeToggle } from "components/ThemeToggle";
+import { headerI18nPrefix, headerRoutes } from "constants/MainPages";
 
 type AuthActionsProps = {
   compact?: boolean;
@@ -21,6 +23,7 @@ export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
 
   return (
     <AuthActionsRow $isCompact={compact}>
+      <ThemeToggle />
       <GetStartedButton
         type="button"
         $isCompact={compact}

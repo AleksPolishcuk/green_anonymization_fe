@@ -1,25 +1,28 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { NavLink, Link } from "react-router-dom";
-import { BG_OFF, BG_ON, BOX_SHADOW, BOX_SHADOW_NAV } from "constants/DeidPage";
-import { theme } from "shared/theme/theme";
+import { deidColors, deidDarkColors } from "constants/DeidPage";
 
 const SIDEBAR_WIDTH = 272;
 const LOGO_BOX_SIZE = 40;
 
-export const SidebarRoot = styled("aside")(({ theme }) => ({
-  width: SIDEBAR_WIDTH,
-  minWidth: SIDEBAR_WIDTH,
-  height: "100vh",
-  position: "sticky",
-  top: 0,
-  display: "flex",
-  flexDirection: "column",
-  padding: theme.spacing(3),
-  borderRight: `1px solid ${theme.palette.divider}`,
-  backgroundColor: theme.palette.background.default,
-  boxShadow: BOX_SHADOW,
-}));
+export const SidebarRoot = styled("aside")(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+
+  return {
+    width: SIDEBAR_WIDTH,
+    minWidth: SIDEBAR_WIDTH,
+    height: "100vh",
+    position: "sticky",
+    top: 0,
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3),
+    borderRight: `1px solid ${theme.palette.divider}`,
+    backgroundColor: theme.palette.background.default,
+    boxShadow: colors.boxShadow,
+  };
+});
 
 export const SidebarLogoRow = styled(Link)(({ theme }) => ({
   paddingTop: theme.spacing(2),
@@ -77,45 +80,50 @@ export const SidebarNav = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
-export const SidebarNavItem = styled(NavLink)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: theme.spacing(3),
-  padding: theme.spacing(2.5, 3),
-  borderRadius: 12,
-  textDecoration: "none",
-  color: theme.palette.text.secondary,
-  transition: "all 0.2s ease",
+export const SidebarNavItem = styled(NavLink)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  "&.active": {
-    backgroundColor: BG_ON,
-    color: theme.palette.text.primary,
-    boxShadow: BOX_SHADOW_NAV,
-  },
+  return {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(3),
+    padding: theme.spacing(2.5, 3),
+    borderRadius: theme.spacing(1.5),
+    textDecoration: "none",
+    color: theme.palette.text.secondary,
+    transition:
+      "background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease",
 
-  "&:hover": {
-    backgroundColor: BG_OFF,
-  },
-}));
+    "&.active": {
+      backgroundColor: colors.bgOn,
+      color: theme.palette.text.primary,
+      boxShadow: colors.boxShadowNav,
+    },
 
-export const SidebarNavIconBox = styled(Box)({
+    "&:hover": {
+      backgroundColor: colors.bgOff,
+    },
+  };
+});
+
+export const SidebarNavIconBox = styled(Box)(({ theme }) => ({
   width: 28,
   height: 28,
-  borderRadius: "8px",
+  borderRadius: theme.spacing(1),
   backgroundColor: theme.palette.background.softGray,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexShrink: 0,
-});
+}));
 
-export const SidebarNavIcon = styled("svg")({
+export const SidebarNavIcon = styled("svg")(({ theme }) => ({
   width: 15,
   height: 15,
   display: "block",
   fill: "none",
   stroke: theme.palette.text.secondary,
-});
+}));
 
 export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.divider}`,

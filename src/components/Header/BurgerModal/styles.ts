@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
+import { headerBreakpoints, headerDimensions } from "constants/MainPages";
 import { Link } from "react-router-dom";
 
-import { headerBreakpoints, headerDimensions } from "constants/header";
 const overlayDurationMs = 280;
 const panelDurationMs = 300;
 const reducedMotionTransitionMs = 0.01;

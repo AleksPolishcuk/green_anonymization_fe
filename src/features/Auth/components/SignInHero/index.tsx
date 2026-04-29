@@ -1,7 +1,7 @@
 import { signinStats } from "constants/auth";
 import { Trans, useTranslation } from "react-i18next";
 import { StatItem, StatLabel, Stats, StatValue } from "./styles";
-import { headerSpriteRef } from "constants/header";
+import { headerSpriteRef } from "constants/MainPages";
 import {
   EnterpriseParagraph,
   ShieldIcon,

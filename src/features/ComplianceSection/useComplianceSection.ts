@@ -1,4 +1,4 @@
-import { COMPLIANCE_CARDS } from "constants";
+import { COMPLIANCE_CARDS } from "constants/MainPages";
 import type { UseComplianceSectionReturn } from "./types";
 
 export const useComplianceSection = (): UseComplianceSectionReturn => {

@@ -21,7 +21,7 @@ import {
   FormStatusAlert,
   FormStatusText,
 } from "./styles";
-import { headerSpriteRef } from "constants/header";
+import { headerSpriteRef } from "constants/MainPages";
 import { Controller } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";

@@ -1,7 +1,6 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
-import { headerBreakpoints, headerDimensions } from "constants/header";
+import { headerBreakpoints, headerDimensions } from "constants/MainPages";
 
 const headerLogoLockBreakpointPx = headerBreakpoints.tabletPx;
 const fastTransitionSeconds = 0.22;

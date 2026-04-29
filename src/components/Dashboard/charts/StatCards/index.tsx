@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import { headerSpriteRef } from "constants/header";
 import {
   STAT_CARD_IDS,
   STAT_CARD_SPRITE_IDS,
@@ -21,6 +20,7 @@ import {
   TrendRow,
   TrendSuffix,
 } from "./styles";
+import { headerSpriteRef } from "constants/MainPages";
 
 const StatSpriteIcon = ({ iconId }: { iconId: StatCardIconId }) => {
   const symbolId = STAT_CARD_SPRITE_IDS[iconId];

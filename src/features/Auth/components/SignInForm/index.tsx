@@ -17,7 +17,7 @@ import {
   RightArrowIcon,
   SubmitButton,
 } from "features/Auth/components/styles";
-import { headerSpriteRef } from "constants/header";
+import { headerSpriteRef } from "constants/MainPages";
 
 export default function SignInForm() {
   const { t } = useTranslation();

@@ -1,8 +1,6 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import { headerSpriteRef } from "constants/header";
-
 import {
   SidebarExitIcon,
   SidebarLogoBox,
@@ -27,6 +25,7 @@ import { useAppSelector } from "store/hooks";
 import { logout } from "store/slices/authSlice";
 import { useAppDispatch } from "store/hooks";
 import { useNavigate } from "react-router-dom";
+import { headerSpriteRef } from "constants/MainPages";
 
 export default function Sidebar() {
   const { t } = useTranslation();

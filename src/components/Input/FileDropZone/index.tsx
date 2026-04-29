@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { headerSpriteRef } from "constants/header";
+import { headerSpriteRef } from "constants/MainPages";
 import {
   FileWrapper,
   FileUploadIcon,

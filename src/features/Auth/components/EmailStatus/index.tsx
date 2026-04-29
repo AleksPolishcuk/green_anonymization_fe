@@ -12,7 +12,7 @@ import {
 } from "./styles";
 import type { useEmailLoginForm } from "features/Auth/hooks/useEmailLoginForm";
 import { useTranslation } from "react-i18next";
-import { headerSpriteRef } from "constants/header";
+import { headerSpriteRef } from "constants/MainPages";
 
 type Props = {
   form: ReturnType<typeof useEmailLoginForm>;
