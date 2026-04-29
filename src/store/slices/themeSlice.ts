@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import {
+  getResolvedTheme,
   getStoredTheme,
   saveTheme,
   type ThemeMode,
@@ -18,7 +19,9 @@ export const themeSlice = createSlice({
   initialState,
   reducers: {
     toggleTheme: (state) => {
-      const newMode = state.mode === "dark" ? "light" : "dark";
+      const current = getResolvedTheme(state.mode);
+
+      const newMode = current === "dark" ? "light" : "dark";
 
       state.mode = newMode;
       saveTheme(newMode);
