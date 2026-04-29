@@ -19,7 +19,6 @@ const reducedMotionTransitionMs = 0.01;
 const easing = "cubic-bezier(0.32, 0.72, 0, 1)";
 const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
 const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
-const navLinkPadX = 10;
 const transitionFastSeconds = 0.22;
 
 export const Overlay = styled("div", {
@@ -183,7 +182,7 @@ export const CloseButton = styled("button")(({ theme }) => ({
   "&:focus-visible": {
     outline: `2px solid ${theme.palette.primary.main}`,
     outlineOffset: "3px",
-    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+    boxShadow: BUTTON_HOVER_SHADOW_DARK,
   },
 
   "&:focus:not(:focus-visible)": {
@@ -221,7 +220,7 @@ export const ModalNavLink = styled(Link)(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(2.5),
   width: "100%",
-  padding: `${theme.spacing(5)} ${navLinkPadX}px`,
+  padding: `${theme.spacing(5)} ${theme.spacing(5)}`,
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.body1.fontWeight,
   fontSize: theme.typography.body1.fontSize,
@@ -238,7 +237,7 @@ export const ModalNavLink = styled(Link)(({ theme }) => ({
   "&:focus-visible": {
     outline: `2px solid ${theme.palette.primary.main}`,
     outlineOffset: "-2px",
-    boxShadow: "0 0 0 4px rgba(21, 93, 252, 0.22)",
+    boxShadow: BUTTON_HOVER_SHADOW_DARK,
   },
 
   "&:focus:not(:focus-visible)": {

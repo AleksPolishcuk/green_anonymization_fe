@@ -54,6 +54,7 @@ export const BUTTON_HOVER_BG_DARK = "rgba(255, 255, 255, 0.08)";
 export const BUTTON_HOVER_BG_LIGHT = "rgba(16, 24, 40, 0.09)";
 export const BUTTON_ACTIVE_BG_DARK = "rgba(255, 255, 255, 0.14)";
 export const BUTTON_ACTIVE_BG_LIGHT = "rgba(16, 24, 40, 0.14)";
+export const boxShadow = "0 0 0 4px rgba(21, 93, 252, 0.22)";
 
 export const headerLogoViewBox = {
   width: headerDimensions.logoWidthPx,
