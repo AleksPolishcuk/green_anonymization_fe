@@ -58,7 +58,7 @@ export const heroAssets = {
   waveBottom: "/img/hero/wave-bottom.png",
   waveBottomDark: "/img/hero/dark-wave.png",
   titleAccentIcon: "/img/hero/icon.png",
-  shield: "/img/hero/shield.png",
+  shield: "/img/hero/shield.webp",
 };
 
 export const heroStatsKeys = [
