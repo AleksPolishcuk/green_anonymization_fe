@@ -12,7 +12,10 @@ export const ThemeToggle = () => {
   const isDark = mode === "dark";
 
   return (
-    <IconButton onClick={() => dispatch(toggleTheme())}>
+    <IconButton
+      onClick={() => dispatch(toggleTheme())}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
       {isDark ? <LightMode /> : <DarkMode />}
     </IconButton>
   );

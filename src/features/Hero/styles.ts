@@ -239,12 +239,14 @@ export const PrimaryButton = styled(Button)(({ theme }) => {
   };
 });
 
-export const StatsRow = styled("div")(({ theme }) => ({
+export const StatsRow = styled("ul")(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
   gap: theme.spacing(5),
   marginTop: theme.spacing(10),
+  listStyle: "none",
+  padding: 0,
 
   [theme.breakpoints.up("lg")]: {
     gap: theme.spacing(7),
@@ -252,10 +254,13 @@ export const StatsRow = styled("div")(({ theme }) => ({
   },
 }));
 
-export const StatItem = styled("div")(({ theme }) => ({
+export const StatItem = styled("li")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(1.6),
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
 }));
 
 export const TaskAlt = styled(TaskAltIcon)(({ theme }) => ({
@@ -286,6 +291,7 @@ export const StatText = styled(Typography)(({ theme }) => ({
   margin: 0,
   whiteSpace: "nowrap",
   letterSpacing: "0.09em",
+  fontFamily: theme.typography.headingFontFamily,
 
   [theme.breakpoints.up("lg")]: {
     fontSize: theme.typography.fontSize18,
