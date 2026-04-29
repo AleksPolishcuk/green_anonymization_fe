@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Box, Typography, Button } from "@mui/material";
 import {
   CHIP_COLOR_PRESETS,
@@ -8,13 +8,13 @@ import {
 
 export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
   position: "relative",
-  margin: theme.spacing(8, 8, 5, 8),
+  margin: theme.spacing(8),
 }));
 
-export const DeidOutputSectionStack = styled(Box)({
+export const DeidOutputSectionStack = styled(Box)(({ theme }) => ({
   display: "flex",
-  gap: 32,
-});
+  gap: theme.spacing(8),
+}));
 
 export const DeidOutputSectionCard = styled(Box)(({ theme }) => {
   const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
@@ -59,7 +59,7 @@ export const CardHeader = styled(Box)(({ theme }) => ({
 export const CardHeaderTextSection = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: 4,
+  gap: theme.spacing(1),
   padding: theme.spacing(4),
 }));
 
@@ -181,26 +181,26 @@ export const IconWrapper = styled("svg")({
   color: "currentColor",
 });
 
-export const ExclamationMarkIconWrapper = styled(IconWrapper)({
+export const ExclamationMarkIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 11,
   height: 11,
-  marginRight: 2,
-});
+  marginRight: theme.spacing(0.5),
+}));
 
-export const ComplianceSafeIconWrapper = styled(IconWrapper)({
+export const ComplianceSafeIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 11,
   height: 11,
-  marginRight: 2,
-});
+  marginRight: theme.spacing(0.5),
+}));
 
-export const CopyIconWrapper = styled(IconWrapper)({
+export const CopyIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 13,
   height: 13,
-  marginRight: 5,
-});
+  marginRight: theme.spacing(1.25),
+}));
 
-export const DownloadIconWrapper = styled(IconWrapper)({
+export const DownloadIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 13,
   height: 13,
-  marginRight: 5,
-});
+  marginRight: theme.spacing(1.25),
+}));
