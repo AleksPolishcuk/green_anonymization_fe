@@ -2,12 +2,15 @@ import React from "react";
 import { type TextSegment } from "./utils/parsers";
 import { EntityHighlight, RedactedContent } from "./styles";
 import { TextContent } from "./styles";
+import { useTranslation } from "react-i18next";
 
 interface TaggedTextProps {
   segments: TextSegment[];
 }
 
 export const TaggedText: React.FC<TaggedTextProps> = ({ segments }) => {
+  const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
+
   return (
     <TextContent>
       {segments.map((segment, index) => {
@@ -20,7 +23,7 @@ export const TaggedText: React.FC<TaggedTextProps> = ({ segments }) => {
             );
           case "redacted":
             return (
-              <RedactedContent key={index} title="Redacted information">
+              <RedactedContent key={index} title={t("redactedContentTooltip")}>
                 {segment.content}
               </RedactedContent>
             );

@@ -284,7 +284,8 @@
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
       "downloadTxt": "Download .txt",
-      "downloadJson": "Download .json"
+      "downloadJson": "Download .json",
+      "redactedContentTooltip": "Redacted information"
     }
   },
   "notFound": {
