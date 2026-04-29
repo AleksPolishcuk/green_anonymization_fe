@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
 import {
   ACCENT_LIGHT_MAP,
+  REVEAL_ANIMATION,
   cardShadows,
   type AccentKey,
 } from "constants/MainPages";
@@ -83,8 +84,8 @@ export const CardItem = styled("li")<{
   opacity: $revealed ? 1 : 0,
   transform: $revealed ? "translateY(0)" : "translateY(24px)",
   transition: $animDone
-    ? "transform 0.2s ease, box-shadow 0.2s ease"
-    : `opacity 0.6s ease ${$index * 0.15}s, transform 0.6s ease ${$index * 0.15}s`,
+    ? `transform ${REVEAL_ANIMATION.hoverDurationS}s ease, box-shadow ${REVEAL_ANIMATION.hoverDurationS}s ease`
+    : `opacity ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s, transform ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s`,
 
   "&:hover": {
     transform: $revealed ? "translateY(-4px)" : undefined,

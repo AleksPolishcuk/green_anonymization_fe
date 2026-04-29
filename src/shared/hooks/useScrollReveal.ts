@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { REVEAL_ANIMATION } from "constants/MainPages";
 
 export const useScrollReveal = (totalItems = 4) => {
   const ref = useRef<HTMLUListElement>(null);
@@ -27,8 +28,8 @@ export const useScrollReveal = (totalItems = 4) => {
   useEffect(() => {
     if (!revealed) return;
 
-    const lastCardDelay = (totalItems - 1) * 0.15;
-    const animationDuration = 0.6;
+    const lastCardDelay = (totalItems - 1) * REVEAL_ANIMATION.staggerDelayS;
+    const animationDuration = REVEAL_ANIMATION.durationS;
     const timeout = window.setTimeout(
       () => setAnimDone(true),
       (lastCardDelay + animationDuration) * 1000,

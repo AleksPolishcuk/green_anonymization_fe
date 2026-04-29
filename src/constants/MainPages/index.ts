@@ -141,6 +141,12 @@ export const ACCENT_LIGHT_MAP: Record<AccentKey, AccentLightKey> = {
   lilac: "lightLilac",
 };
 
+export const REVEAL_ANIMATION = {
+  durationS: 0.6,
+  staggerDelayS: 0.15,
+  hoverDurationS: 0.2,
+} as const;
+
 export const cardShadows = {
   card: "0 1px 3px 0 rgba(0, 0, 0, 0.04)",
   cardHover: "0 8px 24px rgba(0, 0, 0, 0.08)",

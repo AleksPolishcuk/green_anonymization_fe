@@ -1,6 +1,10 @@
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
-import { cardShadows, type AccentKey } from "constants/MainPages";
+import {
+  REVEAL_ANIMATION,
+  cardShadows,
+  type AccentKey,
+} from "constants/MainPages";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -108,8 +112,8 @@ export const CardWrapper = styled("li", {
   transform: $revealed ? "translateY(0)" : "translateY(20px)",
 
   transition: $animDone
-    ? "transform 0.2s ease, box-shadow 0.2s ease"
-    : `opacity 0.6s ease ${$index * 0.15}s, transform 0.6s ease ${$index * 0.15}s`,
+    ? `transform ${REVEAL_ANIMATION.hoverDurationS}s ease, box-shadow ${REVEAL_ANIMATION.hoverDurationS}s ease`
+    : `opacity ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s, transform ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s`,
 
   "&:hover": {
     transform: $revealed ? "translateY(-4px)" : undefined,
