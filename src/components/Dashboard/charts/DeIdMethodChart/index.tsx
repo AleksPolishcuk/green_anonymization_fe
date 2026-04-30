@@ -18,7 +18,7 @@ import {
   CHART_GRID_STROKE,
   tickStyle,
 } from "constants/DashboardPage";
-import type { DeIdMethodData } from "components/Dashboard/types";
+import type { DeIdMethodData } from "store/types/dashboard";
 
 import {
   ChartBody,

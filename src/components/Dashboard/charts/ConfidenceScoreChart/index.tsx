@@ -27,7 +27,7 @@ import {
   tickStyle as tickY,
   tickStyleSm as tickX,
 } from "constants/DashboardPage";
-import type { ConfidenceRangeData } from "components/Dashboard/types";
+import type { ConfidenceRangeData } from "store/types/dashboard";
 
 import {
   ChartBody,

@@ -1,50 +1,27 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-type ComplianceFramework = "HIPAA_US" | "GDPR_EU" | "GDPR_UK" | "FADP_CH";
-
-type Entity = {
-  id: string;
-  type: string;
-  value: string;
-  start: number;
-  end: number;
-  score: number;
-};
-
-type DocumentState = {
-  selectedFrameworks: ComplianceFramework[];
-  originalText: string;
-  redactedText: string;
-  entities: Entity[];
-};
+import type {
+  ComplianceFramework,
+  DocumentState,
+  Entity,
+} from "store/types/document";
+import { DOCUMENT_MOCK } from "store/mocks/documentMock";
 
 const initialState: DocumentState = {
-  selectedFrameworks: [],
-  originalText: "",
-  redactedText: "",
-  entities: [],
+  entities: DOCUMENT_MOCK.entities,
+  originalText: DOCUMENT_MOCK.originalText,
+  redactedText: DOCUMENT_MOCK.redactedText,
+  selectedFramework: DOCUMENT_MOCK.selectedFramework,
 };
 
 export const documentSlice = createSlice({
   name: "document",
   initialState,
   reducers: {
-    setSelectedFrameworks: (
+    setSelectedFramework: (
       state,
-      action: PayloadAction<ComplianceFramework[]>,
+      action: PayloadAction<ComplianceFramework>,
     ) => {
-      state.selectedFrameworks = action.payload;
-    },
-
-    toggleFramework: (state, action: PayloadAction<ComplianceFramework>) => {
-      const framework = action.payload;
-      const index = state.selectedFrameworks.indexOf(framework);
-
-      if (index === -1) {
-        state.selectedFrameworks.push(framework);
-      } else {
-        state.selectedFrameworks.splice(index, 1);
-      }
+      state.selectedFramework = action.payload;
     },
 
     setOriginalText: (state, action: PayloadAction<string>) => {
@@ -75,8 +52,7 @@ export const documentSlice = createSlice({
 });
 
 export const {
-  setSelectedFrameworks,
-  toggleFramework,
+  setSelectedFramework,
   setOriginalText,
   setRedactedText,
   setEntities,

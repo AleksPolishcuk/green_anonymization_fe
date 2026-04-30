@@ -25,7 +25,7 @@ import {
   tickStyleSm,
 } from "constants/DashboardPage";
 import { theme } from "shared/theme/theme";
-import type { ProcessingHistoryPoint } from "components/Dashboard/types";
+import type { ProcessingHistoryPoint } from "store/types/dashboard";
 
 import {
   ChartBody,

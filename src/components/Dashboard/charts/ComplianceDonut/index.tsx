@@ -23,7 +23,7 @@ import {
   HIPAA_GRADIENT_END,
   HIPAA_GRADIENT_ID,
 } from "constants/DashboardPage";
-import type { ComplianceFrameworkData } from "components/Dashboard/types";
+import type { ComplianceFrameworkData } from "store/types/dashboard";
 
 import {
   ChartCard,

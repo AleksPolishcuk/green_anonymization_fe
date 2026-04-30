@@ -4,10 +4,7 @@ import {
   saveTheme,
   type ThemeMode,
 } from "shared/utils/themeHelper";
-
-type ThemeState = {
-  mode: ThemeMode;
-};
+import type { ThemeState } from "store/types/theme";
 
 const initialState: ThemeState = {
   mode: getStoredTheme(),

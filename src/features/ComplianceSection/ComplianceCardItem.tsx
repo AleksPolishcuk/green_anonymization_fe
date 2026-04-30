@@ -30,7 +30,7 @@ export const ComplianceCardItem = ({
       </CardBadge>
       <CardTitle>{t(`complianceSection.cards.${card.id}.title`)}</CardTitle>
       <CardEntityCount>
-        {t("complianceSection.entityTypes", { count: card.entityCount })}
+        {t("complianceSection.entityTypes", { count: card.entityTypesCount })}
       </CardEntityCount>
     </CardWrapper>
   );

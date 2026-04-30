@@ -1,5 +1,5 @@
 import { COMPLIANCE_COLORS } from "constants/DashboardPage";
-import type { DashboardStats } from "components/Dashboard/types";
+import type { DashboardStats } from "store/types/dashboard";
 
 const entityRows = [
   { name: "PERSON", count: 160 },
