@@ -215,7 +215,7 @@ export const COMPLIANCE_FRAMEWORKS = [
     code: "HIPAA_US",
     name: "HIPAA",
     description: "Health Insurance Portability and Accountability Act",
-    entityTypesCount: 17,
+    entityTypesCount: 18,
     accentKey: "blue",
   },
   {
@@ -231,7 +231,7 @@ export const COMPLIANCE_FRAMEWORKS = [
     code: "GDPR_UK",
     name: "UK GDPR",
     description: "General Data Protection Regulation — United Kingdom",
-    entityTypesCount: 9,
+    entityTypesCount: 11,
     accentKey: "amber",
   },
   {
@@ -239,7 +239,7 @@ export const COMPLIANCE_FRAMEWORKS = [
     code: "FADP_CH",
     name: "Swiss FADP",
     description: "Federal Act on Data Protection",
-    entityTypesCount: 8,
+    entityTypesCount: 11,
     accentKey: "red",
   },
 ] as const;
