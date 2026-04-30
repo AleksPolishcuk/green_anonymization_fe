@@ -30,8 +30,7 @@ export const STAT_CARD_SPRITE_IDS: Record<
 export const STAT_CARD_TREND_ARROW_SPRITE_ID = "icon-GreenArrowUp";
 
 export const BAR_WIDTH = 58;
-export const BAR_RADIUS = 10;
-export const INACTIVE_COLOR = "rgba(0, 0, 0, 0.24)";
+export const BAR_RADIUS = 8;
 export const ACTIVE_GRADIENT_ID = "activeBarGradient";
 export const ACTIVE_GRADIENT_HOVER_ID = "activeBarGradientHover";
 export const ACTIVE_GRADIENT_START = "#306bec";
@@ -53,18 +52,25 @@ export const CHART_LINE_ACTIVE_DOT_RADIUS = 6;
 export const CHART_LINE_DASH_ARRAY = "5 4";
 export const CHART_DOT_DASH_ARRAY = "3 2";
 
+export const ENTITY_DE_ID_CHART_MARGIN = {
+  top: 8,
+  right: 2,
+  left: -26,
+  bottom: 0,
+} as const;
+
 export const PROCESSING_HISTORY_CHART_MARGIN = {
   top: 8,
-  right: 4,
-  left: -20,
+  right: 2,
+  left: -34,
   bottom: 0,
 } as const;
 export const CHART_Y_AXIS_RIGHT_WIDTH = 36;
 
 export const CONFIDENCE_CHART_MARGIN = {
-  top: 0,
-  right: 16,
-  left: 0,
+  top: 8,
+  right: 2,
+  left: -10,
   bottom: 0,
 } as const;
 export const CONFIDENCE_BAR_CATEGORY_GAP = "25%";
@@ -77,6 +83,7 @@ export const CHART_CARD_SHADOW = "0 2px 24px 0 rgba(16, 24, 40, 0.05)";
 export const TOOLTIP_DARK_SHADOW = "0 4px 12px rgba(0, 0, 0, 0.15)";
 
 export const CHART_CARD_BORDER_RADIUS = 12;
+export const DONUT_COLUMN_LAYOUT_MAX_PX = 900;
 export const CHART_CARD_HEIGHT = 280;
 export const CHART_CARD_HEIGHT_TALL = 300;
 export const CHART_CARD_HEIGHT_SM = 320;
@@ -97,7 +104,7 @@ export const BUTTON_SHADOW_FOCUS =
 export const PILL_WIDTH = 58;
 export const PILL_HEIGHT = 24;
 export const PILL_OFFSET_Y = 8;
-export const PILL_FONT_SIZE = 12;
+export const PILL_FONT_SIZE = 10;
 export const PILL_BG_COLOR = "#000000";
 export const PILL_GRADIENT_ID = "pillLabelGradient";
 export const PILL_GRADIENT_START_OPACITY = 0.05;
@@ -124,3 +131,23 @@ export const tickStyleSm = {
   fill: theme.palette.text.secondary,
   fontFamily: theme.typography.fontFamily,
 };
+
+export const CHART_X_TICK_ANGLE = -40;
+export const CHART_X_TICK_HEIGHT = 56;
+export const CHART_X_TICK_FONT_SIZE = 10;
+export const CHART_X_TICK_DESKTOP_FONT_SIZE = 12;
+export const CHART_X_TICK_DY_DESKTOP = 12;
+export const CHART_X_TICK_DX_MOBILE = -4;
+export const CHART_X_TICK_DY_MOBILE = 4;
+
+export const CHART_BAR_CATEGORY_GAP = "20%";
+
+export const CHART_ROW_COLS_WIDE = "1.70fr 1fr";
+export const CHART_ROW_COLS_EQUAL = "1fr 1fr";
+
+export const DONUT_CHART_WIDTH = 180;
+export const DONUT_START_ANGLE = 90;
+export const DONUT_END_ANGLE = -270;
+export const DONUT_SMALL_SCREEN_MAX_PX = 425;
+
+export const HIPAA_FRAMEWORK_KEY = "HIPAA";

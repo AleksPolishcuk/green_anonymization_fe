@@ -2,6 +2,11 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+import {
+  DONUT_COLUMN_LAYOUT_MAX_PX,
+  DONUT_SMALL_SCREEN_MAX_PX,
+} from "constants/DashboardPage";
+
 export const DonutWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -9,9 +14,12 @@ export const DonutWrapper = styled(Box)(({ theme }) => ({
   flex: 1,
   minHeight: 0,
   overflow: "hidden",
-  "@media (max-width: 900px)": {
-    flexDirection: "column",
-    alignItems: "flex-start",
+  [`@media (max-width: ${DONUT_COLUMN_LAYOUT_MAX_PX}px)`]: {
+    gap: theme.spacing(4),
+    margin: "0 auto",
+  },
+  [`@media (max-width: ${DONUT_SMALL_SCREEN_MAX_PX}px)`]: {
+    margin: theme.spacing(0, 0),
   },
 }));
 

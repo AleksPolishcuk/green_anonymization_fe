@@ -8,6 +8,8 @@ import {
   YAxis,
 } from "recharts";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 import type { EntityTypeDatum } from "components/Dashboard/types";
 import {
@@ -15,8 +17,12 @@ import {
   ACTIVE_GRADIENT_HOVER_ID,
   ACTIVE_GRADIENT_ID,
   ACTIVE_GRADIENT_START,
+  CHART_BAR_CATEGORY_GAP,
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
+  CHART_GRID_STROKE_WIDTH,
+  CHART_X_TICK_HEIGHT,
+  ENTITY_DE_ID_CHART_MARGIN,
   tickStyle,
 } from "constants/DashboardPage";
 
@@ -28,6 +34,8 @@ import {
 } from "components/Dashboard/charts/ChartCard/styles";
 import {
   ActiveBarLabel,
+  AngledXTick,
+  HorizontalXTick,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
@@ -38,6 +46,8 @@ type Props = { data: EntityTypeDatum[] };
 export const EntityTypesChart = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
@@ -48,8 +58,8 @@ export const EntityTypesChart = ({ data }: Props) => {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: 36, right: 8, left: -16, bottom: 0 }}
-            barCategoryGap="20%"
+            margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
+            barCategoryGap={CHART_BAR_CATEGORY_GAP}
             onMouseLeave={() => setActiveIndex(null)}
           >
             <defs>
@@ -78,13 +88,15 @@ export const EntityTypesChart = ({ data }: Props) => {
             <CartesianGrid
               vertical={false}
               stroke={CHART_GRID_STROKE}
-              strokeWidth={1}
+              strokeWidth={CHART_GRID_STROKE_WIDTH}
               strokeDasharray={CHART_GRID_DASHARRAY}
             />
 
             <XAxis
               dataKey="name"
-              tick={tickStyle}
+              tick={isDesktop ? <HorizontalXTick /> : <AngledXTick />}
+              height={isDesktop ? 30 : CHART_X_TICK_HEIGHT}
+              interval={0}
               axisLine={false}
               tickLine={false}
             />
