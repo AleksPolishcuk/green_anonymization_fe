@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
 import {
   ACCENT_LIGHT_MAP,
+  REVEAL_ANIMATION,
   cardShadows,
   type AccentKey,
 } from "constants/MainPages";
@@ -67,8 +68,9 @@ export const CardsList = styled("ul")(({ theme }) => ({
 
 export const CardItem = styled("li")<{
   $revealed: boolean;
+  $animDone: boolean;
   $index: number;
-}>(({ theme, $revealed, $index }) => ({
+}>(({ theme, $revealed, $animDone, $index }) => ({
   backgroundColor: theme.palette.background.paper,
   border: `1px solid ${theme.palette.divider}`,
   borderRadius: theme.shape.borderRadius,
@@ -81,8 +83,17 @@ export const CardItem = styled("li")<{
 
   opacity: $revealed ? 1 : 0,
   transform: $revealed ? "translateY(0)" : "translateY(24px)",
-  transition: "opacity 1s ease, transform 1s ease, box-shadow 0.3s ease",
-  transitionDelay: $revealed ? `${$index * 0.15}s` : "0s",
+  transition: $animDone
+    ? `transform ${REVEAL_ANIMATION.hoverDurationS}s ease, box-shadow ${REVEAL_ANIMATION.hoverDurationS}s ease`
+    : `opacity ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s, transform ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s`,
+
+  "&:hover": {
+    transform: $revealed ? "translateY(-4px)" : undefined,
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? cardShadows.cardDarkHover
+        : cardShadows.cardHover,
+  },
 
   [theme.breakpoints.up("md")]: {
     padding: theme.spacing(8, 32, 8, 8),

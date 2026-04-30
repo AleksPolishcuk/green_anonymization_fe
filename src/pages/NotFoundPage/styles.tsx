@@ -26,7 +26,7 @@ export const NotFoundSection = styled("main")(({ theme }) => ({
 export const ShieldBackground = styled("div")(({ theme }) => ({
   position: "absolute",
   inset: 0,
-  backgroundImage: "url('/img/hero/shield.png')",
+  backgroundImage: "url('/img/hero/shield.webp')",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
   backgroundSize: "80%",

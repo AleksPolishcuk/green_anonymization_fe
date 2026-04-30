@@ -23,7 +23,7 @@ export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
 
   return (
     <AuthActionsRow $isCompact={compact}>
-      <ThemeToggle />
+      {!compact && <ThemeToggle />}
       <GetStartedButton
         type="button"
         $isCompact={compact}

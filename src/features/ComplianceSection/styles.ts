@@ -1,6 +1,10 @@
 import { styled } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
-import { cardShadows, type AccentKey } from "constants/MainPages";
+import {
+  REVEAL_ANIMATION,
+  cardShadows,
+  type AccentKey,
+} from "constants/MainPages";
 
 export const SectionWrapper = styled("section")(({ theme }) => ({
   padding: theme.spacing(20, 0),
@@ -59,13 +63,16 @@ export const CardsGrid = styled("ul")(({ theme }) => ({
   alignItems: "start",
   gap: theme.spacing(6),
   marginBottom: theme.spacing(6),
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
 
   [theme.breakpoints.up("lg")]: {
-    "& > *:nth-child(2)": {
+    "& > *:nth-of-type(2)": {
       marginTop: theme.spacing(10),
     },
 
-    "& > *:nth-child(4)": {
+    "& > *:nth-of-type(4)": {
       marginTop: theme.spacing(10),
     },
   },
@@ -82,11 +89,13 @@ export const CardsGrid = styled("ul")(({ theme }) => ({
 }));
 
 export const CardWrapper = styled("li", {
-  shouldForwardProp: (prop) => prop !== "$revealed" && prop !== "$index",
+  shouldForwardProp: (prop) =>
+    prop !== "$revealed" && prop !== "$animDone" && prop !== "$index",
 })<{
   $revealed: boolean;
+  $animDone: boolean;
   $index: number;
-}>(({ theme, $revealed, $index }) => ({
+}>(({ theme, $revealed, $animDone, $index }) => ({
   padding: theme.spacing(6),
   border: `1px solid ${theme.palette.divider}`,
   borderRadius: theme.shape.borderRadius,
@@ -102,8 +111,17 @@ export const CardWrapper = styled("li", {
   opacity: $revealed ? 1 : 0,
   transform: $revealed ? "translateY(0)" : "translateY(20px)",
 
-  transition: "opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease",
-  transitionDelay: $revealed ? `${$index * 0.15}s` : "0s",
+  transition: $animDone
+    ? `transform ${REVEAL_ANIMATION.hoverDurationS}s ease, box-shadow ${REVEAL_ANIMATION.hoverDurationS}s ease`
+    : `opacity ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s, transform ${REVEAL_ANIMATION.durationS}s ease ${$index * REVEAL_ANIMATION.staggerDelayS}s`,
+
+  "&:hover": {
+    transform: $revealed ? "translateY(-4px)" : undefined,
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? cardShadows.cardDarkHover
+        : cardShadows.cardHover,
+  },
 }));
 
 export const CardAccentLine = styled("span")<{

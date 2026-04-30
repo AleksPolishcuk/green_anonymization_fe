@@ -46,6 +46,16 @@ export const headerDimensions = {
 
 export const headerLogoSpriteId = "icon-main-logo";
 
+export const HEADER_ICON_DARK_COLOR = "#2563FF";
+export const MODAL_HEADER_DARK_BG = "#101D46";
+export const BUTTON_HOVER_SHADOW_DARK = "0 0 0 2px rgba(79, 140, 255, 0.35)";
+export const BUTTON_HOVER_SHADOW_LIGHT = "0 0 0 2px #DCE3F8";
+export const BUTTON_HOVER_BG_DARK = "rgba(255, 255, 255, 0.08)";
+export const BUTTON_HOVER_BG_LIGHT = "rgba(16, 24, 40, 0.09)";
+export const BUTTON_ACTIVE_BG_DARK = "rgba(255, 255, 255, 0.14)";
+export const BUTTON_ACTIVE_BG_LIGHT = "rgba(16, 24, 40, 0.14)";
+export const boxShadow = "0 0 0 4px rgba(21, 93, 252, 0.22)";
+
 export const headerLogoViewBox = {
   width: headerDimensions.logoWidthPx,
   height: headerDimensions.logoHeightPx,
@@ -58,7 +68,7 @@ export const heroAssets = {
   waveBottom: "/img/hero/wave-bottom.png",
   waveBottomDark: "/img/hero/dark-wave.png",
   titleAccentIcon: "/img/hero/icon.png",
-  shield: "/img/hero/shield.png",
+  shield: "/img/hero/shield.webp",
 };
 
 export const heroStatsKeys = [
@@ -82,6 +92,7 @@ export const heroColors = {
   gradientEnd: "#ede8f5",
   pillGlowBorder: "transparent",
   pillGlow: "transparent",
+  waveFill: "rgb(248, 250, 252)",
 };
 
 export const heroDarkColors = {
@@ -98,6 +109,7 @@ export const heroDarkColors = {
   gradientEnd: "#020617",
   pillGlowBorder: "rgba(59,130,246,0.15)",
   pillGlow: "rgba(59,130,246,0.25)",
+  waveFill: "rgb(2, 6, 23)",
 };
 
 export const heroLayout = {
@@ -139,13 +151,22 @@ export const ACCENT_LIGHT_MAP: Record<AccentKey, AccentLightKey> = {
   lilac: "lightLilac",
 };
 
+export const REVEAL_ANIMATION = {
+  durationS: 0.6,
+  staggerDelayS: 0.15,
+  hoverDurationS: 0.2,
+} as const;
+
 export const cardShadows = {
   card: "0 1px 3px 0 rgba(0, 0, 0, 0.04)",
+  cardHover: "0 8px 24px rgba(0, 0, 0, 0.08)",
   cardDark: `
     0 20px 60px rgba(0, 0, 0, 0.6),
     0 8px 24px rgba(0, 0, 0, 0.4),
     0 0 60px rgba(97, 154, 241, 0.22)
   `,
+  cardDarkHover:
+    "0 25px 70px rgba(0,0,0,0.7), 0 10px 30px rgba(0,0,0,0.5), 0 0 60px rgba(59,130,246,0.35)",
 } as const;
 
 export const cardShadowsLight = {

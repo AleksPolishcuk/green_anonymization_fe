@@ -1,13 +1,13 @@
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <symbol id="icon-burger" viewBox="0 0 32 32">
-      <path fill="none" stroke="#344054" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 16h11.852"></path>
-      <path fill="none" stroke="#344054" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 11.556h11.852"></path>
-      <path fill="none" stroke="#344054" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 20.444h11.852"></path>
+      <path fill="none" stroke="#344054" style="stroke: var(--burger-stroke, #344054)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 16h11.852"></path>
+      <path fill="none" stroke="#344054" style="stroke: var(--burger-stroke, #344054)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 11.556h11.852"></path>
+      <path fill="none" stroke="#344054" style="stroke: var(--burger-stroke, #344054)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M9.629 20.444h11.852"></path>
     </symbol>
     <symbol id="icon-close" viewBox="0 0 32 32">
-      <path fill="none" stroke="#101828" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M20 11.556l-8.889 8.889"></path>
-      <path fill="none" stroke="#101828" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M11.111 11.556l8.889 8.889"></path>
+      <path fill="none" stroke="#101828" style="stroke: var(--close-stroke, #101828)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M20 11.556l-8.889 8.889"></path>
+      <path fill="none" stroke="#101828" style="stroke: var(--close-stroke, #101828)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4809" d="M11.111 11.556l8.889 8.889"></path>
     </symbol>
     <symbol id="icon-logo-work" viewBox="0 0 32 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4" d="M26.666 17.333c0 6.667-4.667 10-10.213 11.933-0.29 0.098-0.606 0.094-0.893-0.013-5.56-1.92-10.227-5.253-10.227-11.92v-9.333c0-0.354 0.14-0.693 0.391-0.943s0.589-0.391 0.943-0.391c2.667 0 6-1.6 8.32-3.627 0.282-0.241 0.642-0.374 1.013-0.374s0.731 0.133 1.013 0.374c2.333 2.040 5.653 3.627 8.32 3.627 0.354 0 0.693 0.14 0.943 0.391s0.39 0.589 0.39 0.943v9.333z"></path>

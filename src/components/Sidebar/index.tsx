@@ -26,6 +26,7 @@ import { logout } from "store/slices/authSlice";
 import { useAppDispatch } from "store/hooks";
 import { useNavigate } from "react-router-dom";
 import { headerSpriteRef } from "constants/MainPages";
+import { useSidebar } from "./useSidebar";
 
 export default function Sidebar() {
   const { t } = useTranslation();
@@ -36,16 +37,24 @@ export default function Sidebar() {
     dispatch(logout());
     navigate("/");
   };
+
+  const { sidebarRef, isMobileOpen, handleSidebarClick, handleNavClick } =
+    useSidebar();
+
   return (
-    <SidebarRoot>
-      <SidebarLogoRow to="/">
+    <SidebarRoot
+      ref={sidebarRef}
+      $isMobileOpen={isMobileOpen}
+      onClick={handleSidebarClick}
+    >
+      <SidebarLogoRow to="/" onClick={handleNavClick}>
         <SidebarLogoBox>
           <SidebarLogoIcon aria-hidden="true">
             <use href={headerSpriteRef("icon-logo-work")} />
           </SidebarLogoIcon>
         </SidebarLogoBox>
 
-        <SidebarTextBlock>
+        <SidebarTextBlock $isMobileOpen={isMobileOpen}>
           <SidebarTitle variant="h5">{t("sidebar.title")}</SidebarTitle>
           <SidebarSubtitle variant="body2">
             {t("sidebar.subtitle")}
@@ -53,12 +62,16 @@ export default function Sidebar() {
         </SidebarTextBlock>
       </SidebarLogoRow>
 
-      <SidebarSectionTitle>
-        {t("sidebar.workspace", "WORKSPACE")}
+      <SidebarSectionTitle $isMobileOpen={isMobileOpen}>
+        {t("sidebar.workspace")}
       </SidebarSectionTitle>
 
       <SidebarNav>
-        <SidebarNavItem to="/dashboard">
+        <SidebarNavItem
+          to="/dashboard"
+          $isMobileOpen={isMobileOpen}
+          onClick={handleNavClick}
+        >
           <SidebarNavIconBox>
             <SidebarNavIcon aria-hidden="true">
               <use href={headerSpriteRef("icon-dashboard")} />
@@ -67,7 +80,11 @@ export default function Sidebar() {
           <Typography variant="body1">{t("sidebar.dashboard")}</Typography>
         </SidebarNavItem>
 
-        <SidebarNavItem to="/deidentification">
+        <SidebarNavItem
+          to="/deidentification"
+          $isMobileOpen={isMobileOpen}
+          onClick={handleNavClick}
+        >
           <SidebarNavIconBox>
             <SidebarNavIcon aria-hidden="true">
               <use href={headerSpriteRef("pii")} />
@@ -76,7 +93,11 @@ export default function Sidebar() {
           <Typography variant="body1">{t("sidebar.deidentify")}</Typography>
         </SidebarNavItem>
 
-        <SidebarNavItem to="/syntheticdata">
+        <SidebarNavItem
+          to="/syntheticdata"
+          $isMobileOpen={isMobileOpen}
+          onClick={handleNavClick}
+        >
           <SidebarNavIconBox>
             <SidebarNavIcon aria-hidden="true">
               <use href={headerSpriteRef("synthetic")} />

@@ -71,7 +71,7 @@ const Hero = () => {
               {heroStatsKeys.map((statKey) => (
                 <StatItem key={statKey}>
                   <TaskAlt />
-                  <StatText variant="h6">{t(`hero.${statKey}.value`)}</StatText>
+                  <StatText>{t(`hero.${statKey}.value`)}</StatText>
                 </StatItem>
               ))}
             </StatsRow>
