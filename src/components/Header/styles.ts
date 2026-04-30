@@ -1,6 +1,16 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { headerBreakpoints, headerDimensions } from "constants/MainPages";
+import {
+  headerBreakpoints,
+  headerDimensions,
+  HEADER_ICON_DARK_COLOR,
+  BUTTON_HOVER_SHADOW_DARK,
+  BUTTON_HOVER_SHADOW_LIGHT,
+  BUTTON_HOVER_BG_DARK,
+  BUTTON_HOVER_BG_LIGHT,
+  BUTTON_ACTIVE_BG_DARK,
+  BUTTON_ACTIVE_BG_LIGHT,
+} from "constants/MainPages";
 
 const headerLogoLockBreakpointPx = headerBreakpoints.tabletPx;
 const fastTransitionSeconds = 0.22;
@@ -132,10 +142,10 @@ export const DesktopNav = styled("nav")(({ theme }) => ({
   gap: theme.spacing(5.5),
 }));
 
-export const LogoLink = styled("a")({
+export const LogoLink = styled("a")(({ theme }) => ({
   display: "inline-flex",
   alignItems: "center",
-  gap: "10px",
+  gap: theme.spacing(2.5),
   width: `${headerDimensions.logoWidthPx}px`,
   height: `${headerDimensions.logoHeightPx}px`,
   textDecoration: "none",
@@ -145,7 +155,7 @@ export const LogoLink = styled("a")({
   "&:focus, &:focus-visible": {
     outline: "none",
   },
-});
+}));
 
 export const LogoIcon = styled("svg")({
   display: "block",
@@ -175,14 +185,28 @@ export const MobileOnlyBurgerButton = styled(IconButton)(({ theme }) => ({
     `box-shadow ${fastTransitionSeconds}s ${easingStandard}`,
   ].join(", "),
 
+  ...(theme.palette.mode === "dark" && {
+    ["--burger-stroke" as string]: HEADER_ICON_DARK_COLOR,
+  }),
+
   "&:hover": {
-    backgroundColor: "rgba(16, 24, 40, 0.1)",
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_BG_DARK
+        : BUTTON_HOVER_BG_LIGHT,
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_SHADOW_DARK
+        : BUTTON_HOVER_SHADOW_LIGHT,
     transform: "scale(1.06)",
   },
 
   "&:active": {
     transform: "scale(1)",
-    backgroundColor: "rgba(16, 24, 40, 0.14)",
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? BUTTON_ACTIVE_BG_DARK
+        : BUTTON_ACTIVE_BG_LIGHT,
   },
 
   "&:focus-visible": {
@@ -194,6 +218,13 @@ export const MobileOnlyBurgerButton = styled(IconButton)(({ theme }) => ({
   "&:focus:not(:focus-visible)": {
     outline: "none",
     boxShadow: "none",
+  },
+
+  "&:focus:not(:focus-visible):hover": {
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? BUTTON_HOVER_SHADOW_DARK
+        : BUTTON_HOVER_SHADOW_LIGHT,
   },
 
   [`@media (min-width: ${headerBreakpoints.desktopAuthPx}px)`]: {
