@@ -92,6 +92,7 @@ export const heroColors = {
   gradientEnd: "#ede8f5",
   pillGlowBorder: "transparent",
   pillGlow: "transparent",
+  waveFill: "rgb(248, 250, 252)",
 };
 
 export const heroDarkColors = {
@@ -108,6 +109,7 @@ export const heroDarkColors = {
   gradientEnd: "#020617",
   pillGlowBorder: "rgba(59,130,246,0.15)",
   pillGlow: "rgba(59,130,246,0.25)",
+  waveFill: "rgb(2, 6, 23)",
 };
 
 export const heroLayout = {
@@ -149,13 +151,22 @@ export const ACCENT_LIGHT_MAP: Record<AccentKey, AccentLightKey> = {
   lilac: "lightLilac",
 };
 
+export const REVEAL_ANIMATION = {
+  durationS: 0.6,
+  staggerDelayS: 0.15,
+  hoverDurationS: 0.2,
+} as const;
+
 export const cardShadows = {
   card: "0 1px 3px 0 rgba(0, 0, 0, 0.04)",
+  cardHover: "0 8px 24px rgba(0, 0, 0, 0.08)",
   cardDark: `
     0 20px 60px rgba(0, 0, 0, 0.6),
     0 8px 24px rgba(0, 0, 0, 0.4),
     0 0 60px rgba(97, 154, 241, 0.22)
   `,
+  cardDarkHover:
+    "0 25px 70px rgba(0,0,0,0.7), 0 10px 30px rgba(0,0,0,0.5), 0 0 60px rgba(59,130,246,0.35)",
 } as const;
 
 export const cardShadowsLight = {

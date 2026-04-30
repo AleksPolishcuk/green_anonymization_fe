@@ -17,7 +17,7 @@ import { useScrollReveal } from "shared/hooks/useScrollReveal";
 export const ComplianceSection = () => {
   const { t } = useTranslation();
   const { cards } = useComplianceSection();
-  const { ref: listRef, revealed } = useScrollReveal();
+  const { ref: listRef, revealed, animDone } = useScrollReveal(cards.length);
 
   return (
     <SectionWrapper id="compliance">
@@ -40,6 +40,7 @@ export const ComplianceSection = () => {
               key={card.id}
               card={card}
               $revealed={revealed}
+              $animDone={animDone}
               $index={index}
             />
           ))}
