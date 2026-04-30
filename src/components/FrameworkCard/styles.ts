@@ -64,7 +64,7 @@ export const FrameworkChip = styled(Chip, {
     color: style.color,
     backgroundColor: style.bg,
     border: `1px solid ${style.border}`,
-    borderRadius: theme.spacing(1),
+    borderRadius: theme.spacing(2),
     fontWeight: theme.typography.fontWeightBold,
     fontSize: theme.typography.fontSize11,
     [theme.breakpoints.up("lg")]: {
