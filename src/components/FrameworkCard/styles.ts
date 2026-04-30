@@ -36,6 +36,12 @@ export const CardRoot = styled(Paper, {
       borderColor: theme.palette.primary.main,
       transform: "translateY(-1px)",
     },
+    [theme.breakpoints.between("md", "lg")]: {
+      minHeight: 114,
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: "auto",
+    },
   };
 });
 
@@ -58,11 +64,19 @@ export const FrameworkChip = styled(Chip, {
     color: style.color,
     backgroundColor: style.bg,
     border: `1px solid ${style.border}`,
-    borderRadius: 8,
+    borderRadius: theme.spacing(1),
     fontWeight: theme.typography.fontWeightBold,
+    fontSize: theme.typography.fontSize11,
+    [theme.breakpoints.up("lg")]: {
+      fontSize: theme.typography.fontSize14,
+    },
   };
 });
 
 export const SecondaryText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
+  fontSize: theme.typography.fontSize12,
+  [theme.breakpoints.up("lg")]: {
+    fontSize: theme.typography.fontSize14,
+  },
 }));
