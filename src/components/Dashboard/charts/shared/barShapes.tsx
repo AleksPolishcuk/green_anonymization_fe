@@ -4,6 +4,12 @@ import {
   BAR_RADIUS,
   BAR_WIDTH,
   CHART_BAR_HOVER_TRANSITION,
+  CHART_X_TICK_ANGLE,
+  CHART_X_TICK_DESKTOP_FONT_SIZE,
+  CHART_X_TICK_DX_MOBILE,
+  CHART_X_TICK_DY_DESKTOP,
+  CHART_X_TICK_DY_MOBILE,
+  CHART_X_TICK_FONT_SIZE,
   CONFIDENCE_GRADIENT_HOVER_ID,
   CONFIDENCE_GRADIENT_ID,
   PILL_BG_COLOR,
@@ -32,12 +38,11 @@ export const RoundedBar = (props: RoundedBarProps) => {
   if (height <= 0 || width <= 0) return null;
 
   const isActive = index === activeIndex;
-  const r = Math.min(BAR_RADIUS, width / 2, height);
-
-  const offsetX = (width - BAR_WIDTH) / 2;
+  const bw = Math.min(BAR_WIDTH, width);
+  const offsetX = (width - bw) / 2;
   const bx = x + offsetX;
-  const bw = BAR_WIDTH;
   const bh = height;
+  const r = Math.min(BAR_RADIUS, bw / 2, bh);
 
   const path = [
     `M ${bx + r} ${y}`,
@@ -136,9 +141,10 @@ export const ActiveBarLabel = (props: ActiveBarLabelProps) => {
   const { x = 0, y = 0, width = 0, value, index, activeIndex } = props;
   if (index !== activeIndex || value === undefined) return null;
 
-  const offsetX = (width - BAR_WIDTH) / 2;
-  const cx = x + offsetX + BAR_WIDTH / 2;
-  const pillX = cx - PILL_WIDTH / 2;
+  const bw = Math.min(BAR_WIDTH, width);
+  const cx = x + width / 2;
+  const pillW = Math.min(PILL_WIDTH, bw);
+  const pillX = cx - pillW / 2;
   const pillY = y - PILL_HEIGHT - PILL_OFFSET_Y;
 
   return (
@@ -147,12 +153,12 @@ export const ActiveBarLabel = (props: ActiveBarLabelProps) => {
         <linearGradient id={PILL_GRADIENT_ID} x1="0" y1="0" x2="0" y2="1">
           <stop
             offset="0%"
-            stopColor="white"
+            stopColor={theme.palette.color.white}
             stopOpacity={PILL_GRADIENT_START_OPACITY}
           />
           <stop
             offset="100%"
-            stopColor="white"
+            stopColor={theme.palette.color.white}
             stopOpacity={PILL_GRADIENT_END_OPACITY}
           />
         </linearGradient>
@@ -160,7 +166,7 @@ export const ActiveBarLabel = (props: ActiveBarLabelProps) => {
       <rect
         x={pillX}
         y={pillY}
-        width={PILL_WIDTH}
+        width={pillW}
         height={PILL_HEIGHT}
         rx={BAR_RADIUS}
         ry={BAR_RADIUS}
@@ -169,7 +175,7 @@ export const ActiveBarLabel = (props: ActiveBarLabelProps) => {
       <rect
         x={pillX}
         y={pillY}
-        width={PILL_WIDTH}
+        width={pillW}
         height={PILL_HEIGHT}
         rx={BAR_RADIUS}
         ry={BAR_RADIUS}
@@ -190,3 +196,43 @@ export const ActiveBarLabel = (props: ActiveBarLabelProps) => {
     </g>
   );
 };
+
+interface AngledXTickProps {
+  x?: number;
+  y?: number;
+  payload?: { value: string };
+}
+
+export const AngledXTick = ({ x = 0, y = 0, payload }: AngledXTickProps) => (
+  <g transform={`translate(${x},${y})`}>
+    <text
+      transform={`rotate(${CHART_X_TICK_ANGLE})`}
+      textAnchor="end"
+      dx={CHART_X_TICK_DX_MOBILE}
+      dy={CHART_X_TICK_DY_MOBILE}
+      fill={theme.palette.text.secondary}
+      fontSize={CHART_X_TICK_FONT_SIZE}
+      fontFamily={theme.typography.fontFamily}
+    >
+      {payload?.value}
+    </text>
+  </g>
+);
+
+export const HorizontalXTick = ({
+  x = 0,
+  y = 0,
+  payload,
+}: AngledXTickProps) => (
+  <g transform={`translate(${x},${y})`}>
+    <text
+      textAnchor="middle"
+      dy={CHART_X_TICK_DY_DESKTOP}
+      fill={theme.palette.text.secondary}
+      fontSize={CHART_X_TICK_DESKTOP_FONT_SIZE}
+      fontFamily={theme.typography.fontFamily}
+    >
+      {payload?.value}
+    </text>
+  </g>
+);

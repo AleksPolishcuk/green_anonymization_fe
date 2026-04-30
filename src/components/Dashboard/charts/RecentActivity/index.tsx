@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
-
 import type { RecentActivityItem } from "components/Dashboard/types";
+import { headerSpriteRef } from "constants/MainPages";
 
 import {
   ChartCard,
@@ -20,7 +19,7 @@ import {
   ScrollIndicator,
   ScrollWrapper,
 } from "components/Dashboard/charts/RecentActivity/styles";
-import { headerSpriteRef } from "constants/MainPages";
+import { useRecentActivityScroll } from "components/Dashboard/hooks/useRecentActivityScroll";
 
 type Props = {
   data: RecentActivityItem[];
@@ -28,18 +27,7 @@ type Props = {
 
 export const RecentActivity = ({ data }: Props) => {
   const { t } = useTranslation("dashboard");
-  const listRef = useRef<HTMLDivElement>(null);
-  const [canScrollMore, setCanScrollMore] = useState(false);
-
-  const checkScroll = () => {
-    const el = listRef.current;
-    if (!el) return;
-    setCanScrollMore(el.scrollTop + el.clientHeight < el.scrollHeight - 1);
-  };
-
-  useEffect(() => {
-    checkScroll();
-  }, [data]);
+  const { listRef, canScrollMore, handleScroll } = useRecentActivityScroll();
 
   return (
     <ChartCard $tall>
@@ -47,7 +35,7 @@ export const RecentActivity = ({ data }: Props) => {
       <ChartSubtitle>{t("charts.recentActivity.subtitle")}</ChartSubtitle>
 
       <ScrollWrapper>
-        <ActivityList ref={listRef} onScroll={checkScroll}>
+        <ActivityList ref={listRef} onScroll={handleScroll}>
           {data.map((item) => (
             <ActivityRow key={item.id}>
               <IconDot>
