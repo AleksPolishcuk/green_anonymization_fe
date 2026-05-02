@@ -26,13 +26,15 @@ type Props = {
 };
 
 export const RecentActivity = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const { listRef, canScrollMore, handleScroll } = useRecentActivityScroll();
 
   return (
     <ChartCard $tall>
-      <ChartTitle>{t("charts.recentActivity.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.recentActivity.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.recentActivity.title")}</ChartTitle>
+      <ChartSubtitle>
+        {t("dashboard.charts.recentActivity.subtitle")}
+      </ChartSubtitle>
 
       <ScrollWrapper>
         <ActivityList ref={listRef} onScroll={handleScroll}>
@@ -46,7 +48,7 @@ export const RecentActivity = ({ data }: Props) => {
               <FileInfo>
                 <FileName>{item.filename}</FileName>
                 <FileMeta>
-                  {t("charts.recentActivity.entities", {
+                  {t("dashboard.charts.recentActivity.entities", {
                     count: item.entities,
                   })}{" "}
                   · {item.timeAgo}

@@ -44,15 +44,15 @@ import {
 type Props = { data: DeIdMethodData[] };
 
 export const DeIdMethodChart = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.deIdMethod.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.deIdMethod.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.deIdMethod.title")}</ChartTitle>
+      <ChartSubtitle>{t("dashboard.charts.deIdMethod.subtitle")}</ChartSubtitle>
 
       <ChartBody>
         <ResponsiveContainer width="100%" height="100%">

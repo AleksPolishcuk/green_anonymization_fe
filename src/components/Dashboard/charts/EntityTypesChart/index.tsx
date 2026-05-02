@@ -44,15 +44,17 @@ import {
 type Props = { data: EntityTypeDatum[] };
 
 export const EntityTypesChart = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.entityTypes.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.entityTypes.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.entityTypes.title")}</ChartTitle>
+      <ChartSubtitle>
+        {t("dashboard.charts.entityTypes.subtitle")}
+      </ChartSubtitle>
 
       <ChartBody>
         <ResponsiveContainer width="100%" height="100%">

@@ -82,13 +82,13 @@ type Props = {
 };
 
 export const ComplianceDonut = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.compliance.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.compliance.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.compliance.title")}</ChartTitle>
+      <ChartSubtitle>{t("dashboard.charts.compliance.subtitle")}</ChartSubtitle>
 
       <DonutWrapper>
         <ResponsiveContainer width={DONUT_CHART_WIDTH} height="100%">
