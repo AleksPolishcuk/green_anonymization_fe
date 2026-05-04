@@ -7,6 +7,7 @@ import {
 
 import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 import { ThemeToggle } from "components/ThemeToggle";
+import { LanguageSwitcher } from "components/LanguageSwitcher";
 import { headerI18nPrefix, headerRoutes } from "constants/MainPages";
 
 type AuthActionsProps = {
@@ -23,6 +24,7 @@ export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
 
   return (
     <AuthActionsRow $isCompact={compact}>
+      {!compact && <LanguageSwitcher />}
       {!compact && <ThemeToggle />}
       <GetStartedButton
         type="button"

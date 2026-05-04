@@ -15,11 +15,15 @@ import { useTranslation } from "react-i18next";
 import {
   COMPLIANCE_COLORS,
   DONUT_ACTIVE_OUTER_RADIUS,
+  DONUT_CHART_WIDTH,
   DONUT_CORNER_RADIUS,
+  DONUT_END_ANGLE,
   DONUT_INNER_RADIUS,
   DONUT_OUTER_RADIUS,
   DONUT_PADDING_ANGLE,
   DONUT_SECTOR_ANIMATION_DURATION,
+  DONUT_START_ANGLE,
+  HIPAA_FRAMEWORK_KEY,
   HIPAA_GRADIENT_END,
   HIPAA_GRADIENT_ID,
 } from "constants/DashboardPage";
@@ -78,16 +82,16 @@ type Props = {
 };
 
 export const ComplianceDonut = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.compliance.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.compliance.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.compliance.title")}</ChartTitle>
+      <ChartSubtitle>{t("dashboard.charts.compliance.subtitle")}</ChartSubtitle>
 
       <DonutWrapper>
-        <ResponsiveContainer width={180} height="100%">
+        <ResponsiveContainer width={DONUT_CHART_WIDTH} height="100%">
           <PieChart>
             <defs>
               <linearGradient
@@ -119,8 +123,8 @@ export const ComplianceDonut = ({ data }: Props) => {
               outerRadius={DONUT_OUTER_RADIUS}
               paddingAngle={DONUT_PADDING_ANGLE}
               dataKey="value"
-              startAngle={90}
-              endAngle={-270}
+              startAngle={DONUT_START_ANGLE}
+              endAngle={DONUT_END_ANGLE}
               cornerRadius={DONUT_CORNER_RADIUS}
               activeIndex={activeIndex ?? undefined}
               activeShape={ActiveSector}
@@ -131,7 +135,7 @@ export const ComplianceDonut = ({ data }: Props) => {
                 <Cell
                   key={entry.name}
                   fill={
-                    entry.name === "HIPAA"
+                    entry.name === HIPAA_FRAMEWORK_KEY
                       ? `url(#${HIPAA_GRADIENT_ID})`
                       : entry.color
                   }

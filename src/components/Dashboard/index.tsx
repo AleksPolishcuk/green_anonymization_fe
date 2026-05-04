@@ -1,5 +1,9 @@
 import { useAppSelector } from "store/hooks";
 
+import {
+  CHART_ROW_COLS_EQUAL,
+  CHART_ROW_COLS_WIDE,
+} from "constants/DashboardPage";
 import { ComplianceDonut } from "components/Dashboard/charts/ComplianceDonut";
 import { ConfidenceScoreChart } from "components/Dashboard/charts/ConfidenceScoreChart";
 import { DashboardHeader } from "components/Dashboard/charts/DashboardHeader";
@@ -24,17 +28,17 @@ export const Dashboard = () => {
       <StatCards data={data.statCards} />
 
       <ChartsLayout>
-        <ChartRow $cols="1.70fr 1fr">
+        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
           <EntityTypesChart data={data.entityTypes} />
           <ComplianceDonut data={data.complianceFrameworks} />
         </ChartRow>
 
-        <ChartRow $cols="1fr 1fr">
+        <ChartRow $cols={CHART_ROW_COLS_EQUAL}>
           <ProcessingHistoryChart data={data.processingHistory} />
           <DeIdMethodChart data={data.deIdMethods} />
         </ChartRow>
 
-        <ChartRow $cols="1.55fr 1fr">
+        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
           <ConfidenceScoreChart data={data.confidenceScores} />
           <RecentActivity data={data.recentActivity} />
         </ChartRow>

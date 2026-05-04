@@ -8,14 +8,20 @@ import {
   YAxis,
 } from "recharts";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 import {
   ACTIVE_GRADIENT_END,
   ACTIVE_GRADIENT_HOVER_ID,
   ACTIVE_GRADIENT_ID,
   ACTIVE_GRADIENT_START,
+  CHART_BAR_CATEGORY_GAP,
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
+  CHART_GRID_STROKE_WIDTH,
+  CHART_X_TICK_HEIGHT,
+  ENTITY_DE_ID_CHART_MARGIN,
   tickStyle,
 } from "constants/DashboardPage";
 import type { DeIdMethodData } from "store/types/dashboard";
@@ -28,6 +34,8 @@ import {
 } from "components/Dashboard/charts/ChartCard/styles";
 import {
   ActiveBarLabel,
+  AngledXTick,
+  HorizontalXTick,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
@@ -36,20 +44,22 @@ import {
 type Props = { data: DeIdMethodData[] };
 
 export const DeIdMethodChart = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.deIdMethod.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.deIdMethod.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.deIdMethod.title")}</ChartTitle>
+      <ChartSubtitle>{t("dashboard.charts.deIdMethod.subtitle")}</ChartSubtitle>
 
       <ChartBody>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: 36, right: 8, left: -16, bottom: 0 }}
-            barCategoryGap="20%"
+            margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
+            barCategoryGap={CHART_BAR_CATEGORY_GAP}
             onMouseLeave={() => setActiveIndex(null)}
           >
             <defs>
@@ -78,13 +88,15 @@ export const DeIdMethodChart = ({ data }: Props) => {
             <CartesianGrid
               vertical={false}
               stroke={CHART_GRID_STROKE}
-              strokeWidth={1}
+              strokeWidth={CHART_GRID_STROKE_WIDTH}
               strokeDasharray={CHART_GRID_DASHARRAY}
             />
 
             <XAxis
               dataKey="method"
-              tick={tickStyle}
+              tick={isDesktop ? <HorizontalXTick /> : <AngledXTick />}
+              height={isDesktop ? 30 : CHART_X_TICK_HEIGHT}
+              interval={0}
               axisLine={false}
               tickLine={false}
             />

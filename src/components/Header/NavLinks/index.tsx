@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import type { ComponentType, ElementType } from "react";
 import { useTranslation } from "react-i18next";
 import type { LinkProps } from "react-router-dom";
 
@@ -8,11 +8,9 @@ import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
 import { NavButton, NavIconBox } from "components/Header/NavLinks/styles";
 import { headerI18nPrefix, headerNavItems } from "constants/MainPages";
 
-type NavIcon = ComponentType<{ fontSize?: string }>;
-
-const NAV_ICONS: Partial<Record<string, NavIcon>> = {
-  solution: TipsAndUpdatesOutlinedIcon,
-  contactUs: MailOutlineRoundedIcon,
+const NAV_ICONS: Partial<Record<string, ElementType>> = {
+  solution: TipsAndUpdatesOutlinedIcon as ElementType,
+  contactUs: MailOutlineRoundedIcon as ElementType,
 };
 
 type NavLinksProps = {

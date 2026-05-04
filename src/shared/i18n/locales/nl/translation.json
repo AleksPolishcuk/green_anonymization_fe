@@ -1,0 +1,318 @@
+{
+  "complianceSection": {
+    "label": "COMPLIANCE",
+    "title": "Gebouwd voor compliance",
+    "description": "Kies uit standaard regelgevende kaders of maak uw eigen aangepaste complianceprofiel",
+    "entityTypes": "{{count}} entiteitstypen",
+    "cards": {
+      "hipaa": {
+        "badge": "HIPAA",
+        "title": "Health Insurance Portability and Accountability Act"
+      },
+      "euGdpr": {
+        "badge": "EU GDPR",
+        "title": "Algemene Verordening Gegevensbescherming"
+      },
+      "ukGdpr": {
+        "badge": "UK GDPR",
+        "title": "UK GDPR Gegevensbescherming en onderzoeksbevoegdheden"
+      },
+      "swissFadp": {
+        "badge": "Swiss FADP",
+        "title": "Zwitserse Federale Wet op de Gegevensbescherming"
+      }
+    },
+    "customProfile": {
+      "title": "Aangepaste complianceprofielen",
+      "description": "Specifieke vereisten nodig? Maak aangepaste complianceprofielen op maat van de unieke regelgevende behoeften en gegevensbeschermingsbeleid van uw organisatie."
+    }
+  },
+  "header": {
+    "nav": {
+      "solution": "Oplossing",
+      "contactUs": "Contact"
+    },
+    "actions": {
+      "getStarted": "Aan de slag"
+    },
+    "logoAlt": "Clinical Data Studio — startpagina",
+    "logoText": "Clinical Data Studio",
+    "aria": {
+      "homeLink": "Ga naar startpagina",
+      "desktopNavigation": "Hoofdnavigatie",
+      "openMenu": "Menu openen",
+      "closeMenu": "Menu sluiten",
+      "mobileMenu": "Mobiel navigatiemenu"
+    }
+  },
+  "hero": {
+    "badge": "De-ID & Synthese Platform",
+    "titleLine1": "Klinische gegevens",
+    "titleLine2": "De-identificatie",
+    "titleLine3": "& Synthetische Data Studio",
+    "description": "PII-detectie en anonimisering op bedrijfsniveau voor gezondheidsgegevens. Bescherm de privacy van patiënten met behoud van analytische waarde.",
+    "ctaPrimary": "Aan de slag",
+    "stats": {
+      "hipaa": { "value": "HIPAA", "label": "Conform" },
+      "eugdpr": { "value": "EU GDPR", "label": "Conform" },
+      "ukgdpr": { "value": "UK GDPR", "label": "Conform" },
+      "fadp": { "value": "Swiss FADP", "label": "Conform" }
+    }
+  },
+  "capabilities": {
+    "subtitle": "MOGELIJKHEDEN",
+    "title": "Bescherm de privacy van patiënten zonder concessies aan datawaarde",
+    "description": "Uitgebreide tools voor zorginstellingen om klinische gegevens veilig te beheren en te gebruiken",
+    "cards": {
+      "pii": {
+        "title": "Geavanceerde PII-detectie",
+        "description": "Identificeer en bescherm automatisch gevoelige patiëntinformatie in gestructureerde en ongestructureerde klinische gegevens."
+      },
+      "synthetic": {
+        "title": "Synthetische datageneratie",
+        "description": "Maak realistische, privacyvriendelijke synthetische datasets voor onderzoek, testen en ontwikkeling."
+      },
+      "framework": {
+        "title": "Multi-framework compliance",
+        "description": "Waarborg naleving van HIPAA, AVG, CCPA en aangepaste regelgevende vereisten tegelijkertijd."
+      },
+      "anonymization": {
+        "title": "Intelligente anonimisering",
+        "description": "Pas geavanceerde de-identificatietechnieken toe met behoud van het nut van gegevens voor analyse."
+      }
+    }
+  },
+  "readyToProtect": {
+    "title": "Klaar om uw klinische gegevens te beschermen?",
+    "description": "Begin met de-identificatie en synthese van gezondheidsgegevens in enkele minuten met ons enterprise platform",
+    "actions": {
+      "primary": "Starten →",
+      "secondary": "Neem contact op met sales"
+    }
+  },
+  "footer": {
+    "brandName": "Clinical Data Studio",
+    "description": "Enterprise platform voor klinische gegevens de-identificatie en synthetische datageneratie. Bescherming van de privacy van patiënten met behoud van datanut.",
+    "navAria": "Voettekstnavigatie",
+    "copyright": "© {{year}} Clinical Data Studio. Alle rechten voorbehouden.",
+    "columns": { "info": "Info" },
+    "company": {
+      "contact": "Contact",
+      "pricing": "Prijzen",
+      "support": "Ondersteuning"
+    }
+  },
+  "faqSection": {
+    "title": "Veelgestelde vragen",
+    "items": {
+      "whatIndustries": {
+        "question": "Welke sectoren bedient u?",
+        "answer": "Wij bedienen een breed scala aan sectoren, waaronder gezondheidszorg, financiën, juridisch en technologie. Onze anonimiseringsoplossingen zijn afgestemd op de specifieke compliancevereisten van elke sector."
+      },
+      "customSolutions": {
+        "question": "Biedt u maatwerkoplossingen?",
+        "answer": "Ja, wij bieden maatwerkoplossingen afgestemd op uw specifieke compliancevereisten en gegevensbeschermingsbehoeften."
+      },
+      "implementationTime": {
+        "question": "Hoe lang duurt de implementatie?",
+        "answer": "Implementatie duurt doorgaans 1-4 weken, afhankelijk van de complexiteit van uw gegevensomgeving en het niveau van maatwerk."
+      },
+      "whatSupport": {
+        "question": "Welke ondersteuning biedt u?",
+        "answer": "Wij bieden 24/7 technische ondersteuning, onboarding-assistentie en toegewijd accountbeheer om uw succes met ons platform te waarborgen."
+      }
+    }
+  },
+  "contactUsPage": {
+    "title": "Contact",
+    "subtitle": "Heeft u vragen? Wij helpen u graag. Neem contact op met ons team en we nemen spoedig contact met u op.",
+    "emailCard": {
+      "label": "E-mail",
+      "infoEmail": "info@clinicaldatastudio.com",
+      "supportEmail": "support@clinicaldatastudio.com"
+    },
+    "form": {
+      "title": "Stuur ons een bericht",
+      "firstName": "Voornaam",
+      "firstNamePlaceholder": "Jan",
+      "lastName": "Achternaam",
+      "lastNamePlaceholder": "Jansen",
+      "email": "E-mail",
+      "emailPlaceholder": "jan.jansen@voorbeeld.nl",
+      "phoneNumber": "Telefoonnummer",
+      "phonePlaceholder": "+31 20 000 0000",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons meer over uw behoeften...",
+      "submitButton": "Bericht verzenden",
+      "submitting": "Verzenden...",
+      "errors": {
+        "firstNameRequired": "Voornaam is verplicht",
+        "firstNameMinLength": "Voornaam moet minimaal 2 tekens bevatten",
+        "lastNameRequired": "Achternaam is verplicht",
+        "lastNameMinLength": "Achternaam moet minimaal 2 tekens bevatten",
+        "emailRequired": "E-mail is verplicht",
+        "emailInvalid": "Voer een geldig e-mailadres in",
+        "phoneRequired": "Telefoonnummer is verplicht",
+        "phoneInvalid": "Voer een geldig telefoonnummer in",
+        "messageRequired": "Bericht is verplicht",
+        "messageMinLength": "Bericht moet minimaal 10 tekens bevatten",
+        "messageMaxLength": "Bericht mag niet meer dan 5000 tekens bevatten",
+        "submissionFailed": "Bericht kon niet worden verzonden. Probeer het opnieuw.",
+        "tooManyRequests": "Te veel verzoeken. Wacht even en probeer het opnieuw.",
+        "serverError": "Serverfout. Probeer het later opnieuw."
+      },
+      "success": "Bedankt! Uw bericht is succesvol verzonden. We nemen spoedig contact met u op."
+    }
+  },
+  "signIn": {
+    "hero": {
+      "title1": "Welkom terug bij",
+      "title2": "Clinical Data Studio",
+      "description": "PII-detectie en anonimisering op bedrijfsniveau voor gezondheidsgegevens.<lineBreak />Bescherm de privacy van patiënten met behoud van analytische waarde."
+    },
+    "stats": {
+      "clients": { "value": "50+", "label": "Klanten" },
+      "records": { "value": "2 mld+", "label": "Records" },
+      "uptime": { "value": "99,9%", "label": "Uptime" }
+    },
+    "heading": "Inloggen",
+    "subtext": "Voer uw e-mailadres in om een inloglink te ontvangen.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "jan.jansen@voorbeeld.nl",
+    "submitButton": "Inloggen",
+    "validation": { "required": "E-mail is verplicht" },
+    "status": {
+      "successTitle": "E-mail verzonden!",
+      "successDescription": "Controleer uw inbox voor de inloglink.",
+      "errorTitle": "E-mail kon niet worden verzonden!",
+      "errorDescription": "{{error}}"
+    },
+    "bottomText": "Door in te loggen gaat u akkoord met onze <terms>Servicevoorwaarden</terms> en <privacy>Privacybeleid</privacy>"
+  },
+  "register": {
+    "heading": "Account aanmaken",
+    "form": {
+      "firstNameLabel": "Voornaam",
+      "firstNamePlaceholder": "Jan",
+      "firstNameRequired": "Voornaam is verplicht",
+      "lastNameLabel": "Achternaam",
+      "lastNamePlaceholder": "Jansen",
+      "lastNameRequired": "Achternaam is verplicht",
+      "companyLabel": "Bedrijf",
+      "companyPlaceholder": "Uw organisatie",
+      "companyRequired": "Bedrijfsnaam is verplicht",
+      "submitButton": "Doorgaan"
+    },
+    "status": {
+      "successTitle": "Account aangemaakt!",
+      "successDescription": "Doorverwijzen naar dashboard",
+      "errorTitle": "Fout bij het aanmaken van account",
+      "errorDescription": "Details: "
+    },
+    "hero": {
+      "title1": "Begin met het beschermen van",
+      "title2": "klinische gegevens in minuten",
+      "description": "Sluit u aan bij meer dan 50 zorginstellingen die Clinical Data Studio al gebruiken om gegevens veilig te de-identificeren en te synthetiseren."
+    },
+    "testimonial": {
+      "text": "Clinical Data Studio heeft de manier waarop we patiëntgegevens voor onderzoek behandelen getransformeerd. Alleen al de synthetische datageneratie bespaarde ons maanden aan compliancebeoordelingen.",
+      "author": "Dr. Sarah Chen",
+      "role": "Chief Medical Officer, MedTech Corp",
+      "initials": "SC"
+    }
+  },
+  "frameworks": {
+    "title": "Compliance-framework",
+    "subtitle": "Kies welke regelgevende kaders moeten worden nageleefd",
+    "step": "STAP 1",
+    "entityTypes": "entiteitstypen"
+  },
+  "sidebar": {
+    "title": "Clinical Data Studio",
+    "subtitle": "De-ID & Synthese",
+    "workspace": "Werkruimte",
+    "dashboard": "Dashboard",
+    "deidentify": "De-identificeren",
+    "syntheticData": "Synthetische gegevens"
+  },
+  "deidHeader": {
+    "title": "De-identificatie workflow",
+    "subtitle": "PII-detectie en anonimisering op bedrijfsniveau — HIPAA · AVG · DSG conform"
+  },
+  "themeToggle": {
+    "light": "Schakel naar lichte modus",
+    "dark": "Schakel naar donkere modus"
+  },
+  "deidOutput": {
+    "originalText": {
+      "title": "Originele tekst",
+      "subtitle": "Gedetecteerde entiteiten gemarkeerd",
+      "entities": "entiteiten"
+    },
+    "deIdentifiedOutput": {
+      "title": "Gede-identificeerde uitvoer",
+      "subtitle": "Gevoelige gegevens verwijderd",
+      "hipaaCompliant": "HIPAA-veilig",
+      "copy": "Kopiëren",
+      "downloadTxt": ".txt downloaden",
+      "downloadJson": ".json downloaden",
+      "redactedContentTooltip": "Geredigeerde informatie"
+    }
+  },
+  "notFound": {
+    "subtitle": "Pagina niet gevonden",
+    "title": "Oeps! We zijn deze pagina kwijt",
+    "description": "De pagina die u zoekt bestaat niet of is verplaatst. Uw gegevens zijn veilig — alleen de route ontbreekt.",
+    "goHome": "Startpagina",
+    "goBack": "Ga terug"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Analyseoverzicht",
+      "subtitle": "Volg de-identificatiemetrieken, compliancetrends en verwerkingsstatistieken",
+      "startButton": "De-identificatie starten"
+    },
+    "sidebar": {
+      "analytics": "Analyses",
+      "settings": "Instellingen",
+      "help": "Help"
+    },
+    "statCards": {
+      "totalDocuments": "Totaal documenten",
+      "entitiesDetected": "Gedetecteerde entiteiten",
+      "avgEntitiesPerDoc": "Gem. entiteiten/doc.",
+      "successRate": "Slagingspercentage",
+      "vsLastMonth": "t.o.v. vorige maand"
+    },
+    "charts": {
+      "entityTypes": {
+        "title": "Gedetecteerde entiteitstypen",
+        "subtitle": "Verdeling van PII-entiteiten gevonden in alle documenten"
+      },
+      "compliance": {
+        "title": "Compliance-frameworks",
+        "subtitle": "Toegepaste frameworkverdeling"
+      },
+      "processingHistory": {
+        "title": "Verwerkingsgeschiedenis",
+        "subtitle": "Document- en entiteitstrends — afgelopen 7 dagen",
+        "documents": "Documenten",
+        "entities": "Entiteiten"
+      },
+      "deIdMethod": {
+        "title": "De-ID-methodegebruik",
+        "subtitle": "Methoden toegepast op gedetecteerde entiteiten"
+      },
+      "confidence": {
+        "title": "Betrouwbaarheidsscoreverdeling",
+        "subtitle": "Detectienauwkeurigheid over alle entiteitsherkenningen"
+      },
+      "recentActivity": {
+        "title": "Recente activiteit",
+        "subtitle": "Laatst verwerkte documenten",
+        "entities": "{{count}} entiteiten",
+        "newDeId": "Nieuwe de-identificatie →"
+      }
+    }
+  }
+}
