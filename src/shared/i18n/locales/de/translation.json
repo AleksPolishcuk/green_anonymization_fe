@@ -1,0 +1,318 @@
+{
+  "complianceSection": {
+    "label": "COMPLIANCE",
+    "title": "Entwickelt für Compliance",
+    "description": "Wählen Sie aus branchenüblichen regulatorischen Rahmenwerken oder erstellen Sie Ihr eigenes benutzerdefiniertes Compliance-Profil",
+    "entityTypes": "{{count}} Entitätstypen",
+    "cards": {
+      "hipaa": {
+        "badge": "HIPAA",
+        "title": "Health Insurance Portability and Accountability Act"
+      },
+      "euGdpr": {
+        "badge": "EU GDPR",
+        "title": "Datenschutz-Grundverordnung"
+      },
+      "ukGdpr": {
+        "badge": "UK GDPR",
+        "title": "UK GDPR Datenschutz- und Ermittlungsbefugnisse"
+      },
+      "swissFadp": {
+        "badge": "Swiss FADP",
+        "title": "Schweizer Bundesgesetz über den Datenschutz"
+      }
+    },
+    "customProfile": {
+      "title": "Benutzerdefinierte Compliance-Profile",
+      "description": "Spezielle Anforderungen? Erstellen Sie benutzerdefinierte Compliance-Profile, die auf die einzigartigen regulatorischen Anforderungen und Datenschutzrichtlinien Ihrer Organisation zugeschnitten sind."
+    }
+  },
+  "header": {
+    "nav": {
+      "solution": "Lösung",
+      "contactUs": "Kontakt"
+    },
+    "actions": {
+      "getStarted": "Jetzt starten"
+    },
+    "logoAlt": "Clinical Data Studio — Startseite",
+    "logoText": "Clinical Data Studio",
+    "aria": {
+      "homeLink": "Zur Startseite",
+      "desktopNavigation": "Hauptnavigation",
+      "openMenu": "Menü öffnen",
+      "closeMenu": "Menü schließen",
+      "mobileMenu": "Mobiles Navigationsmenü"
+    }
+  },
+  "hero": {
+    "badge": "De-ID & Synthese-Plattform",
+    "titleLine1": "Klinische Daten",
+    "titleLine2": "De-Identifikation",
+    "titleLine3": "& Synthetisches Datenstudio",
+    "description": "Unternehmensweite PII-Erkennung und Anonymisierung für Gesundheitsdaten. Schützen Sie die Privatsphäre der Patienten und bewahren Sie den analytischen Wert.",
+    "ctaPrimary": "Jetzt starten",
+    "stats": {
+      "hipaa": { "value": "HIPAA", "label": "Konform" },
+      "eugdpr": { "value": "EU GDPR", "label": "Konform" },
+      "ukgdpr": { "value": "UK GDPR", "label": "Konform" },
+      "fadp": { "value": "Swiss FADP", "label": "Konform" }
+    }
+  },
+  "capabilities": {
+    "subtitle": "FUNKTIONEN",
+    "title": "Patientendatenschutz ohne Kompromisse beim Datenwert",
+    "description": "Umfassende Werkzeuge für Gesundheitsorganisationen zur sicheren Verwaltung und Nutzung klinischer Daten",
+    "cards": {
+      "pii": {
+        "title": "Erweiterte PII-Erkennung",
+        "description": "Automatische Identifizierung und Schutz sensibler Patientendaten in strukturierten und unstrukturierten klinischen Daten."
+      },
+      "synthetic": {
+        "title": "Synthetische Datengenerierung",
+        "description": "Erstellen Sie realistische, datenschutzfreundliche synthetische Datensätze für Forschung, Tests und Entwicklung."
+      },
+      "framework": {
+        "title": "Multi-Framework-Compliance",
+        "description": "Gewährleisten Sie die Einhaltung von HIPAA, DSGVO, CCPA und benutzerdefinierten regulatorischen Anforderungen gleichzeitig."
+      },
+      "anonymization": {
+        "title": "Intelligente Anonymisierung",
+        "description": "Wenden Sie ausgefeilte De-Identifikationstechniken an und bewahren Sie dabei den Nutzen der Daten für Analysen."
+      }
+    }
+  },
+  "readyToProtect": {
+    "title": "Bereit, Ihre klinischen Daten zu schützen?",
+    "description": "Starten Sie die De-Identifikation und Synthese von Gesundheitsdaten in wenigen Minuten mit unserer Enterprise-Plattform",
+    "actions": {
+      "primary": "Starten →",
+      "secondary": "Vertrieb kontaktieren"
+    }
+  },
+  "footer": {
+    "brandName": "Clinical Data Studio",
+    "description": "Enterprise-Plattform für klinische Daten-De-Identifikation und synthetische Datengenerierung. Patientendatenschutz bei gleichzeitiger Erhaltung des Datennutzens.",
+    "navAria": "Fußzeilennavigation",
+    "copyright": "© {{year}} Clinical Data Studio. Alle Rechte vorbehalten.",
+    "columns": { "info": "Info" },
+    "company": {
+      "contact": "Kontakt",
+      "pricing": "Preise",
+      "support": "Support"
+    }
+  },
+  "faqSection": {
+    "title": "Häufig gestellte Fragen",
+    "items": {
+      "whatIndustries": {
+        "question": "Welche Branchen bedienen Sie?",
+        "answer": "Wir bedienen eine Vielzahl von Branchen, darunter Gesundheitswesen, Finanzen, Recht und Technologie. Unsere Anonymisierungslösungen sind auf die spezifischen Compliance-Anforderungen jedes Sektors zugeschnitten."
+      },
+      "customSolutions": {
+        "question": "Bieten Sie individuelle Lösungen an?",
+        "answer": "Ja, wir bieten maßgeschneiderte Lösungen, die auf Ihre spezifischen Compliance-Anforderungen und Datenschutzbedürfnisse zugeschnitten sind."
+      },
+      "implementationTime": {
+        "question": "Wie lange dauert die Implementierung?",
+        "answer": "Die Implementierung dauert in der Regel 1–4 Wochen, abhängig von der Komplexität Ihrer Datenumgebung und dem Grad der Anpassung."
+      },
+      "whatSupport": {
+        "question": "Welchen Support bieten Sie an?",
+        "answer": "Wir bieten 24/7 technischen Support, Onboarding-Unterstützung und dediziertes Account-Management, um Ihren Erfolg mit unserer Plattform sicherzustellen."
+      }
+    }
+  },
+  "contactUsPage": {
+    "title": "Kontakt",
+    "subtitle": "Haben Sie Fragen? Wir helfen Ihnen gerne. Kontaktieren Sie unser Team und wir melden uns in Kürze bei Ihnen.",
+    "emailCard": {
+      "label": "E-Mail",
+      "infoEmail": "info@clinicaldatastudio.com",
+      "supportEmail": "support@clinicaldatastudio.com"
+    },
+    "form": {
+      "title": "Nachricht senden",
+      "firstName": "Vorname",
+      "firstNamePlaceholder": "Max",
+      "lastName": "Nachname",
+      "lastNamePlaceholder": "Mustermann",
+      "email": "E-Mail",
+      "emailPlaceholder": "max.mustermann@beispiel.de",
+      "phoneNumber": "Telefonnummer",
+      "phonePlaceholder": "+49 (30) 000-0000",
+      "message": "Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns mehr über Ihre Anforderungen...",
+      "submitButton": "Nachricht senden",
+      "submitting": "Wird gesendet...",
+      "errors": {
+        "firstNameRequired": "Vorname ist erforderlich",
+        "firstNameMinLength": "Vorname muss mindestens 2 Zeichen lang sein",
+        "lastNameRequired": "Nachname ist erforderlich",
+        "lastNameMinLength": "Nachname muss mindestens 2 Zeichen lang sein",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "phoneRequired": "Telefonnummer ist erforderlich",
+        "phoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein",
+        "messageRequired": "Nachricht ist erforderlich",
+        "messageMinLength": "Nachricht muss mindestens 10 Zeichen lang sein",
+        "messageMaxLength": "Nachricht darf 5000 Zeichen nicht überschreiten",
+        "submissionFailed": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+        "tooManyRequests": "Zu viele Anfragen. Bitte warten Sie einen Moment und versuchen Sie es erneut.",
+        "serverError": "Serverfehler. Bitte versuchen Sie es später erneut."
+      },
+      "success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze bei Ihnen."
+    }
+  },
+  "signIn": {
+    "hero": {
+      "title1": "Willkommen zurück bei",
+      "title2": "Clinical Data Studio",
+      "description": "Unternehmensweite PII-Erkennung und Anonymisierung für Gesundheitsdaten.<lineBreak />Schützen Sie die Privatsphäre der Patienten und bewahren Sie den analytischen Wert."
+    },
+    "stats": {
+      "clients": { "value": "50+", "label": "Kunden" },
+      "records": { "value": "2B+", "label": "Datensätze" },
+      "uptime": { "value": "99,9%", "label": "Verfügbarkeit" }
+    },
+    "heading": "Anmelden",
+    "subtext": "Geben Sie Ihre E-Mail-Adresse ein, um einen Anmeldelink zu erhalten.",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "max.mustermann@beispiel.de",
+    "submitButton": "Anmelden",
+    "validation": { "required": "E-Mail ist erforderlich" },
+    "status": {
+      "successTitle": "E-Mail gesendet!",
+      "successDescription": "Überprüfen Sie Ihren Posteingang für den Anmeldelink.",
+      "errorTitle": "E-Mail konnte nicht gesendet werden!",
+      "errorDescription": "{{error}}"
+    },
+    "bottomText": "Mit der Anmeldung stimmen Sie unseren <terms>Nutzungsbedingungen</terms> und der <privacy>Datenschutzrichtlinie</privacy> zu"
+  },
+  "register": {
+    "heading": "Konto erstellen",
+    "form": {
+      "firstNameLabel": "Vorname",
+      "firstNamePlaceholder": "Max",
+      "firstNameRequired": "Vorname ist erforderlich",
+      "lastNameLabel": "Nachname",
+      "lastNamePlaceholder": "Mustermann",
+      "lastNameRequired": "Nachname ist erforderlich",
+      "companyLabel": "Unternehmen",
+      "companyPlaceholder": "Ihre Organisation",
+      "companyRequired": "Firmenname ist erforderlich",
+      "submitButton": "Weiter"
+    },
+    "status": {
+      "successTitle": "Konto erstellt!",
+      "successDescription": "Weiterleitung zum Dashboard",
+      "errorTitle": "Fehler beim Erstellen des Kontos",
+      "errorDescription": "Details: "
+    },
+    "hero": {
+      "title1": "Beginnen Sie mit dem Schutz",
+      "title2": "klinischer Daten in Minuten",
+      "description": "Schließen Sie sich über 50 Gesundheitsorganisationen an, die Clinical Data Studio bereits zur sicheren De-Identifikation und Synthese von Daten nutzen."
+    },
+    "testimonial": {
+      "text": "Clinical Data Studio hat die Art und Weise, wie wir Patientendaten für die Forschung handhaben, revolutioniert. Allein die synthetische Datengenerierung hat uns Monate an Compliance-Prüfungen erspart.",
+      "author": "Dr. Sarah Chen",
+      "role": "Chief Medical Officer, MedTech Corp",
+      "initials": "SC"
+    }
+  },
+  "frameworks": {
+    "title": "Compliance-Framework",
+    "subtitle": "Wählen Sie die regulatorischen Rahmenwerke, die eingehalten werden sollen",
+    "step": "SCHRITT 1",
+    "entityTypes": "Entitätstypen"
+  },
+  "sidebar": {
+    "title": "Clinical Data Studio",
+    "subtitle": "De-ID & Synthese",
+    "workspace": "Arbeitsbereich",
+    "dashboard": "Dashboard",
+    "deidentify": "De-Identifizieren",
+    "syntheticData": "Synthetische Daten"
+  },
+  "deidHeader": {
+    "title": "De-Identifikations-Workflow",
+    "subtitle": "Unternehmensweite PII-Erkennung und Anonymisierung — HIPAA · DSGVO · DSG konform"
+  },
+  "themeToggle": {
+    "light": "Zum hellen Modus wechseln",
+    "dark": "Zum dunklen Modus wechseln"
+  },
+  "deidOutput": {
+    "originalText": {
+      "title": "Originaltext",
+      "subtitle": "Erkannte Entitäten hervorgehoben",
+      "entities": "Entitäten"
+    },
+    "deIdentifiedOutput": {
+      "title": "De-identifizierte Ausgabe",
+      "subtitle": "Sensible Daten entfernt",
+      "hipaaCompliant": "HIPAA-sicher",
+      "copy": "Kopieren",
+      "downloadTxt": ".txt herunterladen",
+      "downloadJson": ".json herunterladen",
+      "redactedContentTooltip": "Geschwärzte Information"
+    }
+  },
+  "notFound": {
+    "subtitle": "Seite nicht gefunden",
+    "title": "Hoppla! Diese Seite ist verschwunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben. Ihre Daten sind sicher — nur die Route fehlt.",
+    "goHome": "Startseite",
+    "goBack": "Zurück"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Analyseübersicht",
+      "subtitle": "Verfolgen Sie De-Identifikationsmetriken, Compliance-Trends und Verarbeitungsstatistiken",
+      "startButton": "De-Identifikation starten"
+    },
+    "sidebar": {
+      "analytics": "Analysen",
+      "settings": "Einstellungen",
+      "help": "Hilfe"
+    },
+    "statCards": {
+      "totalDocuments": "Dokumente gesamt",
+      "entitiesDetected": "Erkannte Entitäten",
+      "avgEntitiesPerDoc": "Ø Entitäten/Dok.",
+      "successRate": "Erfolgsquote",
+      "vsLastMonth": "ggü. Vormonat"
+    },
+    "charts": {
+      "entityTypes": {
+        "title": "Erkannte Entitätstypen",
+        "subtitle": "Verteilung der PII-Entitäten in allen Dokumenten"
+      },
+      "compliance": {
+        "title": "Compliance-Frameworks",
+        "subtitle": "Angewandte Framework-Verteilung"
+      },
+      "processingHistory": {
+        "title": "Verarbeitungsverlauf",
+        "subtitle": "Dokument- und Entitätstrends — letzte 7 Tage",
+        "documents": "Dokumente",
+        "entities": "Entitäten"
+      },
+      "deIdMethod": {
+        "title": "De-ID-Methodenverwendung",
+        "subtitle": "Auf erkannte Entitäten angewandte Methoden"
+      },
+      "confidence": {
+        "title": "Konfidenzwertverteilung",
+        "subtitle": "Erkennungsgenauigkeit über alle Entitätserkennungen"
+      },
+      "recentActivity": {
+        "title": "Letzte Aktivität",
+        "subtitle": "Zuletzt verarbeitete Dokumente",
+        "entities": "{{count}} Entitäten",
+        "newDeId": "Neue De-Identifikation →"
+      }
+    }
+  }
+}

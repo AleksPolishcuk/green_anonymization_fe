@@ -13,14 +13,14 @@ import {
 import { headerSpriteRef, headerSpriteSymbolIds } from "constants/MainPages";
 
 export const DashboardHeader = () => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const onStartDeId = useCtaNavigate({ target: "/deidentification" });
 
   return (
     <HeaderRoot>
       <HeaderTextGroup>
-        <HeaderTitle component="h1">{t("header.title")}</HeaderTitle>
-        <HeaderSubtitle>{t("header.subtitle")}</HeaderSubtitle>
+        <HeaderTitle component="h1">{t("dashboard.header.title")}</HeaderTitle>
+        <HeaderSubtitle>{t("dashboard.header.subtitle")}</HeaderSubtitle>
       </HeaderTextGroup>
 
       <StartDeIdButton type="button" onClick={onStartDeId} disableElevation>
@@ -29,7 +29,7 @@ export const DashboardHeader = () => {
             href={headerSpriteRef(headerSpriteSymbolIds.dashboardDeIdShield)}
           />
         </ButtonSpriteIcon>
-        {t("header.startButton")}
+        {t("dashboard.header.startButton")}
         <ButtonSpriteIcon viewBox="0 0 32 32" aria-hidden>
           <use
             href={headerSpriteRef(headerSpriteSymbolIds.dashboardDeIdArrow)}

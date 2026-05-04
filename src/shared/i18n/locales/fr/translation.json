@@ -1,0 +1,318 @@
+{
+  "complianceSection": {
+    "label": "CONFORMITÉ",
+    "title": "Conçu pour la conformité",
+    "description": "Choisissez parmi les cadres réglementaires standards de l'industrie ou créez votre propre profil de conformité personnalisé",
+    "entityTypes": "{{count}} types d'entités",
+    "cards": {
+      "hipaa": {
+        "badge": "HIPAA",
+        "title": "Health Insurance Portability and Accountability Act"
+      },
+      "euGdpr": {
+        "badge": "EU GDPR",
+        "title": "Règlement Général sur la Protection des Données"
+      },
+      "ukGdpr": {
+        "badge": "UK GDPR",
+        "title": "UK GDPR Protection des données et pouvoirs d'enquête"
+      },
+      "swissFadp": {
+        "badge": "Swiss FADP",
+        "title": "Loi fédérale suisse sur la protection des données"
+      }
+    },
+    "customProfile": {
+      "title": "Profils de conformité personnalisés",
+      "description": "Des exigences spécifiques ? Créez des profils de conformité personnalisés adaptés aux besoins réglementaires uniques et aux politiques de protection des données de votre organisation."
+    }
+  },
+  "header": {
+    "nav": {
+      "solution": "Solution",
+      "contactUs": "Nous contacter"
+    },
+    "actions": {
+      "getStarted": "Commencer"
+    },
+    "logoAlt": "Clinical Data Studio — accueil",
+    "logoText": "Clinical Data Studio",
+    "aria": {
+      "homeLink": "Aller à la page d'accueil",
+      "desktopNavigation": "Navigation principale",
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu",
+      "mobileMenu": "Menu de navigation mobile"
+    }
+  },
+  "hero": {
+    "badge": "Plateforme De-ID & Synthèse",
+    "titleLine1": "Données cliniques",
+    "titleLine2": "Dé-identification",
+    "titleLine3": "& Studio de données synthétiques",
+    "description": "Détection et anonymisation des PII de niveau entreprise pour les données de santé. Protégez la vie privée des patients tout en préservant la valeur analytique.",
+    "ctaPrimary": "Commencer",
+    "stats": {
+      "hipaa": { "value": "HIPAA", "label": "Conforme" },
+      "eugdpr": { "value": "EU GDPR", "label": "Conforme" },
+      "ukgdpr": { "value": "UK GDPR", "label": "Conforme" },
+      "fadp": { "value": "Swiss FADP", "label": "Conforme" }
+    }
+  },
+  "capabilities": {
+    "subtitle": "FONCTIONNALITÉS",
+    "title": "Protégez la vie privée des patients sans compromettre la valeur des données",
+    "description": "Outils complets pour les organisations de santé pour gérer et utiliser en toute sécurité les données cliniques",
+    "cards": {
+      "pii": {
+        "title": "Détection avancée des PII",
+        "description": "Identifiez et protégez automatiquement les informations sensibles des patients dans les données cliniques structurées et non structurées."
+      },
+      "synthetic": {
+        "title": "Génération de données synthétiques",
+        "description": "Créez des jeux de données synthétiques réalistes et respectueux de la vie privée pour la recherche, les tests et le développement."
+      },
+      "framework": {
+        "title": "Conformité multi-cadres",
+        "description": "Assurez la conformité avec HIPAA, RGPD, CCPA et les exigences réglementaires personnalisées simultanément."
+      },
+      "anonymization": {
+        "title": "Anonymisation intelligente",
+        "description": "Appliquez des techniques de dé-identification sophistiquées tout en maintenant l'utilité des données pour l'analyse."
+      }
+    }
+  },
+  "readyToProtect": {
+    "title": "Prêt à protéger vos données cliniques ?",
+    "description": "Commencez la dé-identification et la synthèse des données de santé en quelques minutes avec notre plateforme entreprise",
+    "actions": {
+      "primary": "Commencer →",
+      "secondary": "Contacter les ventes"
+    }
+  },
+  "footer": {
+    "brandName": "Clinical Data Studio",
+    "description": "Plateforme entreprise de dé-identification des données cliniques et de génération de données synthétiques. Protection de la vie privée des patients tout en maintenant l'utilité des données.",
+    "navAria": "Navigation du pied de page",
+    "copyright": "© {{year}} Clinical Data Studio. Tous droits réservés.",
+    "columns": { "info": "Info" },
+    "company": {
+      "contact": "Contact",
+      "pricing": "Tarifs",
+      "support": "Support"
+    }
+  },
+  "faqSection": {
+    "title": "Questions fréquemment posées",
+    "items": {
+      "whatIndustries": {
+        "question": "Quels secteurs desservez-vous ?",
+        "answer": "Nous desservons un large éventail de secteurs, notamment la santé, la finance, le juridique et la technologie. Nos solutions d'anonymisation sont adaptées aux exigences de conformité spécifiques de chaque secteur."
+      },
+      "customSolutions": {
+        "question": "Proposez-vous des solutions personnalisées ?",
+        "answer": "Oui, nous proposons des solutions personnalisées adaptées à vos exigences de conformité spécifiques et à vos besoins en matière de protection des données."
+      },
+      "implementationTime": {
+        "question": "Combien de temps dure l'implémentation ?",
+        "answer": "L'implémentation prend généralement 1 à 4 semaines selon la complexité de votre environnement de données et le niveau de personnalisation requis."
+      },
+      "whatSupport": {
+        "question": "Quel support proposez-vous ?",
+        "answer": "Nous offrons un support technique 24h/24 et 7j/7, une assistance à l'intégration et une gestion de compte dédiée pour assurer votre succès avec notre plateforme."
+      }
+    }
+  },
+  "contactUsPage": {
+    "title": "Nous contacter",
+    "subtitle": "Des questions ? Nous sommes là pour vous aider. Contactez notre équipe et nous vous répondrons dans les plus brefs délais.",
+    "emailCard": {
+      "label": "E-mail",
+      "infoEmail": "info@clinicaldatastudio.com",
+      "supportEmail": "support@clinicaldatastudio.com"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastName": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "email": "E-mail",
+      "emailPlaceholder": "jean.dupont@exemple.fr",
+      "phoneNumber": "Numéro de téléphone",
+      "phonePlaceholder": "+33 1 00 00 00 00",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous en plus sur vos besoins...",
+      "submitButton": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "errors": {
+        "firstNameRequired": "Le prénom est requis",
+        "firstNameMinLength": "Le prénom doit contenir au moins 2 caractères",
+        "lastNameRequired": "Le nom est requis",
+        "lastNameMinLength": "Le nom doit contenir au moins 2 caractères",
+        "emailRequired": "L'e-mail est requis",
+        "emailInvalid": "Veuillez entrer une adresse e-mail valide",
+        "phoneRequired": "Le numéro de téléphone est requis",
+        "phoneInvalid": "Veuillez entrer un numéro de téléphone valide",
+        "messageRequired": "Le message est requis",
+        "messageMinLength": "Le message doit contenir au moins 10 caractères",
+        "messageMaxLength": "Le message ne doit pas dépasser 5000 caractères",
+        "submissionFailed": "Échec de l'envoi du message. Veuillez réessayer.",
+        "tooManyRequests": "Trop de requêtes. Veuillez patienter un instant et réessayer.",
+        "serverError": "Erreur serveur. Veuillez réessayer plus tard."
+      },
+      "success": "Merci ! Votre message a été envoyé avec succès. Nous vous répondrons bientôt."
+    }
+  },
+  "signIn": {
+    "hero": {
+      "title1": "Bienvenue sur",
+      "title2": "Clinical Data Studio",
+      "description": "Détection et anonymisation des PII de niveau entreprise pour les données de santé.<lineBreak />Protégez la vie privée des patients tout en préservant la valeur analytique."
+    },
+    "stats": {
+      "clients": { "value": "50+", "label": "Clients" },
+      "records": { "value": "2 Md+", "label": "Enregistrements" },
+      "uptime": { "value": "99,9 %", "label": "Disponibilité" }
+    },
+    "heading": "Connexion",
+    "subtext": "Entrez votre e-mail pour recevoir un lien de connexion.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "jean.dupont@exemple.fr",
+    "submitButton": "Se connecter",
+    "validation": { "required": "L'e-mail est requis" },
+    "status": {
+      "successTitle": "E-mail envoyé !",
+      "successDescription": "Vérifiez votre boîte de réception pour le lien de connexion.",
+      "errorTitle": "Échec de l'envoi de l'e-mail !",
+      "errorDescription": "{{error}}"
+    },
+    "bottomText": "En vous connectant, vous acceptez nos <terms>Conditions d'utilisation</terms> et notre <privacy>Politique de confidentialité</privacy>"
+  },
+  "register": {
+    "heading": "Créer votre compte",
+    "form": {
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "firstNameRequired": "Le prénom est requis",
+      "lastNameLabel": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "lastNameRequired": "Le nom est requis",
+      "companyLabel": "Entreprise",
+      "companyPlaceholder": "Votre organisation",
+      "companyRequired": "Le nom de l'entreprise est requis",
+      "submitButton": "Continuer"
+    },
+    "status": {
+      "successTitle": "Compte créé !",
+      "successDescription": "Redirection vers le tableau de bord",
+      "errorTitle": "Erreur lors de la création du compte",
+      "errorDescription": "Détails : "
+    },
+    "hero": {
+      "title1": "Commencez à protéger les données",
+      "title2": "cliniques en quelques minutes",
+      "description": "Rejoignez plus de 50 organisations de santé qui utilisent déjà Clinical Data Studio pour dé-identifier et synthétiser des données en toute sécurité."
+    },
+    "testimonial": {
+      "text": "Clinical Data Studio a transformé notre façon de gérer les données des patients pour la recherche. La génération de données synthétiques seule nous a fait gagner des mois de revues de conformité.",
+      "author": "Dr. Sarah Chen",
+      "role": "Directrice médicale, MedTech Corp",
+      "initials": "SC"
+    }
+  },
+  "frameworks": {
+    "title": "Cadre de conformité",
+    "subtitle": "Choisissez les cadres réglementaires à respecter",
+    "step": "ÉTAPE 1",
+    "entityTypes": "types d'entités"
+  },
+  "sidebar": {
+    "title": "Clinical Data Studio",
+    "subtitle": "De-ID & Synthèse",
+    "workspace": "Espace de travail",
+    "dashboard": "Tableau de bord",
+    "deidentify": "Dé-identifier",
+    "syntheticData": "Données synthétiques"
+  },
+  "deidHeader": {
+    "title": "Flux de dé-identification",
+    "subtitle": "Détection et anonymisation des PII de niveau entreprise — conforme HIPAA · RGPD · LPD"
+  },
+  "themeToggle": {
+    "light": "Passer en mode clair",
+    "dark": "Passer en mode sombre"
+  },
+  "deidOutput": {
+    "originalText": {
+      "title": "Texte original",
+      "subtitle": "Entités détectées surlignées",
+      "entities": "entités"
+    },
+    "deIdentifiedOutput": {
+      "title": "Sortie dé-identifiée",
+      "subtitle": "Données sensibles supprimées",
+      "hipaaCompliant": "Conforme HIPAA",
+      "copy": "Copier",
+      "downloadTxt": "Télécharger .txt",
+      "downloadJson": "Télécharger .json",
+      "redactedContentTooltip": "Information expurgée"
+    }
+  },
+  "notFound": {
+    "subtitle": "Page non trouvée",
+    "title": "Oups ! Cette page a disparu",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée. Vos données sont en sécurité — seul l'itinéraire est manquant.",
+    "goHome": "Page d'accueil",
+    "goBack": "Retour"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Aperçu des analyses",
+      "subtitle": "Suivez les métriques de dé-identification, les tendances de conformité et les statistiques de traitement",
+      "startButton": "Démarrer la dé-identification"
+    },
+    "sidebar": {
+      "analytics": "Analyses",
+      "settings": "Paramètres",
+      "help": "Aide"
+    },
+    "statCards": {
+      "totalDocuments": "Total des documents",
+      "entitiesDetected": "Entités détectées",
+      "avgEntitiesPerDoc": "Moy. entités/doc.",
+      "successRate": "Taux de réussite",
+      "vsLastMonth": "vs mois dernier"
+    },
+    "charts": {
+      "entityTypes": {
+        "title": "Types d'entités détectés",
+        "subtitle": "Distribution des entités PII trouvées dans tous les documents"
+      },
+      "compliance": {
+        "title": "Cadres de conformité",
+        "subtitle": "Distribution des cadres appliqués"
+      },
+      "processingHistory": {
+        "title": "Historique de traitement",
+        "subtitle": "Tendances des documents et entités — 7 derniers jours",
+        "documents": "Documents",
+        "entities": "Entités"
+      },
+      "deIdMethod": {
+        "title": "Utilisation des méthodes De-ID",
+        "subtitle": "Méthodes appliquées aux entités détectées"
+      },
+      "confidence": {
+        "title": "Distribution des scores de confiance",
+        "subtitle": "Précision de détection sur toutes les reconnaissances d'entités"
+      },
+      "recentActivity": {
+        "title": "Activité récente",
+        "subtitle": "Derniers documents traités",
+        "entities": "{{count}} entités",
+        "newDeId": "Nouvelle dé-identification →"
+      }
+    }
+  }
+}
