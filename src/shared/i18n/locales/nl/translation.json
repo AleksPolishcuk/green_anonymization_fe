@@ -53,10 +53,22 @@
     "description": "PII-detectie en anonimisering op bedrijfsniveau voor gezondheidsgegevens. Bescherm de privacy van patiënten met behoud van analytische waarde.",
     "ctaPrimary": "Aan de slag",
     "stats": {
-      "hipaa": { "value": "HIPAA", "label": "Conform" },
-      "eugdpr": { "value": "EU GDPR", "label": "Conform" },
-      "ukgdpr": { "value": "UK GDPR", "label": "Conform" },
-      "fadp": { "value": "Swiss FADP", "label": "Conform" }
+      "hipaa": {
+        "value": "HIPAA",
+        "label": "Conform"
+      },
+      "eugdpr": {
+        "value": "EU GDPR",
+        "label": "Conform"
+      },
+      "ukgdpr": {
+        "value": "UK GDPR",
+        "label": "Conform"
+      },
+      "fadp": {
+        "value": "Swiss FADP",
+        "label": "Conform"
+      }
     }
   },
   "capabilities": {
@@ -95,7 +107,9 @@
     "description": "Enterprise platform voor klinische gegevens de-identificatie en synthetische datageneratie. Bescherming van de privacy van patiënten met behoud van datanut.",
     "navAria": "Voettekstnavigatie",
     "copyright": "© {{year}} Clinical Data Studio. Alle rechten voorbehouden.",
-    "columns": { "info": "Info" },
+    "columns": {
+      "info": "Info"
+    },
     "company": {
       "contact": "Contact",
       "pricing": "Prijzen",
@@ -171,16 +185,27 @@
       "description": "PII-detectie en anonimisering op bedrijfsniveau voor gezondheidsgegevens.<lineBreak />Bescherm de privacy van patiënten met behoud van analytische waarde."
     },
     "stats": {
-      "clients": { "value": "50+", "label": "Klanten" },
-      "records": { "value": "2 mld+", "label": "Records" },
-      "uptime": { "value": "99,9%", "label": "Uptime" }
+      "clients": {
+        "value": "50+",
+        "label": "Klanten"
+      },
+      "records": {
+        "value": "2 mld+",
+        "label": "Records"
+      },
+      "uptime": {
+        "value": "99,9%",
+        "label": "Uptime"
+      }
     },
     "heading": "Inloggen",
     "subtext": "Voer uw e-mailadres in om een inloglink te ontvangen.",
     "emailLabel": "E-mail",
     "emailPlaceholder": "jan.jansen@voorbeeld.nl",
     "submitButton": "Inloggen",
-    "validation": { "required": "E-mail is verplicht" },
+    "validation": {
+      "required": "E-mail is verplicht"
+    },
     "status": {
       "successTitle": "E-mail verzonden!",
       "successDescription": "Controleer uw inbox voor de inloglink.",
@@ -233,7 +258,12 @@
     "workspace": "Werkruimte",
     "dashboard": "Dashboard",
     "deidentify": "De-identificeren",
-    "syntheticData": "Synthetische gegevens"
+    "syntheticData": "Synthetische gegevens",
+    "deidSteps": {
+      "framework": "Framework",
+      "dataSource": "Gegevensbron",
+      "results": "Resultaten"
+    }
   },
   "deidHeader": {
     "title": "De-identificatie workflow",
@@ -257,6 +287,29 @@
       "downloadTxt": ".txt downloaden",
       "downloadJson": ".json downloaden",
       "redactedContentTooltip": "Geredigeerde informatie"
+    },
+    "header": {
+      "title": "Analyse voltooid",
+      "stats": "{{totalCount}} PII-entiteiten gedetecteerd · {{selectedCount}} geselecteerd · {{framework}}-naleving geverifieerd",
+      "accuracy": "{{value}}% nauwkeurigheid"
+    },
+    "findingsTable": {
+      "title": "Bevindingen en beslissingsfactoren",
+      "stats": "{{totalCount}} entiteiten gedetecteerd · {{selectedCount}} geselecteerd voor de-identificatie",
+      "columns": {
+        "id": "#",
+        "text": "Tekst",
+        "position": "Pos",
+        "score": "Score",
+        "recognizer": "Herkenner",
+        "pattern": "Patroon",
+        "factor": "Factor",
+        "action": "Actie"
+      },
+      "actions": {
+        "selected": "Geselecteerd",
+        "deselected": "Gedeselecteerd"
+      }
     }
   },
   "notFound": {
