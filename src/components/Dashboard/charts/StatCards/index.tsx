@@ -36,7 +36,7 @@ type StatCardProps = {
 };
 
 const StatCard = ({ card }: StatCardProps) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
 
   return (
     <Card>
@@ -54,7 +54,7 @@ const StatCard = ({ card }: StatCardProps) => {
           <use href={headerSpriteRef(STAT_CARD_TREND_ARROW_SPRITE_ID)} />
         </TrendArrowIcon>
         <TrendPercent>{card.trendPercent}</TrendPercent>
-        <TrendSuffix>{t("statCards.vsLastMonth")}</TrendSuffix>
+        <TrendSuffix>{t("dashboard.statCards.vsLastMonth")}</TrendSuffix>
       </TrendRow>
     </Card>
   );
@@ -65,13 +65,13 @@ type StatCardsProps = {
 };
 
 export const StatCards = ({ data }: StatCardsProps) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
 
   const labelKeys: Record<string, string> = {
-    [STAT_CARD_IDS.totalDocs]: t("statCards.totalDocuments"),
-    [STAT_CARD_IDS.entities]: t("statCards.entitiesDetected"),
-    [STAT_CARD_IDS.avgEntities]: t("statCards.avgEntitiesPerDoc"),
-    [STAT_CARD_IDS.successRate]: t("statCards.successRate"),
+    [STAT_CARD_IDS.totalDocs]: t("dashboard.statCards.totalDocuments"),
+    [STAT_CARD_IDS.entities]: t("dashboard.statCards.entitiesDetected"),
+    [STAT_CARD_IDS.avgEntities]: t("dashboard.statCards.avgEntitiesPerDoc"),
+    [STAT_CARD_IDS.successRate]: t("dashboard.statCards.successRate"),
   };
 
   const cards = data.map((card) => ({

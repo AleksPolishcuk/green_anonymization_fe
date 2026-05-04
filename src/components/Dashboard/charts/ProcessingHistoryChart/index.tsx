@@ -66,12 +66,14 @@ const CustomTooltip = ({
 type Props = { data: ProcessingHistoryPoint[] };
 
 export const ProcessingHistoryChart = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
 
   return (
     <ChartCard>
-      <ChartTitle>{t("charts.processingHistory.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.processingHistory.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.processingHistory.title")}</ChartTitle>
+      <ChartSubtitle>
+        {t("dashboard.charts.processingHistory.subtitle")}
+      </ChartSubtitle>
 
       <ChartBody>
         <ChartBodyInner>
@@ -110,7 +112,7 @@ export const ProcessingHistoryChart = ({ data }: Props) => {
                 yAxisId="left"
                 type="monotone"
                 dataKey="documents"
-                name={t("charts.processingHistory.documents")}
+                name={t("dashboard.charts.processingHistory.documents")}
                 stroke={theme.palette.primary.main}
                 strokeWidth={CHART_LINE_STROKE_WIDTH}
                 dot={{
@@ -126,7 +128,7 @@ export const ProcessingHistoryChart = ({ data }: Props) => {
                 yAxisId="right"
                 type="monotone"
                 dataKey="entities"
-                name={t("charts.processingHistory.entities")}
+                name={t("dashboard.charts.processingHistory.entities")}
                 stroke={theme.palette.primary.main}
                 strokeWidth={CHART_LINE_STROKE_WIDTH}
                 strokeDasharray={CHART_LINE_DASH_ARRAY}
@@ -146,11 +148,11 @@ export const ProcessingHistoryChart = ({ data }: Props) => {
         <LegendRoot>
           <LegendItem>
             <LegendCircle $color={theme.palette.primary.main} />
-            {t("charts.processingHistory.documents")}
+            {t("dashboard.charts.processingHistory.documents")}
           </LegendItem>
           <LegendItem>
             <LegendCircle $dashed $color={theme.palette.primary.main} />
-            {t("charts.processingHistory.entities")}
+            {t("dashboard.charts.processingHistory.entities")}
           </LegendItem>
         </LegendRoot>
       </ChartBody>
