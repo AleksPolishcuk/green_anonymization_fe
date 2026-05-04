@@ -100,5 +100,32 @@
             <path fill="none" d="m4.125 5.5.917.917 1.833-1.834"></path>
           </g>
         </symbol>
+
+        <symbol id="icon-step-pending" viewBox="0 0 16 16">
+          <rect x="1" y="1" width="14" height="14" rx="7" fill="#D0D5DD" fill-opacity="0.6"/>
+          <rect x="1" y="1" width="14" height="14" rx="7" stroke="#D0D5DD" stroke-width="2"/>
+        </symbol>
+
+        <symbol id="icon-step-active" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="5" fill="#2563EB"/>
+          <circle cx="8" cy="8" r="7" stroke="#2563EB" stroke-opacity="0.2" stroke-width="2" fill="none"/>
+        </symbol>
+
+        <symbol id="icon-step-completed" viewBox="0 0 16 16">
+          <path d="M0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8Z" fill="#06B6D4"/>
+          <path d="M7.99817 12.1633C10.2985 12.1633 12.1633 10.2985 12.1633 7.99817C12.1633 5.69781 10.2985 3.83301 7.99817 3.83301C5.69781 3.83301 3.83301 5.69781 3.83301 7.99817C3.83301 10.2985 5.69781 12.1633 7.99817 12.1633Z" stroke="white" stroke-width="1.24955" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M6.74902 7.99819L7.58206 8.83123L9.24812 7.16516" stroke="white" stroke-width="1.24955" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </symbol>
+
+        <symbol id="icon-database" viewBox="0 0 15 15">
+          <path fill="none" stroke="#6366F1" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M7.5 5C10.6066 5 13.125 4.16053 13.125 3.125C13.125 2.08947 10.6066 1.25 7.5 1.25C4.3934 1.25 1.875 2.08947 1.875 3.125C1.875 4.16053 4.3934 5 7.5 5Z"></path>
+          <path fill="none" stroke="#6366F1" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M1.875 3.125V11.875C1.875 12.3723 2.46763 12.8492 3.52252 13.2008C4.57742 13.5525 6.00816 13.75 7.5 13.75C8.99184 13.75 10.4226 13.5525 11.4775 13.2008C12.5324 12.8492 13.125 12.3723 13.125 11.875V3.125"></path>
+          <path fill="none" stroke="#6366F1" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M1.875 7.5C1.875 7.99728 2.46763 8.47419 3.52252 8.82583C4.57742 9.17746 6.00816 9.375 7.5 9.375C8.99184 9.375 10.4226 9.17746 11.4775 8.82583C12.5324 8.47419 13.125 7.99728 13.125 7.5"></path>
+        </symbol>
+
+        <symbol id="icon-accuracy-check" viewBox="0 0 11 11">
+          <path fill="none" stroke="#06B6D4" stroke-width="0.916667" stroke-linecap="round" stroke-linejoin="round" d="M5.49935 10.0833C8.03065 10.0833 10.0827 8.03126 10.0827 5.49996C10.0827 2.96865 8.03065 0.916626 5.49935 0.916626C2.96804 0.916626 0.916016 2.96865 0.916016 5.49996C0.916016 8.03126 2.96804 10.0833 5.49935 10.0833Z"></path>
+          <path fill="none" stroke="#06B6D4" stroke-width="0.916667" stroke-linecap="round" stroke-linejoin="round" d="M4.125 5.50004L5.04167 6.41671L6.875 4.58337"></path>
+        </symbol>
       </defs>
     </svg>

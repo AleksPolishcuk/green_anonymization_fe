@@ -1,3 +1,4 @@
+import { useState, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import {
   DeidOutputSectionCard,
@@ -25,6 +26,31 @@ import {
 } from "./utils/parsers";
 import { headerSpriteRef } from "constants/MainPages";
 import { useDownloadRedactedTextCopy } from "./hooks/useDownloadRedactedTextCopy";
+import { FindingsTable } from "./FindingsTable";
+import type { Entity as FindingsEntity } from "./types";
+import {
+  HeaderCard,
+  HeaderTitle,
+  HeaderStats,
+  AccuracyBadge,
+  SpriteIconSvg,
+} from "./analysisStyles";
+
+const toFindingsEntities = (
+  text: string,
+  entities: Entity[],
+): FindingsEntity[] =>
+  entities.map((e, i) => ({
+    id: i,
+    text: text.slice(e.start, e.end),
+    startPos: e.start,
+    endPos: e.end,
+    score: e.score,
+    recognizer: e.entity_type,
+    pattern: "Pattern",
+    factor: "Medium",
+    selected: true,
+  }));
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
@@ -57,8 +83,48 @@ export default function DeidOutputSection() {
   ];
   const entityCount = mockEntities.length;
 
+  const [findingsEntities, setFindingsEntities] = useState<FindingsEntity[]>(
+    () => toFindingsEntities(originalText, mockEntities),
+  );
+
+  const toggleEntity = useCallback((id: number) => {
+    setFindingsEntities((prev) =>
+      prev.map((e) => (e.id === id ? { ...e, selected: !e.selected } : e)),
+    );
+  }, []);
+
+  const selectedCount = useMemo(
+    () => findingsEntities.filter((e) => e.selected).length,
+    [findingsEntities],
+  );
+
+  const accuracy = useMemo(() => {
+    if (findingsEntities.length === 0) return 0;
+    const avg =
+      findingsEntities.reduce((sum, e) => sum + e.score, 0) /
+      findingsEntities.length;
+    return Math.round(avg * 1000) / 10;
+  }, [findingsEntities]);
+
+  const selectedEntities = useMemo<Entity[]>(
+    () =>
+      findingsEntities
+        .filter((e) => e.selected)
+        .map((e) => ({
+          start: e.startPos,
+          end: e.endPos,
+          entity_type: e.recognizer,
+          score: e.score,
+          analysis_explanation: null,
+        })),
+    [findingsEntities],
+  );
+
   const originalSegments = parseTextWithEntities(originalText, mockEntities);
-  const redactedSegments = parseTextWithRedactions(originalText, mockEntities);
+  const redactedSegments = parseTextWithRedactions(
+    originalText,
+    selectedEntities,
+  );
 
   const { downloadAsJson, downloadAsText, copyToClipboard } =
     useDownloadRedactedTextCopy();
@@ -77,6 +143,26 @@ export default function DeidOutputSection() {
 
   return (
     <DeidOutputSectionRoot>
+      <HeaderCard>
+        <div>
+          <HeaderTitle>{t("header.title")}</HeaderTitle>
+          <HeaderStats>
+            {/* TODO: Make dynamic based on selected framework */}
+            {t("header.stats", {
+              totalCount: entityCount,
+              selectedCount,
+              framework: "HIPAA",
+            })}
+          </HeaderStats>
+        </div>
+        <AccuracyBadge>
+          <SpriteIconSvg aria-hidden="true">
+            <use href={headerSpriteRef("icon-accuracy-check")} />
+          </SpriteIconSvg>
+          {t("header.accuracy", { value: accuracy })}
+        </AccuracyBadge>
+      </HeaderCard>
+
       <DeidOutputSectionStack>
         <DeidOutputSectionCard>
           <CardHeader>
@@ -144,6 +230,13 @@ export default function DeidOutputSection() {
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
       </DeidOutputSectionStack>
+
+      <FindingsTable
+        entities={findingsEntities}
+        selectedCount={selectedCount}
+        totalCount={entityCount}
+        onToggle={toggleEntity}
+      />
     </DeidOutputSectionRoot>
   );
 }

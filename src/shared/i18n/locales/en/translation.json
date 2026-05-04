@@ -266,6 +266,11 @@
     "workspace": "Workspace",
     "dashboard": "Dashboard",
     "deidentify": "De-Identify",
+    "deidSteps": {
+      "framework": "Framework",
+      "dataSource": "Data Source",
+      "results": "Results"
+    },
     "syntheticData": "Synthetic Data"
   },
   "deidHeader": {
@@ -277,6 +282,11 @@
     "dark": "Switch to dark mode"
   },
   "deidOutput": {
+    "header": {
+      "title": "Analysis Complete",
+      "stats": "{{totalCount}} PII entities detected \u00b7 {{selectedCount}} selected \u00b7 {{framework}} compliance verified",
+      "accuracy": "{{value}}% accuracy"
+    },
     "originalText": {
       "title": "Original Text",
       "subtitle": "Detected entities highlighted",
@@ -290,6 +300,24 @@
       "downloadTxt": "Download .txt",
       "downloadJson": "Download .json",
       "redactedContentTooltip": "Redacted information"
+    },
+    "findingsTable": {
+      "title": "Findings & Decision Factors",
+      "stats": "{{totalCount}} entities detected \u00b7 {{selectedCount}} selected for de-identification",
+      "columns": {
+        "id": "#",
+        "text": "Text",
+        "position": "Pos",
+        "score": "Score",
+        "recognizer": "Recognizer",
+        "pattern": "Pattern",
+        "factor": "Factor",
+        "action": "Action"
+      },
+      "actions": {
+        "selected": "Selected",
+        "deselected": "Deselected"
+      }
     }
   },
   "notFound": {

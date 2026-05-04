@@ -189,3 +189,58 @@ export const SidebarNavIcon = styled("svg")(({ theme }) => ({
   fill: "none",
   stroke: theme.palette.text.secondary,
 }));
+
+export const SubNavList = styled("ul", {
+  shouldForwardProp: (prop) => prop !== "$isMobileOpen",
+})<{ $isMobileOpen: boolean }>(({ theme, $isMobileOpen }) => ({
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
+  paddingLeft: theme.spacing(9),
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(0.5),
+  opacity: $isMobileOpen ? 1 : 0,
+  visibility: $isMobileOpen ? "visible" : "hidden",
+  transition: "opacity 0.2s ease, visibility 0.2s ease",
+
+  [theme.breakpoints.up("md")]: {
+    opacity: 1,
+    visibility: "visible",
+  },
+}));
+
+export const SubNavStepIcon = styled("svg")({
+  width: 16,
+  height: 16,
+  flexShrink: 0,
+  display: "block",
+  overflow: "visible",
+});
+
+export const SubNavItem = styled("li", {
+  shouldForwardProp: (prop) => prop !== "$active" && prop !== "$disabled",
+})<{ $active?: boolean; $disabled?: boolean }>(
+  ({ theme, $active, $disabled }) => ({
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(2),
+    padding: theme.spacing(1.5, 2),
+    borderRadius: theme.spacing(1),
+    color: $disabled
+      ? theme.palette.text.disabled
+      : $active
+        ? theme.palette.text.primary
+        : theme.palette.text.secondary,
+    fontWeight: $active ? 600 : 400,
+    fontSize: theme.typography.fontSize14,
+  }),
+);
+
+export const SubNavChevron = styled("span")(({ theme }) => ({
+  marginLeft: "auto",
+  display: "flex",
+  alignItems: "center",
+  color: theme.palette.text.secondary,
+  fontSize: 16,
+}));

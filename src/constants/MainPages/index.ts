@@ -303,3 +303,26 @@ export const footerNavLinks: FooterNavLinkItem[] = [
 ];
 
 export const footerNavColumnTitleKey = "footer.columns.info";
+
+export const REDACTED_PLACEHOLDER = "[REDACTED]";
+
+export const RECOGNIZER_TYPES = {
+  PERSON: "PERSON",
+  DATE_TIME: "DATE_TIME",
+  AGE: "AGE",
+  PHONE_NUMBER: "PHONE_NUMBER",
+  EMAIL_ADDRESS: "EMAIL_ADDRESS",
+  MEDICAL_RECORD_NUMBER: "MEDICAL_RECORD_NUMBER",
+} as const;
+
+export const DOWNLOAD_FILENAMES = {
+  TXT: "de-identified-output.txt",
+  JSON: "analysis-result.json",
+} as const;
+
+export const MIME_TYPES = {
+  TEXT: "text/plain",
+  JSON: "application/json",
+} as const;
+
+export const FINDINGS_PAGE_SIZE = 10;
