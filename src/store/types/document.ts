@@ -20,16 +20,19 @@ export type Entity = {
   id: string;
   documentId: string;
   entityType: EntityType;
-  value: string;
   confidence: Confidence;
   posStart: number;
   posEnd: number;
   score: number;
+  selected: boolean;
 };
 
 export type DocumentState = {
+  currentStep: DeidStep;
   selectedFramework: ComplianceFramework;
   originalText: string;
   redactedText: string;
   entities: Entity[];
 };
+
+export type DeidStep = "framework" | "dataSource" | "results";

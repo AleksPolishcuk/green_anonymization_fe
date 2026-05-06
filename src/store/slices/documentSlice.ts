@@ -6,8 +6,7 @@ import type {
   Entity,
 } from "store/types/document";
 import { DOCUMENT_MOCK } from "store/mocks/documentMock";
-
-const DEID_STEPS: DeidStep[] = ["framework", "dataSource", "results"];
+import { DEID_STEPS } from "constants/MainPages";
 
 const initialState: DocumentState = {
   currentStep: "results",
@@ -50,6 +49,15 @@ export const documentSlice = createSlice({
         Object.assign(entity, action.payload.changes);
       }
     },
+
+    toggleEntitySelected: (state, action: PayloadAction<string>) => {
+      const entity = state.entities.find((e) => e.id === action.payload);
+
+      if (entity) {
+        entity.selected = !entity.selected;
+      }
+    },
+
     setDeidStep: (state, action: PayloadAction<DeidStep>) => {
       state.currentStep = action.payload;
     },
@@ -80,8 +88,11 @@ export const {
   setRedactedText,
   setEntities,
   updateEntity,
+  toggleEntitySelected,
   resetDocument,
   setDeidStep,
   nextDeidStep,
   prevDeidStep,
 } = documentSlice.actions;
+
+export default documentSlice.reducer;

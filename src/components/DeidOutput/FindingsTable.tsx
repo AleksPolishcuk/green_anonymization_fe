@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
 import { Loader } from "shared/ui/Loader";
+import type { Entity } from "store/types/document";
 
-import type { Entity } from "./types";
 import {
   TableCard,
   TableHeader,
@@ -24,17 +25,18 @@ import {
   LoaderRow,
   SpriteIconSvg,
 } from "./analysisStyles";
-import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
 
 type FindingsTableProps = {
   entities: Entity[];
+  originalText: string;
   selectedCount: number;
   totalCount: number;
-  onToggle: (id: number) => void;
+  onToggle: (id: string) => void;
 };
 
 export const FindingsTable = ({
   entities,
+  originalText,
   selectedCount,
   totalCount,
   onToggle,
@@ -103,7 +105,6 @@ export const FindingsTable = ({
                 <Th>{t("findingsTable.columns.position")}</Th>
                 <Th>{t("findingsTable.columns.score")}</Th>
                 <Th>{t("findingsTable.columns.recognizer")}</Th>
-                <Th>{t("findingsTable.columns.pattern")}</Th>
                 <Th>{t("findingsTable.columns.factor")}</Th>
                 <Th>{t("findingsTable.columns.action")}</Th>
               </tr>
@@ -112,9 +113,11 @@ export const FindingsTable = ({
               {visibleEntities.map((entity) => (
                 <Tr key={entity.id}>
                   <Td>{entity.id}</Td>
-                  <TdBold>{entity.text}</TdBold>
+                  <TdBold>
+                    {originalText.slice(entity.posStart, entity.posEnd)}
+                  </TdBold>
                   <Td>
-                    {entity.startPos}–{entity.endPos}
+                    {entity.posStart}–{entity.posEnd}
                   </Td>
                   <Td>
                     <ScoreBadge $score={entity.score}>
@@ -122,12 +125,11 @@ export const FindingsTable = ({
                     </ScoreBadge>
                   </Td>
                   <Td>
-                    <RecognizerBadge $type={entity.recognizer}>
-                      {entity.recognizer}
+                    <RecognizerBadge $type={entity.entityType}>
+                      {entity.entityType}
                     </RecognizerBadge>
                   </Td>
-                  <Td>{entity.pattern}</Td>
-                  <Td>{entity.factor}</Td>
+                  <Td>{entity.confidence}</Td>
                   <Td>
                     <ToggleButton
                       $selected={entity.selected}

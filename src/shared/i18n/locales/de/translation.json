@@ -302,7 +302,6 @@
         "position": "Pos",
         "score": "Wert",
         "recognizer": "Erkenner",
-        "pattern": "Muster",
         "factor": "Faktor",
         "action": "Aktion"
       },

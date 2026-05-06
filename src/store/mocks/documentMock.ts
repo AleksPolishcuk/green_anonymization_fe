@@ -15,6 +15,7 @@ export const DOCUMENT_MOCK: DocumentState = {
       score: 0.85,
       confidence: "Low",
       documentId: "1",
+      selected: true,
     },
     {
       id: "2",
@@ -25,6 +26,7 @@ export const DOCUMENT_MOCK: DocumentState = {
       score: 0.85,
       confidence: "Medium",
       documentId: "2",
+      selected: true,
     },
     {
       id: "3",
@@ -35,6 +37,7 @@ export const DOCUMENT_MOCK: DocumentState = {
       score: 0.85,
       confidence: "High",
       documentId: "3",
+      selected: true,
     },
   ],
 };

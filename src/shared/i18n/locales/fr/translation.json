@@ -302,7 +302,6 @@
         "position": "Pos",
         "score": "Score",
         "recognizer": "Reconnaisseur",
-        "pattern": "Motif",
         "factor": "Facteur",
         "action": "Action"
       },

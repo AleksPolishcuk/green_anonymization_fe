@@ -1,3 +1,5 @@
+import type { DeidStep } from "store/types/document";
+
 export const headerNavItems = [
   { key: "solution", to: "/#solution" as const },
   { key: "contactUs", to: "/contactus" as const },
@@ -345,3 +347,10 @@ export const MIME_TYPES = {
 } as const;
 
 export const FINDINGS_PAGE_SIZE = 10;
+
+export const DEID_OUTPUT_FILENAME = "de-identified-output";
+
+export const ACCURACY_PERCENT_MULTIPLIER = 100;
+export const ACCURACY_DECIMAL_PRECISION = 10;
+
+export const DEID_STEPS: DeidStep[] = ["framework", "dataSource", "results"];

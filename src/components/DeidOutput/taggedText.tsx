@@ -17,7 +17,7 @@ export const TaggedText: React.FC<TaggedTextProps> = ({ segments }) => {
         switch (segment.type) {
           case "entity":
             return (
-              <EntityHighlight key={index} title={segment.entity?.entity_type}>
+              <EntityHighlight key={index} title={segment.entity?.entityType}>
                 {segment.content}
               </EntityHighlight>
             );

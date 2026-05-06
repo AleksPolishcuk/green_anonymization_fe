@@ -21,10 +21,10 @@ import {
   SubNavList,
   SubNavChevron,
 } from "./styles";
-import { headerSpriteRef } from "constants/MainPages";
+import { DEID_STEPS, headerSpriteRef } from "constants/MainPages";
 import { useSidebar } from "./useSidebar";
 import { useAppSelector } from "store/hooks";
-import { DEID_STEPS, type DeidStep } from "store/slices/documentSlice";
+import type { DeidStep } from "store/types/document";
 
 const DEID_STEP_LABELS: Record<DeidStep, string> = {
   framework: "sidebar.deidSteps.framework",
