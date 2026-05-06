@@ -269,6 +269,28 @@
     "title": "Flux de dé-identification",
     "subtitle": "Détection et anonymisation des PII de niveau entreprise — conforme HIPAA · RGPD · LPD"
   },
+  "input": {
+    "title": "Saisir un texte clinique",
+    "subtitle": "Collez un texte clinique ou téléchargez un document pour analyse",
+    "step": "ÉTAPE 2",
+    "form": {
+      "successMessage": "Demande envoyée avec succès",
+      "errors": {
+        "messageMaxLength": "Le message ne doit pas dépasser 5000 caractères",
+        "fileTooLarge": "Le fichier est trop volumineux",
+        "fileWrongFormat": "Format de fichier non pris en charge",
+        "required": "Fournissez soit un texte, soit un fichier"
+      },
+      "submitting": "...Envoi en cours",
+      "fileSupport": "Formats pris en charge : txt, pdf, docx — max 50 Mo",
+      "estimated": "Temps de traitement estimé : ~2s",
+      "submitButton": "Analyser et désidentifier",
+      "fileDragActive": "Déposez le fichier ici...",
+      "fileDragInactive": "Déposez le fichier ici ou cliquez pour parcourir",
+      "textPlaceholder": "Patient : Dr Sarah Johnson\nDate de visite : 15 mars 2026\nNuméro de dossier médical : MRN789456123\n\nMotif principal :\nPatiente de 45 ans présentant des maux de tête persistants.\n\nHistorique :\nLa patiente indique que les maux de tête ont commencé il y a environ 2 semaines. Les dossiers du 28/02/2026 indiquent un traitement de l'hypertension. Contact : 555-123-4567 ou sarah.johnson@email.com.\n\nAdresse : 123 Medical Center Drive, Springfield Évaluation : Suivi recommandé avec imagerie et surveillance de la tension artérielle. Sécurité sociale : 123-45-6789 ID patient : 987654321 Prochain rendez-vous : 1er avril 2026 à 10h00."
+    }
+  },
+
   "themeToggle": {
     "light": "Passer en mode clair",
     "dark": "Passer en mode sombre"

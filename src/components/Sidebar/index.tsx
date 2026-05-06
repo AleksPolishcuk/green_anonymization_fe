@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { ChevronRight } from "@mui/icons-material";
 
 import {
+  SidebarExitIcon,
   SidebarLogoBox,
   SidebarLogoIcon,
   SidebarLogoRow,
@@ -11,6 +12,11 @@ import {
   SidebarNavIcon,
   SidebarNavIconBox,
   SidebarNavItem,
+  SidebarProfileContainer,
+  SidebarProfileIcon,
+  SidebarProfileTextContainer,
+  SidebarProFileTextHeading,
+  SidebarProFileTextSubtitle,
   SidebarRoot,
   SidebarSectionTitle,
   SidebarSubtitle,
@@ -21,9 +27,12 @@ import {
   SubNavList,
   SubNavChevron,
 } from "./styles";
+import { useAppSelector } from "store/hooks";
+import { logout } from "store/slices/authSlice";
+import { useAppDispatch } from "store/hooks";
+import { useNavigate } from "react-router-dom";
 import { DEID_STEPS, headerSpriteRef } from "constants/MainPages";
 import { useSidebar } from "./useSidebar";
-import { useAppSelector } from "store/hooks";
 import type { DeidStep } from "store/types/document";
 
 const DEID_STEP_LABELS: Record<DeidStep, string> = {
@@ -34,6 +43,13 @@ const DEID_STEP_LABELS: Record<DeidStep, string> = {
 
 export default function Sidebar() {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const user = useAppSelector((state) => state.auth?.user);
+  const handleExitClick = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   const location = useLocation();
   const currentStep = useAppSelector((s) => s.document.currentStep);
 
@@ -142,6 +158,23 @@ export default function Sidebar() {
           <Typography variant="body1">{t("sidebar.syntheticData")}</Typography>
         </SidebarNavItem>
       </SidebarNav>
+      <SidebarProfileContainer>
+        <SidebarProfileIcon>
+          {user?.firstName.charAt(0)}
+          {user?.lastName.charAt(0)}
+        </SidebarProfileIcon>
+
+        <SidebarProfileTextContainer>
+          <SidebarProFileTextHeading>
+            {user?.firstName} {user?.lastName}
+          </SidebarProFileTextHeading>
+          <SidebarProFileTextSubtitle>{user?.email}</SidebarProFileTextSubtitle>
+        </SidebarProfileTextContainer>
+
+        <SidebarExitIcon onClick={handleExitClick}>
+          <use href={headerSpriteRef("icon-exit")} />
+        </SidebarExitIcon>
+      </SidebarProfileContainer>
     </SidebarRoot>
   );
 }

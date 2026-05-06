@@ -182,37 +182,41 @@
     "hero": {
       "title1": "Welcome back to",
       "title2": "Clinical Data Studio",
-      "description": "Enterprise-grade PII detection and anonymization for healthcare data.<lineBreak />Protect patient privacy while preserving analytical value."
-    },
-    "stats": {
-      "clients": {
-        "value": "50+",
-        "label": "Clients"
-      },
-      "records": {
-        "value": "2B+",
-        "label": "Records"
-      },
-      "uptime": {
-        "value": "99.9%",
-        "label": "Uptime"
+      "description": "Enterprise-grade PII detection and anonymization for healthcare data.<lineBreak />Protect patient privacy while preserving analytical value.",
+      "stats": {
+        "clients": {
+          "value": "50+",
+          "label": "Clients"
+        },
+        "records": {
+          "value": "2B+",
+          "label": "Records"
+        },
+        "uptime": {
+          "value": "99.9%",
+          "label": "Uptime"
+        }
       }
     },
-    "heading": "Sign In",
-    "subtext": "Enter your email to get a sign-in link.",
-    "emailLabel": "Email",
-    "emailPlaceholder": "john.doe@example.com",
-    "submitButton": "Sign In",
-    "validation": {
-      "required": "Email is required"
-    },
-    "status": {
-      "successTitle": "Email Sent!",
-      "successDescription": "Check your inbox for the sign-in link.",
-      "errorTitle": "Failed to Send Email!",
-      "errorDescription": "{{error}}"
-    },
-    "bottomText": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
+    "form": {
+      "heading": "Sign In",
+      "subtext": "Enter your email to get a sign-in link.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "john.doe@example.com",
+      "submitButton": "Sign In",
+      "validation": {},
+      "status": {
+        "successTitle": "Email Sent!",
+        "successDescription": "Check your inbox for the sign-in link.",
+        "errorTitle": "Failed to Send Email!",
+        "errorDescription": "{{error}}",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "emailTooShort": "Email is too short",
+        "emailTooLong": "Email is too long"
+      },
+      "bottomText": "By signing in, you agree to our <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
+    }
   },
   "register": {
     "heading": "Create your account",
@@ -225,8 +229,18 @@
       "lastNameRequired": "Last name is required",
       "companyLabel": "Company",
       "companyPlaceholder": "Your organization",
-      "companyRequired": "Company name is required",
-      "submitButton": "Continue"
+
+      "submitButton": "Continue",
+      "errors": {
+        "firstNameRequired": "First name is required",
+        "firstNameMinLength": "First name must be at least 2 characters",
+        "firstNameMaxLength": "First name cannot exceed 200 characters",
+        "lastNameRequired": "Last name is required",
+        "lastNameMinLength": "Last name must be at least 2 characters",
+        "lastNameMaxLength": "Last name cannot exceed 200 characters",
+        "companyRequired": "Company name is required",
+        "companyMaxLength": "Company name cannot exceed 500 characters"
+      }
     },
     "status": {
       "successTitle": "Account Created!",
@@ -268,6 +282,28 @@
   "deidHeader": {
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
+  },
+  "input": {
+    "title": "Input Clinical Text",
+    "subtitle": "Paste clinical text or upload a document for analysis",
+    "step": "STEP 2",
+
+    "form": {
+      "successMessage": "Request submitted successfully",
+      "errors": {
+        "messageMaxLength": "Message must not exceed 5000 characters",
+        "fileTooLarge": "File is too large",
+        "fileWrongFormat": "Unsupported file format",
+        "required": "Provide either text or file"
+      },
+      "submitting": "...Submitting",
+      "fileSupport": "Supports: txt, pdf, docx — max 50 MB",
+      "estimated": "Estimated processing time: ~2s",
+      "submitButton": "Analyze & De-Identify",
+      "fileDragActive": "Drop file here...",
+      "fileDragInactive": "Drop file here, or click to browse",
+      "textPlaceholder": "Patient: Dr. Sarah Johnson\nDate of Visit: March 15, 2026\nMedical Record Number: MRN789456123\n\nChief Complaint:\nThe patient is a 45-year-old female presenting with persistent headaches.\n\nHistory:\nPatient reports headaches started approximately 2 weeks ago. Previous medical records from 02/28/2026 indicate hypertension management. Patient can be reached at 555-123-4567 or sarah.johnson@email.com.\n\nPhysical Address: 123 Medical Center Drive, Springfield Assessment: Recommend follow-up imaging and blood pressure monitoring. Social Security: 123-45-6789 Patient ID: 987654321 Next appointment scheduled for April 1, 2026 at 10:00 AM."
+    }
   },
   "themeToggle": {
     "light": "Switch to light mode",

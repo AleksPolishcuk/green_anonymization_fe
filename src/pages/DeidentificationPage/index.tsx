@@ -1,5 +1,6 @@
 import DeidHeader from "components/DeidHeader";
 import FrameworkSection from "components/Frameworks";
+import Input from "components/Input";
 import DeidOutputSection from "components/DeidOutput";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { nextDeidStep, prevDeidStep } from "store/slices/documentSlice";
@@ -58,6 +59,7 @@ export default function DeidentificationPage() {
     <>
       <DeidHeader />
       <FrameworkSection />
+      <Input />
       {debugButtons}
     </>
   );

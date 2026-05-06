@@ -269,6 +269,27 @@
     "title": "De-identificatie workflow",
     "subtitle": "PII-detectie en anonimisering op bedrijfsniveau — HIPAA · AVG · DSG conform"
   },
+  "input": {
+    "title": "Voer klinische tekst in",
+    "subtitle": "Plak klinische tekst of upload een document voor analyse",
+    "step": "STAP 2",
+    "form": {
+      "successMessage": "Verzoek succesvol verzonden",
+      "errors": {
+        "messageMaxLength": "Het bericht mag niet langer zijn dan 5000 tekens",
+        "fileTooLarge": "Bestand is te groot",
+        "fileWrongFormat": "Niet-ondersteund bestandsformaat",
+        "required": "Geef tekst of een bestand op"
+      },
+      "submitting": "...Verzenden",
+      "fileSupport": "Ondersteunt: txt, pdf, docx — max 50 MB",
+      "estimated": "Geschatte verwerkingstijd: ~2s",
+      "submitButton": "Analyseren en anonimiseren",
+      "fileDragActive": "Bestand hier neerzetten...",
+      "fileDragInactive": "Bestand hier neerzetten of klik om te bladeren",
+      "textPlaceholder": "Patiënt: Dr. Sarah Johnson\nBezoekdatum: 15 maart 2026\nMedisch dossiernummer: MRN789456123\n\nHoofdklacht:\n45-jarige vrouwelijke patiënt met aanhoudende hoofdpijn.\n\nGeschiedenis:\nKlachten begonnen ongeveer 2 weken geleden. Dossiers van 28-02-2026 tonen behandeling van hypertensie. Bereikbaar via 555-123-4567 of sarah.johnson@email.com.\n\nAdres: 123 Medical Center Drive, Springfield Beoordeling: vervolgonderzoek en bloeddrukcontrole aanbevolen. BSN: 123-45-6789 Patiënt-ID: 987654321 Volgende afspraak: 1 april 2026 om 10:00."
+    }
+  },
   "themeToggle": {
     "light": "Schakel naar lichte modus",
     "dark": "Schakel naar donkere modus"

@@ -269,6 +269,27 @@
     "title": "Flujo de desidentificación",
     "subtitle": "Detección y anonimización de PII de nivel empresarial — conforme con HIPAA · RGPD · LPD"
   },
+  "input": {
+    "title": "Introducir texto clínico",
+    "subtitle": "Pegue texto clínico o cargue un documento para su análisis",
+    "step": "PASO 2",
+    "form": {
+      "successMessage": "Solicitud enviada con éxito",
+      "errors": {
+        "messageMaxLength": "El mensaje no debe superar los 5000 caracteres",
+        "fileTooLarge": "El archivo es demasiado grande",
+        "fileWrongFormat": "Formato de archivo no compatible",
+        "required": "Proporcione texto o un archivo"
+      },
+      "submitting": "...Enviando",
+      "fileSupport": "Soporta: txt, pdf, docx — máx. 50 MB",
+      "estimated": "Tiempo estimado de procesamiento: ~2s",
+      "submitButton": "Analizar y desidentificar",
+      "fileDragActive": "Suelta el archivo aquí...",
+      "fileDragInactive": "Suelta el archivo aquí o haz clic para buscar",
+      "textPlaceholder": "Paciente: Dra. Sarah Johnson\nFecha de visita: 15 de marzo de 2026\nNúmero de historial médico: MRN789456123\n\nMotivo de consulta:\nPaciente femenina de 45 años con dolores de cabeza persistentes.\n\nHistorial:\nLa paciente indica que los dolores comenzaron hace aproximadamente 2 semanas. Registros previos del 28/02/2026 indican tratamiento de hipertensión. Puede contactarse al 555-123-4567 o sarah.johnson@email.com.\n\nDirección: 123 Medical Center Drive, Springfield Evaluación: Se recomienda seguimiento con estudios de imagen y control de presión arterial. Seguridad social: 123-45-6789 ID del paciente: 987654321 Próxima cita: 1 de abril de 2026 a las 10:00."
+    }
+  },
   "themeToggle": {
     "light": "Cambiar a modo claro",
     "dark": "Cambiar a modo oscuro"

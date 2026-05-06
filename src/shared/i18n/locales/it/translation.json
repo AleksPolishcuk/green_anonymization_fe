@@ -269,6 +269,27 @@
     "title": "Flusso di de-identificazione",
     "subtitle": "Rilevamento e anonimizzazione PII di livello enterprise — conforme HIPAA · GDPR · LPD"
   },
+  "input": {
+    "title": "Inserisci testo clinico",
+    "subtitle": "Incolla il testo clinico o carica un documento per l'analisi",
+    "step": "PASSO 2",
+    "form": {
+      "successMessage": "Richiesta inviata con successo",
+      "errors": {
+        "messageMaxLength": "Il messaggio non deve superare i 5000 caratteri",
+        "fileTooLarge": "Il file è troppo grande",
+        "fileWrongFormat": "Formato file non supportato",
+        "required": "Fornire testo o file"
+      },
+      "submitting": "...Invio in corso",
+      "fileSupport": "Supportati: txt, pdf, docx — max 50 MB",
+      "estimated": "Tempo stimato di elaborazione: ~2s",
+      "submitButton": "Analizza e de-identifica",
+      "fileDragActive": "Rilascia il file qui...",
+      "fileDragInactive": "Rilascia il file qui o clicca per selezionarlo",
+      "textPlaceholder": "Paziente: Dott.ssa Sarah Johnson\nData visita: 15 marzo 2026\nNumero cartella clinica: MRN789456123\n\nMotivo principale:\nPaziente di 45 anni con cefalee persistenti.\n\nAnamnesi:\nI sintomi sono iniziati circa 2 settimane fa. Documenti del 28/02/2026 indicano trattamento per ipertensione. Contatto: 555-123-4567 o sarah.johnson@email.com.\n\nIndirizzo: 123 Medical Center Drive, Springfield Valutazione: raccomandati ulteriori esami diagnostici e monitoraggio della pressione. Codice fiscale: 123-45-6789 ID paziente: 987654321 Prossimo appuntamento: 1 aprile 2026 alle 10:00."
+    }
+  },
   "themeToggle": {
     "light": "Passa alla modalità chiara",
     "dark": "Passa alla modalità scura"

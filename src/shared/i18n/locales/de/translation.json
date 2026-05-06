@@ -269,6 +269,27 @@
     "title": "De-Identifikations-Workflow",
     "subtitle": "Unternehmensweite PII-Erkennung und Anonymisierung — HIPAA · DSGVO · DSG konform"
   },
+  "input": {
+    "title": "Klinischen Text eingeben",
+    "subtitle": "Fügen Sie klinischen Text ein oder laden Sie ein Dokument zur Analyse hoch",
+    "step": "SCHRITT 2",
+    "form": {
+      "successMessage": "Anfrage erfolgreich übermittelt",
+      "errors": {
+        "messageMaxLength": "Die Nachricht darf 5000 Zeichen nicht überschreiten",
+        "fileTooLarge": "Die Datei ist zu groß",
+        "fileWrongFormat": "Nicht unterstütztes Dateiformat",
+        "required": "Bitte geben Sie entweder Text ein oder laden Sie eine Datei hoch"
+      },
+      "submitting": "...Wird gesendet",
+      "fileSupport": "Unterstützt: txt, pdf, docx — max. 50 MB",
+      "estimated": "Geschätzte Verarbeitungszeit: ~2s",
+      "submitButton": "Analysieren & de-identifizieren",
+      "fileDragActive": "Datei hier ablegen...",
+      "fileDragInactive": "Datei hier ablegen oder klicken, um zu durchsuchen",
+      "textPlaceholder": "Patient: Dr. Sarah Johnson\nBesuchsdatum: 15. März 2026\nMedizinische Aktennummer: MRN789456123\n\nHauptbeschwerde:\nDie Patientin ist eine 45-jährige Frau mit anhaltenden Kopfschmerzen.\n\nVerlauf:\nDie Patientin berichtet, dass die Kopfschmerzen vor etwa 2 Wochen begonnen haben. Frühere Unterlagen vom 28.02.2026 zeigen eine Behandlung von Bluthochdruck. Die Patientin ist erreichbar unter 555-123-4567 oder sarah.johnson@email.com.\n\nAdresse: 123 Medical Center Drive, Springfield Bewertung: Empfohlen werden weitere Bildgebung und Blutdrucküberwachung. Sozialversicherungsnummer: 123-45-6789 Patienten-ID: 987654321 Nächster Termin: 1. April 2026 um 10:00 Uhr."
+    }
+  },
   "themeToggle": {
     "light": "Zum hellen Modus wechseln",
     "dark": "Zum dunklen Modus wechseln"

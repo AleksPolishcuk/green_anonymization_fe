@@ -1,5 +1,4 @@
 import { alpha, Box, styled, Typography } from "@mui/material";
-import { OkCheckmarkIcon } from "assets/icons/auth/OkCheckmarkIcon";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const EmailSentMsg = styled(Box)(({ theme }) => ({
@@ -22,9 +21,12 @@ export const StatusIconWrapper = styled(Box)(({ theme }) => ({
   flexShrink: 0,
 }));
 
-export const SuccessStatusIcon = styled(OkCheckmarkIcon)(({ theme }) => ({
+export const SuccessStatusIcon = styled("svg")(({ theme }) => ({
   width: theme.spacing(4.5),
   height: theme.spacing(4.5),
+  display: "block",
+  fill: "none",
+  color: theme.palette.accent.green,
 }));
 
 export const ErrorStatusIcon = styled(ErrorOutlineIcon)(({ theme }) => ({
