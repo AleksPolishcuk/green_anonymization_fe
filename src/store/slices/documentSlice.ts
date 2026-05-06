@@ -9,7 +9,7 @@ import { DOCUMENT_MOCK } from "store/mocks/documentMock";
 import { DEID_STEPS } from "constants/MainPages";
 
 const initialState: DocumentState = {
-  currentStep: "framework",
+  currentStep: DOCUMENT_MOCK.currentStep,
   entities: DOCUMENT_MOCK.entities,
   originalText: DOCUMENT_MOCK.originalText,
   redactedText: DOCUMENT_MOCK.redactedText,

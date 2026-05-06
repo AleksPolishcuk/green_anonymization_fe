@@ -1,6 +1,7 @@
 import type { DocumentState } from "store/types/document";
 
 export const DOCUMENT_MOCK: DocumentState = {
+  currentStep: "framework",
   selectedFramework: "HIPAA_US",
   originalText:
     "Patient: Dr. Sarah Johnson Date of Visit: March 15, 2026 Chief Complaint: The patient is a 45-year-old female presenting with persistent headaches.",
@@ -9,7 +10,6 @@ export const DOCUMENT_MOCK: DocumentState = {
     {
       id: "1",
       entityType: "PERSON",
-      value: "Dr. Sarah Johnson",
       posStart: 13,
       posEnd: 26,
       score: 0.85,
@@ -20,7 +20,6 @@ export const DOCUMENT_MOCK: DocumentState = {
     {
       id: "2",
       entityType: "DATE_TIME",
-      value: "March 15, 2026",
       posStart: 42,
       posEnd: 56,
       score: 0.85,
@@ -31,7 +30,6 @@ export const DOCUMENT_MOCK: DocumentState = {
     {
       id: "3",
       entityType: "DATE_TIME",
-      value: "45-year-old",
       posStart: 91,
       posEnd: 102,
       score: 0.85,
