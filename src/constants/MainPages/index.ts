@@ -5,7 +5,7 @@ export const headerNavItems = [
 
 export const headerRoutes = {
   home: "/",
-  signIn: "/sign-in",
+  dashboard: "/dashboard",
 } as const;
 
 const headerAssetPaths = {

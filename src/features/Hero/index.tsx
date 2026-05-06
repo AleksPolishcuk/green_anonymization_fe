@@ -28,7 +28,9 @@ import {
 
 const Hero = () => {
   const { t } = useTranslation();
-  const handleGetStartedClick = useCtaNavigate({ target: headerRoutes.signIn });
+  const handleGetStartedClick = useCtaNavigate({
+    target: headerRoutes.dashboard,
+  });
 
   return (
     <Section>

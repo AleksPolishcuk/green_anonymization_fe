@@ -1,8 +1,5 @@
 import { InputAdornment } from "@mui/material";
-import { CompanyIcon } from "assets/icons/auth/CompanyIcon";
-import { PersonIcon } from "assets/icons/auth/PersonIcon";
-import { RightArrowIcon } from "assets/icons/auth/RightArrowIcon";
-import type { useRegisterForm } from "features/Auth/hooks/useRegisterForm";
+import { useRegisterForm } from "features/Auth/hooks/useRegisterForm";
 import { Controller } from "react-hook-form";
 import { Loader } from "shared/ui/Loader";
 import {
@@ -14,7 +11,7 @@ import {
   SuccessStatusDescriptionText,
   ErrorStatusIcon,
   ErrorStatusDescriptionText,
-} from "../EmailStatus/styles";
+} from "features/Auth/components/EmailStatus/styles";
 import {
   RegisterHeading,
   RegisterFormBox,
@@ -22,17 +19,21 @@ import {
   FieldWrapper,
   NameLabel,
   CompanyRow,
-  RegisterButton,
+  CompanyIcon,
+  PersonIcon,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import { FormInputField } from "../styles";
+import {
+  FormInputField,
+  RightArrowIcon,
+  SubmitButton,
+} from "features/Auth/components/styles";
+import { headerSpriteRef } from "constants/MainPages";
 
-type Props = {
-  form: ReturnType<typeof useRegisterForm>;
-};
-
-export default function RegisterForm({ form }: Props) {
+export default function RegisterForm() {
   const { t } = useTranslation();
+
+  const form = useRegisterForm();
 
   return (
     <>
@@ -47,8 +48,6 @@ export default function RegisterForm({ form }: Props) {
               <Controller
                 name="firstName"
                 control={form.control}
-                defaultValue=""
-                rules={{ required: t("register.form.firstNameRequired") }}
                 render={({ field }) => (
                   <FormInputField
                     {...field}
@@ -56,11 +55,15 @@ export default function RegisterForm({ form }: Props) {
                     fullWidth
                     type="text"
                     placeholder={t("register.form.firstNamePlaceholder")}
+                    error={!!form.formState.errors.firstName}
+                    helperText={form.formState.errors.firstName?.message || ""}
                     slotProps={{
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonIcon />
+                            <PersonIcon>
+                              <use href={headerSpriteRef("person-icon")} />
+                            </PersonIcon>
                           </InputAdornment>
                         ),
                       },
@@ -80,8 +83,6 @@ export default function RegisterForm({ form }: Props) {
               <Controller
                 name="lastName"
                 control={form.control}
-                defaultValue=""
-                rules={{ required: t("register.form.lastNameRequired") }}
                 render={({ field }) => (
                   <FormInputField
                     {...field}
@@ -89,11 +90,15 @@ export default function RegisterForm({ form }: Props) {
                     fullWidth
                     type="text"
                     placeholder={t("register.form.lastNamePlaceholder")}
+                    error={!!form.formState.errors.lastName}
+                    helperText={form.formState.errors.lastName?.message || ""}
                     slotProps={{
                       input: {
                         startAdornment: (
                           <InputAdornment position="start">
-                            <PersonIcon />
+                            <PersonIcon>
+                              <use href={headerSpriteRef("person-icon")} />
+                            </PersonIcon>
                           </InputAdornment>
                         ),
                       },
@@ -114,8 +119,6 @@ export default function RegisterForm({ form }: Props) {
             <Controller
               name="companyName"
               control={form.control}
-              defaultValue=""
-              rules={{ required: t("register.form.companyRequired") }}
               render={({ field }) => (
                 <FormInputField
                   {...field}
@@ -123,25 +126,36 @@ export default function RegisterForm({ form }: Props) {
                   fullWidth
                   type="text"
                   placeholder={t("register.form.companyPlaceholder")}
+                  error={!!form.formState.errors.companyName}
+                  helperText={form.formState.errors.companyName?.message || ""}
                   slotProps={{
                     input: {
                       startAdornment: (
                         <InputAdornment position="start">
-                          <CompanyIcon />
+                          <CompanyIcon>
+                            <use href={headerSpriteRef("person-icon")} />
+                          </CompanyIcon>
                         </InputAdornment>
                       ),
                     },
                     htmlInput: {
-                      autoComplete: "organization",
+                      autoComplete: "given-name",
                     },
                   }}
                 />
               )}
             />
           </CompanyRow>
-          <RegisterButton type="submit" fullWidth>
-            {t("register.form.submitButton")} <RightArrowIcon />
-          </RegisterButton>
+          <SubmitButton
+            type="submit"
+            disabled={form.isSubmitDisabled}
+            fullWidth
+          >
+            <span>{t("register.form.submitButton")}</span>
+            <RightArrowIcon>
+              <use href={headerSpriteRef("right-arrow-icon")} />
+            </RightArrowIcon>
+          </SubmitButton>
         </form>
         {form.loading && <Loader />}
         {!form.loading && form.message && (

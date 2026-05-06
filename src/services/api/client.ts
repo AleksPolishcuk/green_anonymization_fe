@@ -152,7 +152,15 @@ export const apiClient = {
   },
 
   post<T, D>(path: string, body: D): Promise<T> {
-    return request<T>(axiosInstance.post(path, body));
+    const isFormData = body instanceof FormData;
+
+    return request<T>(
+      axiosInstance.post(path, body, {
+        headers: isFormData
+          ? { "Content-Type": "multipart/form-data" }
+          : undefined,
+      }),
+    );
   },
 
   put<T, D>(path: string, body: D): Promise<T> {

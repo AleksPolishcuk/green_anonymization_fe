@@ -189,3 +189,91 @@ export const SidebarNavIcon = styled("svg")(({ theme }) => ({
   fill: "none",
   stroke: theme.palette.text.secondary,
 }));
+
+export const SidebarProfileContainer = styled("div")(({ theme }) => ({
+  borderTop: `1px solid ${theme.palette.divider}`,
+  backgroundColor: theme.palette.background.default,
+
+  marginTop: "auto",
+  padding: theme.spacing(3),
+
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(2),
+
+  minHeight: theme.spacing(14),
+}));
+
+export const SidebarProfileIcon = styled("div")(({ theme }) => ({
+  width: theme.spacing(10),
+  height: theme.spacing(10),
+
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  background: `linear-gradient(135deg, ${theme.palette.accent.blue} 0%, ${theme.palette.accent.lilac} 100%)`,
+  boxShadow: `0px 2px 8px 0px rgba(37, 99, 235, 0.28)`,
+
+  color: theme.palette.color.white,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.fontSize14,
+
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
+
+export const SidebarProfileTextContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  flex: 1,
+
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
+
+export const SidebarProFileTextHeading = styled(Typography)(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.fontSize12,
+  lineHeight: theme.typography.lineHeight116,
+
+  color: theme.palette.text.primary,
+}));
+
+export const SidebarProFileTextSubtitle = styled(Typography)(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightRegular,
+  fontSize: theme.typography.fontSize11,
+  lineHeight: theme.typography.lineHeight140,
+
+  color: theme.palette.text.secondary,
+}));
+
+export const SidebarExitIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(5),
+  height: theme.spacing(5),
+  color: theme.palette.text.secondary,
+  fill: "none",
+  flexShrink: 0,
+  cursor: "pointer",
+  borderRadius: 8,
+
+  "&:hover": {
+    backgroundColor: theme.palette.background.softGray,
+    color: theme.palette.text.primary,
+  },
+
+  "&:active": {
+    transform: "scale(0.92)",
+    backgroundColor: theme.palette.background.softGray,
+  },
+
+  "&:focus-visible": {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2,
+  },
+}));

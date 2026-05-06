@@ -1,4 +1,3 @@
-import { useEmailLoginForm } from "features/Auth/hooks/useEmailLoginForm";
 import {
   LeftContent,
   LeftSection,
@@ -10,8 +9,6 @@ import SignInHero from "features/Auth/components/SignInHero";
 import SignInForm from "features/Auth/components/SignInForm";
 
 export default function SignIn() {
-  const form = useEmailLoginForm();
-
   return (
     <Page>
       <LeftSection>
@@ -21,7 +18,7 @@ export default function SignIn() {
       </LeftSection>
       <RightSection>
         <RightContent>
-          <SignInForm form={form} />
+          <SignInForm />
         </RightContent>
       </RightSection>
     </Page>
