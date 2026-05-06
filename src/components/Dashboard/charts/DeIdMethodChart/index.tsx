@@ -24,7 +24,7 @@ import {
   ENTITY_DE_ID_CHART_MARGIN,
   tickStyle,
 } from "constants/DashboardPage";
-import type { DeIdMethodData } from "components/Dashboard/types";
+import type { DeIdMethodData } from "store/types/dashboard";
 
 import {
   ChartBody,

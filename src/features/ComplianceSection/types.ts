@@ -1,6 +1,6 @@
-import type { COMPLIANCE_CARDS } from "constants/MainPages";
+import type { COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 
-export type ComplianceCard = (typeof COMPLIANCE_CARDS)[number];
+export type ComplianceCard = (typeof COMPLIANCE_FRAMEWORKS)[number];
 
 export type UseComplianceSectionReturn = {
   cards: readonly ComplianceCard[];

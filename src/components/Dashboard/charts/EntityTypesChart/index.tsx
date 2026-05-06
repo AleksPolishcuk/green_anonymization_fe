@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-import type { EntityTypeDatum } from "components/Dashboard/types";
+import type { EntityTypeDatum } from "store/types/dashboard";
 import {
   ACTIVE_GRADIENT_END,
   ACTIVE_GRADIENT_HOVER_ID,

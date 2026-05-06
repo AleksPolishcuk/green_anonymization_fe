@@ -59,8 +59,8 @@ export interface DashboardStats {
   recentActivity: RecentActivityItem[];
 }
 
-export interface DashboardState {
+export type DashboardState = {
   data: DashboardStats;
   loading: boolean;
   error: string | null;
-}
+};
