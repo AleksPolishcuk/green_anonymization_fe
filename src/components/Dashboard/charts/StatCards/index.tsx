@@ -5,7 +5,7 @@ import {
   STAT_CARD_SPRITE_IDS,
   STAT_CARD_TREND_ARROW_SPRITE_ID,
 } from "constants/DashboardPage";
-import type { StatCardData, StatCardIconId } from "components/Dashboard/types";
+import type { StatCardData, StatCardIconId } from "store/types/dashboard";
 
 import {
   Card,

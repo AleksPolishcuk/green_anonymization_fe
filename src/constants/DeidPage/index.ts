@@ -53,10 +53,3 @@ export const CHIP_COLOR_PRESETS = {
     border: "rgba(102, 112, 133, 0.22)",
   },
 } as const;
-
-export const frameworkToneMap = {
-  HIPAA_US: "blue",
-  GDPR_EU: "sky",
-  GDPR_UK: "cyan",
-  FADP_CH: "gray",
-} as const;

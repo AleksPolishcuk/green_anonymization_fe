@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import FrameworkCard from "components/FrameworkCard";
-import { useComplianceFramework } from "./hooks/useComplianceFramework";
 import {
   FrameworkSectionGrid,
   FrameworkSectionHeaderRow,
@@ -16,22 +15,15 @@ import {
   StepChip,
 } from "./styles";
 
-import { Loader } from "shared/ui/Loader";
-import { headerSpriteRef } from "constants/MainPages";
+import { headerSpriteRef, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { setSelectedFramework } from "store/slices/documentSlice";
+import type { ComplianceFramework } from "store/types/document";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();
-
-  const { frameworks, selectedCode, loading, handleSelect } =
-    useComplianceFramework();
-
-  if (loading) {
-    return (
-      <FrameworkSectionRoot>
-        <Loader />
-      </FrameworkSectionRoot>
-    );
-  }
+  const dispatch = useAppDispatch();
+  const selectedFramework = useAppSelector((s) => s.document.selectedFramework);
 
   return (
     <FrameworkSectionRoot>
@@ -57,14 +49,14 @@ export default function FrameworkSection() {
         </FrameworkSectionHeaderRow>
 
         <FrameworkSectionGrid>
-          {frameworks.map((framework) => (
+          {COMPLIANCE_FRAMEWORKS.map((framework) => (
             <FrameworkSectionItem key={framework.code}>
               <FrameworkCard
                 framework={framework}
-                selected={selectedCode === framework.code}
-                onClick={() => {
-                  void handleSelect(framework.code);
-                }}
+                selected={selectedFramework.includes(
+                  framework.code as ComplianceFramework,
+                )}
+                onClick={() => dispatch(setSelectedFramework(framework.code))}
               />
             </FrameworkSectionItem>
           ))}

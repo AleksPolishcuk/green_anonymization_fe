@@ -1,10 +1,4 @@
-export interface Entity {
-  start: number;
-  end: number;
-  entity_type: string;
-  score: number;
-  analysis_explanation: string | null;
-}
+import type { Entity } from "store/types/document";
 
 export interface TextSegment {
   type: "text" | "entity" | "redacted";
@@ -26,20 +20,20 @@ const buildSegments = (
   const segments: TextSegment[] = [];
   let lastIndex = 0;
 
-  const sortedEntities = [...entities].sort((a, b) => a.start - b.start);
+  const sortedEntities = [...entities].sort((a, b) => a.posStart - b.posEnd);
 
   sortedEntities.forEach((entity) => {
-    if (lastIndex < entity.start) {
+    if (lastIndex < entity.posStart) {
       segments.push({
         type: "text",
-        content: text.substring(lastIndex, entity.start),
+        content: text.substring(lastIndex, entity.posStart),
       });
     }
 
     segments.push(
-      buildSegment(entity, text.substring(entity.start, entity.end)),
+      buildSegment(entity, text.substring(entity.posStart, entity.posEnd)),
     );
-    lastIndex = entity.end;
+    lastIndex = entity.posEnd;
   });
 
   if (lastIndex < text.length) {
@@ -69,7 +63,7 @@ export const parseTextWithRedactions = (
 ): TextSegment[] => {
   return buildSegments(text, entities, (entity) => ({
     type: "redacted",
-    content: `[${entity.entity_type}]`,
+    content: `[${entity.entityType}]`,
     entity,
   }));
 };

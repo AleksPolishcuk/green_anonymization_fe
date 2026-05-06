@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
-import type { RecentActivityItem } from "components/Dashboard/types";
+import type { RecentActivityItem } from "store/types/dashboard";
 import { headerSpriteRef } from "constants/MainPages";
 
 import {

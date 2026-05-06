@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import type { ComplianceFramework } from "services/compliance/typing/compliance";
 
 import {
   CardRoot,
@@ -8,10 +7,10 @@ import {
   FrameworkChip,
   SecondaryText,
 } from "./styles";
-import { frameworkToneMap } from "constants/DeidPage";
+import { frameworkToneMap, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 
 type Props = {
-  framework: ComplianceFramework;
+  framework: (typeof COMPLIANCE_FRAMEWORKS)[number];
   selected: boolean;
   onClick: () => void;
 };

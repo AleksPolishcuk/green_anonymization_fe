@@ -209,26 +209,38 @@ export const CAPABILITIES_CARDS = [
   },
 ] as const;
 
-export const COMPLIANCE_CARDS = [
+export const COMPLIANCE_FRAMEWORKS = [
   {
     id: "hipaa",
+    code: "HIPAA_US",
+    name: "HIPAA",
+    description: "Health Insurance Portability and Accountability Act",
+    entityTypesCount: 18,
     accentKey: "blue",
-    entityCount: 17,
   },
   {
     id: "euGdpr",
+    code: "GDPR_EU",
+    name: "EU GDPR",
+    description: "General Data Protection Regulation — European Union",
+    entityTypesCount: 11,
     accentKey: "green",
-    entityCount: 11,
   },
   {
     id: "ukGdpr",
+    code: "GDPR_UK",
+    name: "UK GDPR",
+    description: "General Data Protection Regulation — United Kingdom",
+    entityTypesCount: 11,
     accentKey: "amber",
-    entityCount: 9,
   },
   {
     id: "swissFadp",
+    code: "FADP_CH",
+    name: "Swiss FADP",
+    description: "Federal Act on Data Protection",
+    entityTypesCount: 11,
     accentKey: "red",
-    entityCount: 8,
   },
 ] as const;
 
@@ -303,6 +315,13 @@ export const footerNavLinks: FooterNavLinkItem[] = [
 ];
 
 export const footerNavColumnTitleKey = "footer.columns.info";
+
+export const frameworkToneMap = {
+  HIPAA_US: "blue",
+  GDPR_EU: "sky",
+  GDPR_UK: "cyan",
+  FADP_CH: "gray",
+} as const;
 
 export const REDACTED_PLACEHOLDER = "[REDACTED]";
 

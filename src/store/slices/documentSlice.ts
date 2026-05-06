@@ -1,21 +1,55 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-export type DeidStep = "framework" | "dataSource" | "results";
+import type {
+  ComplianceFramework,
+  DeidStep,
+  DocumentState,
+  Entity,
+} from "store/types/document";
+import { DOCUMENT_MOCK } from "store/mocks/documentMock";
 
 const DEID_STEPS: DeidStep[] = ["framework", "dataSource", "results"];
 
-type DocumentState = {
-  currentStep: DeidStep;
-};
-
 const initialState: DocumentState = {
   currentStep: "results",
+  entities: DOCUMENT_MOCK.entities,
+  originalText: DOCUMENT_MOCK.originalText,
+  redactedText: DOCUMENT_MOCK.redactedText,
+  selectedFramework: DOCUMENT_MOCK.selectedFramework,
 };
 
 export const documentSlice = createSlice({
   name: "document",
   initialState,
   reducers: {
+    setSelectedFramework: (
+      state,
+      action: PayloadAction<ComplianceFramework>,
+    ) => {
+      state.selectedFramework = action.payload;
+    },
+
+    setOriginalText: (state, action: PayloadAction<string>) => {
+      state.originalText = action.payload;
+    },
+
+    setRedactedText: (state, action: PayloadAction<string>) => {
+      state.redactedText = action.payload;
+    },
+
+    setEntities: (state, action: PayloadAction<Entity[]>) => {
+      state.entities = action.payload;
+    },
+
+    updateEntity: (
+      state,
+      action: PayloadAction<{ id: string; changes: Partial<Entity> }>,
+    ) => {
+      const entity = state.entities.find((e) => e.id === action.payload.id);
+
+      if (entity) {
+        Object.assign(entity, action.payload.changes);
+      }
+    },
     setDeidStep: (state, action: PayloadAction<DeidStep>) => {
       state.currentStep = action.payload;
     },
@@ -35,12 +69,19 @@ export const documentSlice = createSlice({
         state.currentStep = DEID_STEPS[currentIndex - 1];
       }
     },
+
+    resetDocument: () => initialState,
   },
 });
 
-export const { setDeidStep, nextDeidStep, prevDeidStep } =
-  documentSlice.actions;
-
-export { DEID_STEPS };
-
-export default documentSlice.reducer;
+export const {
+  setSelectedFramework,
+  setOriginalText,
+  setRedactedText,
+  setEntities,
+  updateEntity,
+  resetDocument,
+  setDeidStep,
+  nextDeidStep,
+  prevDeidStep,
+} = documentSlice.actions;
