@@ -232,7 +232,9 @@ export const SubNavItem = styled("li", {
       : $active
         ? theme.palette.text.primary
         : theme.palette.text.secondary,
-    fontWeight: $active ? 600 : 400,
+    fontWeight: $active
+      ? theme.typography.fontWeightMedium
+      : theme.typography.fontWeightRegular,
     fontSize: theme.typography.fontSize14,
   }),
 );

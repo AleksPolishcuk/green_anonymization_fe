@@ -9,6 +9,9 @@ export const deidColors = {
   boxShadowNav: "0 4px 16px 0 rgba(37, 99, 235, 0.16)",
   topLine:
     "linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, rgba(14, 165, 233, 0.3) 100%)",
+  analysisHeaderBg:
+    "linear-gradient(135deg, rgba(6, 182, 212, 0.07), rgba(37, 99, 235, 0.05))",
+  analysisHeaderBorder: "rgba(6, 182, 212, 0.2)",
 };
 
 export const deidDarkColors = {
@@ -29,6 +32,9 @@ export const deidDarkColors = {
   boxShadowNav: "0 6px 24px rgba(59,130,246,0.25)",
   topLine:
     "linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, rgba(14, 165, 233, 0.5) 100%)",
+  analysisHeaderBg:
+    "linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(37, 99, 235, 0.08))",
+  analysisHeaderBorder: "rgba(6, 182, 212, 0.25)",
 };
 
 export const CHIP_COLOR_PRESETS = {
@@ -52,4 +58,16 @@ export const CHIP_COLOR_PRESETS = {
     bg: "rgba(102, 112, 133, 0.08)",
     border: "rgba(102, 112, 133, 0.22)",
   },
+} as const;
+
+export const recognizerColors = {
+  indigo: "rgba(99, 102, 241, 1)",
+  cyan: "rgba(6, 182, 212, 1)",
+} as const;
+
+export const findingBadgeColors = {
+  scoreBg: "rgba(59, 130, 246, 0.1)",
+  scoreBorder: "rgba(59, 130, 246, 0.2)",
+  recognizerBg: "rgba(59, 130, 246, 0.09)",
+  recognizerBorder: "rgba(59, 130, 246, 0.2)",
 } as const;

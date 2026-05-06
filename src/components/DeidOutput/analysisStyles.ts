@@ -1,8 +1,14 @@
-import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
+import {
+  CHIP_COLOR_PRESETS,
+  deidColors,
+  deidDarkColors,
+  findingBadgeColors,
+  recognizerColors,
+} from "constants/DeidPage";
 import { RECOGNIZER_TYPES } from "constants/MainPages";
-import { deidColors, deidDarkColors } from "constants/DeidPage";
 
 export const AnalysisPageWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(10, 6),
@@ -15,29 +21,32 @@ export const AnalysisWrapper = styled("div")(({ theme }) => ({
   gap: theme.spacing(7),
 }));
 
-export const HeaderCard = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  height: 100,
-  padding: "20px",
-  borderRadius: theme.shape.borderRadius,
-  background:
-    "linear-gradient(135deg, rgba(6, 182, 212, 0.07), rgba(37, 99, 235, 0.05))",
-  border: "1px solid rgba(6, 182, 212, 0.2)",
+export const HeaderCard = styled("div")(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    height: "auto",
-    gap: theme.spacing(4),
-  },
-}));
+  return {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: 100,
+    padding: theme.spacing(5),
+    borderRadius: theme.shape.borderRadius,
+    background: colors.analysisHeaderBg,
+    border: `1px solid ${colors.analysisHeaderBorder}`,
+
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+      height: "auto",
+      gap: theme.spacing(4),
+    },
+  };
+});
 
 export const HeaderTitle = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.h3.fontFamily,
   fontSize: theme.typography.fontSize32,
-  fontWeight: 600,
+  fontWeight: theme.typography.fontWeightMedium,
 }));
 
 export const HeaderStats = styled(Typography)(({ theme }) => ({
@@ -46,19 +55,23 @@ export const HeaderStats = styled(Typography)(({ theme }) => ({
   color: theme.palette.color.grayDark,
 }));
 
-export const AccuracyBadge = styled("span")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "6px",
-  padding: "6px 16px",
-  borderRadius: "20px",
-  backgroundColor: "rgba(6, 182, 212, 0.08)",
-  border: "1px solid rgba(6, 182, 212, 0.2)",
-  color: "#06B6D4",
-  fontFamily: theme.typography.fontFamily,
-  fontSize: theme.typography.fontSize14,
-  fontWeight: theme.typography.fontWeightBold,
-}));
+export const AccuracyBadge = styled("span")(({ theme }) => {
+  const cyan = CHIP_COLOR_PRESETS.cyan;
+
+  return {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(1.5),
+    padding: theme.spacing(1.5, 4),
+    borderRadius: theme.spacing(5),
+    backgroundColor: cyan.bg,
+    border: `1px solid ${cyan.border}`,
+    color: cyan.color,
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.fontSize14,
+    fontWeight: theme.typography.fontWeightBold,
+  };
+});
 
 export const SpriteIconSvg = styled("svg")({
   width: 15,
@@ -203,10 +216,10 @@ export const LoaderRow = styled("div")(({ theme }) => ({
 }));
 
 export const ScoreBadge = styled("span")<{ $score: number }>(({ theme }) => ({
-  padding: "4px 10px",
-  borderRadius: "12px",
-  backgroundColor: "rgba(59, 130, 246, 0.1)",
-  border: "1px solid rgba(59, 130, 246, 0.2)",
+  padding: theme.spacing(1, 2.5),
+  borderRadius: theme.spacing(3),
+  backgroundColor: findingBadgeColors.scoreBg,
+  border: `1px solid ${findingBadgeColors.scoreBorder}`,
   color: theme.palette.accent.blue,
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.fontSize12,
@@ -214,15 +227,13 @@ export const ScoreBadge = styled("span")<{ $score: number }>(({ theme }) => ({
 }));
 
 const RECOGNIZER_COLOR_MAP: Record<string, string> = {
-  [RECOGNIZER_TYPES.PERSON]: "rgba(99, 102, 241, 1)",
-  [RECOGNIZER_TYPES.DATE_TIME]: "rgba(6, 182, 212, 1)",
-  [RECOGNIZER_TYPES.AGE]: "rgba(99, 102, 241, 1)",
-  [RECOGNIZER_TYPES.PHONE_NUMBER]: "rgba(6, 182, 212, 1)",
-  [RECOGNIZER_TYPES.EMAIL_ADDRESS]: "rgba(99, 102, 241, 1)",
-  [RECOGNIZER_TYPES.MEDICAL_RECORD_NUMBER]: "rgba(6, 182, 212, 1)",
+  [RECOGNIZER_TYPES.PERSON]: recognizerColors.indigo,
+  [RECOGNIZER_TYPES.DATE_TIME]: recognizerColors.cyan,
+  [RECOGNIZER_TYPES.AGE]: recognizerColors.indigo,
+  [RECOGNIZER_TYPES.PHONE_NUMBER]: recognizerColors.cyan,
+  [RECOGNIZER_TYPES.EMAIL_ADDRESS]: recognizerColors.indigo,
+  [RECOGNIZER_TYPES.MEDICAL_RECORD_NUMBER]: recognizerColors.cyan,
 };
-
-const RECOGNIZER_BG = "rgba(59, 130, 246, 0.09)";
 
 export const RecognizerBadge = styled("span")<{ $type: string }>(({
   theme,
@@ -231,10 +242,10 @@ export const RecognizerBadge = styled("span")<{ $type: string }>(({
   const color = RECOGNIZER_COLOR_MAP[$type] ?? theme.palette.color.grayDark;
 
   return {
-    padding: "4px 10px",
-    borderRadius: "12px",
-    backgroundColor: RECOGNIZER_BG,
-    border: "1px solid rgba(59, 130, 246, 0.2)",
+    padding: theme.spacing(1, 2.5),
+    borderRadius: theme.spacing(3),
+    backgroundColor: findingBadgeColors.recognizerBg,
+    border: `1px solid ${findingBadgeColors.recognizerBorder}`,
     color,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.fontSize12,
@@ -246,9 +257,9 @@ export const RecognizerBadge = styled("span")<{ $type: string }>(({
 
 export const ToggleButton = styled("button")<{ $selected: boolean }>(
   ({ theme, $selected }) => ({
-    minWidth: "120px",
-    padding: "8px 16px",
-    borderRadius: "8px",
+    minWidth: 120,
+    padding: theme.spacing(2, 4),
+    borderRadius: theme.spacing(2),
     border: `1px solid ${$selected ? theme.palette.accent.blue : theme.palette.background.mediumGray}`,
     backgroundColor: $selected
       ? theme.palette.accent.lightBlue
@@ -256,7 +267,7 @@ export const ToggleButton = styled("button")<{ $selected: boolean }>(
     color: $selected ? theme.palette.accent.blue : theme.palette.color.grayDark,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.fontSize14,
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightMedium,
     cursor: "pointer",
     outline: "none",
     whiteSpace: "nowrap" as const,
@@ -302,8 +313,8 @@ export const TextPanelBadge = styled("span")<{ $variant: "blue" | "green" }>(({
       ? theme.palette.accent.blue
       : theme.palette.accent.green;
   return {
-    padding: "3px 10px",
-    borderRadius: "12px",
+    padding: theme.spacing(0.75, 2.5),
+    borderRadius: theme.spacing(3),
     backgroundColor: `${color}14`,
     color,
     fontFamily: theme.typography.fontFamily,
@@ -311,7 +322,7 @@ export const TextPanelBadge = styled("span")<{ $variant: "blue" | "green" }>(({
     fontWeight: theme.typography.fontWeightBold,
     display: "flex",
     alignItems: "center",
-    gap: "4px",
+    gap: theme.spacing(1),
   };
 });
 
@@ -320,7 +331,7 @@ export const TextContent = styled("pre")(({ theme }) => ({
   margin: 0,
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.fontSize14,
-  lineHeight: 1.8,
+  lineHeight: theme.typography.lineHeight175,
   color: theme.palette.color.charcoal,
   whiteSpace: "pre-wrap",
   wordBreak: "break-word",
@@ -329,16 +340,16 @@ export const TextContent = styled("pre")(({ theme }) => ({
 export const HighlightedEntity = styled("mark")(({ theme }) => ({
   backgroundColor: `${theme.palette.accent.blue}20`,
   color: theme.palette.accent.blue,
-  padding: "1px 4px",
-  borderRadius: "4px",
+  padding: theme.spacing(0.25, 1),
+  borderRadius: theme.spacing(1),
   fontWeight: theme.typography.fontWeightBold,
 }));
 
 export const RedactedTag = styled("span")(({ theme }) => ({
   backgroundColor: `${theme.palette.accent.blue}14`,
   color: theme.palette.accent.blue,
-  padding: "2px 8px",
-  borderRadius: "4px",
+  padding: theme.spacing(0.5, 2),
+  borderRadius: theme.spacing(1),
   fontWeight: theme.typography.fontWeightBold,
   fontSize: theme.typography.fontSize12,
 }));
@@ -357,7 +368,7 @@ export const ActionButton = styled("button")(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(2),
   padding: theme.spacing(2, 4),
-  borderRadius: "10px",
+  borderRadius: theme.spacing(2.5),
   border: `1px solid ${theme.palette.background.softGray}`,
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.color.charcoal,
