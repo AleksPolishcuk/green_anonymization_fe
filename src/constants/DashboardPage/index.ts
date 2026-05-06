@@ -151,3 +151,17 @@ export const DONUT_END_ANGLE = -270;
 export const DONUT_SMALL_SCREEN_MAX_PX = 425;
 
 export const HIPAA_FRAMEWORK_KEY = "HIPAA";
+
+export const STAT_CARD_LABELS = {
+  totalDocs: "Total Documents",
+  entities: "Entities Detected",
+  avgEntities: "Avg. Entities/Doc",
+  successRate: "Success Rate",
+} as const;
+
+export const FRAMEWORK_CODE_TO_NAME: Record<string, string> = {
+  HIPAA_US: "HIPAA",
+  GDPR_EU: "EU GDPR",
+  GDPR_UK: "UK GDPR",
+  FADP_CH: "FADP",
+};
