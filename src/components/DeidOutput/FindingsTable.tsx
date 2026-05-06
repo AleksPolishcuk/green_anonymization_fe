@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
@@ -25,6 +25,7 @@ import {
   LoaderRow,
   SpriteIconSvg,
 } from "./analysisStyles";
+import { useScroll } from "./hooks/useScroll";
 
 type FindingsTableProps = {
   entities: Entity[];
@@ -43,38 +44,16 @@ export const FindingsTable = ({
 }: FindingsTableProps) => {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
   const [expanded, setExpanded] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(FINDINGS_PAGE_SIZE);
-  const loaderRef = useRef<HTMLDivElement>(null);
-  const loadingRef = useRef(false);
 
-  const hasMore = visibleCount < entities.length;
-  const visibleEntities = entities.slice(0, visibleCount);
-
-  const loadMore = useCallback(() => {
-    if (loadingRef.current) return;
-    loadingRef.current = true;
-    setTimeout(() => {
-      setVisibleCount((prev) =>
-        Math.min(prev + FINDINGS_PAGE_SIZE, entities.length),
-      );
-      loadingRef.current = false;
-    }, 500);
-  }, [entities.length]);
-
-  useEffect(() => {
-    const node = loaderRef.current;
-    if (!node || !hasMore) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) loadMore();
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [loadMore, hasMore, visibleCount, expanded]);
+  const {
+    visibleItems: visibleEntities,
+    hasMore,
+    loaderRef,
+  } = useScroll({
+    items: entities,
+    pageSize: FINDINGS_PAGE_SIZE,
+    enabled: expanded,
+  });
 
   return (
     <TableCard>
