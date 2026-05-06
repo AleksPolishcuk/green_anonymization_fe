@@ -11,7 +11,7 @@ import {
   SuccessStatusDescriptionText,
   ErrorStatusIcon,
   ErrorStatusDescriptionText,
-} from "../EmailStatus/styles";
+} from "features/Auth/components/EmailStatus/styles";
 import {
   RegisterHeading,
   RegisterFormBox,

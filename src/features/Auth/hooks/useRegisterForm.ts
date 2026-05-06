@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "services/api/auth";
+import { authService } from "services/auth";
 import { ValidationError } from "yup";
 import { registerSchema } from "constants/validations";
 import { useTranslation } from "react-i18next";

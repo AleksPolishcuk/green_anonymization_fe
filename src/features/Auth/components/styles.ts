@@ -11,7 +11,7 @@ import {
   headingDelay,
   paragraphDelay,
 } from "constants/auth";
-import staggerItem from "../utils/staggerItem";
+import staggerItem from "features/Auth/utils/staggerItem";
 
 export const fadeUp = keyframes`
   from {

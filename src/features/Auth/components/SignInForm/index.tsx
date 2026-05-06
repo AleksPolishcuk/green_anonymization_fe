@@ -10,7 +10,7 @@ import {
   BottomLinkText,
   EmailIcon,
 } from "./styles";
-import EmailStatus from "../EmailStatus";
+import EmailStatus from "features/Auth/components/EmailStatus";
 import { Trans, useTranslation } from "react-i18next";
 import {
   FormInputField,

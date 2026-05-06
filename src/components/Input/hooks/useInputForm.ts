@@ -2,9 +2,9 @@ import { inputFormSchema } from "constants/validations";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { inputService } from "services/api/input";
+import { inputService } from "services/input";
 import { ValidationError } from "yup";
-import type { InputFormValues } from "../types";
+import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 
 export const useInputForm = () => {
@@ -84,7 +84,7 @@ export const useInputForm = () => {
       const message =
         error instanceof Error
           ? error.message
-          : t("input.form.errors.submissionFailed") || "Submission failed";
+          : t("input.form.errors.submissionFailed");
 
       setSubmitError(message);
     } finally {

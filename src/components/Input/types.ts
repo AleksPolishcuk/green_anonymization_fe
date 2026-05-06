@@ -23,3 +23,7 @@ export type FileDropZoneProps = {
   value: File | null;
   onChange: (file: File | null) => void;
 };
+
+export type UseFileDropZoneProps = {
+  onChange: (file: File | null) => void;
+};

@@ -1,5 +1,3 @@
-import { useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { headerSpriteRef } from "constants/MainPages";
 import {
   FileWrapper,
@@ -10,14 +8,11 @@ import {
   FileTextWrapper,
   FileRemoveButton,
   FileDropHelperText,
-} from "../styles";
+} from "components/Input/styles";
 
 import type { FileDropZoneProps } from "components/Input/types";
-import {
-  ALLOWED_FILE_TYPES,
-  INPUT_SECTION_CONSTANTS,
-  MAX_FILE_UPLOAD_SIZE,
-} from "constants/DeidPage";
+import useFileDropZone from "./useFileDropZone";
+import { useTranslation } from "react-i18next";
 
 type Props = FileDropZoneProps & {
   error?: boolean;
@@ -31,73 +26,28 @@ export default function FileDropZone({
   helperText,
 }: Props) {
   const { t } = useTranslation();
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [isDragActive, setIsDragActive] = useState(false);
-  const [localError, setLocalError] = useState<string | null>(null);
-
-  const validateFile = (file: File | null): string | null => {
-    if (!file) return null;
-
-    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-      return t("input.form.errors.fileWrongFormat");
-    }
-
-    if (file.size > MAX_FILE_UPLOAD_SIZE) {
-      return t("input.form.errors.fileTooLarge");
-    }
-
-    return null;
-  };
-  const handleFileSelect = (file: File | null) => {
-    const error = validateFile(file);
-
-    if (error) {
-      setLocalError(error);
-
-      setTimeout(() => {
-        setLocalError(null);
-      }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
-
-      return;
-    }
-
-    onChange(file);
-  };
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragActive(false);
-
-    const file = e.dataTransfer.files?.[0] || null;
-    handleFileSelect(file);
-  };
-  const handleRemove = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onChange(null);
-  };
+  const {
+    inputRef,
+    isDragActive,
+    setIsDragActive,
+    localError,
+    handleDrop,
+    handleRemove,
+    handleInputChange,
+    handleDragOver,
+  } = useFileDropZone({ onChange });
 
   return (
     <div>
       <FileWrapper
         onClick={() => inputRef.current?.click()}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setIsDragActive(true);
-        }}
+        onDragOver={handleDragOver}
         onDragLeave={() => setIsDragActive(false)}
         onDrop={handleDrop}
         $hasError={Boolean(error || localError)}
       >
-        <input
-          ref={inputRef}
-          type="file"
-          hidden
-          onChange={(e) => {
-            const file = e.target.files?.[0] || null;
-            handleFileSelect(file);
-            e.target.value = "";
-          }}
-        />
+        <input ref={inputRef} type="file" hidden onChange={handleInputChange} />
 
         <FileUploadIcon>
           <use href={headerSpriteRef("upload-file-icon")} />

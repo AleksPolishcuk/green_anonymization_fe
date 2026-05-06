@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type User from "shared/interfaces/User";
 import { clearTokens } from "features/Auth/utils/authTokens";
 import { AUTH_STATUS } from "constants/auth";
-import { authService } from "services/api/auth";
+import { authService } from "services/auth";
 
 type SessionResponse = {
   registered: boolean;
