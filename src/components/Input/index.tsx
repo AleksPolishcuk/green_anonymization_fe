@@ -37,6 +37,7 @@ export default function Input() {
     submitSuccess,
     isFileUploaded,
     isSubmitDisabled,
+    isSubmitting,
   } = useInputForm();
 
   const { errors } = formState;
@@ -110,9 +111,8 @@ export default function Input() {
                   <InputPlayIcon>
                     <use href={headerSpriteRef("input-submit-play-icon")} />
                   </InputPlayIcon>
-
-                  <span>{t("input.form.submitButton")}</span>
-
+                  {!isSubmitting && <span>{t("input.form.submitButton")}</span>}
+                  {isSubmitting && <span>{t("input.form.submitting")}</span>}
                   <InputArrowIcon>
                     <use href={headerSpriteRef("input-submit-right-arrow")} />
                   </InputArrowIcon>

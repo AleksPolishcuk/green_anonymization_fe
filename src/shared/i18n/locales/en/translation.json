@@ -298,6 +298,7 @@
         "fileWrongFormat": "Unsupported file format",
         "required": "Provide either text or file"
       },
+      "submitting": "...Submitting",
       "fileSupport": "Supports: txt, pdf, docx — max 50 MB",
       "estimated": "Estimated processing time: ~2s",
       "submitButton": "Analyze & De-Identify",

@@ -219,13 +219,21 @@ export const SidebarProfileIcon = styled("div")(({ theme }) => ({
   color: theme.palette.color.white,
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize14,
+
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
-export const SidebarProfileTextContainer = styled("div")({
+export const SidebarProfileTextContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   flex: 1,
-});
+
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
 export const SidebarProFileTextHeading = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
@@ -251,6 +259,8 @@ export const SidebarExitIcon = styled("svg")(({ theme }) => ({
   color: theme.palette.text.secondary,
   fill: "none",
   flexShrink: 0,
+  cursor: "pointer",
+  borderRadius: 8,
 
   "&:hover": {
     backgroundColor: theme.palette.background.softGray,

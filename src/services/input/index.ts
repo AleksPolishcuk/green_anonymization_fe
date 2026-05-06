@@ -14,7 +14,7 @@ export const inputService = {
     }
 
     return apiClient.post<InputFormResponse, FormData>(
-      "/anonymization/anonymize",
+      "/processing/anonymize",
       formData,
     );
   },
