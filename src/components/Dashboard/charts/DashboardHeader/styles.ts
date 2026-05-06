@@ -19,11 +19,14 @@ export const HeaderRoot = styled(Box)(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "center",
   gap: theme.spacing(2),
   marginBottom: theme.spacing(3),
   [theme.breakpoints.up("md")]: {
     marginBottom: theme.spacing(4),
+  },
+  [theme.breakpoints.up("lg")]: {
+    justifyContent: "space-between",
   },
 }));
 
@@ -43,8 +46,12 @@ export const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize22,
   lineHeight: theme.typography.lineHeight108,
+  textAlign: "center",
   [theme.breakpoints.up("md")]: {
     fontSize: theme.typography.fontSize32,
+  },
+  [theme.breakpoints.up("lg")]: {
+    textAlign: "left",
   },
 }));
 
@@ -54,8 +61,12 @@ export const HeaderSubtitle = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight175,
+  textAlign: "center",
   [theme.breakpoints.up("md")]: {
     fontSize: theme.typography.fontSize16,
+  },
+  [theme.breakpoints.up("lg")]: {
+    textAlign: "left",
   },
 }));
 

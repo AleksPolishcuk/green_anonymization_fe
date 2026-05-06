@@ -1,13 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type User from "shared/interfaces/User";
 import { clearTokens } from "features/Auth/utils/authTokens";
 import { AUTH_STATUS } from "constants/auth";
 import { authService } from "services/auth";
-
-type SessionResponse = {
-  registered: boolean;
-  user: User | null;
-};
+import type { AuthState, SessionResponse } from "store/types/auth";
 
 export const fetchSession = createAsyncThunk<
   SessionResponse,
@@ -20,11 +15,6 @@ export const fetchSession = createAsyncThunk<
     return rejectWithValue(`${AUTH_STATUS.unauthenticated}, error: ${err}`);
   }
 });
-
-interface AuthState {
-  user: User | null;
-  registered: boolean;
-}
 
 const initialState: AuthState = {
   user: null,

@@ -1,5 +1,5 @@
 import { COMPLIANCE_COLORS } from "constants/DashboardPage";
-import type { DashboardStats } from "components/Dashboard/types";
+import type { DashboardStats } from "store/types/dashboard";
 
 const entityRows = [
   { name: "PERSON", count: 160 },
@@ -91,49 +91,49 @@ export const DASHBOARD_MOCK: DashboardStats = {
       timeAgo: "2 min ago",
     },
     {
-      id: "1",
-      filename: "patient_notes_march.txt",
-      entities: 47,
-      timeAgo: "2 min ago",
-    },
-    {
-      id: "1",
-      filename: "patient_notes_march.txt",
-      entities: 47,
-      timeAgo: "2 min ago",
-    },
-    {
-      id: "1",
-      filename: "patient_notes_march.txt",
-      entities: 47,
-      timeAgo: "2 min ago",
-    },
-    {
-      id: "1",
-      filename: "patient_notes_march.txt",
-      entities: 47,
-      timeAgo: "2 min ago",
-    },
-    {
       id: "2",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "3",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "4",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "5",
+      filename: "patient_notes_march.txt",
+      entities: 47,
+      timeAgo: "2 min ago",
+    },
+    {
+      id: "6",
       filename: "clinical_records_Q1.txt",
       entities: 123,
       timeAgo: "18 min ago",
     },
     {
-      id: "3",
+      id: "7",
       filename: "discharge_summary.txt",
       entities: 31,
       timeAgo: "1 hr ago",
     },
     {
-      id: "4",
+      id: "8",
       filename: "lab_results_batch.txt",
       entities: 89,
       timeAgo: "3 hrs ago",
     },
     {
-      id: "5",
+      id: "9",
       filename: "surgery_report_april.txt",
       entities: 55,
       timeAgo: "5 hrs ago",

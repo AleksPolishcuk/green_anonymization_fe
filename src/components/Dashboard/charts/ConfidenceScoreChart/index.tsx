@@ -27,7 +27,7 @@ import {
   tickStyle as tickY,
   tickStyleSm as tickX,
 } from "constants/DashboardPage";
-import type { ConfidenceRangeData } from "components/Dashboard/types";
+import type { ConfidenceRangeData } from "store/types/dashboard";
 
 import {
   ChartBody,
@@ -59,13 +59,13 @@ type Props = {
 };
 
 export const ConfidenceScoreChart = ({ data }: Props) => {
-  const { t } = useTranslation("dashboard");
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <ChartCard $tall>
-      <ChartTitle>{t("charts.confidence.title")}</ChartTitle>
-      <ChartSubtitle>{t("charts.confidence.subtitle")}</ChartSubtitle>
+      <ChartTitle>{t("dashboard.charts.confidence.title")}</ChartTitle>
+      <ChartSubtitle>{t("dashboard.charts.confidence.subtitle")}</ChartSubtitle>
 
       <ChartBody>
         <ResponsiveContainer width="100%" height="100%">
