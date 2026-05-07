@@ -10,16 +10,16 @@ export type AuthStatus = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];
 
 export const signinStats = [
   {
-    valueKey: "signIn.stats.clients.value",
-    labelKey: "signIn.stats.clients.label",
+    valueKey: "signIn.hero.stats.clients.value",
+    labelKey: "signIn.hero.stats.clients.label",
   },
   {
-    valueKey: "signIn.stats.records.value",
-    labelKey: "signIn.stats.records.label",
+    valueKey: "signIn.hero.stats.records.value",
+    labelKey: "signIn.hero.stats.records.label",
   },
   {
-    valueKey: "signIn.stats.uptime.value",
-    labelKey: "signIn.stats.uptime.label",
+    valueKey: "signIn.hero.stats.uptime.value",
+    labelKey: "signIn.hero.stats.uptime.label",
   },
 ] as const;
 

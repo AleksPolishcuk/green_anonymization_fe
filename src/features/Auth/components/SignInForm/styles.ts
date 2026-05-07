@@ -1,5 +1,6 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
 import staggerItem from "features/Auth/utils/staggerItem";
+import { submitButtonStyles } from "features/Auth/components/styles";
 
 export const SigninHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),
@@ -49,6 +50,14 @@ export const EmailLabel = styled("label")(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
+export const EmailIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
+  display: "block",
+  fill: "none",
+  color: theme.palette.background.mediumGray,
+}));
+
 export const SigninBtn = styled(Button)(({ theme }) => ({
   width: "100%",
   minHeight: theme.spacing(13),
@@ -72,6 +81,17 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
       duration: theme.transitions.duration.shorter,
     },
   ),
+
+  "&.Mui-disabled": {
+    cursor: "not-allowed",
+    pointerEvents: "auto",
+
+    background: submitButtonStyles.disabledBtnBg,
+    color: theme.palette.color.grayDark,
+    border: submitButtonStyles.disabledBtnBorder,
+    fontWeight: theme.typography.fontWeightLight,
+    boxShadow: "none",
+  },
 
   "&:hover": {
     backgroundColor: theme.palette.color.darkBlue,

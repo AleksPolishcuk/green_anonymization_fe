@@ -1,22 +1,22 @@
-import { ShieldIcon } from "assets/icons/auth/ShieldIcon";
 import { signinStats } from "constants/auth";
 import { Trans, useTranslation } from "react-i18next";
+import { StatItem, StatLabel, Stats, StatValue } from "./styles";
+import { headerSpriteRef } from "constants/MainPages";
 import {
   EnterpriseParagraph,
+  ShieldIcon,
   ShieldLogo,
-  StatItem,
-  StatLabel,
-  Stats,
-  StatValue,
   WelcomeHeading,
-} from "./styles";
+} from "features/Auth/components/styles";
 
 export default function SignInHero() {
   const { t } = useTranslation();
   return (
     <>
       <ShieldLogo>
-        <ShieldIcon />
+        <ShieldIcon>
+          <use href={headerSpriteRef("shield-icon")} />
+        </ShieldIcon>
       </ShieldLogo>
       <WelcomeHeading>
         {t("signIn.hero.title1")}

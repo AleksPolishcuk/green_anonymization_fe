@@ -1,7 +1,7 @@
 import { setTokens } from "features/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "services/api/auth";
+import { authService } from "services/auth";
 import { Loader } from "shared/ui/Loader";
 
 export default function AuthCallback() {
