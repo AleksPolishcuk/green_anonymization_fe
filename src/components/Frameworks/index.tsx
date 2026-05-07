@@ -18,7 +18,6 @@ import {
 import { headerSpriteRef, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { setSelectedFramework } from "store/slices/documentSlice";
-import type { ComplianceFramework } from "store/types/document";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();
@@ -53,9 +52,7 @@ export default function FrameworkSection() {
             <FrameworkSectionItem key={framework.code}>
               <FrameworkCard
                 framework={framework}
-                selected={selectedFramework.includes(
-                  framework.code as ComplianceFramework,
-                )}
+                selected={selectedFramework === framework.code}
                 onClick={() => dispatch(setSelectedFramework(framework.code))}
               />
             </FrameworkSectionItem>

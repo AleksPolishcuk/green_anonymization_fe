@@ -89,14 +89,14 @@ export const FindingsTable = ({
               </tr>
             </thead>
             <tbody>
-              {visibleEntities.map((entity) => (
+              {visibleEntities.map((entity, index) => (
                 <Tr key={entity.id}>
-                  <Td>{entity.id}</Td>
+                  <Td>{index + 1}</Td>
                   <TdBold>
-                    {originalText.slice(entity.posStart, entity.posEnd)}
+                    {originalText.slice(entity.start, entity.end)}
                   </TdBold>
                   <Td>
-                    {entity.posStart}–{entity.posEnd}
+                    {entity.start}-{entity.end}
                   </Td>
                   <Td>
                     <ScoreBadge $score={entity.score}>

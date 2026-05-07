@@ -5,15 +5,16 @@ import type {
   DocumentState,
   Entity,
 } from "store/types/document";
-import { DOCUMENT_MOCK } from "store/mocks/documentMock";
 import { DEID_STEPS } from "constants/MainPages";
+import type { PiiEntity } from "services/input/typing";
 
 const initialState: DocumentState = {
-  currentStep: DOCUMENT_MOCK.currentStep,
-  entities: DOCUMENT_MOCK.entities,
-  originalText: DOCUMENT_MOCK.originalText,
-  redactedText: DOCUMENT_MOCK.redactedText,
-  selectedFramework: DOCUMENT_MOCK.selectedFramework,
+  currentStep: "framework",
+  piiEntities: null,
+  originalText: null,
+  anonymizedText: null,
+  selectedFramework: null,
+  document: null,
 };
 
 export const documentSlice = createSlice({
@@ -25,25 +26,38 @@ export const documentSlice = createSlice({
       action: PayloadAction<ComplianceFramework>,
     ) => {
       state.selectedFramework = action.payload;
+
+      if (state.currentStep === null || state.currentStep === "framework") {
+        state.currentStep = "dataSource";
+      }
     },
 
     setOriginalText: (state, action: PayloadAction<string>) => {
       state.originalText = action.payload;
+
+      if (action.payload.trim().length > 0 && state.currentStep !== "results") {
+        state.currentStep = "results";
+      }
     },
 
     setRedactedText: (state, action: PayloadAction<string>) => {
-      state.redactedText = action.payload;
+      state.anonymizedText = action.payload;
     },
 
-    setEntities: (state, action: PayloadAction<Entity[]>) => {
-      state.entities = action.payload;
+    setEntities: (state, action: PayloadAction<PiiEntity[]>) => {
+      state.piiEntities = action.payload
+        .map((entity) => ({
+          ...entity,
+          selected: true,
+        }))
+        .sort((a, b) => a.start - b.start);
     },
 
     updateEntity: (
       state,
       action: PayloadAction<{ id: string; changes: Partial<Entity> }>,
     ) => {
-      const entity = state.entities.find((e) => e.id === action.payload.id);
+      const entity = state.piiEntities?.find((e) => e.id === action.payload.id);
 
       if (entity) {
         Object.assign(entity, action.payload.changes);
@@ -51,7 +65,7 @@ export const documentSlice = createSlice({
     },
 
     toggleEntitySelected: (state, action: PayloadAction<string>) => {
-      const entity = state.entities.find((e) => e.id === action.payload);
+      const entity = state.piiEntities?.find((e) => e.id === action.payload);
 
       if (entity) {
         entity.selected = !entity.selected;
@@ -63,6 +77,11 @@ export const documentSlice = createSlice({
     },
 
     nextDeidStep: (state) => {
+      if (state.currentStep === null) {
+        state.currentStep = DEID_STEPS[0];
+        return;
+      }
+
       const currentIndex = DEID_STEPS.indexOf(state.currentStep);
 
       if (currentIndex < DEID_STEPS.length - 1) {
@@ -71,6 +90,8 @@ export const documentSlice = createSlice({
     },
 
     prevDeidStep: (state) => {
+      if (state.currentStep === null) return;
+
       const currentIndex = DEID_STEPS.indexOf(state.currentStep);
 
       if (currentIndex > 0) {

@@ -34,7 +34,7 @@ import { TaggedText } from "./taggedText";
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
   const {
-    entities,
+    piiEntities,
     originalText,
     entityCount,
     selectedCount,
@@ -136,13 +136,15 @@ export default function DeidOutputSection() {
         </DeidOutputSectionCard>
       </DeidOutputSectionStack>
 
-      <FindingsTable
-        entities={entities}
-        originalText={originalText}
-        selectedCount={selectedCount}
-        totalCount={entityCount}
-        onToggle={toggleEntity}
-      />
+      {piiEntities && originalText && (
+        <FindingsTable
+          entities={piiEntities}
+          originalText={originalText}
+          selectedCount={selectedCount}
+          totalCount={entityCount}
+          onToggle={toggleEntity}
+        />
+      )}
     </DeidOutputSectionRoot>
   );
 }

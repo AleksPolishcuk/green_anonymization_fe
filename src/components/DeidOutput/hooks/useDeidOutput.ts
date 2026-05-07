@@ -18,7 +18,7 @@ import {
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
-  const { originalText, entities, selectedFramework } = useAppSelector(
+  const { originalText, piiEntities, selectedFramework } = useAppSelector(
     (s) => s.document,
   );
 
@@ -30,22 +30,23 @@ export const useDeidOutput = () => {
   );
 
   const selectedEntities = useMemo(
-    () => entities.filter((e) => e.selected),
-    [entities],
+    () => piiEntities.filter((e) => e.selected),
+    [piiEntities],
   );
 
-  const entityCount = entities.length;
+  const entityCount = piiEntities.length;
   const selectedCount = selectedEntities.length;
 
   const accuracy = useMemo(() => {
-    if (entities.length === 0) return 0;
-    const avg = entities.reduce((sum, e) => sum + e.score, 0) / entities.length;
+    if (piiEntities.length === 0) return 0;
+    const avg =
+      piiEntities.reduce((sum, e) => sum + e.score, 0) / piiEntities.length;
     return (
       Math.round(
         avg * ACCURACY_PERCENT_MULTIPLIER * ACCURACY_DECIMAL_PRECISION,
       ) / ACCURACY_DECIMAL_PRECISION
     );
-  }, [entities]);
+  }, [piiEntities]);
 
   const frameworkName = useMemo(
     () =>
@@ -55,8 +56,8 @@ export const useDeidOutput = () => {
   );
 
   const originalSegments = useMemo(
-    () => parseTextWithEntities(originalText, entities),
-    [originalText, entities],
+    () => parseTextWithEntities(originalText, piiEntities),
+    [originalText, piiEntities],
   );
 
   const redactedSegments = useMemo(
@@ -80,7 +81,7 @@ export const useDeidOutput = () => {
   }, [copyToClipboard, redactedSegments]);
 
   return {
-    entities,
+    piiEntities,
     originalText,
     entityCount,
     selectedCount,

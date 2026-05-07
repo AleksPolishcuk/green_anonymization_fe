@@ -20,20 +20,20 @@ const buildSegments = (
   const segments: TextSegment[] = [];
   let lastIndex = 0;
 
-  const sortedEntities = [...entities].sort((a, b) => a.posStart - b.posEnd);
+  const sortedEntities = [...entities].sort((a, b) => a.start - b.end);
 
   sortedEntities.forEach((entity) => {
-    if (lastIndex < entity.posStart) {
+    if (lastIndex < entity.start) {
       segments.push({
         type: "text",
-        content: text.substring(lastIndex, entity.posStart),
+        content: text.substring(lastIndex, entity.start),
       });
     }
 
     segments.push(
-      buildSegment(entity, text.substring(entity.posStart, entity.posEnd)),
+      buildSegment(entity, text.substring(entity.start, entity.end)),
     );
-    lastIndex = entity.posEnd;
+    lastIndex = entity.end;
   });
 
   if (lastIndex < text.length) {

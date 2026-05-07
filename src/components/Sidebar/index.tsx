@@ -57,7 +57,8 @@ export default function Sidebar() {
     useSidebar();
 
   const isDeidPage = location.pathname === "/deidentification";
-  const currentStepIndex = DEID_STEPS.indexOf(currentStep);
+  const effectiveStep = currentStep ?? DEID_STEPS[0];
+  const currentStepIndex = DEID_STEPS.indexOf(effectiveStep);
 
   return (
     <SidebarRoot
@@ -117,7 +118,7 @@ export default function Sidebar() {
         {isDeidPage && (
           <SubNavList $isMobileOpen={isMobileOpen}>
             {DEID_STEPS.map((step, index) => {
-              const isActive = step === currentStep;
+              const isActive = step === effectiveStep;
               const isCompleted = index < currentStepIndex;
               const isDisabled = index > currentStepIndex;
 
