@@ -165,3 +165,7 @@ export const FRAMEWORK_CODE_TO_NAME: Record<string, string> = {
   GDPR_UK: "UK GDPR",
   FADP_CH: "FADP",
 };
+
+export const CHART_EMPTY_STATE_ICON_SIZE = 40;
+export const CHART_EMPTY_STATE_SPRITE_ID = "icon-ChartEmptyState";
+export const CHART_EMPTY_STATE_VIEWBOX = "0 0 486.44 486.44";

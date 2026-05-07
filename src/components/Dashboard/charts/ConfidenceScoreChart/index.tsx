@@ -36,6 +36,7 @@ import {
   ChartTitle,
   TooltipDark,
 } from "components/Dashboard/charts/ChartCard/styles";
+import { ChartEmptyState } from "components/Dashboard/charts/ChartEmptyState";
 import {
   ConfidenceRoundedBar,
   type ConfidenceBarProps,
@@ -68,72 +69,76 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
       <ChartSubtitle>{t("dashboard.charts.confidence.subtitle")}</ChartSubtitle>
 
       <ChartBody>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            layout="vertical"
-            data={data}
-            margin={CONFIDENCE_CHART_MARGIN}
-            barCategoryGap={CONFIDENCE_BAR_CATEGORY_GAP}
-            onMouseLeave={() => setActiveIndex(null)}
-          >
-            <defs>
-              <linearGradient
-                id={CONFIDENCE_GRADIENT_ID}
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="0"
-              >
-                <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
-                <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
-              </linearGradient>
-              <linearGradient
-                id={CONFIDENCE_GRADIENT_HOVER_ID}
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="0"
-              >
-                <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
-                <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
-              </linearGradient>
-            </defs>
+        {data.length === 0 ? (
+          <ChartEmptyState />
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              layout="vertical"
+              data={data}
+              margin={CONFIDENCE_CHART_MARGIN}
+              barCategoryGap={CONFIDENCE_BAR_CATEGORY_GAP}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              <defs>
+                <linearGradient
+                  id={CONFIDENCE_GRADIENT_ID}
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="0"
+                >
+                  <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
+                  <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
+                </linearGradient>
+                <linearGradient
+                  id={CONFIDENCE_GRADIENT_HOVER_ID}
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="0"
+                >
+                  <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
+                  <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
+                </linearGradient>
+              </defs>
 
-            <CartesianGrid
-              horizontal={false}
-              stroke={CHART_GRID_STROKE}
-              strokeWidth={CHART_GRID_STROKE_WIDTH}
-              strokeDasharray={CHART_GRID_DASHARRAY}
-            />
-            <XAxis
-              type="number"
-              tick={tickX}
-              axisLine={false}
-              tickLine={false}
-              tickCount={CHART_TICK_COUNT}
-            />
-            <YAxis
-              type="category"
-              dataKey="range"
-              tick={tickY}
-              axisLine={false}
-              tickLine={false}
-              width={CONFIDENCE_Y_AXIS_WIDTH}
-            />
-            <Tooltip content={<CustomTooltip />} cursor={false} />
-            <Bar
-              dataKey="count"
-              barSize={CONFIDENCE_BAR_SIZE}
-              shape={(shapeProps: unknown) => (
-                <ConfidenceRoundedBar
-                  {...(shapeProps as ConfidenceBarProps)}
-                  activeIndex={activeIndex}
-                />
-              )}
-              onMouseEnter={(_, index) => setActiveIndex(index)}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+              <CartesianGrid
+                horizontal={false}
+                stroke={CHART_GRID_STROKE}
+                strokeWidth={CHART_GRID_STROKE_WIDTH}
+                strokeDasharray={CHART_GRID_DASHARRAY}
+              />
+              <XAxis
+                type="number"
+                tick={tickX}
+                axisLine={false}
+                tickLine={false}
+                tickCount={CHART_TICK_COUNT}
+              />
+              <YAxis
+                type="category"
+                dataKey="range"
+                tick={tickY}
+                axisLine={false}
+                tickLine={false}
+                width={CONFIDENCE_Y_AXIS_WIDTH}
+              />
+              <Tooltip content={<CustomTooltip />} cursor={false} />
+              <Bar
+                dataKey="count"
+                barSize={CONFIDENCE_BAR_SIZE}
+                shape={(shapeProps: unknown) => (
+                  <ConfidenceRoundedBar
+                    {...(shapeProps as ConfidenceBarProps)}
+                    activeIndex={activeIndex}
+                  />
+                )}
+                onMouseEnter={(_, index) => setActiveIndex(index)}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </ChartBody>
     </ChartCard>
   );
