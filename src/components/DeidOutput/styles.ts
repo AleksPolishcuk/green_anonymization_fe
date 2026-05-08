@@ -9,6 +9,9 @@ import {
 export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
   position: "relative",
   margin: theme.spacing(8),
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(7),
 }));
 
 export const DeidOutputSectionStack = styled(Box)(({ theme }) => ({

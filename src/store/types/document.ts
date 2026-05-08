@@ -4,7 +4,7 @@ export type ComplianceFramework =
   | "GDPR_UK"
   | "FADP_CH";
 
-export type Confidence = "Low" | "Medium" | "High";
+export type Confidence = "low" | "medium" | "high";
 
 export type EntityType =
   | "PERSON"
@@ -20,16 +20,33 @@ export type Entity = {
   id: string;
   documentId: string;
   entityType: EntityType;
-  value: string;
   confidence: Confidence;
-  posStart: number;
-  posEnd: number;
+  start: number;
+  end: number;
   score: number;
+  selected: boolean;
+  createdAt: string;
+};
+
+export type Document = {
+  chosenCompliance: string;
+  createdAt: string;
+  fileName: string;
+  filePath: string;
+  fileType: string;
+  id: string;
+  updatedAt: string;
+  userId: string;
+  verifiedAt: string;
 };
 
 export type DocumentState = {
-  selectedFramework: ComplianceFramework;
-  originalText: string;
-  redactedText: string;
-  entities: Entity[];
+  currentStep: DeidStep | null;
+  selectedFramework: ComplianceFramework | null;
+  originalText: string | null;
+  anonymizedText: string | null;
+  piiEntities: Entity[] | null;
+  document: Document | null;
 };
+
+export type DeidStep = "framework" | "dataSource" | "results";
