@@ -18,9 +18,25 @@ function formatTrendPercent(value: number | null): string {
   return `${Math.abs(Math.round(value))}%`;
 }
 
+const MONTH_SHORT = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+] as const;
+
 function formatDate(isoDate: string): string {
   const [, month, day] = isoDate.split("-");
-  return `${month}/${day}`;
+  const monthName = MONTH_SHORT[parseInt(month, 10) - 1] ?? month;
+  return `${parseInt(day, 10)} ${monthName}`;
 }
 
 function formatTimeAgo(isoString: string): string {

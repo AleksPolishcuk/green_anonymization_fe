@@ -8,8 +8,6 @@ import {
   YAxis,
 } from "recharts";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import type { EntityTypeDatum } from "store/types/dashboard";
 import {
@@ -36,7 +34,6 @@ import { ChartEmptyState } from "components/Dashboard/charts/ChartEmptyState";
 import {
   ActiveBarLabel,
   AngledXTick,
-  HorizontalXTick,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
@@ -47,8 +44,6 @@ type Props = { data: EntityTypeDatum[] };
 export const EntityTypesChart = ({ data }: Props) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
@@ -100,8 +95,8 @@ export const EntityTypesChart = ({ data }: Props) => {
 
               <XAxis
                 dataKey="name"
-                tick={isDesktop ? <HorizontalXTick /> : <AngledXTick />}
-                height={isDesktop ? 30 : CHART_X_TICK_HEIGHT}
+                tick={<AngledXTick />}
+                height={CHART_X_TICK_HEIGHT}
                 interval={0}
                 axisLine={false}
                 tickLine={false}

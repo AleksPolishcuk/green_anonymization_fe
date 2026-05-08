@@ -322,3 +322,11 @@ export const frameworkToneMap = {
   GDPR_UK: "cyan",
   FADP_CH: "gray",
 } as const;
+
+export const FINDINGS_PAGE_SIZE = 10;
+export const ACCURACY_PERCENT_MULTIPLIER = 100;
+export const ACCURACY_DECIMAL_PRECISION = 10;
+
+import type { DeidStep } from "store/types/document";
+
+export const DEID_STEPS: DeidStep[] = ["framework", "dataSource", "results"];

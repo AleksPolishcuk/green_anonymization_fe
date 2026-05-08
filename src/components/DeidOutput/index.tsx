@@ -28,14 +28,16 @@ import { useAppSelector } from "store/hooks";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
-  const { originalText, entities, selectedFramework } = useAppSelector(
+  const { originalText, piiEntities, selectedFramework } = useAppSelector(
     (s) => s.document,
   );
 
+  const entities = piiEntities ?? [];
+  const text = originalText ?? "";
   const entityCount = entities.length;
 
-  const originalSegments = parseTextWithEntities(originalText, entities);
-  const redactedSegments = parseTextWithRedactions(originalText, entities);
+  const originalSegments = parseTextWithEntities(text, entities);
+  const redactedSegments = parseTextWithRedactions(text, entities);
 
   const { downloadAsJson, downloadAsText, copyToClipboard } =
     useDownloadRedactedTextCopy();
