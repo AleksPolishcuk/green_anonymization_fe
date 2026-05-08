@@ -1,10 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type {
-  ComplianceFramework,
-  DocumentState,
-  Entity,
-} from "store/types/document";
+import type { DocumentState, Entity } from "store/types/document";
 import { DOCUMENT_MOCK } from "store/mocks/documentMock";
+import type { ComplianceFramework } from "services/compliance/typing/compliance";
 
 const initialState: DocumentState = {
   entities: DOCUMENT_MOCK.entities,

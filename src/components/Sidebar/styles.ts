@@ -216,7 +216,7 @@ export const SidebarProfileIcon = styled("div")(({ theme }) => ({
   background: `linear-gradient(135deg, ${theme.palette.accent.blue} 0%, ${theme.palette.accent.lilac} 100%)`,
   boxShadow: `0px 2px 8px 0px rgba(37, 99, 235, 0.28)`,
 
-  color: theme.palette.color.white,
+  color: theme.palette.common.white, // theme.palette.text.primary,
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize14,
 

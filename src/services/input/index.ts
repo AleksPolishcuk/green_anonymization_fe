@@ -13,6 +13,8 @@ export const inputService = {
       formData.append("text", data.text);
     }
 
+    formData.append("selectedFrameworkCode", data.selectedFrameworkCode);
+
     return apiClient.post<InputFormResponse, FormData>(
       "/processing/anonymize",
       formData,

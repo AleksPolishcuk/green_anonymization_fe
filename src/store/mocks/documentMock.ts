@@ -1,7 +1,13 @@
 import type { DocumentState } from "store/types/document";
 
 export const DOCUMENT_MOCK: DocumentState = {
-  selectedFramework: "HIPAA_US",
+  selectedFramework: {
+    code: "HIPAA_US",
+    name: "HIPAA",
+    description: "Health Insurance Portability and Accountability Act (US)",
+    entityTypesCount: 18,
+    isActive: true,
+  },
   originalText:
     "Patient: Dr. Sarah Johnson Date of Visit: March 15, 2026 Chief Complaint: The patient is a 45-year-old female presenting with persistent headaches.",
   redactedText: "",

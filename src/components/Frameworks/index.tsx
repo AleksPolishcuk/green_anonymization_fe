@@ -18,12 +18,30 @@ import {
 import { headerSpriteRef, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { setSelectedFramework } from "store/slices/documentSlice";
-import type { ComplianceFramework } from "store/types/document";
+import { useEffect } from "react";
+import { complianceService } from "services/compliance";
+import type {
+  ComplianceFramework,
+  ComplianceSelectionResponse,
+} from "services/compliance/typing/compliance";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const selectedFramework = useAppSelector((s) => s.document.selectedFramework);
+
+  useEffect(() => {
+    const fetchDefaultFramework = async () => {
+      const currentComplianceResponse: ComplianceSelectionResponse =
+        await complianceService.getSelection();
+      if (currentComplianceResponse.framework) {
+        const currentCompliance: ComplianceFramework =
+          currentComplianceResponse?.framework;
+        dispatch(setSelectedFramework(currentCompliance));
+      }
+    };
+    fetchDefaultFramework();
+  }, [dispatch]);
 
   return (
     <FrameworkSectionRoot>
@@ -53,10 +71,12 @@ export default function FrameworkSection() {
             <FrameworkSectionItem key={framework.code}>
               <FrameworkCard
                 framework={framework}
-                selected={selectedFramework.includes(
-                  framework.code as ComplianceFramework,
-                )}
-                onClick={() => dispatch(setSelectedFramework(framework.code))}
+                selected={selectedFramework?.code === framework.code}
+                onClick={() => {
+                  dispatch(
+                    setSelectedFramework(framework as ComplianceFramework),
+                  );
+                }}
               />
             </FrameworkSectionItem>
           ))}

@@ -6,6 +6,8 @@ import { inputService } from "services/input";
 import { ValidationError } from "yup";
 import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
+import { useAppSelector } from "store/hooks";
+import type { ComplianceFramework } from "services/compliance/typing/compliance";
 
 export const useInputForm = () => {
   const { t } = useTranslation();
@@ -62,14 +64,19 @@ export const useInputForm = () => {
   const isFileUploaded = !!values.file;
   const isTextValid = !!values.text && values.text.length <= 5000;
   const isSubmitDisabled = isSubmitting || (!isFileUploaded && !isTextValid);
+  const selectedFramework: ComplianceFramework = useAppSelector(
+    (s) => s.document.selectedFramework,
+  );
+  const selectedFrameworkCode = selectedFramework.code;
 
   const onSubmit = async (data: InputFormValues) => {
     try {
       setIsSubmitting(true);
       setSubmitSuccess(false);
+
       const payload = data.file
-        ? { file: data.file, text: null }
-        : { text: data.text, file: null };
+        ? { selectedFrameworkCode, file: data.file, text: null }
+        : { selectedFrameworkCode, text: data.text, file: null };
 
       await inputService.submitForm(payload);
 
