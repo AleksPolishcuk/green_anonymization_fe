@@ -220,16 +220,13 @@
   },
   "register": {
     "heading": "Create your account",
-
     "form": {
       "firstNameLabel": "First Name",
       "firstNamePlaceholder": "John",
       "firstNameRequired": "First name is required",
-
       "lastNameLabel": "Last Name",
       "lastNamePlaceholder": "Doe",
       "lastNameRequired": "Last name is required",
-
       "companyLabel": "Company",
       "companyPlaceholder": "Your organization",
 
@@ -245,21 +242,17 @@
         "companyMaxLength": "Company name cannot exceed 500 characters"
       }
     },
-
     "status": {
       "successTitle": "Account Created!",
       "successDescription": "Redirecting to Dashboard",
-
       "errorTitle": "Error Creating an Account",
       "errorDescription": "Details: "
     },
-
     "hero": {
       "title1": "Start protecting clinical",
       "title2": "data in minutes",
       "description": "Join 50+ healthcare organizations already using Clinical Data Studio to de-identify and synthesize data securely."
     },
-
     "testimonial": {
       "text": "Clinical Data Studio has transformed how we handle patient data for research. The synthetic data generation alone saved us months of compliance reviews.",
       "author": "Dr. Sarah Chen",
@@ -279,6 +272,11 @@
     "workspace": "Workspace",
     "dashboard": "Dashboard",
     "deidentify": "De-Identify",
+    "deidSteps": {
+      "framework": "Framework",
+      "dataSource": "Data Source",
+      "results": "Results"
+    },
     "syntheticData": "Synthetic Data"
   },
   "deidHeader": {
@@ -312,6 +310,11 @@
     "dark": "Switch to dark mode"
   },
   "deidOutput": {
+    "header": {
+      "title": "Analysis Complete",
+      "stats": "{{totalCount}} PII entities detected · {{selectedCount}} selected · {{framework}} compliance verified",
+      "accuracy": "{{value}}% accuracy"
+    },
     "originalText": {
       "title": "Original Text",
       "subtitle": "Detected entities highlighted",
@@ -325,6 +328,23 @@
       "downloadTxt": "Download .txt",
       "downloadJson": "Download .json",
       "redactedContentTooltip": "Redacted information"
+    },
+    "findingsTable": {
+      "title": "Findings & Decision Factors",
+      "stats": "{{totalCount}} entities detected · {{selectedCount}} selected for de-identification",
+      "columns": {
+        "id": "#",
+        "text": "Text",
+        "position": "Pos",
+        "score": "Score",
+        "recognizer": "Recognizer",
+        "factor": "Factor",
+        "action": "Action"
+      },
+      "actions": {
+        "selected": "Selected",
+        "deselected": "Deselected"
+      }
     }
   },
   "notFound": {

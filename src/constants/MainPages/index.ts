@@ -1,3 +1,5 @@
+import type { DeidStep } from "store/types/document";
+
 export const headerNavItems = [
   { key: "solution", to: "/#solution" as const },
   { key: "contactUs", to: "/contactus" as const },
@@ -323,10 +325,30 @@ export const frameworkToneMap = {
   FADP_CH: "gray",
 } as const;
 
+export const REDACTED_PLACEHOLDER = "[REDACTED]";
+
+export const RECOGNIZER_TYPES = {
+  PERSON: "PERSON",
+  DATE_TIME: "DATE_TIME",
+  AGE: "AGE",
+  PHONE_NUMBER: "PHONE_NUMBER",
+  EMAIL_ADDRESS: "EMAIL_ADDRESS",
+  MEDICAL_RECORD_NUMBER: "MEDICAL_RECORD_NUMBER",
+} as const;
+
+export const DOWNLOAD_FILENAMES = {
+  TXT: "de-identified-output.txt",
+  JSON: "analysis-result.json",
+} as const;
+
+export const MIME_TYPES = {
+  TEXT: "text/plain",
+  JSON: "application/json",
+} as const;
+
 export const FINDINGS_PAGE_SIZE = 10;
+export const DEID_OUTPUT_FILENAME = "de-identified-output";
 export const ACCURACY_PERCENT_MULTIPLIER = 100;
 export const ACCURACY_DECIMAL_PRECISION = 10;
-
-import type { DeidStep } from "store/types/document";
 
 export const DEID_STEPS: DeidStep[] = ["framework", "dataSource", "results"];

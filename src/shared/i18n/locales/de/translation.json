@@ -53,10 +53,22 @@
     "description": "Unternehmensweite PII-Erkennung und Anonymisierung für Gesundheitsdaten. Schützen Sie die Privatsphäre der Patienten und bewahren Sie den analytischen Wert.",
     "ctaPrimary": "Jetzt starten",
     "stats": {
-      "hipaa": { "value": "HIPAA", "label": "Konform" },
-      "eugdpr": { "value": "EU GDPR", "label": "Konform" },
-      "ukgdpr": { "value": "UK GDPR", "label": "Konform" },
-      "fadp": { "value": "Swiss FADP", "label": "Konform" }
+      "hipaa": {
+        "value": "HIPAA",
+        "label": "Konform"
+      },
+      "eugdpr": {
+        "value": "EU GDPR",
+        "label": "Konform"
+      },
+      "ukgdpr": {
+        "value": "UK GDPR",
+        "label": "Konform"
+      },
+      "fadp": {
+        "value": "Swiss FADP",
+        "label": "Konform"
+      }
     }
   },
   "capabilities": {
@@ -95,7 +107,9 @@
     "description": "Enterprise-Plattform für klinische Daten-De-Identifikation und synthetische Datengenerierung. Patientendatenschutz bei gleichzeitiger Erhaltung des Datennutzens.",
     "navAria": "Fußzeilennavigation",
     "copyright": "© {{year}} Clinical Data Studio. Alle Rechte vorbehalten.",
-    "columns": { "info": "Info" },
+    "columns": {
+      "info": "Info"
+    },
     "company": {
       "contact": "Kontakt",
       "pricing": "Preise",
@@ -171,16 +185,27 @@
       "description": "Unternehmensweite PII-Erkennung und Anonymisierung für Gesundheitsdaten.<lineBreak />Schützen Sie die Privatsphäre der Patienten und bewahren Sie den analytischen Wert."
     },
     "stats": {
-      "clients": { "value": "50+", "label": "Kunden" },
-      "records": { "value": "2B+", "label": "Datensätze" },
-      "uptime": { "value": "99,9%", "label": "Verfügbarkeit" }
+      "clients": {
+        "value": "50+",
+        "label": "Kunden"
+      },
+      "records": {
+        "value": "2B+",
+        "label": "Datensätze"
+      },
+      "uptime": {
+        "value": "99,9%",
+        "label": "Verfügbarkeit"
+      }
     },
     "heading": "Anmelden",
     "subtext": "Geben Sie Ihre E-Mail-Adresse ein, um einen Anmeldelink zu erhalten.",
     "emailLabel": "E-Mail",
     "emailPlaceholder": "max.mustermann@beispiel.de",
     "submitButton": "Anmelden",
-    "validation": { "required": "E-Mail ist erforderlich" },
+    "validation": {
+      "required": "E-Mail ist erforderlich"
+    },
     "status": {
       "successTitle": "E-Mail gesendet!",
       "successDescription": "Überprüfen Sie Ihren Posteingang für den Anmeldelink.",
@@ -233,7 +258,12 @@
     "workspace": "Arbeitsbereich",
     "dashboard": "Dashboard",
     "deidentify": "De-Identifizieren",
-    "syntheticData": "Synthetische Daten"
+    "syntheticData": "Synthetische Daten",
+    "deidSteps": {
+      "framework": "Framework",
+      "dataSource": "Datenquelle",
+      "results": "Ergebnisse"
+    }
   },
   "deidHeader": {
     "title": "De-Identifikations-Workflow",
@@ -278,6 +308,28 @@
       "downloadTxt": ".txt herunterladen",
       "downloadJson": ".json herunterladen",
       "redactedContentTooltip": "Geschwärzte Information"
+    },
+    "header": {
+      "title": "Analyse abgeschlossen",
+      "stats": "{{totalCount}} PII-Entitäten erkannt · {{selectedCount}} ausgewählt · {{framework}}-Konformität bestätigt",
+      "accuracy": "{{value}}% Genauigkeit"
+    },
+    "findingsTable": {
+      "title": "Befunde und Entscheidungsfaktoren",
+      "stats": "{{totalCount}} Entitäten erkannt · {{selectedCount}} für De-Identifikation ausgewählt",
+      "columns": {
+        "id": "#",
+        "text": "Text",
+        "position": "Pos",
+        "score": "Wert",
+        "recognizer": "Erkenner",
+        "factor": "Faktor",
+        "action": "Aktion"
+      },
+      "actions": {
+        "selected": "Ausgewählt",
+        "deselected": "Abgewählt"
+      }
     }
   },
   "notFound": {

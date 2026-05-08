@@ -1,4 +1,4 @@
-import type { Confidence, EntityType } from "store/types/document";
+import type { Confidence, Document, EntityType } from "store/types/document";
 
 export type InputFormRequest = {
   text: string | null;
@@ -20,4 +20,5 @@ export type InputFormResponse = {
   originalText: string;
   anonymizedText: string;
   piiEntities: PiiEntity[];
+  document: Document;
 };

@@ -1,5 +1,7 @@
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { ChevronRight } from "@mui/icons-material";
 
 import {
   SidebarExitIcon,
@@ -20,13 +22,24 @@ import {
   SidebarSubtitle,
   SidebarTextBlock,
   SidebarTitle,
+  SubNavStepIcon,
+  SubNavItem,
+  SubNavList,
+  SubNavChevron,
 } from "./styles";
 import { useAppSelector } from "store/hooks";
 import { logout } from "store/slices/authSlice";
 import { useAppDispatch } from "store/hooks";
 import { useNavigate } from "react-router-dom";
-import { headerSpriteRef } from "constants/MainPages";
+import { DEID_STEPS, headerSpriteRef } from "constants/MainPages";
 import { useSidebar } from "./useSidebar";
+import type { DeidStep } from "store/types/document";
+
+const DEID_STEP_LABELS: Record<DeidStep, string> = {
+  framework: "sidebar.deidSteps.framework",
+  dataSource: "sidebar.deidSteps.dataSource",
+  results: "sidebar.deidSteps.results",
+};
 
 export default function Sidebar() {
   const { t } = useTranslation();
@@ -37,9 +50,15 @@ export default function Sidebar() {
     dispatch(logout());
     navigate("/");
   };
+  const location = useLocation();
+  const currentStep = useAppSelector((s) => s.document.currentStep);
 
   const { sidebarRef, isMobileOpen, handleSidebarClick, handleNavClick } =
     useSidebar();
+
+  const isDeidPage = location.pathname === "/deidentification";
+  const effectiveStep = currentStep ?? DEID_STEPS[0];
+  const currentStepIndex = DEID_STEPS.indexOf(effectiveStep);
 
   return (
     <SidebarRoot
@@ -91,7 +110,41 @@ export default function Sidebar() {
             </SidebarNavIcon>
           </SidebarNavIconBox>
           <Typography variant="body1">{t("sidebar.deidentify")}</Typography>
+          <SubNavChevron>
+            <ChevronRight fontSize="small" />
+          </SubNavChevron>
         </SidebarNavItem>
+
+        {isDeidPage && (
+          <SubNavList $isMobileOpen={isMobileOpen}>
+            {DEID_STEPS.map((step, index) => {
+              const isActive = step === effectiveStep;
+              const isCompleted = index < currentStepIndex;
+              const isDisabled = index > currentStepIndex;
+
+              return (
+                <SubNavItem
+                  key={step}
+                  $active={isActive}
+                  $disabled={isDisabled}
+                >
+                  <SubNavStepIcon viewBox="0 0 16 16" aria-hidden="true">
+                    <use
+                      href={headerSpriteRef(
+                        isCompleted
+                          ? "icon-step-completed"
+                          : isActive
+                            ? "icon-step-active"
+                            : "icon-step-pending",
+                      )}
+                    />
+                  </SubNavStepIcon>
+                  {t(DEID_STEP_LABELS[step])}
+                </SubNavItem>
+              );
+            })}
+          </SubNavList>
+        )}
 
         <SidebarNavItem
           to="/syntheticdata"

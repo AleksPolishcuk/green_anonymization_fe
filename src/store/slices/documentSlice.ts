@@ -33,14 +33,16 @@ export const documentSlice = createSlice({
       action: PayloadAction<ComplianceFramework>,
     ) => {
       state.selectedFramework = action.payload;
-      if (state.currentStep === "framework") {
+
+      if (state.currentStep === null || state.currentStep === "framework") {
         state.currentStep = "dataSource";
       }
     },
 
     setOriginalText: (state, action: PayloadAction<string>) => {
       state.originalText = action.payload;
-      if (action.payload) {
+
+      if (action.payload.trim().length > 0 && state.currentStep !== "results") {
         state.currentStep = "results";
       }
     },
@@ -51,7 +53,7 @@ export const documentSlice = createSlice({
 
     setEntities: (state, action: PayloadAction<PiiEntity[]>) => {
       state.piiEntities = action.payload
-        .map((e): Entity => ({ ...e, selected: true }))
+        .map((entity) => ({ ...entity, selected: true }))
         .sort((a, b) => a.start - b.start);
     },
 
@@ -59,8 +61,19 @@ export const documentSlice = createSlice({
       state.document = action.payload;
     },
 
+    updateEntity: (
+      state,
+      action: PayloadAction<{ id: string; changes: Partial<Entity> }>,
+    ) => {
+      const entity = state.piiEntities?.find((e) => e.id === action.payload.id);
+      if (entity) {
+        Object.assign(entity, action.payload.changes);
+      }
+    },
+
     toggleEntitySelected: (state, action: PayloadAction<string>) => {
       const entity = state.piiEntities?.find((e) => e.id === action.payload);
+
       if (entity) {
         entity.selected = !entity.selected;
       }
@@ -71,18 +84,25 @@ export const documentSlice = createSlice({
     },
 
     nextDeidStep: (state) => {
-      if (!state.currentStep) return;
-      const idx = DEID_STEPS.indexOf(state.currentStep);
-      if (idx < DEID_STEPS.length - 1) {
-        state.currentStep = DEID_STEPS[idx + 1];
+      if (state.currentStep === null) {
+        state.currentStep = DEID_STEPS[0];
+        return;
+      }
+
+      const currentIndex = DEID_STEPS.indexOf(state.currentStep);
+
+      if (currentIndex < DEID_STEPS.length - 1) {
+        state.currentStep = DEID_STEPS[currentIndex + 1];
       }
     },
 
     prevDeidStep: (state) => {
-      if (!state.currentStep) return;
-      const idx = DEID_STEPS.indexOf(state.currentStep);
-      if (idx > 0) {
-        state.currentStep = DEID_STEPS[idx - 1];
+      if (state.currentStep === null) return;
+
+      const currentIndex = DEID_STEPS.indexOf(state.currentStep);
+
+      if (currentIndex > 0) {
+        state.currentStep = DEID_STEPS[currentIndex - 1];
       }
     },
 
@@ -96,11 +116,12 @@ export const {
   setRedactedText,
   setEntities,
   setDocument,
+  updateEntity,
   toggleEntitySelected,
+  resetDocument,
   setDeidStep,
   nextDeidStep,
   prevDeidStep,
-  resetDocument,
 } = documentSlice.actions;
 
 export const saveFrameworkSelection = createAsyncThunk<

@@ -1,4 +1,16 @@
 import { useTranslation } from "react-i18next";
+
+import { headerSpriteRef } from "constants/MainPages";
+
+import {
+  HeaderCard,
+  HeaderTitle,
+  HeaderStats,
+  AccuracyBadge,
+  SpriteIconSvg,
+} from "./analysisStyles";
+import { FindingsTable } from "./FindingsTable";
+import { useDeidOutput } from "./hooks/useDeidOutput";
 import {
   DeidOutputSectionCard,
   DeidOutputSectionRoot,
@@ -18,44 +30,45 @@ import {
   DownloadIconWrapper,
 } from "./styles";
 import { TaggedText } from "./taggedText";
-import {
-  parseTextWithEntities,
-  parseTextWithRedactions,
-} from "./utils/parsers";
-import { headerSpriteRef } from "constants/MainPages";
-import { useDownloadRedactedTextCopy } from "./hooks/useDownloadRedactedTextCopy";
-import { useAppSelector } from "store/hooks";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
-  const { originalText, piiEntities, selectedFramework } = useAppSelector(
-    (s) => s.document,
-  );
-
-  const entities = piiEntities ?? [];
-  const text = originalText ?? "";
-  const entityCount = entities.length;
-
-  const originalSegments = parseTextWithEntities(text, entities);
-  const redactedSegments = parseTextWithRedactions(text, entities);
-
-  const { downloadAsJson, downloadAsText, copyToClipboard } =
-    useDownloadRedactedTextCopy();
-
-  const handleDownloadJson = () => {
-    downloadAsJson(redactedSegments, "de-identified-output");
-  };
-
-  const handleDownloadText = () => {
-    downloadAsText(redactedSegments, "de-identified-output");
-  };
-
-  const handleCopyText = () => {
-    copyToClipboard(redactedSegments);
-  };
+  const {
+    piiEntities,
+    originalText,
+    entityCount,
+    selectedCount,
+    accuracy,
+    frameworkName,
+    originalSegments,
+    redactedSegments,
+    toggleEntity,
+    handleDownloadJson,
+    handleDownloadText,
+    handleCopyText,
+  } = useDeidOutput();
 
   return (
     <DeidOutputSectionRoot>
+      <HeaderCard>
+        <div>
+          <HeaderTitle>{t("header.title")}</HeaderTitle>
+          <HeaderStats>
+            {t("header.stats", {
+              totalCount: entityCount,
+              selectedCount,
+              framework: frameworkName,
+            })}
+          </HeaderStats>
+        </div>
+        <AccuracyBadge>
+          <SpriteIconSvg aria-hidden="true">
+            <use href={headerSpriteRef("icon-accuracy-check")} />
+          </SpriteIconSvg>
+          {t("header.accuracy", { value: accuracy })}
+        </AccuracyBadge>
+      </HeaderCard>
+
       <DeidOutputSectionStack>
         <DeidOutputSectionCard>
           <CardHeader>
@@ -90,7 +103,7 @@ export default function DeidOutputSection() {
               <ComplianceSafeIconWrapper viewBox="0 0 11 11" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconComplianceSafe")} />
               </ComplianceSafeIconWrapper>
-              {selectedFramework}
+              {frameworkName}
             </ComplianceBadge>
           </CardHeader>
 
@@ -122,6 +135,16 @@ export default function DeidOutputSection() {
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
       </DeidOutputSectionStack>
+
+      {piiEntities && originalText && (
+        <FindingsTable
+          entities={piiEntities}
+          originalText={originalText}
+          selectedCount={selectedCount}
+          totalCount={entityCount}
+          onToggle={toggleEntity}
+        />
+      )}
     </DeidOutputSectionRoot>
   );
 }
