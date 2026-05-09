@@ -78,17 +78,15 @@ export const useInputForm = () => {
     try {
       setIsSubmitting(true);
       setSubmitSuccess(false);
+
+      if (!selectedFramework) {
+        throw new Error(t("input.form.errors.frameworkRequired"));
+      }
+
+      const selectedFrameworkCode = selectedFramework;
       const payload = data.file
-        ? {
-            file: data.file,
-            text: null,
-            selectedFrameworkCode: selectedFramework!,
-          }
-        : {
-            text: data.text,
-            file: null,
-            selectedFrameworkCode: selectedFramework!,
-          };
+        ? { selectedFrameworkCode, file: data.file, text: null }
+        : { selectedFrameworkCode, text: data.text, file: null };
 
       const analysis = await inputService.submitForm(payload);
 
