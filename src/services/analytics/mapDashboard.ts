@@ -2,16 +2,10 @@ import {
   COMPLIANCE_COLORS,
   FRAMEWORK_CODE_TO_NAME,
   STAT_CARD_IDS,
-  STAT_CARD_LABELS,
 } from "constants/DashboardPage";
-import type { DashboardStats, TrendType } from "store/types/dashboard";
+import type { DashboardStats } from "store/types/dashboard";
 
 import type { DashboardDto } from "./typing/analytics";
-
-function getTrendType(value: number | null): TrendType {
-  if (value === null || value === 0) return "stable";
-  return value > 0 ? "up" : "down";
-}
 
 function formatTrendPercent(value: number | null): string {
   if (value === null) return "—";
@@ -70,33 +64,25 @@ export function mapDashboard(
         id: STAT_CARD_IDS.totalDocs,
         iconId: "icon-document",
         value: stats.totalDocuments.toLocaleString("en-US"),
-        label: STAT_CARD_LABELS.totalDocs,
         trendPercent: formatTrendPercent(trends.documentsVsLastMonth),
-        trendType: getTrendType(trends.documentsVsLastMonth),
       },
       {
         id: STAT_CARD_IDS.entities,
         iconId: "icon-shield",
         value: stats.totalEntities.toLocaleString("en-US"),
-        label: STAT_CARD_LABELS.entities,
         trendPercent: formatTrendPercent(trends.entitiesVsLastMonth),
-        trendType: getTrendType(trends.entitiesVsLastMonth),
       },
       {
         id: STAT_CARD_IDS.avgEntities,
         iconId: "icon-activity",
         value: stats.avgEntitiesPerDoc.toFixed(1),
-        label: STAT_CARD_LABELS.avgEntities,
         trendPercent: "—",
-        trendType: "stable",
       },
       {
         id: STAT_CARD_IDS.successRate,
         iconId: "icon-chart",
         value: `${stats.successRate.toFixed(1)}%`,
-        label: STAT_CARD_LABELS.successRate,
         trendPercent: "—",
-        trendType: "excellent",
       },
     ],
 
@@ -111,7 +97,7 @@ export function mapDashboard(
         return {
           name,
           value: percentage,
-          color: COMPLIANCE_COLORS[name] ?? "#cccccc",
+          color: COMPLIANCE_COLORS[name],
         };
       },
     ),

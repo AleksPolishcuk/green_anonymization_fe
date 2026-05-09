@@ -7,9 +7,6 @@ export const COMPLIANCE_COLORS: Record<string, string> = {
   FADP: "#aec7ed",
 };
 
-export const STAT_CARD_TREND_PERCENT_COLOR = "#027a48";
-export const STAT_CARD_TREND_SUFFIX_COLOR = "#475467";
-
 export const STAT_CARD_IDS = {
   totalDocs: "total-docs",
   entities: "entities",
@@ -151,13 +148,6 @@ export const DONUT_END_ANGLE = -270;
 export const DONUT_SMALL_SCREEN_MAX_PX = 425;
 
 export const HIPAA_FRAMEWORK_KEY = "HIPAA";
-
-export const STAT_CARD_LABELS = {
-  totalDocs: "Total Documents",
-  entities: "Entities Detected",
-  avgEntities: "Avg. Entities/Doc",
-  successRate: "Success Rate",
-} as const;
 
 export const FRAMEWORK_CODE_TO_NAME: Record<string, string> = {
   HIPAA_US: "HIPAA",

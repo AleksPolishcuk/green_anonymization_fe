@@ -5,6 +5,7 @@ import {
   STAT_CARD_SPRITE_IDS,
   STAT_CARD_TREND_ARROW_SPRITE_ID,
 } from "constants/DashboardPage";
+import { headerSpriteRef } from "constants/MainPages";
 import type { StatCardData, StatCardIconId } from "store/types/dashboard";
 
 import {
@@ -20,7 +21,13 @@ import {
   TrendRow,
   TrendSuffix,
 } from "./styles";
-import { headerSpriteRef } from "constants/MainPages";
+
+const STAT_CARD_LABEL_KEYS: Record<string, string> = {
+  [STAT_CARD_IDS.totalDocs]: "dashboard.statCards.totalDocuments",
+  [STAT_CARD_IDS.entities]: "dashboard.statCards.entitiesDetected",
+  [STAT_CARD_IDS.avgEntities]: "dashboard.statCards.avgEntitiesPerDoc",
+  [STAT_CARD_IDS.successRate]: "dashboard.statCards.successRate",
+};
 
 const StatSpriteIcon = ({ iconId }: { iconId: StatCardIconId }) => {
   const symbolId = STAT_CARD_SPRITE_IDS[iconId];
@@ -32,16 +39,17 @@ const StatSpriteIcon = ({ iconId }: { iconId: StatCardIconId }) => {
 };
 
 type StatCardProps = {
-  card: StatCardData & { label: string };
+  card: StatCardData;
 };
 
 const StatCard = ({ card }: StatCardProps) => {
   const { t } = useTranslation();
+  const label = t(STAT_CARD_LABEL_KEYS[card.id] ?? "");
 
   return (
     <Card>
       <CardTopRow>
-        <CardLabel>{card.label}</CardLabel>
+        <CardLabel>{label}</CardLabel>
         <CardIconWrapper>
           <StatSpriteIcon iconId={card.iconId} />
         </CardIconWrapper>
@@ -64,26 +72,10 @@ type StatCardsProps = {
   data: StatCardData[];
 };
 
-export const StatCards = ({ data }: StatCardsProps) => {
-  const { t } = useTranslation();
-
-  const labelKeys: Record<string, string> = {
-    [STAT_CARD_IDS.totalDocs]: t("dashboard.statCards.totalDocuments"),
-    [STAT_CARD_IDS.entities]: t("dashboard.statCards.entitiesDetected"),
-    [STAT_CARD_IDS.avgEntities]: t("dashboard.statCards.avgEntitiesPerDoc"),
-    [STAT_CARD_IDS.successRate]: t("dashboard.statCards.successRate"),
-  };
-
-  const cards = data.map((card) => ({
-    ...card,
-    label: labelKeys[card.id] ?? card.label,
-  }));
-
-  return (
-    <CardsGrid>
-      {cards.map((card) => (
-        <StatCard key={card.id} card={card} />
-      ))}
-    </CardsGrid>
-  );
-};
+export const StatCards = ({ data }: StatCardsProps) => (
+  <CardsGrid>
+    {data.map((card) => (
+      <StatCard key={card.id} card={card} />
+    ))}
+  </CardsGrid>
+);

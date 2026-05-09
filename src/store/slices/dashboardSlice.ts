@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { DASHBOARD_MOCK } from "store/mocks/dashboardMock";
+import { DE_ID_METHODS_MOCK } from "store/mocks/dashboardMock";
 import type { DashboardState } from "store/types/dashboard";
 import { analyticsService } from "services/analytics";
 import { mapDashboard } from "services/analytics/mapDashboard";
 
 export const fetchDashboard = createAsyncThunk<
-  Omit<ReturnType<typeof mapDashboard>, never>,
+  ReturnType<typeof mapDashboard>,
   void,
   { rejectValue: string }
 >("dashboard/fetch", async (_, { rejectWithValue }) => {
@@ -26,7 +26,7 @@ const initialState: DashboardState = {
     entityTypes: [],
     complianceFrameworks: [],
     processingHistory: [],
-    deIdMethods: DASHBOARD_MOCK.deIdMethods,
+    deIdMethods: DE_ID_METHODS_MOCK,
     confidenceScores: [],
     recentActivity: [],
   },
