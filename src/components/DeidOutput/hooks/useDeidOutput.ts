@@ -59,12 +59,16 @@ export const useDeidOutput = () => {
     );
   }, [safeEntities]);
 
-  const frameworkName = useMemo(
-    () =>
-      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework?.code)
-        ?.name ?? selectedFramework,
-    [selectedFramework],
-  );
+  const frameworkName = useMemo(() => {
+    if (!selectedFramework) {
+      return "";
+    }
+
+    return (
+      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework.code)
+        ?.name ?? selectedFramework.name
+    );
+  }, [selectedFramework]);
 
   const originalSegments = useMemo(
     () => parseTextWithEntities(safeOriginalText, safeEntities),
