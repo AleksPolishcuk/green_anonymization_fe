@@ -8,8 +8,18 @@ export const EmailSentMsg = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3, 4),
   width: "100%",
   borderRadius: theme.spacing(3.5),
+
   border: `1px solid ${theme.palette.divider}`,
-  backgroundColor: alpha(theme.palette.background.softGray, 0.5),
+
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.background.lightGray, 0.72)
+      : alpha(theme.palette.background.softGray, 0.5),
+
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? `0px 8px 28px ${alpha(theme.palette.common.black, 0.18)}`
+      : "none",
 }));
 
 export const StatusIconWrapper = styled(Box)(({ theme }) => ({
@@ -58,7 +68,11 @@ export const SuccessStatusDescriptionText = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize16,
   lineHeight: theme.typography.lineHeight158,
-  color: theme.palette.background.mediumGray,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.secondary
+      : theme.palette.background.mediumGray,
 
   [theme.breakpoints.down("md")]: {
     fontSize: theme.typography.fontSize14,
