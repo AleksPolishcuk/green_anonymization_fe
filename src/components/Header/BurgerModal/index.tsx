@@ -42,7 +42,7 @@ export function BurgerModal({ isOpen, id, onClose }: BurgerModalProps) {
   }, [isOpen]);
 
   return (
-    <Overlay $isOpen={isOpen} onClick={onClose} aria-hidden={!isOpen}>
+    <Overlay $isOpen={isOpen} onClick={onClose} inert={!isOpen || undefined}>
       <Panel
         id={id}
         $isOpen={isOpen}
