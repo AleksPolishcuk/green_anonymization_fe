@@ -38,7 +38,7 @@ export type Document = {
 
 export type DocumentState = {
   currentStep: DeidStep | null;
-  selectedFramework: ComplianceFramework;
+  selectedFramework: ComplianceFramework | null;
   originalText: string | null;
   anonymizedText: string | null;
   piiEntities: Entity[] | null;

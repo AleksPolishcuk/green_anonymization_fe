@@ -40,10 +40,6 @@ export const RightSection = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 
-  // backgroundColor:
-  //   theme.palette.mode === "dark"
-  //     ? theme.palette.subtle.bg
-  //     : theme.palette.background.default,
   background: theme.palette.background.default,
   padding: theme.spacing(6),
 

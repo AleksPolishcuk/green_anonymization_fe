@@ -53,8 +53,8 @@ export const useDeidOutput = () => {
 
   const frameworkName = useMemo(
     () =>
-      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework)?.name ??
-      selectedFramework,
+      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework?.code)
+        ?.name ?? selectedFramework,
     [selectedFramework],
   );
 

@@ -219,7 +219,6 @@ export const COMPLIANCE_FRAMEWORKS = [
     description: "Health Insurance Portability and Accountability Act",
     entityTypesCount: 18,
     accentKey: "blue",
-    isActive: true,
   },
   {
     id: "euGdpr",
@@ -228,7 +227,6 @@ export const COMPLIANCE_FRAMEWORKS = [
     description: "General Data Protection Regulation — European Union",
     entityTypesCount: 11,
     accentKey: "green",
-    isActive: true,
   },
   {
     id: "ukGdpr",
@@ -237,7 +235,6 @@ export const COMPLIANCE_FRAMEWORKS = [
     description: "General Data Protection Regulation — United Kingdom",
     entityTypesCount: 11,
     accentKey: "amber",
-    isActive: true,
   },
   {
     id: "swissFadp",
@@ -246,7 +243,6 @@ export const COMPLIANCE_FRAMEWORKS = [
     description: "Federal Act on Data Protection",
     entityTypesCount: 11,
     accentKey: "red",
-    isActive: true,
   },
 ] as const;
 

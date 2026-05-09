@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ComplianceFramework } from "services/compliance/typing/compliance";
 import type { DeidStep, DocumentState, Entity } from "store/types/document";
-import { COMPLIANCE_FRAMEWORKS, DEID_STEPS } from "constants/MainPages";
+import { DEID_STEPS } from "constants/MainPages";
 import type { PiiEntity } from "services/input/typing";
 
 const initialState: DocumentState = {
@@ -9,7 +9,7 @@ const initialState: DocumentState = {
   piiEntities: null,
   originalText: null,
   anonymizedText: null,
-  selectedFramework: COMPLIANCE_FRAMEWORKS[0],
+  selectedFramework: null,
   document: null,
 };
 

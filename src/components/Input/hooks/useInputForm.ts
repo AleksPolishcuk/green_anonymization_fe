@@ -74,12 +74,15 @@ export const useInputForm = () => {
   const selectedFramework: ComplianceFramework | null = useAppSelector(
     (s) => s.document.selectedFramework,
   );
-  const selectedFrameworkCode = selectedFramework?.code;
 
   const onSubmit = async (data: InputFormValues) => {
     try {
       setIsSubmitting(true);
       setSubmitSuccess(false);
+      if (!selectedFramework) {
+        throw new Error("Please Select a compliance framework");
+      }
+      const selectedFrameworkCode = selectedFramework?.code;
 
       const payload = data.file
         ? { selectedFrameworkCode, file: data.file, text: null }
