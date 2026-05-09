@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solution",
-      "contactUs": "Contact Us"
+      "contactUs": "Contact Us",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "logOut": "Log Out"
     },
     "logoAlt": "Clinical Data Studio — home",
     "logoText": "Clinical Data Studio",
@@ -229,7 +231,6 @@
       "lastNameRequired": "Last name is required",
       "companyLabel": "Company",
       "companyPlaceholder": "Your organization",
-
       "submitButton": "Continue",
       "errors": {
         "firstNameRequired": "First name is required",
@@ -287,7 +288,6 @@
     "title": "Input Clinical Text",
     "subtitle": "Paste clinical text or upload a document for analysis",
     "step": "STEP 2",
-
     "form": {
       "successMessage": "Request submitted successfully",
       "errors": {

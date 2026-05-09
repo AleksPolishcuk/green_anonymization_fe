@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "store/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 import { fetchSession } from "store/slices/authSlice";
 
 export const useAuthGuard = (mode: "registered" | "unregistered") => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const user = useAppSelector((state) => state.auth?.user);
+  const registered = useAppSelector((state) => state.auth?.registered);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,21 +20,27 @@ export const useAuthGuard = (mode: "registered" | "unregistered") => {
         return;
       }
 
-      const result = await dispatch(fetchSession());
+      let sessionUser = user;
+      let sessionRegistered = registered;
 
-      if (fetchSession.rejected.match(result)) {
-        navigate("/sign-in");
-        return;
+      if (!sessionUser) {
+        const result = await dispatch(fetchSession());
+
+        if (fetchSession.rejected.match(result)) {
+          navigate("/sign-in");
+          return;
+        }
+
+        sessionUser = result.payload.user;
+        sessionRegistered = result.payload.registered;
       }
 
-      const { registered } = result.payload;
-
-      if (mode === "registered" && !registered) {
+      if (mode === "registered" && !sessionRegistered) {
         navigate("/register");
         return;
       }
 
-      if (mode === "unregistered" && registered) {
+      if (mode === "unregistered" && sessionRegistered) {
         navigate("/dashboard");
         return;
       }
@@ -41,7 +49,8 @@ export const useAuthGuard = (mode: "registered" | "unregistered") => {
     };
 
     check();
-  }, [dispatch, navigate, mode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return { loading };
 };
