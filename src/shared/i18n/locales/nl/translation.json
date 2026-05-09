@@ -330,6 +330,11 @@
         "selected": "Geselecteerd",
         "deselected": "Gedeselecteerd"
       }
+    },
+    "syntheticCta": {
+      "title": "Klaar om synthetische gegevens te genereren?",
+      "subtitle": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
+      "button": "Synthetische gegevens genereren"
     }
   },
   "notFound": {

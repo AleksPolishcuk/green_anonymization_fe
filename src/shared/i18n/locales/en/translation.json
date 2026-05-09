@@ -345,6 +345,11 @@
         "selected": "Selected",
         "deselected": "Deselected"
       }
+    },
+    "syntheticCta": {
+      "title": "Ready to Generate Synthetic Data?",
+      "subtitle": "Use de-identified data to create realistic synthetic datasets for testing and development",
+      "button": "Generate Synthetic Data"
     }
   },
   "notFound": {

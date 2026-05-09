@@ -207,3 +207,80 @@ export const DownloadIconWrapper = styled(IconWrapper)(({ theme }) => ({
   height: 13,
   marginRight: theme.spacing(1.25),
 }));
+
+export const SyntheticCtaCard = styled(Box)(({ theme }) => {
+  const blue = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(4),
+    padding: theme.spacing(4, 5),
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: blue.bg,
+    border: `1px solid ${blue.border}`,
+
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+      gap: theme.spacing(3),
+    },
+  };
+});
+
+export const SyntheticCtaIconBox = styled(Box)(({ theme }) => {
+  const blue = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    width: 40,
+    height: 40,
+    flexShrink: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: theme.spacing(2),
+    backgroundColor: blue.color,
+    color: theme.palette.common.white,
+  };
+});
+
+export const SyntheticCtaText = styled(Box)({
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+});
+
+export const SyntheticCtaTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: theme.typography.fontWeightSemiBold,
+  fontSize: theme.typography.fontSize14,
+  color: theme.palette.text.primary,
+}));
+
+export const SyntheticCtaSubtitle = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.fontSize12,
+  color: theme.palette.text.secondary,
+}));
+
+export const SyntheticCtaButton = styled(Button)(({ theme }) => {
+  const blue = CHIP_COLOR_PRESETS.blue;
+
+  return {
+    flexShrink: 0,
+    textTransform: "none",
+    fontSize: theme.typography.fontSize12,
+    fontWeight: theme.typography.fontWeightSemiBold,
+    padding: theme.spacing(1.5, 3),
+    borderRadius: theme.spacing(2),
+    color: theme.palette.common.white,
+    backgroundColor: blue.color,
+    "&:hover": {
+      backgroundColor: blue.color,
+      filter: "brightness(0.95)",
+    },
+  };
+});
+
+export const SyntheticCtaIconSvg = styled("svg")({
+  width: 20,
+  height: 20,
+});

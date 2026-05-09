@@ -10,6 +10,11 @@ export const headerRoutes = {
   dashboard: "/dashboard",
 } as const;
 
+export const WORKSPACE_ROUTES = {
+  deidentification: "/deidentification",
+  syntheticData: "/syntheticdata",
+} as const;
+
 const headerAssetPaths = {
   sprite: "/sprite.svg",
 } as const;

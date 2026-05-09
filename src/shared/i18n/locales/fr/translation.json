@@ -331,6 +331,11 @@
         "selected": "Sélectionné",
         "deselected": "Désélectionné"
       }
+    },
+    "syntheticCta": {
+      "title": "Prêt à générer des données synthétiques ?",
+      "subtitle": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
+      "button": "Générer des données synthétiques"
     }
   },
   "notFound": {

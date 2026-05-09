@@ -330,6 +330,11 @@
         "selected": "Selezionato",
         "deselected": "Deselezionato"
       }
+    },
+    "syntheticCta": {
+      "title": "Pronto a generare dati sintetici?",
+      "subtitle": "Usa i dati de-identificati per creare dataset sintetici realistici per test e sviluppo",
+      "button": "Genera dati sintetici"
     }
   },
   "notFound": {
