@@ -22,6 +22,9 @@ export const useDeidOutput = () => {
     (s) => s.document,
   );
 
+  const safeEntities = useMemo(() => piiEntities ?? [], [piiEntities]);
+  const safeOriginalText = originalText ?? "";
+
   const toggleEntity = useCallback(
     (id: string) => {
       dispatch(toggleEntitySelected(id));
@@ -30,23 +33,23 @@ export const useDeidOutput = () => {
   );
 
   const selectedEntities = useMemo(
-    () => piiEntities.filter((e) => e.selected),
-    [piiEntities],
+    () => safeEntities.filter((e) => e.selected),
+    [safeEntities],
   );
 
-  const entityCount = piiEntities.length;
+  const entityCount = safeEntities.length;
   const selectedCount = selectedEntities.length;
 
   const accuracy = useMemo(() => {
-    if (piiEntities.length === 0) return 0;
+    if (safeEntities.length === 0) return 0;
     const avg =
-      piiEntities.reduce((sum, e) => sum + e.score, 0) / piiEntities.length;
+      safeEntities.reduce((sum, e) => sum + e.score, 0) / safeEntities.length;
     return (
       Math.round(
         avg * ACCURACY_PERCENT_MULTIPLIER * ACCURACY_DECIMAL_PRECISION,
       ) / ACCURACY_DECIMAL_PRECISION
     );
-  }, [piiEntities]);
+  }, [safeEntities]);
 
   const frameworkName = useMemo(
     () =>
@@ -56,13 +59,13 @@ export const useDeidOutput = () => {
   );
 
   const originalSegments = useMemo(
-    () => parseTextWithEntities(originalText, piiEntities),
-    [originalText, piiEntities],
+    () => parseTextWithEntities(safeOriginalText, safeEntities),
+    [safeOriginalText, safeEntities],
   );
 
   const redactedSegments = useMemo(
-    () => parseTextWithRedactions(originalText, selectedEntities),
-    [originalText, selectedEntities],
+    () => parseTextWithRedactions(safeOriginalText, selectedEntities),
+    [safeOriginalText, selectedEntities],
   );
 
   const { downloadAsJson, downloadAsText, copyToClipboard } =
