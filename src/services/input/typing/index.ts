@@ -3,6 +3,7 @@ import type { Confidence, Document, EntityType } from "store/types/document";
 export type InputFormRequest = {
   text: string | null;
   file: File | null;
+  selectedFrameworkCode: string;
 };
 
 export type PiiEntity = {

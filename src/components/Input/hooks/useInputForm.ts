@@ -6,7 +6,7 @@ import { inputService } from "services/input";
 import { ValidationError } from "yup";
 import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
-import { useAppDispatch } from "store/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
   setEntities,
   setOriginalText,
@@ -16,6 +16,9 @@ import {
 export const useInputForm = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const selectedFramework = useAppSelector(
+    (state) => state.document.selectedFramework,
+  );
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -68,15 +71,24 @@ export const useInputForm = () => {
   const values = useWatch({ control });
   const isFileUploaded = !!values.file;
   const isTextValid = !!values.text && values.text.length <= 5000;
-  const isSubmitDisabled = isSubmitting || (!isFileUploaded && !isTextValid);
+  const isSubmitDisabled =
+    isSubmitting || !selectedFramework || (!isFileUploaded && !isTextValid);
 
   const onSubmit = async (data: InputFormValues) => {
     try {
       setIsSubmitting(true);
       setSubmitSuccess(false);
       const payload = data.file
-        ? { file: data.file, text: null }
-        : { text: data.text, file: null };
+        ? {
+            file: data.file,
+            text: null,
+            selectedFrameworkCode: selectedFramework!,
+          }
+        : {
+            text: data.text,
+            file: null,
+            selectedFrameworkCode: selectedFramework!,
+          };
 
       const analysis = await inputService.submitForm(payload);
 
