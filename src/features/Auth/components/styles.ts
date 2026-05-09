@@ -100,7 +100,7 @@ export const EnterpriseParagraph = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
   lineHeight: theme.typography.lineHeight167,
 
-  color: theme.palette.common.white, //theme.palette.text.primary,
+  color: theme.palette.common.white,
 
   [theme.breakpoints.down("md")]: {
     maxWidth: theme.spacing(80.5),
@@ -232,7 +232,6 @@ export const FormInputField = styled(TextField)(({ theme }) => ({
       theme.palette.mode === "dark"
         ? `0px 4px 18px ${alpha(theme.palette.common.black, 0.18)}`
         : "none",
-    //boxShadow: theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
 
     transition: `box-shadow 160ms ease, background-color 160ms ease`,
 
@@ -246,7 +245,6 @@ export const FormInputField = styled(TextField)(({ theme }) => ({
     },
 
     "&.Mui-focused": {
-      //boxShadow: `0 0 0 4px ${alpha(theme.palette.primary.main, 0.15)}`,
       boxShadow:
         theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
     },
