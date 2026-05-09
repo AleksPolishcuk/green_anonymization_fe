@@ -1,8 +1,4 @@
-export type ComplianceFramework =
-  | "HIPAA_US"
-  | "GDPR_EU"
-  | "GDPR_UK"
-  | "FADP_CH";
+import type { ComplianceFramework } from "services/compliance/typing/compliance";
 
 export type Confidence = "low" | "medium" | "high";
 
@@ -40,6 +36,8 @@ export type Document = {
   verifiedAt: string;
 };
 
+export type DeidStep = "framework" | "dataSource" | "results";
+
 export type DocumentState = {
   currentStep: DeidStep | null;
   selectedFramework: ComplianceFramework | null;
@@ -48,5 +46,3 @@ export type DocumentState = {
   piiEntities: Entity[] | null;
   document: Document | null;
 };
-
-export type DeidStep = "framework" | "dataSource" | "results";

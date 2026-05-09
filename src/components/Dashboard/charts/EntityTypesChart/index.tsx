@@ -8,8 +8,6 @@ import {
   YAxis,
 } from "recharts";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 import type { EntityTypeDatum } from "store/types/dashboard";
 import {
@@ -32,10 +30,10 @@ import {
   ChartSubtitle,
   ChartTitle,
 } from "components/Dashboard/charts/ChartCard/styles";
+import { ChartEmptyState } from "components/Dashboard/charts/ChartEmptyState";
 import {
   ActiveBarLabel,
   AngledXTick,
-  HorizontalXTick,
   RoundedBar,
   type ActiveBarLabelProps,
   type RoundedBarProps,
@@ -46,8 +44,6 @@ type Props = { data: EntityTypeDatum[] };
 export const EntityTypesChart = ({ data }: Props) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
     <ChartCard>
@@ -57,76 +53,80 @@ export const EntityTypesChart = ({ data }: Props) => {
       </ChartSubtitle>
 
       <ChartBody>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
-            barCategoryGap={CHART_BAR_CATEGORY_GAP}
-            onMouseLeave={() => setActiveIndex(null)}
-          >
-            <defs>
-              <linearGradient
-                id={ACTIVE_GRADIENT_ID}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
-                <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
-              </linearGradient>
-              <linearGradient
-                id={ACTIVE_GRADIENT_HOVER_ID}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
-                <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
-              </linearGradient>
-            </defs>
+        {data.length === 0 ? (
+          <ChartEmptyState />
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={data}
+              margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
+              barCategoryGap={CHART_BAR_CATEGORY_GAP}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
+              <defs>
+                <linearGradient
+                  id={ACTIVE_GRADIENT_ID}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor={ACTIVE_GRADIENT_START} />
+                  <stop offset="100%" stopColor={ACTIVE_GRADIENT_END} />
+                </linearGradient>
+                <linearGradient
+                  id={ACTIVE_GRADIENT_HOVER_ID}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor={ACTIVE_GRADIENT_END} />
+                  <stop offset="100%" stopColor={ACTIVE_GRADIENT_START} />
+                </linearGradient>
+              </defs>
 
-            <CartesianGrid
-              vertical={false}
-              stroke={CHART_GRID_STROKE}
-              strokeWidth={CHART_GRID_STROKE_WIDTH}
-              strokeDasharray={CHART_GRID_DASHARRAY}
-            />
+              <CartesianGrid
+                vertical={false}
+                stroke={CHART_GRID_STROKE}
+                strokeWidth={CHART_GRID_STROKE_WIDTH}
+                strokeDasharray={CHART_GRID_DASHARRAY}
+              />
 
-            <XAxis
-              dataKey="name"
-              tick={isDesktop ? <HorizontalXTick /> : <AngledXTick />}
-              height={isDesktop ? 30 : CHART_X_TICK_HEIGHT}
-              interval={0}
-              axisLine={false}
-              tickLine={false}
-            />
-            <YAxis
-              tick={tickStyle}
-              axisLine={false}
-              tickLine={false}
-              tickCount={5}
-            />
+              <XAxis
+                dataKey="name"
+                tick={<AngledXTick />}
+                height={CHART_X_TICK_HEIGHT}
+                interval={0}
+                axisLine={false}
+                tickLine={false}
+              />
+              <YAxis
+                tick={tickStyle}
+                axisLine={false}
+                tickLine={false}
+                tickCount={5}
+              />
 
-            <Bar
-              dataKey="count"
-              shape={(shapeProps: unknown) => (
-                <RoundedBar
-                  {...(shapeProps as RoundedBarProps)}
-                  activeIndex={activeIndex}
-                />
-              )}
-              onMouseEnter={(_, index) => setActiveIndex(index)}
-              label={(labelProps: unknown) => (
-                <ActiveBarLabel
-                  {...(labelProps as ActiveBarLabelProps)}
-                  activeIndex={activeIndex}
-                />
-              )}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+              <Bar
+                dataKey="count"
+                shape={(shapeProps: unknown) => (
+                  <RoundedBar
+                    {...(shapeProps as RoundedBarProps)}
+                    activeIndex={activeIndex}
+                  />
+                )}
+                onMouseEnter={(_, index) => setActiveIndex(index)}
+                label={(labelProps: unknown) => (
+                  <ActiveBarLabel
+                    {...(labelProps as ActiveBarLabelProps)}
+                    activeIndex={activeIndex}
+                  />
+                )}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </ChartBody>
     </ChartCard>
   );

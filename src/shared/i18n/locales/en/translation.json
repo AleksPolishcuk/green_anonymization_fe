@@ -405,7 +405,8 @@
         "subtitle": "Latest processed documents",
         "entities": "{{count}} entities",
         "newDeId": "New De-Identification →"
-      }
+      },
+      "emptyState": "Your statistics will appear here soon"
     }
   }
 }

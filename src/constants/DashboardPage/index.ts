@@ -7,9 +7,6 @@ export const COMPLIANCE_COLORS: Record<string, string> = {
   FADP: "#aec7ed",
 };
 
-export const STAT_CARD_TREND_PERCENT_COLOR = "#027a48";
-export const STAT_CARD_TREND_SUFFIX_COLOR = "#475467";
-
 export const STAT_CARD_IDS = {
   totalDocs: "total-docs",
   entities: "entities",
@@ -151,3 +148,14 @@ export const DONUT_END_ANGLE = -270;
 export const DONUT_SMALL_SCREEN_MAX_PX = 425;
 
 export const HIPAA_FRAMEWORK_KEY = "HIPAA";
+
+export const FRAMEWORK_CODE_TO_NAME: Record<string, string> = {
+  HIPAA_US: "HIPAA",
+  GDPR_EU: "EU GDPR",
+  GDPR_UK: "UK GDPR",
+  FADP_CH: "FADP",
+};
+
+export const CHART_EMPTY_STATE_ICON_SIZE = 40;
+export const CHART_EMPTY_STATE_SPRITE_ID = "icon-ChartEmptyState";
+export const CHART_EMPTY_STATE_VIEWBOX = "0 0 486.44 486.44";

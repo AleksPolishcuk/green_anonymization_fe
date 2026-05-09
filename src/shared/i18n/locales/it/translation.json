@@ -390,7 +390,8 @@
         "subtitle": "Ultimi documenti elaborati",
         "entities": "{{count}} entità",
         "newDeId": "Nuova de-identificazione →"
-      }
+      },
+      "emptyState": "Le tue statistiche appariranno qui a breve"
     }
   }
 }

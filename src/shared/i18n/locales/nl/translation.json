@@ -390,7 +390,8 @@
         "subtitle": "Laatst verwerkte documenten",
         "entities": "{{count}} entiteiten",
         "newDeId": "Nieuwe de-identificatie →"
-      }
+      },
+      "emptyState": "Uw statistieken verschijnen hier binnenkort"
     }
   }
 }

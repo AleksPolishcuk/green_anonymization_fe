@@ -390,7 +390,8 @@
         "subtitle": "Últimos documentos procesados",
         "entities": "{{count}} entidades",
         "newDeId": "Nueva desidentificación →"
-      }
+      },
+      "emptyState": "Tus estadísticas aparecerán aquí pronto"
     }
   }
 }
