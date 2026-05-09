@@ -1,3 +1,19 @@
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
+
+import { DEID_STEPS } from "constants/MainPages";
+import { complianceService } from "services/compliance";
+import type { PiiEntity } from "services/input/typing";
+import type {
+  ComplianceFramework,
+  DeidStep,
+  Document,
+  DocumentState,
+  Entity,
+} from "store/types/document";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ComplianceFramework } from "services/compliance/typing/compliance";
 import type { DeidStep, DocumentState, Entity } from "store/types/document";
@@ -42,11 +58,12 @@ export const documentSlice = createSlice({
 
     setEntities: (state, action: PayloadAction<PiiEntity[]>) => {
       state.piiEntities = action.payload
-        .map((entity) => ({
-          ...entity,
-          selected: true,
-        }))
+        .map((entity) => ({ ...entity, selected: true }))
         .sort((a, b) => a.start - b.start);
+    },
+
+    setDocument: (state, action: PayloadAction<Document>) => {
+      state.document = action.payload;
     },
 
     updateEntity: (
@@ -54,7 +71,6 @@ export const documentSlice = createSlice({
       action: PayloadAction<{ id: string; changes: Partial<Entity> }>,
     ) => {
       const entity = state.piiEntities?.find((e) => e.id === action.payload.id);
-
       if (entity) {
         Object.assign(entity, action.payload.changes);
       }
@@ -104,6 +120,7 @@ export const {
   setOriginalText,
   setRedactedText,
   setEntities,
+  setDocument,
   updateEntity,
   toggleEntitySelected,
   resetDocument,
@@ -111,5 +128,25 @@ export const {
   nextDeidStep,
   prevDeidStep,
 } = documentSlice.actions;
+
+export const saveFrameworkSelection = createAsyncThunk<
+  void,
+  ComplianceFramework,
+  { rejectValue: string }
+>(
+  "document/saveFramework",
+  async (frameworkCode, { dispatch, rejectWithValue }) => {
+    dispatch(setSelectedFramework(frameworkCode));
+    try {
+      await complianceService.selectFramework({ frameworkCode });
+    } catch (err) {
+      return rejectWithValue(
+        err instanceof Error
+          ? err.message
+          : "Failed to save framework selection",
+      );
+    }
+  },
+);
 
 export default documentSlice.reducer;

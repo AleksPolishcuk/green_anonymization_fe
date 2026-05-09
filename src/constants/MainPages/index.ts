@@ -347,9 +347,7 @@ export const MIME_TYPES = {
 } as const;
 
 export const FINDINGS_PAGE_SIZE = 10;
-
 export const DEID_OUTPUT_FILENAME = "de-identified-output";
-
 export const ACCURACY_PERCENT_MULTIPLIER = 100;
 export const ACCURACY_DECIMAL_PRECISION = 10;
 

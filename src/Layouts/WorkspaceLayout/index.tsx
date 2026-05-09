@@ -5,6 +5,7 @@ import { workspaceLayoutStyles } from "./styles";
 import Sidebar from "components/Sidebar";
 import { useAuthGuard } from "shared/hooks/useAuthGuard";
 import { Loader } from "shared/ui/Loader";
+import { ScrollToTop } from "components/ScrollToTop";
 
 type WorkspaceLayoutProps = {
   children: ReactNode;
@@ -19,11 +20,14 @@ export const WorkspaceLayout = ({ children }: WorkspaceLayoutProps) => {
   if (loading) return <Loader />;
 
   return (
-    <Box sx={styles.root}>
-      <Sidebar />
-      <Box component="main" sx={styles.content}>
-        {children}
+    <>
+      <ScrollToTop />
+      <Box sx={styles.root}>
+        <Sidebar />
+        <Box component="main" sx={styles.content}>
+          {children}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
