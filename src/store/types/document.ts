@@ -40,6 +40,8 @@ export type Document = {
   verifiedAt: string;
 };
 
+export type DeidStep = "framework" | "dataSource" | "results";
+
 export type DocumentState = {
   currentStep: DeidStep | null;
   selectedFramework: ComplianceFramework | null;
@@ -48,5 +50,3 @@ export type DocumentState = {
   piiEntities: Entity[] | null;
   document: Document | null;
 };
-
-export type DeidStep = "framework" | "dataSource" | "results";

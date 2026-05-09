@@ -2,11 +2,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import {
-  STAT_CARD_SHADOW,
-  STAT_CARD_TREND_PERCENT_COLOR,
-  STAT_CARD_TREND_SUFFIX_COLOR,
-} from "constants/DashboardPage";
+import { STAT_CARD_SHADOW } from "constants/DashboardPage";
 import { deidColors, deidDarkColors } from "constants/DeidPage";
 
 export const CardsGrid = styled(Box)(({ theme }) => ({
@@ -15,7 +11,6 @@ export const CardsGrid = styled(Box)(({ theme }) => ({
   gap: theme.spacing(3),
   marginBottom: theme.spacing(3),
   [theme.breakpoints.up("sm")]: {
-    gridTemplateColumns: "repeat(1, 1fr)",
     gap: theme.spacing(4),
   },
   [theme.breakpoints.up("md")]: {
@@ -116,7 +111,7 @@ export const TrendPercent = styled("span")(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightMedium,
-  color: STAT_CARD_TREND_PERCENT_COLOR,
+  color: theme.palette.success.main,
   lineHeight: theme.typography.lineHeight150,
 }));
 
@@ -124,6 +119,6 @@ export const TrendSuffix = styled("span")(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightMedium,
-  color: STAT_CARD_TREND_SUFFIX_COLOR,
+  color: theme.palette.text.secondary,
   lineHeight: theme.typography.lineHeight150,
 }));

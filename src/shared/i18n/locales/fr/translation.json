@@ -386,7 +386,8 @@
         "subtitle": "Derniers documents traités",
         "entities": "{{count}} entités",
         "newDeId": "Nouvelle dé-identification →"
-      }
+      },
+      "emptyState": "Vos statistiques apparaîtront ici bientôt"
     }
   }
 }

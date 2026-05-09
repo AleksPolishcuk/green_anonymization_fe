@@ -18,9 +18,14 @@ import {
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
-  const { originalText, piiEntities, selectedFramework } = useAppSelector(
-    (s) => s.document,
-  );
+  const {
+    originalText: rawOriginalText,
+    piiEntities: rawPiiEntities,
+    selectedFramework,
+  } = useAppSelector((s) => s.document);
+
+  const originalText = rawOriginalText ?? "";
+  const piiEntities = useMemo(() => rawPiiEntities ?? [], [rawPiiEntities]);
 
   const safeEntities = useMemo(() => piiEntities ?? [], [piiEntities]);
   const safeOriginalText = originalText ?? "";
@@ -54,7 +59,8 @@ export const useDeidOutput = () => {
   const frameworkName = useMemo(
     () =>
       COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework)?.name ??
-      selectedFramework,
+      selectedFramework ??
+      "",
     [selectedFramework],
   );
 

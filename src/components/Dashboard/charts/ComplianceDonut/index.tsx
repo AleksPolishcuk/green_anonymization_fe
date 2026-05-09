@@ -35,6 +35,7 @@ import {
   ChartTitle,
   TooltipDark,
 } from "components/Dashboard/charts/ChartCard/styles";
+import { ChartEmptyState } from "components/Dashboard/charts/ChartEmptyState";
 import {
   DonutWrapper,
   LegendDot,
@@ -90,72 +91,76 @@ export const ComplianceDonut = ({ data }: Props) => {
       <ChartTitle>{t("dashboard.charts.compliance.title")}</ChartTitle>
       <ChartSubtitle>{t("dashboard.charts.compliance.subtitle")}</ChartSubtitle>
 
-      <DonutWrapper>
-        <ResponsiveContainer width={DONUT_CHART_WIDTH} height="100%">
-          <PieChart>
-            <defs>
-              <linearGradient
-                id={HIPAA_GRADIENT_ID}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
+      {data.length === 0 ? (
+        <ChartEmptyState />
+      ) : (
+        <DonutWrapper>
+          <ResponsiveContainer width={DONUT_CHART_WIDTH} height="100%">
+            <PieChart>
+              <defs>
+                <linearGradient
+                  id={HIPAA_GRADIENT_ID}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={COMPLIANCE_COLORS.HIPAA}
+                    stopOpacity={1}
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={HIPAA_GRADIENT_END}
+                    stopOpacity={0.6}
+                  />
+                </linearGradient>
+              </defs>
+
+              <Tooltip content={<CustomTooltip />} />
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                innerRadius={DONUT_INNER_RADIUS}
+                outerRadius={DONUT_OUTER_RADIUS}
+                paddingAngle={DONUT_PADDING_ANGLE}
+                dataKey="value"
+                startAngle={DONUT_START_ANGLE}
+                endAngle={DONUT_END_ANGLE}
+                cornerRadius={DONUT_CORNER_RADIUS}
+                activeIndex={activeIndex ?? undefined}
+                activeShape={ActiveSector}
+                onMouseEnter={(_, index) => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(null)}
               >
-                <stop
-                  offset="0%"
-                  stopColor={COMPLIANCE_COLORS.HIPAA}
-                  stopOpacity={1}
-                />
-                <stop
-                  offset="100%"
-                  stopColor={HIPAA_GRADIENT_END}
-                  stopOpacity={0.6}
-                />
-              </linearGradient>
-            </defs>
+                {data.map((entry) => (
+                  <Cell
+                    key={entry.name}
+                    fill={
+                      entry.name === HIPAA_FRAMEWORK_KEY
+                        ? `url(#${HIPAA_GRADIENT_ID})`
+                        : entry.color
+                    }
+                    stroke={entry.color}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
 
-            <Tooltip content={<CustomTooltip />} />
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={DONUT_INNER_RADIUS}
-              outerRadius={DONUT_OUTER_RADIUS}
-              paddingAngle={DONUT_PADDING_ANGLE}
-              dataKey="value"
-              startAngle={DONUT_START_ANGLE}
-              endAngle={DONUT_END_ANGLE}
-              cornerRadius={DONUT_CORNER_RADIUS}
-              activeIndex={activeIndex ?? undefined}
-              activeShape={ActiveSector}
-              onMouseEnter={(_, index) => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
-            >
-              {data.map((entry) => (
-                <Cell
-                  key={entry.name}
-                  fill={
-                    entry.name === HIPAA_FRAMEWORK_KEY
-                      ? `url(#${HIPAA_GRADIENT_ID})`
-                      : entry.color
-                  }
-                  stroke={entry.color}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-
-        <LegendList>
-          {data.map((entry) => (
-            <LegendItem key={entry.name}>
-              <LegendDot $color={entry.color} />
-              <LegendLabel>{entry.name}</LegendLabel>
-              <LegendValue>{entry.value}%</LegendValue>
-            </LegendItem>
-          ))}
-        </LegendList>
-      </DonutWrapper>
+          <LegendList>
+            {data.map((entry) => (
+              <LegendItem key={entry.name}>
+                <LegendDot $color={entry.color} />
+                <LegendLabel>{entry.name}</LegendLabel>
+                <LegendValue>{entry.value}%</LegendValue>
+              </LegendItem>
+            ))}
+          </LegendList>
+        </DonutWrapper>
+      )}
     </ChartCard>
   );
 };
