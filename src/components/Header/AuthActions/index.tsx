@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 import {
   AuthActionsRow,
@@ -7,10 +6,8 @@ import {
 } from "components/Header/AuthActions/styles";
 import { ThemeToggle } from "components/ThemeToggle";
 import { LanguageSwitcher } from "components/LanguageSwitcher";
-import { headerI18nPrefix, headerRoutes } from "constants/MainPages";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { logout } from "store/slices/authSlice";
-import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
+import { headerI18nPrefix } from "constants/MainPages";
+import { useAuthActions } from "components/Header/AuthActions/useAuthActions";
 
 type AuthActionsProps = {
   compact?: boolean;
@@ -19,22 +16,9 @@ type AuthActionsProps = {
 
 export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const user = useAppSelector((state) => state.auth?.user);
-
-  const handleGetStartedClick = useCtaNavigate({
-    target: headerRoutes.dashboard,
-    beforeNavigate: onAction,
+  const { isLoggedIn, handleLogout, handleGetStartedClick } = useAuthActions({
+    onAction,
   });
-
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate(headerRoutes.home);
-    onAction?.();
-  };
-
-  const isLoggedIn = Boolean(user);
 
   return (
     <AuthActionsRow $isCompact={compact}>

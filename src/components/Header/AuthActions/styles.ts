@@ -36,7 +36,7 @@ export const GetStartedButton = styled(Button, {
 
   return {
     boxSizing: "border-box",
-    marginLeft: $isCompact ? 0 : 8,
+    marginLeft: $isCompact ? 0 : theme.spacing(2),
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",
