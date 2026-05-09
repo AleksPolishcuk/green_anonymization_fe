@@ -43,7 +43,10 @@ export const useDeidOutput = () => {
   const accuracy = useMemo(() => {
     if (safeEntities.length === 0) return 0;
     const avg =
-      safeEntities.reduce((sum, e) => sum + e.score, 0) / safeEntities.length;
+      safeEntities.reduce(
+        (sum: number, e: { score: number }) => sum + e.score,
+        0,
+      ) / safeEntities.length;
     return (
       Math.round(
         avg * ACCURACY_PERCENT_MULTIPLIER * ACCURACY_DECIMAL_PRECISION,
