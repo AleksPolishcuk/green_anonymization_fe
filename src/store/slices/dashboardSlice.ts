@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { DE_ID_METHODS_MOCK } from "store/mocks/dashboardMock";
+// import { DE_ID_METHODS_MOCK } from "store/mocks/dashboardMock";
 import type { DashboardState } from "store/types/dashboard";
 import { analyticsService } from "services/analytics";
 import { mapDashboard } from "services/analytics/mapDashboard";
@@ -26,7 +26,7 @@ const initialState: DashboardState = {
     entityTypes: [],
     complianceFrameworks: [],
     processingHistory: [],
-    deIdMethods: DE_ID_METHODS_MOCK,
+    deIdMethods: [], // DE_ID_METHODS_MOCK, // Use mock data for now until backend supports this endpoint
     confidenceScores: [],
     recentActivity: [],
   },
