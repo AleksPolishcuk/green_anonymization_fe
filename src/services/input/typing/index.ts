@@ -1,6 +1,7 @@
 import type { Confidence, Document, EntityType } from "store/types/document";
 
 export type InputFormRequest = {
+  selectedFrameworkCode: string;
   text: string | null;
   file: File | null;
   selectedFrameworkCode: string;

@@ -14,8 +14,23 @@ export const TestimonialCard = styled(Box)(({ theme }) => ({
   padding: theme.spacing(6),
   borderRadius: theme.shape.borderRadius,
 
-  background: alpha(theme.palette.color.white, 0.1),
-  border: `1px solid ${alpha(theme.palette.color.white, 0.15)}`,
+  background:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.background.lightGray, 0.1)
+      : alpha(theme.palette.color.white, 0.1),
+
+  border: `1px solid ${
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.common.white, 0.08)
+      : alpha(theme.palette.color.white, 0.15)
+  }`,
+
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? `0px 10px 30px ${alpha(theme.palette.common.black, 0.25)}`
+      : "none",
+
+  backdropFilter: "blur(10px)",
 }));
 
 export const TestimonialText = styled(Typography)(({ theme }) => ({
@@ -26,7 +41,11 @@ export const TestimonialText = styled(Typography)(({ theme }) => ({
   lineHeight: theme.typography.lineHeight167,
 
   textAlign: "left",
-  color: theme.palette.color.white,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.primary
+      : theme.palette.color.white,
 }));
 
 export const ProfileRow = styled(Box)(({ theme }) => ({
@@ -44,7 +63,14 @@ export const ProfileCircle = styled(Box)(({ theme }) => ({
   justifyContent: "center",
 
   borderRadius: "50%",
-  background: alpha(theme.palette.color.white, 0.2),
+
+  background: `linear-gradient(135deg, ${theme.palette.accent.blue} 0%, ${theme.palette.accent.lilac} 100%)`,
+
+  border: `1px solid ${
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.primary.main, 0.35)
+      : "transparent"
+  }`,
 }));
 
 export const ProfileInitials = styled(Typography)(({ theme }) => ({
@@ -53,7 +79,10 @@ export const ProfileInitials = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight150,
 
-  color: theme.palette.color.white,
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.primary
+      : theme.palette.color.white,
 }));
 
 export const ProfileTextContainer = styled(Box)(({ theme }) => ({
@@ -68,7 +97,11 @@ export const ProfileName = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   lineHeight: theme.typography.lineHeight150,
   textAlign: "left",
-  color: theme.palette.color.white,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.primary
+      : theme.palette.color.white,
 }));
 
 export const ProfileRole = styled(Typography)(({ theme }) => ({
@@ -77,5 +110,8 @@ export const ProfileRole = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize12,
   lineHeight: theme.typography.lineHeight150,
 
-  color: theme.palette.accent.lightBlue,
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.secondary
+      : theme.palette.accent.lightBlue,
 }));

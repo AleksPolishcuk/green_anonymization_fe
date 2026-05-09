@@ -6,7 +6,9 @@ import { inputService } from "services/input";
 import { ValidationError } from "yup";
 import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
-import { useAppDispatch, useAppSelector } from "store/hooks";
+import { useAppSelector } from "store/hooks";
+import type { ComplianceFramework } from "services/compliance/typing/compliance";
+import { useAppDispatch } from "store/hooks";
 import {
   setEntities,
   setOriginalText,
@@ -71,19 +73,20 @@ export const useInputForm = () => {
   const values = useWatch({ control });
   const isFileUploaded = !!values.file;
   const isTextValid = !!values.text && values.text.length <= 5000;
-  const isSubmitDisabled =
-    isSubmitting || !selectedFramework || (!isFileUploaded && !isTextValid);
+  const isSubmitDisabled = isSubmitting || (!isFileUploaded && !isTextValid);
+  const selectedFramework: ComplianceFramework | null = useAppSelector(
+    (s) => s.document.selectedFramework,
+  );
 
   const onSubmit = async (data: InputFormValues) => {
     try {
       setIsSubmitting(true);
       setSubmitSuccess(false);
-
       if (!selectedFramework) {
-        throw new Error(t("input.form.errors.frameworkRequired"));
+        throw new Error("Please Select a compliance framework");
       }
+      const selectedFrameworkCode = selectedFramework?.code;
 
-      const selectedFrameworkCode = selectedFramework;
       const payload = data.file
         ? { selectedFrameworkCode, file: data.file, text: null }
         : { selectedFrameworkCode, text: data.text, file: null };

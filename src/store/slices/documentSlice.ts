@@ -8,12 +8,12 @@ import { DEID_STEPS } from "constants/MainPages";
 import { complianceService } from "services/compliance";
 import type { PiiEntity } from "services/input/typing";
 import type {
-  ComplianceFramework,
   DeidStep,
   Document,
   DocumentState,
   Entity,
 } from "store/types/document";
+import type { ComplianceFramework } from "services/compliance/typing/compliance";
 
 const initialState: DocumentState = {
   currentStep: "framework",
@@ -130,10 +130,12 @@ export const saveFrameworkSelection = createAsyncThunk<
   { rejectValue: string }
 >(
   "document/saveFramework",
-  async (frameworkCode, { dispatch, rejectWithValue }) => {
-    dispatch(setSelectedFramework(frameworkCode));
+  async (framework: ComplianceFramework, { dispatch, rejectWithValue }) => {
+    dispatch(setSelectedFramework(framework));
     try {
-      await complianceService.selectFramework({ frameworkCode });
+      await complianceService.selectFramework({
+        frameworkCode: framework.code,
+      });
     } catch (err) {
       return rejectWithValue(
         err instanceof Error

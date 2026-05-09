@@ -55,7 +55,11 @@ export const EmailIcon = styled("svg")(({ theme }) => ({
   height: theme.spacing(4.5),
   display: "block",
   fill: "none",
-  color: theme.palette.background.mediumGray,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.secondary
+      : theme.palette.background.mediumGray,
 }));
 
 export const SigninBtn = styled(Button)(({ theme }) => ({
@@ -64,7 +68,12 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   padding: theme.spacing(0, 4),
   borderRadius: theme.spacing(3.5),
   backgroundColor: theme.palette.primary.main,
-  boxShadow: `0px 4px 14px 0px ${alpha(theme.palette.accent.blue, 0.3)}`,
+
+  boxShadow: `0px 4px 14px 0px ${alpha(
+    theme.palette.accent.blue,
+    theme.palette.mode === "dark" ? 0.45 : 0.3,
+  )}`,
+
   color: theme.palette.color.white,
   display: "flex",
   alignItems: "center",
@@ -75,6 +84,7 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   fontSize: theme.typography.fontSize16,
   lineHeight: theme.typography.lineHeight150,
   textTransform: "none",
+
   transition: theme.transitions.create(
     ["transform", "box-shadow", "background-color"],
     {
@@ -96,7 +106,11 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: theme.palette.color.darkBlue,
     transform: "translateY(-2px)",
-    boxShadow: `0px 10px 20px 0px ${alpha(theme.palette.accent.blue, 0.3)}`,
+
+    boxShadow: `0px 10px 20px 0px ${alpha(
+      theme.palette.accent.blue,
+      theme.palette.mode === "dark" ? 0.5 : 0.3,
+    )}`,
   },
 
   "&:active": {
