@@ -8,9 +8,16 @@ import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 import { useAppSelector } from "store/hooks";
 import type { ComplianceFramework } from "services/compliance/typing/compliance";
+import { useAppDispatch } from "store/hooks";
+import {
+  setEntities,
+  setOriginalText,
+  setRedactedText,
+} from "store/slices/documentSlice";
 
 export const useInputForm = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -64,10 +71,10 @@ export const useInputForm = () => {
   const isFileUploaded = !!values.file;
   const isTextValid = !!values.text && values.text.length <= 5000;
   const isSubmitDisabled = isSubmitting || (!isFileUploaded && !isTextValid);
-  const selectedFramework: ComplianceFramework = useAppSelector(
+  const selectedFramework: ComplianceFramework | null = useAppSelector(
     (s) => s.document.selectedFramework,
   );
-  const selectedFrameworkCode = selectedFramework.code;
+  const selectedFrameworkCode = selectedFramework?.code;
 
   const onSubmit = async (data: InputFormValues) => {
     try {
@@ -78,7 +85,11 @@ export const useInputForm = () => {
         ? { selectedFrameworkCode, file: data.file, text: null }
         : { selectedFrameworkCode, text: data.text, file: null };
 
-      await inputService.submitForm(payload);
+      const analysis = await inputService.submitForm(payload);
+
+      dispatch(setOriginalText(analysis.originalText));
+      dispatch(setRedactedText(analysis.anonymizedText));
+      dispatch(setEntities(analysis.piiEntities));
 
       setSubmitSuccess(true);
 

@@ -53,10 +53,22 @@
     "description": "Rilevamento e anonimizzazione PII di livello enterprise per dati sanitari. Proteggi la privacy dei pazienti preservando il valore analitico.",
     "ctaPrimary": "Inizia",
     "stats": {
-      "hipaa": { "value": "HIPAA", "label": "Conforme" },
-      "eugdpr": { "value": "EU GDPR", "label": "Conforme" },
-      "ukgdpr": { "value": "UK GDPR", "label": "Conforme" },
-      "fadp": { "value": "Swiss FADP", "label": "Conforme" }
+      "hipaa": {
+        "value": "HIPAA",
+        "label": "Conforme"
+      },
+      "eugdpr": {
+        "value": "EU GDPR",
+        "label": "Conforme"
+      },
+      "ukgdpr": {
+        "value": "UK GDPR",
+        "label": "Conforme"
+      },
+      "fadp": {
+        "value": "Swiss FADP",
+        "label": "Conforme"
+      }
     }
   },
   "capabilities": {
@@ -95,7 +107,9 @@
     "description": "Piattaforma enterprise per la de-identificazione dei dati clinici e la generazione di dati sintetici. Protezione della privacy dei pazienti mantenendo l'utilità dei dati.",
     "navAria": "Navigazione a piè di pagina",
     "copyright": "© {{year}} Clinical Data Studio. Tutti i diritti riservati.",
-    "columns": { "info": "Info" },
+    "columns": {
+      "info": "Info"
+    },
     "company": {
       "contact": "Contatti",
       "pricing": "Prezzi",
@@ -171,16 +185,27 @@
       "description": "Rilevamento e anonimizzazione PII di livello enterprise per dati sanitari.<lineBreak />Proteggi la privacy dei pazienti preservando il valore analitico."
     },
     "stats": {
-      "clients": { "value": "50+", "label": "Clienti" },
-      "records": { "value": "2 mld+", "label": "Record" },
-      "uptime": { "value": "99,9%", "label": "Uptime" }
+      "clients": {
+        "value": "50+",
+        "label": "Clienti"
+      },
+      "records": {
+        "value": "2 mld+",
+        "label": "Record"
+      },
+      "uptime": {
+        "value": "99,9%",
+        "label": "Uptime"
+      }
     },
     "heading": "Accedi",
     "subtext": "Inserisci la tua e-mail per ricevere un link di accesso.",
     "emailLabel": "E-mail",
     "emailPlaceholder": "marco.rossi@esempio.it",
     "submitButton": "Accedi",
-    "validation": { "required": "L'e-mail è obbligatoria" },
+    "validation": {
+      "required": "L'e-mail è obbligatoria"
+    },
     "status": {
       "successTitle": "E-mail inviata!",
       "successDescription": "Controlla la tua casella di posta per il link di accesso.",
@@ -233,7 +258,12 @@
     "workspace": "Area di lavoro",
     "dashboard": "Dashboard",
     "deidentify": "De-identificare",
-    "syntheticData": "Dati sintetici"
+    "syntheticData": "Dati sintetici",
+    "deidSteps": {
+      "framework": "Framework",
+      "dataSource": "Origine dati",
+      "results": "Risultati"
+    }
   },
   "deidHeader": {
     "title": "Flusso di de-identificazione",
@@ -278,6 +308,28 @@
       "downloadTxt": "Scarica .txt",
       "downloadJson": "Scarica .json",
       "redactedContentTooltip": "Informazione oscurata"
+    },
+    "header": {
+      "title": "Analisi completata",
+      "stats": "{{totalCount}} entità PII rilevate · {{selectedCount}} selezionate · Conformità {{framework}} verificata",
+      "accuracy": "{{value}}% di precisione"
+    },
+    "findingsTable": {
+      "title": "Risultati e fattori decisionali",
+      "stats": "{{totalCount}} entità rilevate · {{selectedCount}} selezionate per la de-identificazione",
+      "columns": {
+        "id": "#",
+        "text": "Testo",
+        "position": "Pos",
+        "score": "Punteggio",
+        "recognizer": "Riconoscitore",
+        "factor": "Fattore",
+        "action": "Azione"
+      },
+      "actions": {
+        "selected": "Selezionato",
+        "deselected": "Deselezionato"
+      }
     }
   },
   "notFound": {
