@@ -8,7 +8,7 @@ export const useAuthGuard = (mode: "registered" | "unregistered") => {
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.auth?.user);
   const registered = useAppSelector((state) => state.auth?.registered);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!user);
 
   useEffect(() => {
     const check = async () => {

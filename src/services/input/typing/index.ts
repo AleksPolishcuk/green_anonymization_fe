@@ -4,7 +4,6 @@ export type InputFormRequest = {
   selectedFrameworkCode: string;
   text: string | null;
   file: File | null;
-  selectedFrameworkCode: string;
 };
 
 export type PiiEntity = {
