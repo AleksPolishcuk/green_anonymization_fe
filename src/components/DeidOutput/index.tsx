@@ -30,6 +30,7 @@ import {
   DownloadIconWrapper,
 } from "./styles";
 import { TaggedText } from "./taggedText";
+import CtaSynthetycBlock from "components/CtaSynthetycBlock";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
@@ -145,6 +146,7 @@ export default function DeidOutputSection() {
           onToggle={toggleEntity}
         />
       )}
+      <CtaSynthetycBlock />
     </DeidOutputSectionRoot>
   );
 }

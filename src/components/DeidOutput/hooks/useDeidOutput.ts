@@ -12,15 +12,18 @@ import { toggleEntitySelected } from "store/slices/documentSlice";
 
 import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
 import {
+  buildAnonymizedText,
   parseTextWithEntities,
   parseTextWithRedactions,
 } from "../utils/parsers";
+import { useNavigate } from "react-router-dom";
+import { documentsService } from "services/documents";
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
-  const { originalText, piiEntities, selectedFramework } = useAppSelector(
-    (s) => s.document,
-  );
+  const navigate = useNavigate();
+  const { originalText, piiEntities, selectedFramework, document } =
+    useAppSelector((s) => s.document);
 
   const safeEntities = useMemo(() => piiEntities ?? [], [piiEntities]);
   const safeOriginalText = originalText ?? "";
@@ -68,6 +71,21 @@ export const useDeidOutput = () => {
     [safeOriginalText, selectedEntities],
   );
 
+  const handleGenerateSyntheticData = useCallback(async () => {
+    if (!document?.id || !safeOriginalText) return;
+
+    const finalAnonymizedText = buildAnonymizedText(
+      safeOriginalText,
+      safeEntities,
+    );
+
+    await documentsService.updateDocumentText(document.id, {
+      text: finalAnonymizedText,
+    });
+
+    navigate(`/syntheticdata?documentId=${document.id}`);
+  }, [document, safeOriginalText, safeEntities, navigate]);
+
   const { downloadAsJson, downloadAsText, copyToClipboard } =
     useDownloadRedactedTextCopy();
 
@@ -96,5 +114,6 @@ export const useDeidOutput = () => {
     handleDownloadJson,
     handleDownloadText,
     handleCopyText,
+    handleGenerateSyntheticData,
   };
 };

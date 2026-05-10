@@ -400,6 +400,11 @@
         "subtitle": "Latest processed documents",
         "entities": "{{count}} entities",
         "newDeId": "New De-Identification →"
+      },
+      "syntheticDataCta": {
+        "title": "Ready to Generate Synthetic Data?",
+        "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
+        "button": "Generate Synthetic Data"
       }
     }
   }
