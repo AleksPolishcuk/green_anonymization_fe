@@ -390,5 +390,37 @@
       },
       "emptyState": "Vos statistiques apparaîtront ici bientôt"
     }
+  },
+  "pricingPage": {
+    "title": "Tarifs",
+    "subtitle": "Des tarifs simples et transparents pour la dé-identification sécurisée des données personnelles sensibles dans les documents.",
+    "perMonth": "/mois",
+    "mostPopular": "Plus Populaire",
+    "plans": {
+      "free": {
+        "name": "Gratuit",
+        "description": "Pour les particuliers qui débutent",
+        "badge": "5 documents pour identification",
+        "cta": "Commencer"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Pour les professionnels et les équipes",
+        "badge": "Documents illimités",
+        "cta": "Commencer"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Jusqu'à 5 documents/mois",
+      "automatedPii": "Détection automatique des PII",
+      "standardDeid": "Dé-identification standard",
+      "basicReport": "Rapport de base",
+      "unlimitedDocs": "Documents illimités",
+      "advancedDeid": "Dé-identification avancée",
+      "customRules": "Règles de rédaction personnalisées",
+      "batchProcessing": "Traitement par lots",
+      "auditLogs": "Journaux d'audit et historique",
+      "prioritySupport": "Support prioritaire"
+    }
   }
 }

@@ -390,5 +390,37 @@
       },
       "emptyState": "Ihre Statistiken erscheinen hier bald"
     }
+  },
+  "pricingPage": {
+    "title": "Preise",
+    "subtitle": "Einfache, transparente Preise für die sichere De-Identifikation sensibler Daten in Dokumenten.",
+    "perMonth": "/Monat",
+    "mostPopular": "Beliebteste",
+    "plans": {
+      "free": {
+        "name": "Kostenlos",
+        "description": "Für Einzelpersonen zum Einstieg",
+        "badge": "5 Dokumente zur Identifizierung",
+        "cta": "Jetzt starten"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Für Fachleute und Teams",
+        "badge": "Unbegrenzte Dokumente",
+        "cta": "Jetzt starten"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Bis zu 5 Dokumente/Monat",
+      "automatedPii": "Automatische PII-Erkennung",
+      "standardDeid": "Standard-De-Identifikation",
+      "basicReport": "Grundlegender Bericht",
+      "unlimitedDocs": "Unbegrenzte Dokumente",
+      "advancedDeid": "Erweiterte De-Identifikation",
+      "customRules": "Benutzerdefinierte Schwärzungsregeln",
+      "batchProcessing": "Stapelverarbeitung",
+      "auditLogs": "Prüfprotokolle & Aktivitätsverlauf",
+      "prioritySupport": "Prioritäts-Support"
+    }
   }
 }

@@ -390,5 +390,37 @@
       },
       "emptyState": "Uw statistieken verschijnen hier binnenkort"
     }
+  },
+  "pricingPage": {
+    "title": "Prijzen",
+    "subtitle": "Eenvoudige, transparante prijzen voor veilige de-identificatie van gevoelige persoonsgegevens in documenten.",
+    "perMonth": "/maand",
+    "mostPopular": "Meest Populair",
+    "plans": {
+      "free": {
+        "name": "Gratis",
+        "description": "Voor beginners",
+        "badge": "5 documenten voor identificatie",
+        "cta": "Aan de slag"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Voor professionals en teams",
+        "badge": "Onbeperkte documenten",
+        "cta": "Aan de slag"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Tot 5 documenten/maand",
+      "automatedPii": "Automatische PII-detectie",
+      "standardDeid": "Standaard de-identificatie",
+      "basicReport": "Basisrapport",
+      "unlimitedDocs": "Onbeperkte documenten",
+      "advancedDeid": "Geavanceerde de-identificatie",
+      "customRules": "Aangepaste redactieregels",
+      "batchProcessing": "Batchverwerking",
+      "auditLogs": "Auditlogboeken & activiteitsgeschiedenis",
+      "prioritySupport": "Prioriteitsondersteuning"
+    }
   }
 }
