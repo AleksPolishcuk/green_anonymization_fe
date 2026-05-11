@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solution",
-      "contactUs": "Contact Us"
+      "contactUs": "Contact Us",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "logOut": "Log Out"
     },
     "logoAlt": "Clinical Data Studio — home",
     "logoText": "Clinical Data Studio",
@@ -398,7 +400,8 @@
         "subtitle": "Latest processed documents",
         "entities": "{{count}} entities",
         "newDeId": "New De-Identification →"
-      }
+      },
+      "emptyState": "Your statistics will appear here soon"
     }
   },
   "syntheticDataGeneratedDataset": {

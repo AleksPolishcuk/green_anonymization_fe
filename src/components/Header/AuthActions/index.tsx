@@ -4,11 +4,10 @@ import {
   AuthActionsRow,
   GetStartedButton,
 } from "components/Header/AuthActions/styles";
-
-import { useCtaNavigate } from "shared/hooks/useCtaNavigate";
 import { ThemeToggle } from "components/ThemeToggle";
 import { LanguageSwitcher } from "components/LanguageSwitcher";
-import { headerI18nPrefix, headerRoutes } from "constants/MainPages";
+import { headerI18nPrefix } from "constants/MainPages";
+import { useAuthActions } from "components/Header/AuthActions/useAuthActions";
 
 type AuthActionsProps = {
   compact?: boolean;
@@ -17,9 +16,8 @@ type AuthActionsProps = {
 
 export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
   const { t } = useTranslation();
-  const handleGetStartedClick = useCtaNavigate({
-    target: headerRoutes.dashboard,
-    beforeNavigate: onAction,
+  const { isLoggedIn, handleLogout, handleGetStartedClick } = useAuthActions({
+    onAction,
   });
 
   return (
@@ -29,9 +27,12 @@ export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
       <GetStartedButton
         type="button"
         $isCompact={compact}
-        onClick={handleGetStartedClick}
+        $isLogout={isLoggedIn}
+        onClick={isLoggedIn ? handleLogout : handleGetStartedClick}
       >
-        {t(`${headerI18nPrefix}.actions.getStarted`)}
+        {isLoggedIn
+          ? t(`${headerI18nPrefix}.actions.logOut`)
+          : t(`${headerI18nPrefix}.actions.getStarted`)}
       </GetStartedButton>
     </AuthActionsRow>
   );
