@@ -48,8 +48,6 @@ export type DocumentState = {
   document: Document | null;
 };
 
-export type DeidStep = "framework" | "dataSource" | "results";
-
 export type SyntheticEntity = {
   id: string;
   syntheticDataDocumentId: string;
