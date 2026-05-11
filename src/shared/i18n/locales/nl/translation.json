@@ -397,7 +397,9 @@
     "columns": {
       "id": "ID"
     },
-    "dataSafetyInfo": "Alle records zijn volledig synthetisch. Er zijn geen echte patiëntgegevens gebruikt bij de generatie. Veilig voor ontwikkeling, testen en onderzoeksdoeleinden."
+    "dataSafetyInfo": "Alle records zijn volledig synthetisch. Er zijn geen echte patiëntgegevens gebruikt bij de generatie. Veilig voor ontwikkeling, testen en onderzoeksdoeleinden.",
+    "downloadArchiveButton": "Download archief",
+    "regenerateDatasetButton": "Regenereren dataset"
   },
   "syntheticDataHeader": {
     "title": "Generator voor synthetische gegevens",

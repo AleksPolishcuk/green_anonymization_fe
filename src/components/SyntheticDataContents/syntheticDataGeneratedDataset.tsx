@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import {
   TableCard,
   TableHeader,
-  TableHeaderLeft,
+  TableHeaderColumn,
   TableIconWrapper,
   TableTitle,
   TableStats,
@@ -14,6 +14,9 @@ import {
   SpriteIconSvg,
   DataSafetyInfoWrapper,
   DataSafetyInfoIconWrapper,
+  ActionButtonsContainer,
+  ActionButton,
+  ActionButtonIconWrapper,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
@@ -28,7 +31,7 @@ export default function SyntheticDataGeneratedDataset() {
   return (
     <TableCard>
       <TableHeader style={{ cursor: "default" }}>
-        <TableHeaderLeft>
+        <TableHeaderColumn>
           <TableIconWrapper>
             <SpriteIconSvg aria-hidden="true">
               <use href={headerSpriteRef("icon-database")} />
@@ -40,7 +43,23 @@ export default function SyntheticDataGeneratedDataset() {
               {t("subtitle", { count: syntheticDocuments?.length })}
             </TableStats>
           </div>
-        </TableHeaderLeft>
+        </TableHeaderColumn>
+        <TableHeaderColumn>
+          <ActionButtonsContainer>
+            <ActionButton>
+              <ActionButtonIconWrapper>
+                <use href={headerSpriteRef("icon-IconRefresh")} />
+              </ActionButtonIconWrapper>
+              {t("regenerateDatasetButton")}
+            </ActionButton>
+            <ActionButton>
+              <ActionButtonIconWrapper>
+                <use href={headerSpriteRef("icon-IconDownload")} />
+              </ActionButtonIconWrapper>
+              {t("downloadArchiveButton")}
+            </ActionButton>
+          </ActionButtonsContainer>
+        </TableHeaderColumn>
       </TableHeader>
 
       <TableScrollWrapper>

@@ -410,7 +410,9 @@
     "columns": {
       "id": "ID"
     },
-    "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes."
+    "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes.",
+    "downloadArchiveButton": "Download Archive",
+    "regenerateDatasetButton": "Regenerate Dataset"
   },
   "syntheticDataHeader": {
     "title": "Synthetic Data Generator",

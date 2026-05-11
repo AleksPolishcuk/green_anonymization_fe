@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { deidColors, deidDarkColors } from "constants/DeidPage";
@@ -42,7 +42,7 @@ export const TableHeader = styled("div")(({ theme }) => ({
   cursor: "pointer",
 }));
 
-export const TableHeaderLeft = styled("div")(({ theme }) => ({
+export const TableHeaderColumn = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(3),
@@ -138,12 +138,12 @@ export const ActionButton = styled("button")(({ theme }) => ({
   gap: theme.spacing(2),
   padding: theme.spacing(2, 4),
   borderRadius: theme.spacing(2.5),
-  border: `1px solid ${theme.palette.background.softGray}`,
+  border: 0,
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.color.charcoal,
   fontFamily: theme.typography.fontFamily,
-  fontSize: theme.typography.fontSize14,
-  fontWeight: theme.typography.fontWeightBold,
+  fontSize: theme.typography.fontSize12,
+  fontWeight: theme.typography.fontWeightMedium,
   cursor: "pointer",
   transition: "background-color 0.2s ease",
 
@@ -166,4 +166,20 @@ export const DataSafetyInfoIconWrapper = styled(IconWrapper)(({ theme }) => ({
   display: "inline-flex",
   flexShrink: 0,
   color: theme.palette.color.blue,
+}));
+
+export const ActionButtonIconWrapper = styled(IconWrapper)(({ theme }) => ({
+  width: 13,
+  height: 13,
+  flexShrink: 0,
+  marginRight: theme.spacing(0.75),
+}));
+
+export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing(1),
+  marginTop: "auto",
+  padding: theme.spacing(2),
+  width: "100%",
+  backgroundColor: theme.palette.background.default,
 }));

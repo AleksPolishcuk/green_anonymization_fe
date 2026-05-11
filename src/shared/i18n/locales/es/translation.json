@@ -397,7 +397,9 @@
     "columns": {
       "id": "ID"
     },
-    "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación."
+    "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación.",
+    "downloadArchiveButton": "Descargar archivo",
+    "regenerateDatasetButton": "Regenerar conjunto de datos"
   },
   "syntheticDataHeader": {
     "title": "Generador de datos sintéticos",
