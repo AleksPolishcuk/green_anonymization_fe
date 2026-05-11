@@ -1,4 +1,4 @@
-import type { SyntheticDataDocument } from "../types/document";
+import type { SyntheticDataDocument } from "../types/syntheticData";
 
 export const SYNTHETIC_DATA_DOCUMENTS_MOCK: SyntheticDataDocument[] = [
   {

@@ -47,15 +47,3 @@ export type DocumentState = {
   piiEntities: Entity[] | null;
   document: Document | null;
 };
-
-export type SyntheticEntity = {
-  id: string;
-  syntheticDataDocumentId: string;
-  entity_type: EntityType;
-  value: string;
-};
-
-export type SyntheticDataDocument = {
-  id: string;
-  entities: SyntheticEntity[];
-};
