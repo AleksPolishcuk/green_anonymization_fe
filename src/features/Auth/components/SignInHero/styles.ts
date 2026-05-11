@@ -56,7 +56,11 @@ export const StatValue = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize22,
   lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.color.white,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.primary
+      : theme.palette.color.white,
 }));
 
 export const StatLabel = styled(Typography)(({ theme }) => ({
@@ -65,5 +69,9 @@ export const StatLabel = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize12,
   lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.accent.lightBlue,
+
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.text.secondary
+      : theme.palette.accent.lightBlue,
 }));

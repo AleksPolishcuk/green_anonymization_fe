@@ -8,7 +8,11 @@ import {
   Button,
 } from "@mui/material";
 import { alpha, keyframes, styled } from "@mui/material/styles";
-import { BOX_SHADOW, CHIP_COLOR_PRESETS } from "constants/DeidPage";
+import {
+  CHIP_COLOR_PRESETS,
+  deidColors,
+  deidDarkColors,
+} from "constants/DeidPage";
 
 const INPUT_SECTION_STYLES = {
   topLineBackground:
@@ -51,35 +55,39 @@ const INPUT_SECTION_STYLES = {
   transition: "0.2s ease",
 };
 
-export const InputSectionRoot = styled(Paper)(({ theme }) => ({
-  position: "relative",
+export const InputSectionRoot = styled(Paper)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
-  marginTop: theme.spacing(8),
-  marginBottom: theme.spacing(5),
+  return {
+    position: "relative",
 
-  marginLeft: theme.spacing(8),
-  marginRight: theme.spacing(8),
+    marginLeft: theme.spacing(8),
+    marginRight: theme.spacing(8),
 
-  padding: theme.spacing(6),
+    padding: theme.spacing(6),
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(5),
 
-  backgroundColor: theme.palette.background.default,
-  borderRadius: theme.shape.borderRadius,
-  border: `1px solid ${theme.palette.divider}`,
-  boxShadow: BOX_SHADOW,
+    backgroundColor: theme.palette.background.default,
+    borderRadius: theme.shape.borderRadius,
+    border: `1px solid ${theme.palette.divider}`,
 
-  minHeight: 550,
-  overflow: "hidden",
+    boxShadow: colors.boxShadow,
 
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: 3,
-    background: INPUT_SECTION_STYLES.topLineBackground,
-  },
-}));
+    minHeight: 550,
+    overflow: "hidden",
+
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: 3,
+      background: INPUT_SECTION_STYLES.topLineBackground,
+    },
+  };
+});
 
 export const InputSectionStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(5),
@@ -141,7 +149,6 @@ export const InputForm = styled("form")(({ theme }) => ({
   gap: theme.spacing(7),
   minWidth: 0,
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.background.paper,
 
   animation: INPUT_SECTION_STYLES.fadeSlideIn,
   padding: "0px",
@@ -153,50 +160,80 @@ export const InputForm = styled("form")(({ theme }) => ({
 
 export const TextInput = styled(TextField, {
   shouldForwardProp: (prop) => prop !== "$fileMode",
-})<{ $fileMode?: boolean }>(({ theme, $fileMode }) => ({
-  "& .MuiInputBase-root": {
-    backgroundColor: theme.palette.background.lightGray,
-    boxShadow: INPUT_SECTION_STYLES.textInput.boxShadow,
-    borderRadius: theme.shape.borderRadius,
-  },
+})<{ $fileMode?: boolean }>(({ theme, $fileMode }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+  return {
+    "& .MuiInputBase-root": {
+      backgroundColor: colors.bgOff,
+      boxShadow: INPUT_SECTION_STYLES.textInput.boxShadow,
+      borderRadius: theme.shape.borderRadius,
+    },
 
-  "& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline": {
-    borderColor: theme.palette.error.main,
-  },
-
-  "& .MuiOutlinedInput-root.Mui-error:hover .MuiOutlinedInput-notchedOutline": {
-    borderColor: theme.palette.error.main,
-  },
-
-  "& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline":
-    {
+    "& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline": {
       borderColor: theme.palette.error.main,
     },
 
-  "& textarea": {
-    overflow: $fileMode ? "hidden" : "auto",
-    resize: "none",
-    cursor: $fileMode ? "not-allowed" : "text",
+    "& .MuiOutlinedInput-root.Mui-error:hover .MuiOutlinedInput-notchedOutline":
+      {
+        borderColor: theme.palette.error.main,
+      },
 
-    fontFamily: "Courier New",
-    fontWeight: 400,
+    "& .MuiOutlinedInput-root.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline":
+      {
+        borderColor: theme.palette.error.main,
+      },
 
-    fontSize: theme.spacing(3),
-    lineHeight: theme.spacing(6),
+    scrollbarColor:
+      theme.palette.mode === "dark"
+        ? `${colors.borderOn} ${colors.bgOff}`
+        : `${colors.borderOff}`,
 
-    padding: theme.spacing(2, 8),
+    "&::-webkit-scrollbar-thumb": {
+      background:
+        theme.palette.mode === "dark"
+          ? `linear-gradient(180deg, ${colors.borderOn}, ${colors.bgOn})`
+          : colors.borderOff,
 
-    paddingRight: theme.spacing(12),
+      border: `1px solid ${
+        theme.palette.mode === "dark"
+          ? colors.borderOn
+          : theme.palette.background.default
+      }`,
 
-    [theme.breakpoints.down("sm")]: {
-      fontSize: theme.spacing(2.5),
-      lineHeight: theme.spacing(5),
-
-      padding: theme.spacing(2, 4),
-      paddingRight: theme.spacing(6),
+      transition: "background 0.2s ease",
     },
-  },
-}));
+
+    "&::-webkit-scrollbar-thumb:hover": {
+      background:
+        theme.palette.mode === "dark"
+          ? `linear-gradient(180deg, ${theme.palette.primary.light || colors.bgOn}, ${colors.borderOn})`
+          : theme.palette.background.mediumGray,
+    },
+
+    "& textarea": {
+      overflow: $fileMode ? "hidden" : "auto",
+      resize: "none",
+      cursor: $fileMode ? "not-allowed" : "text",
+      fontFamily: "Courier New",
+      fontWeight: 400,
+
+      fontSize: theme.spacing(3),
+      lineHeight: theme.spacing(6),
+
+      padding: theme.spacing(2, 8),
+
+      paddingRight: theme.spacing(12),
+
+      [theme.breakpoints.down("sm")]: {
+        fontSize: theme.spacing(2.5),
+        lineHeight: theme.spacing(5),
+
+        padding: theme.spacing(2, 4),
+        paddingRight: theme.spacing(6),
+      },
+    },
+  };
+});
 
 export const FileUploadIcon = styled("svg")(({ theme }) => ({
   width: theme.spacing(8),
@@ -207,7 +244,7 @@ export const FileUploadIcon = styled("svg")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   borderRadius: 8,
-  background: theme.palette.accent.lightLilac,
+  background: theme.palette.accent.lightBlue,
   border: `1px solid ${theme.palette.primary.main}`,
   flexShrink: 0,
   [theme.breakpoints.down("sm")]: {
@@ -220,45 +257,54 @@ export const FileUploadIcon = styled("svg")(({ theme }) => ({
 
 export const FileWrapper = styled("div", {
   shouldForwardProp: (prop) => prop !== "$hasError",
-})<{ $hasError?: boolean }>(({ theme, $hasError }) => ({
-  minHeight: theme.spacing(19),
-  height: "auto",
+})<{ $hasError?: boolean }>(({ theme, $hasError }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+  return {
+    minHeight: theme.spacing(19),
+    height: "auto",
 
-  flexWrap: "wrap",
-  alignItems: "center",
+    flexWrap: "wrap",
+    alignItems: "center",
 
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
 
-  display: "flex",
-  gap: theme.spacing(3),
+    display: "flex",
+    gap: theme.spacing(3),
 
-  borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.shape.borderRadius,
 
-  background: INPUT_SECTION_STYLES.fileWrapper.background,
-  border: INPUT_SECTION_STYLES.fileWrapper.border,
-
-  cursor: "pointer",
-  transition: INPUT_SECTION_STYLES.transition,
-
-  borderColor: $hasError ? theme.palette.error.main : undefined,
-
-  "&:hover": {
-    background: INPUT_SECTION_STYLES.fileWrapper.hoverBackground,
+    background: colors.bgOff,
+    border: `2px dashed ${theme.palette.background.lightGray}`,
+    cursor: "pointer",
+    transition: INPUT_SECTION_STYLES.transition,
+    boxShadow: colors.boxShadow,
     borderColor: $hasError
       ? theme.palette.error.main
-      : theme.palette.primary.main,
-  },
+      : theme.palette.background.mediumGray,
 
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    alignItems: "flex-start",
+    "&:hover": {
+      background:
+        theme.palette.mode == "dark"
+          ? theme.palette.background.lightGray
+          : INPUT_SECTION_STYLES.fileWrapper.hoverBackground,
+      borderColor: $hasError
+        ? theme.palette.error.main
+        : theme.palette.primary.main,
 
-    gap: theme.spacing(2),
+      transform: "translateY(-1px)",
+    },
 
-    padding: theme.spacing(3),
-  },
-}));
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+
+      gap: theme.spacing(2),
+
+      padding: theme.spacing(3),
+    },
+  };
+});
 
 export const FileTextBlock = styled("div")(() => ({
   display: "flex",
@@ -348,7 +394,7 @@ export const FileRemoveButton = styled("button")(({ theme }) => ({
   transition: INPUT_SECTION_STYLES.transition,
 
   "&:hover": {
-    background: theme.palette.accent.lightRed,
+    background: theme.palette.background.lightGray,
     color: theme.palette.accent.red,
     border: INPUT_SECTION_STYLES.fileWrapper.border,
   },

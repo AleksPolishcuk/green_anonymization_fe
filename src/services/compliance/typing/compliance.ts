@@ -3,7 +3,6 @@ export interface ComplianceFramework {
   name: string;
   description: string;
   entityTypesCount: number;
-  isActive: boolean;
 }
 
 export interface SelectComplianceRequest {

@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solución",
-      "contactUs": "Contáctenos"
+      "contactUs": "Contáctenos",
+      "dashboard": "Panel de control"
     },
     "actions": {
-      "getStarted": "Comenzar"
+      "getStarted": "Comenzar",
+      "logOut": "Cerrar sesión"
     },
     "logoAlt": "Clinical Data Studio — inicio",
     "logoText": "Clinical Data Studio",

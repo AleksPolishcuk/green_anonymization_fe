@@ -4,6 +4,8 @@ export const Page = styled(Box)(({ theme }) => ({
   display: "flex",
   minHeight: "100vh",
 
+  backgroundColor: theme.palette.background.default,
+
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   },
@@ -33,9 +35,12 @@ export const RightSection = styled(Box)(({ theme }) => ({
 
   padding: theme.spacing(10),
 
-  color: theme.palette.color.white,
+  color: theme.palette.text.primary,
 
-  background: "linear-gradient(135deg, #0EA5E9 0%, #3B82F6 50%, #1E40AF 100%)",
+  background:
+    theme.palette.mode === "dark"
+      ? "linear-gradient(135deg, #081654 0%, #155dfc 50%, #020617 100%)"
+      : "linear-gradient(135deg, #0EA5E9 0%, #3B82F6 50%, #1E40AF 100%)",
 
   [theme.breakpoints.down("md")]: {
     display: "none",
