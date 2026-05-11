@@ -1,17 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { deidColors, deidDarkColors } from "constants/DeidPage";
-
-export const SyntheticDataGeneratedDatasetSectionRoot = styled(Box)(
-  ({ theme }) => ({
-    position: "relative",
-    margin: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    gap: theme.spacing(7),
-  }),
-);
 
 export const SpriteIconSvg = styled("svg")({
   width: 15,
