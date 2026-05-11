@@ -17,6 +17,7 @@ import {
   ActionButtonsContainer,
   ActionButton,
   ActionButtonIconWrapper,
+  TableHeaderColumnButtons,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
@@ -44,7 +45,7 @@ export default function SyntheticDataGeneratedDataset() {
             </TableStats>
           </div>
         </TableHeaderColumn>
-        <TableHeaderColumn>
+        <TableHeaderColumnButtons>
           <ActionButtonsContainer>
             <ActionButton>
               <ActionButtonIconWrapper>
@@ -59,7 +60,7 @@ export default function SyntheticDataGeneratedDataset() {
               {t("downloadArchiveButton")}
             </ActionButton>
           </ActionButtonsContainer>
-        </TableHeaderColumn>
+        </TableHeaderColumnButtons>
       </TableHeader>
 
       <TableScrollWrapper>

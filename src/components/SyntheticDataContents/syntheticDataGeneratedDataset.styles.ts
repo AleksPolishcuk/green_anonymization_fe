@@ -36,21 +36,37 @@ export const TableHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  height: 90,
+  minHeight: 90,
+  height: "auto",
   padding: theme.spacing(0, 6),
   borderBottom: `1px solid ${theme.palette.background.softGray}`,
   cursor: "pointer",
+  "@media (max-width: 500px)": {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    padding: theme.spacing(2, 4),
+  },
 }));
 
 export const TableHeaderColumn = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(3),
+  padding: theme.spacing(2, 0),
 }));
 
+export const TableHeaderColumnButtons = styled(TableHeaderColumn)(
+  ({ theme }) => ({
+    "@media (max-width: 500px)": {
+      borderTop: `1px solid ${theme.palette.divider}`,
+      width: "100%",
+    },
+  }),
+);
+
 export const TableIconWrapper = styled("div")(({ theme }) => ({
-  width: 36,
-  height: 36,
+  minWidth: 36,
+  minHeight: 36,
   borderRadius: theme.shape.borderRadius,
   backgroundColor:
     theme.palette.accent.lightLilac ?? `${theme.palette.accent.lilac}14`,
@@ -162,7 +178,7 @@ export const IconWrapper = styled("svg")({
 export const DataSafetyInfoIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 11,
   height: 11,
-  marginRight: theme.spacing(0.5),
+  marginRight: theme.spacing(2),
   display: "inline-flex",
   flexShrink: 0,
   color: theme.palette.color.blue,
@@ -180,6 +196,10 @@ export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
   marginTop: "auto",
   padding: theme.spacing(2),
-  width: "100%",
   backgroundColor: theme.palette.background.default,
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    padding: 0,
+  },
 }));
