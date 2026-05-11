@@ -16,7 +16,7 @@ import {
   DataSafetyInfoIconWrapper,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef } from "constants/MainPages";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "store/hooks";
 
 export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {

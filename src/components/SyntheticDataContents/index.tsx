@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "store/hooks";
 import { SyntheticDataRoot } from "./styles";
 import SyntheticDataGeneratedDataset from "./syntheticDataGeneratedDataset";
 import SyntheticDataGenerationSettings from "./syntheticDataGenerationSettings";

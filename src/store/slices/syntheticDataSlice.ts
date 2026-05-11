@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type {
   SyntheticDataDocument,
   SyntheticDataState,
-} from "../types/syntheticData";
+} from "store/types/syntheticData";
 
 const initialState: SyntheticDataState = {
   syntheticDocuments: [],
