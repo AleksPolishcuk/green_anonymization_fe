@@ -398,5 +398,9 @@
       "id": "ID"
     },
     "dataSafetyInfo": "Tous les enregistrements sont complètement synthétiques. Aucune donnée réelle de patient n'a été utilisée dans la génération. Sûr pour le développement, les tests et la recherche."
+  },
+  "syntheticDataHeader": {
+    "title": "Générateur de données synthétiques",
+    "subtitle": "Générez des données cliniques réalistes mais entièrement synthétiques pour les tests et le développement"
   }
 }

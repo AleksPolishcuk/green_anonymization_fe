@@ -398,5 +398,9 @@
       "id": "ID"
     },
     "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación."
+  },
+  "syntheticDataHeader": {
+    "title": "Generador de datos sintéticos",
+    "subtitle": "Genere datos clínicos realistas pero completamente sintéticos para pruebas y desarrollo"
   }
 }

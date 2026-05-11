@@ -1,5 +1,11 @@
 import { SyntheticDataGeneratedDataset } from "../../components/SyntheticDataGeneratedDataset";
+import SyntheticDataHeader from "../../components/SyntheticDataHeader";
 
 export default function SyntheticDataPage() {
-  return <SyntheticDataGeneratedDataset />;
+  return (
+    <>
+      <SyntheticDataHeader />
+      <SyntheticDataGeneratedDataset />
+    </>
+  );
 }

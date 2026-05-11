@@ -411,5 +411,9 @@
       "id": "ID"
     },
     "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes."
+  },
+  "syntheticDataHeader": {
+    "title": "Synthetic Data Generator",
+    "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
   }
 }
