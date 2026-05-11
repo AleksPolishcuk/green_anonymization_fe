@@ -387,5 +387,13 @@
         "newDeId": "Nuova de-identificazione →"
       }
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Dataset generato",
+    "subtitle": "{{count}} record sintetici",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Tutti i record sono completamente sintetici. Non sono stati utilizzati dati reali dei pazienti nella generazione. Sicuro per sviluppo, test e scopi di ricerca."
   }
 }

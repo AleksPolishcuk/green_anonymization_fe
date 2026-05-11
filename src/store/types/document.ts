@@ -50,3 +50,15 @@ export type DocumentState = {
 };
 
 export type DeidStep = "framework" | "dataSource" | "results";
+
+export type SyntheticEntity = {
+  id: string;
+  syntheticDataDocumentId: string;
+  entity_type: EntityType;
+  value: string;
+};
+
+export type SyntheticDataDocument = {
+  id: string;
+  entities: SyntheticEntity[];
+};

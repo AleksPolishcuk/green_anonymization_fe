@@ -387,5 +387,13 @@
         "newDeId": "Nieuwe de-identificatie →"
       }
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Gegenereerde dataset",
+    "subtitle": "{{count}} synthetische records",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Alle records zijn volledig synthetisch. Er zijn geen echte patiëntgegevens gebruikt bij de generatie. Veilig voor ontwikkeling, testen en onderzoeksdoeleinden."
   }
 }

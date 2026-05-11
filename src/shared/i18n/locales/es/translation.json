@@ -387,5 +387,13 @@
         "newDeId": "Nueva desidentificación →"
       }
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Conjunto de datos generado",
+    "subtitle": "{{count}} conjuntos de datos sintéticos",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación."
   }
 }

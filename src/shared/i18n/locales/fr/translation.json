@@ -388,5 +388,13 @@
         "newDeId": "Nouvelle dé-identification →"
       }
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Ensemble de données généré",
+    "subtitle": "{{count}} enregistrements synthétiques",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Tous les enregistrements sont complètement synthétiques. Aucune donnée réelle de patient n'a été utilisée dans la génération. Sûr pour le développement, les tests et la recherche."
   }
 }
