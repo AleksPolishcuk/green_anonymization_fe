@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { deidColors, deidDarkColors } from "constants/DeidPage";
@@ -148,7 +148,7 @@ export const ActionsBar = styled("div")(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.background.softGray}`,
 }));
 
-export const ActionButton = styled("button")(({ theme }) => ({
+export const ActionButton = styled(Button)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(2),
