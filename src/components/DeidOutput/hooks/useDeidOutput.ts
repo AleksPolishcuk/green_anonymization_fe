@@ -14,7 +14,7 @@ import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
 import {
   parseTextWithEntities,
   parseTextWithRedactions,
-} from "../utils/parsers";
+} from "components/DeidOutput/utils/parsers";
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
