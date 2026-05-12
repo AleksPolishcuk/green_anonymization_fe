@@ -10,7 +10,7 @@ export const SpriteIconSvg = styled("svg")({
   flexShrink: 0,
 });
 
-export const TableCard = styled("div")(({ theme }) => {
+export const TableCard = styled(Box)(({ theme }) => {
   const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
 
   return {
@@ -32,7 +32,7 @@ export const TableCard = styled("div")(({ theme }) => {
   };
 });
 
-export const TableHeader = styled("div")(({ theme }) => ({
+export const TableHeader = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -48,7 +48,7 @@ export const TableHeader = styled("div")(({ theme }) => ({
   },
 }));
 
-export const TableHeaderColumn = styled("div")(({ theme }) => ({
+export const TableHeaderColumn = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(3),
@@ -64,7 +64,7 @@ export const TableHeaderColumnButtons = styled(TableHeaderColumn)(
   }),
 );
 
-export const TableIconWrapper = styled("div")(({ theme }) => ({
+export const TableIconWrapper = styled(Box)(({ theme }) => ({
   minWidth: 36,
   minHeight: 36,
   borderRadius: theme.shape.borderRadius,
@@ -80,7 +80,7 @@ export const TableTitle = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightRegular,
 }));
 
-export const DataSafetyInfoWrapper = styled("div")(({ theme }) => ({
+export const DataSafetyInfoWrapper = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2, 4),
   display: "flex",
   alignItems: "center",
@@ -135,11 +135,11 @@ export const Tr = styled("tr")(({ theme }) => ({
   },
 }));
 
-export const TableScrollWrapper = styled("div")({
+export const TableScrollWrapper = styled(Box)({
   overflowX: "auto",
 });
 
-export const ActionsBar = styled("div")(({ theme }) => ({
+export const ActionsBar = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
