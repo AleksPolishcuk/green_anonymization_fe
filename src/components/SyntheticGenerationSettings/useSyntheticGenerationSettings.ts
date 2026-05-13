@@ -7,6 +7,9 @@ import type {
   DocumentDetails,
   DocumentListItem,
 } from "services/documents/typing";
+import { syntheticDataService } from "services/synthetic";
+import { useAppDispatch } from "store/hooks";
+import { setSyntheticDocuments } from "store/slices/syntheticDataSlice";
 
 const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
@@ -14,6 +17,8 @@ const MAX_RECORDS_COUNT = 10000;
 
 export const useSyntheticGenerationSettings = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const documentId = useMemo(
     () => searchParams.get("documentId"),
@@ -77,13 +82,21 @@ export const useSyntheticGenerationSettings = () => {
     setRecordsCount((prev) => Math.min(MAX_RECORDS_COUNT, prev + 1));
   };
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (!selectedDocument) return;
 
-    console.log({
-      documentId: selectedDocument.id,
-      count: recordsCount,
-    });
+    try {
+      setIsGenerating(true);
+
+      const response = await syntheticDataService.generate({
+        documentId: selectedDocument.id,
+        count: recordsCount,
+      });
+
+      dispatch(setSyntheticDocuments(response.syntheticDocuments));
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return {
@@ -92,6 +105,7 @@ export const useSyntheticGenerationSettings = () => {
     recordsCount,
     isPreviewExpanded,
     isLoadingDocument,
+    isGenerating,
     error,
     setIsPreviewExpanded,
     setRecordsCount,

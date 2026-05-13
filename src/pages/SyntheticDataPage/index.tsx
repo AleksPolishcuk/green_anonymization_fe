@@ -9,6 +9,7 @@ import {
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
+import SyntheticDataContents from "components/SyntheticDataContents";
 
 export default function SyntheticDataPage() {
   const { t } = useTranslation();
@@ -30,6 +31,7 @@ export default function SyntheticDataPage() {
         </HeaderDescription>
       </PageHeader>
       <SyntheticGenerationSettings />
+      <SyntheticDataContents />
     </PageRoot>
   );
 }

@@ -390,5 +390,19 @@
       },
       "emptyState": "Ihre Statistiken erscheinen hier bald"
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Generierter Datensatz",
+    "subtitle": "{{count}} synthetische Datensätze",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Alle Datensätze sind vollständig synthetisch. Es wurden keine echten Patientendaten zur Generierung verwendet. Sicher für Entwicklungs-, Test- und Forschungszwecke.",
+    "downloadArchiveButton": "Archiv herunterladen",
+    "regenerateDatasetButton": "Datensatz regenerieren"
+  },
+  "syntheticDataHeader": {
+    "title": "Synthetischer Datengenerator",
+    "subtitle": "Generieren Sie realistische, aber vollständig synthetische klinische Daten für Tests und Entwicklung"
   }
 }

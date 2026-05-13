@@ -459,5 +459,19 @@
       "button": "Generate Synthetic Data",
       "secure": "Your data is secure and will never be used to train models"
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Generated Dataset",
+    "subtitle": "{{count}} synthetic records",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes.",
+    "downloadArchiveButton": "Download Archive",
+    "regenerateDatasetButton": "Regenerate Dataset"
+  },
+  "syntheticDataHeader": {
+    "title": "Synthetic Data Generator",
+    "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
   }
 }

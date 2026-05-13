@@ -390,5 +390,19 @@
       },
       "emptyState": "Le tue statistiche appariranno qui a breve"
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Dataset generato",
+    "subtitle": "{{count}} record sintetici",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Tutti i record sono completamente sintetici. Non sono stati utilizzati dati reali dei pazienti nella generazione. Sicuro per sviluppo, test e scopi di ricerca.",
+    "downloadArchiveButton": "Scarica archivio",
+    "regenerateDatasetButton": "Rigenera dataset"
+  },
+  "syntheticDataHeader": {
+    "title": "Generatore di dati sintetici",
+    "subtitle": "Genera dati clinici realistici ma completamente sintetici per test e sviluppo"
   }
 }

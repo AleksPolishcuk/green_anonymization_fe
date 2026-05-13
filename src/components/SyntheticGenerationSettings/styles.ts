@@ -433,6 +433,7 @@ export const GenerateButton = styled(Button)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.common.white,
   backgroundColor: theme.palette.color.blue,
+  margin: "0 auto",
 
   "& svg": {
     marginRight: theme.spacing(1),
