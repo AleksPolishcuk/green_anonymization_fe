@@ -1,4 +1,4 @@
-import { apiClient } from "../api";
+import { apiClient } from "services/api";
 import type { ContactFormRequest, ContactFormResponse } from "./typing/contact";
 
 export const contactService = {

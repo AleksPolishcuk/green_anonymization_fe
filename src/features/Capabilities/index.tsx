@@ -11,7 +11,7 @@ import {
   Subtitle,
   TitleSectionBlock,
 } from "./styles";
-import { useScrollReveal } from "../../shared/hooks/useScrollReveal";
+import { useScrollReveal } from "shared/hooks/useScrollReveal";
 import { CAPABILITIES_CARDS } from "constants/MainPages";
 
 export const Capabilities = () => {
