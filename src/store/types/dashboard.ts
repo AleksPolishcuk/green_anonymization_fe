@@ -1,5 +1,3 @@
-export type TrendType = "up" | "down" | "stable" | "excellent";
-
 export type StatCardIconId =
   | "icon-document"
   | "icon-shield"
@@ -10,9 +8,7 @@ export interface StatCardData {
   id: string;
   iconId: StatCardIconId;
   value: string;
-  label: string;
   trendPercent: string;
-  trendType: TrendType;
 }
 
 export interface EntityTypeDatum {

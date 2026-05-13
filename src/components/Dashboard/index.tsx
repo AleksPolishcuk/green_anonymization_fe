@@ -1,5 +1,8 @@
-import { useAppSelector } from "store/hooks";
+import { useEffect } from "react";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { fetchDashboard } from "store/slices/dashboardSlice";
 import {
   CHART_ROW_COLS_EQUAL,
   CHART_ROW_COLS_WIDE,
@@ -19,7 +22,38 @@ import {
 } from "components/Dashboard/styles";
 
 export const Dashboard = () => {
-  const data = useAppSelector((state) => state.dashboard.data);
+  const dispatch = useAppDispatch();
+  const { data, loading, error } = useAppSelector((state) => state.dashboard);
+
+  useEffect(() => {
+    dispatch(fetchDashboard());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        minHeight="60vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        minHeight="60vh"
+      >
+        <Typography color="error">{error}</Typography>
+      </Box>
+    );
+  }
 
   return (
     <MainContent>

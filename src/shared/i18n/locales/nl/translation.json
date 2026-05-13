@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Oplossing",
-      "contactUs": "Contact"
+      "contactUs": "Contact",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Aan de slag"
+      "getStarted": "Aan de slag",
+      "logOut": "Uitloggen"
     },
     "logoAlt": "Clinical Data Studio — startpagina",
     "logoText": "Clinical Data Studio",
@@ -385,7 +387,8 @@
         "subtitle": "Laatst verwerkte documenten",
         "entities": "{{count}} entiteiten",
         "newDeId": "Nieuwe de-identificatie →"
-      }
+      },
+      "emptyState": "Uw statistieken verschijnen hier binnenkort"
     }
   }
 }

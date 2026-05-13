@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solution",
-      "contactUs": "Nous contacter"
+      "contactUs": "Nous contacter",
+      "dashboard": "Tableau de bord"
     },
     "actions": {
-      "getStarted": "Commencer"
+      "getStarted": "Commencer",
+      "logOut": "Se déconnecter"
     },
     "logoAlt": "Clinical Data Studio — accueil",
     "logoText": "Clinical Data Studio",
@@ -290,7 +292,6 @@
       "textPlaceholder": "Patient : Dr Sarah Johnson\nDate de visite : 15 mars 2026\nNuméro de dossier médical : MRN789456123\n\nMotif principal :\nPatiente de 45 ans présentant des maux de tête persistants.\n\nHistorique :\nLa patiente indique que les maux de tête ont commencé il y a environ 2 semaines. Les dossiers du 28/02/2026 indiquent un traitement de l'hypertension. Contact : 555-123-4567 ou sarah.johnson@email.com.\n\nAdresse : 123 Medical Center Drive, Springfield Évaluation : Suivi recommandé avec imagerie et surveillance de la tension artérielle. Sécurité sociale : 123-45-6789 ID patient : 987654321 Prochain rendez-vous : 1er avril 2026 à 10h00."
     }
   },
-
   "themeToggle": {
     "light": "Passer en mode clair",
     "dark": "Passer en mode sombre"
@@ -386,7 +387,8 @@
         "subtitle": "Derniers documents traités",
         "entities": "{{count}} entités",
         "newDeId": "Nouvelle dé-identification →"
-      }
+      },
+      "emptyState": "Vos statistiques apparaîtront ici bientôt"
     }
   }
 }

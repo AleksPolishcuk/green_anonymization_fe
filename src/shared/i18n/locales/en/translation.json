@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solution",
-      "contactUs": "Contact Us"
+      "contactUs": "Contact Us",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "logOut": "Log Out"
     },
     "logoAlt": "Clinical Data Studio — home",
     "logoText": "Clinical Data Studio",
@@ -229,7 +231,6 @@
       "lastNameRequired": "Last name is required",
       "companyLabel": "Company",
       "companyPlaceholder": "Your organization",
-
       "submitButton": "Continue",
       "errors": {
         "firstNameRequired": "First name is required",
@@ -287,7 +288,6 @@
     "title": "Input Clinical Text",
     "subtitle": "Paste clinical text or upload a document for analysis",
     "step": "STEP 2",
-
     "form": {
       "successMessage": "Request submitted successfully",
       "errors": {
@@ -399,13 +399,65 @@
         "title": "Recent Activity",
         "subtitle": "Latest processed documents",
         "entities": "{{count}} entities",
-        "newDeId": "New De-Identification →"
-      },
-      "syntheticDataCta": {
-        "title": "Ready to Generate Synthetic Data?",
-        "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
-        "button": "Generate Synthetic Data"
+        "newDeId": "New De-Identification →",
+        "emptyState": "Your statistics will appear here soon"
       }
+    }
+  },
+  "syntheticDataCta": {
+    "title": "Ready to Generate Synthetic Data?",
+    "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
+    "button": "Generate Synthetic Data"
+  },
+  "syntheticData": {
+    "header": {
+      "badge": "AI Powered",
+      "title": "Synthetic Data Generator",
+      "description": "Generate realistic but completely synthetic clinical data for testing and development"
+    },
+    "selectDocument": {
+      "title": "Select a source document",
+      "description": "Choose one of your de-identified documents to generate synthetic data."
+    },
+    "emptyState": {
+      "title": "No documents available",
+      "description": "You don’t have any de-identified documents yet. Anonymize a document first to generate synthetic data.",
+      "button": "Go to De-identification"
+    },
+    "sourceDocument": {
+      "title": "Source Document",
+      "description": "Select the de-identified document you want to use",
+      "status": "De-identified",
+      "preview": {
+        "title": "De-identified document preview",
+        "description": "All sensitive information has been removed",
+        "show": "Show full text",
+        "hide": "Hide full text"
+      },
+      "meta": {
+        "created": "Created",
+        "framework": "Framework",
+        "entities": "Entities removed",
+        "characters": "Characters"
+      }
+    },
+    "generation": {
+      "title": "Generation Settings",
+      "description": "Configure how many synthetic records to generate",
+      "recordsTitle": "Number of synthetic records",
+      "recordsDescription": "How many synthetic documents would you like to generate?",
+      "helper": "Max 500 records per generation",
+      "preserved": {
+        "title": "What will be preserved?",
+        "items": {
+          "structure": "Clinical structure and relationships",
+          "diagnosis": "Diagnosis patterns and distributions",
+          "schema": "Data schema",
+          "statistics": "Statistical properties and correlations"
+        }
+      },
+      "button": "Generate Synthetic Data",
+      "secure": "Your data is secure and will never be used to train models"
     }
   }
 }

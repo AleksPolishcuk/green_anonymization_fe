@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Soluzione",
-      "contactUs": "Contattaci"
+      "contactUs": "Contattaci",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Inizia"
+      "getStarted": "Inizia",
+      "logOut": "Disconnetti"
     },
     "logoAlt": "Clinical Data Studio — home",
     "logoText": "Clinical Data Studio",
@@ -385,7 +387,8 @@
         "subtitle": "Ultimi documenti elaborati",
         "entities": "{{count}} entità",
         "newDeId": "Nuova de-identificazione →"
-      }
+      },
+      "emptyState": "Le tue statistiche appariranno qui a breve"
     }
   }
 }

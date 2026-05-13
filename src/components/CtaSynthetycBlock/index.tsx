@@ -1,4 +1,3 @@
-import { SpriteIconSvg } from "components/DeidOutput/analysisStyles";
 import {
   SyntheticDataButton,
   SyntheticDataCta,
@@ -7,21 +6,19 @@ import {
   SyntheticDataCtaTitle,
   SyntheticDataIconBox,
 } from "./styles";
-import { headerSpriteRef } from "constants/MainPages";
 import { useTranslation } from "react-i18next";
 import { useDeidOutput } from "components/DeidOutput/hooks/useDeidOutput";
+import { ArrowRight, AutoAwesomeOutlined } from "@mui/icons-material";
 
 export default function CtaSynthetycBlock() {
-  const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
+  const { t } = useTranslation();
   const { handleGenerateSyntheticData } = useDeidOutput();
 
   return (
     <SyntheticDataCta>
       <SyntheticDataCtaLeft>
         <SyntheticDataIconBox>
-          <SpriteIconSvg aria-hidden="true">
-            <use href={headerSpriteRef("icon-database")} />
-          </SpriteIconSvg>
+          <AutoAwesomeOutlined />
         </SyntheticDataIconBox>
 
         <div>
@@ -36,6 +33,7 @@ export default function CtaSynthetycBlock() {
 
       <SyntheticDataButton onClick={handleGenerateSyntheticData}>
         {t("syntheticDataCta.button")}
+        <ArrowRight />
       </SyntheticDataButton>
     </SyntheticDataCta>
   );

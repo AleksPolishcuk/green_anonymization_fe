@@ -11,19 +11,27 @@ import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toggleEntitySelected } from "store/slices/documentSlice";
 
 import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
+
+import { useNavigate } from "react-router-dom";
+import { documentsService } from "services/documents";
 import {
   buildAnonymizedText,
   parseTextWithEntities,
   parseTextWithRedactions,
-} from "../utils/parsers";
-import { useNavigate } from "react-router-dom";
-import { documentsService } from "services/documents";
+} from "components/DeidOutput/utils/parsers";
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { originalText, piiEntities, selectedFramework, document } =
-    useAppSelector((s) => s.document);
+  const {
+    originalText: rawOriginalText,
+    piiEntities: rawPiiEntities,
+    selectedFramework,
+    document,
+  } = useAppSelector((s) => s.document);
+
+  const originalText = rawOriginalText ?? "";
+  const piiEntities = useMemo(() => rawPiiEntities ?? [], [rawPiiEntities]);
 
   const safeEntities = useMemo(() => piiEntities ?? [], [piiEntities]);
   const safeOriginalText = originalText ?? "";
@@ -46,7 +54,10 @@ export const useDeidOutput = () => {
   const accuracy = useMemo(() => {
     if (safeEntities.length === 0) return 0;
     const avg =
-      safeEntities.reduce((sum, e) => sum + e.score, 0) / safeEntities.length;
+      safeEntities.reduce(
+        (sum: number, e: { score: number }) => sum + e.score,
+        0,
+      ) / safeEntities.length;
     return (
       Math.round(
         avg * ACCURACY_PERCENT_MULTIPLIER * ACCURACY_DECIMAL_PRECISION,
@@ -54,12 +65,16 @@ export const useDeidOutput = () => {
     );
   }, [safeEntities]);
 
-  const frameworkName = useMemo(
-    () =>
-      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework)?.name ??
-      selectedFramework,
-    [selectedFramework],
-  );
+  const frameworkName = useMemo(() => {
+    if (!selectedFramework) {
+      return "";
+    }
+
+    return (
+      COMPLIANCE_FRAMEWORKS.find((f) => f.code === selectedFramework.code)
+        ?.name ?? selectedFramework.name
+    );
+  }, [selectedFramework]);
 
   const originalSegments = useMemo(
     () => parseTextWithEntities(safeOriginalText, safeEntities),

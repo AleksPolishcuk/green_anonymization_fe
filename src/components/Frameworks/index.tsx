@@ -14,15 +14,12 @@ import {
   FrameworksLogoIcon,
   StepChip,
 } from "./styles";
-
 import { headerSpriteRef, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { setSelectedFramework } from "store/slices/documentSlice";
+import { useFrameworkSelection } from "./useFrameworkSelection";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const selectedFramework = useAppSelector((s) => s.document.selectedFramework);
+  const { selectedFramework, selectFramework } = useFrameworkSelection();
 
   return (
     <FrameworkSectionRoot>
@@ -52,8 +49,8 @@ export default function FrameworkSection() {
             <FrameworkSectionItem key={framework.code}>
               <FrameworkCard
                 framework={framework}
-                selected={selectedFramework === framework.code}
-                onClick={() => dispatch(setSelectedFramework(framework.code))}
+                selected={selectedFramework?.code === framework.code}
+                onClick={() => selectFramework(framework)}
               />
             </FrameworkSectionItem>
           ))}
