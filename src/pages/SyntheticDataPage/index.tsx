@@ -1,3 +1,11 @@
+import SyntheticDataContents from "components/SyntheticDataContents";
+import SyntheticDataHeader from "components/SyntheticDataHeader";
+
 export default function SyntheticDataPage() {
-  return <h2>Synthetic Data Page</h2>;
+  return (
+    <>
+      <SyntheticDataHeader />
+      <SyntheticDataContents />
+    </>
+  );
 }
