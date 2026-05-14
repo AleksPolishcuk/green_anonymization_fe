@@ -67,7 +67,7 @@ export const FrameworksLogoIcon = styled("svg")(({ theme }) => ({
   height: 16,
   display: "block",
   fill: theme.palette.primary.main,
-  stroke: theme.palette.color.white,
+  stroke: theme.palette.common.white,
 }));
 
 export const FrameworkSectionTitleRow = styled(Stack)(({ theme }) => ({

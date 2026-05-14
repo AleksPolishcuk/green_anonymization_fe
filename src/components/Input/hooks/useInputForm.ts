@@ -8,6 +8,7 @@ import type { InputFormValues } from "components/Input/types";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
+  setDocument,
   setEntities,
   setOriginalText,
   setRedactedText,
@@ -93,6 +94,7 @@ export const useInputForm = () => {
       dispatch(setOriginalText(analysis.originalText));
       dispatch(setRedactedText(analysis.anonymizedText));
       dispatch(setEntities(analysis.piiEntities));
+      dispatch(setDocument(analysis.document));
 
       setSubmitSuccess(true);
 
