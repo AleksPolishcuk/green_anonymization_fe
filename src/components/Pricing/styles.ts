@@ -5,7 +5,20 @@ import Typography from "@mui/material/Typography";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import DoNotDisturbOnOutlinedIcon from "@mui/icons-material/DoNotDisturbOnOutlined";
 
-import { PRICING_CARD_HOVER_SHADOW } from "constants/PricingPage";
+import {
+  PRICING_CARD_BACKDROP_BLUR,
+  PRICING_CARD_BG_ALPHA,
+  PRICING_CARD_BORDER_RADIUS,
+  PRICING_CARD_HOVER_SHADOW,
+  PRICING_CARD_SHADOW_DARK,
+  PRICING_CARD_SHADOW_LIGHT,
+  PRICING_CARD_TRANSITION,
+  PRICING_CTA_BORDER_RADIUS,
+  PRICING_CTA_TRANSITION,
+  PRICING_GRID_MAX_WIDTH,
+  PRICING_POPULAR_BADGE_BORDER_RADIUS,
+  PRICING_PRIMARY_ALPHA,
+} from "constants/PricingPage";
 
 export const PRICING_CTA_CLASS = "pricing-cta-btn";
 
@@ -14,7 +27,7 @@ export const PricingGrid = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "1fr",
   gap: theme.spacing(6),
   width: "100%",
-  maxWidth: 820,
+  maxWidth: PRICING_GRID_MAX_WIDTH,
   margin: "0 auto",
   [theme.breakpoints.up("md")]: {
     gridTemplateColumns: "1fr 1fr",
@@ -26,18 +39,18 @@ export const PricingCardRoot = styled(Box, {
   shouldForwardProp: (prop) => prop !== "$isPopular",
 })<{ $isPopular: boolean }>(({ theme, $isPopular }) => ({
   position: "relative",
-  backgroundColor: alpha(theme.palette.background.paper, 0.55),
-  backdropFilter: "blur(6px)",
-  borderRadius: 16,
+  backgroundColor: alpha(theme.palette.background.paper, PRICING_CARD_BG_ALPHA),
+  backdropFilter: PRICING_CARD_BACKDROP_BLUR,
+  borderRadius: PRICING_CARD_BORDER_RADIUS,
   padding: theme.spacing(6),
   border: `1px solid ${$isPopular ? theme.palette.primary.main : theme.palette.divider}`,
   boxShadow:
     theme.palette.mode === "dark"
-      ? "0 2px 16px rgba(0, 0, 0, 0.25)"
-      : "0 2px 16px rgba(16, 24, 40, 0.06)",
+      ? PRICING_CARD_SHADOW_DARK
+      : PRICING_CARD_SHADOW_LIGHT,
   display: "flex",
   flexDirection: "column",
-  transition: "border-color 0.22s ease, box-shadow 0.22s ease",
+  transition: PRICING_CARD_TRANSITION,
 
   "&:hover": {
     borderColor: theme.palette.primary.main,
@@ -61,12 +74,12 @@ export const PopularBadge = styled(Box)(({ theme }) => ({
   right: theme.spacing(4),
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
-  borderRadius: 20,
+  borderRadius: PRICING_POPULAR_BADGE_BORDER_RADIUS,
   padding: theme.spacing(0.75, 2),
   fontSize: theme.typography.fontSize12,
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightMedium,
-  lineHeight: 1.4,
+  lineHeight: theme.typography.lineHeight140,
 }));
 
 export const PlanName = styled(Typography)(({ theme }) => ({
@@ -94,13 +107,13 @@ export const PriceAmount = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize44,
   fontWeight: theme.typography.fontWeightBold,
   color: theme.palette.text.primary,
-  lineHeight: 1,
+  lineHeight: theme.typography.lineHeight108,
 }));
 
 export const PriceMonth = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
-  lineHeight: 1,
+  lineHeight: theme.typography.lineHeight108,
 }));
 
 export const DocumentsBadge = styled(Box)(({ theme }) => ({
@@ -108,10 +121,10 @@ export const DocumentsBadge = styled(Box)(({ theme }) => ({
   alignItems: "center",
   backgroundColor:
     theme.palette.mode === "dark"
-      ? "rgba(21, 93, 252, 0.18)"
+      ? alpha(theme.palette.primary.main, PRICING_PRIMARY_ALPHA)
       : theme.palette.accent.lightBlue,
   color: theme.palette.primary.main,
-  borderRadius: 8,
+  borderRadius: theme.spacing(2),
   padding: theme.spacing(0.75, 2),
   fontSize: theme.typography.fontSize12,
   fontFamily: theme.typography.fontFamily,
@@ -131,22 +144,22 @@ export const FeatureList = styled("ul")(({ theme }) => ({
   marginBottom: theme.spacing(6),
 }));
 
-export const FeatureItem = styled("li")({
+export const FeatureItem = styled("li")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: 8,
-});
+  gap: theme.spacing(2),
+}));
 
 export const EnabledIcon = styled(CheckRoundedIcon)(({ theme }) => ({
-  width: 18,
-  height: 18,
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
   color: theme.palette.primary.main,
   flexShrink: 0,
 }));
 
 export const DisabledIcon = styled(DoNotDisturbOnOutlinedIcon)(({ theme }) => ({
-  width: 18,
-  height: 18,
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
   color: theme.palette.text.disabled,
   flexShrink: 0,
 }));
@@ -156,13 +169,13 @@ export const FeatureLabel = styled(Typography, {
 })<{ $enabled: boolean }>(({ theme, $enabled }) => ({
   fontSize: theme.typography.fontSize14,
   color: $enabled ? theme.palette.text.primary : theme.palette.text.disabled,
-  lineHeight: 1.5,
+  lineHeight: theme.typography.lineHeight150,
 }));
 
 export const PlanCTA = styled(Button)(({ theme }) => ({
   width: "100%",
   padding: theme.spacing(2.5, 4),
-  borderRadius: 10,
+  borderRadius: PRICING_CTA_BORDER_RADIUS,
   border: `2px solid ${theme.palette.primary.main}`,
   backgroundColor: "transparent",
   color: theme.palette.primary.main,
@@ -170,8 +183,7 @@ export const PlanCTA = styled(Button)(({ theme }) => ({
   fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightMedium,
   textTransform: "none",
-  transition:
-    "background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease",
+  transition: PRICING_CTA_TRANSITION,
   "&.Mui-disabled": {
     borderColor: theme.palette.divider,
     color: theme.palette.text.disabled,

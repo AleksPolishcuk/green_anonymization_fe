@@ -1,5 +1,6 @@
 import { alpha, styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
+
 import {
   BUTTON_ACTIVE_BG_DARK,
   BUTTON_ACTIVE_BG_LIGHT,
@@ -11,21 +12,38 @@ import {
   headerDimensions,
 } from "constants/MainPages";
 import { deidColors, deidDarkColors } from "constants/DeidPage";
-
-const transitionFastSeconds = 0.22;
-const easingStandard = "cubic-bezier(0.4, 0, 0.2, 1)";
-const easingOut = "cubic-bezier(0.16, 1, 0.3, 1)";
+import {
+  MODAL_ACCENT_BORDER_ALPHA,
+  MODAL_ACTIVE_SCALE,
+  MODAL_BACKDROP_ALPHA_DARK,
+  MODAL_BACKDROP_ALPHA_LIGHT,
+  MODAL_BACKDROP_BLUR,
+  MODAL_BORDER_RADIUS,
+  MODAL_CLOSE_BTN_BORDER_RADIUS,
+  MODAL_CLOSE_BTN_Z_INDEX,
+  MODAL_EASING_OUT,
+  MODAL_EASING_STANDARD,
+  MODAL_HOVER_SCALE,
+  MODAL_MAX_WIDTH,
+  MODAL_PAPER_ALPHA_DARK,
+  MODAL_PAPER_ALPHA_LIGHT,
+  MODAL_PAPER_BLUR,
+  MODAL_SHADOW_DARK,
+  MODAL_SHADOW_LIGHT,
+  MODAL_TOP_LINE_HEIGHT,
+  MODAL_TRANSITION_DURATION,
+} from "constants/ModalStyles";
 
 export const StyledDialog = styled(Dialog)(({ theme }) => {
   const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+  const isDark = theme.palette.mode === "dark";
 
   return {
     "& .MuiBackdrop-root": {
-      backdropFilter: "blur(6px)",
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? "rgba(2, 6, 23, 0.75)"
-          : "rgba(16, 24, 40, 0.45)",
+      backdropFilter: MODAL_BACKDROP_BLUR,
+      backgroundColor: isDark
+        ? alpha(theme.palette.background.default, MODAL_BACKDROP_ALPHA_DARK)
+        : alpha(theme.palette.color.charcoal, MODAL_BACKDROP_ALPHA_LIGHT),
     },
     "& .MuiDialog-container": {
       alignItems: "center",
@@ -33,26 +51,22 @@ export const StyledDialog = styled(Dialog)(({ theme }) => {
     },
     "& .MuiPaper-root": {
       position: "relative",
-      borderRadius: 20,
+      borderRadius: MODAL_BORDER_RADIUS,
       overflow: "hidden",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
+      backdropFilter: MODAL_PAPER_BLUR,
+      WebkitBackdropFilter: MODAL_PAPER_BLUR,
       width: "100%",
-      maxWidth: 400,
+      maxWidth: MODAL_MAX_WIDTH,
       margin: theme.spacing(4),
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? alpha(theme.palette.background.paper, 0.88)
-          : alpha(theme.palette.background.paper, 0.97),
+      backgroundColor: isDark
+        ? alpha(theme.palette.background.paper, MODAL_PAPER_ALPHA_DARK)
+        : alpha(theme.palette.background.paper, MODAL_PAPER_ALPHA_LIGHT),
       border: `1px solid ${
-        theme.palette.mode === "dark"
-          ? "rgba(59, 130, 246, 0.18)"
+        isDark
+          ? alpha(theme.palette.accent.blue, MODAL_ACCENT_BORDER_ALPHA)
           : theme.palette.divider
       }`,
-      boxShadow:
-        theme.palette.mode === "dark"
-          ? `0 32px 80px rgba(0,0,0,0.7), 0 12px 32px rgba(0,0,0,0.5), 0 0 40px rgba(59,130,246,0.12)`
-          : `0 24px 64px rgba(16, 24, 40, 0.12), 0 8px 24px rgba(16, 24, 40, 0.07)`,
+      boxShadow: isDark ? MODAL_SHADOW_DARK : MODAL_SHADOW_LIGHT,
 
       "&::before": {
         content: '""',
@@ -60,7 +74,7 @@ export const StyledDialog = styled(Dialog)(({ theme }) => {
         top: 0,
         left: 0,
         width: "100%",
-        height: 3,
+        height: MODAL_TOP_LINE_HEIGHT,
         background: colors.topLine,
         zIndex: 1,
       },
@@ -75,7 +89,7 @@ export const CloseButton = styled("button")(({ theme }) => ({
   width: `${headerDimensions.closeControlSizePx}px`,
   height: `${headerDimensions.closeControlSizePx}px`,
   border: "none",
-  borderRadius: "10px",
+  borderRadius: MODAL_CLOSE_BTN_BORDER_RADIUS,
   padding: 0,
   background: "transparent",
   cursor: "pointer",
@@ -83,11 +97,11 @@ export const CloseButton = styled("button")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   color: "inherit",
-  zIndex: 2,
+  zIndex: MODAL_CLOSE_BTN_Z_INDEX,
   transition: [
-    `background-color ${transitionFastSeconds}s ${easingStandard}`,
-    `transform ${transitionFastSeconds}s ${easingOut}`,
-    `box-shadow ${transitionFastSeconds}s ${easingStandard}`,
+    `background-color ${MODAL_TRANSITION_DURATION}s ${MODAL_EASING_STANDARD}`,
+    `transform ${MODAL_TRANSITION_DURATION}s ${MODAL_EASING_OUT}`,
+    `box-shadow ${MODAL_TRANSITION_DURATION}s ${MODAL_EASING_STANDARD}`,
   ].join(", "),
 
   "&:hover": {
@@ -99,11 +113,11 @@ export const CloseButton = styled("button")(({ theme }) => ({
       theme.palette.mode === "dark"
         ? BUTTON_HOVER_SHADOW_DARK
         : BUTTON_HOVER_SHADOW_LIGHT,
-    transform: "scale(1.06)",
+    transform: MODAL_HOVER_SCALE,
   },
 
   "&:active": {
-    transform: "scale(1)",
+    transform: MODAL_ACTIVE_SCALE,
     backgroundColor:
       theme.palette.mode === "dark"
         ? BUTTON_ACTIVE_BG_DARK

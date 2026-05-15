@@ -1,7 +1,15 @@
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
+
+import {
+  USAGE_BAR_BORDER_RADIUS,
+  USAGE_BAR_HEIGHT,
+  USAGE_BAR_MIN_WIDTH,
+  USAGE_BAR_TRACK_ALPHA,
+  USAGE_ROOT_BORDER_RADIUS,
+} from "constants/PricingPage";
 
 export const UsageRoot = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -9,7 +17,7 @@ export const UsageRoot = styled(Box)(({ theme }) => ({
   gap: theme.spacing(2),
   padding: theme.spacing(3, 4),
   backgroundColor: theme.palette.background.paper,
-  borderRadius: 12,
+  borderRadius: USAGE_ROOT_BORDER_RADIUS,
   border: `1px solid ${theme.palette.divider}`,
   marginBottom: theme.spacing(4),
   [theme.breakpoints.up("lg")]: {
@@ -49,7 +57,7 @@ export const UsageBarWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.up("lg")]: {
     flex: 1,
-    minWidth: 80,
+    minWidth: USAGE_BAR_MIN_WIDTH,
     width: "auto",
   },
 }));
@@ -57,16 +65,16 @@ export const UsageBarWrapper = styled(Box)(({ theme }) => ({
 export const UsageBar = styled(LinearProgress, {
   shouldForwardProp: (prop) => prop !== "$warn",
 })<{ $warn: boolean }>(({ theme, $warn }) => ({
-  height: 6,
-  borderRadius: 4,
+  height: USAGE_BAR_HEIGHT,
+  borderRadius: USAGE_BAR_BORDER_RADIUS,
   backgroundColor:
     theme.palette.mode === "dark"
-      ? "rgba(255,255,255,0.1)"
+      ? alpha(theme.palette.common.white, USAGE_BAR_TRACK_ALPHA)
       : theme.palette.action.hover,
   "& .MuiLinearProgress-bar": {
-    borderRadius: 4,
+    borderRadius: USAGE_BAR_BORDER_RADIUS,
     backgroundColor: $warn
-      ? theme.palette.warning.main
+      ? theme.palette.accent.amber
       : theme.palette.primary.main,
   },
 }));

@@ -19,6 +19,26 @@ export const PRICING_SHIELD_SIZE = "44%";
 export const PRICING_SUBTITLE_MAX_WIDTH = 560;
 export const PRICING_CARD_HOVER_SHADOW = "0 6px 14px 0 rgba(59, 130, 246, 0.3)";
 
+export const PRICING_GRID_MAX_WIDTH = 820;
+export const PRICING_CARD_BG_ALPHA = 0.55;
+export const PRICING_CARD_BORDER_RADIUS = 16;
+export const PRICING_PRIMARY_ALPHA = 0.18;
+export const PRICING_CARD_BACKDROP_BLUR = "blur(6px)";
+export const PRICING_CARD_SHADOW_DARK = "0 2px 16px rgba(0, 0, 0, 0.25)";
+export const PRICING_CARD_SHADOW_LIGHT = "0 2px 16px rgba(16, 24, 40, 0.06)";
+export const PRICING_CARD_TRANSITION =
+  "border-color 0.22s ease, box-shadow 0.22s ease";
+export const PRICING_CTA_TRANSITION =
+  "background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease";
+export const PRICING_CTA_BORDER_RADIUS = 10;
+export const PRICING_POPULAR_BADGE_BORDER_RADIUS = 20;
+
+export const USAGE_ROOT_BORDER_RADIUS = 12;
+export const USAGE_BAR_HEIGHT = 6;
+export const USAGE_BAR_BORDER_RADIUS = 4;
+export const USAGE_BAR_TRACK_ALPHA = 0.1;
+export const USAGE_BAR_MIN_WIDTH = 80;
+
 export const PRICING_FREE_PRICE = "$0";
 export const PRICING_PRO_PRICE = "$49";
 
