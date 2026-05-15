@@ -428,7 +428,7 @@
       }
     },
     "features": {
-      "upTo5Docs": "Up to 5 documents/month",
+      "upTo5Docs": "Up to 5 documents/day",
       "automatedPii": "Automated PII detection",
       "standardDeid": "Standard de-identification",
       "basicReport": "Basic report",
@@ -444,8 +444,81 @@
   },
   "limitReached": {
     "title": "Daily limit reached",
-    "message": "You've used all {{limit}} documents for today.",
+    "message": "You’ve used all {{limit}} documents for today.",
     "upgrade": "Upgrade to Pro",
-    "wait": "Wait until tomorrow"
+    "close": "Close",
+    "resetToday": "Your limit resets today at {{time}}",
+    "resetTomorrow": "Your limit resets tomorrow at {{time}}",
+    "resetFallback": "Your limit resets tomorrow"
+  },
+  "syntheticDataCta": {
+    "title": "Ready to Generate Synthetic Data?",
+    "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
+    "button": "Generate Synthetic Data"
+  },
+  "syntheticData": {
+    "header": {
+      "badge": "AI Powered",
+      "title": "Synthetic Data Generator",
+      "description": "Generate realistic but completely synthetic clinical data for testing and development"
+    },
+    "selectDocument": {
+      "title": "Select a source document",
+      "description": "Choose one of your de-identified documents to generate synthetic data."
+    },
+    "emptyState": {
+      "title": "No documents available",
+      "description": "You don’t have any de-identified documents yet. Anonymize a document first to generate synthetic data.",
+      "button": "Go to De-identification"
+    },
+    "sourceDocument": {
+      "title": "Source Document",
+      "description": "Select the de-identified document you want to use",
+      "status": "De-identified",
+      "preview": {
+        "title": "De-identified document preview",
+        "description": "All sensitive information has been removed",
+        "show": "Show full text",
+        "hide": "Hide full text"
+      },
+      "meta": {
+        "created": "Created",
+        "framework": "Framework",
+        "entities": "Entities removed",
+        "characters": "Characters"
+      }
+    },
+    "generation": {
+      "title": "Generation Settings",
+      "description": "Configure how many synthetic records to generate",
+      "recordsTitle": "Number of synthetic records",
+      "recordsDescription": "How many synthetic documents would you like to generate?",
+      "helper": "Max 500 records per generation",
+      "preserved": {
+        "title": "What will be preserved?",
+        "items": {
+          "structure": "Clinical structure and relationships",
+          "diagnosis": "Diagnosis patterns and distributions",
+          "schema": "Data schema",
+          "statistics": "Statistical properties and correlations"
+        }
+      },
+      "button": "Generate Synthetic Data",
+      "secure": "Your data is secure and will never be used to train models"
+    }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Generated Dataset",
+    "subtitle": "{{count}} synthetic records",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes.",
+    "downloadArchiveButton": "Download Archive",
+    "regenerateDatasetButton": "Regenerate Dataset"
+  },
+  "syntheticDataHeader": {
+    "title": "Synthetic Data Generator",
+    "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
   }
 }

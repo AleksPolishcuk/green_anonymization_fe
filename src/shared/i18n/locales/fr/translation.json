@@ -415,7 +415,7 @@
       }
     },
     "features": {
-      "upTo5Docs": "Jusqu'à 5 documents/mois",
+      "upTo5Docs": "Jusqu'à 5 documents/jour",
       "automatedPii": "Détection automatique des PII",
       "standardDeid": "Dé-identification standard",
       "basicReport": "Rapport de base",
@@ -433,6 +433,23 @@
     "title": "Limite quotidienne atteinte",
     "message": "Vous avez utilisé les {{limit}} documents d'aujourd'hui.",
     "upgrade": "Passer à Pro",
-    "wait": "Attendre jusqu'à demain"
+    "close": "Fermer",
+    "resetToday": "Votre limite se renouvelle aujourd'hui à {{time}}",
+    "resetTomorrow": "Votre limite se renouvelle demain à {{time}}",
+    "resetFallback": "Votre limite se renouvelle demain"
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Ensemble de données généré",
+    "subtitle": "{{count}} enregistrements synthétiques",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Tous les enregistrements sont complètement synthétiques. Aucune donnée réelle de patient n'a été utilisée dans la génération. Sûr pour le développement, les tests et la recherche.",
+    "downloadArchiveButton": "Télécharger l'archive",
+    "regenerateDatasetButton": "Régénérer le jeu de données"
+  },
+  "syntheticDataHeader": {
+    "title": "Générateur de données synthétiques",
+    "subtitle": "Générez des données cliniques réalistes mais entièrement synthétiques pour les tests et le développement"
   }
 }

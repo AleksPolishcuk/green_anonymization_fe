@@ -45,9 +45,12 @@ function formatTimeAgo(isoString: string): string {
   return `${diffDay === 1 ? "1 day" : `${diffDay} days`} ago`;
 }
 
-export function mapDashboard(
-  dto: DashboardDto,
-): Omit<DashboardStats, "deIdMethods"> {
+function capitalizeFirst(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function mapDashboard(dto: DashboardDto): DashboardStats {
   const {
     stats,
     entityTypes,
@@ -55,6 +58,7 @@ export function mapDashboard(
     processingHistory,
     confidenceDistribution,
     recentActivity,
+    deIdMethodUsage,
   } = dto;
   const { trends } = stats;
 
@@ -123,5 +127,10 @@ export function mapDashboard(
         timeAgo: formatTimeAgo(createdAt),
       }),
     ),
+
+    deIdMethods: deIdMethodUsage.map(({ method, count }) => ({
+      method: capitalizeFirst(method),
+      count,
+    })),
   };
 }

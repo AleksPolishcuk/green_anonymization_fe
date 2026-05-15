@@ -67,3 +67,31 @@ export const parseTextWithRedactions = (
     entity,
   }));
 };
+
+export const buildAnonymizedText = (
+  text: string,
+  entities: Entity[],
+): string => {
+  if (!entities || entities.length === 0) {
+    return text;
+  }
+
+  let result = "";
+  let lastIndex = 0;
+
+  const sortedEntities = [...entities].sort((a, b) => a.start - b.start);
+
+  sortedEntities.forEach((entity) => {
+    result += text.substring(lastIndex, entity.start);
+
+    result += entity.selected
+      ? `[${entity.entityType}]`
+      : text.substring(entity.start, entity.end);
+
+    lastIndex = entity.end;
+  });
+
+  result += text.substring(lastIndex);
+
+  return result;
+};

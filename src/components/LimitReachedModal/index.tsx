@@ -3,15 +3,20 @@ import { useNavigate } from "react-router-dom";
 
 import { PRICING_ROUTE } from "constants/PricingPage";
 import { useAppSelector } from "store/hooks";
+import { BaseModal } from "components/BaseModal";
+import { useResetTime } from "./useResetTime";
 
 import {
   ModalActions,
-  ModalContent,
+  ModalHeader,
+  ModalIcon,
+  ModalIconBadge,
   ModalMessage,
+  ModalTextGroup,
   ModalTitle,
-  StyledDialog,
+  ResetInfo,
+  ResetInfoText,
   UpgradeButton,
-  WaitButton,
 } from "./styles";
 
 type LimitReachedModalProps = {
@@ -25,6 +30,7 @@ export const LimitReachedModal = ({
 }: LimitReachedModalProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const resetTimeLabel = useResetTime();
   const dailyLimit = useAppSelector(
     (state) => state.pricing.current?.dailyLimit ?? 5,
   );
@@ -35,19 +41,29 @@ export const LimitReachedModal = ({
   };
 
   return (
-    <StyledDialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
-      <ModalTitle>{t("limitReached.title")}</ModalTitle>
+    <BaseModal
+      open={open}
+      onClose={onClose}
+      closeLabel={t("limitReached.close")}
+    >
+      <ModalHeader>
+        <ModalIconBadge>
+          <ModalIcon />
+        </ModalIconBadge>
 
-      <ModalContent>
-        <ModalMessage>
-          {t("limitReached.message", { limit: dailyLimit })}
-        </ModalMessage>
-      </ModalContent>
+        <ModalTextGroup>
+          <ModalTitle>{t("limitReached.title")}</ModalTitle>
+          <ModalMessage>
+            {t("limitReached.message", { limit: dailyLimit })}
+          </ModalMessage>
+        </ModalTextGroup>
+      </ModalHeader>
+
+      <ResetInfo>
+        <ResetInfoText>{resetTimeLabel}</ResetInfoText>
+      </ResetInfo>
 
       <ModalActions>
-        <WaitButton variant="outlined" onClick={onClose} disableElevation>
-          {t("limitReached.wait")}
-        </WaitButton>
         <UpgradeButton
           variant="contained"
           onClick={handleUpgrade}
@@ -56,6 +72,6 @@ export const LimitReachedModal = ({
           {t("limitReached.upgrade")}
         </UpgradeButton>
       </ModalActions>
-    </StyledDialog>
+    </BaseModal>
   );
 };

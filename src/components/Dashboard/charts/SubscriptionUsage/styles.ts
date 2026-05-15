@@ -5,16 +5,28 @@ import Typography from "@mui/material/Typography";
 
 export const UsageRoot = styled(Box)(({ theme }) => ({
   display: "flex",
-  alignItems: "center",
-  gap: theme.spacing(4),
+  flexDirection: "column",
+  gap: theme.spacing(2),
   padding: theme.spacing(3, 4),
   backgroundColor: theme.palette.background.paper,
   borderRadius: 12,
   border: `1px solid ${theme.palette.divider}`,
   marginBottom: theme.spacing(4),
-  flexWrap: "wrap",
-  [theme.breakpoints.up("sm")]: {
-    flexWrap: "nowrap",
+  [theme.breakpoints.up("lg")]: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing(4),
+  },
+}));
+
+export const UsageInfoRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: theme.spacing(2),
+  [theme.breakpoints.up("lg")]: {
+    display: "contents",
   },
 }));
 
@@ -33,10 +45,14 @@ export const UsageCount = styled(Typography)(({ theme }) => ({
   flexShrink: 0,
 }));
 
-export const UsageBarWrapper = styled(Box)({
-  flex: 1,
-  minWidth: 120,
-});
+export const UsageBarWrapper = styled(Box)(({ theme }) => ({
+  width: "100%",
+  [theme.breakpoints.up("lg")]: {
+    flex: 1,
+    minWidth: 80,
+    width: "auto",
+  },
+}));
 
 export const UsageBar = styled(LinearProgress, {
   shouldForwardProp: (prop) => prop !== "$warn",
@@ -62,6 +78,10 @@ export const UpgradeLink = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
   whiteSpace: "nowrap",
   flexShrink: 0,
+  alignSelf: "flex-end",
+  [theme.breakpoints.up("lg")]: {
+    alignSelf: "auto",
+  },
   "&:hover": {
     textDecoration: "underline",
   },

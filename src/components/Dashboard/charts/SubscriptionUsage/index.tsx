@@ -11,6 +11,7 @@ import {
   UsageBar,
   UsageBarWrapper,
   UsageCount,
+  UsageInfoRow,
   UsageLabel,
   UsageRoot,
 } from "./styles";
@@ -40,11 +41,12 @@ export const SubscriptionUsage = () => {
 
   return (
     <UsageRoot>
-      <UsageLabel>{t("dashboard.usage.label")}</UsageLabel>
-
-      <UsageCount>
-        {usedToday} / {limitLabel}
-      </UsageCount>
+      <UsageInfoRow>
+        <UsageLabel>{t("dashboard.usage.label")}</UsageLabel>
+        <UsageCount>
+          {usedToday} / {limitLabel}
+        </UsageCount>
+      </UsageInfoRow>
 
       {!isUnlimited && (
         <UsageBarWrapper>

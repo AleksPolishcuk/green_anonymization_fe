@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useInputForm } from "./hooks/useInputForm";
@@ -26,9 +27,12 @@ import { Controller } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 import { LimitReachedModal } from "components/LimitReachedModal";
+import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
 
 export default function Input() {
   const { t } = useTranslation();
+  const { isDailyLimitReached } = useDailyLimitGuard();
+  const [proactiveLimitOpen, setProactiveLimitOpen] = useState(false);
 
   const {
     control,
@@ -44,6 +48,14 @@ export default function Input() {
   } = useInputForm();
 
   const { errors } = formState;
+
+  const openLimitModal = () => setProactiveLimitOpen(true);
+  const closeLimitModal = () => {
+    clearLimitReached();
+    setProactiveLimitOpen(false);
+  };
+
+  const limitModalOpen = isLimitReached || proactiveLimitOpen;
 
   return (
     <InputSectionRoot>
@@ -82,6 +94,19 @@ export default function Input() {
                 helperText={!isFileUploaded ? errors.text?.message : ""}
                 placeholder={t("input.form.textPlaceholder")}
                 $fileMode={isFileUploaded}
+                onClick={
+                  isDailyLimitReached && !isFileUploaded
+                    ? openLimitModal
+                    : undefined
+                }
+                onFocus={
+                  isDailyLimitReached && !isFileUploaded
+                    ? (e) => {
+                        e.target.blur();
+                        openLimitModal();
+                      }
+                    : undefined
+                }
               />
             )}
           />
@@ -95,6 +120,9 @@ export default function Input() {
                 onChange={field.onChange}
                 error={!!errors.file?.message}
                 helperText={errors.file?.message}
+                onLimitReached={
+                  isDailyLimitReached ? openLimitModal : undefined
+                }
               />
             )}
           />
@@ -127,7 +155,8 @@ export default function Input() {
           </SubmitMetaRow>
         </InputForm>
       </InputSectionStack>
-      <LimitReachedModal open={isLimitReached} onClose={clearLimitReached} />
+
+      <LimitReachedModal open={limitModalOpen} onClose={closeLimitModal} />
     </InputSectionRoot>
   );
 }

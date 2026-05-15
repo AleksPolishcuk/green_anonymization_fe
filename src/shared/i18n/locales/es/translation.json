@@ -415,7 +415,7 @@
       }
     },
     "features": {
-      "upTo5Docs": "Hasta 5 documentos/mes",
+      "upTo5Docs": "Hasta 5 documentos/día",
       "automatedPii": "Detección automática de PII",
       "standardDeid": "Desidentificación estándar",
       "basicReport": "Informe básico",
@@ -433,6 +433,23 @@
     "title": "Límite diario alcanzado",
     "message": "Has usado los {{limit}} documentos de hoy.",
     "upgrade": "Actualizar a Pro",
-    "wait": "Esperar hasta mañana"
+    "close": "Cerrar",
+    "resetToday": "Tu límite se renueva hoy a las {{time}}",
+    "resetTomorrow": "Tu límite se renueva mañana a las {{time}}",
+    "resetFallback": "Tu límite se renueva mañana"
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Conjunto de datos generado",
+    "subtitle": "{{count}} conjuntos de datos sintéticos",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación.",
+    "downloadArchiveButton": "Descargar archivo",
+    "regenerateDatasetButton": "Regenerar conjunto de datos"
+  },
+  "syntheticDataHeader": {
+    "title": "Generador de datos sintéticos",
+    "subtitle": "Genere datos clínicos realistas pero completamente sintéticos para pruebas y desarrollo"
   }
 }

@@ -25,6 +25,7 @@ export interface CurrentSubscription {
   plan: SubscriptionPlan;
   usedToday: number;
   dailyLimit: number | null;
+  resetAt?: string | null;
 }
 
 export interface SelectPlanRequest {

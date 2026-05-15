@@ -17,6 +17,10 @@ export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
 export const DeidOutputSectionStack = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(8),
+  "@media (max-width: 984px)": {
+    flexDirection: "column",
+    gap: theme.spacing(4),
+  },
 }));
 
 export const DeidOutputSectionCard = styled(Box)(({ theme }) => {
@@ -29,7 +33,6 @@ export const DeidOutputSectionCard = styled(Box)(({ theme }) => {
     overflow: "hidden",
 
     minHeight: 308,
-    minWidth: 308,
     width: "100%",
 
     backgroundColor: theme.palette.background.lightGray,
@@ -63,7 +66,7 @@ export const CardHeaderTextSection = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(1),
-  padding: theme.spacing(4),
+  padding: theme.spacing(4, 0, 4, 4),
 }));
 
 export const CardTitle = styled(Typography)(({ theme }) => ({
@@ -76,7 +79,7 @@ export const CardSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export const ComplianceBadge = styled(Box)(({ theme }) => {
+export const BaseBadge = styled(Box)(({ theme }) => {
   const style = CHIP_COLOR_PRESETS.blue;
 
   return {
@@ -84,7 +87,7 @@ export const ComplianceBadge = styled(Box)(({ theme }) => {
     alignItems: "center",
     gap: theme.spacing(0.5),
     padding: theme.spacing(0.75, 1.5),
-    margin: theme.spacing(4),
+    margin: theme.spacing(4, 4, 4, 0),
     color: style.color,
     backgroundColor: style.bg,
     border: `1px solid ${style.border}`,
@@ -94,23 +97,9 @@ export const ComplianceBadge = styled(Box)(({ theme }) => {
   };
 });
 
-export const DetectedEntityNumberBadge = styled(Box)(({ theme }) => {
-  const style = CHIP_COLOR_PRESETS.blue;
+export const ComplianceBadge = styled(BaseBadge)({});
 
-  return {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: theme.spacing(0.5),
-    padding: theme.spacing(0.75, 1.5),
-    margin: theme.spacing(4),
-    color: style.color,
-    backgroundColor: style.bg,
-    border: `1px solid ${style.border}`,
-    borderRadius: theme.spacing(2),
-    fontSize: theme.typography.fontSize11,
-    fontWeight: theme.typography.fontWeightBold,
-  };
-});
+export const DetectedEntityNumberBadge = styled(BaseBadge)({});
 
 export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -182,6 +171,7 @@ export const IconWrapper = styled("svg")({
   alignItems: "center",
   justifyContent: "center",
   color: "currentColor",
+  flexShrink: 0,
 });
 
 export const ExclamationMarkIconWrapper = styled(IconWrapper)(({ theme }) => ({
