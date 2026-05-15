@@ -119,7 +119,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
   "& .react-tel-input": {
     border: `1px solid ${theme.palette.background.mediumGray}`,
     borderRadius: "14px",
-    backgroundColor: `${theme.palette.background.lightGray}`,
+    backgroundColor: theme.palette.background.lightGray,
 
     "&:hover": {
       borderColor: theme.palette.background.mediumGray,
@@ -141,6 +141,11 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
     paddingLeft: "72px",
     backgroundColor: "transparent",
     boxShadow: "none",
+    color: theme.palette.color.charcoal,
+
+    "&::placeholder": {
+      color: theme.palette.color.grayDark,
+    },
 
     "&:focus": {
       boxShadow: "none",
@@ -164,6 +169,7 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
     {
       backgroundColor: "transparent",
     },
+
   "& .react-tel-input .selected-flag": {
     width: "68px",
     borderRadius: "14px 0 0 14px",
@@ -171,17 +177,50 @@ export const PhoneInputWrapper = styled("div")(({ theme }) => ({
 
     "&.open": {
       borderRadius: "14px 0 0 14px !important",
-      backgroundColor: `${theme.palette.background.lightGray}`,
+      backgroundColor: theme.palette.background.lightGray,
     },
   },
+
   "& .react-tel-input .flag": {
     backgroundImage: "none !important",
     width: "0 !important",
     height: "0 !important",
     margin: "0 !important",
   },
+
   "& .react-tel-input .arrow": {
     marginLeft: "15px",
+  },
+
+  "& .react-tel-input .country-list": {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.color.charcoal,
+    border: `1px solid ${theme.palette.background.mediumGray}`,
+    borderRadius: "14px",
+    boxShadow:
+      theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
+  },
+
+  "& .react-tel-input .country-list .country": {
+    color: theme.palette.color.charcoal,
+
+    "&:hover, &.highlight": {
+      backgroundColor: theme.palette.background.lightGray,
+    },
+  },
+
+  "& .react-tel-input .country-list .country .dial-code": {
+    color: theme.palette.color.grayDark,
+  },
+
+  "& .react-tel-input .search-box": {
+    backgroundColor: theme.palette.background.lightGray,
+    color: theme.palette.color.charcoal,
+    border: `1px solid ${theme.palette.background.mediumGray}`,
+
+    "&::placeholder": {
+      color: theme.palette.color.grayDark,
+    },
   },
 }));
 
@@ -331,9 +370,13 @@ export const PhoneInputWrapperError = styled("div")<{ $hasError?: boolean }>(
     position: "relative",
 
     "& .react-tel-input": {
-      border: `1px solid ${$hasError ? theme.palette.accent.red : theme.palette.background.mediumGray}`,
+      border: `1px solid ${
+        $hasError
+          ? theme.palette.accent.red
+          : theme.palette.background.mediumGray
+      }`,
       borderRadius: "14px",
-      backgroundColor: `${theme.palette.background.lightGray}`,
+      backgroundColor: theme.palette.background.lightGray,
 
       "&:hover": {
         borderColor: $hasError
@@ -359,6 +402,11 @@ export const PhoneInputWrapperError = styled("div")<{ $hasError?: boolean }>(
       paddingLeft: "72px",
       backgroundColor: "transparent",
       boxShadow: "none",
+      color: theme.palette.color.charcoal,
+
+      "&::placeholder": {
+        color: theme.palette.color.grayDark,
+      },
 
       "&:focus": {
         boxShadow: "none",
@@ -370,7 +418,11 @@ export const PhoneInputWrapperError = styled("div")<{ $hasError?: boolean }>(
       width: "68px",
       borderRadius: "14px 0 0 14px",
       border: "none",
-      borderRight: `1px solid ${$hasError ? theme.palette.accent.red : theme.palette.background.mediumGray}`,
+      borderRight: `1px solid ${
+        $hasError
+          ? theme.palette.accent.red
+          : theme.palette.background.mediumGray
+      }`,
       backgroundColor: "transparent",
 
       "&:hover, &.open": {
@@ -382,6 +434,7 @@ export const PhoneInputWrapperError = styled("div")<{ $hasError?: boolean }>(
       {
         backgroundColor: "transparent",
       },
+
     "& .react-tel-input .selected-flag": {
       width: "68px",
       borderRadius: "14px 0 0 14px",
@@ -389,17 +442,58 @@ export const PhoneInputWrapperError = styled("div")<{ $hasError?: boolean }>(
 
       "&.open": {
         borderRadius: "14px 0 0 14px !important",
-        backgroundColor: `${theme.palette.background.lightGray}`,
+        backgroundColor: theme.palette.background.lightGray,
       },
     },
+
     "& .react-tel-input .flag": {
       backgroundImage: "none !important",
       width: "0 !important",
       height: "0 !important",
       margin: "0 !important",
     },
+
     "& .react-tel-input .arrow": {
       marginLeft: "15px",
+    },
+
+    "& .react-tel-input .country-list": {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.color.charcoal,
+      border: `1px solid ${
+        $hasError
+          ? theme.palette.accent.red
+          : theme.palette.background.mediumGray
+      }`,
+      borderRadius: "14px",
+      boxShadow:
+        theme.palette.mode === "dark" ? cardShadows.cardDark : cardShadows.card,
+    },
+
+    "& .react-tel-input .country-list .country": {
+      color: theme.palette.color.charcoal,
+
+      "&:hover, &.highlight": {
+        backgroundColor: theme.palette.background.lightGray,
+      },
+    },
+
+    "& .react-tel-input .country-list .country .dial-code": {
+      color: theme.palette.color.grayDark,
+    },
+
+    "& .react-tel-input .search-box": {
+      backgroundColor: theme.palette.background.lightGray,
+      color: theme.palette.color.charcoal,
+      border: `1px solid ${
+        $hasError
+          ? theme.palette.accent.red
+          : theme.palette.background.mediumGray
+      }`,
+
+      "&::placeholder": {
+        color: theme.palette.color.grayDark,
+      },
     },
   }),
 );
