@@ -1,4 +1,5 @@
 import { inputFormSchema } from "constants/validations";
+import { DAILY_LIMIT_REACHED_CODE } from "constants/PricingPage";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -23,6 +24,7 @@ export const useInputForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isLimitReached, setIsLimitReached] = useState(false);
   const {
     control,
     handleSubmit,
@@ -102,6 +104,15 @@ export const useInputForm = () => {
         setSubmitSuccess(false);
       }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
     } catch (error) {
+      const apiErr = error as { status?: number; message?: unknown };
+      if (
+        apiErr.status === 403 &&
+        JSON.stringify(apiErr.message ?? "").includes(DAILY_LIMIT_REACHED_CODE)
+      ) {
+        setIsLimitReached(true);
+        return;
+      }
+
       const message =
         error instanceof Error
           ? error.message
@@ -126,5 +137,7 @@ export const useInputForm = () => {
     clearErrors,
     isFileUploaded,
     isSubmitDisabled,
+    isLimitReached,
+    clearLimitReached: () => setIsLimitReached(false),
   };
 };

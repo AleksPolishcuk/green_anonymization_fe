@@ -25,6 +25,7 @@ import { headerSpriteRef } from "constants/MainPages";
 import { Controller } from "react-hook-form";
 import FileDropZone from "./FileDropZone";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
+import { LimitReachedModal } from "components/LimitReachedModal";
 
 export default function Input() {
   const { t } = useTranslation();
@@ -38,6 +39,8 @@ export default function Input() {
     isFileUploaded,
     isSubmitDisabled,
     isSubmitting,
+    isLimitReached,
+    clearLimitReached,
   } = useInputForm();
 
   const { errors } = formState;
@@ -124,6 +127,7 @@ export default function Input() {
           </SubmitMetaRow>
         </InputForm>
       </InputSectionStack>
+      <LimitReachedModal open={isLimitReached} onClose={clearLimitReached} />
     </InputSectionRoot>
   );
 }

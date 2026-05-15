@@ -389,6 +389,10 @@
         "newDeId": "Nieuwe de-identificatie →"
       },
       "emptyState": "Uw statistieken verschijnen hier binnenkort"
+    },
+    "usage": {
+      "label": "Documenten vandaag",
+      "upgrade": "Upgrade naar Pro →"
     }
   },
   "pricingPage": {
@@ -421,6 +425,14 @@
       "batchProcessing": "Batchverwerking",
       "auditLogs": "Auditlogboeken & activiteitsgeschiedenis",
       "prioritySupport": "Prioriteitsondersteuning"
-    }
+    },
+    "currentPlan": "Huidig Plan",
+    "activePlan": "Actief"
+  },
+  "limitReached": {
+    "title": "Daglimiet bereikt",
+    "message": "U heeft alle {{limit}} documenten van vandaag gebruikt.",
+    "upgrade": "Upgrade naar Pro",
+    "wait": "Wacht tot morgen"
   }
 }

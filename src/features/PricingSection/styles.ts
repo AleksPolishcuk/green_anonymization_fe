@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import DoNotDisturbOnOutlinedIcon from "@mui/icons-material/DoNotDisturbOnOutlined";
 
+import { PRICING_CARD_HOVER_SHADOW } from "constants/PricingPage";
+
 export const PRICING_CTA_CLASS = "pricing-cta-btn";
 
 export const PricingGrid = styled(Box)(({ theme }) => ({
@@ -20,13 +22,15 @@ export const PricingGrid = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const PricingCardRoot = styled(Box)(({ theme }) => ({
+export const PricingCardRoot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "$isPopular",
+})<{ $isPopular: boolean }>(({ theme, $isPopular }) => ({
   position: "relative",
   backgroundColor: alpha(theme.palette.background.paper, 0.55),
   backdropFilter: "blur(6px)",
   borderRadius: 16,
   padding: theme.spacing(6),
-  border: `1px solid ${theme.palette.divider}`,
+  border: `1px solid ${$isPopular ? theme.palette.primary.main : theme.palette.divider}`,
   boxShadow:
     theme.palette.mode === "dark"
       ? "0 2px 16px rgba(0, 0, 0, 0.25)"
@@ -37,10 +41,7 @@ export const PricingCardRoot = styled(Box)(({ theme }) => ({
 
   "&:hover": {
     borderColor: theme.palette.primary.main,
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0 6px 28px rgba(0, 0, 0, 0.4)"
-        : "0 6px 28px rgba(16, 24, 40, 0.12)",
+    boxShadow: PRICING_CARD_HOVER_SHADOW,
 
     [`& .${PRICING_CTA_CLASS}`]: {
       backgroundColor: theme.palette.primary.main,
@@ -171,4 +172,9 @@ export const PlanCTA = styled(Button)(({ theme }) => ({
   textTransform: "none",
   transition:
     "background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease",
+  "&.Mui-disabled": {
+    borderColor: theme.palette.divider,
+    color: theme.palette.text.disabled,
+    backgroundColor: "transparent",
+  },
 }));

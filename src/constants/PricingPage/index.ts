@@ -1,4 +1,7 @@
 export const PRICING_CTA_ROUTE = "/sign-in";
+export const DAILY_LIMIT_REACHED_CODE = "DAILY_LIMIT_REACHED";
+export const PRICING_ROUTE = "/pricing";
+export const PRICING_CARD_HOVER_SHADOW = "0 6px 14px 0 rgba(59, 130, 246, 0.3)";
 
 export const PRICING_FREE_PRICE = "$0";
 export const PRICING_PRO_PRICE = "$49";

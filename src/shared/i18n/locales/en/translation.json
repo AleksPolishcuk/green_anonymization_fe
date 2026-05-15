@@ -402,6 +402,10 @@
         "newDeId": "New De-Identification →"
       },
       "emptyState": "Your statistics will appear here soon"
+    },
+    "usage": {
+      "label": "Documents today",
+      "upgrade": "Upgrade to Pro →"
     }
   },
   "pricingPage": {
@@ -434,6 +438,14 @@
       "batchProcessing": "Batch processing",
       "auditLogs": "Audit logs & activity history",
       "prioritySupport": "Priority support"
-    }
+    },
+    "currentPlan": "Current Plan",
+    "activePlan": "Active"
+  },
+  "limitReached": {
+    "title": "Daily limit reached",
+    "message": "You've used all {{limit}} documents for today.",
+    "upgrade": "Upgrade to Pro",
+    "wait": "Wait until tomorrow"
   }
 }

@@ -389,6 +389,10 @@
         "newDeId": "Nuova de-identificazione →"
       },
       "emptyState": "Le tue statistiche appariranno qui a breve"
+    },
+    "usage": {
+      "label": "Documenti oggi",
+      "upgrade": "Passa a Pro →"
     }
   },
   "pricingPage": {
@@ -421,6 +425,14 @@
       "batchProcessing": "Elaborazione in batch",
       "auditLogs": "Registri di audit e cronologia attività",
       "prioritySupport": "Supporto prioritario"
-    }
+    },
+    "currentPlan": "Piano Attuale",
+    "activePlan": "Attivo"
+  },
+  "limitReached": {
+    "title": "Limite giornaliero raggiunto",
+    "message": "Hai utilizzato tutti i {{limit}} documenti di oggi.",
+    "upgrade": "Passa a Pro",
+    "wait": "Aspetta fino a domani"
   }
 }
