@@ -21,6 +21,7 @@ import {
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
+import { useSyntheticGenerationSettings } from "components/SyntheticGenerationSettings/useSyntheticGenerationSettings";
 
 export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {
@@ -28,6 +29,8 @@ export default function SyntheticDataGeneratedDataset() {
   });
 
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
+
+  const { handleGenerate } = useSyntheticGenerationSettings();
 
   return (
     <TableCard>
@@ -47,7 +50,7 @@ export default function SyntheticDataGeneratedDataset() {
         </TableHeaderColumn>
         <TableHeaderColumnButtons>
           <ActionButtonsContainer>
-            <ActionButton>
+            <ActionButton onClick={handleGenerate}>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconRefresh")} />
               </ActionButtonIconWrapper>
