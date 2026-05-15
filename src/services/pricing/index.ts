@@ -6,18 +6,24 @@ import type {
   SubscriptionPlan,
 } from "./typing/pricing";
 
+const PRICING_API = {
+  plans: "/pricing/plans",
+  current: "/pricing/current",
+  select: "/pricing/select",
+} as const;
+
 export const pricingService = {
   async getPlans(): Promise<SubscriptionPlan[]> {
-    return apiClient.get<SubscriptionPlan[]>("/pricing/plans");
+    return apiClient.get<SubscriptionPlan[]>(PRICING_API.plans);
   },
 
   async getCurrentSubscription(): Promise<CurrentSubscription> {
-    return apiClient.get<CurrentSubscription>("/pricing/current");
+    return apiClient.get<CurrentSubscription>(PRICING_API.current);
   },
 
   async selectPlan(request: SelectPlanRequest): Promise<CurrentSubscription> {
     return apiClient.post<CurrentSubscription, SelectPlanRequest>(
-      "/pricing/select",
+      PRICING_API.select,
       request,
     );
   },

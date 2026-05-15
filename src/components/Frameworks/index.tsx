@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import FrameworkCard from "components/FrameworkCard";
 import { LimitReachedModal } from "components/LimitReachedModal";
+import { COMPLIANCE_FRAMEWORKS, headerSpriteRef } from "constants/MainPages";
+import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
+
 import {
   FrameworkSectionGrid,
   FrameworkSectionHeaderRow,
@@ -16,9 +19,7 @@ import {
   FrameworksLogoIcon,
   StepChip,
 } from "./styles";
-import { headerSpriteRef, COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 import { useFrameworkSelection } from "./useFrameworkSelection";
-import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
 
 export default function FrameworkSection() {
   const { t } = useTranslation();

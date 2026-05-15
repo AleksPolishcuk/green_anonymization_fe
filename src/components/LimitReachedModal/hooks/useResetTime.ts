@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
+
+import { TIME_FORMAT_OPTIONS } from "constants/PricingPage";
 import { useAppSelector } from "store/hooks";
 
 function formatTime(date: Date): string {
-  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  return date.toLocaleTimeString([], TIME_FORMAT_OPTIONS);
 }
 
 function isToday(date: Date): boolean {

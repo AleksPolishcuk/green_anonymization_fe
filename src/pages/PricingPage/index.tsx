@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { PricingSection } from "features/PricingSection";
+import { PricingSection } from "components/Pricing";
 
 import {
   PricingPageContainer,

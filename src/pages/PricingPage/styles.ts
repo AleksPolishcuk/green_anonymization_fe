@@ -2,6 +2,14 @@ import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
+import { heroAssets } from "constants/MainPages";
+import {
+  PRICING_SHIELD_OPACITY,
+  PRICING_SHIELD_POSITION,
+  PRICING_SHIELD_SIZE,
+  PRICING_SUBTITLE_MAX_WIDTH,
+} from "constants/PricingPage";
+
 export const PricingPageSection = styled("section")(({ theme }) => ({
   position: "relative",
   overflow: "hidden",
@@ -17,11 +25,11 @@ export const PricingPageSection = styled("section")(({ theme }) => ({
 export const PricingShieldBackground = styled("div")({
   position: "absolute",
   inset: 0,
-  backgroundImage: "url('/img/hero/shield.webp')",
+  backgroundImage: `url('${heroAssets.shield}')`,
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "78% center",
-  backgroundSize: "44%",
-  opacity: 0.07,
+  backgroundPosition: PRICING_SHIELD_POSITION,
+  backgroundSize: PRICING_SHIELD_SIZE,
+  opacity: PRICING_SHIELD_OPACITY,
   pointerEvents: "none",
 });
 
@@ -48,5 +56,5 @@ export const PricingPageSubtitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
   marginBottom: theme.spacing(14),
-  maxWidth: 560,
+  maxWidth: PRICING_SUBTITLE_MAX_WIDTH,
 }));

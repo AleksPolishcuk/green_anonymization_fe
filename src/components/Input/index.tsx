@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useInputForm } from "./hooks/useInputForm";
+import { Controller } from "react-hook-form";
+
+import { headerSpriteRef } from "constants/MainPages";
+import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
+import { LimitReachedModal } from "components/LimitReachedModal";
+import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
+
 import {
   InputLogoIcon,
   StepChip,
@@ -22,12 +28,8 @@ import {
   FormStatusAlert,
   FormStatusText,
 } from "./styles";
-import { headerSpriteRef } from "constants/MainPages";
-import { Controller } from "react-hook-form";
+import { useInputForm } from "./hooks/useInputForm";
 import FileDropZone from "./FileDropZone";
-import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
-import { LimitReachedModal } from "components/LimitReachedModal";
-import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
 
 export default function Input() {
   const { t } = useTranslation();

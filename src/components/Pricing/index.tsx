@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
-import { PRICING_PLANS } from "constants/PricingPage";
+import { PRICING_PLANS, type PricingPlan } from "constants/PricingPage";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
   fetchCurrentSubscription,
   fetchPlans,
-  selectPlan,
 } from "store/slices/pricingSlice";
 
 import {
@@ -28,57 +26,15 @@ import {
   PricingCardRoot,
   PricingGrid,
 } from "./styles";
-
-const FREE_PLAN_ID = "free";
-const DASHBOARD_ROUTE = "/dashboard";
-const SIGN_IN_ROUTE = "/sign-in";
-
-type StaticPlan = (typeof PRICING_PLANS)[number];
+import { usePricingCard } from "./hooks/usePricingCard";
 
 type PricingCardProps = {
-  plan: StaticPlan;
+  plan: PricingPlan;
 };
 
 const PricingCard = ({ plan }: PricingCardProps) => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const user = useAppSelector((state) => state.auth?.user);
-  const { plans, current, selectLoading } = useAppSelector(
-    (state) => state.pricing,
-  );
-
-  const apiPlan = plans.find(
-    (p) => p.name.toLowerCase() === plan.id.toLowerCase(),
-  );
-  const currentPlanId = current?.plan.name.toLowerCase();
-  const isCurrent = currentPlanId === plan.id.toLowerCase();
-  const isFree = plan.id === FREE_PLAN_ID;
-
-  const isLoggedIn = Boolean(user);
-  const isFreeCurrent =
-    isFree &&
-    isLoggedIn &&
-    (current === null || current.plan.name.toLowerCase() === FREE_PLAN_ID);
-
-  const handleCTA = async () => {
-    if (!isLoggedIn) {
-      navigate(SIGN_IN_ROUTE);
-      return;
-    }
-    if (!isCurrent && !isFreeCurrent && apiPlan) {
-      await dispatch(selectPlan({ planId: apiPlan.uuid }));
-    }
-    navigate(DASHBOARD_ROUTE);
-  };
-
-  const ctaLabel =
-    isFreeCurrent || isCurrent
-      ? t("pricingPage.currentPlan")
-      : t(`pricingPage.plans.${plan.id}.cta`);
-
-  const isDisabled = isCurrent || isFreeCurrent || selectLoading;
+  const { isDisabled, ctaLabel, handleCTA } = usePricingCard(plan);
 
   return (
     <PricingCardRoot $isPopular={plan.isPopular}>

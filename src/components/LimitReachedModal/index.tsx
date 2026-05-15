@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PRICING_ROUTE } from "constants/PricingPage";
 import { useAppSelector } from "store/hooks";
 import { BaseModal } from "components/BaseModal";
-import { useResetTime } from "./useResetTime";
+import { useResetTime } from "./hooks/useResetTime";
 
 import {
   ModalActions,

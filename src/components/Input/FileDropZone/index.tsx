@@ -1,18 +1,19 @@
+import { useTranslation } from "react-i18next";
+
 import { headerSpriteRef } from "constants/MainPages";
 import {
-  FileWrapper,
-  FileUploadIcon,
-  FileTextBlock,
   FileDropHeading,
-  FileDropSubtitle,
-  FileTextWrapper,
-  FileRemoveButton,
   FileDropHelperText,
+  FileDropSubtitle,
+  FileRemoveButton,
+  FileTextBlock,
+  FileTextWrapper,
+  FileUploadIcon,
+  FileWrapper,
 } from "components/Input/styles";
-
 import type { FileDropZoneProps } from "components/Input/types";
+
 import useFileDropZone from "./useFileDropZone";
-import { useTranslation } from "react-i18next";
 
 type Props = FileDropZoneProps & {
   error?: boolean;

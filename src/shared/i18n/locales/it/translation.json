@@ -451,5 +451,8 @@
   "syntheticDataHeader": {
     "title": "Generatore di dati sintetici",
     "subtitle": "Genera dati clinici realistici ma completamente sintetici per test e sviluppo"
+  },
+  "common": {
+    "close": "Chiudi"
   }
 }

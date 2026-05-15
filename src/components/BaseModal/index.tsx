@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import type { DialogProps } from "@mui/material/Dialog";
 
 import { headerSpriteRef, headerSpriteSymbolIds } from "constants/MainPages";
+
 import { CloseButton, CloseIcon, StyledDialog } from "./styles";
 
 type BaseModalProps = {
@@ -17,15 +19,22 @@ export const BaseModal = ({
   onClose,
   children,
   maxWidth = "xs",
-  closeLabel = "Close",
-}: BaseModalProps) => (
-  <StyledDialog open={open} onClose={onClose} maxWidth={maxWidth} fullWidth>
-    <CloseButton onClick={onClose} aria-label={closeLabel}>
-      <CloseIcon aria-hidden="true">
-        <use href={headerSpriteRef(headerSpriteSymbolIds.close)} />
-      </CloseIcon>
-    </CloseButton>
+  closeLabel,
+}: BaseModalProps) => {
+  const { t } = useTranslation();
 
-    {children}
-  </StyledDialog>
-);
+  return (
+    <StyledDialog open={open} onClose={onClose} maxWidth={maxWidth} fullWidth>
+      <CloseButton
+        onClick={onClose}
+        aria-label={closeLabel ?? t("common.close")}
+      >
+        <CloseIcon aria-hidden="true">
+          <use href={headerSpriteRef(headerSpriteSymbolIds.close)} />
+        </CloseIcon>
+      </CloseButton>
+
+      {children}
+    </StyledDialog>
+  );
+};

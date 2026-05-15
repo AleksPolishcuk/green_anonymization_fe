@@ -520,5 +520,8 @@
   "syntheticDataHeader": {
     "title": "Synthetic Data Generator",
     "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
+  },
+  "common": {
+    "close": "Close"
   }
 }
