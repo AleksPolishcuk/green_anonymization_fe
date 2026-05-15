@@ -41,6 +41,12 @@ export interface RecentActivityDto {
   createdAt: string;
 }
 
+export interface DeIdMethodUsageDto {
+  method: string;
+  count: number;
+  percentage: number;
+}
+
 export interface DashboardDto {
   stats: DashboardStatsDto;
   entityTypes: EntityTypeStatDto[];
@@ -48,4 +54,5 @@ export interface DashboardDto {
   processingHistory: ProcessingHistoryDto[];
   confidenceDistribution: ConfidenceRangeDto[];
   recentActivity: RecentActivityDto[];
+  deIdMethodUsage: DeIdMethodUsageDto[];
 }

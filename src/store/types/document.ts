@@ -1,4 +1,5 @@
 import type { ComplianceFramework } from "services/compliance/typing/compliance";
+export type { ComplianceFramework };
 
 export type Confidence = "low" | "medium" | "high";
 

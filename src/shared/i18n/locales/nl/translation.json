@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Oplossing",
-      "contactUs": "Contact"
+      "contactUs": "Contact",
+      "dashboard": "Dashboard"
     },
     "actions": {
-      "getStarted": "Aan de slag"
+      "getStarted": "Aan de slag",
+      "logOut": "Uitloggen"
     },
     "logoAlt": "Clinical Data Studio — startpagina",
     "logoText": "Clinical Data Studio",
@@ -393,5 +395,19 @@
       },
       "emptyState": "Uw statistieken verschijnen hier binnenkort"
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Gegenereerde dataset",
+    "subtitle": "{{count}} synthetische records",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Alle records zijn volledig synthetisch. Er zijn geen echte patiëntgegevens gebruikt bij de generatie. Veilig voor ontwikkeling, testen en onderzoeksdoeleinden.",
+    "downloadArchiveButton": "Download archief",
+    "regenerateDatasetButton": "Regenereren dataset"
+  },
+  "syntheticDataHeader": {
+    "title": "Generator voor synthetische gegevens",
+    "subtitle": "Genereer realistische maar volledig synthetische klinische gegevens voor testen en ontwikkeling"
   }
 }

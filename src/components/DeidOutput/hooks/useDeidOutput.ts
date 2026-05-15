@@ -11,17 +11,23 @@ import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toggleEntitySelected } from "store/slices/documentSlice";
 
 import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
+
+import { useNavigate } from "react-router-dom";
+import { documentsService } from "services/documents";
 import {
+  buildAnonymizedText,
   parseTextWithEntities,
   parseTextWithRedactions,
-} from "../utils/parsers";
+} from "components/DeidOutput/utils/parsers";
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     originalText: rawOriginalText,
     piiEntities: rawPiiEntities,
     selectedFramework,
+    document,
   } = useAppSelector((s) => s.document);
 
   const originalText = rawOriginalText ?? "";
@@ -80,6 +86,21 @@ export const useDeidOutput = () => {
     [safeOriginalText, selectedEntities],
   );
 
+  const handleGenerateSyntheticData = useCallback(async () => {
+    if (!document?.id || !safeOriginalText) return;
+
+    const finalAnonymizedText = buildAnonymizedText(
+      safeOriginalText,
+      safeEntities,
+    );
+
+    await documentsService.updateDocumentText(document.id, {
+      text: finalAnonymizedText,
+    });
+
+    navigate(`/syntheticdata?documentId=${document.id}`);
+  }, [document, safeOriginalText, safeEntities, navigate]);
+
   const { downloadAsJson, downloadAsText, copyToClipboard } =
     useDownloadRedactedTextCopy();
 
@@ -108,5 +129,6 @@ export const useDeidOutput = () => {
     handleDownloadJson,
     handleDownloadText,
     handleCopyText,
+    handleGenerateSyntheticData,
   };
 };

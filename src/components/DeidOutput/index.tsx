@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
-import { headerSpriteRef, WORKSPACE_ROUTES } from "constants/MainPages";
+import { headerSpriteRef } from "constants/MainPages";
 
 import {
   HeaderCard,
@@ -29,19 +28,12 @@ import {
   ComplianceSafeIconWrapper,
   CopyIconWrapper,
   DownloadIconWrapper,
-  SyntheticCtaCard,
-  SyntheticCtaIconBox,
-  SyntheticCtaIconSvg,
-  SyntheticCtaText,
-  SyntheticCtaTitle,
-  SyntheticCtaSubtitle,
-  SyntheticCtaButton,
 } from "./styles";
 import { TaggedText } from "./taggedText";
+import CtaSynthetycBlock from "components/CtaSynthetycBlock";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
-  const navigate = useNavigate();
   const {
     piiEntities,
     originalText,
@@ -56,10 +48,6 @@ export default function DeidOutputSection() {
     handleDownloadText,
     handleCopyText,
   } = useDeidOutput();
-
-  const handleGenerateSyntheticData = () => {
-    navigate(WORKSPACE_ROUTES.syntheticData);
-  };
 
   return (
     <DeidOutputSectionRoot>
@@ -158,25 +146,7 @@ export default function DeidOutputSection() {
           onToggle={toggleEntity}
         />
       )}
-
-      {entityCount > 0 && (
-        <SyntheticCtaCard>
-          <SyntheticCtaIconBox>
-            <SyntheticCtaIconSvg aria-hidden="true">
-              <use href={headerSpriteRef("synthetic")} />
-            </SyntheticCtaIconSvg>
-          </SyntheticCtaIconBox>
-          <SyntheticCtaText>
-            <SyntheticCtaTitle>{t("syntheticCta.title")}</SyntheticCtaTitle>
-            <SyntheticCtaSubtitle>
-              {t("syntheticCta.subtitle")}
-            </SyntheticCtaSubtitle>
-          </SyntheticCtaText>
-          <SyntheticCtaButton onClick={handleGenerateSyntheticData}>
-            {t("syntheticCta.button")} →
-          </SyntheticCtaButton>
-        </SyntheticCtaCard>
-      )}
+      <CtaSynthetycBlock />
     </DeidOutputSectionRoot>
   );
 }

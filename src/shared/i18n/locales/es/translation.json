@@ -30,10 +30,12 @@
   "header": {
     "nav": {
       "solution": "Solución",
-      "contactUs": "Contáctenos"
+      "contactUs": "Contáctenos",
+      "dashboard": "Panel de control"
     },
     "actions": {
-      "getStarted": "Comenzar"
+      "getStarted": "Comenzar",
+      "logOut": "Cerrar sesión"
     },
     "logoAlt": "Clinical Data Studio — inicio",
     "logoText": "Clinical Data Studio",
@@ -393,5 +395,19 @@
       },
       "emptyState": "Tus estadísticas aparecerán aquí pronto"
     }
+  },
+  "syntheticDataGeneratedDataset": {
+    "title": "Conjunto de datos generado",
+    "subtitle": "{{count}} conjuntos de datos sintéticos",
+    "columns": {
+      "id": "ID"
+    },
+    "dataSafetyInfo": "Todos los registros son completamente sintéticos. No se utilizaron datos reales de pacientes en la generación. Seguro para desarrollo, pruebas e investigación.",
+    "downloadArchiveButton": "Descargar archivo",
+    "regenerateDatasetButton": "Regenerar conjunto de datos"
+  },
+  "syntheticDataHeader": {
+    "title": "Generador de datos sintéticos",
+    "subtitle": "Genere datos clínicos realistas pero completamente sintéticos para pruebas y desarrollo"
   }
 }

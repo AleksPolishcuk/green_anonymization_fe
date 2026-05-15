@@ -19,6 +19,7 @@
       "constants/*": ["constants/*"],
       "theme/*": ["theme/*"],
       "assets/*": ["assets/*"],
+      "store/*": ["store/*"],
       "Layouts": ["Layouts/index.tsx"]
     },
 
