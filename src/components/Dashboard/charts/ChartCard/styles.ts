@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
@@ -82,7 +82,7 @@ export const ChartBody = styled(Box)({
 
 export const TooltipDark = styled(Box)(({ theme }) => ({
   background: [
-    `linear-gradient(to bottom, rgba(255,255,255,${PILL_GRADIENT_START_OPACITY}), rgba(255,255,255,${PILL_GRADIENT_END_OPACITY}))`,
+    `linear-gradient(to bottom, ${alpha(theme.palette.common.white, PILL_GRADIENT_START_OPACITY)}, ${alpha(theme.palette.common.white, PILL_GRADIENT_END_OPACITY)})`,
     PILL_BG_COLOR,
   ].join(", "),
   color: theme.palette.common.white,
