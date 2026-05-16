@@ -1,22 +1,24 @@
+import { useTranslation } from "react-i18next";
+
 import { headerSpriteRef } from "constants/MainPages";
 import {
-  FileWrapper,
-  FileUploadIcon,
-  FileTextBlock,
   FileDropHeading,
-  FileDropSubtitle,
-  FileTextWrapper,
-  FileRemoveButton,
   FileDropHelperText,
+  FileDropSubtitle,
+  FileRemoveButton,
+  FileTextBlock,
+  FileTextWrapper,
+  FileUploadIcon,
+  FileWrapper,
 } from "components/Input/styles";
-
 import type { FileDropZoneProps } from "components/Input/types";
+
 import useFileDropZone from "./useFileDropZone";
-import { useTranslation } from "react-i18next";
 
 type Props = FileDropZoneProps & {
   error?: boolean;
   helperText?: string | null;
+  onLimitReached?: () => void;
 };
 
 export default function FileDropZone({
@@ -24,6 +26,7 @@ export default function FileDropZone({
   onChange,
   error,
   helperText,
+  onLimitReached,
 }: Props) {
   const { t } = useTranslation();
 
@@ -38,13 +41,30 @@ export default function FileDropZone({
     handleDragOver,
   } = useFileDropZone({ onChange });
 
+  const handleClick = () => {
+    if (onLimitReached) {
+      onLimitReached();
+      return;
+    }
+    inputRef.current?.click();
+  };
+
+  const handleDropGuarded: React.DragEventHandler<HTMLDivElement> = (e) => {
+    if (onLimitReached) {
+      e.preventDefault();
+      onLimitReached();
+      return;
+    }
+    handleDrop(e);
+  };
+
   return (
     <div>
       <FileWrapper
-        onClick={() => inputRef.current?.click()}
+        onClick={handleClick}
         onDragOver={handleDragOver}
         onDragLeave={() => setIsDragActive(false)}
-        onDrop={handleDrop}
+        onDrop={handleDropGuarded}
         $hasError={Boolean(error || localError)}
       >
         <input ref={inputRef} type="file" hidden onChange={handleInputChange} />

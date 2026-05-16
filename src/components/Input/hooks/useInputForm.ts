@@ -1,11 +1,11 @@
-import { inputFormSchema } from "constants/validations";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { inputService } from "services/input";
 import { ValidationError } from "yup";
-import type { InputFormValues } from "components/Input/types";
+
+import { DAILY_LIMIT_REACHED_CODE } from "constants/PricingPage";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
+import { inputFormSchema } from "constants/validations";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
   setDocument,
@@ -13,6 +13,8 @@ import {
   setOriginalText,
   setRedactedText,
 } from "store/slices/documentSlice";
+import { inputService } from "services/input";
+import type { InputFormValues } from "components/Input/types";
 
 export const useInputForm = () => {
   const { t } = useTranslation();
@@ -23,16 +25,9 @@ export const useInputForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const {
-    control,
-    handleSubmit,
-    formState,
-    reset,
-    setValue,
-    setError,
-    clearErrors,
-  } = useForm<InputFormValues>({
+  const [isLimitReached, setIsLimitReached] = useState(false);
+
+  const { control, handleSubmit, formState, reset } = useForm<InputFormValues>({
     mode: "onChange",
     defaultValues: {
       text: "",
@@ -51,13 +46,9 @@ export const useInputForm = () => {
 
           error.inner.forEach((err) => {
             if (err.path) {
-              errors[err.path] = {
-                message: t(err.message),
-              };
+              errors[err.path] = { message: t(err.message) };
             } else {
-              errors.root = {
-                message: t(err.message),
-              };
+              errors.root = { message: t(err.message) };
             }
           });
 
@@ -97,19 +88,20 @@ export const useInputForm = () => {
       dispatch(setDocument(analysis.document));
 
       setSubmitSuccess(true);
-
       reset({ text: "", file: null });
 
       setTimeout(() => {
         setSubmitSuccess(false);
       }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
     } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : t("input.form.errors.submissionFailed");
-
-      setSubmitError(message);
+      const apiErr = error as { status?: number; message?: unknown };
+      if (
+        apiErr.status === 403 &&
+        JSON.stringify(apiErr.message ?? "").includes(DAILY_LIMIT_REACHED_CODE)
+      ) {
+        setIsLimitReached(true);
+        return;
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -122,11 +114,9 @@ export const useInputForm = () => {
     onSubmit,
     isSubmitting,
     submitSuccess,
-    submitError,
-    setValue,
-    setError,
-    clearErrors,
     isFileUploaded,
     isSubmitDisabled,
+    isLimitReached,
+    clearLimitReached: () => setIsLimitReached(false),
   };
 };

@@ -9,6 +9,7 @@ import Dashboard from "pages/Dashboard";
 import Register from "pages/Register";
 import SignIn from "pages/SignIn";
 import { NotFound } from "pages/NotFoundPage";
+import PricingPage from "pages/PricingPage";
 import DeidentificationPage from "pages/DeidentificationPage";
 import SyntheticDataPage from "pages/SyntheticDataPage";
 
@@ -26,6 +27,14 @@ export const router = createBrowserRouter([
     element: (
       <MainLayout>
         <ComplianceSection />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/pricing",
+    element: (
+      <MainLayout>
+        <PricingPage />
       </MainLayout>
     ),
   },
