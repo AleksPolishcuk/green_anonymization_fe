@@ -6,6 +6,7 @@ import {
 
 import { DEID_STEPS } from "constants/MainPages";
 import { complianceService } from "services/compliance";
+import { documentsService } from "services/documents";
 import type { PiiEntity } from "services/input/typing";
 import type {
   DeidStep,
@@ -14,6 +15,7 @@ import type {
   Entity,
 } from "store/types/document";
 import type { ComplianceFramework } from "services/compliance/typing/compliance";
+import type { RootState } from "store/index";
 
 const initialState: DocumentState = {
   currentStep: "framework",
@@ -123,6 +125,33 @@ export const {
   nextDeidStep,
   prevDeidStep,
 } = documentSlice.actions;
+
+export const saveEntitySelections = createAsyncThunk<
+  void,
+  void,
+  { state: RootState; rejectValue: string }
+>("document/saveEntitySelections", async (_, { getState, rejectWithValue }) => {
+  const state = getState();
+  const { document, piiEntities } = state.document;
+
+  if (!document?.id || !piiEntities) {
+    return rejectWithValue("No document or entities loaded");
+  }
+
+  const selectedEntityIds = piiEntities
+    .filter((e) => e.selected)
+    .map((e) => e.id);
+
+  try {
+    await documentsService.updateEntitySelections(document.id, {
+      selectedEntityIds,
+    });
+  } catch (err) {
+    return rejectWithValue(
+      err instanceof Error ? err.message : "Failed to save entity selections",
+    );
+  }
+});
 
 export const saveFrameworkSelection = createAsyncThunk<
   void,
