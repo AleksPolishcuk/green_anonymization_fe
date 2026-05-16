@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useInputForm } from "./hooks/useInputForm";
+import { Controller } from "react-hook-form";
+
+import { headerSpriteRef } from "constants/MainPages";
+import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
+import { LimitReachedModal } from "components/LimitReachedModal";
+import { useDailyLimitGuard } from "shared/hooks/useDailyLimitGuard";
+
 import {
   InputLogoIcon,
   StepChip,
@@ -21,13 +28,13 @@ import {
   FormStatusAlert,
   FormStatusText,
 } from "./styles";
-import { headerSpriteRef } from "constants/MainPages";
-import { Controller } from "react-hook-form";
+import { useInputForm } from "./hooks/useInputForm";
 import FileDropZone from "./FileDropZone";
-import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 
 export default function Input() {
   const { t } = useTranslation();
+  const { isDailyLimitReached } = useDailyLimitGuard();
+  const [proactiveLimitOpen, setProactiveLimitOpen] = useState(false);
 
   const {
     control,
@@ -38,9 +45,32 @@ export default function Input() {
     isFileUploaded,
     isSubmitDisabled,
     isSubmitting,
+    isLimitReached,
+    clearLimitReached,
   } = useInputForm();
 
   const { errors } = formState;
+
+  const openLimitModal = () => setProactiveLimitOpen(true);
+  const closeLimitModal = () => {
+    clearLimitReached();
+    setProactiveLimitOpen(false);
+  };
+
+  const limitModalOpen = isLimitReached || proactiveLimitOpen;
+
+  const handleTextClick = () => {
+    if (isDailyLimitReached && !isFileUploaded) openLimitModal();
+  };
+
+  const handleTextFocus = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    if (isDailyLimitReached && !isFileUploaded) {
+      e.target.blur();
+      openLimitModal();
+    }
+  };
 
   return (
     <InputSectionRoot>
@@ -79,6 +109,8 @@ export default function Input() {
                 helperText={!isFileUploaded ? errors.text?.message : ""}
                 placeholder={t("input.form.textPlaceholder")}
                 $fileMode={isFileUploaded}
+                onClick={handleTextClick}
+                onFocus={handleTextFocus}
               />
             )}
           />
@@ -92,6 +124,9 @@ export default function Input() {
                 onChange={field.onChange}
                 error={!!errors.file?.message}
                 helperText={errors.file?.message}
+                onLimitReached={
+                  isDailyLimitReached ? openLimitModal : undefined
+                }
               />
             )}
           />
@@ -124,6 +159,8 @@ export default function Input() {
           </SubmitMetaRow>
         </InputForm>
       </InputSectionStack>
+
+      <LimitReachedModal open={limitModalOpen} onClose={closeLimitModal} />
     </InputSectionRoot>
   );
 }

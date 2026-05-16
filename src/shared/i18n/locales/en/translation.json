@@ -399,10 +399,57 @@
         "title": "Recent Activity",
         "subtitle": "Latest processed documents",
         "entities": "{{count}} entities",
-        "newDeId": "New De-Identification →",
-        "emptyState": "Your statistics will appear here soon"
-      }
+        "newDeId": "New De-Identification →"
+      },
+      "emptyState": "Your statistics will appear here soon"
+    },
+    "usage": {
+      "label": "Documents today",
+      "upgrade": "Upgrade to Pro →"
     }
+  },
+  "pricingPage": {
+    "title": "Pricing",
+    "subtitle": "Simple, transparent pricing for secure de-identification of sensitive personal data in documents.",
+    "perMonth": "/month",
+    "mostPopular": "Most Popular",
+    "plans": {
+      "free": {
+        "name": "Free",
+        "description": "For individuals getting started",
+        "badge": "5 documents for identification",
+        "cta": "Get Started"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "For professionals and teams",
+        "badge": "Unlimited documents",
+        "cta": "Get Started"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Up to 5 documents/day",
+      "automatedPii": "Automated PII detection",
+      "standardDeid": "Standard de-identification",
+      "basicReport": "Basic report",
+      "unlimitedDocs": "Unlimited documents",
+      "advancedDeid": "Advanced de-identification",
+      "customRules": "Custom redaction rules",
+      "batchProcessing": "Batch processing",
+      "auditLogs": "Audit logs & activity history",
+      "prioritySupport": "Priority support"
+    },
+    "currentPlan": "Current Plan",
+    "activePlan": "Active"
+  },
+  "limitReached": {
+    "title": "Daily limit reached",
+    "message": "You’ve used all {{limit}} documents for today.",
+    "upgrade": "Upgrade to Pro",
+    "close": "Close",
+    "resetToday": "Your limit resets today at {{time}}",
+    "resetTomorrow": "Your limit resets tomorrow at {{time}}",
+    "resetFallback": "Your limit resets tomorrow"
   },
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
@@ -473,5 +520,8 @@
   "syntheticDataHeader": {
     "title": "Synthetic Data Generator",
     "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
+  },
+  "common": {
+    "close": "Close"
   }
 }
