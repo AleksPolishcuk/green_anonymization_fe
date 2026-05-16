@@ -2,9 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { PRICING_ROUTE } from "constants/PricingPage";
-import { useAppSelector } from "store/hooks";
 import { BaseModal } from "components/BaseModal";
-import { useResetTime } from "./hooks/useResetTime";
 
 import {
   ModalActions,
@@ -18,6 +16,7 @@ import {
   ResetInfoText,
   UpgradeButton,
 } from "./styles";
+import { useLimitInfo } from "./hooks/useResetTime";
 
 type LimitReachedModalProps = {
   open: boolean;
@@ -30,10 +29,7 @@ export const LimitReachedModal = ({
 }: LimitReachedModalProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const resetTimeLabel = useResetTime();
-  const dailyLimit = useAppSelector(
-    (state) => state.pricing.current?.dailyLimit ?? 5,
-  );
+  const { resetTimeLabel, dailyLimit } = useLimitInfo();
 
   const handleUpgrade = () => {
     navigate(PRICING_ROUTE);

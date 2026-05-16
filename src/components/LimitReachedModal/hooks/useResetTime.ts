@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next";
 
-import { TIME_FORMAT_OPTIONS } from "constants/PricingPage";
+import {
+  DEFAULT_DAILY_LIMIT,
+  TIME_FORMAT_OPTIONS,
+} from "constants/PricingPage";
 import { useAppSelector } from "store/hooks";
 
 function formatTime(date: Date): string {
@@ -26,29 +29,28 @@ function isTomorrow(date: Date): boolean {
   );
 }
 
-export function useResetTime(): string {
+export function useLimitInfo() {
   const { t } = useTranslation();
   const resetAt = useAppSelector((state) => state.pricing.current?.resetAt);
+  const dailyLimit = useAppSelector(
+    (state) => state.pricing.current?.dailyLimit ?? DEFAULT_DAILY_LIMIT,
+  );
 
-  if (!resetAt) {
-    return t("limitReached.resetFallback");
+  let resetTimeLabel = t("limitReached.resetFallback");
+
+  if (resetAt) {
+    const resetDate = new Date(resetAt);
+
+    if (!isNaN(resetDate.getTime())) {
+      const time = formatTime(resetDate);
+
+      if (isToday(resetDate)) {
+        resetTimeLabel = t("limitReached.resetToday", { time });
+      } else if (isTomorrow(resetDate)) {
+        resetTimeLabel = t("limitReached.resetTomorrow", { time });
+      }
+    }
   }
 
-  const resetDate = new Date(resetAt);
-
-  if (isNaN(resetDate.getTime())) {
-    return t("limitReached.resetFallback");
-  }
-
-  const time = formatTime(resetDate);
-
-  if (isToday(resetDate)) {
-    return t("limitReached.resetToday", { time });
-  }
-
-  if (isTomorrow(resetDate)) {
-    return t("limitReached.resetTomorrow", { time });
-  }
-
-  return t("limitReached.resetFallback");
+  return { resetTimeLabel, dailyLimit };
 }

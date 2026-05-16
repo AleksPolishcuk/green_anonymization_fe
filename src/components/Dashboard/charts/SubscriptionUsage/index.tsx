@@ -17,12 +17,17 @@ import { useSubscriptionUsage } from "./useSubscriptionUsage";
 export const SubscriptionUsage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const usage = useSubscriptionUsage();
+  const {
+    isReady,
+    usedToday,
+    limitLabel,
+    isUnlimited,
+    progress,
+    isWarn,
+    isFreePlan,
+  } = useSubscriptionUsage();
 
-  if (!usage) return null;
-
-  const { usedToday, limitLabel, isUnlimited, progress, isWarn, isFreePlan } =
-    usage;
+  if (!isReady) return null;
 
   return (
     <UsageRoot>

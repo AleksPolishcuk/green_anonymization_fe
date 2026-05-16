@@ -27,6 +27,8 @@ export default function FrameworkSection() {
   const { isDailyLimitReached } = useDailyLimitGuard();
   const [limitModalOpen, setLimitModalOpen] = useState(false);
 
+  const handleCloseLimitModal = () => setLimitModalOpen(false);
+
   const handleFrameworkClick = (
     framework: (typeof COMPLIANCE_FRAMEWORKS)[number],
   ) => {
@@ -77,7 +79,7 @@ export default function FrameworkSection() {
 
       <LimitReachedModal
         open={limitModalOpen}
-        onClose={() => setLimitModalOpen(false)}
+        onClose={handleCloseLimitModal}
       />
     </>
   );

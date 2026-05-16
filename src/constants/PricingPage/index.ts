@@ -7,6 +7,7 @@ export const FREE_PLAN_NAME = "Free";
 
 export const UNLIMITED_LABEL = "∞";
 export const USAGE_WARN_THRESHOLD = 0.8;
+export const DEFAULT_DAILY_LIMIT = 5;
 
 export const TIME_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
   hour: "2-digit",

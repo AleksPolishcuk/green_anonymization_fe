@@ -59,6 +59,19 @@ export default function Input() {
 
   const limitModalOpen = isLimitReached || proactiveLimitOpen;
 
+  const handleTextClick = () => {
+    if (isDailyLimitReached && !isFileUploaded) openLimitModal();
+  };
+
+  const handleTextFocus = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    if (isDailyLimitReached && !isFileUploaded) {
+      e.target.blur();
+      openLimitModal();
+    }
+  };
+
   return (
     <InputSectionRoot>
       <InputSectionStack>
@@ -96,19 +109,8 @@ export default function Input() {
                 helperText={!isFileUploaded ? errors.text?.message : ""}
                 placeholder={t("input.form.textPlaceholder")}
                 $fileMode={isFileUploaded}
-                onClick={
-                  isDailyLimitReached && !isFileUploaded
-                    ? openLimitModal
-                    : undefined
-                }
-                onFocus={
-                  isDailyLimitReached && !isFileUploaded
-                    ? (e) => {
-                        e.target.blur();
-                        openLimitModal();
-                      }
-                    : undefined
-                }
+                onClick={handleTextClick}
+                onFocus={handleTextFocus}
               />
             )}
           />

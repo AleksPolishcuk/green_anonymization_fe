@@ -10,7 +10,7 @@ import { fetchCurrentSubscription } from "store/slices/pricingSlice";
 
 export function useSubscriptionUsage() {
   const dispatch = useAppDispatch();
-  const { current } = useAppSelector((state) => state.pricing);
+  const subscription = useAppSelector((state) => state.pricing.current);
   const user = useAppSelector((state) => state.auth?.user);
 
   useEffect(() => {
@@ -19,14 +19,24 @@ export function useSubscriptionUsage() {
     }
   }, [dispatch, user]);
 
-  if (!current) return null;
+  if (!subscription) {
+    return { isReady: false as const };
+  }
 
-  const { usedToday, dailyLimit, plan } = current;
+  const { usedToday, dailyLimit, plan } = subscription;
   const isUnlimited = dailyLimit === null;
   const progress = isUnlimited ? 0 : (usedToday / dailyLimit!) * 100;
   const isWarn = !isUnlimited && progress >= USAGE_WARN_THRESHOLD * 100;
   const limitLabel = isUnlimited ? UNLIMITED_LABEL : String(dailyLimit);
   const isFreePlan = plan.name === FREE_PLAN_NAME;
 
-  return { usedToday, limitLabel, isUnlimited, progress, isWarn, isFreePlan };
+  return {
+    isReady: true as const,
+    usedToday,
+    limitLabel,
+    isUnlimited,
+    progress,
+    isWarn,
+    isFreePlan,
+  };
 }

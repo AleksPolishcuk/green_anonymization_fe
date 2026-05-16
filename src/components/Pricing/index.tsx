@@ -1,12 +1,6 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PRICING_PLANS, type PricingPlan } from "constants/PricingPage";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import {
-  fetchCurrentSubscription,
-  fetchPlans,
-} from "store/slices/pricingSlice";
 
 import {
   DisabledIcon,
@@ -27,6 +21,7 @@ import {
   PricingGrid,
 } from "./styles";
 import { usePricingCard } from "./hooks/usePricingCard";
+import { usePricingSection } from "./hooks/usePricingSection";
 
 type PricingCardProps = {
   plan: PricingPlan;
@@ -78,15 +73,7 @@ const PricingCard = ({ plan }: PricingCardProps) => {
 };
 
 export function PricingSection() {
-  const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.auth?.user);
-
-  useEffect(() => {
-    dispatch(fetchPlans());
-    if (user) {
-      dispatch(fetchCurrentSubscription());
-    }
-  }, [dispatch, user]);
+  usePricingSection();
 
   return (
     <PricingGrid>

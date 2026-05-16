@@ -16,15 +16,15 @@ export function usePricingCard(plan: PricingPlan) {
   const navigate = useNavigate();
 
   const user = useAppSelector((state) => state.auth?.user);
-  const { plans, current, selectLoading } = useAppSelector(
-    (state) => state.pricing,
-  );
+  const plans = useAppSelector((state) => state.pricing.plans);
+  const subscription = useAppSelector((state) => state.pricing.current);
+  const selectLoading = useAppSelector((state) => state.pricing.selectLoading);
 
   const apiPlan = plans.find(
     (p) => p.name.toLowerCase() === plan.id.toLowerCase(),
   );
 
-  const currentPlanId = current?.plan.name.toLowerCase();
+  const currentPlanId = subscription?.plan.name.toLowerCase();
   const isCurrent = currentPlanId === plan.id.toLowerCase();
   const isFree = plan.id === FREE_PLAN_ID;
   const isLoggedIn = Boolean(user);
@@ -32,7 +32,8 @@ export function usePricingCard(plan: PricingPlan) {
   const isFreeCurrent =
     isFree &&
     isLoggedIn &&
-    (current === null || current.plan.name.toLowerCase() === FREE_PLAN_ID);
+    (subscription === null ||
+      subscription.plan.name.toLowerCase() === FREE_PLAN_ID);
 
   const isDisabled = isCurrent || isFreeCurrent || selectLoading;
 
