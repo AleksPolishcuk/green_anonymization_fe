@@ -9,9 +9,12 @@ export type SyntheticEntity = {
 
 export type SyntheticDataDocument = {
   id: string;
+  text: string;
   entities: SyntheticEntity[];
 };
 
 export type SyntheticDataState = {
   syntheticDocuments: SyntheticDataDocument[];
+  documentId: string | null;
+  recordsCount: number;
 };
