@@ -9,6 +9,8 @@ import {
 } from "recharts";
 import { useTranslation } from "react-i18next";
 
+import { useResponsiveChartSizes } from "components/Dashboard/hooks/useResponsiveBarSize";
+
 import type { EntityTypeDatum } from "store/types/dashboard";
 import {
   ACTIVE_GRADIENT_END,
@@ -19,6 +21,7 @@ import {
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
   CHART_GRID_STROKE_WIDTH,
+  CHART_TICK_COUNT,
   CHART_X_TICK_HEIGHT,
   ENTITY_DE_ID_CHART_MARGIN,
   tickStyle,
@@ -44,6 +47,7 @@ type Props = { data: EntityTypeDatum[] };
 export const EntityTypesChart = ({ data }: Props) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { barSize } = useResponsiveChartSizes();
 
   return (
     <ChartCard>
@@ -59,7 +63,7 @@ export const EntityTypesChart = ({ data }: Props) => {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={data}
-              margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
+              margin={ENTITY_DE_ID_CHART_MARGIN}
               barCategoryGap={CHART_BAR_CATEGORY_GAP}
               onMouseLeave={() => setActiveIndex(null)}
             >
@@ -105,11 +109,12 @@ export const EntityTypesChart = ({ data }: Props) => {
                 tick={tickStyle}
                 axisLine={false}
                 tickLine={false}
-                tickCount={5}
+                tickCount={CHART_TICK_COUNT}
               />
 
               <Bar
                 dataKey="count"
+                barSize={barSize}
                 shape={(shapeProps: unknown) => (
                   <RoundedBar
                     {...(shapeProps as RoundedBarProps)}

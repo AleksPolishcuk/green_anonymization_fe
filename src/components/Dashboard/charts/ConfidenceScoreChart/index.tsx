@@ -4,12 +4,12 @@ import {
   BarChart,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
-  type TooltipProps,
 } from "recharts";
 import { useTranslation } from "react-i18next";
+
+import { useResponsiveChartSizes } from "components/Dashboard/hooks/useResponsiveBarSize";
 
 import {
   ACTIVE_GRADIENT_END,
@@ -19,7 +19,6 @@ import {
   CHART_GRID_STROKE_WIDTH,
   CHART_TICK_COUNT,
   CONFIDENCE_BAR_CATEGORY_GAP,
-  CONFIDENCE_BAR_SIZE,
   CONFIDENCE_CHART_MARGIN,
   CONFIDENCE_GRADIENT_HOVER_ID,
   CONFIDENCE_GRADIENT_ID,
@@ -34,26 +33,14 @@ import {
   ChartCard,
   ChartSubtitle,
   ChartTitle,
-  TooltipDark,
 } from "components/Dashboard/charts/ChartCard/styles";
 import { ChartEmptyState } from "components/Dashboard/charts/ChartEmptyState";
 import {
+  ConfidenceActiveBarLabel,
   ConfidenceRoundedBar,
+  type ConfidenceActiveBarLabelProps,
   type ConfidenceBarProps,
 } from "components/Dashboard/charts/shared/barShapes";
-
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-}: TooltipProps<number, string>) => {
-  if (!active || !payload?.length) return null;
-  return (
-    <TooltipDark>
-      {label}: {payload[0].value}
-    </TooltipDark>
-  );
-};
 
 type Props = {
   data: ConfidenceRangeData[];
@@ -62,6 +49,7 @@ type Props = {
 export const ConfidenceScoreChart = ({ data }: Props) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { barSize, confidencePillWidth } = useResponsiveChartSizes();
 
   return (
     <ChartCard $tall>
@@ -124,10 +112,9 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
                 tickLine={false}
                 width={CONFIDENCE_Y_AXIS_WIDTH}
               />
-              <Tooltip content={<CustomTooltip />} cursor={false} />
               <Bar
                 dataKey="count"
-                barSize={CONFIDENCE_BAR_SIZE}
+                barSize={barSize}
                 shape={(shapeProps: unknown) => (
                   <ConfidenceRoundedBar
                     {...(shapeProps as ConfidenceBarProps)}
@@ -135,6 +122,13 @@ export const ConfidenceScoreChart = ({ data }: Props) => {
                   />
                 )}
                 onMouseEnter={(_, index) => setActiveIndex(index)}
+                label={(labelProps: unknown) => (
+                  <ConfidenceActiveBarLabel
+                    {...(labelProps as ConfidenceActiveBarLabelProps)}
+                    activeIndex={activeIndex}
+                    confidencePillWidth={confidencePillWidth}
+                  />
+                )}
               />
             </BarChart>
           </ResponsiveContainer>
