@@ -422,8 +422,7 @@
       "unlimitedDocs": "Documentos ilimitados",
       "advancedDeid": "Desidentificación avanzada",
       "customRules": "Reglas de redacción personalizadas",
-      "batchProcessing": "Procesamiento por lotes",
-      "auditLogs": "Registros de auditoría e historial",
+      "syntheticData": "Generar datos sintéticos",
       "prioritySupport": "Soporte prioritario"
     },
     "currentPlan": "Plan Actual",
@@ -453,6 +452,13 @@
     "subtitle": "Genere datos clínicos realistas pero completamente sintéticos para pruebas y desarrollo"
   },
   "common": {
+    "close": "Cerrar"
+  },
+  "proFeature": {
+    "title": "Función Pro",
+    "customRules": "Las reglas de redacción personalizadas están disponibles en el plan Pro. Actualice para seleccionar y deseleccionar entidades individuales.",
+    "syntheticData": "La generación de datos sintéticos está disponible en el plan Pro. Actualice para generar conjuntos de datos sintéticos realistas.",
+    "upgrade": "Actualizar a Pro",
     "close": "Cerrar"
   }
 }

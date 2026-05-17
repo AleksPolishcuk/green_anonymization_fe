@@ -422,8 +422,7 @@
       "unlimitedDocs": "Onbeperkte documenten",
       "advancedDeid": "Geavanceerde de-identificatie",
       "customRules": "Aangepaste redactieregels",
-      "batchProcessing": "Batchverwerking",
-      "auditLogs": "Auditlogboeken & activiteitsgeschiedenis",
+      "syntheticData": "Synthetische gegevens genereren",
       "prioritySupport": "Prioriteitsondersteuning"
     },
     "currentPlan": "Huidig Plan",
@@ -453,6 +452,13 @@
     "subtitle": "Genereer realistische maar volledig synthetische klinische gegevens voor testen en ontwikkeling"
   },
   "common": {
+    "close": "Sluiten"
+  },
+  "proFeature": {
+    "title": "Pro-functie",
+    "customRules": "Aangepaste redactieregels zijn beschikbaar in het Pro-abonnement. Upgrade om individuele entiteiten te selecteren en deselecteren.",
+    "syntheticData": "Synthetische datageneratie is beschikbaar in het Pro-abonnement. Upgrade om realistische synthetische datasets te genereren.",
+    "upgrade": "Upgrade naar Pro",
     "close": "Sluiten"
   }
 }
