@@ -26,7 +26,7 @@ export const STAT_CARD_SPRITE_IDS: Record<
 
 export const STAT_CARD_TREND_ARROW_SPRITE_ID = "icon-GreenArrowUp";
 
-export const BAR_WIDTH = 58;
+export const BAR_WIDTH = 40;
 export const BAR_RADIUS = 8;
 export const ACTIVE_GRADIENT_ID = "activeBarGradient";
 export const ACTIVE_GRADIENT_HOVER_ID = "activeBarGradientHover";
@@ -50,7 +50,7 @@ export const CHART_LINE_DASH_ARRAY = "5 4";
 export const CHART_DOT_DASH_ARRAY = "3 2";
 
 export const ENTITY_DE_ID_CHART_MARGIN = {
-  top: 8,
+  top: 40,
   right: 2,
   left: -26,
   bottom: 0,
@@ -66,17 +66,22 @@ export const CHART_Y_AXIS_RIGHT_WIDTH = 36;
 
 export const CONFIDENCE_CHART_MARGIN = {
   top: 8,
-  right: 2,
+  right: 50,
   left: -10,
   bottom: 0,
 } as const;
 export const CONFIDENCE_BAR_CATEGORY_GAP = "25%";
-export const CONFIDENCE_BAR_SIZE = 36;
+export const CONFIDENCE_BAR_SIZE = 40;
 export const CONFIDENCE_Y_AXIS_WIDTH = 72;
+
+export const BAR_SIZE_DESKTOP = 40;
+export const BAR_SIZE_TABLET = 20;
+export const BAR_SIZE_MOBILE = 16;
 
 export const STAT_CARD_SHADOW =
   "0 1px 2px 0 rgba(16, 24, 40, 0.06), 0 1px 3px 0 rgba(16, 24, 40, 0.1)";
 export const CHART_CARD_SHADOW = "0 2px 24px 0 rgba(16, 24, 40, 0.05)";
+export const CHART_CARD_HOVER_TRANSITION = "box-shadow 0.2s ease";
 export const TOOLTIP_DARK_SHADOW = "0 4px 12px rgba(0, 0, 0, 0.15)";
 
 export const CHART_CARD_BORDER_RADIUS = 12;
@@ -100,7 +105,12 @@ export const BUTTON_SHADOW_FOCUS =
 
 export const PILL_WIDTH = 58;
 export const PILL_HEIGHT = 24;
+export const PILL_MIN_WIDTH = 28;
+export const CONFIDENCE_PILL_WIDTH = 44;
+export const CONFIDENCE_PILL_WIDTH_TABLET = 36;
+export const CONFIDENCE_PILL_WIDTH_MOBILE = 30;
 export const PILL_OFFSET_Y = 8;
+export const PILL_OFFSET_X = 8;
 export const PILL_FONT_SIZE = 10;
 export const PILL_BG_COLOR = "#000000";
 export const PILL_GRADIENT_ID = "pillLabelGradient";
@@ -109,6 +119,7 @@ export const PILL_GRADIENT_END_OPACITY = 0.4;
 
 export const HIPAA_GRADIENT_ID = "hipaaSegmentGradient";
 export const HIPAA_GRADIENT_END = "#1c1c1c";
+export const HIPAA_GRADIENT_END_OPACITY = 0.6;
 
 export const DONUT_INNER_RADIUS = 35;
 export const DONUT_OUTER_RADIUS = 70;
@@ -130,7 +141,9 @@ export const tickStyleSm = {
 };
 
 export const CHART_X_TICK_ANGLE = -40;
-export const CHART_X_TICK_HEIGHT = 56;
+export const CHART_X_TICK_MAX_CHARS = 10;
+export const CHART_X_TICK_HEIGHT = 68;
+export const CHART_X_TICK_HEIGHT_DESKTOP = 30;
 export const CHART_X_TICK_FONT_SIZE = 10;
 export const CHART_X_TICK_DESKTOP_FONT_SIZE = 12;
 export const CHART_X_TICK_DY_DESKTOP = 12;

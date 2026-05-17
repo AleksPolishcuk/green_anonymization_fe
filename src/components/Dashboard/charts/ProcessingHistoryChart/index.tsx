@@ -9,6 +9,7 @@ import {
   type TooltipProps,
 } from "recharts";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "@mui/material/styles";
 
 import {
   CHART_DOT_DASH_ARRAY,
@@ -24,7 +25,6 @@ import {
   PROCESSING_HISTORY_CHART_MARGIN,
   tickStyleSm,
 } from "constants/DashboardPage";
-import { theme } from "shared/theme/theme";
 import type { ProcessingHistoryPoint } from "store/types/dashboard";
 
 import {
@@ -50,6 +50,7 @@ const CustomTooltip = ({
   payload,
   label,
 }: TooltipProps<number, string>) => {
+  const theme = useTheme();
   if (!active || !payload?.length) return null;
   return (
     <TooltipLight>
@@ -68,6 +69,7 @@ type Props = { data: ProcessingHistoryPoint[] };
 
 export const ProcessingHistoryChart = ({ data }: Props) => {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   return (
     <ChartCard>

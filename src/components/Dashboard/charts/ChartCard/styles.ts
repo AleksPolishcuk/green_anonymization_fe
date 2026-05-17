@@ -1,8 +1,9 @@
-import { styled } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import {
+  BAR_RADIUS,
   CHART_CARD_BORDER_RADIUS,
   CHART_CARD_HEIGHT,
   CHART_CARD_HEIGHT_MD,
@@ -10,7 +11,11 @@ import {
   CHART_CARD_HEIGHT_SM,
   CHART_CARD_HEIGHT_SM_TALL,
   CHART_CARD_HEIGHT_TALL,
+  CHART_CARD_HOVER_TRANSITION,
   CHART_CARD_SHADOW,
+  PILL_BG_COLOR,
+  PILL_GRADIENT_END_OPACITY,
+  PILL_GRADIENT_START_OPACITY,
   TOOLTIP_DARK_SHADOW,
 } from "constants/DashboardPage";
 import { deidColors, deidDarkColors } from "constants/DeidPage";
@@ -28,7 +33,7 @@ export const ChartCard = styled(Box, {
     flexDirection: "column",
     overflow: "hidden",
     height: $tall ? CHART_CARD_HEIGHT_TALL : CHART_CARD_HEIGHT,
-    transition: "box-shadow 0.2s ease",
+    transition: CHART_CARD_HOVER_TRANSITION,
     "&:hover": {
       boxShadow: colors.boxShadowNav,
     },
@@ -76,9 +81,12 @@ export const ChartBody = styled(Box)({
 });
 
 export const TooltipDark = styled(Box)(({ theme }) => ({
-  background: theme.palette.text.primary,
-  color: theme.palette.color.white,
-  borderRadius: 14,
+  background: [
+    `linear-gradient(to bottom, ${alpha(theme.palette.common.white, PILL_GRADIENT_START_OPACITY)}, ${alpha(theme.palette.common.white, PILL_GRADIENT_END_OPACITY)})`,
+    PILL_BG_COLOR,
+  ].join(", "),
+  color: theme.palette.common.white,
+  borderRadius: BAR_RADIUS,
   padding: theme.spacing(0.75, 1.5),
   fontSize: theme.typography.fontSize14,
   fontFamily: theme.typography.fontFamily,
