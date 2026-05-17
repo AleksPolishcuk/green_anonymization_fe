@@ -13,9 +13,8 @@ export const useSyntheticDataContents = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // ✅ IMPORTANT: backend expects array of texts
   const anonymizedTexts = useMemo(() => {
-    return syntheticDocuments.map((doc) => doc.text);
+    return syntheticDocuments.map((doc) => doc.syntheticText);
   }, [syntheticDocuments]);
 
   const handleRegenerate = async () => {
@@ -57,7 +56,7 @@ export const useSyntheticDataContents = () => {
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = `synthetic-data.${extension}`;
+      link.download = `synthetic-data.zip`;
 
       document.body.appendChild(link);
       link.click();
