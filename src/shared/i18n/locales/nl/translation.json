@@ -331,6 +331,12 @@
       "actions": {
         "selected": "Geselecteerd",
         "deselected": "Gedeselecteerd"
+      },
+      "deselectConfirm": {
+        "title": "Anonimisering voor deze entiteit overslaan?",
+        "body": "Deze entiteit wordt niet geanonimiseerd en verschijnt als leesbare tekst in de de-geïdentificeerde uitvoer. Het ongemaskerd laten van gevoelige gegevens kan leiden tot een complianceschending onder het geselecteerde framework.",
+        "confirm": "Bevestigen",
+        "cancel": "Annuleren"
       }
     },
     "syntheticCta": {

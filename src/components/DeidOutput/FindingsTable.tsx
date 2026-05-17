@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
-import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
+import {
+  DESELECT_CONFIRM_SHOWN_KEY,
+  FINDINGS_PAGE_SIZE,
+  headerSpriteRef,
+} from "constants/MainPages";
+import { BaseModal } from "components/BaseModal";
 import { Loader } from "shared/ui/Loader";
 import type { Entity } from "store/types/document";
 
@@ -44,6 +55,28 @@ export const FindingsTable = ({
 }: FindingsTableProps) => {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
   const [expanded, setExpanded] = useState(false);
+  const [pendingDeselectId, setPendingDeselectId] = useState<string | null>(
+    null,
+  );
+
+  const handleToggle = (entity: Entity) => {
+    if (entity.selected && !localStorage.getItem(DESELECT_CONFIRM_SHOWN_KEY)) {
+      setPendingDeselectId(entity.id);
+      return;
+    }
+    onToggle(entity.id);
+  };
+
+  const handleConfirmDeselect = () => {
+    if (!pendingDeselectId) return;
+    localStorage.setItem(DESELECT_CONFIRM_SHOWN_KEY, "true");
+    onToggle(pendingDeselectId);
+    setPendingDeselectId(null);
+  };
+
+  const handleCancelDeselect = () => {
+    setPendingDeselectId(null);
+  };
 
   const {
     visibleItems: visibleEntities,
@@ -56,80 +89,102 @@ export const FindingsTable = ({
   });
 
   return (
-    <TableCard>
-      <TableHeader onClick={() => setExpanded((prev) => !prev)}>
-        <TableHeaderLeft>
-          <TableIconWrapper>
-            <SpriteIconSvg aria-hidden="true">
-              <use href={headerSpriteRef("icon-database")} />
-            </SpriteIconSvg>
-          </TableIconWrapper>
-          <div>
-            <TableTitle>{t("findingsTable.title")}</TableTitle>
-            <TableStats>
-              {t("findingsTable.stats", { totalCount, selectedCount })}
-            </TableStats>
-          </div>
-        </TableHeaderLeft>
-        <CollapseArrow $expanded={expanded} />
-      </TableHeader>
+    <>
+      <TableCard>
+        <TableHeader onClick={() => setExpanded((prev) => !prev)}>
+          <TableHeaderLeft>
+            <TableIconWrapper>
+              <SpriteIconSvg aria-hidden="true">
+                <use href={headerSpriteRef("icon-database")} />
+              </SpriteIconSvg>
+            </TableIconWrapper>
+            <div>
+              <TableTitle>{t("findingsTable.title")}</TableTitle>
+              <TableStats>
+                {t("findingsTable.stats", { totalCount, selectedCount })}
+              </TableStats>
+            </div>
+          </TableHeaderLeft>
+          <CollapseArrow $expanded={expanded} />
+        </TableHeader>
 
-      {expanded && (
-        <TableScrollWrapper>
-          <StyledTable>
-            <thead>
-              <tr>
-                <Th>{t("findingsTable.columns.id")}</Th>
-                <Th>{t("findingsTable.columns.text")}</Th>
-                <Th>{t("findingsTable.columns.position")}</Th>
-                <Th>{t("findingsTable.columns.score")}</Th>
-                <Th>{t("findingsTable.columns.recognizer")}</Th>
-                <Th>{t("findingsTable.columns.factor")}</Th>
-                <Th>{t("findingsTable.columns.action")}</Th>
-              </tr>
-            </thead>
-            <tbody>
-              {visibleEntities.map((entity, index) => (
-                <Tr key={entity.id}>
-                  <Td>{index + 1}</Td>
-                  <TdBold>
-                    {originalText.slice(entity.start, entity.end)}
-                  </TdBold>
-                  <Td>
-                    {entity.start}-{entity.end}
-                  </Td>
-                  <Td>
-                    <ScoreBadge $score={entity.score}>
-                      {entity.score.toFixed(2)}
-                    </ScoreBadge>
-                  </Td>
-                  <Td>
-                    <RecognizerBadge $type={entity.entityType}>
-                      {entity.entityType}
-                    </RecognizerBadge>
-                  </Td>
-                  <Td>{entity.confidence}</Td>
-                  <Td>
-                    <ToggleButton
-                      $selected={entity.selected}
-                      onClick={() => onToggle(entity.id)}
-                    >
-                      {entity.selected
-                        ? t("findingsTable.actions.selected")
-                        : t("findingsTable.actions.deselected")}
-                    </ToggleButton>
-                  </Td>
-                </Tr>
-              ))}
-            </tbody>
-          </StyledTable>
-          {hasMore && (
-            <LoaderRow ref={loaderRef}>
-              <Loader />
-            </LoaderRow>
-          )}
-        </TableScrollWrapper>
-      )}
-    </TableCard>
+        {expanded && (
+          <TableScrollWrapper>
+            <StyledTable>
+              <thead>
+                <tr>
+                  <Th>{t("findingsTable.columns.id")}</Th>
+                  <Th>{t("findingsTable.columns.text")}</Th>
+                  <Th>{t("findingsTable.columns.position")}</Th>
+                  <Th>{t("findingsTable.columns.score")}</Th>
+                  <Th>{t("findingsTable.columns.recognizer")}</Th>
+                  <Th>{t("findingsTable.columns.factor")}</Th>
+                  <Th>{t("findingsTable.columns.action")}</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleEntities.map((entity, index) => (
+                  <Tr key={entity.id}>
+                    <Td>{index + 1}</Td>
+                    <TdBold>
+                      {originalText.slice(entity.start, entity.end)}
+                    </TdBold>
+                    <Td>
+                      {entity.start}-{entity.end}
+                    </Td>
+                    <Td>
+                      <ScoreBadge $score={entity.score}>
+                        {entity.score.toFixed(2)}
+                      </ScoreBadge>
+                    </Td>
+                    <Td>
+                      <RecognizerBadge $type={entity.entityType}>
+                        {entity.entityType}
+                      </RecognizerBadge>
+                    </Td>
+                    <Td>{entity.confidence}</Td>
+                    <Td>
+                      <ToggleButton
+                        $selected={entity.selected}
+                        onClick={() => handleToggle(entity)}
+                      >
+                        {entity.selected
+                          ? t("findingsTable.actions.selected")
+                          : t("findingsTable.actions.deselected")}
+                      </ToggleButton>
+                    </Td>
+                  </Tr>
+                ))}
+              </tbody>
+            </StyledTable>
+            {hasMore && (
+              <LoaderRow ref={loaderRef}>
+                <Loader />
+              </LoaderRow>
+            )}
+          </TableScrollWrapper>
+        )}
+      </TableCard>
+
+      <BaseModal
+        open={pendingDeselectId !== null}
+        onClose={handleCancelDeselect}
+      >
+        <DialogTitle>{t("findingsTable.deselectConfirm.title")}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {t("findingsTable.deselectConfirm.body")}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ padding: 3, gap: 1 }}>
+          <ToggleButton $selected={false} onClick={handleCancelDeselect}>
+            {t("findingsTable.deselectConfirm.cancel")}
+          </ToggleButton>
+          <ToggleButton $selected onClick={handleConfirmDeselect}>
+            {t("findingsTable.deselectConfirm.confirm")}
+          </ToggleButton>
+        </DialogActions>
+      </BaseModal>
+    </>
   );
 };

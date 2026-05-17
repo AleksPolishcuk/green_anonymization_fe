@@ -331,6 +331,12 @@
       "actions": {
         "selected": "Seleccionado",
         "deselected": "Deseleccionado"
+      },
+      "deselectConfirm": {
+        "title": "¿Omitir la anonimización de esta entidad?",
+        "body": "Esta entidad no será anonimizada y aparecerá como texto sin formato en el resultado desidentificado. Dejar datos sensibles sin enmascarar puede constituir una violación del marco de cumplimiento seleccionado.",
+        "confirm": "Confirmar",
+        "cancel": "Cancelar"
       }
     },
     "syntheticCta": {
