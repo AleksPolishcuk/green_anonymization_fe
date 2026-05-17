@@ -15,6 +15,7 @@ import { EntityTypesChart } from "components/Dashboard/charts/EntityTypesChart";
 import { ProcessingHistoryChart } from "components/Dashboard/charts/ProcessingHistoryChart";
 import { RecentActivity } from "components/Dashboard/charts/RecentActivity";
 import { StatCards } from "components/Dashboard/charts/StatCards";
+import { SubscriptionUsage } from "components/Dashboard/charts/SubscriptionUsage";
 import {
   ChartsLayout,
   ChartRow,
@@ -58,6 +59,8 @@ export const Dashboard = () => {
   return (
     <MainContent>
       <DashboardHeader />
+
+      <SubscriptionUsage />
 
       <StatCards data={data.statCards} />
 

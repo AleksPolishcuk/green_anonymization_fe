@@ -389,7 +389,54 @@
         "newDeId": "Nuova de-identificazione →"
       },
       "emptyState": "Le tue statistiche appariranno qui a breve"
+    },
+    "usage": {
+      "label": "Documenti oggi",
+      "upgrade": "Passa a Pro →"
     }
+  },
+  "pricingPage": {
+    "title": "Prezzi",
+    "subtitle": "Prezzi semplici e trasparenti per la de-identificazione sicura dei dati personali sensibili nei documenti.",
+    "perMonth": "/mese",
+    "mostPopular": "Più Popolare",
+    "plans": {
+      "free": {
+        "name": "Gratuito",
+        "description": "Per i privati che iniziano",
+        "badge": "5 documenti per identificazione",
+        "cta": "Inizia"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Per professionisti e team",
+        "badge": "Documenti illimitati",
+        "cta": "Inizia"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Fino a 5 documenti/giorno",
+      "automatedPii": "Rilevamento automatico PII",
+      "standardDeid": "De-identificazione standard",
+      "basicReport": "Report di base",
+      "unlimitedDocs": "Documenti illimitati",
+      "advancedDeid": "De-identificazione avanzata",
+      "customRules": "Regole di redazione personalizzate",
+      "batchProcessing": "Elaborazione in batch",
+      "auditLogs": "Registri di audit e cronologia attività",
+      "prioritySupport": "Supporto prioritario"
+    },
+    "currentPlan": "Piano Attuale",
+    "activePlan": "Attivo"
+  },
+  "limitReached": {
+    "title": "Limite giornaliero raggiunto",
+    "message": "Hai utilizzato tutti i {{limit}} documenti di oggi.",
+    "upgrade": "Passa a Pro",
+    "close": "Chiudi",
+    "resetToday": "Il tuo limite si rinnova oggi alle {{time}}",
+    "resetTomorrow": "Il tuo limite si rinnova domani alle {{time}}",
+    "resetFallback": "Il tuo limite si rinnova domani"
   },
   "syntheticDataGeneratedDataset": {
     "title": "Dataset generato",
@@ -404,5 +451,8 @@
   "syntheticDataHeader": {
     "title": "Generatore di dati sintetici",
     "subtitle": "Genera dati clinici realistici ma completamente sintetici per test e sviluppo"
+  },
+  "common": {
+    "close": "Chiudi"
   }
 }
