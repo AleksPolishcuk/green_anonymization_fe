@@ -13,8 +13,7 @@ import {
   setTokens,
 } from "features/Auth/utils/authTokens";
 
-const API_URL = "http://localhost:3002";
-// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 let isRefreshing = false;
 let refreshPromise: Promise<string | null> | null = null;
