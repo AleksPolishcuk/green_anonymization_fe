@@ -5,6 +5,7 @@ import type {
   DocumentsListResponse,
   DocumentsQueryParams,
   UpdateDocumentRequest,
+  UpdateEntitySelectionsRequest,
 } from "./typing";
 
 export const documentsService = {
@@ -28,6 +29,16 @@ export const documentsService = {
   ): Promise<DocumentDetails> {
     return apiClient.patch<DocumentDetails, UpdateDocumentRequest>(
       `/documents/${id}`,
+      payload,
+    );
+  },
+
+  async updateEntitySelections(
+    documentId: string,
+    payload: UpdateEntitySelectionsRequest,
+  ): Promise<void> {
+    return apiClient.patch<void, UpdateEntitySelectionsRequest>(
+      `/documents/${documentId}/entities/selection`,
       payload,
     );
   },

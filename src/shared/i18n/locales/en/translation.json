@@ -344,7 +344,18 @@
       "actions": {
         "selected": "Selected",
         "deselected": "Deselected"
+      },
+      "deselectConfirm": {
+        "title": "Skip anonymization for this entity?",
+        "body": "This entity will not be anonymized and will appear as plain text in the de-identified output. Leaving sensitive data unmasked may result in a compliance violation under the selected framework.",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
       }
+    },
+    "syntheticCta": {
+      "title": "Ready to Generate Synthetic Data?",
+      "subtitle": "Use de-identified data to create realistic synthetic datasets for testing and development",
+      "button": "Generate Synthetic Data"
     }
   },
   "notFound": {
