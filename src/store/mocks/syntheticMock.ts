@@ -3,6 +3,8 @@ import type { SyntheticDataDocument } from "store/types/syntheticData";
 export const SYNTHETIC_DATA_DOCUMENTS_MOCK: SyntheticDataDocument[] = [
   {
     id: "doc-001",
+    syntheticText:
+      "Patient: John Smith. Visit date: March 15, 2026. MRN: 987654321. Contact: 123-456-7890, john.smith@example.com. DOB: 1979-05-15.",
     entities: [
       {
         id: "entity-001",
@@ -38,6 +40,8 @@ export const SYNTHETIC_DATA_DOCUMENTS_MOCK: SyntheticDataDocument[] = [
   },
   {
     id: "doc-002",
+    syntheticText:
+      "Patient: Sarah Johnson. Visit date: November 22, 2026. MRN: 456789012. Contact: 555-123-4567, sarah.j@hospital.org. DOB: 1993-11-22.",
     entities: [
       {
         id: "entity-006",
@@ -73,6 +77,8 @@ export const SYNTHETIC_DATA_DOCUMENTS_MOCK: SyntheticDataDocument[] = [
   },
   {
     id: "doc-003",
+    syntheticText:
+      "Patient: Michael Chen. Visit date: March 10, 2026. MRN: 234567890. Contact: 777-888-9999, m.chen@clinic.net. DOB: 1967-03-10.",
     entities: [
       {
         id: "entity-011",
