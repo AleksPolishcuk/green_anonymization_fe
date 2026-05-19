@@ -433,9 +433,7 @@
     "message": "U heeft alle {{limit}} documenten van vandaag gebruikt.",
     "upgrade": "Upgrade naar Pro",
     "close": "Sluiten",
-    "resetToday": "Uw limiet wordt vandaag om {{time}} vernieuwd",
-    "resetTomorrow": "Uw limiet wordt morgen om {{time}} vernieuwd",
-    "resetFallback": "Uw limiet wordt morgen vernieuwd"
+    "resetFallback": "Uw limiet wordt morgen vernieuwd."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Gegenereerde dataset",

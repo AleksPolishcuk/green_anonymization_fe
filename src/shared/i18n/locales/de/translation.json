@@ -433,9 +433,7 @@
     "message": "Sie haben alle {{limit}} Dokumente für heute verwendet.",
     "upgrade": "Auf Pro upgraden",
     "close": "Schließen",
-    "resetToday": "Ihr Limit wird heute um {{time}} Uhr erneuert",
-    "resetTomorrow": "Ihr Limit wird morgen um {{time}} Uhr erneuert",
-    "resetFallback": "Ihr Limit wird morgen erneuert"
+    "resetFallback": "Ihr Limit wird morgen erneuert."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Generierter Datensatz",

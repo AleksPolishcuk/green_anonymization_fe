@@ -433,9 +433,7 @@
     "message": "Hai utilizzato tutti i {{limit}} documenti di oggi.",
     "upgrade": "Passa a Pro",
     "close": "Chiudi",
-    "resetToday": "Il tuo limite si rinnova oggi alle {{time}}",
-    "resetTomorrow": "Il tuo limite si rinnova domani alle {{time}}",
-    "resetFallback": "Il tuo limite si rinnova domani"
+    "resetFallback": "Il tuo limite si rinnova domani."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Dataset generato",

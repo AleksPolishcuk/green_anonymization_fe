@@ -446,9 +446,7 @@
     "message": "You’ve used all {{limit}} documents for today.",
     "upgrade": "Upgrade to Pro",
     "close": "Close",
-    "resetToday": "Your limit resets today at {{time}}",
-    "resetTomorrow": "Your limit resets tomorrow at {{time}}",
-    "resetFallback": "Your limit resets tomorrow"
+    "resetFallback": "Your limit resets tomorrow."
   },
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
