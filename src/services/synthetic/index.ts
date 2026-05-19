@@ -4,7 +4,12 @@ import type {
   GenerateSyntheticDataResponse,
 } from "./typing";
 
-export const syntheticDataService = {
+export interface GenerateArchiveRequest {
+  anonymizedTexts: string[];
+  extension: string;
+}
+
+const syntheticDataService = {
   async generate(
     payload: GenerateSyntheticDataRequest,
   ): Promise<GenerateSyntheticDataResponse> {
@@ -13,4 +18,13 @@ export const syntheticDataService = {
       GenerateSyntheticDataRequest
     >("/synthetic-data/generate", payload);
   },
+
+  async generateArchive(payload: GenerateArchiveRequest): Promise<Blob> {
+    return apiClient.postBlob<GenerateArchiveRequest>(
+      "/file-generation/generate-archive",
+      payload,
+    );
+  },
 };
+
+export default syntheticDataService;

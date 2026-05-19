@@ -7,7 +7,7 @@ import type {
   DocumentDetails,
   DocumentListItem,
 } from "services/documents/typing";
-import { syntheticDataService } from "services/synthetic";
+import syntheticDataService from "services/synthetic";
 import { useAppDispatch } from "store/hooks";
 import { setSyntheticDocuments } from "store/slices/syntheticDataSlice";
 
