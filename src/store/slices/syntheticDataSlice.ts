@@ -26,9 +26,15 @@ export const syntheticDataSlice = createSlice({
       state.documentId = action.payload.documentId;
       state.recordsCount = action.payload.recordsCount;
     },
+    resetSyntheticData: (state) => {
+      state.syntheticDocuments = initialState.syntheticDocuments;
+      state.documentId = initialState.documentId;
+      state.recordsCount = initialState.recordsCount;
+    },
   },
 });
 
-export const { setSyntheticData } = syntheticDataSlice.actions;
+export const { setSyntheticData, resetSyntheticData } =
+  syntheticDataSlice.actions;
 
 export default syntheticDataSlice.reducer;

@@ -9,7 +9,10 @@ import type {
 } from "services/documents/typing";
 import { syntheticDataService } from "services/synthetic";
 import { useAppDispatch } from "store/hooks";
-import { setSyntheticData } from "store/slices/syntheticDataSlice";
+import {
+  resetSyntheticData,
+  setSyntheticData,
+} from "store/slices/syntheticDataSlice";
 
 const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
@@ -39,6 +42,8 @@ export const useSyntheticGenerationSettings = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    dispatch(resetSyntheticData());
+
     const loadData = async () => {
       try {
         setIsLoadingDocument(true);
