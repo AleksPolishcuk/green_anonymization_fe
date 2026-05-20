@@ -110,7 +110,7 @@ export const useDeidOutput = () => {
     navigate(`/syntheticdata?documentId=${document.id}`);
   }, [document, safeOriginalText, safeEntities, navigate]);
 
-  const { downloadAsJson, downloadAsText, copyToClipboard } =
+  const { downloadAsJson, downloadAsText, copyToClipboard, downloadAsPdf } =
     useDownloadRedactedTextCopy();
 
   const handleDownloadJson = useCallback(() => {
@@ -124,6 +124,10 @@ export const useDeidOutput = () => {
   const handleCopyText = useCallback(() => {
     copyToClipboard(redactedSegments);
   }, [copyToClipboard, redactedSegments]);
+
+  const handleDownloadPdf = useCallback(() => {
+    downloadAsPdf(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsPdf, redactedSegments]);
 
   const handleSave = () => {
     if (!document?.id) {
@@ -154,5 +158,6 @@ export const useDeidOutput = () => {
     handleCopyText,
     handleGenerateSyntheticData,
     handleSave,
+    handleDownloadPdf,
   };
 };

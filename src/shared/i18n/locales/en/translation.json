@@ -325,7 +325,7 @@
       "subtitle": "Sensitive data removed",
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
-      "downloadTxt": "Download .txt",
+      "downloadPdf": "Download PDF",
       "saveButtonText": "Save changes",
       "redactedContentTooltip": "Redacted information"
     },

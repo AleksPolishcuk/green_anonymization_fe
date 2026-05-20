@@ -307,7 +307,7 @@
       "subtitle": "Sensible Daten entfernt",
       "hipaaCompliant": "HIPAA-sicher",
       "copy": "Kopieren",
-      "downloadTxt": ".txt herunterladen",
+      "downloadPdf": "PDF herunterladen",
       "saveButtonText": "Änderungen speichern",
       "redactedContentTooltip": "Geschwärzte Information"
     },

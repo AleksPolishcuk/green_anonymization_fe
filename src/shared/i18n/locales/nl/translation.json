@@ -307,7 +307,7 @@
       "subtitle": "Gevoelige gegevens verwijderd",
       "hipaaCompliant": "HIPAA-veilig",
       "copy": "Kopiëren",
-      "downloadTxt": ".txt downloaden",
+      "downloadPdf": "PDF downloaden",
       "saveButtonText": "Wijzigingen opslaan",
       "redactedContentTooltip": "Geredigeerde informatie"
     },

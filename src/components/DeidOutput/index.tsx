@@ -44,9 +44,9 @@ export default function DeidOutputSection() {
     originalSegments,
     redactedSegments,
     toggleEntity,
-    handleDownloadText,
     handleCopyText,
     handleSave,
+    handleDownloadPdf,
   } = useDeidOutput();
 
   return (
@@ -120,11 +120,11 @@ export default function DeidOutputSection() {
               {t("deIdentifiedOutput.copy")}
             </ActionButton>
 
-            <ActionButton onClick={handleDownloadText}>
+            <ActionButton onClick={handleDownloadPdf}>
               <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </DownloadIconWrapper>
-              {t("deIdentifiedOutput.downloadTxt")}
+              {t("deIdentifiedOutput.downloadPdf")}
             </ActionButton>
 
             <ActionButton onClick={handleSave}>

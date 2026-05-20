@@ -307,7 +307,7 @@
       "subtitle": "Dati sensibili rimossi",
       "hipaaCompliant": "Sicuro HIPAA",
       "copy": "Copia",
-      "downloadTxt": "Scarica .txt",
+      "downloadPdf": "Scarica PDF",
       "saveButtonText": "Salva modifiche",
       "redactedContentTooltip": "Informazione oscurata"
     },
