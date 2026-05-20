@@ -6,7 +6,9 @@ import Typography from "@mui/material/Typography";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 
 import {
+  MODAL_EASING_STANDARD,
   MODAL_PRIMARY_ALPHA,
+  MODAL_TRANSITION_DURATION,
   MODAL_UPGRADE_BTN_BORDER_RADIUS,
   MODAL_UPGRADE_BTN_HOVER_SHADOW,
   MODAL_UPGRADE_BTN_SHADOW,
@@ -25,7 +27,6 @@ import {
   PAYMENT_CARD_INACTIVE_OPACITY,
   PAYMENT_CARD_ICON_WIDTH,
   PAYMENT_CARD_ICON_WIDTH_MD,
-  PAYMENT_CARD_TRANSITION,
   PAYMENT_ERROR_BORDER_RADIUS,
   PAYMENT_FIELD_BORDER_RADIUS,
   PAYMENT_HEADER_PADDING_TOP,
@@ -116,7 +117,7 @@ export const CardIconWrapper = styled(Box)<{ $active?: boolean }>(
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: PAYMENT_CARD_TRANSITION,
+    transition: `opacity ${MODAL_TRANSITION_DURATION}s ${MODAL_EASING_STANDARD}`,
     opacity: $active ? 1 : PAYMENT_CARD_INACTIVE_OPACITY,
     overflow: "hidden",
     [theme.breakpoints.up("md")]: {

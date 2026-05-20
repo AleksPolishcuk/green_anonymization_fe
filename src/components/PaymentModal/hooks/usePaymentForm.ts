@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -58,7 +58,7 @@ const buildSchema = (t: (key: string) => string) =>
       .matches(CVV_REGEX, t("paymentModal.errors.cvvInvalid")),
   });
 
-export function detectCardType(cardNumber: string): CardType {
+function detectCardType(cardNumber: string): CardType {
   const digits = cardNumber.replace(/\s/g, "");
   if (VISA_PREFIX_REGEX.test(digits)) return "visa";
   if (MASTERCARD_PREFIX_REGEX.test(digits)) return "mastercard";
@@ -114,15 +114,20 @@ export function usePaymentForm(planId: string, onClose: () => void) {
 
   const cardNumber = useWatch({ control, name: "cardNumber" });
 
+  useEffect(() => {
+    if (!isSuccess) return;
+    const id = setTimeout(() => {
+      onClose();
+      navigate(headerRoutes.dashboard);
+    }, PAYMENT_SUCCESS_REDIRECT_DELAY);
+    return () => clearTimeout(id);
+  }, [isSuccess, onClose, navigate]);
+
   const onSubmit = async () => {
     setPaymentError(null);
     try {
       await dispatch(selectPlan({ planId })).unwrap();
       setIsSuccess(true);
-      setTimeout(() => {
-        onClose();
-        navigate(headerRoutes.dashboard);
-      }, PAYMENT_SUCCESS_REDIRECT_DELAY);
     } catch {
       setPaymentError(t("paymentModal.errors.paymentFailed"));
     }

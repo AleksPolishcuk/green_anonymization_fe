@@ -58,11 +58,11 @@ export const StyledDialog = styled(Dialog)<{ $wide?: boolean }>(({
       borderRadius: MODAL_BORDER_RADIUS,
       overflow: "hidden",
       backdropFilter: MODAL_PAPER_BLUR,
+      WebkitBackdropFilter: MODAL_PAPER_BLUR,
       maxWidth: $wide ? MODAL_MAX_WIDTH_WIDE : MODAL_MAX_WIDTH,
       [theme.breakpoints.down("sm")]: {
         maxWidth: MODAL_MAX_WIDTH,
       },
-      WebkitBackdropFilter: MODAL_PAPER_BLUR,
       width: "100%",
       margin: theme.spacing(4),
       backgroundColor: isDark

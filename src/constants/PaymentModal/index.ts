@@ -1,5 +1,5 @@
 export const PAYMENT_CARD_NUMBER_LENGTH = 16;
-export const PAYMENT_CARD_NUMBER_MAX_INPUT = 19;
+export const PAYMENT_CARD_NUMBER_MAX_INPUT = 19; // 16 digits + 3 spaces
 export const PAYMENT_CVV_MAX_LENGTH = 4;
 export const PAYMENT_EXPIRY_DIGITS = 4;
 export const PAYMENT_EXPIRY_MAX_LENGTH = 5;
@@ -23,7 +23,6 @@ export const PAYMENT_CARD_ICON_BG_ALPHA_LIGHT_INACTIVE = 0.7;
 export const PAYMENT_BUTTON_MARGIN_TOP = 7;
 export const PAYMENT_BUTTON_MARGIN_TOP_MD = 10;
 export const PAYMENT_BUTTON_DISABLED_OPACITY = 0.6;
-export const PAYMENT_CARD_TRANSITION = "opacity 0.2s ease";
 export const PAYMENT_CARD_INACTIVE_OPACITY = 0.45;
 
 export const CARD_NUMBER_REGEX = /^\d{16}$/;

@@ -37,7 +37,7 @@ export function usePricingCard(plan: PricingPlan) {
     (subscription === null ||
       subscription.plan.name.toLowerCase() === FREE_PLAN_ID);
 
-  const isDisabled = isCurrent || isFreeCurrent || selectLoading;
+  const isDisabled = isCurrent || isFreeCurrent || selectLoading || !apiPlan;
 
   const ctaLabel =
     isFreeCurrent || isCurrent
@@ -60,9 +60,7 @@ export function usePricingCard(plan: PricingPlan) {
       } catch {
         return;
       }
-      return;
     }
-    navigate(headerRoutes.dashboard);
   };
 
   const handleClosePaymentModal = () => setPaymentModalOpen(false);
