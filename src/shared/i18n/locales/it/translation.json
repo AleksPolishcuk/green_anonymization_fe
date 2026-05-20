@@ -433,8 +433,7 @@
       "unlimitedDocs": "Documenti illimitati",
       "advancedDeid": "De-identificazione avanzata",
       "customRules": "Regole di redazione personalizzate",
-      "batchProcessing": "Elaborazione in batch",
-      "auditLogs": "Registri di audit e cronologia attività",
+      "syntheticData": "Genera dati sintetici",
       "prioritySupport": "Supporto prioritario"
     },
     "currentPlan": "Piano Attuale",
@@ -445,9 +444,7 @@
     "message": "Hai utilizzato tutti i {{limit}} documenti di oggi.",
     "upgrade": "Passa a Pro",
     "close": "Chiudi",
-    "resetToday": "Il tuo limite si rinnova oggi alle {{time}}",
-    "resetTomorrow": "Il tuo limite si rinnova domani alle {{time}}",
-    "resetFallback": "Il tuo limite si rinnova domani"
+    "resetFallback": "Il tuo limite si rinnova domani."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Dataset generato",
@@ -464,6 +461,13 @@
     "subtitle": "Genera dati clinici realistici ma completamente sintetici per test e sviluppo"
   },
   "common": {
+    "close": "Chiudi"
+  },
+  "proFeature": {
+    "title": "Funzione Pro",
+    "customRules": "Le regole di redazione personalizzate sono disponibili nel piano Pro. Effettua l'upgrade per selezionare e deselezionare singole entità.",
+    "syntheticData": "La generazione di dati sintetici è disponibile nel piano Pro. Effettua l'upgrade per generare dataset sintetici realistici.",
+    "upgrade": "Passa a Pro",
     "close": "Chiudi"
   }
 }

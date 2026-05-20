@@ -4,5 +4,7 @@ import SyntheticDataGeneratedDataset from "./syntheticDataGeneratedDataset";
 export default function SyntheticDataContents() {
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
 
-  return <>{syntheticDocuments && <SyntheticDataGeneratedDataset />}</>;
+  return (
+    <>{syntheticDocuments?.length > 0 && <SyntheticDataGeneratedDataset />}</>
+  );
 }

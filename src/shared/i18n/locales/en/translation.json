@@ -446,8 +446,7 @@
       "unlimitedDocs": "Unlimited documents",
       "advancedDeid": "Advanced de-identification",
       "customRules": "Custom redaction rules",
-      "batchProcessing": "Batch processing",
-      "auditLogs": "Audit logs & activity history",
+      "syntheticData": "Generate Synthetic Data",
       "prioritySupport": "Priority support"
     },
     "currentPlan": "Current Plan",
@@ -458,9 +457,7 @@
     "message": "You’ve used all {{limit}} documents for today.",
     "upgrade": "Upgrade to Pro",
     "close": "Close",
-    "resetToday": "Your limit resets today at {{time}}",
-    "resetTomorrow": "Your limit resets tomorrow at {{time}}",
-    "resetFallback": "Your limit resets tomorrow"
+    "resetFallback": "Your limit resets tomorrow."
   },
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
@@ -533,6 +530,13 @@
     "subtitle": "Generate realistic but completely synthetic clinical data for testing and development"
   },
   "common": {
+    "close": "Close"
+  },
+  "proFeature": {
+    "title": "Pro Feature",
+    "customRules": "Custom redaction rules are available on the Pro plan. Upgrade to enable selecting and deselecting individual entities.",
+    "syntheticData": "Synthetic Data Generation is available on the Pro plan. Upgrade to generate realistic synthetic datasets from your de-identified documents.",
+    "upgrade": "Upgrade to Pro",
     "close": "Close"
   }
 }

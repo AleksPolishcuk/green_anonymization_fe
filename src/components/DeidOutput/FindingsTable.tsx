@@ -13,6 +13,8 @@ import {
   headerSpriteRef,
 } from "constants/MainPages";
 import { BaseModal } from "components/BaseModal";
+import { ProFeatureModal } from "components/ProFeatureModal";
+import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
 import { Loader } from "shared/ui/Loader";
 import type { Entity } from "store/types/document";
 
@@ -55,11 +57,19 @@ export const FindingsTable = ({
 }: FindingsTableProps) => {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
   const [expanded, setExpanded] = useState(false);
+  const [proModalOpen, setProModalOpen] = useState(false);
   const [pendingDeselectId, setPendingDeselectId] = useState<string | null>(
     null,
   );
+  const { hasCustomRules } = useFeatureAccess();
+
+  const handleProModalClose = () => setProModalOpen(false);
 
   const handleToggle = (entity: Entity) => {
+    if (!hasCustomRules) {
+      setProModalOpen(true);
+      return;
+    }
     if (entity.selected && !localStorage.getItem(DESELECT_CONFIRM_SHOWN_KEY)) {
       setPendingDeselectId(entity.id);
       return;
@@ -90,6 +100,11 @@ export const FindingsTable = ({
 
   return (
     <>
+      <ProFeatureModal
+        open={proModalOpen}
+        onClose={handleProModalClose}
+        messageKey="customRules"
+      />
       <TableCard>
         <TableHeader onClick={() => setExpanded((prev) => !prev)}>
           <TableHeaderLeft>

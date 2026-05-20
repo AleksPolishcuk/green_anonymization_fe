@@ -1,4 +1,13 @@
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { AutoAwesomeOutlined } from "@mui/icons-material";
+
+import { headerRoutes } from "constants/MainPages";
+import { ProFeatureModal } from "components/ProFeatureModal";
+import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
+import SyntheticDataContents from "components/SyntheticDataContents";
+import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
+
 import {
   AIPoweredBadge,
   HeaderDescription,
@@ -7,12 +16,24 @@ import {
   PageHeader,
   PageRoot,
 } from "./styles";
-import { useTranslation } from "react-i18next";
-import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
-import SyntheticDataContents from "components/SyntheticDataContents";
 
 export default function SyntheticDataPage() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { hasSyntheticData } = useFeatureAccess();
+
+  const handleModalClose = () => navigate(headerRoutes.dashboard);
+
+  if (!hasSyntheticData) {
+    return (
+      <ProFeatureModal
+        open
+        onClose={handleModalClose}
+        messageKey="syntheticData"
+      />
+    );
+  }
+
   return (
     <PageRoot>
       <PageHeader>
@@ -23,7 +44,7 @@ export default function SyntheticDataPage() {
           <AIPoweredBadge
             icon={<AutoAwesomeOutlined />}
             label={t("syntheticData.header.badge")}
-          ></AIPoweredBadge>
+          />
         </HeaderTopRow>
 
         <HeaderDescription>
