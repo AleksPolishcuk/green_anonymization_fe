@@ -11,6 +11,7 @@ import {
 } from "./analysisStyles";
 import { FindingsTable } from "./FindingsTable";
 import { useDeidOutput } from "./hooks/useDeidOutput";
+import { useChangeDetection } from "shared/hooks/useChangeDetection";
 import {
   DeidOutputSectionCard,
   DeidOutputSectionRoot,
@@ -48,6 +49,16 @@ export default function DeidOutputSection() {
     handleSave,
     handleDownloadPdf,
   } = useDeidOutput();
+
+  const { hasChanges, resetChanges } = useChangeDetection({
+    piiEntities,
+    selectedCount,
+  });
+
+  const handleSaveClick = () => {
+    handleSave();
+    resetChanges();
+  };
 
   return (
     <DeidOutputSectionRoot>
@@ -127,7 +138,7 @@ export default function DeidOutputSection() {
               {t("deIdentifiedOutput.downloadPdf")}
             </ActionButton>
 
-            <ActionButton onClick={handleSave}>
+            <ActionButton onClick={handleSaveClick} disabled={!hasChanges}>
               {t("deIdentifiedOutput.saveButtonText")}
             </ActionButton>
           </ActionButtonsContainer>
