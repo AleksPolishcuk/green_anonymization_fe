@@ -203,3 +203,11 @@ export const ActionButtonsContainer = styled(Box)(({ theme }) => ({
     padding: 0,
   },
 }));
+
+export const LoaderRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  transform: "scale(0.5)",
+  padding: theme.spacing(4),
+}));
