@@ -3,9 +3,17 @@ import { styled } from "@mui/material/styles";
 
 export const PageHeaderRoot = styled(Box)(({ theme }) => ({
   position: "relative",
-  padding: theme.spacing(6, 8),
+  padding: theme.spacing(3, 2),
   borderBottom: `1px solid ${theme.palette.divider}`,
   backgroundColor: theme.palette.background.default,
+
+  [theme.breakpoints.up("sm")]: {
+    padding: theme.spacing(4, 3),
+  },
+
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(6, 8),
+  },
 }));
 
 export const PageHeaderTitle = styled(Typography)(({ theme }) => ({
