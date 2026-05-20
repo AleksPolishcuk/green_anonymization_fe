@@ -174,12 +174,4 @@ export const apiClient = {
   delete<T>(path: string): Promise<T> {
     return request<T>(axiosInstance.delete(path));
   },
-
-  postBlob<D>(path: string, body: D): Promise<Blob> {
-    return request<Blob>(
-      axiosInstance.post(path, body, {
-        responseType: "blob",
-      }),
-    );
-  },
 };

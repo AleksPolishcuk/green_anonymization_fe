@@ -9,7 +9,6 @@ export type SyntheticEntity = {
 
 export type SyntheticDataDocument = {
   id: string;
-  syntheticText: string;
   entities: SyntheticEntity[];
 };
 

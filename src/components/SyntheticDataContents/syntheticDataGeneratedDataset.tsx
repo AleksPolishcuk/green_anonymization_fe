@@ -22,7 +22,6 @@ import {
 import { headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticGenerationSettings } from "components/SyntheticGenerationSettings/useSyntheticGenerationSettings";
-import useSyntheticDataGeneratedDataset from "./hooks/useSyntheticDataGeneratedDataset";
 
 export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {
@@ -32,7 +31,6 @@ export default function SyntheticDataGeneratedDataset() {
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
 
   const { handleGenerate } = useSyntheticGenerationSettings();
-  const { handleGenerateArchive } = useSyntheticDataGeneratedDataset();
 
   return (
     <TableCard>
@@ -58,7 +56,7 @@ export default function SyntheticDataGeneratedDataset() {
               </ActionButtonIconWrapper>
               {t("regenerateDatasetButton")}
             </ActionButton>
-            <ActionButton onClick={handleGenerateArchive}>
+            <ActionButton>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </ActionButtonIconWrapper>
