@@ -26,6 +26,7 @@ import {
   SubNavItem,
   SubNavList,
   SubNavChevron,
+  SubNavStepLabel,
 } from "./styles";
 import { useAppSelector } from "store/hooks";
 import { logout } from "store/slices/authSlice";
@@ -139,7 +140,9 @@ export default function Sidebar() {
                       )}
                     />
                   </SubNavStepIcon>
-                  {t(DEID_STEP_LABELS[step])}
+                  <SubNavStepLabel $isMobileOpen={isMobileOpen}>
+                    {t(DEID_STEP_LABELS[step])}
+                  </SubNavStepLabel>
                 </SubNavItem>
               );
             })}

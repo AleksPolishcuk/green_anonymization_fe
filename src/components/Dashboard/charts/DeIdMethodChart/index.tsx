@@ -8,8 +8,8 @@ import {
   YAxis,
 } from "recharts";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+
+import { useResponsiveChartSizes } from "components/Dashboard/hooks/useResponsiveBarSize";
 
 import {
   ACTIVE_GRADIENT_END,
@@ -20,7 +20,9 @@ import {
   CHART_GRID_DASHARRAY,
   CHART_GRID_STROKE,
   CHART_GRID_STROKE_WIDTH,
+  CHART_TICK_COUNT,
   CHART_X_TICK_HEIGHT,
+  CHART_X_TICK_HEIGHT_DESKTOP,
   ENTITY_DE_ID_CHART_MARGIN,
   tickStyle,
 } from "constants/DashboardPage";
@@ -47,8 +49,7 @@ type Props = { data: DeIdMethodData[] };
 export const DeIdMethodChart = ({ data }: Props) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const { barSize, isDesktop } = useResponsiveChartSizes();
 
   return (
     <ChartCard>
@@ -62,7 +63,7 @@ export const DeIdMethodChart = ({ data }: Props) => {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={data}
-              margin={{ ...ENTITY_DE_ID_CHART_MARGIN }}
+              margin={ENTITY_DE_ID_CHART_MARGIN}
               barCategoryGap={CHART_BAR_CATEGORY_GAP}
               onMouseLeave={() => setActiveIndex(null)}
             >
@@ -99,7 +100,9 @@ export const DeIdMethodChart = ({ data }: Props) => {
               <XAxis
                 dataKey="method"
                 tick={isDesktop ? <HorizontalXTick /> : <AngledXTick />}
-                height={isDesktop ? 30 : CHART_X_TICK_HEIGHT}
+                height={
+                  isDesktop ? CHART_X_TICK_HEIGHT_DESKTOP : CHART_X_TICK_HEIGHT
+                }
                 interval={0}
                 axisLine={false}
                 tickLine={false}
@@ -108,11 +111,12 @@ export const DeIdMethodChart = ({ data }: Props) => {
                 tick={tickStyle}
                 axisLine={false}
                 tickLine={false}
-                tickCount={5}
+                tickCount={CHART_TICK_COUNT}
               />
 
               <Bar
                 dataKey="count"
+                barSize={barSize}
                 shape={(shapeProps: unknown) => (
                   <RoundedBar
                     {...(shapeProps as RoundedBarProps)}

@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Ausgewählt",
         "deselected": "Abgewählt"
+      },
+      "deselectConfirm": {
+        "title": "Anonymisierung für diese Entität überspringen?",
+        "body": "Diese Entität wird nicht anonymisiert und erscheint als Klartext im de-identifizierten Ergebnis. Das Offenlassen sensibler Daten kann zu einem Compliance-Verstoß gemäß dem ausgewählten Framework führen.",
+        "confirm": "Bestätigen",
+        "cancel": "Abbrechen"
       }
+    },
+    "syntheticCta": {
+      "title": "Bereit, synthetische Daten zu generieren?",
+      "subtitle": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
+      "button": "Synthetische Daten generieren"
     }
   },
   "notFound": {
@@ -389,7 +400,54 @@
         "newDeId": "Neue De-Identifikation →"
       },
       "emptyState": "Ihre Statistiken erscheinen hier bald"
+    },
+    "usage": {
+      "label": "Dokumente heute",
+      "upgrade": "Auf Pro upgraden →"
     }
+  },
+  "pricingPage": {
+    "title": "Preise",
+    "subtitle": "Einfache, transparente Preise für die sichere De-Identifikation sensibler Daten in Dokumenten.",
+    "perMonth": "/Monat",
+    "mostPopular": "Beliebteste",
+    "plans": {
+      "free": {
+        "name": "Kostenlos",
+        "description": "Für Einzelpersonen zum Einstieg",
+        "badge": "5 Dokumente zur Identifizierung",
+        "cta": "Jetzt starten"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Für Fachleute und Teams",
+        "badge": "Unbegrenzte Dokumente",
+        "cta": "Jetzt starten"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Bis zu 5 Dokumente/Tag",
+      "automatedPii": "Automatische PII-Erkennung",
+      "standardDeid": "Standard-De-Identifikation",
+      "basicReport": "Grundlegender Bericht",
+      "unlimitedDocs": "Unbegrenzte Dokumente",
+      "advancedDeid": "Erweiterte De-Identifikation",
+      "customRules": "Benutzerdefinierte Schwärzungsregeln",
+      "batchProcessing": "Stapelverarbeitung",
+      "auditLogs": "Prüfprotokolle & Aktivitätsverlauf",
+      "prioritySupport": "Prioritäts-Support"
+    },
+    "currentPlan": "Aktueller Plan",
+    "activePlan": "Aktiv"
+  },
+  "limitReached": {
+    "title": "Tageslimit erreicht",
+    "message": "Sie haben alle {{limit}} Dokumente für heute verwendet.",
+    "upgrade": "Auf Pro upgraden",
+    "close": "Schließen",
+    "resetToday": "Ihr Limit wird heute um {{time}} Uhr erneuert",
+    "resetTomorrow": "Ihr Limit wird morgen um {{time}} Uhr erneuert",
+    "resetFallback": "Ihr Limit wird morgen erneuert"
   },
   "syntheticDataGeneratedDataset": {
     "title": "Generierter Datensatz",
@@ -404,5 +462,8 @@
   "syntheticDataHeader": {
     "title": "Synthetischer Datengenerator",
     "subtitle": "Generieren Sie realistische, aber vollständig synthetische klinische Daten für Tests und Entwicklung"
+  },
+  "common": {
+    "close": "Schließen"
   }
 }

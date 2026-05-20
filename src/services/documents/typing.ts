@@ -30,3 +30,7 @@ export type DocumentDetails = DocumentListItem & {
 export type UpdateDocumentRequest = {
   text: string;
 };
+
+export type UpdateEntitySelectionsRequest = {
+  selectedEntityIds: string[];
+};

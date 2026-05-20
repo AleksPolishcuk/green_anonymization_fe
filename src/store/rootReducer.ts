@@ -3,6 +3,7 @@ import authReducer from "store/slices/authSlice";
 import themeReducer from "store/slices/themeSlice";
 import documentReducer from "store/slices/documentSlice";
 import dashboardReducer from "store/slices/dashboardSlice";
+import pricingReducer from "store/slices/pricingSlice";
 import syntheticDataReducer from "store/slices/syntheticDataSlice";
 
 export const rootReducer = combineReducers({
@@ -10,5 +11,6 @@ export const rootReducer = combineReducers({
   theme: themeReducer,
   document: documentReducer,
   dashboard: dashboardReducer,
+  pricing: pricingReducer,
   syntheticData: syntheticDataReducer,
 });

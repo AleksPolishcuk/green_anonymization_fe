@@ -25,6 +25,7 @@ import {
   DONUT_START_ANGLE,
   HIPAA_FRAMEWORK_KEY,
   HIPAA_GRADIENT_END,
+  HIPAA_GRADIENT_END_OPACITY,
   HIPAA_GRADIENT_ID,
 } from "constants/DashboardPage";
 import type { ComplianceFrameworkData } from "store/types/dashboard";
@@ -71,11 +72,7 @@ const ActiveSector = ({ cx = 0, cy = 0, ...props }: SectorProps) => (
 const CustomTooltip = ({ active, payload }: TooltipProps<number, string>) => {
   if (!active || !payload?.length) return null;
   const entry = payload[0];
-  return (
-    <TooltipDark>
-      {entry.name}: {entry.value}%
-    </TooltipDark>
-  );
+  return <TooltipDark>{entry.value}%</TooltipDark>;
 };
 
 type Props = {
@@ -113,7 +110,7 @@ export const ComplianceDonut = ({ data }: Props) => {
                   <stop
                     offset="100%"
                     stopColor={HIPAA_GRADIENT_END}
-                    stopOpacity={0.6}
+                    stopOpacity={HIPAA_GRADIENT_END_OPACITY}
                   />
                 </linearGradient>
               </defs>

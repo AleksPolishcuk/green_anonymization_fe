@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Geselecteerd",
         "deselected": "Gedeselecteerd"
+      },
+      "deselectConfirm": {
+        "title": "Anonimisering voor deze entiteit overslaan?",
+        "body": "Deze entiteit wordt niet geanonimiseerd en verschijnt als leesbare tekst in de de-geïdentificeerde uitvoer. Het ongemaskerd laten van gevoelige gegevens kan leiden tot een complianceschending onder het geselecteerde framework.",
+        "confirm": "Bevestigen",
+        "cancel": "Annuleren"
       }
+    },
+    "syntheticCta": {
+      "title": "Klaar om synthetische gegevens te genereren?",
+      "subtitle": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
+      "button": "Synthetische gegevens genereren"
     }
   },
   "notFound": {
@@ -389,7 +400,54 @@
         "newDeId": "Nieuwe de-identificatie →"
       },
       "emptyState": "Uw statistieken verschijnen hier binnenkort"
+    },
+    "usage": {
+      "label": "Documenten vandaag",
+      "upgrade": "Upgrade naar Pro →"
     }
+  },
+  "pricingPage": {
+    "title": "Prijzen",
+    "subtitle": "Eenvoudige, transparante prijzen voor veilige de-identificatie van gevoelige persoonsgegevens in documenten.",
+    "perMonth": "/maand",
+    "mostPopular": "Meest Populair",
+    "plans": {
+      "free": {
+        "name": "Gratis",
+        "description": "Voor beginners",
+        "badge": "5 documenten voor identificatie",
+        "cta": "Aan de slag"
+      },
+      "pro": {
+        "name": "Pro",
+        "description": "Voor professionals en teams",
+        "badge": "Onbeperkte documenten",
+        "cta": "Aan de slag"
+      }
+    },
+    "features": {
+      "upTo5Docs": "Tot 5 documenten/dag",
+      "automatedPii": "Automatische PII-detectie",
+      "standardDeid": "Standaard de-identificatie",
+      "basicReport": "Basisrapport",
+      "unlimitedDocs": "Onbeperkte documenten",
+      "advancedDeid": "Geavanceerde de-identificatie",
+      "customRules": "Aangepaste redactieregels",
+      "batchProcessing": "Batchverwerking",
+      "auditLogs": "Auditlogboeken & activiteitsgeschiedenis",
+      "prioritySupport": "Prioriteitsondersteuning"
+    },
+    "currentPlan": "Huidig Plan",
+    "activePlan": "Actief"
+  },
+  "limitReached": {
+    "title": "Daglimiet bereikt",
+    "message": "U heeft alle {{limit}} documenten van vandaag gebruikt.",
+    "upgrade": "Upgrade naar Pro",
+    "close": "Sluiten",
+    "resetToday": "Uw limiet wordt vandaag om {{time}} vernieuwd",
+    "resetTomorrow": "Uw limiet wordt morgen om {{time}} vernieuwd",
+    "resetFallback": "Uw limiet wordt morgen vernieuwd"
   },
   "syntheticDataGeneratedDataset": {
     "title": "Gegenereerde dataset",
@@ -404,5 +462,8 @@
   "syntheticDataHeader": {
     "title": "Generator voor synthetische gegevens",
     "subtitle": "Genereer realistische maar volledig synthetische klinische gegevens voor testen en ontwikkeling"
+  },
+  "common": {
+    "close": "Sluiten"
   }
 }
