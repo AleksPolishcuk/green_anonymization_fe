@@ -26,27 +26,38 @@ export const HeaderCard = styled("div")(({ theme }) => {
 
   return {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 100,
-    padding: theme.spacing(5),
+    flexDirection: "column",
+    alignItems: "flex-start",
+    height: "auto",
+    gap: theme.spacing(3),
+    padding: theme.spacing(3),
     borderRadius: theme.shape.borderRadius,
     background: colors.analysisHeaderBg,
     border: `1px solid ${colors.analysisHeaderBorder}`,
 
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "flex-start",
-      height: "auto",
-      gap: theme.spacing(4),
+    "@media (min-width: 1024px)": {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      height: 100,
+      padding: theme.spacing(5),
+      gap: 0,
     },
   };
 });
 
 export const HeaderTitle = styled(Typography)(({ theme }) => ({
-  fontFamily: theme.typography.h3.fontFamily,
-  fontSize: theme.typography.fontSize32,
-  fontWeight: theme.typography.fontWeightMedium,
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize18,
+  fontWeight: theme.typography.fontWeightBold,
+
+  [theme.breakpoints.up("md")]: {
+    fontSize: theme.typography.fontSize22,
+  },
+
+  "@media (min-width: 1024px)": {
+    fontSize: theme.typography.fontSize28,
+  },
 }));
 
 export const HeaderStats = styled(Typography)(({ theme }) => ({
@@ -61,15 +72,23 @@ export const AccuracyBadge = styled("span")(({ theme }) => {
   return {
     display: "flex",
     alignItems: "center",
+    alignSelf: "flex-start",
+    whiteSpace: "nowrap",
     gap: theme.spacing(1.5),
-    padding: theme.spacing(1.5, 4),
+    padding: theme.spacing(1.5, 3),
     borderRadius: theme.spacing(5),
     backgroundColor: cyan.bg,
     border: `1px solid ${cyan.border}`,
     color: cyan.color,
     fontFamily: theme.typography.fontFamily,
-    fontSize: theme.typography.fontSize14,
+    fontSize: theme.typography.fontSize12,
     fontWeight: theme.typography.fontWeightBold,
+
+    [theme.breakpoints.up("md")]: {
+      alignSelf: "center",
+      padding: theme.spacing(1.5, 4),
+      fontSize: theme.typography.fontSize14,
+    },
   };
 });
 
@@ -107,9 +126,13 @@ export const TableHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   height: 90,
-  padding: theme.spacing(0, 6),
+  padding: theme.spacing(0, 3),
   borderBottom: `1px solid ${theme.palette.background.softGray}`,
   cursor: "pointer",
+
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(0, 6),
+  },
 }));
 
 export const CollapseArrow = styled("div")<{ $expanded: boolean }>(
