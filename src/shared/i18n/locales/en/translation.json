@@ -538,5 +538,36 @@
     "syntheticData": "Synthetic Data Generation is available on the Pro plan. Upgrade to generate realistic synthetic datasets from your de-identified documents.",
     "upgrade": "Upgrade to Pro",
     "close": "Close"
+  },
+  "paymentModal": {
+    "title": "Complete your payment",
+    "subtitle": "Subscribe to Pro — {{price}}/month",
+    "cardholderName": "Cardholder name",
+    "cardholderNamePlaceholder": "John Doe",
+    "cardNumber": "Card number",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Expiry date",
+    "expiryPlaceholder": "MM/YY",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "We accept",
+    "payButton": "Pay {{price}}",
+    "processing": "Processing...",
+    "success": {
+      "title": "Payment successful!",
+      "message": "You are now on the Pro plan. Redirecting to dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 2 characters",
+      "cardRequired": "Card number is required",
+      "cardInvalid": "Card number must be 16 digits",
+      "expiryRequired": "Expiry date is required",
+      "expiryInvalid": "Invalid expiry date (MM/YY)",
+      "expiryExpired": "Card has expired",
+      "cvvRequired": "CVV is required",
+      "cvvInvalid": "CVV must be 3–4 digits",
+      "paymentFailed": "Payment failed. Please try again."
+    }
   }
 }

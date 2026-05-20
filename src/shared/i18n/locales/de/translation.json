@@ -469,5 +469,36 @@
     "syntheticData": "Synthetische Datengenerierung ist im Pro-Plan verfügbar. Upgraden Sie, um realistische synthetische Datensätze zu generieren.",
     "upgrade": "Auf Pro upgraden",
     "close": "Schließen"
+  },
+  "paymentModal": {
+    "title": "Zahlung abschließen",
+    "subtitle": "Pro-Abonnement — {{price}}/Monat",
+    "cardholderName": "Karteninhaber",
+    "cardholderNamePlaceholder": "Max Mustermann",
+    "cardNumber": "Kartennummer",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Ablaufdatum",
+    "expiryPlaceholder": "MM/JJ",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Wir akzeptieren",
+    "payButton": "{{price}} bezahlen",
+    "processing": "Wird verarbeitet...",
+    "success": {
+      "title": "Zahlung erfolgreich!",
+      "message": "Sie sind jetzt im Pro-Plan. Weiterleitung zum Dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Name ist erforderlich",
+      "nameMinLength": "Name muss mindestens 2 Zeichen lang sein",
+      "cardRequired": "Kartennummer ist erforderlich",
+      "cardInvalid": "Kartennummer muss 16 Ziffern haben",
+      "expiryRequired": "Ablaufdatum ist erforderlich",
+      "expiryInvalid": "Ungültiges Ablaufdatum (MM/JJ)",
+      "expiryExpired": "Karte ist abgelaufen",
+      "cvvRequired": "CVV ist erforderlich",
+      "cvvInvalid": "CVV muss 3–4 Ziffern haben",
+      "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    }
   }
 }

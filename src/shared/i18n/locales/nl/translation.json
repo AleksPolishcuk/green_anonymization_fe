@@ -469,5 +469,36 @@
     "syntheticData": "Synthetische datageneratie is beschikbaar in het Pro-abonnement. Upgrade om realistische synthetische datasets te genereren.",
     "upgrade": "Upgrade naar Pro",
     "close": "Sluiten"
+  },
+  "paymentModal": {
+    "title": "Betaling afronden",
+    "subtitle": "Pro-abonnement — {{price}}/maand",
+    "cardholderName": "Naam kaarthouder",
+    "cardholderNamePlaceholder": "Jan de Vries",
+    "cardNumber": "Kaartnummer",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Vervaldatum",
+    "expiryPlaceholder": "MM/JJ",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Wij accepteren",
+    "payButton": "Betaal {{price}}",
+    "processing": "Verwerken...",
+    "success": {
+      "title": "Betaling geslaagd!",
+      "message": "U heeft nu het Pro-abonnement. Doorsturen naar dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Naam is verplicht",
+      "nameMinLength": "Naam moet minimaal 2 tekens bevatten",
+      "cardRequired": "Kaartnummer is verplicht",
+      "cardInvalid": "Kaartnummer moet 16 cijfers bevatten",
+      "expiryRequired": "Vervaldatum is verplicht",
+      "expiryInvalid": "Ongeldige vervaldatum (MM/JJ)",
+      "expiryExpired": "Kaart is verlopen",
+      "cvvRequired": "CVV is verplicht",
+      "cvvInvalid": "CVV moet 3–4 cijfers bevatten",
+      "paymentFailed": "Betaling mislukt. Probeer het opnieuw."
+    }
   }
 }

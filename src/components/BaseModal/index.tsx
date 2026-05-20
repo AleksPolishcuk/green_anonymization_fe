@@ -12,6 +12,7 @@ type BaseModalProps = {
   children: ReactNode;
   maxWidth?: DialogProps["maxWidth"];
   closeLabel?: string;
+  wide?: boolean;
 };
 
 export const BaseModal = ({
@@ -20,11 +21,18 @@ export const BaseModal = ({
   children,
   maxWidth = "xs",
   closeLabel,
+  wide = false,
 }: BaseModalProps) => {
   const { t } = useTranslation();
 
   return (
-    <StyledDialog open={open} onClose={onClose} maxWidth={maxWidth} fullWidth>
+    <StyledDialog
+      open={open}
+      onClose={onClose}
+      maxWidth={maxWidth}
+      fullWidth
+      $wide={wide}
+    >
       <CloseButton
         onClick={onClose}
         aria-label={closeLabel ?? t("common.close")}
