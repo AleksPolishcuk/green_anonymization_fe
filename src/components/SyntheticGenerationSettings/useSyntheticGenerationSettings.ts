@@ -9,7 +9,7 @@ import type {
 } from "services/documents/typing";
 import { syntheticDataService } from "services/synthetic";
 import { useAppDispatch } from "store/hooks";
-import { setSyntheticDocuments } from "store/slices/syntheticDataSlice";
+import { setSyntheticData } from "store/slices/syntheticDataSlice";
 
 const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
@@ -93,7 +93,13 @@ export const useSyntheticGenerationSettings = () => {
         count: recordsCount,
       });
 
-      dispatch(setSyntheticDocuments(response.syntheticDocuments));
+      dispatch(
+        setSyntheticData({
+          syntheticDocuments: response.syntheticDocuments,
+          documentId: selectedDocument.id,
+          recordsCount,
+        }),
+      );
     } finally {
       setIsGenerating(false);
     }

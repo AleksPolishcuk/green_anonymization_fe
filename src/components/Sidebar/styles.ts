@@ -284,17 +284,31 @@ export const SubNavList = styled("ul", {
   listStyle: "none",
   margin: 0,
   padding: 0,
-  paddingLeft: theme.spacing(9),
+  paddingLeft: $isMobileOpen ? theme.spacing(9) : theme.spacing(2),
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(0.5),
+  transition: "padding-left 0.25s ease",
+
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: theme.spacing(9),
+  },
+}));
+
+export const SubNavStepLabel = styled("span", {
+  shouldForwardProp: (prop) => prop !== "$isMobileOpen",
+})<{ $isMobileOpen: boolean }>(({ theme, $isMobileOpen }) => ({
   opacity: $isMobileOpen ? 1 : 0,
   visibility: $isMobileOpen ? "visible" : "hidden",
-  transition: "opacity 0.2s ease, visibility 0.2s ease",
+  maxWidth: $isMobileOpen ? "200px" : 0,
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  transition: "opacity 0.2s ease, visibility 0.2s ease, max-width 0.25s ease",
 
   [theme.breakpoints.up("md")]: {
     opacity: 1,
     visibility: "visible",
+    maxWidth: "200px",
   },
 }));
 

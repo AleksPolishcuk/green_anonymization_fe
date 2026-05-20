@@ -8,3 +8,9 @@ export type GenerateSyntheticDataRequest = {
 export type GenerateSyntheticDataResponse = {
   syntheticDocuments: SyntheticDataDocument[];
 };
+
+export type DownloadSyntheticDataRequest = {
+  documentId: string;
+  anonymizedTexts: string[];
+  extension: "txt" | "pdf" | "docx";
+};

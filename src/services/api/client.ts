@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import type {
   AxiosInstance,
+  AxiosRequestConfig,
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
@@ -151,7 +152,7 @@ export const apiClient = {
     return request<T>(axiosInstance.get(path));
   },
 
-  post<T, D>(path: string, body: D): Promise<T> {
+  post<T, D>(path: string, body: D, config?: AxiosRequestConfig): Promise<T> {
     const isFormData = body instanceof FormData;
 
     return request<T>(
@@ -159,6 +160,7 @@ export const apiClient = {
         headers: isFormData
           ? { "Content-Type": "multipart/form-data" }
           : undefined,
+        ...config,
       }),
     );
   },

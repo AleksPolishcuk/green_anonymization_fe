@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Ausgewählt",
         "deselected": "Abgewählt"
+      },
+      "deselectConfirm": {
+        "title": "Anonymisierung für diese Entität überspringen?",
+        "body": "Diese Entität wird nicht anonymisiert und erscheint als Klartext im de-identifizierten Ergebnis. Das Offenlassen sensibler Daten kann zu einem Compliance-Verstoß gemäß dem ausgewählten Framework führen.",
+        "confirm": "Bestätigen",
+        "cancel": "Abbrechen"
       }
+    },
+    "syntheticCta": {
+      "title": "Bereit, synthetische Daten zu generieren?",
+      "subtitle": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
+      "button": "Synthetische Daten generieren"
     }
   },
   "notFound": {

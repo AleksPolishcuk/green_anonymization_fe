@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Selezionato",
         "deselected": "Deselezionato"
+      },
+      "deselectConfirm": {
+        "title": "Saltare l'anonimizzazione per questa entità?",
+        "body": "Questa entità non verrà anonimizzata e apparirà come testo normale nel risultato de-identificato. Lasciare dati sensibili non mascherati può costituire una violazione del framework di conformità selezionato.",
+        "confirm": "Conferma",
+        "cancel": "Annulla"
       }
+    },
+    "syntheticCta": {
+      "title": "Pronto a generare dati sintetici?",
+      "subtitle": "Usa i dati de-identificati per creare dataset sintetici realistici per test e sviluppo",
+      "button": "Genera dati sintetici"
     }
   },
   "notFound": {
