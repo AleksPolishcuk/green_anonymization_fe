@@ -433,8 +433,7 @@
       "unlimitedDocs": "Documents illimités",
       "advancedDeid": "Dé-identification avancée",
       "customRules": "Règles de rédaction personnalisées",
-      "batchProcessing": "Traitement par lots",
-      "auditLogs": "Journaux d'audit et historique",
+      "syntheticData": "Générer des données synthétiques",
       "prioritySupport": "Support prioritaire"
     },
     "currentPlan": "Plan Actuel",
@@ -445,9 +444,7 @@
     "message": "Vous avez utilisé les {{limit}} documents d'aujourd'hui.",
     "upgrade": "Passer à Pro",
     "close": "Fermer",
-    "resetToday": "Votre limite se renouvelle aujourd'hui à {{time}}",
-    "resetTomorrow": "Votre limite se renouvelle demain à {{time}}",
-    "resetFallback": "Votre limite se renouvelle demain"
+    "resetFallback": "Votre limite se renouvelle demain."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Ensemble de données généré",
@@ -464,6 +461,13 @@
     "subtitle": "Générez des données cliniques réalistes mais entièrement synthétiques pour les tests et le développement"
   },
   "common": {
+    "close": "Fermer"
+  },
+  "proFeature": {
+    "title": "Fonctionnalité Pro",
+    "customRules": "Les règles de rédaction personnalisées sont disponibles dans le plan Pro. Mettez à niveau pour sélectionner et désélectionner des entités individuelles.",
+    "syntheticData": "La génération de données synthétiques est disponible dans le plan Pro. Mettez à niveau pour générer des ensembles de données synthétiques réalistes.",
+    "upgrade": "Passer à Pro",
     "close": "Fermer"
   }
 }
