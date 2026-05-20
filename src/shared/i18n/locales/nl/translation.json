@@ -433,7 +433,8 @@
       "unlimitedDocs": "Onbeperkte documenten",
       "advancedDeid": "Geavanceerde de-identificatie",
       "customRules": "Aangepaste redactieregels",
-      "syntheticData": "Synthetische gegevens genereren",
+      "syntheticDataFree": "Synthetische gegevens (tot 5 records)",
+      "syntheticDataPro": "Synthetische gegevens (tot 500 records)",
       "prioritySupport": "Prioriteitsondersteuning"
     },
     "currentPlan": "Huidig Plan",
@@ -466,7 +467,7 @@
   "proFeature": {
     "title": "Pro-functie",
     "customRules": "Aangepaste redactieregels zijn beschikbaar in het Pro-abonnement. Upgrade om individuele entiteiten te selecteren en deselecteren.",
-    "syntheticData": "Synthetische datageneratie is beschikbaar in het Pro-abonnement. Upgrade om realistische synthetische datasets te genereren.",
+    "syntheticData": "Meer dan 5 records genereren vereist het Pro-abonnement. Upgrade om volledige datageneratie te ontgrendelen.",
     "upgrade": "Upgrade naar Pro",
     "close": "Sluiten"
   },

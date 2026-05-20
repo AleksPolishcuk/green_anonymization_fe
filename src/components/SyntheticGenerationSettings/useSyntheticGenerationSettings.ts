@@ -2,26 +2,34 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { documentsService } from "services/documents";
-
-import type {
-  DocumentDetails,
-  DocumentListItem,
-} from "services/documents/typing";
 import { syntheticDataService } from "services/synthetic";
+import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
 import { useAppDispatch } from "store/hooks";
 import {
   resetSyntheticData,
   setSyntheticData,
 } from "store/slices/syntheticDataSlice";
 
+import type {
+  DocumentDetails,
+  DocumentListItem,
+} from "services/documents/typing";
+
 const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
-const MAX_RECORDS_COUNT = 10000;
+const MAX_RECORDS_COUNT_FREE = 5;
+const MAX_RECORDS_COUNT_PRO = 500;
 
 export const useSyntheticGenerationSettings = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
+  const { hasSyntheticData } = useFeatureAccess();
   const [isGenerating, setIsGenerating] = useState(false);
+  const [proModalOpen, setProModalOpen] = useState(false);
+
+  const maxRecordsCount = hasSyntheticData
+    ? MAX_RECORDS_COUNT_PRO
+    : MAX_RECORDS_COUNT_FREE;
 
   const documentId = useMemo(
     () => searchParams.get("documentId"),
@@ -29,16 +37,13 @@ export const useSyntheticGenerationSettings = () => {
   );
 
   const [documents, setDocuments] = useState<DocumentListItem[]>([]);
-
   const [selectedDocument, setSelectedDocument] =
     useState<DocumentDetails | null>(null);
-
-  const [recordsCount, setRecordsCount] = useState(DEFAULT_RECORDS_COUNT);
-
+  const [recordsCount, setRecordsCount] = useState(
+    Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount),
+  );
   const [isPreviewExpanded, setIsPreviewExpanded] = useState(false);
-
   const [isLoadingDocument, setIsLoadingDocument] = useState(false);
-
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,18 +56,15 @@ export const useSyntheticGenerationSettings = () => {
 
         if (documentId) {
           setIsPreviewExpanded(false);
-
           const response = await documentsService.getDocumentById(documentId);
           setSelectedDocument(response);
         } else {
           setSelectedDocument(null);
           setIsPreviewExpanded(false);
-
           const response = await documentsService.getDocuments({
             page: 1,
             limit: 20,
           });
-
           setDocuments(response.items);
         }
       } catch {
@@ -84,8 +86,14 @@ export const useSyntheticGenerationSettings = () => {
   };
 
   const handleIncrease = () => {
-    setRecordsCount((prev) => Math.min(MAX_RECORDS_COUNT, prev + 1));
+    if (recordsCount >= maxRecordsCount && !hasSyntheticData) {
+      setProModalOpen(true);
+      return;
+    }
+    setRecordsCount((prev) => Math.min(maxRecordsCount, prev + 1));
   };
+
+  const handleProModalClose = () => setProModalOpen(false);
 
   const handleGenerate = async () => {
     if (!selectedDocument) return;
@@ -114,15 +122,17 @@ export const useSyntheticGenerationSettings = () => {
     documents,
     selectedDocument,
     recordsCount,
+    maxRecordsCount,
     isPreviewExpanded,
     isLoadingDocument,
     isGenerating,
+    proModalOpen,
     error,
     setIsPreviewExpanded,
-    setRecordsCount,
     handleSelectDocument,
     handleDecrease,
     handleIncrease,
+    handleProModalClose,
     handleGenerate,
   };
 };

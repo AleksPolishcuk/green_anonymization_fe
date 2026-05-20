@@ -433,7 +433,8 @@
       "unlimitedDocs": "Documenti illimitati",
       "advancedDeid": "De-identificazione avanzata",
       "customRules": "Regole di redazione personalizzate",
-      "syntheticData": "Genera dati sintetici",
+      "syntheticDataFree": "Dati sintetici (fino a 5 record)",
+      "syntheticDataPro": "Dati sintetici (fino a 500 record)",
       "prioritySupport": "Supporto prioritario"
     },
     "currentPlan": "Piano Attuale",
@@ -466,7 +467,7 @@
   "proFeature": {
     "title": "Funzione Pro",
     "customRules": "Le regole di redazione personalizzate sono disponibili nel piano Pro. Effettua l'upgrade per selezionare e deselezionare singole entità.",
-    "syntheticData": "La generazione di dati sintetici è disponibile nel piano Pro. Effettua l'upgrade per generare dataset sintetici realistici.",
+    "syntheticData": "Generare più di 5 record richiede il piano Pro. Effettua l'upgrade per sbloccare la generazione completa.",
     "upgrade": "Passa a Pro",
     "close": "Chiudi"
   },
