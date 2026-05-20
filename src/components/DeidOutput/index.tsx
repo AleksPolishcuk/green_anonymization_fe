@@ -11,6 +11,7 @@ import {
 } from "./analysisStyles";
 import { FindingsTable } from "./FindingsTable";
 import { useDeidOutput } from "./hooks/useDeidOutput";
+import { useChangeDetection } from "shared/hooks/useChangeDetection";
 import {
   DeidOutputSectionCard,
   DeidOutputSectionRoot,
@@ -44,10 +45,20 @@ export default function DeidOutputSection() {
     originalSegments,
     redactedSegments,
     toggleEntity,
-    handleDownloadJson,
-    handleDownloadText,
     handleCopyText,
+    handleSave,
+    handleDownloadPdf,
   } = useDeidOutput();
+
+  const { hasChanges, resetChanges } = useChangeDetection({
+    piiEntities,
+    selectedCount,
+  });
+
+  const handleSaveClick = () => {
+    handleSave();
+    resetChanges();
+  };
 
   return (
     <DeidOutputSectionRoot>
@@ -120,18 +131,15 @@ export default function DeidOutputSection() {
               {t("deIdentifiedOutput.copy")}
             </ActionButton>
 
-            <ActionButton onClick={handleDownloadText}>
+            <ActionButton onClick={handleDownloadPdf}>
               <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </DownloadIconWrapper>
-              {t("deIdentifiedOutput.downloadTxt")}
+              {t("deIdentifiedOutput.downloadPdf")}
             </ActionButton>
 
-            <ActionButton onClick={handleDownloadJson}>
-              <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
-                <use href={headerSpriteRef("icon-IconDownload")} />
-              </DownloadIconWrapper>
-              {t("deIdentifiedOutput.downloadJson")}
+            <ActionButton onClick={handleSaveClick} disabled={!hasChanges}>
+              {t("deIdentifiedOutput.saveButtonText")}
             </ActionButton>
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
