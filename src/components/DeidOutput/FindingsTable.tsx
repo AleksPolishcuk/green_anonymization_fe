@@ -7,15 +7,14 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
-import { ProFeatureModal } from "components/ProFeatureModal";
-import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
 import {
   DESELECT_CONFIRM_SHOWN_KEY,
   FINDINGS_PAGE_SIZE,
   headerSpriteRef,
 } from "constants/MainPages";
 import { BaseModal } from "components/BaseModal";
+import { ProFeatureModal } from "components/ProFeatureModal";
+import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
 import { Loader } from "shared/ui/Loader";
 import type { Entity } from "store/types/document";
 
@@ -59,21 +58,18 @@ export const FindingsTable = ({
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
   const [expanded, setExpanded] = useState(false);
   const [proModalOpen, setProModalOpen] = useState(false);
+  const [pendingDeselectId, setPendingDeselectId] = useState<string | null>(
+    null,
+  );
   const { hasCustomRules } = useFeatureAccess();
 
   const handleProModalClose = () => setProModalOpen(false);
 
-  const handleToggle = (id: string) => {
+  const handleToggle = (entity: Entity) => {
     if (!hasCustomRules) {
       setProModalOpen(true);
       return;
     }
-    onToggle(id);
-  const [pendingDeselectId, setPendingDeselectId] = useState<string | null>(
-    null,
-  );
-
-  const handleToggle = (entity: Entity) => {
     if (entity.selected && !localStorage.getItem(DESELECT_CONFIRM_SHOWN_KEY)) {
       setPendingDeselectId(entity.id);
       return;
@@ -126,64 +122,6 @@ export const FindingsTable = ({
           </TableHeaderLeft>
           <CollapseArrow $expanded={expanded} />
         </TableHeader>
-
-        {expanded && (
-          <TableScrollWrapper>
-            <StyledTable>
-              <thead>
-                <tr>
-                  <Th>{t("findingsTable.columns.id")}</Th>
-                  <Th>{t("findingsTable.columns.text")}</Th>
-                  <Th>{t("findingsTable.columns.position")}</Th>
-                  <Th>{t("findingsTable.columns.score")}</Th>
-                  <Th>{t("findingsTable.columns.recognizer")}</Th>
-                  <Th>{t("findingsTable.columns.factor")}</Th>
-                  <Th>{t("findingsTable.columns.action")}</Th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleEntities.map((entity, index) => (
-                  <Tr key={entity.id}>
-                    <Td>{index + 1}</Td>
-                    <TdBold>
-                      {originalText.slice(entity.start, entity.end)}
-                    </TdBold>
-                    <Td>
-                      {entity.start}-{entity.end}
-                    </Td>
-                    <Td>
-                      <ScoreBadge $score={entity.score}>
-                        {entity.score.toFixed(2)}
-                      </ScoreBadge>
-                    </Td>
-                    <Td>
-                      <RecognizerBadge $type={entity.entityType}>
-                        {entity.entityType}
-                      </RecognizerBadge>
-                    </Td>
-                    <Td>{entity.confidence}</Td>
-                    <Td>
-                      <ToggleButton
-                        $selected={entity.selected}
-                        onClick={() => handleToggle(entity.id)}
-                      >
-                        {entity.selected
-                          ? t("findingsTable.actions.selected")
-                          : t("findingsTable.actions.deselected")}
-                      </ToggleButton>
-                    </Td>
-                  </Tr>
-                ))}
-              </tbody>
-            </StyledTable>
-            {hasMore && (
-              <LoaderRow ref={loaderRef}>
-                <Loader />
-              </LoaderRow>
-            )}
-          </TableScrollWrapper>
-        )}
-      </TableCard>
 
         {expanded && (
           <TableScrollWrapper>
