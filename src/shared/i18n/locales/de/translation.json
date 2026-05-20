@@ -308,7 +308,7 @@
       "hipaaCompliant": "HIPAA-sicher",
       "copy": "Kopieren",
       "downloadTxt": ".txt herunterladen",
-      "downloadJson": ".json herunterladen",
+      "saveButtonText": "Änderungen speichern",
       "redactedContentTooltip": "Geschwärzte Information"
     },
     "header": {

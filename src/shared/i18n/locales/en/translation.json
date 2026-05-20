@@ -326,7 +326,7 @@
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
       "downloadTxt": "Download .txt",
-      "downloadJson": "Download .json",
+      "saveButtonText": "Save changes",
       "redactedContentTooltip": "Redacted information"
     },
     "findingsTable": {

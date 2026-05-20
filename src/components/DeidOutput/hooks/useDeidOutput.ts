@@ -8,7 +8,10 @@ import {
 } from "constants/MainPages";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { toggleEntitySelected } from "store/slices/documentSlice";
+import {
+  toggleEntitySelected,
+  setRedactedText,
+} from "store/slices/documentSlice";
 
 import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
 
@@ -27,6 +30,7 @@ export const useDeidOutput = () => {
     originalText: rawOriginalText,
     piiEntities: rawPiiEntities,
     selectedFramework,
+    anonymizedText,
     document,
   } = useAppSelector((s) => s.document);
 
@@ -39,8 +43,13 @@ export const useDeidOutput = () => {
   const toggleEntity = useCallback(
     (id: string) => {
       dispatch(toggleEntitySelected(id));
+      const updatedRedactedText = buildAnonymizedText(
+        safeOriginalText,
+        safeEntities,
+      );
+      dispatch(setRedactedText(updatedRedactedText));
     },
-    [dispatch],
+    [dispatch, safeOriginalText, safeEntities],
   );
 
   const selectedEntities = useMemo(
@@ -116,6 +125,20 @@ export const useDeidOutput = () => {
     copyToClipboard(redactedSegments);
   }, [copyToClipboard, redactedSegments]);
 
+  const handleSave = () => {
+    if (!document?.id) {
+      return;
+    }
+
+    if (!anonymizedText) {
+      return;
+    }
+
+    documentsService.updateDocumentText(document?.id, {
+      text: anonymizedText,
+    });
+  };
+
   return {
     piiEntities,
     originalText,
@@ -130,5 +153,6 @@ export const useDeidOutput = () => {
     handleDownloadText,
     handleCopyText,
     handleGenerateSyntheticData,
+    handleSave,
   };
 };
