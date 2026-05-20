@@ -446,7 +446,8 @@
       "unlimitedDocs": "Unlimited documents",
       "advancedDeid": "Advanced de-identification",
       "customRules": "Custom redaction rules",
-      "syntheticData": "Generate Synthetic Data",
+      "syntheticDataFree": "Synthetic Data (up to 5 records)",
+      "syntheticDataPro": "Synthetic Data (up to 500 records)",
       "prioritySupport": "Priority support"
     },
     "currentPlan": "Current Plan",
@@ -501,7 +502,7 @@
       "description": "Configure how many synthetic records to generate",
       "recordsTitle": "Number of synthetic records",
       "recordsDescription": "How many synthetic documents would you like to generate?",
-      "helper": "Max 500 records per generation",
+      "helper": "Max {{max}} records per generation",
       "preserved": {
         "title": "What will be preserved?",
         "items": {
@@ -535,7 +536,7 @@
   "proFeature": {
     "title": "Pro Feature",
     "customRules": "Custom redaction rules are available on the Pro plan. Upgrade to enable selecting and deselecting individual entities.",
-    "syntheticData": "Synthetic Data Generation is available on the Pro plan. Upgrade to generate realistic synthetic datasets from your de-identified documents.",
+    "syntheticData": "Generating more than 5 records requires the Pro plan. Upgrade to unlock full synthetic data generation.",
     "upgrade": "Upgrade to Pro",
     "close": "Close"
   },

@@ -51,7 +51,8 @@ export const PRICING_FEATURE_KEYS = {
   unlimitedDocs: "unlimitedDocs",
   advancedDeid: "advancedDeid",
   customRules: "customRules",
-  syntheticData: "syntheticData",
+  syntheticDataFree: "syntheticDataFree",
+  syntheticDataPro: "syntheticDataPro",
   prioritySupport: "prioritySupport",
 } as const;
 
@@ -83,7 +84,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       { key: PRICING_FEATURE_KEYS.unlimitedDocs, enabled: false },
       { key: PRICING_FEATURE_KEYS.advancedDeid, enabled: false },
       { key: PRICING_FEATURE_KEYS.customRules, enabled: false },
-      { key: PRICING_FEATURE_KEYS.syntheticData, enabled: false },
+      { key: PRICING_FEATURE_KEYS.syntheticDataFree, enabled: true },
       { key: PRICING_FEATURE_KEYS.prioritySupport, enabled: false },
     ],
   },
@@ -96,7 +97,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       { key: PRICING_FEATURE_KEYS.automatedPii, enabled: true },
       { key: PRICING_FEATURE_KEYS.advancedDeid, enabled: true },
       { key: PRICING_FEATURE_KEYS.customRules, enabled: true },
-      { key: PRICING_FEATURE_KEYS.syntheticData, enabled: true },
+      { key: PRICING_FEATURE_KEYS.syntheticDataPro, enabled: true },
       { key: PRICING_FEATURE_KEYS.prioritySupport, enabled: true },
     ],
   },

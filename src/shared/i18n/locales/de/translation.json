@@ -433,7 +433,8 @@
       "unlimitedDocs": "Unbegrenzte Dokumente",
       "advancedDeid": "Erweiterte De-Identifikation",
       "customRules": "Benutzerdefinierte Schwärzungsregeln",
-      "syntheticData": "Synthetische Daten generieren",
+      "syntheticDataFree": "Synthetische Daten (bis zu 5 Datensätze)",
+      "syntheticDataPro": "Synthetische Daten (bis zu 500 Datensätze)",
       "prioritySupport": "Prioritäts-Support"
     },
     "currentPlan": "Aktueller Plan",
@@ -466,7 +467,7 @@
   "proFeature": {
     "title": "Pro-Funktion",
     "customRules": "Benutzerdefinierte Schwärzungsregeln sind im Pro-Plan verfügbar. Upgraden Sie, um einzelne Entitäten zu aktivieren oder zu deaktivieren.",
-    "syntheticData": "Synthetische Datengenerierung ist im Pro-Plan verfügbar. Upgraden Sie, um realistische synthetische Datensätze zu generieren.",
+    "syntheticData": "Mehr als 5 Datensätze erfordern den Pro-Plan. Upgraden Sie, um die vollständige Datengenerierung freizuschalten.",
     "upgrade": "Auf Pro upgraden",
     "close": "Schließen"
   },
