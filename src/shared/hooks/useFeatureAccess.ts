@@ -14,6 +14,13 @@ export function useFeatureAccess(): FeatureAccess {
     (s) => s.pricing.current?.plan.features ?? [],
   );
 
+  if (
+    import.meta.env.DEV &&
+    import.meta.env.VITE_PRO_FEATURE_BYPASS === "true"
+  ) {
+    return { hasCustomRules: true, hasSyntheticData: true };
+  }
+
   return {
     hasCustomRules: hasFeature(features, FEATURE_KEYS.customRules),
     hasSyntheticData: hasFeature(features, FEATURE_KEYS.syntheticData),
