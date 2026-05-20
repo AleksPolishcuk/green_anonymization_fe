@@ -25,6 +25,7 @@ import {
   MODAL_EASING_STANDARD,
   MODAL_HOVER_SCALE,
   MODAL_MAX_WIDTH,
+  MODAL_MAX_WIDTH_WIDE,
   MODAL_PAPER_ALPHA_DARK,
   MODAL_PAPER_ALPHA_LIGHT,
   MODAL_PAPER_BLUR,
@@ -34,7 +35,10 @@ import {
   MODAL_TRANSITION_DURATION,
 } from "constants/ModalStyles";
 
-export const StyledDialog = styled(Dialog)(({ theme }) => {
+export const StyledDialog = styled(Dialog)<{ $wide?: boolean }>(({
+  theme,
+  $wide,
+}) => {
   const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
   const isDark = theme.palette.mode === "dark";
 
@@ -54,9 +58,12 @@ export const StyledDialog = styled(Dialog)(({ theme }) => {
       borderRadius: MODAL_BORDER_RADIUS,
       overflow: "hidden",
       backdropFilter: MODAL_PAPER_BLUR,
+      maxWidth: $wide ? MODAL_MAX_WIDTH_WIDE : MODAL_MAX_WIDTH,
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: MODAL_MAX_WIDTH,
+      },
       WebkitBackdropFilter: MODAL_PAPER_BLUR,
       width: "100%",
-      maxWidth: MODAL_MAX_WIDTH,
       margin: theme.spacing(4),
       backgroundColor: isDark
         ? alpha(theme.palette.background.paper, MODAL_PAPER_ALPHA_DARK)

@@ -27,7 +27,7 @@ export const SubscriptionUsage = () => {
     isFreePlan,
   } = useSubscriptionUsage();
 
-  if (!isReady) return null;
+  if (!isReady || isUnlimited) return null;
 
   return (
     <UsageRoot>

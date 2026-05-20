@@ -469,5 +469,36 @@
     "syntheticData": "La generazione di dati sintetici è disponibile nel piano Pro. Effettua l'upgrade per generare dataset sintetici realistici.",
     "upgrade": "Passa a Pro",
     "close": "Chiudi"
+  },
+  "paymentModal": {
+    "title": "Completa il pagamento",
+    "subtitle": "Abbonamento Pro — {{price}}/mese",
+    "cardholderName": "Titolare della carta",
+    "cardholderNamePlaceholder": "Mario Rossi",
+    "cardNumber": "Numero di carta",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Data di scadenza",
+    "expiryPlaceholder": "MM/AA",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Accettiamo",
+    "payButton": "Paga {{price}}",
+    "processing": "Elaborazione in corso...",
+    "success": {
+      "title": "Pagamento riuscito!",
+      "message": "Sei ora nel piano Pro. Reindirizzamento alla dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Il nome è obbligatorio",
+      "nameMinLength": "Il nome deve essere di almeno 2 caratteri",
+      "cardRequired": "Il numero di carta è obbligatorio",
+      "cardInvalid": "Il numero di carta deve avere 16 cifre",
+      "expiryRequired": "La data di scadenza è obbligatoria",
+      "expiryInvalid": "Data di scadenza non valida (MM/AA)",
+      "expiryExpired": "La carta è scaduta",
+      "cvvRequired": "Il CVV è obbligatorio",
+      "cvvInvalid": "Il CVV deve avere 3–4 cifre",
+      "paymentFailed": "Pagamento fallito. Si prega di riprovare."
+    }
   }
 }

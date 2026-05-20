@@ -19,6 +19,8 @@ export const headerSpriteSymbolIds = {
   close: "icon-close",
   dashboardDeIdShield: "icon-WhiteShild",
   dashboardDeIdArrow: "icon-IconArrow",
+  visa: "icon-visa",
+  mastercard: "icon-mastercard",
 } as const;
 
 export function headerSpriteRef(symbolId: string): string {

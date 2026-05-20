@@ -1,5 +1,6 @@
 export const MODAL_BORDER_RADIUS = 20;
 export const MODAL_MAX_WIDTH = 400;
+export const MODAL_MAX_WIDTH_WIDE = 640;
 export const MODAL_BACKDROP_BLUR = "blur(6px)";
 export const MODAL_PAPER_BLUR = "blur(12px)";
 export const MODAL_PAPER_ALPHA_DARK = 0.88;

@@ -469,5 +469,36 @@
     "syntheticData": "La génération de données synthétiques est disponible dans le plan Pro. Mettez à niveau pour générer des ensembles de données synthétiques réalistes.",
     "upgrade": "Passer à Pro",
     "close": "Fermer"
+  },
+  "paymentModal": {
+    "title": "Finaliser le paiement",
+    "subtitle": "Abonnement Pro — {{price}}/mois",
+    "cardholderName": "Nom du titulaire",
+    "cardholderNamePlaceholder": "Jean Dupont",
+    "cardNumber": "Numéro de carte",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Date d'expiration",
+    "expiryPlaceholder": "MM/AA",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Nous acceptons",
+    "payButton": "Payer {{price}}",
+    "processing": "Traitement en cours...",
+    "success": {
+      "title": "Paiement réussi !",
+      "message": "Vous êtes maintenant sur le plan Pro. Redirection vers le tableau de bord..."
+    },
+    "errors": {
+      "nameRequired": "Le nom est requis",
+      "nameMinLength": "Le nom doit comporter au moins 2 caractères",
+      "cardRequired": "Le numéro de carte est requis",
+      "cardInvalid": "Le numéro de carte doit comporter 16 chiffres",
+      "expiryRequired": "La date d'expiration est requise",
+      "expiryInvalid": "Date d'expiration invalide (MM/AA)",
+      "expiryExpired": "La carte a expiré",
+      "cvvRequired": "Le CVV est requis",
+      "cvvInvalid": "Le CVV doit comporter 3–4 chiffres",
+      "paymentFailed": "Paiement échoué. Veuillez réessayer."
+    }
   }
 }

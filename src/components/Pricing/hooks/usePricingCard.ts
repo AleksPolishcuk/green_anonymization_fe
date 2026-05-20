@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -12,8 +13,9 @@ import { selectPlan } from "store/slices/pricingSlice";
 
 export function usePricingCard(plan: PricingPlan) {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
 
   const user = useAppSelector((state) => state.auth?.user);
   const plans = useAppSelector((state) => state.pricing.plans);
@@ -47,15 +49,30 @@ export function usePricingCard(plan: PricingPlan) {
       navigate(PRICING_CTA_ROUTE);
       return;
     }
-    if (!isCurrent && !isFreeCurrent && apiPlan) {
+    if (!isFree && !isCurrent && apiPlan) {
+      setPaymentModalOpen(true);
+      return;
+    }
+    if (isFree && !isCurrent && apiPlan) {
       try {
         await dispatch(selectPlan({ planId: apiPlan.uuid })).unwrap();
+        navigate(headerRoutes.dashboard);
       } catch {
         return;
       }
+      return;
     }
     navigate(headerRoutes.dashboard);
   };
 
-  return { isDisabled, ctaLabel, handleCTA };
+  const handleClosePaymentModal = () => setPaymentModalOpen(false);
+
+  return {
+    isDisabled,
+    ctaLabel,
+    handleCTA,
+    paymentModalOpen,
+    handleClosePaymentModal,
+    apiPlanId: apiPlan?.uuid ?? "",
+  };
 }
