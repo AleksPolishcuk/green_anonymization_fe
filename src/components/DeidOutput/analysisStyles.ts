@@ -125,12 +125,13 @@ export const TableHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  height: 90,
-  padding: theme.spacing(0, 3),
+  minHeight: 64,
+  padding: theme.spacing(3),
   borderBottom: `1px solid ${theme.palette.background.softGray}`,
   cursor: "pointer",
 
   [theme.breakpoints.up("md")]: {
+    minHeight: 90,
     padding: theme.spacing(0, 6),
   },
 }));
@@ -175,14 +176,23 @@ export const TableIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const TableTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.fontSize16,
+  fontSize: theme.typography.fontSize14,
   fontWeight: theme.typography.fontWeightRegular,
+
+  [theme.breakpoints.up("md")]: {
+    fontSize: theme.typography.fontSize16,
+  },
 }));
 
 export const TableStats = styled(Typography)(({ theme }) => ({
+  display: "none",
   fontSize: theme.typography.fontSize12,
   fontWeight: theme.typography.fontWeightRegular,
   color: theme.palette.color.grayDark,
+
+  [theme.breakpoints.up("md")]: {
+    display: "block",
+  },
 }));
 
 export const StyledTable = styled("table")(({ theme }) => ({
