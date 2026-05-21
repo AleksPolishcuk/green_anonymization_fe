@@ -4,6 +4,7 @@ import { syntheticDataService } from "services/synthetic";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { setSyntheticData } from "store/slices/syntheticDataSlice";
+import type { SyntheticDataDocument } from "store/types/syntheticData";
 export const useSyntheticDataContents = () => {
   const dispatch = useAppDispatch();
 
@@ -14,7 +15,9 @@ export const useSyntheticDataContents = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const anonymizedTexts = useMemo(() => {
-    return syntheticDocuments.map((doc) => doc.syntheticText);
+    return syntheticDocuments.map(
+      (doc: SyntheticDataDocument) => doc.syntheticText,
+    );
   }, [syntheticDocuments]);
 
   const handleRegenerate = async () => {
@@ -22,7 +25,6 @@ export const useSyntheticDataContents = () => {
 
     try {
       setIsLoading(true);
-
       const response = await syntheticDataService.generate({
         documentId,
         count: recordsCount,
@@ -47,7 +49,6 @@ export const useSyntheticDataContents = () => {
       setIsLoading(true);
 
       const blob = await syntheticDataService.download({
-        documentId: documentId!,
         anonymizedTexts,
         extension,
       });
