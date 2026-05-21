@@ -8,6 +8,7 @@ export const headerNavItems = [
 export const headerRoutes = {
   home: "/",
   dashboard: "/dashboard",
+  syntheticData: "/syntheticdata",
 } as const;
 
 const headerAssetPaths = {

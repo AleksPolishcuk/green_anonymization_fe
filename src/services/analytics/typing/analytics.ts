@@ -1,6 +1,7 @@
 export interface TrendsDto {
   documentsVsLastMonth: number | null;
   entitiesVsLastMonth: number | null;
+  successRateVsLastMonth: number | null;
 }
 
 export interface DashboardStatsDto {

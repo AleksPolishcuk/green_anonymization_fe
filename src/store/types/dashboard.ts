@@ -8,7 +8,7 @@ export interface StatCardData {
   id: string;
   iconId: StatCardIconId;
   value: string;
-  trendPercent: string;
+  trend: number | null;
 }
 
 export interface EntityTypeDatum {

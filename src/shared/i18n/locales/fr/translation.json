@@ -368,7 +368,8 @@
       "entitiesDetected": "Entités détectées",
       "avgEntitiesPerDoc": "Moy. entités/doc.",
       "successRate": "Taux de réussite",
-      "vsLastMonth": "vs mois dernier"
+      "vsLastMonth": "vs mois dernier",
+      "thisMonth": "ce mois-ci"
     },
     "charts": {
       "entityTypes": {

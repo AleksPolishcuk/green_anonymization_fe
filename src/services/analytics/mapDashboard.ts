@@ -7,11 +7,6 @@ import type { DashboardStats } from "store/types/dashboard";
 
 import type { DashboardDto } from "./typing/analytics";
 
-function formatTrendPercent(value: number | null): string {
-  if (value === null) return "—";
-  return `${Math.abs(Math.round(value))}%`;
-}
-
 const MONTH_SHORT = [
   "Jan",
   "Feb",
@@ -68,25 +63,25 @@ export function mapDashboard(dto: DashboardDto): DashboardStats {
         id: STAT_CARD_IDS.totalDocs,
         iconId: "icon-document",
         value: stats.totalDocuments.toLocaleString("en-US"),
-        trendPercent: formatTrendPercent(trends.documentsVsLastMonth),
+        trend: trends.documentsVsLastMonth,
       },
       {
         id: STAT_CARD_IDS.entities,
         iconId: "icon-shield",
         value: stats.totalEntities.toLocaleString("en-US"),
-        trendPercent: formatTrendPercent(trends.entitiesVsLastMonth),
+        trend: trends.entitiesVsLastMonth,
       },
       {
         id: STAT_CARD_IDS.avgEntities,
         iconId: "icon-activity",
         value: stats.avgEntitiesPerDoc.toFixed(1),
-        trendPercent: "—",
+        trend: null,
       },
       {
         id: STAT_CARD_IDS.successRate,
         iconId: "icon-chart",
         value: `${stats.successRate.toFixed(1)}%`,
-        trendPercent: "—",
+        trend: trends.successRateVsLastMonth,
       },
     ],
 
