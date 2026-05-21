@@ -54,8 +54,13 @@ export default function Sidebar() {
   const location = useLocation();
   const currentStep = useAppSelector((s) => s.document.currentStep);
 
-  const { sidebarRef, isMobileOpen, handleSidebarClick, handleNavClick } =
-    useSidebar();
+  const {
+    sidebarRef,
+    isMobileOpen,
+    handleSidebarClick,
+    handleNavClick,
+    formatEmail,
+  } = useSidebar();
 
   const isDeidPage = location.pathname === "/deidentification";
   const effectiveStep = currentStep ?? DEID_STEPS[0];
@@ -172,7 +177,10 @@ export default function Sidebar() {
           <SidebarProFileTextHeading>
             {user?.firstName} {user?.lastName}
           </SidebarProFileTextHeading>
-          <SidebarProFileTextSubtitle>{user?.email}</SidebarProFileTextSubtitle>
+
+          <SidebarProFileTextSubtitle title={user?.email}>
+            {formatEmail("liudmyla.dziubynska@gmail.com")}
+          </SidebarProFileTextSubtitle>
         </SidebarProfileTextContainer>
 
         <SidebarExitIcon onClick={handleExitClick}>
