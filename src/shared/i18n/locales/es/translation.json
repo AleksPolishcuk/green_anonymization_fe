@@ -307,8 +307,8 @@
       "subtitle": "Datos sensibles eliminados",
       "hipaaCompliant": "Seguro HIPAA",
       "copy": "Copiar",
-      "downloadTxt": "Descargar .txt",
-      "downloadJson": "Descargar .json",
+      "downloadPdf": "Descargar PDF",
+      "saveButtonText": "Guardar cambios",
       "redactedContentTooltip": "Información redactada"
     },
     "header": {
@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Seleccionado",
         "deselected": "Deseleccionado"
+      },
+      "deselectConfirm": {
+        "title": "¿Omitir la anonimización de esta entidad?",
+        "body": "Esta entidad no será anonimizada y aparecerá como texto sin formato en el resultado desidentificado. Dejar datos sensibles sin enmascarar puede constituir una violación del marco de cumplimiento seleccionado.",
+        "confirm": "Confirmar",
+        "cancel": "Cancelar"
       }
+    },
+    "syntheticCta": {
+      "title": "¿Listo para generar datos sintéticos?",
+      "subtitle": "Use datos desidentificados para crear conjuntos de datos sintéticos realistas para pruebas y desarrollo",
+      "button": "Generar datos sintéticos"
     }
   },
   "notFound": {
@@ -422,8 +433,8 @@
       "unlimitedDocs": "Documentos ilimitados",
       "advancedDeid": "Desidentificación avanzada",
       "customRules": "Reglas de redacción personalizadas",
-      "batchProcessing": "Procesamiento por lotes",
-      "auditLogs": "Registros de auditoría e historial",
+      "syntheticDataFree": "Datos sintéticos (hasta 5 registros)",
+      "syntheticDataPro": "Datos sintéticos (hasta 500 registros)",
       "prioritySupport": "Soporte prioritario"
     },
     "currentPlan": "Plan Actual",
@@ -434,9 +445,7 @@
     "message": "Has usado los {{limit}} documentos de hoy.",
     "upgrade": "Actualizar a Pro",
     "close": "Cerrar",
-    "resetToday": "Tu límite se renueva hoy a las {{time}}",
-    "resetTomorrow": "Tu límite se renueva mañana a las {{time}}",
-    "resetFallback": "Tu límite se renueva mañana"
+    "resetFallback": "Tu límite se renueva mañana."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Conjunto de datos generado",
@@ -454,5 +463,43 @@
   },
   "common": {
     "close": "Cerrar"
+  },
+  "proFeature": {
+    "title": "Función Pro",
+    "customRules": "Las reglas de redacción personalizadas están disponibles en el plan Pro. Actualice para seleccionar y deseleccionar entidades individuales.",
+    "syntheticData": "Generar más de 5 registros requiere el plan Pro. Actualice para desbloquear la generación completa.",
+    "upgrade": "Actualizar a Pro",
+    "close": "Cerrar"
+  },
+  "paymentModal": {
+    "title": "Completa tu pago",
+    "subtitle": "Suscripción Pro — {{price}}/mes",
+    "cardholderName": "Nombre del titular",
+    "cardholderNamePlaceholder": "Juan García",
+    "cardNumber": "Número de tarjeta",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Fecha de caducidad",
+    "expiryPlaceholder": "MM/AA",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Aceptamos",
+    "payButton": "Pagar {{price}}",
+    "processing": "Procesando...",
+    "success": {
+      "title": "¡Pago exitoso!",
+      "message": "Ahora estás en el plan Pro. Redirigiendo al panel..."
+    },
+    "errors": {
+      "nameRequired": "El nombre es obligatorio",
+      "nameMinLength": "El nombre debe tener al menos 2 caracteres",
+      "cardRequired": "El número de tarjeta es obligatorio",
+      "cardInvalid": "El número de tarjeta debe tener 16 dígitos",
+      "expiryRequired": "La fecha de caducidad es obligatoria",
+      "expiryInvalid": "Fecha de caducidad inválida (MM/AA)",
+      "expiryExpired": "La tarjeta ha caducado",
+      "cvvRequired": "El CVV es obligatorio",
+      "cvvInvalid": "El CVV debe tener 3–4 dígitos",
+      "paymentFailed": "Pago fallido. Por favor, inténtelo de nuevo."
+    }
   }
 }

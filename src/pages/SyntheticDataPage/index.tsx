@@ -1,4 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { AutoAwesomeOutlined } from "@mui/icons-material";
+
+import SyntheticDataContents from "components/SyntheticDataContents";
+import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
+
 import {
   AIPoweredBadge,
   HeaderDescription,
@@ -7,9 +12,6 @@ import {
   PageHeader,
   PageRoot,
 } from "./styles";
-import { useTranslation } from "react-i18next";
-import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
-import SyntheticDataContents from "components/SyntheticDataContents";
 import DriverStyles from "components/WorkflowTour/DriverStyles";
 
 export default function SyntheticDataPage() {
@@ -26,7 +28,7 @@ export default function SyntheticDataPage() {
           <AIPoweredBadge
             icon={<AutoAwesomeOutlined />}
             label={t("syntheticData.header.badge")}
-          ></AIPoweredBadge>
+          />
         </HeaderTopRow>
 
         <HeaderDescription>

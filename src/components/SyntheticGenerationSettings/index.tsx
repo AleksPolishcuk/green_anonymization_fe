@@ -1,16 +1,24 @@
-import { Typography } from "@mui/material";
-
+import { Pagination, Typography } from "@mui/material";
+import { AutoAwesomeOutlined } from "@mui/icons-material";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-import TextSnippetOutlinedIcon from "@mui/icons-material/TextSnippetOutlined";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import TextSnippetOutlinedIcon from "@mui/icons-material/TextSnippetOutlined";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
+import { COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
+import { ProFeatureModal } from "components/ProFeatureModal";
 import { Loader } from "shared/ui/Loader";
+import { useAppSelector } from "store/hooks";
+
+import { useSyntheticPageEffects } from "./useSyntheticPageEffects";
+import { useSyntheticGenerationSettings } from "./useSyntheticGenerationSettings";
 
 import {
   SectionRoot,
@@ -49,29 +57,27 @@ import {
   EmptyState,
 } from "./styles";
 
-import { useSyntheticGenerationSettings } from "./useSyntheticGenerationSettings";
-import { AutoAwesomeOutlined } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
-import { useAppSelector } from "store/hooks";
-import { useSyntheticPageEffects } from "./useSyntheticPageEffects";
-
 export default function SyntheticGenerationSettings() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const {
     documents,
+    documentsPage,
+    documentsTotalPages,
     selectedDocument,
     recordsCount,
+    maxRecordsCount,
     isPreviewExpanded,
     isLoadingDocument,
+    proModalOpen,
     error,
     setIsPreviewExpanded,
     handleSelectDocument,
+    handleDocumentsPageChange,
     handleDecrease,
     handleIncrease,
+    handleProModalClose,
     handleGenerate,
   } = useSyntheticGenerationSettings();
 
@@ -133,6 +139,14 @@ export default function SyntheticGenerationSettings() {
               </StatusBadge>
             </SourceDocumentSelect>
           ))}
+
+          {documentsTotalPages > 1 && (
+            <Pagination
+              count={documentsTotalPages}
+              page={documentsPage}
+              onChange={handleDocumentsPageChange}
+            />
+          )}
         </Card>
       </SectionRoot>
     );
@@ -165,190 +179,202 @@ export default function SyntheticGenerationSettings() {
   }
 
   return (
-    <SectionRoot>
-      <Card data-tour="synthetic-source-document">
-        <CardHeader>
-          <CardHeaderIcon>
-            <DescriptionOutlinedIcon />
-          </CardHeaderIcon>
+    <>
+      <ProFeatureModal
+        open={proModalOpen}
+        onClose={handleProModalClose}
+        messageKey="syntheticData"
+      />
 
-          <CardHeaderText>
-            <CardTitle>{t("syntheticData.sourceDocument.title")}</CardTitle>
+      <SectionRoot>
+        <Card data-tour="synthetic-source-document">
+          <CardHeader>
+            <CardHeaderIcon>
+              <DescriptionOutlinedIcon />
+            </CardHeaderIcon>
 
-            <CardSubtitle>
-              {t("syntheticData.sourceDocument.description")}
-            </CardSubtitle>
-          </CardHeaderText>
-        </CardHeader>
+            <CardHeaderText>
+              <CardTitle>{t("syntheticData.sourceDocument.title")}</CardTitle>
 
-        <SourceDocumentSelect>
-          <DocumentIconBox>
-            <DescriptionOutlinedIcon />
-          </DocumentIconBox>
+              <CardSubtitle>
+                {t("syntheticData.sourceDocument.description")}
+              </CardSubtitle>
+            </CardHeaderText>
+          </CardHeader>
 
-          <DocumentName>{selectedDocument.fileName}</DocumentName>
+          <SourceDocumentSelect>
+            <DocumentIconBox>
+              <DescriptionOutlinedIcon />
+            </DocumentIconBox>
 
-          <StatusBadge>{t("syntheticData.sourceDocument.status")}</StatusBadge>
-        </SourceDocumentSelect>
+            <DocumentName>{selectedDocument.fileName}</DocumentName>
 
-        <MetaGrid>
-          <MetaItem>
-            <MetaIcon>
-              <CalendarTodayOutlinedIcon />
-            </MetaIcon>
+            <StatusBadge>
+              {t("syntheticData.sourceDocument.status")}
+            </StatusBadge>
+          </SourceDocumentSelect>
 
-            <MetaText>
-              {new Date(selectedDocument.createdAt).toLocaleDateString()}
+          <MetaGrid>
+            <MetaItem>
+              <MetaIcon>
+                <CalendarTodayOutlinedIcon />
+              </MetaIcon>
 
-              <MetaLabel>
-                {t("syntheticData.sourceDocument.meta.created")}
-              </MetaLabel>
-            </MetaText>
-          </MetaItem>
+              <MetaText>
+                {new Date(selectedDocument.createdAt).toLocaleDateString()}
 
-          <MetaItem>
-            <MetaIcon>
-              <ShieldOutlinedIcon />
-            </MetaIcon>
+                <MetaLabel>
+                  {t("syntheticData.sourceDocument.meta.created")}
+                </MetaLabel>
+              </MetaText>
+            </MetaItem>
 
-            <MetaText>
-              {frameworkName}
+            <MetaItem>
+              <MetaIcon>
+                <ShieldOutlinedIcon />
+              </MetaIcon>
 
-              <MetaLabel>
-                {t("syntheticData.sourceDocument.meta.framework")}
-              </MetaLabel>
-            </MetaText>
-          </MetaItem>
+              <MetaText>
+                {frameworkName}
 
-          <MetaItem>
-            <MetaIcon>
-              <LocalOfferOutlinedIcon />
-            </MetaIcon>
+                <MetaLabel>
+                  {t("syntheticData.sourceDocument.meta.framework")}
+                </MetaLabel>
+              </MetaText>
+            </MetaItem>
 
-            <MetaText>
-              {selectedDocument.piiEntities.length}
+            <MetaItem>
+              <MetaIcon>
+                <LocalOfferOutlinedIcon />
+              </MetaIcon>
 
-              <MetaLabel>
-                {t("syntheticData.sourceDocument.meta.entities")}
-              </MetaLabel>
-            </MetaText>
-          </MetaItem>
+              <MetaText>
+                {selectedDocument.piiEntities.length}
 
-          <MetaItem>
-            <MetaIcon>
-              <TextSnippetOutlinedIcon />
-            </MetaIcon>
+                <MetaLabel>
+                  {t("syntheticData.sourceDocument.meta.entities")}
+                </MetaLabel>
+              </MetaText>
+            </MetaItem>
 
-            <MetaText>
-              {selectedDocument.anonymizedText.length}
+            <MetaItem>
+              <MetaIcon>
+                <TextSnippetOutlinedIcon />
+              </MetaIcon>
 
-              <MetaLabel>
-                {t("syntheticData.sourceDocument.meta.characters")}
-              </MetaLabel>
-            </MetaText>
-          </MetaItem>
-        </MetaGrid>
+              <MetaText>
+                {selectedDocument.anonymizedText.length}
 
-        <PreviewBox>
-          <PreviewHeader>
-            <PreviewHeaderLeft>
-              <PreviewIcon>
-                <AutoAwesomeOutlined />
-              </PreviewIcon>
+                <MetaLabel>
+                  {t("syntheticData.sourceDocument.meta.characters")}
+                </MetaLabel>
+              </MetaText>
+            </MetaItem>
+          </MetaGrid>
 
-              <div>
-                <PreviewText>
-                  {t("syntheticData.sourceDocument.preview.title")}
-                </PreviewText>
+          <PreviewBox>
+            <PreviewHeader>
+              <PreviewHeaderLeft>
+                <PreviewIcon>
+                  <AutoAwesomeOutlined />
+                </PreviewIcon>
 
-                <CardSubtitle>
-                  {t("syntheticData.sourceDocument.preview.description")}
-                </CardSubtitle>
-              </div>
-            </PreviewHeaderLeft>
-          </PreviewHeader>
+                <div>
+                  <PreviewText>
+                    {t("syntheticData.sourceDocument.preview.title")}
+                  </PreviewText>
 
-          <PreviewContent $expanded={isPreviewExpanded}>
-            {selectedDocument.anonymizedText}
-          </PreviewContent>
+                  <CardSubtitle>
+                    {t("syntheticData.sourceDocument.preview.description")}
+                  </CardSubtitle>
+                </div>
+              </PreviewHeaderLeft>
+            </PreviewHeader>
 
-          <PreviewToggleButton
-            type="button"
-            onClick={() => setIsPreviewExpanded((prev) => !prev)}
-          >
-            {isPreviewExpanded
-              ? t("syntheticData.sourceDocument.preview.hide")
-              : t("syntheticData.sourceDocument.preview.show")}
+            <PreviewContent $expanded={isPreviewExpanded}>
+              {selectedDocument.anonymizedText}
+            </PreviewContent>
 
-            <KeyboardArrowDownRoundedIcon />
-          </PreviewToggleButton>
-        </PreviewBox>
-      </Card>
+            <PreviewToggleButton
+              type="button"
+              onClick={() => setIsPreviewExpanded((prev) => !prev)}
+            >
+              {isPreviewExpanded
+                ? t("syntheticData.sourceDocument.preview.hide")
+                : t("syntheticData.sourceDocument.preview.show")}
 
-      <Card data-tour="synthetic-generate-settings">
-        <CardHeader>
-          <CardHeaderIcon>
+              <KeyboardArrowDownRoundedIcon />
+            </PreviewToggleButton>
+          </PreviewBox>
+        </Card>
+
+        <Card data-tour="synthetic-generate-settings">
+          <CardHeader>
+            <CardHeaderIcon>
+              <AutoAwesomeOutlined />
+            </CardHeaderIcon>
+
+            <CardHeaderText>
+              <CardTitle>{t("syntheticData.generation.title")}</CardTitle>
+
+              <CardSubtitle>
+                {t("syntheticData.generation.description")}
+              </CardSubtitle>
+            </CardHeaderText>
+          </CardHeader>
+
+          <Typography variant="h5">
+            {t("syntheticData.generation.recordsTitle")}
+          </Typography>
+
+          <CardSubtitle>
+            {t("syntheticData.generation.recordsDescription")}
+          </CardSubtitle>
+
+          <CounterBox>
+            <CounterButton type="button" onClick={handleDecrease}>
+              <RemoveRoundedIcon />
+            </CounterButton>
+
+            <CounterValue>{recordsCount}</CounterValue>
+
+            <CounterButton type="button" onClick={handleIncrease}>
+              <AddRoundedIcon />
+            </CounterButton>
+          </CounterBox>
+
+          <CounterHelper>
+            {t("syntheticData.generation.helper", { max: maxRecordsCount })}
+          </CounterHelper>
+
+          <PreservedBox>
+            <PreservedTitle>
+              {t("syntheticData.generation.preserved.title")}
+            </PreservedTitle>
+
+            <PreservedList>
+              {[
+                t("syntheticData.generation.preserved.items.structure"),
+                t("syntheticData.generation.preserved.items.diagnosis"),
+                t("syntheticData.generation.preserved.items.schema"),
+                t("syntheticData.generation.preserved.items.statistics"),
+              ].map((item) => (
+                <PreservedItem key={item}>
+                  <CheckCircleOutlineRoundedIcon />
+                  {item}
+                </PreservedItem>
+              ))}
+            </PreservedList>
+          </PreservedBox>
+
+          <GenerateButton onClick={handleGenerate}>
             <AutoAwesomeOutlined />
-          </CardHeaderIcon>
+            {t("syntheticData.generation.button")}
+          </GenerateButton>
 
-          <CardHeaderText>
-            <CardTitle>{t("syntheticData.generation.title")}</CardTitle>
-
-            <CardSubtitle>
-              {t("syntheticData.generation.description")}
-            </CardSubtitle>
-          </CardHeaderText>
-        </CardHeader>
-
-        <Typography variant="h5">
-          {t("syntheticData.generation.recordsTitle")}
-        </Typography>
-
-        <CardSubtitle>
-          {t("syntheticData.generation.recordsDescription")}
-        </CardSubtitle>
-
-        <CounterBox>
-          <CounterButton type="button" onClick={handleDecrease}>
-            <RemoveRoundedIcon />
-          </CounterButton>
-
-          <CounterValue>{recordsCount}</CounterValue>
-
-          <CounterButton type="button" onClick={handleIncrease}>
-            <AddRoundedIcon />
-          </CounterButton>
-        </CounterBox>
-
-        <CounterHelper>{t("syntheticData.generation.helper")}</CounterHelper>
-
-        <PreservedBox>
-          <PreservedTitle>
-            {t("syntheticData.generation.preserved.title")}
-          </PreservedTitle>
-
-          <PreservedList>
-            {[
-              t("syntheticData.generation.preserved.items.structure"),
-              t("syntheticData.generation.preserved.items.diagnosis"),
-              t("syntheticData.generation.preserved.items.schema"),
-              t("syntheticData.generation.preserved.items.statistics"),
-            ].map((item) => (
-              <PreservedItem key={item}>
-                <CheckCircleOutlineRoundedIcon />
-                {item}
-              </PreservedItem>
-            ))}
-          </PreservedList>
-        </PreservedBox>
-
-        <GenerateButton onClick={handleGenerate}>
-          <AutoAwesomeOutlined />
-          {t("syntheticData.generation.button")}
-        </GenerateButton>
-
-        <SecureText>{t("syntheticData.generation.secure")}</SecureText>
-      </Card>
-    </SectionRoot>
+          <SecureText>{t("syntheticData.generation.secure")}</SecureText>
+        </Card>
+      </SectionRoot>
+    </>
   );
 }

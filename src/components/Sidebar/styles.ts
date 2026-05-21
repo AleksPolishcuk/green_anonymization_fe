@@ -198,21 +198,21 @@ export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   padding: theme.spacing(3),
 
   display: "flex",
-  alignItems: "center",
   gap: theme.spacing(2),
 
+  alignItems: "center",
   minHeight: theme.spacing(14),
+  height: "auto",
 }));
 
 export const SidebarProfileIcon = styled("div")(({ theme }) => ({
   width: theme.spacing(10),
   height: theme.spacing(10),
-
+  flexShrink: 0,
   borderRadius: "50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-
   background: `linear-gradient(135deg, ${theme.palette.accent.blue} 0%, ${theme.palette.accent.lilac} 100%)`,
   boxShadow: `0px 2px 8px 0px rgba(37, 99, 235, 0.28)`,
 
@@ -229,28 +229,32 @@ export const SidebarProfileTextContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   flex: 1,
-
+  minWidth: 0,
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
 
 export const SidebarProFileTextHeading = styled(Typography)(({ theme }) => ({
-  fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize12,
-  lineHeight: theme.typography.lineHeight116,
-
   color: theme.palette.text.primary,
+
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  minWidth: 0,
 }));
 
 export const SidebarProFileTextSubtitle = styled(Typography)(({ theme }) => ({
-  fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightRegular,
   fontSize: theme.typography.fontSize11,
-  lineHeight: theme.typography.lineHeight140,
-
   color: theme.palette.text.secondary,
+
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  minWidth: 0,
 }));
 
 export const SidebarExitIcon = styled("svg")(({ theme }) => ({
@@ -284,17 +288,31 @@ export const SubNavList = styled("ul", {
   listStyle: "none",
   margin: 0,
   padding: 0,
-  paddingLeft: theme.spacing(9),
+  paddingLeft: $isMobileOpen ? theme.spacing(9) : theme.spacing(2),
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(0.5),
+  transition: "padding-left 0.25s ease",
+
+  [theme.breakpoints.up("md")]: {
+    paddingLeft: theme.spacing(9),
+  },
+}));
+
+export const SubNavStepLabel = styled("span", {
+  shouldForwardProp: (prop) => prop !== "$isMobileOpen",
+})<{ $isMobileOpen: boolean }>(({ theme, $isMobileOpen }) => ({
   opacity: $isMobileOpen ? 1 : 0,
   visibility: $isMobileOpen ? "visible" : "hidden",
-  transition: "opacity 0.2s ease, visibility 0.2s ease",
+  maxWidth: $isMobileOpen ? "200px" : 0,
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  transition: "opacity 0.2s ease, visibility 0.2s ease, max-width 0.25s ease",
 
   [theme.breakpoints.up("md")]: {
     opacity: 1,
     visibility: "visible",
+    maxWidth: "200px",
   },
 }));
 

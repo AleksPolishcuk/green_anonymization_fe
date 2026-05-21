@@ -307,8 +307,8 @@
       "subtitle": "Données sensibles supprimées",
       "hipaaCompliant": "Conforme HIPAA",
       "copy": "Copier",
-      "downloadTxt": "Télécharger .txt",
-      "downloadJson": "Télécharger .json",
+      "downloadPdf": "Télécharger PDF",
+      "saveButtonText": "Enregistrer les modifications",
       "redactedContentTooltip": "Information expurgée"
     },
     "header": {
@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Sélectionné",
         "deselected": "Désélectionné"
+      },
+      "deselectConfirm": {
+        "title": "Ignorer l'anonymisation pour cette entité ?",
+        "body": "Cette entité ne sera pas anonymisée et apparaîtra en clair dans le résultat dé-identifié. Laisser des données sensibles non masquées peut constituer une violation du cadre de conformité sélectionné.",
+        "confirm": "Confirmer",
+        "cancel": "Annuler"
       }
+    },
+    "syntheticCta": {
+      "title": "Prêt à générer des données synthétiques ?",
+      "subtitle": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
+      "button": "Générer des données synthétiques"
     }
   },
   "notFound": {
@@ -422,8 +433,8 @@
       "unlimitedDocs": "Documents illimités",
       "advancedDeid": "Dé-identification avancée",
       "customRules": "Règles de rédaction personnalisées",
-      "batchProcessing": "Traitement par lots",
-      "auditLogs": "Journaux d'audit et historique",
+      "syntheticDataFree": "Données synthétiques (jusqu'à 5 enregistrements)",
+      "syntheticDataPro": "Données synthétiques (jusqu'à 500 enregistrements)",
       "prioritySupport": "Support prioritaire"
     },
     "currentPlan": "Plan Actuel",
@@ -434,9 +445,7 @@
     "message": "Vous avez utilisé les {{limit}} documents d'aujourd'hui.",
     "upgrade": "Passer à Pro",
     "close": "Fermer",
-    "resetToday": "Votre limite se renouvelle aujourd'hui à {{time}}",
-    "resetTomorrow": "Votre limite se renouvelle demain à {{time}}",
-    "resetFallback": "Votre limite se renouvelle demain"
+    "resetFallback": "Votre limite se renouvelle demain."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Ensemble de données généré",
@@ -454,5 +463,43 @@
   },
   "common": {
     "close": "Fermer"
+  },
+  "proFeature": {
+    "title": "Fonctionnalité Pro",
+    "customRules": "Les règles de rédaction personnalisées sont disponibles dans le plan Pro. Mettez à niveau pour sélectionner et désélectionner des entités individuelles.",
+    "syntheticData": "Générer plus de 5 enregistrements nécessite le plan Pro. Passez à Pro pour débloquer la génération complète.",
+    "upgrade": "Passer à Pro",
+    "close": "Fermer"
+  },
+  "paymentModal": {
+    "title": "Finaliser le paiement",
+    "subtitle": "Abonnement Pro — {{price}}/mois",
+    "cardholderName": "Nom du titulaire",
+    "cardholderNamePlaceholder": "Jean Dupont",
+    "cardNumber": "Numéro de carte",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Date d'expiration",
+    "expiryPlaceholder": "MM/AA",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Nous acceptons",
+    "payButton": "Payer {{price}}",
+    "processing": "Traitement en cours...",
+    "success": {
+      "title": "Paiement réussi !",
+      "message": "Vous êtes maintenant sur le plan Pro. Redirection vers le tableau de bord..."
+    },
+    "errors": {
+      "nameRequired": "Le nom est requis",
+      "nameMinLength": "Le nom doit comporter au moins 2 caractères",
+      "cardRequired": "Le numéro de carte est requis",
+      "cardInvalid": "Le numéro de carte doit comporter 16 chiffres",
+      "expiryRequired": "La date d'expiration est requise",
+      "expiryInvalid": "Date d'expiration invalide (MM/AA)",
+      "expiryExpired": "La carte a expiré",
+      "cvvRequired": "Le CVV est requis",
+      "cvvInvalid": "Le CVV doit comporter 3–4 chiffres",
+      "paymentFailed": "Paiement échoué. Veuillez réessayer."
+    }
   }
 }

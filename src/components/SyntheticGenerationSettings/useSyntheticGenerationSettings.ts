@@ -2,30 +2,30 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { documentsService } from "services/documents";
+import { syntheticDataService } from "services/synthetic";
+import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
+import { useAppDispatch } from "store/hooks";
+import { setSyntheticData } from "store/slices/syntheticDataSlice";
 
 import type {
   DocumentDetails,
   DocumentListItem,
 } from "services/documents/typing";
-import { syntheticDataService } from "services/synthetic";
-import { useAppDispatch } from "store/hooks";
-import { setSyntheticDocuments } from "store/slices/syntheticDataSlice";
 
 const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
-const MAX_RECORDS_COUNT = 10000;
+const MAX_RECORDS_COUNT_FREE = 5;
+const MAX_RECORDS_COUNT_PRO = 500;
+const DOCUMENTS_PAGE_LIMIT = 10;
 
 export const useSyntheticGenerationSettings = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const [isGenerating, setIsGenerating] = useState(false);
-
-  const documentId = useMemo(
-    () => searchParams.get("documentId"),
-    [searchParams],
-  );
+  const { hasSyntheticData } = useFeatureAccess();
 
   const [documents, setDocuments] = useState<DocumentListItem[]>([]);
+  const [documentsPage, setDocumentsPage] = useState(1);
+  const [documentsTotal, setDocumentsTotal] = useState(0);
 
   const [selectedDocument, setSelectedDocument] =
     useState<DocumentDetails | null>(null);
@@ -36,7 +36,26 @@ export const useSyntheticGenerationSettings = () => {
 
   const [isLoadingDocument, setIsLoadingDocument] = useState(false);
 
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const [proModalOpen, setProModalOpen] = useState(false);
+
   const [error, setError] = useState<string | null>(null);
+
+  const maxRecordsCount = hasSyntheticData
+    ? MAX_RECORDS_COUNT_PRO
+    : MAX_RECORDS_COUNT_FREE;
+
+  const documentId = useMemo(
+    () => searchParams.get("documentId"),
+    [searchParams],
+  );
+
+  const documentsTotalPages = Math.ceil(documentsTotal / DOCUMENTS_PAGE_LIMIT);
+
+  useEffect(() => {
+    setRecordsCount(Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount));
+  }, [maxRecordsCount]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -48,18 +67,22 @@ export const useSyntheticGenerationSettings = () => {
           setIsPreviewExpanded(false);
 
           const response = await documentsService.getDocumentById(documentId);
+
           setSelectedDocument(response);
-        } else {
-          setSelectedDocument(null);
-          setIsPreviewExpanded(false);
 
-          const response = await documentsService.getDocuments({
-            page: 1,
-            limit: 20,
-          });
-
-          setDocuments(response.items);
+          return;
         }
+
+        setSelectedDocument(null);
+        setIsPreviewExpanded(false);
+
+        const response = await documentsService.getDocuments({
+          page: documentsPage,
+          limit: DOCUMENTS_PAGE_LIMIT,
+        });
+
+        setDocuments(response.items);
+        setDocumentsTotal(response.total);
       } catch {
         setError("Failed to load source document");
       } finally {
@@ -67,11 +90,17 @@ export const useSyntheticGenerationSettings = () => {
       }
     };
 
-    loadData();
-  }, [documentId]);
+    void loadData();
+  }, [documentId, documentsPage]);
 
   const handleSelectDocument = (id: string) => {
-    setSearchParams({ documentId: id });
+    setSearchParams({
+      documentId: id,
+    });
+  };
+
+  const handleDocumentsPageChange = (_: unknown, value: number) => {
+    setDocumentsPage(value);
   };
 
   const handleDecrease = () => {
@@ -79,8 +108,16 @@ export const useSyntheticGenerationSettings = () => {
   };
 
   const handleIncrease = () => {
-    setRecordsCount((prev) => Math.min(MAX_RECORDS_COUNT, prev + 1));
+    if (recordsCount >= maxRecordsCount && !hasSyntheticData) {
+      setProModalOpen(true);
+
+      return;
+    }
+
+    setRecordsCount((prev) => Math.min(maxRecordsCount, prev + 1));
   };
+
+  const handleProModalClose = () => setProModalOpen(false);
 
   const handleGenerate = async () => {
     if (!selectedDocument) return;
@@ -93,7 +130,13 @@ export const useSyntheticGenerationSettings = () => {
         count: recordsCount,
       });
 
-      dispatch(setSyntheticDocuments(response.syntheticDocuments));
+      dispatch(
+        setSyntheticData({
+          syntheticDocuments: response.syntheticDocuments,
+          documentId: selectedDocument.id,
+          recordsCount,
+        }),
+      );
     } finally {
       setIsGenerating(false);
     }
@@ -101,17 +144,22 @@ export const useSyntheticGenerationSettings = () => {
 
   return {
     documents,
+    documentsPage,
+    documentsTotalPages,
     selectedDocument,
     recordsCount,
+    maxRecordsCount,
     isPreviewExpanded,
     isLoadingDocument,
     isGenerating,
+    proModalOpen,
     error,
     setIsPreviewExpanded,
-    setRecordsCount,
     handleSelectDocument,
+    handleDocumentsPageChange,
     handleDecrease,
     handleIncrease,
+    handleProModalClose,
     handleGenerate,
   };
 };

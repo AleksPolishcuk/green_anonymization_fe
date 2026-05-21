@@ -45,7 +45,7 @@ export const signInSchema = yup.object({
     .required("signIn.form.status.emailRequired")
     .matches(EMAIL_REGEX, "signIn.form.status.emailInvalid")
     .min(5, "signIn.form.status.emailTooShort")
-    .max(100, "signIn.form.status.emailTooLong"),
+    .max(300, "signIn.form.status.emailTooLong"),
 });
 
 export const registerSchema = yup.object({

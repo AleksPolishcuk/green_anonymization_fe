@@ -8,7 +8,10 @@ import {
 } from "constants/MainPages";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { toggleEntitySelected } from "store/slices/documentSlice";
+import {
+  toggleEntitySelected,
+  setRedactedText,
+} from "store/slices/documentSlice";
 
 import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
 
@@ -27,6 +30,7 @@ export const useDeidOutput = () => {
     originalText: rawOriginalText,
     piiEntities: rawPiiEntities,
     selectedFramework,
+    anonymizedText,
     document,
   } = useAppSelector((s) => s.document);
 
@@ -39,8 +43,13 @@ export const useDeidOutput = () => {
   const toggleEntity = useCallback(
     (id: string) => {
       dispatch(toggleEntitySelected(id));
+      const updatedRedactedText = buildAnonymizedText(
+        safeOriginalText,
+        safeEntities,
+      );
+      dispatch(setRedactedText(updatedRedactedText));
     },
-    [dispatch],
+    [dispatch, safeOriginalText, safeEntities],
   );
 
   const selectedEntities = useMemo(
@@ -101,7 +110,7 @@ export const useDeidOutput = () => {
     navigate(`/syntheticdata?documentId=${document.id}`);
   }, [document, safeOriginalText, safeEntities, navigate]);
 
-  const { downloadAsJson, downloadAsText, copyToClipboard } =
+  const { downloadAsJson, downloadAsText, copyToClipboard, downloadAsPdf } =
     useDownloadRedactedTextCopy();
 
   const handleDownloadJson = useCallback(() => {
@@ -115,6 +124,24 @@ export const useDeidOutput = () => {
   const handleCopyText = useCallback(() => {
     copyToClipboard(redactedSegments);
   }, [copyToClipboard, redactedSegments]);
+
+  const handleDownloadPdf = useCallback(() => {
+    downloadAsPdf(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsPdf, redactedSegments]);
+
+  const handleSave = () => {
+    if (!document?.id) {
+      return;
+    }
+
+    if (!anonymizedText) {
+      return;
+    }
+
+    documentsService.updateDocumentText(document?.id, {
+      text: anonymizedText,
+    });
+  };
 
   return {
     piiEntities,
@@ -130,5 +157,7 @@ export const useDeidOutput = () => {
     handleDownloadText,
     handleCopyText,
     handleGenerateSyntheticData,
+    handleSave,
+    handleDownloadPdf,
   };
 };

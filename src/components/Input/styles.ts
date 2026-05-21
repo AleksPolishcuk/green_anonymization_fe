@@ -61,12 +61,15 @@ export const InputSectionRoot = styled(Paper)(({ theme }) => {
   return {
     position: "relative",
 
-    marginLeft: theme.spacing(8),
-    marginRight: theme.spacing(8),
+    padding: theme.spacing(3, 2),
 
-    padding: theme.spacing(6),
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(4, 3),
+    },
+
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(6, 8),
+    },
 
     backgroundColor: theme.palette.background.default,
     borderRadius: theme.shape.borderRadius,

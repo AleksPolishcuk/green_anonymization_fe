@@ -19,6 +19,8 @@ export const headerSpriteSymbolIds = {
   close: "icon-close",
   dashboardDeIdShield: "icon-WhiteShild",
   dashboardDeIdArrow: "icon-IconArrow",
+  visa: "icon-visa",
+  mastercard: "icon-mastercard",
 } as const;
 
 export function headerSpriteRef(symbolId: string): string {
@@ -348,6 +350,7 @@ export const MIME_TYPES = {
 
 export const FINDINGS_PAGE_SIZE = 10;
 export const DEID_OUTPUT_FILENAME = "de-identified-output";
+export const DESELECT_CONFIRM_SHOWN_KEY = "deid_deselect_confirm_shown";
 export const ACCURACY_PERCENT_MULTIPLIER = 100;
 export const ACCURACY_DECIMAL_PRECISION = 10;
 

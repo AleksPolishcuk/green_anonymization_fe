@@ -8,18 +8,29 @@ import {
 
 export const DeidOutputSectionRoot = styled(Box)(({ theme }) => ({
   position: "relative",
-  margin: theme.spacing(8),
+  padding: theme.spacing(3, 2),
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(7),
+  gap: theme.spacing(4),
+
+  [theme.breakpoints.up("sm")]: {
+    padding: theme.spacing(4, 3),
+  },
+
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(8),
+    gap: theme.spacing(7),
+  },
 }));
 
 export const DeidOutputSectionStack = styled(Box)(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing(8),
-  "@media (max-width: 984px)": {
-    flexDirection: "column",
-    gap: theme.spacing(4),
+  flexDirection: "column",
+  gap: theme.spacing(4),
+
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+    gap: theme.spacing(8),
   },
 }));
 
@@ -85,15 +96,20 @@ export const BaseBadge = styled(Box)(({ theme }) => {
   return {
     display: "inline-flex",
     alignItems: "center",
+    whiteSpace: "nowrap",
     gap: theme.spacing(0.5),
     padding: theme.spacing(0.75, 1.5),
-    margin: theme.spacing(4, 4, 4, 0),
+    margin: theme.spacing(2, 2, 2, 0),
     color: style.color,
     backgroundColor: style.bg,
     border: `1px solid ${style.border}`,
     borderRadius: theme.spacing(2),
     fontSize: theme.typography.fontSize11,
     fontWeight: theme.typography.fontWeightBold,
+
+    [theme.breakpoints.up("md")]: {
+      margin: theme.spacing(4, 4, 4, 0),
+    },
   };
 });
 

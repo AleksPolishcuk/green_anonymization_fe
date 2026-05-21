@@ -325,8 +325,8 @@
       "subtitle": "Sensitive data removed",
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
-      "downloadTxt": "Download .txt",
-      "downloadJson": "Download .json",
+      "downloadPdf": "Download PDF",
+      "saveButtonText": "Save changes",
       "redactedContentTooltip": "Redacted information"
     },
     "findingsTable": {
@@ -344,7 +344,18 @@
       "actions": {
         "selected": "Selected",
         "deselected": "Deselected"
+      },
+      "deselectConfirm": {
+        "title": "Skip anonymization for this entity?",
+        "body": "This entity will not be anonymized and will appear as plain text in the de-identified output. Leaving sensitive data unmasked may result in a compliance violation under the selected framework.",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
       }
+    },
+    "syntheticCta": {
+      "title": "Ready to Generate Synthetic Data?",
+      "subtitle": "Use de-identified data to create realistic synthetic datasets for testing and development",
+      "button": "Generate Synthetic Data"
     }
   },
   "notFound": {
@@ -435,8 +446,8 @@
       "unlimitedDocs": "Unlimited documents",
       "advancedDeid": "Advanced de-identification",
       "customRules": "Custom redaction rules",
-      "batchProcessing": "Batch processing",
-      "auditLogs": "Audit logs & activity history",
+      "syntheticDataFree": "Synthetic Data (up to 5 records)",
+      "syntheticDataPro": "Synthetic Data (up to 500 records)",
       "prioritySupport": "Priority support"
     },
     "currentPlan": "Current Plan",
@@ -447,9 +458,7 @@
     "message": "You’ve used all {{limit}} documents for today.",
     "upgrade": "Upgrade to Pro",
     "close": "Close",
-    "resetToday": "Your limit resets today at {{time}}",
-    "resetTomorrow": "Your limit resets tomorrow at {{time}}",
-    "resetFallback": "Your limit resets tomorrow"
+    "resetFallback": "Your limit resets tomorrow."
   },
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
@@ -493,7 +502,7 @@
       "description": "Configure how many synthetic records to generate",
       "recordsTitle": "Number of synthetic records",
       "recordsDescription": "How many synthetic documents would you like to generate?",
-      "helper": "Max 500 records per generation",
+      "helper": "Max {{max}} records per generation",
       "preserved": {
         "title": "What will be preserved?",
         "items": {
@@ -523,6 +532,44 @@
   },
   "common": {
     "close": "Close"
+  },
+  "proFeature": {
+    "title": "Pro Feature",
+    "customRules": "Custom redaction rules are available on the Pro plan. Upgrade to enable selecting and deselecting individual entities.",
+    "syntheticData": "Generating more than 5 records requires the Pro plan. Upgrade to unlock full synthetic data generation.",
+    "upgrade": "Upgrade to Pro",
+    "close": "Close"
+  },
+  "paymentModal": {
+    "title": "Complete your payment",
+    "subtitle": "Subscribe to Pro — {{price}}/month",
+    "cardholderName": "Cardholder name",
+    "cardholderNamePlaceholder": "John Doe",
+    "cardNumber": "Card number",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Expiry date",
+    "expiryPlaceholder": "MM/YY",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "We accept",
+    "payButton": "Pay {{price}}",
+    "processing": "Processing...",
+    "success": {
+      "title": "Payment successful!",
+      "message": "You are now on the Pro plan. Redirecting to dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 2 characters",
+      "cardRequired": "Card number is required",
+      "cardInvalid": "Card number must be 16 digits",
+      "expiryRequired": "Expiry date is required",
+      "expiryInvalid": "Invalid expiry date (MM/YY)",
+      "expiryExpired": "Card has expired",
+      "cvvRequired": "CVV is required",
+      "cvvInvalid": "CVV must be 3–4 digits",
+      "paymentFailed": "Payment failed. Please try again."
+    }
   },
   "workflowTour": {
     "title": "Welcome to Clinical Data Studio",

@@ -1,4 +1,5 @@
 import { type TextSegment } from "components/DeidOutput/utils/parsers";
+import jsPDF from "jspdf";
 
 export const useDownloadRedactedTextCopy = () => {
   const segmentsToText = (segments: TextSegment[]): string => {
@@ -32,10 +33,19 @@ export const useDownloadRedactedTextCopy = () => {
     URL.revokeObjectURL(url);
   };
 
+  const downloadAsPdf = (segments: TextSegment[], filename: string): void => {
+    const text = segmentsToText(segments);
+    const doc = new jsPDF();
+    doc.setFontSize(9);
+    doc.setFont("courier");
+    doc.text(text, 10, 10, { maxWidth: 190 });
+    doc.save(`${filename}.pdf`);
+  };
+
   const copyToClipboard = (segments: TextSegment[]): void => {
     const text = segmentsToText(segments);
     navigator.clipboard.writeText(text);
   };
 
-  return { downloadAsJson, downloadAsText, copyToClipboard };
+  return { downloadAsJson, downloadAsText, copyToClipboard, downloadAsPdf };
 };

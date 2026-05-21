@@ -9,7 +9,7 @@ import type {
 const PRICING_API = {
   plans: "/pricing/plans",
   current: "/pricing/current",
-  select: "/pricing/select",
+  select: "/pricing/subscriptions",
 } as const;
 
 export const pricingService = {

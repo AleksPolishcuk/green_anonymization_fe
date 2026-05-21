@@ -26,6 +26,7 @@ import {
   SubNavItem,
   SubNavList,
   SubNavChevron,
+  SubNavStepLabel,
 } from "./styles";
 import { useAppSelector } from "store/hooks";
 import { logout } from "store/slices/authSlice";
@@ -53,8 +54,13 @@ export default function Sidebar() {
   const location = useLocation();
   const currentStep = useAppSelector((s) => s.document.currentStep);
 
-  const { sidebarRef, isMobileOpen, handleSidebarClick, handleNavClick } =
-    useSidebar();
+  const {
+    sidebarRef,
+    isMobileOpen,
+    handleSidebarClick,
+    handleNavClick,
+    formatEmail,
+  } = useSidebar();
 
   const isDeidPage = location.pathname === "/deidentification";
   const effectiveStep = currentStep ?? DEID_STEPS[0];
@@ -140,7 +146,9 @@ export default function Sidebar() {
                       )}
                     />
                   </SubNavStepIcon>
-                  {t(DEID_STEP_LABELS[step])}
+                  <SubNavStepLabel $isMobileOpen={isMobileOpen}>
+                    {t(DEID_STEP_LABELS[step])}
+                  </SubNavStepLabel>
                 </SubNavItem>
               );
             })}
@@ -170,7 +178,10 @@ export default function Sidebar() {
           <SidebarProFileTextHeading>
             {user?.firstName} {user?.lastName}
           </SidebarProFileTextHeading>
-          <SidebarProFileTextSubtitle>{user?.email}</SidebarProFileTextSubtitle>
+
+          <SidebarProFileTextSubtitle title={user?.email}>
+            {formatEmail(user?.email)}
+          </SidebarProFileTextSubtitle>
         </SidebarProfileTextContainer>
 
         <SidebarExitIcon onClick={handleExitClick}>

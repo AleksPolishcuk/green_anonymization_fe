@@ -9,13 +9,20 @@ export default function DriverStyles() {
           backgroundColor: `${theme.palette.background.paper} !important`,
           border: `1px solid ${theme.palette.divider} !important`,
           borderRadius: `${theme.shape.borderRadius}px !important`,
-          padding: `${theme.spacing(5)} !important`,
+          padding: `${theme.spacing(4)} !important`,
+          width: "calc(100vw - 32px) !important",
           maxWidth: "380px !important",
+          minWidth: "0 !important",
+          boxSizing: "border-box !important",
 
           boxShadow:
             theme.palette.mode === "dark"
               ? `${cardShadows.cardDarkHover} !important`
               : `${cardShadows.cardHover} !important`,
+
+          [theme.breakpoints.up("sm")]: {
+            padding: `${theme.spacing(5)} !important`,
+          },
         },
 
         ".clinical-tour .driver-popover-title": {
@@ -34,9 +41,14 @@ export default function DriverStyles() {
 
         ".clinical-tour .driver-popover-footer": {
           display: "flex !important",
-          justifyContent: "flex-end !important",
+          flexDirection: "column-reverse !important",
           gap: `${theme.spacing(2)} !important`,
           marginTop: `${theme.spacing(4)} !important`,
+
+          [theme.breakpoints.up("sm")]: {
+            flexDirection: "row !important",
+            justifyContent: "flex-end !important",
+          },
         },
 
         ".clinical-tour .driver-popover-next-btn": {
@@ -95,6 +107,15 @@ export default function DriverStyles() {
           backdropFilter: "none !important",
         },
 
+        ".clinical-tour .driver-popover-next-btn, .clinical-tour .driver-popover-prev-btn":
+          {
+            width: "100% !important",
+
+            [theme.breakpoints.up("sm")]: {
+              width: "auto !important",
+            },
+          },
+
         ".driver-active-element": {
           position: "relative !important",
           zIndex: "10001 !important",
@@ -111,6 +132,7 @@ export default function DriverStyles() {
         },
 
         ".driver-popover": {
+          maxWidth: "calc(100vw - 32px) !important",
           marginLeft: "16px !important",
           marginRight: "16px !important",
         },

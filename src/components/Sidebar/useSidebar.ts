@@ -38,10 +38,22 @@ export const useSidebar = () => {
     setIsMobileOpen(false);
   };
 
+  const formatEmail = (email?: string, maxLocal = 10) => {
+    if (!email) return "";
+
+    const [local, domain] = email.split("@");
+    if (!domain) return email;
+
+    if (local.length <= maxLocal) return email;
+
+    return `${local.slice(0, maxLocal)}…@${domain}`;
+  };
+
   return {
     sidebarRef,
     isMobileOpen,
     handleSidebarClick,
     handleNavClick,
+    formatEmail,
   };
 };

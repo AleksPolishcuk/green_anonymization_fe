@@ -18,9 +18,13 @@ import {
   ActionButton,
   ActionButtonIconWrapper,
   TableHeaderColumnButtons,
+  LoaderRow,
 } from "./syntheticDataGeneratedDataset.styles";
-import { headerSpriteRef } from "constants/MainPages";
+import { headerSpriteRef, FINDINGS_PAGE_SIZE } from "constants/MainPages";
+import { Loader } from "shared/ui/Loader";
 import { useAppSelector } from "store/hooks";
+import { useSyntheticDataContents } from "./useSyntheticDataContents";
+import { useScroll } from "components/DeidOutput/hooks/useScroll";
 
 export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {
@@ -28,6 +32,16 @@ export default function SyntheticDataGeneratedDataset() {
   });
 
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
+  const { handleRegenerate, handleDownload } = useSyntheticDataContents();
+
+  const {
+    visibleItems: visibleDocuments,
+    hasMore,
+    loaderRef,
+  } = useScroll({
+    items: syntheticDocuments || [],
+    pageSize: FINDINGS_PAGE_SIZE,
+  });
 
   return (
     <TableCard data-tour="synthetic-generated-dataset">
@@ -47,13 +61,13 @@ export default function SyntheticDataGeneratedDataset() {
         </TableHeaderColumn>
         <TableHeaderColumnButtons>
           <ActionButtonsContainer>
-            <ActionButton>
+            <ActionButton onClick={handleRegenerate}>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconRefresh")} />
               </ActionButtonIconWrapper>
               {t("regenerateDatasetButton")}
             </ActionButton>
-            <ActionButton>
+            <ActionButton onClick={() => handleDownload("txt")}>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </ActionButtonIconWrapper>
@@ -68,13 +82,13 @@ export default function SyntheticDataGeneratedDataset() {
           <thead>
             <tr>
               <Th>{t("columns.id")}</Th>
-              {syntheticDocuments[0]?.entities.map((entity) => (
+              {syntheticDocuments?.[0]?.entities.map((entity) => (
                 <Th key={entity.entity_type}>{entity.entity_type}</Th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {syntheticDocuments?.map((doc, rowIndex) => (
+            {visibleDocuments?.map((doc, rowIndex) => (
               <Tr key={doc.id}>
                 <Td>{rowIndex + 1}</Td>
                 {doc.entities.map((entity) => (
@@ -86,6 +100,11 @@ export default function SyntheticDataGeneratedDataset() {
             ))}
           </tbody>
         </StyledTable>
+        {hasMore && (
+          <LoaderRow ref={loaderRef}>
+            <Loader />
+          </LoaderRow>
+        )}
       </TableScrollWrapper>
       <DataSafetyInfoWrapper>
         <DataSafetyInfoIconWrapper>

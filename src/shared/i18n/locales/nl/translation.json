@@ -307,8 +307,8 @@
       "subtitle": "Gevoelige gegevens verwijderd",
       "hipaaCompliant": "HIPAA-veilig",
       "copy": "Kopiëren",
-      "downloadTxt": ".txt downloaden",
-      "downloadJson": ".json downloaden",
+      "downloadPdf": "PDF downloaden",
+      "saveButtonText": "Wijzigingen opslaan",
       "redactedContentTooltip": "Geredigeerde informatie"
     },
     "header": {
@@ -331,7 +331,18 @@
       "actions": {
         "selected": "Geselecteerd",
         "deselected": "Gedeselecteerd"
+      },
+      "deselectConfirm": {
+        "title": "Anonimisering voor deze entiteit overslaan?",
+        "body": "Deze entiteit wordt niet geanonimiseerd en verschijnt als leesbare tekst in de de-geïdentificeerde uitvoer. Het ongemaskerd laten van gevoelige gegevens kan leiden tot een complianceschending onder het geselecteerde framework.",
+        "confirm": "Bevestigen",
+        "cancel": "Annuleren"
       }
+    },
+    "syntheticCta": {
+      "title": "Klaar om synthetische gegevens te genereren?",
+      "subtitle": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
+      "button": "Synthetische gegevens genereren"
     }
   },
   "notFound": {
@@ -422,8 +433,8 @@
       "unlimitedDocs": "Onbeperkte documenten",
       "advancedDeid": "Geavanceerde de-identificatie",
       "customRules": "Aangepaste redactieregels",
-      "batchProcessing": "Batchverwerking",
-      "auditLogs": "Auditlogboeken & activiteitsgeschiedenis",
+      "syntheticDataFree": "Synthetische gegevens (tot 5 records)",
+      "syntheticDataPro": "Synthetische gegevens (tot 500 records)",
       "prioritySupport": "Prioriteitsondersteuning"
     },
     "currentPlan": "Huidig Plan",
@@ -434,9 +445,7 @@
     "message": "U heeft alle {{limit}} documenten van vandaag gebruikt.",
     "upgrade": "Upgrade naar Pro",
     "close": "Sluiten",
-    "resetToday": "Uw limiet wordt vandaag om {{time}} vernieuwd",
-    "resetTomorrow": "Uw limiet wordt morgen om {{time}} vernieuwd",
-    "resetFallback": "Uw limiet wordt morgen vernieuwd"
+    "resetFallback": "Uw limiet wordt morgen vernieuwd."
   },
   "syntheticDataGeneratedDataset": {
     "title": "Gegenereerde dataset",
@@ -454,5 +463,43 @@
   },
   "common": {
     "close": "Sluiten"
+  },
+  "proFeature": {
+    "title": "Pro-functie",
+    "customRules": "Aangepaste redactieregels zijn beschikbaar in het Pro-abonnement. Upgrade om individuele entiteiten te selecteren en deselecteren.",
+    "syntheticData": "Meer dan 5 records genereren vereist het Pro-abonnement. Upgrade om volledige datageneratie te ontgrendelen.",
+    "upgrade": "Upgrade naar Pro",
+    "close": "Sluiten"
+  },
+  "paymentModal": {
+    "title": "Betaling afronden",
+    "subtitle": "Pro-abonnement — {{price}}/maand",
+    "cardholderName": "Naam kaarthouder",
+    "cardholderNamePlaceholder": "Jan de Vries",
+    "cardNumber": "Kaartnummer",
+    "cardNumberPlaceholder": "1234 5678 9012 3456",
+    "expiryDate": "Vervaldatum",
+    "expiryPlaceholder": "MM/JJ",
+    "cvv": "CVV",
+    "cvvPlaceholder": "123",
+    "acceptedCards": "Wij accepteren",
+    "payButton": "Betaal {{price}}",
+    "processing": "Verwerken...",
+    "success": {
+      "title": "Betaling geslaagd!",
+      "message": "U heeft nu het Pro-abonnement. Doorsturen naar dashboard..."
+    },
+    "errors": {
+      "nameRequired": "Naam is verplicht",
+      "nameMinLength": "Naam moet minimaal 2 tekens bevatten",
+      "cardRequired": "Kaartnummer is verplicht",
+      "cardInvalid": "Kaartnummer moet 16 cijfers bevatten",
+      "expiryRequired": "Vervaldatum is verplicht",
+      "expiryInvalid": "Ongeldige vervaldatum (MM/JJ)",
+      "expiryExpired": "Kaart is verlopen",
+      "cvvRequired": "CVV is verplicht",
+      "cvvInvalid": "CVV moet 3–4 cijfers bevatten",
+      "paymentFailed": "Betaling mislukt. Probeer het opnieuw."
+    }
   }
 }
