@@ -132,9 +132,12 @@ export default function DriverStyles() {
         },
 
         ".driver-popover": {
-          maxWidth: "calc(100vw - 32px) !important",
-          marginLeft: "16px !important",
-          marginRight: "16px !important",
+          width: "auto !important",
+          maxWidth: "380px !important",
+
+          [theme.breakpoints.down("sm")]: {
+            maxWidth: "calc(100vw - 32px) !important",
+          },
         },
       })}
     />

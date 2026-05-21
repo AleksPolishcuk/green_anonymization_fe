@@ -28,7 +28,7 @@ export const startSyntheticTour = ({
       },
     },
     {
-      element: '[data-tour="synthetic-generated-dataset"]',
+      element: '[data-tour="synthetic-generate-button"]',
       popover: {
         title: i18n.t("syntheticTour.datasetTitle"),
         description: i18n.t("syntheticTour.datasetDescription"),

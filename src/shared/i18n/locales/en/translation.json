@@ -611,7 +611,7 @@
     "sourceDescription": "Review the de-identified document that will be used to generate synthetic data.",
     "settingsTitle": "Generate settings",
     "settingsDescription": "Choose how many synthetic records you want to generate.",
-    "datasetTitle": "Generated dataset",
-    "datasetDescription": "Review the generated files and download the dataset archive."
+    "datasetTitle": "Start generating synthetic data",
+    "datasetDescription": "Receive the generated dataset and download the archive."
   }
 }

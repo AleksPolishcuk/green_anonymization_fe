@@ -367,7 +367,10 @@ export default function SyntheticGenerationSettings() {
             </PreservedList>
           </PreservedBox>
 
-          <GenerateButton onClick={handleGenerate}>
+          <GenerateButton
+            onClick={handleGenerate}
+            data-tour="synthetic-generate-button"
+          >
             <AutoAwesomeOutlined />
             {t("syntheticData.generation.button")}
           </GenerateButton>

@@ -44,7 +44,7 @@ export default function SyntheticDataGeneratedDataset() {
   });
 
   return (
-    <TableCard data-tour="synthetic-generated-dataset">
+    <TableCard>
       <TableHeader style={{ cursor: "default" }}>
         <TableHeaderColumn>
           <TableIconWrapper>
