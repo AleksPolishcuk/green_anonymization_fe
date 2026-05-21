@@ -18,8 +18,12 @@ export const syntheticDataSlice = createSlice({
     ) => {
       state.syntheticDocuments = action.payload;
     },
+    clearSyntheticDocuments: (state) => {
+      state.syntheticDocuments = [];
+    },
   },
 });
 
-export const { setSyntheticDocuments } = syntheticDataSlice.actions;
+export const { setSyntheticDocuments, clearSyntheticDocuments } =
+  syntheticDataSlice.actions;
 export default syntheticDataSlice.reducer;

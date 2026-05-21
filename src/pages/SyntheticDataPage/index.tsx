@@ -10,11 +10,14 @@ import {
 import { useTranslation } from "react-i18next";
 import SyntheticGenerationSettings from "components/SyntheticGenerationSettings";
 import SyntheticDataContents from "components/SyntheticDataContents";
+import DriverStyles from "components/WorkflowTour/DriverStyles";
 
 export default function SyntheticDataPage() {
   const { t } = useTranslation();
+
   return (
     <PageRoot>
+      <DriverStyles />
       <PageHeader>
         <HeaderTopRow>
           <HeaderTitle variant="h4">

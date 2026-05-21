@@ -54,10 +54,13 @@ import { AutoAwesomeOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
+import { useAppSelector } from "store/hooks";
+import { useSyntheticPageEffects } from "./useSyntheticPageEffects";
 
 export default function SyntheticGenerationSettings() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const {
     documents,
     selectedDocument,
@@ -71,6 +74,13 @@ export default function SyntheticGenerationSettings() {
     handleIncrease,
     handleGenerate,
   } = useSyntheticGenerationSettings();
+
+  const user = useAppSelector((state) => state.auth.user);
+
+  useSyntheticPageEffects({
+    user,
+    hasSelectedDocument: !!selectedDocument,
+  });
 
   const getFrameworkName = (code?: string) =>
     COMPLIANCE_FRAMEWORKS.find((framework) => framework.code === code)?.name ??
@@ -156,7 +166,7 @@ export default function SyntheticGenerationSettings() {
 
   return (
     <SectionRoot>
-      <Card>
+      <Card data-tour="synthetic-source-document">
         <CardHeader>
           <CardHeaderIcon>
             <DescriptionOutlinedIcon />
@@ -275,7 +285,7 @@ export default function SyntheticGenerationSettings() {
         </PreviewBox>
       </Card>
 
-      <Card>
+      <Card data-tour="synthetic-generate-settings">
         <CardHeader>
           <CardHeaderIcon>
             <AutoAwesomeOutlined />

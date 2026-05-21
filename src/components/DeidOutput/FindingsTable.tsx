@@ -56,7 +56,7 @@ export const FindingsTable = ({
   });
 
   return (
-    <TableCard>
+    <TableCard data-tour="entities-list">
       <TableHeader onClick={() => setExpanded((prev) => !prev)}>
         <TableHeaderLeft>
           <TableIconWrapper>

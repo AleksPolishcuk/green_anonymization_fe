@@ -41,7 +41,7 @@ export default function FrameworkSection() {
 
   return (
     <>
-      <FrameworkSectionRoot>
+      <FrameworkSectionRoot data-tour="framework-section">
         <FrameworkSectionStack>
           <FrameworkSectionHeaderRow>
             <FrameworkSectionIconBox aria-hidden="true">

@@ -73,7 +73,7 @@ export default function Input() {
   };
 
   return (
-    <InputSectionRoot>
+    <InputSectionRoot data-tour="input-section">
       <InputSectionStack>
         <InputSectionHeaderRow>
           <InputSectionIconBox aria-hidden="true">
@@ -142,7 +142,11 @@ export default function Input() {
 
             {!submitSuccess && (
               <SubmitWrapper>
-                <InputSubmitButton type="submit" disabled={isSubmitDisabled}>
+                <InputSubmitButton
+                  type="submit"
+                  disabled={isSubmitDisabled}
+                  data-tour="analyze-button"
+                >
                   <InputPlayIcon>
                     <use href={headerSpriteRef("input-submit-play-icon")} />
                   </InputPlayIcon>

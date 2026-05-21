@@ -2,14 +2,25 @@ import DeidHeader from "components/DeidHeader";
 import FrameworkSection from "components/Frameworks";
 import Input from "components/Input";
 import DeidOutputSection from "components/DeidOutput";
+import DriverStyles from "components/WorkflowTour/DriverStyles";
+
 import { useAppSelector } from "store/hooks";
+import { useDeidentificationTour } from "./useDeidentificationTour";
 
 export default function DeidentificationPage() {
   const currentStep = useAppSelector((s) => s.document.currentStep);
 
+  const user = useAppSelector((s) => s.auth.user);
+
+  useDeidentificationTour({
+    currentStep,
+    user,
+  });
+
   if (currentStep === "results") {
     return (
       <>
+        <DriverStyles />
         <DeidOutputSection />
       </>
     );
@@ -17,6 +28,7 @@ export default function DeidentificationPage() {
 
   return (
     <>
+      <DriverStyles />
       <DeidHeader />
       <FrameworkSection />
       <Input />

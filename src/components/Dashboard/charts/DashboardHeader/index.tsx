@@ -23,7 +23,12 @@ export const DashboardHeader = () => {
         <HeaderSubtitle>{t("dashboard.header.subtitle")}</HeaderSubtitle>
       </HeaderTextGroup>
 
-      <StartDeIdButton type="button" onClick={onStartDeId} disableElevation>
+      <StartDeIdButton
+        type="button"
+        onClick={onStartDeId}
+        disableElevation
+        data-tour="dashboard-start-deid"
+      >
         <ButtonSpriteIcon viewBox="0 0 32 32" aria-hidden>
           <use
             href={headerSpriteRef(headerSpriteSymbolIds.dashboardDeIdShield)}

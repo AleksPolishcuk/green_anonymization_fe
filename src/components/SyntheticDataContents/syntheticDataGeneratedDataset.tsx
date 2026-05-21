@@ -30,7 +30,7 @@ export default function SyntheticDataGeneratedDataset() {
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
 
   return (
-    <TableCard>
+    <TableCard data-tour="synthetic-generated-dataset">
       <TableHeader style={{ cursor: "default" }}>
         <TableHeaderColumn>
           <TableIconWrapper>

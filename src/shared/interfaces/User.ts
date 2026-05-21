@@ -1,3 +1,11 @@
+export type WorkflowTour = {
+  skipped: boolean;
+  dashboard: boolean;
+  deidentification: boolean;
+  results: boolean;
+  synthetic: boolean;
+};
+
 export default interface User {
   email: string;
 
@@ -6,4 +14,6 @@ export default interface User {
   lastName: string;
 
   companyName: string;
+
+  workflowTour?: WorkflowTour | null;
 }
