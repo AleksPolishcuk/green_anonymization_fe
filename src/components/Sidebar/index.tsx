@@ -179,7 +179,7 @@ export default function Sidebar() {
           </SidebarProFileTextHeading>
 
           <SidebarProFileTextSubtitle title={user?.email}>
-            {formatEmail("liudmyla.dziubynska@gmail.com")}
+            {formatEmail(user?.email)}
           </SidebarProFileTextSubtitle>
         </SidebarProfileTextContainer>
 
