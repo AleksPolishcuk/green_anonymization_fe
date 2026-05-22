@@ -368,7 +368,8 @@
       "entitiesDetected": "Gedetecteerde entiteiten",
       "avgEntitiesPerDoc": "Gem. entiteiten/doc.",
       "successRate": "Slagingspercentage",
-      "vsLastMonth": "t.o.v. vorige maand"
+      "vsLastMonth": "t.o.v. vorige maand",
+      "thisMonth": "deze maand"
     },
     "charts": {
       "entityTypes": {

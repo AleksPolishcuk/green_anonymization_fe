@@ -100,20 +100,33 @@ export const TrendRow = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
-export const TrendArrowIcon = styled("svg")({
+export const CalendarIcon = styled("svg")(({ theme }) => ({
   display: "block",
-  width: 14,
-  height: 14,
+  width: 13,
+  height: 13,
   flexShrink: 0,
-});
-
-export const TrendPercent = styled("span")(({ theme }) => ({
-  fontFamily: theme.typography.fontFamily,
-  fontSize: theme.typography.fontSize14,
-  fontWeight: theme.typography.fontWeightMedium,
-  color: theme.palette.success.main,
-  lineHeight: theme.typography.lineHeight150,
+  color: theme.palette.text.secondary,
 }));
+
+export const TrendArrowIcon = styled("svg")<{ $negative?: boolean }>(
+  ({ theme, $negative }) => ({
+    display: "block",
+    width: 14,
+    height: 14,
+    flexShrink: 0,
+    color: $negative ? theme.palette.error.main : theme.palette.success.main,
+  }),
+);
+
+export const TrendPercent = styled("span")<{ $negative?: boolean }>(
+  ({ theme, $negative }) => ({
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.fontSize14,
+    fontWeight: theme.typography.fontWeightMedium,
+    color: $negative ? theme.palette.error.main : theme.palette.success.main,
+    lineHeight: theme.typography.lineHeight150,
+  }),
+);
 
 export const TrendSuffix = styled("span")(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
