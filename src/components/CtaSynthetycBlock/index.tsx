@@ -31,7 +31,10 @@ export default function CtaSynthetycBlock() {
         </div>
       </SyntheticDataCtaLeft>
 
-      <SyntheticDataButton onClick={handleGenerateSyntheticData}>
+      <SyntheticDataButton
+        onClick={handleGenerateSyntheticData}
+        data-tour="synthetic-cta"
+      >
         {t("syntheticDataCta.button")}
         <ArrowRight />
       </SyntheticDataButton>

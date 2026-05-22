@@ -5,10 +5,7 @@ import { documentsService } from "services/documents";
 import { syntheticDataService } from "services/synthetic";
 import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
 import { useAppDispatch } from "store/hooks";
-import {
-  resetSyntheticData,
-  setSyntheticData,
-} from "store/slices/syntheticDataSlice";
+import { setSyntheticData } from "store/slices/syntheticDataSlice";
 
 import type {
   DocumentDetails,
@@ -19,13 +16,31 @@ const DEFAULT_RECORDS_COUNT = 10;
 const MIN_RECORDS_COUNT = 1;
 const MAX_RECORDS_COUNT_FREE = 5;
 const MAX_RECORDS_COUNT_PRO = 500;
+const DOCUMENTS_PAGE_LIMIT = 10;
 
 export const useSyntheticGenerationSettings = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const { hasSyntheticData } = useFeatureAccess();
+
+  const [documents, setDocuments] = useState<DocumentListItem[]>([]);
+  const [documentsPage, setDocumentsPage] = useState(1);
+  const [documentsTotal, setDocumentsTotal] = useState(0);
+
+  const [selectedDocument, setSelectedDocument] =
+    useState<DocumentDetails | null>(null);
+
+  const [recordsCount, setRecordsCount] = useState(DEFAULT_RECORDS_COUNT);
+
+  const [isPreviewExpanded, setIsPreviewExpanded] = useState(false);
+
+  const [isLoadingDocument, setIsLoadingDocument] = useState(false);
+
   const [isGenerating, setIsGenerating] = useState(false);
+
   const [proModalOpen, setProModalOpen] = useState(false);
+
+  const [error, setError] = useState<string | null>(null);
 
   const maxRecordsCount = hasSyntheticData
     ? MAX_RECORDS_COUNT_PRO
@@ -36,19 +51,13 @@ export const useSyntheticGenerationSettings = () => {
     [searchParams],
   );
 
-  const [documents, setDocuments] = useState<DocumentListItem[]>([]);
-  const [selectedDocument, setSelectedDocument] =
-    useState<DocumentDetails | null>(null);
-  const [recordsCount, setRecordsCount] = useState(
-    Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount),
-  );
-  const [isPreviewExpanded, setIsPreviewExpanded] = useState(false);
-  const [isLoadingDocument, setIsLoadingDocument] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const documentsTotalPages = Math.ceil(documentsTotal / DOCUMENTS_PAGE_LIMIT);
 
   useEffect(() => {
-    dispatch(resetSyntheticData());
+    setRecordsCount(Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount));
+  }, [maxRecordsCount]);
 
+  useEffect(() => {
     const loadData = async () => {
       try {
         setIsLoadingDocument(true);
@@ -56,17 +65,24 @@ export const useSyntheticGenerationSettings = () => {
 
         if (documentId) {
           setIsPreviewExpanded(false);
+
           const response = await documentsService.getDocumentById(documentId);
+
           setSelectedDocument(response);
-        } else {
-          setSelectedDocument(null);
-          setIsPreviewExpanded(false);
-          const response = await documentsService.getDocuments({
-            page: 1,
-            limit: 20,
-          });
-          setDocuments(response.items);
+
+          return;
         }
+
+        setSelectedDocument(null);
+        setIsPreviewExpanded(false);
+
+        const response = await documentsService.getDocuments({
+          page: documentsPage,
+          limit: DOCUMENTS_PAGE_LIMIT,
+        });
+
+        setDocuments(response.items);
+        setDocumentsTotal(response.total);
       } catch {
         setError("Failed to load source document");
       } finally {
@@ -74,11 +90,17 @@ export const useSyntheticGenerationSettings = () => {
       }
     };
 
-    loadData();
-  }, [documentId]);
+    void loadData();
+  }, [documentId, documentsPage]);
 
   const handleSelectDocument = (id: string) => {
-    setSearchParams({ documentId: id });
+    setSearchParams({
+      documentId: id,
+    });
+  };
+
+  const handleDocumentsPageChange = (_: unknown, value: number) => {
+    setDocumentsPage(value);
   };
 
   const handleDecrease = () => {
@@ -88,8 +110,10 @@ export const useSyntheticGenerationSettings = () => {
   const handleIncrease = () => {
     if (recordsCount >= maxRecordsCount && !hasSyntheticData) {
       setProModalOpen(true);
+
       return;
     }
+
     setRecordsCount((prev) => Math.min(maxRecordsCount, prev + 1));
   };
 
@@ -120,6 +144,8 @@ export const useSyntheticGenerationSettings = () => {
 
   return {
     documents,
+    documentsPage,
+    documentsTotalPages,
     selectedDocument,
     recordsCount,
     maxRecordsCount,
@@ -130,6 +156,7 @@ export const useSyntheticGenerationSettings = () => {
     error,
     setIsPreviewExpanded,
     handleSelectDocument,
+    handleDocumentsPageChange,
     handleDecrease,
     handleIncrease,
     handleProModalClose,

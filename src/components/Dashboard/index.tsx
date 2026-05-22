@@ -57,29 +57,30 @@ export const Dashboard = () => {
   }
 
   return (
-    <MainContent>
+    <MainContent data-tour="dashboard">
       <DashboardHeader />
 
       <SubscriptionUsage />
+      <div>
+        <StatCards data={data.statCards} />
 
-      <StatCards data={data.statCards} />
+        <ChartsLayout>
+          <ChartRow $cols={CHART_ROW_COLS_WIDE}>
+            <EntityTypesChart data={data.entityTypes} />
+            <ComplianceDonut data={data.complianceFrameworks} />
+          </ChartRow>
 
-      <ChartsLayout>
-        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
-          <EntityTypesChart data={data.entityTypes} />
-          <ComplianceDonut data={data.complianceFrameworks} />
-        </ChartRow>
+          <ChartRow $cols={CHART_ROW_COLS_EQUAL}>
+            <ProcessingHistoryChart data={data.processingHistory} />
+            <DeIdMethodChart data={data.deIdMethods} />
+          </ChartRow>
 
-        <ChartRow $cols={CHART_ROW_COLS_EQUAL}>
-          <ProcessingHistoryChart data={data.processingHistory} />
-          <DeIdMethodChart data={data.deIdMethods} />
-        </ChartRow>
-
-        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
-          <ConfidenceScoreChart data={data.confidenceScores} />
-          <RecentActivity data={data.recentActivity} />
-        </ChartRow>
-      </ChartsLayout>
+          <ChartRow $cols={CHART_ROW_COLS_WIDE}>
+            <ConfidenceScoreChart data={data.confidenceScores} />
+            <RecentActivity data={data.recentActivity} />
+          </ChartRow>
+        </ChartsLayout>
+      </div>
     </MainContent>
   );
 };

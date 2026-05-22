@@ -71,6 +71,7 @@ export default function Sidebar() {
       ref={sidebarRef}
       $isMobileOpen={isMobileOpen}
       onClick={handleSidebarClick}
+      data-tour="sidebar"
     >
       <SidebarLogoRow to="/" onClick={handleNavClick}>
         <SidebarLogoBox>

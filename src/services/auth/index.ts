@@ -1,6 +1,10 @@
 import { apiClient } from "services/api";
 import type User from "shared/interfaces/User";
-import type { VerifyResponse, SessionResponse } from "./typing";
+import type {
+  VerifyResponse,
+  SessionResponse,
+  UpdateWorkflowTourPayload,
+} from "./typing";
 
 export const authService = {
   login(email: string) {
@@ -15,7 +19,7 @@ export const authService = {
   },
 
   refresh(refreshToken: string) {
-    return apiClient.post<{ accessTokenL: string }, { refreshToken: string }>(
+    return apiClient.post<{ accessToken: string }, { refreshToken: string }>(
       "/auth/refresh",
       { refreshToken },
     );
@@ -27,5 +31,12 @@ export const authService = {
 
   register(data: { firstName: string; lastName: string; companyName: string }) {
     return apiClient.post<User, typeof data>("/user/register", data);
+  },
+
+  updateWorkflowTour(data: UpdateWorkflowTourPayload) {
+    return apiClient.patch<User, UpdateWorkflowTourPayload>(
+      "/user/workflow-tour",
+      data,
+    );
   },
 };

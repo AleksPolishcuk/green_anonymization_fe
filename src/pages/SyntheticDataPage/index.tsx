@@ -12,12 +12,14 @@ import {
   PageHeader,
   PageRoot,
 } from "./styles";
+import DriverStyles from "components/WorkflowTour/DriverStyles";
 
 export default function SyntheticDataPage() {
   const { t } = useTranslation();
 
   return (
     <PageRoot>
+      <DriverStyles />
       <PageHeader>
         <HeaderTopRow>
           <HeaderTitle variant="h4">

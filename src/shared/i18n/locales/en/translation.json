@@ -570,5 +570,48 @@
       "cvvInvalid": "CVV must be 3–4 digits",
       "paymentFailed": "Payment failed. Please try again."
     }
+  },
+  "workflowTour": {
+    "title": "Welcome to Clinical Data Studio",
+    "description": "Let's take a quick tour of the main features and walk through your first workflow.",
+    "start": "Start tour",
+    "skip": "Skip"
+  },
+  "deidTour": {
+    "frameworkTitle": "Choose framework",
+    "frameworkDescription": "Select the compliance framework for your document.",
+    "inputTitle": "Upload data",
+    "inputDescription": "Upload a document or paste text for de-identification.",
+    "analyzeTitle": "Analyze document",
+    "analyzeDescription": "Start de-identification when your input is ready."
+  },
+  "dashboardTour": {
+    "sidebarTitle": "Your sidebar navigation",
+    "sidebarDescription": "Use this sidebar to navigate between your dashboard, de-identification, and synthetic data generation.",
+    "dashboardTitle": "Welcome to your dashboard!",
+    "dashboardDescription": "This is your dashboard where you can track all of your projects and documents.",
+    "startTitle": "Start de-identification",
+    "startDescription": "Start here when you are ready to de-identify your first document."
+  },
+  "resultsTour": {
+    "originalTitle": "Original document",
+    "originalDescription": "Here you can review the original text you submitted.",
+
+    "redactedTitle": "De-identified result",
+    "redactedDescription": "Sensitive information is hidden in this version of the document.",
+
+    "entitiesTitle": "Detected entities",
+    "entitiesDescription": "Review the sensitive entities detected during de-identification.",
+
+    "syntheticTitle": "Generate synthetic data",
+    "syntheticDescription": "Use this de-identified document to generate synthetic data."
+  },
+  "syntheticTour": {
+    "sourceTitle": "Check your source document",
+    "sourceDescription": "Review the de-identified document that will be used to generate synthetic data.",
+    "settingsTitle": "Generate settings",
+    "settingsDescription": "Choose how many synthetic records you want to generate.",
+    "datasetTitle": "Start generating synthetic data",
+    "datasetDescription": "Receive the generated dataset and download the archive."
   }
 }

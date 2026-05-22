@@ -31,10 +31,12 @@ export const syntheticDataSlice = createSlice({
       state.documentId = initialState.documentId;
       state.recordsCount = initialState.recordsCount;
     },
+    clearSyntheticDocuments: (state) => {
+      state.syntheticDocuments = [];
+    },
   },
 });
 
-export const { setSyntheticData, resetSyntheticData } =
+export const { setSyntheticData, clearSyntheticDocuments } =
   syntheticDataSlice.actions;
-
 export default syntheticDataSlice.reducer;

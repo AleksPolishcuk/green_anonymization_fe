@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Pagination, Typography } from "@mui/material";
 import { AutoAwesomeOutlined } from "@mui/icons-material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
@@ -15,6 +15,10 @@ import { useTranslation } from "react-i18next";
 import { COMPLIANCE_FRAMEWORKS } from "constants/MainPages";
 import { ProFeatureModal } from "components/ProFeatureModal";
 import { Loader } from "shared/ui/Loader";
+import { useAppSelector } from "store/hooks";
+
+import { useSyntheticPageEffects } from "./useSyntheticPageEffects";
+import { useSyntheticGenerationSettings } from "./useSyntheticGenerationSettings";
 
 import {
   SectionRoot,
@@ -53,13 +57,14 @@ import {
   EmptyState,
 } from "./styles";
 
-import { useSyntheticGenerationSettings } from "./useSyntheticGenerationSettings";
-
 export default function SyntheticGenerationSettings() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const {
     documents,
+    documentsPage,
+    documentsTotalPages,
     selectedDocument,
     recordsCount,
     maxRecordsCount,
@@ -69,11 +74,19 @@ export default function SyntheticGenerationSettings() {
     error,
     setIsPreviewExpanded,
     handleSelectDocument,
+    handleDocumentsPageChange,
     handleDecrease,
     handleIncrease,
     handleProModalClose,
     handleGenerate,
   } = useSyntheticGenerationSettings();
+
+  const user = useAppSelector((state) => state.auth.user);
+
+  useSyntheticPageEffects({
+    user,
+    hasSelectedDocument: !!selectedDocument,
+  });
 
   const getFrameworkName = (code?: string) =>
     COMPLIANCE_FRAMEWORKS.find((framework) => framework.code === code)?.name ??
@@ -126,6 +139,14 @@ export default function SyntheticGenerationSettings() {
               </StatusBadge>
             </SourceDocumentSelect>
           ))}
+
+          {documentsTotalPages > 1 && (
+            <Pagination
+              count={documentsTotalPages}
+              page={documentsPage}
+              onChange={handleDocumentsPageChange}
+            />
+          )}
         </Card>
       </SectionRoot>
     );
@@ -164,8 +185,9 @@ export default function SyntheticGenerationSettings() {
         onClose={handleProModalClose}
         messageKey="syntheticData"
       />
+
       <SectionRoot>
-        <Card>
+        <Card data-tour="synthetic-source-document">
           <CardHeader>
             <CardHeaderIcon>
               <DescriptionOutlinedIcon />
@@ -286,7 +308,7 @@ export default function SyntheticGenerationSettings() {
           </PreviewBox>
         </Card>
 
-        <Card>
+        <Card data-tour="synthetic-generate-settings">
           <CardHeader>
             <CardHeaderIcon>
               <AutoAwesomeOutlined />
@@ -345,7 +367,10 @@ export default function SyntheticGenerationSettings() {
             </PreservedList>
           </PreservedBox>
 
-          <GenerateButton onClick={handleGenerate}>
+          <GenerateButton
+            onClick={handleGenerate}
+            data-tour="synthetic-generate-button"
+          >
             <AutoAwesomeOutlined />
             {t("syntheticData.generation.button")}
           </GenerateButton>

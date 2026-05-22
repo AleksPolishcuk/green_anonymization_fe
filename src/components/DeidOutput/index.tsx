@@ -100,7 +100,7 @@ export default function DeidOutputSection() {
             </DetectedEntityNumberBadge>
           </CardHeader>
 
-          <CardContent>
+          <CardContent data-tour="original-text">
             <TaggedText segments={originalSegments} />
           </CardContent>
         </DeidOutputSectionCard>
@@ -119,7 +119,7 @@ export default function DeidOutputSection() {
             </ComplianceBadge>
           </CardHeader>
 
-          <CardContent>
+          <CardContent data-tour="redacted-text">
             <TaggedText segments={redactedSegments} />
           </CardContent>
 
