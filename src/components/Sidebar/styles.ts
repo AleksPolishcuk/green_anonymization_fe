@@ -193,7 +193,7 @@ export const SidebarNavIcon = styled("svg")(({ theme }) => ({
 export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.divider}`,
   backgroundColor: theme.palette.background.default,
-
+  marginTop: "auto",
   padding: theme.spacing(3),
 
   display: "flex",
