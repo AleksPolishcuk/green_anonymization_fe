@@ -5,7 +5,6 @@ import {
   GetStartedButton,
 } from "components/Header/AuthActions/styles";
 import { ThemeToggle } from "components/ThemeToggle";
-import { LanguageSwitcher } from "components/LanguageSwitcher";
 import { headerI18nPrefix } from "constants/MainPages";
 import { useAuthActions } from "components/Header/AuthActions/useAuthActions";
 
@@ -22,7 +21,6 @@ export function AuthActions({ compact = false, onAction }: AuthActionsProps) {
 
   return (
     <AuthActionsRow $isCompact={compact}>
-      {!compact && <LanguageSwitcher />}
       {!compact && <ThemeToggle />}
       <GetStartedButton
         type="button"

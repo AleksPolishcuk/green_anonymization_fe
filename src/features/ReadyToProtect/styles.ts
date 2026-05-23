@@ -84,7 +84,7 @@ export const PrimaryButton = styled(Button)(({ theme }) => {
 
   return {
     padding: theme.spacing(3.5, 16.5),
-    borderRadius: theme.spacing(1.5),
+    borderRadius: theme.spacing(3),
 
     backgroundColor: colors.primaryButtonBackground,
     color: theme.palette.primary.main,
@@ -109,7 +109,7 @@ export const SecondaryButton = styled(Button)(({ theme }) => {
 
   return {
     padding: theme.spacing(3.5, 7),
-    borderRadius: theme.spacing(1.5),
+    borderRadius: theme.spacing(3),
 
     color: theme.palette.common.white,
     backgroundColor: colors.secondaryButtonBackground,
