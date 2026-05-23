@@ -1,4 +1,7 @@
-import type { SyntheticDataDocument } from "store/types/syntheticData";
+import type {
+  SyntheticDataDocument,
+  SyntheticEntity,
+} from "store/types/syntheticData";
 
 export type GenerateSyntheticDataRequest = {
   documentId: string;
@@ -12,4 +15,8 @@ export type GenerateSyntheticDataResponse = {
 export type DownloadSyntheticDataRequest = {
   anonymizedTexts: string[];
   extension: "txt" | "pdf" | "docx";
+};
+
+export type DownloadSyntheticTableRequest = {
+  syntheticEntities: SyntheticEntity[][];
 };

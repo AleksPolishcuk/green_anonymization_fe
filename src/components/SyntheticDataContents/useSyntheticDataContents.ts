@@ -4,7 +4,10 @@ import { syntheticDataService } from "services/synthetic";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { setSyntheticData } from "store/slices/syntheticDataSlice";
-import type { SyntheticDataDocument } from "store/types/syntheticData";
+import type {
+  SyntheticDataDocument,
+  SyntheticEntity,
+} from "store/types/syntheticData";
 export const useSyntheticDataContents = () => {
   const dispatch = useAppDispatch();
 
@@ -14,10 +17,14 @@ export const useSyntheticDataContents = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const anonymizedTexts = useMemo(() => {
+  const syntheticTexts = useMemo(() => {
     return syntheticDocuments.map(
       (doc: SyntheticDataDocument) => doc.syntheticText,
     );
+  }, [syntheticDocuments]);
+
+  const syntheticEntities: SyntheticEntity[][] = useMemo(() => {
+    return syntheticDocuments.map((doc: SyntheticDataDocument) => doc.entities);
   }, [syntheticDocuments]);
 
   const handleRegenerate = async () => {
@@ -43,13 +50,13 @@ export const useSyntheticDataContents = () => {
   };
 
   const handleDownload = async (extension: "txt" | "pdf" | "docx") => {
-    if (!anonymizedTexts.length) return;
+    if (!syntheticTexts.length) return;
 
     try {
       setIsLoading(true);
 
       const blob = await syntheticDataService.download({
-        anonymizedTexts,
+        anonymizedTexts: syntheticTexts,
         extension,
       });
 
@@ -69,10 +76,32 @@ export const useSyntheticDataContents = () => {
     }
   };
 
+  const handleTableDownload = async () => {
+    if (!syntheticTexts.length) return;
+
+    try {
+      setIsLoading(true);
+      const blob = await syntheticDataService.downloadTable({
+        syntheticEntities,
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `synthetic-entitites-table.xlsx`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return {
     syntheticDocuments,
     isLoading,
     handleRegenerate,
     handleDownload,
+    handleTableDownload,
   };
 };

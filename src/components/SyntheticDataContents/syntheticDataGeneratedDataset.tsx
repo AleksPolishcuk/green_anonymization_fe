@@ -32,7 +32,8 @@ export default function SyntheticDataGeneratedDataset() {
   });
 
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
-  const { handleRegenerate, handleDownload } = useSyntheticDataContents();
+  const { handleRegenerate, handleDownload, handleTableDownload } =
+    useSyntheticDataContents();
 
   const {
     visibleItems: visibleDocuments,
@@ -66,6 +67,12 @@ export default function SyntheticDataGeneratedDataset() {
                 <use href={headerSpriteRef("icon-IconRefresh")} />
               </ActionButtonIconWrapper>
               {t("regenerateDatasetButton")}
+            </ActionButton>
+            <ActionButton onClick={() => handleTableDownload()}>
+              <ActionButtonIconWrapper>
+                <use href={headerSpriteRef("icon-IconDownload")} />
+              </ActionButtonIconWrapper>
+              {t("downloadTableButton")}
             </ActionButton>
             <ActionButton onClick={() => handleDownload("txt")}>
               <ActionButtonIconWrapper>
