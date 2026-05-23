@@ -350,10 +350,3 @@ export const SubNavChevron = styled("span")(({ theme }) => ({
   color: theme.palette.text.secondary,
   fontSize: 16,
 }));
-
-export const ThemeToggleContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  marginTop: "auto",
-  paddingBottom: theme.spacing(3),
-}));
