@@ -24,7 +24,9 @@ export const STAT_CARD_SPRITE_IDS: Record<
   "icon-chart": "icon-IconArrowUp",
 };
 
-export const STAT_CARD_TREND_ARROW_SPRITE_ID = "icon-GreenArrowUp";
+export const STAT_CARD_TREND_UP_SPRITE_ID = "icon-TrendUp";
+export const STAT_CARD_TREND_DOWN_SPRITE_ID = "icon-TrendDown";
+export const STAT_CARD_CALENDAR_SPRITE_ID = "icon-Calendar";
 
 export const BAR_WIDTH = 40;
 export const BAR_RADIUS = 8;

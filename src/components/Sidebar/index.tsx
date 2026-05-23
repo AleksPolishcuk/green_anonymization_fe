@@ -27,6 +27,7 @@ import {
   SubNavList,
   SubNavChevron,
   SubNavStepLabel,
+  ThemeToggleContainer,
 } from "./styles";
 import { useAppSelector } from "store/hooks";
 import { logout } from "store/slices/authSlice";
@@ -35,6 +36,7 @@ import { useNavigate } from "react-router-dom";
 import { DEID_STEPS, headerSpriteRef } from "constants/MainPages";
 import { useSidebar } from "./useSidebar";
 import type { DeidStep } from "store/types/document";
+import { ThemeToggle } from "components/ThemeToggle";
 
 const DEID_STEP_LABELS: Record<DeidStep, string> = {
   framework: "sidebar.deidSteps.framework",
@@ -168,6 +170,9 @@ export default function Sidebar() {
           <Typography variant="body1">{t("sidebar.syntheticData")}</Typography>
         </SidebarNavItem>
       </SidebarNav>
+      <ThemeToggleContainer>
+        <ThemeToggle />
+      </ThemeToggleContainer>
       <SidebarProfileContainer>
         <SidebarProfileIcon>
           {user?.firstName.charAt(0)}

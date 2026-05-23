@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
+import { headerRoutes, headerSpriteRef } from "constants/MainPages";
 import type { RecentActivityItem } from "store/types/dashboard";
-import { headerSpriteRef } from "constants/MainPages";
 
 import {
   ChartCard,
@@ -28,7 +29,12 @@ type Props = {
 
 export const RecentActivity = ({ data }: Props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { listRef, canScrollMore, handleScroll } = useRecentActivityScroll();
+
+  const handleRowClick = (id: string) => {
+    navigate(`${headerRoutes.syntheticData}?documentId=${id}`);
+  };
 
   return (
     <ChartCard $tall>
@@ -43,7 +49,10 @@ export const RecentActivity = ({ data }: Props) => {
         <ScrollWrapper>
           <ActivityList ref={listRef} onScroll={handleScroll}>
             {data.map((item) => (
-              <ActivityRow key={item.id}>
+              <ActivityRow
+                key={item.id}
+                onClick={() => handleRowClick(item.id)}
+              >
                 <IconDot>
                   <svg viewBox="0 0 32 32" aria-hidden>
                     <use href={headerSpriteRef(ACTIVITY_SUCCESS_SPRITE_ID)} />

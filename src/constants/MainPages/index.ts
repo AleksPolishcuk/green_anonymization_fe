@@ -8,6 +8,7 @@ export const headerNavItems = [
 export const headerRoutes = {
   home: "/",
   dashboard: "/dashboard",
+  syntheticData: "/syntheticdata",
 } as const;
 
 const headerAssetPaths = {
@@ -275,7 +276,7 @@ export const readyToProtectColors = {
 
 export const readyToProtectDarkColors = {
   backgroundGradient:
-    "linear-gradient(135deg, #081654 0%, #155dfc 50%, #020617 100%)",
+    "linear-gradient(135deg, #081654 0%, #155dfc 50%, #081654 100%)",
   wrapperShadow: "0 0 80px rgba(59,130,246,0.18)",
 
   primaryButtonBackground: "rgba(255,255,255,0.88)",
@@ -314,7 +315,6 @@ export type FooterNavLinkItem = {
 
 export const footerNavLinks: FooterNavLinkItem[] = [
   { labelKey: "footer.company.pricing", to: footerInternalPaths.pricing },
-  { labelKey: "footer.company.support", to: footerInternalPaths.support },
   { labelKey: "footer.company.contact", to: footerInternalPaths.contact },
 ];
 

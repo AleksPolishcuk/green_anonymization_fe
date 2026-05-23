@@ -48,7 +48,7 @@ export const ActivityRow = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1.5),
   padding: theme.spacing(1.5, 1),
   borderRadius: 8,
-  cursor: "default",
+  cursor: "pointer",
   transition: "background-color 0.15s ease",
   "&:hover": {
     backgroundColor: theme.palette.background.softGray,

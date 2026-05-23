@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import { AuthActions } from "components/Header/AuthActions";
 import { ThemeToggle } from "components/ThemeToggle";
-import { LanguageSwitcher } from "components/LanguageSwitcher";
 import {
   CloseButton,
   CloseIcon,
@@ -61,7 +60,6 @@ export function BurgerModal({ isOpen, id, onClose }: BurgerModalProps) {
               />
             </ModalLogoIcon>
             <ThemeToggle />
-            <LanguageSwitcher />
           </ModalHeaderActions>
 
           <CloseButton

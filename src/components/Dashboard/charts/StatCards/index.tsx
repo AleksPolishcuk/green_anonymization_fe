@@ -1,14 +1,17 @@
 import { useTranslation } from "react-i18next";
 
 import {
+  STAT_CARD_CALENDAR_SPRITE_ID,
   STAT_CARD_IDS,
   STAT_CARD_SPRITE_IDS,
-  STAT_CARD_TREND_ARROW_SPRITE_ID,
+  STAT_CARD_TREND_DOWN_SPRITE_ID,
+  STAT_CARD_TREND_UP_SPRITE_ID,
 } from "constants/DashboardPage";
 import { headerSpriteRef } from "constants/MainPages";
 import type { StatCardData, StatCardIconId } from "store/types/dashboard";
 
 import {
+  CalendarIcon,
   Card,
   CardIconWrapper,
   CardLabel,
@@ -46,6 +49,11 @@ const StatCard = ({ card }: StatCardProps) => {
   const { t } = useTranslation();
   const label = t(STAT_CARD_LABEL_KEYS[card.id] ?? "");
 
+  const isNegative = card.trend !== null && card.trend < 0;
+  const spriteId = isNegative
+    ? STAT_CARD_TREND_DOWN_SPRITE_ID
+    : STAT_CARD_TREND_UP_SPRITE_ID;
+
   return (
     <Card>
       <CardTopRow>
@@ -58,11 +66,28 @@ const StatCard = ({ card }: StatCardProps) => {
       <CardValue>{card.value}</CardValue>
 
       <TrendRow>
-        <TrendArrowIcon viewBox="0 0 32 32" aria-hidden>
-          <use href={headerSpriteRef(STAT_CARD_TREND_ARROW_SPRITE_ID)} />
-        </TrendArrowIcon>
-        <TrendPercent>{card.trendPercent}</TrendPercent>
-        <TrendSuffix>{t("dashboard.statCards.vsLastMonth")}</TrendSuffix>
+        {card.trend === null ? (
+          <>
+            <CalendarIcon viewBox="0 0 16 16" aria-hidden>
+              <use href={headerSpriteRef(STAT_CARD_CALENDAR_SPRITE_ID)} />
+            </CalendarIcon>
+            <TrendSuffix>{t("dashboard.statCards.thisMonth")}</TrendSuffix>
+          </>
+        ) : (
+          <>
+            <TrendArrowIcon
+              viewBox="0 0 16 16"
+              aria-hidden
+              $negative={isNegative}
+            >
+              <use href={headerSpriteRef(spriteId)} />
+            </TrendArrowIcon>
+            <TrendPercent $negative={isNegative}>
+              {Math.abs(Math.round(card.trend))}%
+            </TrendPercent>
+            <TrendSuffix>{t("dashboard.statCards.vsLastMonth")}</TrendSuffix>
+          </>
+        )}
       </TrendRow>
     </Card>
   );

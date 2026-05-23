@@ -194,7 +194,6 @@ export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.divider}`,
   backgroundColor: theme.palette.background.default,
 
-  marginTop: "auto",
   padding: theme.spacing(3),
 
   display: "flex",
@@ -202,7 +201,6 @@ export const SidebarProfileContainer = styled("div")(({ theme }) => ({
 
   alignItems: "center",
   minHeight: theme.spacing(14),
-  height: "auto",
 }));
 
 export const SidebarProfileIcon = styled("div")(({ theme }) => ({
@@ -351,4 +349,11 @@ export const SubNavChevron = styled("span")(({ theme }) => ({
   alignItems: "center",
   color: theme.palette.text.secondary,
   fontSize: 16,
+}));
+
+export const ThemeToggleContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "auto",
+  paddingBottom: theme.spacing(3),
 }));
