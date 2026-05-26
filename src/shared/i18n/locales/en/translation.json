@@ -280,6 +280,61 @@
     },
     "syntheticData": "Synthetic Data"
   },
+  "profile": {
+    "title": "My Profile",
+    "actions": {
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "avatar": {
+      "changeLabel": "Change",
+      "changeHint": "Click to upload a new avatar"
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "timezone": "Timezone",
+      "workflowTour": "Workflow Tour"
+    },
+    "tour": {
+      "title": "Guides",
+      "takeTour": "Take Guide",
+      "dashboard": "Dashboard",
+      "deidentification": "De-Identification",
+      "results": "Results",
+      "synthetic": "Synthetic Data"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "dailyUsage": "Daily usage",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} used",
+      "resetsIn": "Resets in {{time}}",
+      "features": "Included features",
+      "upgradeCta": "Upgrade to Pro",
+      "none": "No active subscription",
+      "tagline": {
+        "free": "Get started with standard de-identification",
+        "pro": "Unlimited de-identification with all premium features"
+      },
+      "status": {
+        "active": "Active",
+        "cancelled": "Cancelled",
+        "expired": "Expired"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "theme": "Theme",
+      "themeDark": "Dark",
+      "themeLight": "Light",
+      "timezone": "Timezone",
+      "timezonePlaceholder": "Select timezone"
+    }
+  },
   "deidHeader": {
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"

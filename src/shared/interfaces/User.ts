@@ -15,5 +15,9 @@ export default interface User {
 
   companyName: string;
 
+  avatarUrl?: string | null;
+
+  timezone?: string;
+
   workflowTour?: WorkflowTour | null;
 }

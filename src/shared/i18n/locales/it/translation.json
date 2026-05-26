@@ -502,5 +502,60 @@
       "cvvInvalid": "Il CVV deve avere 3–4 cifre",
       "paymentFailed": "Pagamento fallito. Si prega di riprovare."
     }
+  },
+  "profile": {
+    "title": "Il mio profilo",
+    "actions": {
+      "edit": "Modifica",
+      "save": "Salva",
+      "cancel": "Annulla"
+    },
+    "avatar": {
+      "changeLabel": "Cambia",
+      "changeHint": "Clicca per caricare un nuovo avatar"
+    },
+    "fields": {
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "E-mail",
+      "company": "Azienda",
+      "timezone": "Fuso orario",
+      "workflowTour": "Tour del flusso di lavoro"
+    },
+    "tour": {
+      "title": "Guide",
+      "takeTour": "Inizia guida",
+      "dashboard": "Dashboard",
+      "deidentification": "De-identificazione",
+      "results": "Risultati",
+      "synthetic": "Dati sintetici"
+    },
+    "subscription": {
+      "title": "Abbonamento",
+      "dailyUsage": "Utilizzo giornaliero",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} utilizzato",
+      "resetsIn": "Si azzera in {{time}}",
+      "features": "Funzionalità incluse",
+      "upgradeCta": "Passa a Pro",
+      "none": "Nessun abbonamento attivo",
+      "tagline": {
+        "free": "Inizia con la de-identificazione standard",
+        "pro": "De-identificazione illimitata con tutte le funzionalità premium"
+      },
+      "status": {
+        "active": "Attivo",
+        "cancelled": "Annullato",
+        "expired": "Scaduto"
+      }
+    },
+    "settings": {
+      "title": "Impostazioni",
+      "theme": "Tema",
+      "themeDark": "Scuro",
+      "themeLight": "Chiaro",
+      "timezone": "Fuso orario",
+      "timezonePlaceholder": "Seleziona fuso orario"
+    }
   }
 }
