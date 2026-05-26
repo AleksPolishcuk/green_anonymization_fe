@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Testo originale",
       "subtitle": "Entità rilevate evidenziate",
-      "entities": "entità"
+      "entities": "entità",
+      "back": "Indietro"
     },
     "deIdentifiedOutput": {
       "title": "Output de-identificato",
@@ -337,13 +338,19 @@
         "body": "Questa entità non verrà anonimizzata e apparirà come testo normale nel risultato de-identificato. Lasciare dati sensibili non mascherati può costituire una violazione del framework di conformità selezionato.",
         "confirm": "Conferma",
         "cancel": "Annulla"
+      },
+      "pagination": {
+        "previous": "Precedente",
+        "next": "Successivo",
+        "page": "Pagina {{current}} di {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Pronto a generare dati sintetici?",
       "subtitle": "Usa i dati de-identificati per creare dataset sintetici realistici per test e sviluppo",
       "button": "Genera dati sintetici"
-    }
+    },
+    "newDocument": "Nuovo documento"
   },
   "notFound": {
     "subtitle": "Pagina non trovata",
@@ -502,5 +509,11 @@
       "cvvInvalid": "Il CVV deve avere 3–4 cifre",
       "paymentFailed": "Pagamento fallito. Si prega di riprovare."
     }
+  },
+  "syntheticDataCta": {
+    "title": "Pronto a generare dati sintetici?",
+    "description": "Usa i dati de-identificati per creare dataset sintetici realistici per test e sviluppo",
+    "button": "Genera dati sintetici",
+    "newDocument": "Nuovo documento"
   }
 }

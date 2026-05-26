@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { ValidationError } from "yup";
@@ -16,49 +16,61 @@ import {
 import { inputService } from "services/input";
 import type { InputFormValues } from "components/Input/types";
 
+let pendingFile: File | null = null;
+
 export const useInputForm = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const selectedFramework = useAppSelector(
     (state) => state.document.selectedFramework,
   );
+  const storedText = useAppSelector((state) => state.document.originalText);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isLimitReached, setIsLimitReached] = useState(false);
 
-  const { control, handleSubmit, formState, reset } = useForm<InputFormValues>({
-    mode: "onChange",
-    defaultValues: {
-      text: "",
-      file: null,
-    },
-    resolver: async (data) => {
-      try {
-        const values = await inputFormSchema.validate(data, {
-          abortEarly: false,
-        });
-
-        return { values, errors: {} };
-      } catch (error) {
-        if (error instanceof ValidationError) {
-          const errors: Record<string, { message: string }> = {};
-
-          error.inner.forEach((err) => {
-            if (err.path) {
-              errors[err.path] = { message: t(err.message) };
-            } else {
-              errors.root = { message: t(err.message) };
-            }
+  const { control, handleSubmit, formState, reset, setValue } =
+    useForm<InputFormValues>({
+      mode: "onChange",
+      defaultValues: {
+        text: storedText ?? "",
+        file: pendingFile,
+      },
+      resolver: async (data) => {
+        try {
+          const values = await inputFormSchema.validate(data, {
+            abortEarly: false,
           });
 
-          return { values: {}, errors };
-        }
+          return { values, errors: {} };
+        } catch (error) {
+          if (error instanceof ValidationError) {
+            const errors: Record<string, { message: string }> = {};
 
-        return { values: {}, errors: {} };
-      }
+            error.inner.forEach((err) => {
+              if (err.path) {
+                errors[err.path] = { message: t(err.message) };
+              } else {
+                errors.root = { message: t(err.message) };
+              }
+            });
+
+            return { values: {}, errors };
+          }
+
+          return { values: {}, errors: {} };
+        }
+      },
+    });
+
+  const handleFileChange = useCallback(
+    (file: File | null) => {
+      pendingFile = file;
+      setValue("file", file, { shouldValidate: true, shouldDirty: true });
     },
-  });
+    [setValue],
+  );
 
   const values = useWatch({ control });
   const isFileUploaded = !!values.file;
@@ -117,6 +129,7 @@ export const useInputForm = () => {
     isFileUploaded,
     isSubmitDisabled,
     isLimitReached,
+    handleFileChange,
     clearLimitReached: () => setIsLimitReached(false),
   };
 };

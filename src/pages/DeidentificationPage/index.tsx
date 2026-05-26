@@ -6,12 +6,15 @@ import DriverStyles from "components/WorkflowTour/DriverStyles";
 
 import { useAppSelector } from "store/hooks";
 import { useDeidentificationTour } from "./useDeidentificationTour";
+import { useAutoSaveDeid } from "./hooks/useAutoSaveDeid";
 import { PageContainer } from "./styles";
 
 export default function DeidentificationPage() {
   const currentStep = useAppSelector((s) => s.document.currentStep);
 
   const user = useAppSelector((s) => s.auth.user);
+
+  useAutoSaveDeid();
 
   useDeidentificationTour({
     currentStep,

@@ -213,3 +213,46 @@ export const DownloadIconWrapper = styled(IconWrapper)(({ theme }) => ({
   height: 13,
   marginRight: theme.spacing(1.25),
 }));
+
+export const BackArrowIconWrapper = styled(IconWrapper)(({ theme }) => ({
+  width: 13,
+  height: 13,
+  marginRight: theme.spacing(1.25),
+  transform: "scaleX(-1)",
+}));
+
+export const DeidOutputTopActions = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(-2),
+  marginBottom: theme.spacing(-2),
+
+  [theme.breakpoints.up("md")]: {
+    marginTop: theme.spacing(-4),
+    marginBottom: theme.spacing(-4),
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    justifyContent: "flex-end",
+  },
+}));
+
+export const CreateNewDocumentButton = styled(Button)(({ theme }) => ({
+  width: "100%",
+  flexShrink: 0,
+  textTransform: "none",
+  fontSize: theme.typography.fontSize14,
+  padding: theme.spacing(2.5, 4),
+  borderRadius: theme.spacing(3),
+  color: theme.palette.common.white,
+  backgroundColor: theme.palette.color.blue,
+  gap: theme.spacing(1.5),
+
+  "&:hover": {
+    backgroundColor: theme.palette.color.darkBlue,
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    width: "auto",
+  },
+}));

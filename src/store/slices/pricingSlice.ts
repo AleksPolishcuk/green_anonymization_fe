@@ -8,33 +8,53 @@ import type {
 } from "services/pricing/typing/pricing";
 import type { PricingState } from "store/types/pricing";
 
+type StateWithPricing = { pricing: PricingState };
+
 export const fetchPlans = createAsyncThunk<
   SubscriptionPlan[],
   void,
   { rejectValue: string }
->("pricing/fetchPlans", async (_, { rejectWithValue }) => {
-  try {
-    return await pricingService.getPlans();
-  } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Failed to load plans",
-    );
-  }
-});
+>(
+  "pricing/fetchPlans",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await pricingService.getPlans();
+    } catch (err) {
+      return rejectWithValue(
+        err instanceof Error ? err.message : "Failed to load plans",
+      );
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { plansLoading } = (getState() as StateWithPricing).pricing;
+      return !plansLoading;
+    },
+  },
+);
 
 export const fetchCurrentSubscription = createAsyncThunk<
   CurrentSubscription,
   void,
   { rejectValue: string }
->("pricing/fetchCurrent", async (_, { rejectWithValue }) => {
-  try {
-    return await pricingService.getCurrentSubscription();
-  } catch (err) {
-    return rejectWithValue(
-      err instanceof Error ? err.message : "Failed to load subscription",
-    );
-  }
-});
+>(
+  "pricing/fetchCurrent",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await pricingService.getCurrentSubscription();
+    } catch (err) {
+      return rejectWithValue(
+        err instanceof Error ? err.message : "Failed to load subscription",
+      );
+    }
+  },
+  {
+    condition: (_, { getState }) => {
+      const { currentLoading } = (getState() as StateWithPricing).pricing;
+      return !currentLoading;
+    },
+  },
+);
 
 export const selectPlan = createAsyncThunk<
   CurrentSubscription,
