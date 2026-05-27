@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Texte original",
       "subtitle": "Entités détectées surlignées",
-      "entities": "entités"
+      "entities": "entités",
+      "back": "Retour"
     },
     "deIdentifiedOutput": {
       "title": "Sortie dé-identifiée",
@@ -337,13 +338,19 @@
         "body": "Cette entité ne sera pas anonymisée et apparaîtra en clair dans le résultat dé-identifié. Laisser des données sensibles non masquées peut constituer une violation du cadre de conformité sélectionné.",
         "confirm": "Confirmer",
         "cancel": "Annuler"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "page": "Page {{current}} sur {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Prêt à générer des données synthétiques ?",
       "subtitle": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
       "button": "Générer des données synthétiques"
-    }
+    },
+    "newDocument": "Nouveau document"
   },
   "notFound": {
     "subtitle": "Page non trouvée",
@@ -502,6 +509,12 @@
       "cvvInvalid": "Le CVV doit comporter 3–4 chiffres",
       "paymentFailed": "Paiement échoué. Veuillez réessayer."
     }
+  },
+  "syntheticDataCta": {
+    "title": "Prêt à générer des données synthétiques ?",
+    "description": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
+    "button": "Générer des données synthétiques",
+    "newDocument": "Nouveau document"
   },
   "profile": {
     "title": "Mon profil",

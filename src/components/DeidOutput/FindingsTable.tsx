@@ -6,6 +6,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 import {
   DESELECT_CONFIRM_SHOWN_KEY,
@@ -15,7 +16,6 @@ import {
 import { BaseModal } from "components/BaseModal";
 import { ProFeatureModal } from "components/ProFeatureModal";
 import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
-import { Loader } from "shared/ui/Loader";
 import type { Entity } from "store/types/document";
 
 import {
@@ -35,10 +35,12 @@ import {
   RecognizerBadge,
   ToggleButton,
   CollapseArrow,
-  LoaderRow,
   SpriteIconSvg,
+  PaginationBar,
+  PaginationButton,
+  PaginationInfo,
 } from "./analysisStyles";
-import { useScroll } from "./hooks/useScroll";
+import { usePagination } from "./hooks/usePagination";
 
 type FindingsTableProps = {
   entities: Entity[];
@@ -90,12 +92,14 @@ export const FindingsTable = ({
 
   const {
     visibleItems: visibleEntities,
-    hasMore,
-    loaderRef,
-  } = useScroll({
+    currentPage,
+    totalPages,
+    goNext,
+    goPrev,
+    startIndex,
+  } = usePagination({
     items: entities,
     pageSize: FINDINGS_PAGE_SIZE,
-    enabled: expanded,
   });
 
   return (
@@ -124,60 +128,79 @@ export const FindingsTable = ({
         </TableHeader>
 
         {expanded && (
-          <TableScrollWrapper>
-            <StyledTable>
-              <thead>
-                <tr>
-                  <Th>{t("findingsTable.columns.id")}</Th>
-                  <Th>{t("findingsTable.columns.text")}</Th>
-                  <Th>{t("findingsTable.columns.position")}</Th>
-                  <Th>{t("findingsTable.columns.score")}</Th>
-                  <Th>{t("findingsTable.columns.recognizer")}</Th>
-                  <Th>{t("findingsTable.columns.factor")}</Th>
-                  <Th>{t("findingsTable.columns.action")}</Th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleEntities.map((entity, index) => (
-                  <Tr key={entity.id}>
-                    <Td>{index + 1}</Td>
-                    <TdBold>
-                      {originalText.slice(entity.start, entity.end)}
-                    </TdBold>
-                    <Td>
-                      {entity.start}-{entity.end}
-                    </Td>
-                    <Td>
-                      <ScoreBadge $score={entity.score}>
-                        {entity.score.toFixed(2)}
-                      </ScoreBadge>
-                    </Td>
-                    <Td>
-                      <RecognizerBadge $type={entity.entityType}>
-                        {entity.entityType}
-                      </RecognizerBadge>
-                    </Td>
-                    <Td>{entity.confidence}</Td>
-                    <Td>
-                      <ToggleButton
-                        $selected={entity.selected}
-                        onClick={() => handleToggle(entity)}
-                      >
-                        {entity.selected
-                          ? t("findingsTable.actions.selected")
-                          : t("findingsTable.actions.deselected")}
-                      </ToggleButton>
-                    </Td>
-                  </Tr>
-                ))}
-              </tbody>
-            </StyledTable>
-            {hasMore && (
-              <LoaderRow ref={loaderRef}>
-                <Loader />
-              </LoaderRow>
+          <>
+            <TableScrollWrapper>
+              <StyledTable>
+                <thead>
+                  <tr>
+                    <Th>{t("findingsTable.columns.id")}</Th>
+                    <Th>{t("findingsTable.columns.text")}</Th>
+                    <Th>{t("findingsTable.columns.position")}</Th>
+                    <Th>{t("findingsTable.columns.score")}</Th>
+                    <Th>{t("findingsTable.columns.recognizer")}</Th>
+                    <Th>{t("findingsTable.columns.factor")}</Th>
+                    <Th>{t("findingsTable.columns.action")}</Th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleEntities.map((entity, index) => (
+                    <Tr key={entity.id}>
+                      <Td>{startIndex + index + 1}</Td>
+                      <TdBold>
+                        {originalText.slice(entity.start, entity.end)}
+                      </TdBold>
+                      <Td>
+                        {entity.start}-{entity.end}
+                      </Td>
+                      <Td>
+                        <ScoreBadge $score={entity.score}>
+                          {entity.score.toFixed(2)}
+                        </ScoreBadge>
+                      </Td>
+                      <Td>
+                        <RecognizerBadge $type={entity.entityType}>
+                          {entity.entityType}
+                        </RecognizerBadge>
+                      </Td>
+                      <Td>{entity.confidence}</Td>
+                      <Td>
+                        <ToggleButton
+                          $selected={entity.selected}
+                          onClick={() => handleToggle(entity)}
+                        >
+                          {entity.selected
+                            ? t("findingsTable.actions.selected")
+                            : t("findingsTable.actions.deselected")}
+                        </ToggleButton>
+                      </Td>
+                    </Tr>
+                  ))}
+                </tbody>
+              </StyledTable>
+            </TableScrollWrapper>
+
+            {totalPages > 1 && (
+              <PaginationBar>
+                <PaginationButton onClick={goPrev} disabled={currentPage === 1}>
+                  <ChevronLeft />
+                  {t("findingsTable.pagination.previous")}
+                </PaginationButton>
+                <PaginationInfo>
+                  {t("findingsTable.pagination.page", {
+                    current: currentPage,
+                    total: totalPages,
+                  })}
+                </PaginationInfo>
+                <PaginationButton
+                  onClick={goNext}
+                  disabled={currentPage === totalPages}
+                >
+                  {t("findingsTable.pagination.next")}
+                  <ChevronRight />
+                </PaginationButton>
+              </PaginationBar>
             )}
-          </TableScrollWrapper>
+          </>
         )}
       </TableCard>
 

@@ -135,8 +135,47 @@ export const Tr = styled("tr")(({ theme }) => ({
   },
 }));
 
-export const TableScrollWrapper = styled(Box)({
-  overflowX: "auto",
+export const TableScrollWrapper = styled(Box)(({ theme }) => {
+  const colors = theme.palette.mode === "dark" ? deidDarkColors : deidColors;
+
+  return {
+    overflowX: "auto",
+
+    scrollbarWidth: "thin",
+    scrollbarColor:
+      theme.palette.mode === "dark"
+        ? `${colors.borderOn} ${colors.bgOff}`
+        : `${colors.borderOff} transparent`,
+
+    "&::-webkit-scrollbar": {
+      height: 6,
+    },
+
+    "&::-webkit-scrollbar-track": {
+      background: "transparent",
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+      background:
+        theme.palette.mode === "dark"
+          ? `linear-gradient(90deg, ${colors.borderOn}, ${colors.bgOn})`
+          : colors.borderOff,
+      borderRadius: 4,
+      border: `1px solid ${
+        theme.palette.mode === "dark"
+          ? colors.borderOn
+          : theme.palette.background.default
+      }`,
+      transition: "background 0.2s ease",
+    },
+
+    "&::-webkit-scrollbar-thumb:hover": {
+      background:
+        theme.palette.mode === "dark"
+          ? `linear-gradient(90deg, ${colors.bgOn}, ${colors.borderOn})`
+          : theme.palette.background.mediumGray,
+    },
+  };
 });
 
 export const ActionsBar = styled(Box)(({ theme }) => ({

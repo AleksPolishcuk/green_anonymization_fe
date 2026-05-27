@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { NoteAddOutlined } from "@mui/icons-material";
 
 import { headerSpriteRef } from "constants/MainPages";
 
@@ -11,11 +12,12 @@ import {
 } from "./analysisStyles";
 import { FindingsTable } from "./FindingsTable";
 import { useDeidOutput } from "./hooks/useDeidOutput";
-import { useChangeDetection } from "shared/hooks/useChangeDetection";
 import {
   DeidOutputSectionCard,
   DeidOutputSectionRoot,
   DeidOutputSectionStack,
+  DeidOutputTopActions,
+  CreateNewDocumentButton,
   CardHeader,
   CardHeaderTextSection,
   CardTitle,
@@ -29,6 +31,7 @@ import {
   ComplianceSafeIconWrapper,
   CopyIconWrapper,
   DownloadIconWrapper,
+  BackArrowIconWrapper,
 } from "./styles";
 import { TaggedText } from "./taggedText";
 import CtaSynthetycBlock from "components/CtaSynthetycBlock";
@@ -46,19 +49,10 @@ export default function DeidOutputSection() {
     redactedSegments,
     toggleEntity,
     handleCopyText,
-    handleSave,
     handleDownloadPdf,
+    handleBack,
+    handleCreateNewDocument,
   } = useDeidOutput();
-
-  const { hasChanges, resetChanges } = useChangeDetection({
-    piiEntities,
-    selectedCount,
-  });
-
-  const handleSaveClick = () => {
-    handleSave();
-    resetChanges();
-  };
 
   return (
     <DeidOutputSectionRoot>
@@ -80,6 +74,13 @@ export default function DeidOutputSection() {
           {t("header.accuracy", { value: accuracy })}
         </AccuracyBadge>
       </HeaderCard>
+
+      <DeidOutputTopActions>
+        <CreateNewDocumentButton onClick={handleCreateNewDocument}>
+          <NoteAddOutlined />
+          {t("newDocument")}
+        </CreateNewDocumentButton>
+      </DeidOutputTopActions>
 
       <DeidOutputSectionStack>
         <DeidOutputSectionCard>
@@ -103,6 +104,15 @@ export default function DeidOutputSection() {
           <CardContent data-tour="original-text">
             <TaggedText segments={originalSegments} />
           </CardContent>
+
+          <ActionButtonsContainer>
+            <ActionButton onClick={handleBack}>
+              <BackArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconArrow")} />
+              </BackArrowIconWrapper>
+              {t("originalText.back")}
+            </ActionButton>
+          </ActionButtonsContainer>
         </DeidOutputSectionCard>
 
         <DeidOutputSectionCard>
@@ -136,10 +146,6 @@ export default function DeidOutputSection() {
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </DownloadIconWrapper>
               {t("deIdentifiedOutput.downloadPdf")}
-            </ActionButton>
-
-            <ActionButton onClick={handleSaveClick} disabled={!hasChanges}>
-              {t("deIdentifiedOutput.saveButtonText")}
             </ActionButton>
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
