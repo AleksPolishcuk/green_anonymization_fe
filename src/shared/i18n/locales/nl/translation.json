@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Originele tekst",
       "subtitle": "Gedetecteerde entiteiten gemarkeerd",
-      "entities": "entiteiten"
+      "entities": "entiteiten",
+      "back": "Terug"
     },
     "deIdentifiedOutput": {
       "title": "Gede-identificeerde uitvoer",
@@ -337,13 +338,19 @@
         "body": "Deze entiteit wordt niet geanonimiseerd en verschijnt als leesbare tekst in de de-geïdentificeerde uitvoer. Het ongemaskerd laten van gevoelige gegevens kan leiden tot een complianceschending onder het geselecteerde framework.",
         "confirm": "Bevestigen",
         "cancel": "Annuleren"
+      },
+      "pagination": {
+        "previous": "Vorige",
+        "next": "Volgende",
+        "page": "Pagina {{current}} van {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Klaar om synthetische gegevens te genereren?",
       "subtitle": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
       "button": "Synthetische gegevens genereren"
-    }
+    },
+    "newDocument": "Nieuw document"
   },
   "notFound": {
     "subtitle": "Pagina niet gevonden",
@@ -502,5 +509,11 @@
       "cvvInvalid": "CVV moet 3–4 cijfers bevatten",
       "paymentFailed": "Betaling mislukt. Probeer het opnieuw."
     }
+  },
+  "syntheticDataCta": {
+    "title": "Klaar om synthetische gegevens te genereren?",
+    "description": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
+    "button": "Synthetische gegevens genereren",
+    "newDocument": "Nieuw document"
   }
 }

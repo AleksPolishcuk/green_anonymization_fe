@@ -318,7 +318,8 @@
     "originalText": {
       "title": "Original Text",
       "subtitle": "Detected entities highlighted",
-      "entities": "entities"
+      "entities": "entities",
+      "back": "Back"
     },
     "deIdentifiedOutput": {
       "title": "De-Identified Output",
@@ -350,13 +351,19 @@
         "body": "This entity will not be anonymized and will appear as plain text in the de-identified output. Leaving sensitive data unmasked may result in a compliance violation under the selected framework.",
         "confirm": "Confirm",
         "cancel": "Cancel"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{current}} of {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Ready to Generate Synthetic Data?",
       "subtitle": "Use de-identified data to create realistic synthetic datasets for testing and development",
       "button": "Generate Synthetic Data"
-    }
+    },
+    "newDocument": "New Document"
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -464,7 +471,8 @@
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
     "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
-    "button": "Generate Synthetic Data"
+    "button": "Generate Synthetic Data",
+    "newDocument": "New Document"
   },
   "syntheticData": {
     "header": {
@@ -598,13 +606,10 @@
   "resultsTour": {
     "originalTitle": "Original document",
     "originalDescription": "Here you can review the original text you submitted.",
-
     "redactedTitle": "De-identified result",
     "redactedDescription": "Sensitive information is hidden in this version of the document.",
-
     "entitiesTitle": "Detected entities",
     "entitiesDescription": "Review the sensitive entities detected during de-identification.",
-
     "syntheticTitle": "Generate synthetic data",
     "syntheticDescription": "Use this de-identified document to generate synthetic data."
   },

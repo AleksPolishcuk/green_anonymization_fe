@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { fetchDashboard } from "store/slices/dashboardSlice";
@@ -21,6 +21,7 @@ import {
   ChartRow,
   MainContent,
 } from "components/Dashboard/styles";
+import { Loader } from "shared/ui/Loader";
 
 export const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -36,9 +37,9 @@ export const Dashboard = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        minHeight="60vh"
+        minHeight="100vh"
       >
-        <CircularProgress />
+        <Loader />
       </Box>
     );
   }

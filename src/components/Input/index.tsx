@@ -46,6 +46,7 @@ export default function Input() {
     isSubmitDisabled,
     isSubmitting,
     isLimitReached,
+    handleFileChange,
     clearLimitReached,
   } = useInputForm();
 
@@ -121,7 +122,7 @@ export default function Input() {
             render={({ field }) => (
               <FileDropZone
                 value={field.value}
-                onChange={field.onChange}
+                onChange={handleFileChange}
                 error={!!errors.file?.message}
                 helperText={errors.file?.message}
                 onLimitReached={

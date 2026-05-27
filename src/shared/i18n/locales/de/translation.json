@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Originaltext",
       "subtitle": "Erkannte Entitäten hervorgehoben",
-      "entities": "Entitäten"
+      "entities": "Entitäten",
+      "back": "Zurück"
     },
     "deIdentifiedOutput": {
       "title": "De-identifizierte Ausgabe",
@@ -337,13 +338,19 @@
         "body": "Diese Entität wird nicht anonymisiert und erscheint als Klartext im de-identifizierten Ergebnis. Das Offenlassen sensibler Daten kann zu einem Compliance-Verstoß gemäß dem ausgewählten Framework führen.",
         "confirm": "Bestätigen",
         "cancel": "Abbrechen"
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "page": "Seite {{current}} von {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Bereit, synthetische Daten zu generieren?",
       "subtitle": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
       "button": "Synthetische Daten generieren"
-    }
+    },
+    "newDocument": "Neues Dokument"
   },
   "notFound": {
     "subtitle": "Seite nicht gefunden",
@@ -502,5 +509,11 @@
       "cvvInvalid": "CVV muss 3–4 Ziffern haben",
       "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
     }
+  },
+  "syntheticDataCta": {
+    "title": "Bereit, synthetische Daten zu generieren?",
+    "description": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
+    "button": "Synthetische Daten generieren",
+    "newDocument": "Neues Dokument"
   }
 }
