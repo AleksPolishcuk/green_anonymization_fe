@@ -164,19 +164,7 @@ export function useProfile() {
     }
   };
 
-  const handleTimezoneChange = async (timezone: string) => {
-    const prev = profile?.timezone;
-    setProfile((p) => (p ? { ...p, timezone } : p));
-    try {
-      await userService.updateTimezone(timezone);
-    } catch {
-      setProfile((p) => (p ? { ...p, timezone: prev ?? "UTC" } : p));
-    }
-  };
-
   const handleTakeTour = async (step: TourStep) => {
-    // Ensure the tour can run again: unset skipped + reset this step
-    // so the page-level auto-start effect picks it up.
     const payload: UpdateWorkflowTourPayload = { [step]: false };
     if (profile?.workflowTour?.skipped) payload.skipped = false;
     await dispatch(updateWorkflowTour(payload));
@@ -199,7 +187,6 @@ export function useProfile() {
     handleAvatarClick,
     handleFileChange,
     handleTakeTour,
-    handleTimezoneChange,
     isEditing,
     editForm,
     editErrors,

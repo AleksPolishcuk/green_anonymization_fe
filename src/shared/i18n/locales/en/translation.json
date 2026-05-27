@@ -296,7 +296,6 @@
       "lastName": "Last Name",
       "email": "Email",
       "company": "Company",
-      "timezone": "Timezone",
       "workflowTour": "Workflow Tour"
     },
     "tour": {
@@ -330,9 +329,7 @@
       "title": "Settings",
       "theme": "Theme",
       "themeDark": "Dark",
-      "themeLight": "Light",
-      "timezone": "Timezone",
-      "timezonePlaceholder": "Select timezone"
+      "themeLight": "Light"
     }
   },
   "deidHeader": {

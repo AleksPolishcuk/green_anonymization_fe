@@ -12,7 +12,7 @@ import { SubscriptionUsage } from "components/Dashboard/charts/SubscriptionUsage
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toggleTheme } from "store/slices/themeSlice";
 import { getResolvedTheme } from "shared/utils/themeHelper";
-import { TIMEZONES, TOUR_STEPS } from "constants/ProfilePage";
+import { TOUR_STEPS } from "constants/ProfilePage";
 import { useProfile } from "./useProfile";
 import {
   AvatarEditBadge,
@@ -42,7 +42,6 @@ import {
   SubscriptionPlanTagline,
   SubscriptionUsageWrapper,
   TakeTourButton,
-  TimezoneSelect,
   TourAccordion,
   TourAccordionDetails,
   TourAccordionSummary,
@@ -69,7 +68,6 @@ export default function ProfilePage() {
     handleAvatarClick,
     handleFileChange,
     handleTakeTour,
-    handleTimezoneChange,
     isEditing,
     editForm,
     editErrors,
@@ -300,28 +298,6 @@ export default function ProfilePage() {
                 color="primary"
               />
             </PreferenceControl>
-          </SettingsItem>
-
-          <SettingsItem>
-            <FieldLabel>{t("profile.settings.timezone")}</FieldLabel>
-            <TimezoneSelect
-              size="small"
-              options={TIMEZONES}
-              value={profile.timezone ?? "UTC"}
-              disableClearable
-              blurOnSelect
-              selectOnFocus
-              handleHomeEndKeys
-              onChange={(_, value) => {
-                if (value) void handleTimezoneChange(value);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  placeholder={t("profile.settings.timezonePlaceholder")}
-                />
-              )}
-            />
           </SettingsItem>
         </SettingsGrid>
       </SectionCard>

@@ -2,7 +2,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Autocomplete,
   Avatar,
   Box,
   Button,
@@ -438,38 +437,6 @@ export const SettingsItem = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1.5),
   minWidth: 0,
 }));
-
-export const TimezoneSelect = styled(Autocomplete<string, false, true, false>)(
-  ({ theme }) => ({
-    "& .MuiOutlinedInput-root": {
-      cursor: "pointer",
-      paddingRight: `${theme.spacing(1)} !important`,
-      backgroundColor: theme.palette.background.lightGray,
-      transition: "background-color 0.15s",
-
-      "&:hover": {
-        backgroundColor: theme.palette.background.softGray,
-      },
-
-      "&.Mui-focused": {
-        backgroundColor: theme.palette.background.paper,
-      },
-    },
-
-    "& .MuiOutlinedInput-input": {
-      cursor: "pointer",
-      caretColor: "transparent",
-    },
-
-    "& .Mui-focused .MuiOutlinedInput-input": {
-      caretColor: "auto",
-    },
-
-    "& .MuiAutocomplete-endAdornment": {
-      right: theme.spacing(1.5),
-    },
-  }),
-);
 
 export const TakeTourButton = styled(Button)(({ theme }) => ({
   textTransform: "none",

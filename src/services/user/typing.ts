@@ -7,11 +7,3 @@ export type UpdateProfileRequest = {
 export type AvatarResponse = {
   avatarUrl: string;
 };
-
-export type UpdateTimezoneRequest = {
-  timezone: string;
-};
-
-export type UpdateTimezoneResponse = {
-  timezone: string;
-};

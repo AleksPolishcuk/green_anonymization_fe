@@ -17,7 +17,5 @@ export default interface User {
 
   avatarUrl?: string | null;
 
-  timezone?: string;
-
   workflowTour?: WorkflowTour | null;
 }
