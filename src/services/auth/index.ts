@@ -14,6 +14,10 @@ export const authService = {
     );
   },
 
+  loginGoogle() {
+    return apiClient.get("/auth/google");
+  },
+
   verify(token: string) {
     return apiClient.get<VerifyResponse>(`/auth/verify?token=${token}`);
   },

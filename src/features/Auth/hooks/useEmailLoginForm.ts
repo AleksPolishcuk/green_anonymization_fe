@@ -16,6 +16,28 @@ export const useEmailLoginForm = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const handleSubmitGoogle = async () => {
+    try {
+      setLoading(true);
+      //setStatus(null);
+      setError(null);
+
+      await authService.loginGoogle();
+
+      //setStatus(data.message);
+      reset();
+    } catch (err) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : t("signIn.form.status.errorDescription", { error: "" });
+
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const { control, handleSubmit, reset, formState } = useForm<FormValues>({
     mode: "onChange",
     defaultValues: {
@@ -87,5 +109,6 @@ export const useEmailLoginForm = () => {
     error,
     loading,
     isSubmitDisabled,
+    handleSubmitGoogle,
   };
 };

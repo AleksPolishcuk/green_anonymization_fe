@@ -73,6 +73,16 @@ export default function SignInForm() {
               <use href={headerSpriteRef("right-arrow-icon")} />
             </RightArrowIcon>
           </SubmitButton>
+          <SubmitButton
+            type="submit"
+            disabled={form.isSubmitDisabled}
+            fullWidth
+          >
+            <span>{t("signIn.form.submitGoogle")}</span>
+            <RightArrowIcon>
+              <use href={headerSpriteRef("right-arrow-icon")} />
+            </RightArrowIcon>
+          </SubmitButton>
         </form>
 
         <EmailStatus form={form} />
