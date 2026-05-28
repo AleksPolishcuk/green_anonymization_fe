@@ -378,9 +378,12 @@
       "subtitle": "Sensitive data removed",
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
-      "downloadPdf": "Download PDF",
+      "downloadButton": "Download",
       "saveButtonText": "Save changes",
-      "redactedContentTooltip": "Redacted information"
+      "redactedContentTooltip": "Redacted information",
+      "formatTxt": "TXT",
+      "formatPdf": "PDF",
+      "formatDocx": "DOCX"
     },
     "findingsTable": {
       "title": "Findings & Decision Factors",
@@ -586,7 +589,10 @@
     "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes.",
     "downloadTableButton": "Download Table",
     "downloadArchiveButton": "Download Archive",
-    "regenerateDatasetButton": "Regenerate Dataset"
+    "regenerateDatasetButton": "Regenerate Dataset",
+    "formatTxt": "TXT",
+    "formatPdf": "PDF",
+    "formatDocx": "DOCX"
   },
   "syntheticDataHeader": {
     "title": "Synthetic Data Generator",

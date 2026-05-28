@@ -30,11 +30,13 @@ import {
   ExclamationMarkIconWrapper,
   ComplianceSafeIconWrapper,
   CopyIconWrapper,
-  DownloadIconWrapper,
   BackArrowIconWrapper,
+  Dropdown,
+  DropdownItem,
 } from "./styles";
 import { TaggedText } from "./taggedText";
 import CtaSynthetycBlock from "components/CtaSynthetycBlock";
+import { ActionButtonIconWrapper } from "../SyntheticDataContents/syntheticDataGeneratedDataset.styles";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
@@ -49,9 +51,11 @@ export default function DeidOutputSection() {
     redactedSegments,
     toggleEntity,
     handleCopyText,
-    handleDownloadPdf,
     handleBack,
     handleCreateNewDocument,
+    anchorEl,
+    setAnchorEl,
+    handleDownload,
   } = useDeidOutput();
 
   return (
@@ -141,12 +145,27 @@ export default function DeidOutputSection() {
               {t("deIdentifiedOutput.copy")}
             </ActionButton>
 
-            <ActionButton onClick={handleDownloadPdf}>
-              <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
+            <ActionButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+              <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
-              </DownloadIconWrapper>
-              {t("deIdentifiedOutput.downloadPdf")}
+              </ActionButtonIconWrapper>
+              {t("deIdentifiedOutput.downloadButton")}
             </ActionButton>
+            <Dropdown
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={() => setAnchorEl(null)}
+            >
+              <DropdownItem onClick={() => handleDownload("txt")}>
+                {t("deIdentifiedOutput.formatTxt")}
+              </DropdownItem>
+              <DropdownItem onClick={() => handleDownload("pdf")}>
+                {t("deIdentifiedOutput.formatPdf")}
+              </DropdownItem>
+              <DropdownItem onClick={() => handleDownload("docx")}>
+                {t("deIdentifiedOutput.formatDocx")}
+              </DropdownItem>
+            </Dropdown>
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
       </DeidOutputSectionStack>

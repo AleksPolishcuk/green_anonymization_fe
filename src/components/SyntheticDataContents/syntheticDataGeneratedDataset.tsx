@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import {
   TableCard,
   TableHeader,
@@ -18,17 +19,26 @@ import {
   ActionButton,
   ActionButtonIconWrapper,
   TableHeaderColumnButtons,
-  LoaderRow,
+  Dropdown,
+  DropdownItem,
+  PaginationBar,
+  PaginationButton,
+  PaginationInfo,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef, FINDINGS_PAGE_SIZE } from "constants/MainPages";
-import { Loader } from "shared/ui/Loader";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticDataContents } from "./useSyntheticDataContents";
-import { useScroll } from "components/DeidOutput/hooks/useScroll";
+import { usePagination } from "components/DeidOutput/hooks/usePagination";
+import { useState } from "react";
 
 export default function SyntheticDataGeneratedDataset() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   const { t } = useTranslation("translation", {
     keyPrefix: "syntheticDataGeneratedDataset",
+  });
+  const { t: tFindingsTable } = useTranslation("translation", {
+    keyPrefix: "deidOutput.findingsTable",
   });
 
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
@@ -37,9 +47,12 @@ export default function SyntheticDataGeneratedDataset() {
 
   const {
     visibleItems: visibleDocuments,
-    hasMore,
-    loaderRef,
-  } = useScroll({
+    currentPage,
+    totalPages,
+    goNext,
+    goPrev,
+    startIndex,
+  } = usePagination({
     items: syntheticDocuments || [],
     pageSize: FINDINGS_PAGE_SIZE,
   });
@@ -74,12 +87,36 @@ export default function SyntheticDataGeneratedDataset() {
               </ActionButtonIconWrapper>
               {t("downloadTableButton")}
             </ActionButton>
-            <ActionButton onClick={() => handleDownload("txt")}>
+            <ActionButton onClick={(e) => setAnchorEl(e.currentTarget)}>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </ActionButtonIconWrapper>
               {t("downloadArchiveButton")}
             </ActionButton>
+            <Dropdown
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={() => setAnchorEl(null)}
+            >
+              <DropdownItem
+                key={t("formatTxt")}
+                onClick={() => handleDownload("txt")}
+              >
+                {t("formatTxt")}
+              </DropdownItem>
+              <DropdownItem
+                key={t("formatPdf")}
+                onClick={() => handleDownload("pdf")}
+              >
+                {t("formatPdf")}
+              </DropdownItem>
+              <DropdownItem
+                key={t("formatDocx")}
+                onClick={() => handleDownload("docx")}
+              >
+                {t("formatDocx")}
+              </DropdownItem>
+            </Dropdown>
           </ActionButtonsContainer>
         </TableHeaderColumnButtons>
       </TableHeader>
@@ -89,17 +126,21 @@ export default function SyntheticDataGeneratedDataset() {
           <thead>
             <tr>
               <Th>{t("columns.id")}</Th>
-              {syntheticDocuments?.[0]?.entities.map((entity) => (
-                <Th key={entity.entity_type}>{entity.entity_type}</Th>
+              {syntheticDocuments?.[0]?.entities.map((entity, entityIndex) => (
+                <Th key={`${entity.entity_type}-${entityIndex}`}>
+                  {entity.entity_type}
+                </Th>
               ))}
             </tr>
           </thead>
           <tbody>
             {visibleDocuments?.map((doc, rowIndex) => (
               <Tr key={doc.id}>
-                <Td>{rowIndex + 1}</Td>
-                {doc.entities.map((entity) => (
-                  <Td key={`${doc.id}-${entity.entity_type}`}>
+                <Td>{startIndex + rowIndex + 1}</Td>
+                {doc.entities.map((entity, entityIndex) => (
+                  <Td
+                    key={`${doc.id}-${rowIndex}-${entityIndex}-${entity.entity_type}`}
+                  >
                     {entity.value}
                   </Td>
                 ))}
@@ -107,12 +148,30 @@ export default function SyntheticDataGeneratedDataset() {
             ))}
           </tbody>
         </StyledTable>
-        {hasMore && (
-          <LoaderRow ref={loaderRef}>
-            <Loader />
-          </LoaderRow>
-        )}
       </TableScrollWrapper>
+
+      {totalPages > 1 && (
+        <PaginationBar>
+          <PaginationButton onClick={goPrev} disabled={currentPage === 1}>
+            <ChevronLeft />
+            {tFindingsTable("pagination.previous")}
+          </PaginationButton>
+          <PaginationInfo>
+            {tFindingsTable("pagination.page", {
+              current: currentPage,
+              total: totalPages,
+            })}
+          </PaginationInfo>
+          <PaginationButton
+            onClick={goNext}
+            disabled={currentPage === totalPages}
+          >
+            {tFindingsTable("pagination.next")}
+            <ChevronRight />
+          </PaginationButton>
+        </PaginationBar>
+      )}
+
       <DataSafetyInfoWrapper>
         <DataSafetyInfoIconWrapper>
           <use href={headerSpriteRef("icon-IconComplianceSafe")} />

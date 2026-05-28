@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Menu, MenuItem } from "@mui/material";
 import {
   CHIP_COLOR_PRESETS,
   deidColors,
@@ -254,5 +254,39 @@ export const CreateNewDocumentButton = styled(Button)(({ theme }) => ({
 
   [theme.breakpoints.up("lg")]: {
     width: "auto",
+  },
+}));
+
+export const Dropdown = styled(Menu)(({ theme }) => ({
+  "& .MuiPaper-root": {
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.background.softGray}`,
+    borderRadius: theme.shape.borderRadius,
+  },
+
+  "& .MuiPopperUnstyled-root": {
+    width: "inherit !important",
+  },
+}));
+
+export const DropdownItem = styled(MenuItem)(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize12,
+  fontWeight: theme.typography.fontWeightMedium,
+  color: theme.palette.color.charcoal,
+  padding: theme.spacing(1.5, 2),
+  whiteSpace: "nowrap",
+  minWidth: "auto",
+
+  "&:hover": {
+    backgroundColor: theme.palette.background.softGray,
+  },
+
+  "&.Mui-selected": {
+    backgroundColor: `${theme.palette.background.softGray}CC`,
+
+    "&:hover": {
+      backgroundColor: theme.palette.background.softGray,
+    },
   },
 }));
