@@ -14,6 +14,7 @@ import {
   TOUR_ROUTES,
   type TourStep,
 } from "constants/ProfilePage";
+import { buildWorkflowTourPayload } from "shared/utils/workflow-tour-helper";
 
 export type { TourStep };
 
@@ -164,7 +165,11 @@ export function useProfile() {
   };
 
   const handleTakeTour = async (step: TourStep) => {
-    await dispatch(updateWorkflowTour({ [step]: false }));
+    const payload = buildWorkflowTourPayload(profile?.workflowTour, {
+      [step]: false,
+      skipped: false,
+    });
+    await dispatch(updateWorkflowTour(payload));
     navigate(TOUR_ROUTES[step], { state: { forceTour: step } });
   };
 
