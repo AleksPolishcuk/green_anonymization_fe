@@ -6,7 +6,6 @@ import { pricingService } from "services/pricing";
 import { updateAvatarUrl, updateWorkflowTour } from "store/slices/authSlice";
 import type User from "shared/interfaces/User";
 import type { CurrentSubscription } from "services/pricing/typing/pricing";
-import type { UpdateWorkflowTourPayload } from "services/auth/typing";
 import {
   ALLOWED_TYPES,
   MAX_FILE_SIZE,
@@ -165,10 +164,8 @@ export function useProfile() {
   };
 
   const handleTakeTour = async (step: TourStep) => {
-    const payload: UpdateWorkflowTourPayload = { [step]: false };
-    if (profile?.workflowTour?.skipped) payload.skipped = false;
-    await dispatch(updateWorkflowTour(payload));
-    navigate(TOUR_ROUTES[step]);
+    await dispatch(updateWorkflowTour({ [step]: false }));
+    navigate(TOUR_ROUTES[step], { state: { forceTour: step } });
   };
 
   const initials = `${profile?.firstName?.charAt(0) ?? ""}${
