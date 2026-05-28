@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import {
   TableCard,
   TableHeader,
@@ -18,15 +19,16 @@ import {
   ActionButton,
   ActionButtonIconWrapper,
   TableHeaderColumnButtons,
-  LoaderRow,
   Dropdown,
   DropdownItem,
+  PaginationBar,
+  PaginationButton,
+  PaginationInfo,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef, FINDINGS_PAGE_SIZE } from "constants/MainPages";
-import { Loader } from "shared/ui/Loader";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticDataContents } from "./useSyntheticDataContents";
-import { useScroll } from "components/DeidOutput/hooks/useScroll";
+import { usePagination } from "components/DeidOutput/hooks/usePagination";
 import { useState } from "react";
 
 export default function SyntheticDataGeneratedDataset() {
@@ -35,6 +37,9 @@ export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {
     keyPrefix: "syntheticDataGeneratedDataset",
   });
+  const { t: tFindingsTable } = useTranslation("translation", {
+    keyPrefix: "deidOutput.findingsTable",
+  });
 
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
   const { handleRegenerate, handleDownload, handleTableDownload } =
@@ -42,9 +47,12 @@ export default function SyntheticDataGeneratedDataset() {
 
   const {
     visibleItems: visibleDocuments,
-    hasMore,
-    loaderRef,
-  } = useScroll({
+    currentPage,
+    totalPages,
+    goNext,
+    goPrev,
+    startIndex,
+  } = usePagination({
     items: syntheticDocuments || [],
     pageSize: FINDINGS_PAGE_SIZE,
   });
@@ -128,7 +136,7 @@ export default function SyntheticDataGeneratedDataset() {
           <tbody>
             {visibleDocuments?.map((doc, rowIndex) => (
               <Tr key={doc.id}>
-                <Td>{rowIndex + 1}</Td>
+                <Td>{startIndex + rowIndex + 1}</Td>
                 {doc.entities.map((entity, entityIndex) => (
                   <Td
                     key={`${doc.id}-${rowIndex}-${entityIndex}-${entity.entity_type}`}
@@ -140,12 +148,30 @@ export default function SyntheticDataGeneratedDataset() {
             ))}
           </tbody>
         </StyledTable>
-        {hasMore && (
-          <LoaderRow ref={loaderRef}>
-            <Loader />
-          </LoaderRow>
-        )}
       </TableScrollWrapper>
+
+      {totalPages > 1 && (
+        <PaginationBar>
+          <PaginationButton onClick={goPrev} disabled={currentPage === 1}>
+            <ChevronLeft />
+            {tFindingsTable("pagination.previous")}
+          </PaginationButton>
+          <PaginationInfo>
+            {tFindingsTable("pagination.page", {
+              current: currentPage,
+              total: totalPages,
+            })}
+          </PaginationInfo>
+          <PaginationButton
+            onClick={goNext}
+            disabled={currentPage === totalPages}
+          >
+            {tFindingsTable("pagination.next")}
+            <ChevronRight />
+          </PaginationButton>
+        </PaginationBar>
+      )}
+
       <DataSafetyInfoWrapper>
         <DataSafetyInfoIconWrapper>
           <use href={headerSpriteRef("icon-IconComplianceSafe")} />
