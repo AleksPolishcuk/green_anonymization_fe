@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import type User from "shared/interfaces/User";
 import { useAppDispatch } from "store/hooks";
@@ -9,13 +10,16 @@ import { buildWorkflowTourPayload } from "shared/utils/workflow-tour-helper";
 
 export const useWorkflowTour = (user: User | null) => {
   const [isHidden, setIsHidden] = useState(false);
+  const location = useLocation();
+  const forceTour = (location.state as { forceTour?: string } | null)
+    ?.forceTour;
 
   const dispatch = useAppDispatch();
 
   const shouldShowWelcome =
     !!user &&
     !isHidden &&
-    !user.workflowTour?.skipped &&
+    (forceTour === "dashboard" || !user.workflowTour?.skipped) &&
     !user.workflowTour?.dashboard;
 
   const handleStartTour = () => {
