@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Originaltext",
       "subtitle": "Erkannte Entitäten hervorgehoben",
-      "entities": "Entitäten"
+      "entities": "Entitäten",
+      "back": "Zurück"
     },
     "deIdentifiedOutput": {
       "title": "De-identifizierte Ausgabe",
@@ -337,13 +338,19 @@
         "body": "Diese Entität wird nicht anonymisiert und erscheint als Klartext im de-identifizierten Ergebnis. Das Offenlassen sensibler Daten kann zu einem Compliance-Verstoß gemäß dem ausgewählten Framework führen.",
         "confirm": "Bestätigen",
         "cancel": "Abbrechen"
+      },
+      "pagination": {
+        "previous": "Zurück",
+        "next": "Weiter",
+        "page": "Seite {{current}} von {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Bereit, synthetische Daten zu generieren?",
       "subtitle": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
       "button": "Synthetische Daten generieren"
-    }
+    },
+    "newDocument": "Neues Dokument"
   },
   "notFound": {
     "subtitle": "Seite nicht gefunden",
@@ -501,6 +508,67 @@
       "cvvRequired": "CVV ist erforderlich",
       "cvvInvalid": "CVV muss 3–4 Ziffern haben",
       "paymentFailed": "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    }
+  },
+  "syntheticDataCta": {
+    "title": "Bereit, synthetische Daten zu generieren?",
+    "description": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
+    "button": "Synthetische Daten generieren",
+    "newDocument": "Neues Dokument"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "actions": {
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    },
+    "avatar": {
+      "changeLabel": "Ändern",
+      "changeHint": "Klicken Sie, um ein neues Avatar hochzuladen"
+    },
+    "fields": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "timezone": "Zeitzone",
+      "workflowTour": "Workflow-Tour"
+    },
+    "tour": {
+      "title": "Anleitungen",
+      "takeTour": "Anleitung starten",
+      "dashboard": "Dashboard",
+      "deidentification": "De-Identifikation",
+      "results": "Ergebnisse",
+      "synthetic": "Synthetische Daten"
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "dailyUsage": "Tägliche Nutzung",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} verwendet",
+      "resetsIn": "Zurückgesetzt in {{time}}",
+      "features": "Enthaltene Funktionen",
+      "upgradeCta": "Auf Pro upgraden",
+      "none": "Kein aktives Abonnement",
+      "tagline": {
+        "free": "Beginnen Sie mit der Standard-De-Identifikation",
+        "pro": "Unbegrenzte De-Identifikation mit allen Premium-Funktionen"
+      },
+      "status": {
+        "active": "Aktiv",
+        "cancelled": "Gekündigt",
+        "expired": "Abgelaufen"
+      }
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "theme": "Design",
+      "themeDark": "Dunkel",
+      "themeLight": "Hell",
+      "timezone": "Zeitzone",
+      "timezonePlaceholder": "Zeitzone auswählen"
     }
   }
 }

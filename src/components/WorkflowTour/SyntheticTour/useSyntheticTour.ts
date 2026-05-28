@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import { startSyntheticTour } from "components/WorkflowTour/SyntheticTour";
 
@@ -14,14 +15,16 @@ type UseSyntheticTourParams = {
 
 export const useSyntheticTour = ({ user, enabled }: UseSyntheticTourParams) => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
+  const forceTour = (location.state as { forceTour?: string } | null)
+    ?.forceTour;
 
   useEffect(() => {
-    if (
-      !enabled ||
-      !user ||
-      user.workflowTour?.skipped ||
-      user.workflowTour?.synthetic
-    ) {
+    if (!enabled || !user || user.workflowTour?.synthetic) {
+      return;
+    }
+
+    if (user.workflowTour?.skipped && forceTour !== "synthetic") {
       return;
     }
 
@@ -40,5 +43,5 @@ export const useSyntheticTour = ({ user, enabled }: UseSyntheticTourParams) => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [enabled, user, dispatch]);
+  }, [enabled, user, dispatch, forceTour]);
 };

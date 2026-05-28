@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Menu, MenuItem } from "@mui/material";
 import {
   CHIP_COLOR_PRESETS,
   deidColors,
@@ -212,4 +212,81 @@ export const DownloadIconWrapper = styled(IconWrapper)(({ theme }) => ({
   width: 13,
   height: 13,
   marginRight: theme.spacing(1.25),
+}));
+
+export const BackArrowIconWrapper = styled(IconWrapper)(({ theme }) => ({
+  width: 13,
+  height: 13,
+  marginRight: theme.spacing(1.25),
+  transform: "scaleX(-1)",
+}));
+
+export const DeidOutputTopActions = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(-2),
+  marginBottom: theme.spacing(-2),
+
+  [theme.breakpoints.up("md")]: {
+    marginTop: theme.spacing(-4),
+    marginBottom: theme.spacing(-4),
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    justifyContent: "flex-end",
+  },
+}));
+
+export const CreateNewDocumentButton = styled(Button)(({ theme }) => ({
+  width: "100%",
+  flexShrink: 0,
+  textTransform: "none",
+  fontSize: theme.typography.fontSize14,
+  padding: theme.spacing(2.5, 4),
+  borderRadius: theme.spacing(3),
+  color: theme.palette.common.white,
+  backgroundColor: theme.palette.color.blue,
+  gap: theme.spacing(1.5),
+
+  "&:hover": {
+    backgroundColor: theme.palette.color.darkBlue,
+  },
+
+  [theme.breakpoints.up("lg")]: {
+    width: "auto",
+  },
+}));
+
+export const Dropdown = styled(Menu)(({ theme }) => ({
+  "& .MuiPaper-root": {
+    backgroundColor: theme.palette.background.paper,
+    border: `1px solid ${theme.palette.background.softGray}`,
+    borderRadius: theme.shape.borderRadius,
+  },
+
+  "& .MuiPopperUnstyled-root": {
+    width: "inherit !important",
+  },
+}));
+
+export const DropdownItem = styled(MenuItem)(({ theme }) => ({
+  fontFamily: theme.typography.fontFamily,
+  fontSize: theme.typography.fontSize12,
+  fontWeight: theme.typography.fontWeightMedium,
+  color: theme.palette.color.charcoal,
+  padding: theme.spacing(1.5, 2),
+  whiteSpace: "nowrap",
+  minWidth: "auto",
+
+  "&:hover": {
+    backgroundColor: theme.palette.background.softGray,
+  },
+
+  "&.Mui-selected": {
+    backgroundColor: `${theme.palette.background.softGray}CC`,
+
+    "&:hover": {
+      backgroundColor: theme.palette.background.softGray,
+    },
+  },
 }));

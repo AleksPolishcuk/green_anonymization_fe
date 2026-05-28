@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { NoteAddOutlined } from "@mui/icons-material";
 
 import { headerSpriteRef } from "constants/MainPages";
 
@@ -11,11 +12,12 @@ import {
 } from "./analysisStyles";
 import { FindingsTable } from "./FindingsTable";
 import { useDeidOutput } from "./hooks/useDeidOutput";
-import { useChangeDetection } from "shared/hooks/useChangeDetection";
 import {
   DeidOutputSectionCard,
   DeidOutputSectionRoot,
   DeidOutputSectionStack,
+  DeidOutputTopActions,
+  CreateNewDocumentButton,
   CardHeader,
   CardHeaderTextSection,
   CardTitle,
@@ -28,10 +30,13 @@ import {
   ExclamationMarkIconWrapper,
   ComplianceSafeIconWrapper,
   CopyIconWrapper,
-  DownloadIconWrapper,
+  BackArrowIconWrapper,
+  Dropdown,
+  DropdownItem,
 } from "./styles";
 import { TaggedText } from "./taggedText";
 import CtaSynthetycBlock from "components/CtaSynthetycBlock";
+import { ActionButtonIconWrapper } from "../SyntheticDataContents/syntheticDataGeneratedDataset.styles";
 
 export default function DeidOutputSection() {
   const { t } = useTranslation("translation", { keyPrefix: "deidOutput" });
@@ -46,19 +51,12 @@ export default function DeidOutputSection() {
     redactedSegments,
     toggleEntity,
     handleCopyText,
-    handleSave,
-    handleDownloadPdf,
+    handleBack,
+    handleCreateNewDocument,
+    anchorEl,
+    setAnchorEl,
+    handleDownload,
   } = useDeidOutput();
-
-  const { hasChanges, resetChanges } = useChangeDetection({
-    piiEntities,
-    selectedCount,
-  });
-
-  const handleSaveClick = () => {
-    handleSave();
-    resetChanges();
-  };
 
   return (
     <DeidOutputSectionRoot>
@@ -80,6 +78,13 @@ export default function DeidOutputSection() {
           {t("header.accuracy", { value: accuracy })}
         </AccuracyBadge>
       </HeaderCard>
+
+      <DeidOutputTopActions>
+        <CreateNewDocumentButton onClick={handleCreateNewDocument}>
+          <NoteAddOutlined />
+          {t("newDocument")}
+        </CreateNewDocumentButton>
+      </DeidOutputTopActions>
 
       <DeidOutputSectionStack>
         <DeidOutputSectionCard>
@@ -103,6 +108,15 @@ export default function DeidOutputSection() {
           <CardContent data-tour="original-text">
             <TaggedText segments={originalSegments} />
           </CardContent>
+
+          <ActionButtonsContainer>
+            <ActionButton onClick={handleBack}>
+              <BackArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
+                <use href={headerSpriteRef("icon-IconArrow")} />
+              </BackArrowIconWrapper>
+              {t("originalText.back")}
+            </ActionButton>
+          </ActionButtonsContainer>
         </DeidOutputSectionCard>
 
         <DeidOutputSectionCard>
@@ -131,16 +145,27 @@ export default function DeidOutputSection() {
               {t("deIdentifiedOutput.copy")}
             </ActionButton>
 
-            <ActionButton onClick={handleDownloadPdf}>
-              <DownloadIconWrapper viewBox="0 0 13 13" aria-hidden="true">
+            <ActionButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+              <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
-              </DownloadIconWrapper>
-              {t("deIdentifiedOutput.downloadPdf")}
+              </ActionButtonIconWrapper>
+              {t("deIdentifiedOutput.downloadButton")}
             </ActionButton>
-
-            <ActionButton onClick={handleSaveClick} disabled={!hasChanges}>
-              {t("deIdentifiedOutput.saveButtonText")}
-            </ActionButton>
+            <Dropdown
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={() => setAnchorEl(null)}
+            >
+              <DropdownItem onClick={() => handleDownload("txt")}>
+                {t("deIdentifiedOutput.formatTxt")}
+              </DropdownItem>
+              <DropdownItem onClick={() => handleDownload("pdf")}>
+                {t("deIdentifiedOutput.formatPdf")}
+              </DropdownItem>
+              <DropdownItem onClick={() => handleDownload("docx")}>
+                {t("deIdentifiedOutput.formatDocx")}
+              </DropdownItem>
+            </Dropdown>
           </ActionButtonsContainer>
         </DeidOutputSectionCard>
       </DeidOutputSectionStack>

@@ -12,8 +12,10 @@ import {
   SidebarNavIcon,
   SidebarNavIconBox,
   SidebarNavItem,
+  SidebarProfileAvatar,
   SidebarProfileContainer,
   SidebarProfileIcon,
+  SidebarProfileLink,
   SidebarProfileTextContainer,
   SidebarProFileTextHeading,
   SidebarProFileTextSubtitle,
@@ -169,20 +171,35 @@ export default function Sidebar() {
         </SidebarNavItem>
       </SidebarNav>
       <SidebarProfileContainer>
-        <SidebarProfileIcon>
-          {user?.firstName.charAt(0)}
-          {user?.lastName.charAt(0)}
-        </SidebarProfileIcon>
+        <SidebarProfileLink
+          to="/profile"
+          onClick={handleNavClick}
+          $isMobileOpen={isMobileOpen}
+        >
+          <SidebarProfileIcon>
+            {user?.avatarUrl ? (
+              <SidebarProfileAvatar
+                src={user.avatarUrl}
+                alt={`${user.firstName} ${user.lastName}`}
+              />
+            ) : (
+              <>
+                {user?.firstName.charAt(0)}
+                {user?.lastName.charAt(0)}
+              </>
+            )}
+          </SidebarProfileIcon>
 
-        <SidebarProfileTextContainer>
-          <SidebarProFileTextHeading>
-            {user?.firstName} {user?.lastName}
-          </SidebarProFileTextHeading>
+          <SidebarProfileTextContainer $isMobileOpen={isMobileOpen}>
+            <SidebarProFileTextHeading>
+              {user?.firstName} {user?.lastName}
+            </SidebarProFileTextHeading>
 
-          <SidebarProFileTextSubtitle title={user?.email}>
-            {formatEmail(user?.email)}
-          </SidebarProFileTextSubtitle>
-        </SidebarProfileTextContainer>
+            <SidebarProFileTextSubtitle title={user?.email}>
+              {formatEmail(user?.email)}
+            </SidebarProFileTextSubtitle>
+          </SidebarProfileTextContainer>
+        </SidebarProfileLink>
 
         <SidebarExitIcon onClick={handleExitClick}>
           <use href={headerSpriteRef("icon-exit")} />

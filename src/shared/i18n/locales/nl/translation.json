@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Originele tekst",
       "subtitle": "Gedetecteerde entiteiten gemarkeerd",
-      "entities": "entiteiten"
+      "entities": "entiteiten",
+      "back": "Terug"
     },
     "deIdentifiedOutput": {
       "title": "Gede-identificeerde uitvoer",
@@ -337,13 +338,19 @@
         "body": "Deze entiteit wordt niet geanonimiseerd en verschijnt als leesbare tekst in de de-geïdentificeerde uitvoer. Het ongemaskerd laten van gevoelige gegevens kan leiden tot een complianceschending onder het geselecteerde framework.",
         "confirm": "Bevestigen",
         "cancel": "Annuleren"
+      },
+      "pagination": {
+        "previous": "Vorige",
+        "next": "Volgende",
+        "page": "Pagina {{current}} van {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Klaar om synthetische gegevens te genereren?",
       "subtitle": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
       "button": "Synthetische gegevens genereren"
-    }
+    },
+    "newDocument": "Nieuw document"
   },
   "notFound": {
     "subtitle": "Pagina niet gevonden",
@@ -501,6 +508,67 @@
       "cvvRequired": "CVV is verplicht",
       "cvvInvalid": "CVV moet 3–4 cijfers bevatten",
       "paymentFailed": "Betaling mislukt. Probeer het opnieuw."
+    }
+  },
+  "syntheticDataCta": {
+    "title": "Klaar om synthetische gegevens te genereren?",
+    "description": "Gebruik gedeïdentificeerde gegevens om realistische synthetische datasets te maken voor testen en ontwikkeling",
+    "button": "Synthetische gegevens genereren",
+    "newDocument": "Nieuw document"
+  },
+  "profile": {
+    "title": "Mijn profiel",
+    "actions": {
+      "edit": "Bewerken",
+      "save": "Opslaan",
+      "cancel": "Annuleren"
+    },
+    "avatar": {
+      "changeLabel": "Wijzigen",
+      "changeHint": "Klik om een nieuw avatar te uploaden"
+    },
+    "fields": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail",
+      "company": "Bedrijf",
+      "timezone": "Tijdzone",
+      "workflowTour": "Workflow-rondleiding"
+    },
+    "tour": {
+      "title": "Handleidingen",
+      "takeTour": "Handleiding starten",
+      "dashboard": "Dashboard",
+      "deidentification": "De-identificatie",
+      "results": "Resultaten",
+      "synthetic": "Synthetische gegevens"
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "dailyUsage": "Dagelijks gebruik",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} gebruikt",
+      "resetsIn": "Reset over {{time}}",
+      "features": "Inbegrepen functies",
+      "upgradeCta": "Upgrade naar Pro",
+      "none": "Geen actief abonnement",
+      "tagline": {
+        "free": "Ga aan de slag met standaard de-identificatie",
+        "pro": "Onbeperkte de-identificatie met alle premium functies"
+      },
+      "status": {
+        "active": "Actief",
+        "cancelled": "Opgezegd",
+        "expired": "Verlopen"
+      }
+    },
+    "settings": {
+      "title": "Instellingen",
+      "theme": "Thema",
+      "themeDark": "Donker",
+      "themeLight": "Licht",
+      "timezone": "Tijdzone",
+      "timezonePlaceholder": "Selecteer tijdzone"
     }
   }
 }

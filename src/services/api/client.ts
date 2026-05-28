@@ -170,7 +170,14 @@ export const apiClient = {
   },
 
   patch<T, D>(path: string, body: D): Promise<T> {
-    return request<T>(axiosInstance.patch(path, body));
+    const isFormData = body instanceof FormData;
+    return request<T>(
+      axiosInstance.patch(path, body, {
+        headers: isFormData
+          ? { "Content-Type": "multipart/form-data" }
+          : undefined,
+      }),
+    );
   },
 
   delete<T>(path: string): Promise<T> {

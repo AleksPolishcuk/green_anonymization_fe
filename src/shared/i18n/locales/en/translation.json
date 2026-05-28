@@ -281,6 +281,58 @@
     },
     "syntheticData": "Synthetic Data"
   },
+  "profile": {
+    "title": "My Profile",
+    "actions": {
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "avatar": {
+      "changeLabel": "Change",
+      "changeHint": "Click to upload a new avatar"
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "workflowTour": "Workflow Tour"
+    },
+    "tour": {
+      "title": "Guides",
+      "takeTour": "Take Guide",
+      "dashboard": "Dashboard",
+      "deidentification": "De-Identification",
+      "results": "Results",
+      "synthetic": "Synthetic Data"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "dailyUsage": "Daily usage",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} used",
+      "resetsIn": "Resets in {{time}}",
+      "features": "Included features",
+      "upgradeCta": "Upgrade to Pro",
+      "none": "No active subscription",
+      "tagline": {
+        "free": "Get started with standard de-identification",
+        "pro": "Unlimited de-identification with all premium features"
+      },
+      "status": {
+        "active": "Active",
+        "cancelled": "Cancelled",
+        "expired": "Expired"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "theme": "Theme",
+      "themeDark": "Dark",
+      "themeLight": "Light"
+    }
+  },
   "deidHeader": {
     "title": "De-Identification Workflow",
     "subtitle": "Enterprise-grade PII detection and anonymization — HIPAA · GDPR · FADP compliant"
@@ -319,16 +371,20 @@
     "originalText": {
       "title": "Original Text",
       "subtitle": "Detected entities highlighted",
-      "entities": "entities"
+      "entities": "entities",
+      "back": "Back"
     },
     "deIdentifiedOutput": {
       "title": "De-Identified Output",
       "subtitle": "Sensitive data removed",
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
-      "downloadPdf": "Download PDF",
+      "downloadButton": "Download",
       "saveButtonText": "Save changes",
-      "redactedContentTooltip": "Redacted information"
+      "redactedContentTooltip": "Redacted information",
+      "formatTxt": "TXT",
+      "formatPdf": "PDF",
+      "formatDocx": "DOCX"
     },
     "findingsTable": {
       "title": "Findings & Decision Factors",
@@ -351,13 +407,19 @@
         "body": "This entity will not be anonymized and will appear as plain text in the de-identified output. Leaving sensitive data unmasked may result in a compliance violation under the selected framework.",
         "confirm": "Confirm",
         "cancel": "Cancel"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{current}} of {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Ready to Generate Synthetic Data?",
       "subtitle": "Use de-identified data to create realistic synthetic datasets for testing and development",
       "button": "Generate Synthetic Data"
-    }
+    },
+    "newDocument": "New Document"
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -465,7 +527,8 @@
   "syntheticDataCta": {
     "title": "Ready to Generate Synthetic Data?",
     "description": "Use de-identified data to create realistic synthetic datasets for testing and development",
-    "button": "Generate Synthetic Data"
+    "button": "Generate Synthetic Data",
+    "newDocument": "New Document"
   },
   "syntheticData": {
     "header": {
@@ -527,7 +590,10 @@
     "dataSafetyInfo": "All records are completely synthetic. No real patient data was used in generation. Safe for development, testing, and research purposes.",
     "downloadTableButton": "Download Table",
     "downloadArchiveButton": "Download Archive",
-    "regenerateDatasetButton": "Regenerate Dataset"
+    "regenerateDatasetButton": "Regenerate Dataset",
+    "formatTxt": "TXT",
+    "formatPdf": "PDF",
+    "formatDocx": "DOCX"
   },
   "syntheticDataHeader": {
     "title": "Synthetic Data Generator",
@@ -599,13 +665,10 @@
   "resultsTour": {
     "originalTitle": "Original document",
     "originalDescription": "Here you can review the original text you submitted.",
-
     "redactedTitle": "De-identified result",
     "redactedDescription": "Sensitive information is hidden in this version of the document.",
-
     "entitiesTitle": "Detected entities",
     "entitiesDescription": "Review the sensitive entities detected during de-identification.",
-
     "syntheticTitle": "Generate synthetic data",
     "syntheticDescription": "Use this de-identified document to generate synthetic data."
   },

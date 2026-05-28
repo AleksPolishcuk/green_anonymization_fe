@@ -300,7 +300,8 @@
     "originalText": {
       "title": "Texte original",
       "subtitle": "Entités détectées surlignées",
-      "entities": "entités"
+      "entities": "entités",
+      "back": "Retour"
     },
     "deIdentifiedOutput": {
       "title": "Sortie dé-identifiée",
@@ -337,13 +338,19 @@
         "body": "Cette entité ne sera pas anonymisée et apparaîtra en clair dans le résultat dé-identifié. Laisser des données sensibles non masquées peut constituer une violation du cadre de conformité sélectionné.",
         "confirm": "Confirmer",
         "cancel": "Annuler"
+      },
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "page": "Page {{current}} sur {{total}}"
       }
     },
     "syntheticCta": {
       "title": "Prêt à générer des données synthétiques ?",
       "subtitle": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
       "button": "Générer des données synthétiques"
-    }
+    },
+    "newDocument": "Nouveau document"
   },
   "notFound": {
     "subtitle": "Page non trouvée",
@@ -501,6 +508,67 @@
       "cvvRequired": "Le CVV est requis",
       "cvvInvalid": "Le CVV doit comporter 3–4 chiffres",
       "paymentFailed": "Paiement échoué. Veuillez réessayer."
+    }
+  },
+  "syntheticDataCta": {
+    "title": "Prêt à générer des données synthétiques ?",
+    "description": "Utilisez des données dé-identifiées pour créer des ensembles de données synthétiques réalistes pour les tests et le développement",
+    "button": "Générer des données synthétiques",
+    "newDocument": "Nouveau document"
+  },
+  "profile": {
+    "title": "Mon profil",
+    "actions": {
+      "edit": "Modifier",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
+    },
+    "avatar": {
+      "changeLabel": "Modifier",
+      "changeHint": "Cliquez pour télécharger un nouvel avatar"
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "E-mail",
+      "company": "Entreprise",
+      "timezone": "Fuseau horaire",
+      "workflowTour": "Visite guidée du flux de travail"
+    },
+    "tour": {
+      "title": "Guides",
+      "takeTour": "Démarrer le guide",
+      "dashboard": "Tableau de bord",
+      "deidentification": "Dé-identification",
+      "results": "Résultats",
+      "synthetic": "Données synthétiques"
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "dailyUsage": "Utilisation quotidienne",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} utilisé",
+      "resetsIn": "Réinitialisation dans {{time}}",
+      "features": "Fonctionnalités incluses",
+      "upgradeCta": "Passer à Pro",
+      "none": "Aucun abonnement actif",
+      "tagline": {
+        "free": "Commencez avec la dé-identification standard",
+        "pro": "Dé-identification illimitée avec toutes les fonctionnalités premium"
+      },
+      "status": {
+        "active": "Actif",
+        "cancelled": "Annulé",
+        "expired": "Expiré"
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "theme": "Thème",
+      "themeDark": "Sombre",
+      "themeLight": "Clair",
+      "timezone": "Fuseau horaire",
+      "timezonePlaceholder": "Sélectionner un fuseau horaire"
     }
   }
 }

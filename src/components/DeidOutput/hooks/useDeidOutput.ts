@@ -1,4 +1,5 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   ACCURACY_DECIMAL_PRECISION,
@@ -6,22 +7,21 @@ import {
   COMPLIANCE_FRAMEWORKS,
   DEID_OUTPUT_FILENAME,
 } from "constants/MainPages";
-
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
   toggleEntitySelected,
   setRedactedText,
+  prevDeidStep,
+  resetDocument,
 } from "store/slices/documentSlice";
-
-import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
-
-import { useNavigate } from "react-router-dom";
 import { documentsService } from "services/documents";
 import {
   buildAnonymizedText,
   parseTextWithEntities,
   parseTextWithRedactions,
 } from "components/DeidOutput/utils/parsers";
+
+import { useDownloadRedactedTextCopy } from "./useDownloadRedactedTextCopy";
 
 export const useDeidOutput = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +33,8 @@ export const useDeidOutput = () => {
     anonymizedText,
     document,
   } = useAppSelector((s) => s.document);
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const originalText = rawOriginalText ?? "";
   const piiEntities = useMemo(() => rawPiiEntities ?? [], [rawPiiEntities]);
@@ -103,23 +105,18 @@ export const useDeidOutput = () => {
       safeEntities,
     );
 
-    await documentsService.updateDocumentText(document.id, {
-      text: finalAnonymizedText,
-    });
-
-    navigate(`/syntheticdata?documentId=${document.id}`);
+    try {
+      await documentsService.updateDocumentText(document.id, {
+        text: finalAnonymizedText,
+      });
+      navigate(`/syntheticdata?documentId=${document.id}`);
+    } catch {
+      // save failed — stay on page, do not navigate
+    }
   }, [document, safeOriginalText, safeEntities, navigate]);
 
-  const { downloadAsJson, downloadAsText, copyToClipboard, downloadAsPdf } =
+  const { copyToClipboard, downloadAsPdf, downloadAsText, downloadAsDocx } =
     useDownloadRedactedTextCopy();
-
-  const handleDownloadJson = useCallback(() => {
-    downloadAsJson(redactedSegments, DEID_OUTPUT_FILENAME);
-  }, [downloadAsJson, redactedSegments]);
-
-  const handleDownloadText = useCallback(() => {
-    downloadAsText(redactedSegments, DEID_OUTPUT_FILENAME);
-  }, [downloadAsText, redactedSegments]);
 
   const handleCopyText = useCallback(() => {
     copyToClipboard(redactedSegments);
@@ -129,19 +126,53 @@ export const useDeidOutput = () => {
     downloadAsPdf(redactedSegments, DEID_OUTPUT_FILENAME);
   }, [downloadAsPdf, redactedSegments]);
 
-  const handleSave = () => {
-    if (!document?.id) {
-      return;
+  const handleDownloadText = useCallback(() => {
+    downloadAsText(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsText, redactedSegments]);
+
+  const handleDownloadDocx = useCallback(() => {
+    downloadAsDocx(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsDocx, redactedSegments]);
+
+  const handleBack = useCallback(() => {
+    dispatch(prevDeidStep());
+  }, [dispatch]);
+
+  const handleCreateNewDocument = useCallback(async () => {
+    if (document?.id && anonymizedText) {
+      const selectedEntityIds = safeEntities
+        .filter((e) => e.selected)
+        .map((e) => e.id);
+
+      try {
+        await Promise.all([
+          documentsService.updateDocumentText(document.id, {
+            text: anonymizedText,
+          }),
+          documentsService.updateEntitySelections(document.id, {
+            selectedEntityIds,
+          }),
+        ]);
+      } catch {
+        // save failed — reset state anyway
+      }
     }
 
-    if (!anonymizedText) {
-      return;
-    }
+    dispatch(resetDocument());
+  }, [document, anonymizedText, safeEntities, dispatch]);
 
-    documentsService.updateDocumentText(document?.id, {
-      text: anonymizedText,
-    });
-  };
+  const handleDownload = useCallback(
+    (format: "txt" | "pdf" | "docx") => {
+      if (format == "txt") {
+        handleDownloadText();
+      } else if (format == "pdf") {
+        handleDownloadPdf();
+      } else if (format === "docx") {
+        handleDownloadDocx();
+      }
+    },
+    [handleDownloadText, handleDownloadPdf, handleDownloadDocx],
+  );
 
   return {
     piiEntities,
@@ -152,12 +183,14 @@ export const useDeidOutput = () => {
     frameworkName,
     originalSegments,
     redactedSegments,
+    anchorEl,
+    setAnchorEl,
     toggleEntity,
-    handleDownloadJson,
-    handleDownloadText,
     handleCopyText,
     handleGenerateSyntheticData,
-    handleSave,
     handleDownloadPdf,
+    handleBack,
+    handleCreateNewDocument,
+    handleDownload,
   };
 };
