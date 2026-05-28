@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -33,6 +33,8 @@ export const useDeidOutput = () => {
     anonymizedText,
     document,
   } = useAppSelector((s) => s.document);
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const originalText = rawOriginalText ?? "";
   const piiEntities = useMemo(() => rawPiiEntities ?? [], [rawPiiEntities]);
@@ -113,7 +115,8 @@ export const useDeidOutput = () => {
     }
   }, [document, safeOriginalText, safeEntities, navigate]);
 
-  const { copyToClipboard, downloadAsPdf } = useDownloadRedactedTextCopy();
+  const { copyToClipboard, downloadAsPdf, downloadAsText, downloadAsDocx } =
+    useDownloadRedactedTextCopy();
 
   const handleCopyText = useCallback(() => {
     copyToClipboard(redactedSegments);
@@ -122,6 +125,14 @@ export const useDeidOutput = () => {
   const handleDownloadPdf = useCallback(() => {
     downloadAsPdf(redactedSegments, DEID_OUTPUT_FILENAME);
   }, [downloadAsPdf, redactedSegments]);
+
+  const handleDownloadText = useCallback(() => {
+    downloadAsText(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsText, redactedSegments]);
+
+  const handleDownloadDocx = useCallback(() => {
+    downloadAsDocx(redactedSegments, DEID_OUTPUT_FILENAME);
+  }, [downloadAsDocx, redactedSegments]);
 
   const handleBack = useCallback(() => {
     dispatch(prevDeidStep());
@@ -150,6 +161,19 @@ export const useDeidOutput = () => {
     dispatch(resetDocument());
   }, [document, anonymizedText, safeEntities, dispatch]);
 
+  const handleDownload = useCallback(
+    (format: "txt" | "pdf" | "docx") => {
+      if (format == "txt") {
+        handleDownloadText();
+      } else if (format == "pdf") {
+        handleDownloadPdf();
+      } else if (format === "docx") {
+        handleDownloadDocx();
+      }
+    },
+    [handleDownloadText, handleDownloadPdf, handleDownloadDocx],
+  );
+
   return {
     piiEntities,
     originalText,
@@ -159,11 +183,14 @@ export const useDeidOutput = () => {
     frameworkName,
     originalSegments,
     redactedSegments,
+    anchorEl,
+    setAnchorEl,
     toggleEntity,
     handleCopyText,
     handleGenerateSyntheticData,
     handleDownloadPdf,
     handleBack,
     handleCreateNewDocument,
+    handleDownload,
   };
 };

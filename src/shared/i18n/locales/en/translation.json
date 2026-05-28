@@ -326,9 +326,12 @@
       "subtitle": "Sensitive data removed",
       "hipaaCompliant": "HIPAA Safe",
       "copy": "Copy",
-      "downloadPdf": "Download PDF",
+      "downloadButton": "Download",
       "saveButtonText": "Save changes",
-      "redactedContentTooltip": "Redacted information"
+      "redactedContentTooltip": "Redacted information",
+      "formatTxt": "TXT",
+      "formatPdf": "PDF",
+      "formatDocx": "DOCX"
     },
     "findingsTable": {
       "title": "Findings & Decision Factors",

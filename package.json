@@ -29,6 +29,7 @@
     "@mui/material": "^7.3.9",
     "@reduxjs/toolkit": "^2.11.2",
     "axios": "^1.15.0",
+    "docx": "^9.7.1",
     "driver.js": "^1.4.0",
     "express": "^4.21.1",
     "i18next": "^25.8.20",
