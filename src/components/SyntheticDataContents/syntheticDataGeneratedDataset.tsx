@@ -19,14 +19,19 @@ import {
   ActionButtonIconWrapper,
   TableHeaderColumnButtons,
   LoaderRow,
+  Dropdown,
+  DropdownItem,
 } from "./syntheticDataGeneratedDataset.styles";
 import { headerSpriteRef, FINDINGS_PAGE_SIZE } from "constants/MainPages";
 import { Loader } from "shared/ui/Loader";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticDataContents } from "./useSyntheticDataContents";
 import { useScroll } from "components/DeidOutput/hooks/useScroll";
+import { useState } from "react";
 
 export default function SyntheticDataGeneratedDataset() {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   const { t } = useTranslation("translation", {
     keyPrefix: "syntheticDataGeneratedDataset",
   });
@@ -74,12 +79,36 @@ export default function SyntheticDataGeneratedDataset() {
               </ActionButtonIconWrapper>
               {t("downloadTableButton")}
             </ActionButton>
-            <ActionButton onClick={() => handleDownload("txt")}>
+            <ActionButton onClick={(e) => setAnchorEl(e.currentTarget)}>
               <ActionButtonIconWrapper>
                 <use href={headerSpriteRef("icon-IconDownload")} />
               </ActionButtonIconWrapper>
               {t("downloadArchiveButton")}
             </ActionButton>
+            <Dropdown
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={() => setAnchorEl(null)}
+            >
+              <DropdownItem
+                key={t("formatTxt")}
+                onClick={() => handleDownload("txt")}
+              >
+                {t("formatTxt")}
+              </DropdownItem>
+              <DropdownItem
+                key={t("formatPdf")}
+                onClick={() => handleDownload("pdf")}
+              >
+                {t("formatPdf")}
+              </DropdownItem>
+              <DropdownItem
+                key={t("formatDocx")}
+                onClick={() => handleDownload("docx")}
+              >
+                {t("formatDocx")}
+              </DropdownItem>
+            </Dropdown>
           </ActionButtonsContainer>
         </TableHeaderColumnButtons>
       </TableHeader>
