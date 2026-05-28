@@ -118,8 +118,10 @@ export default function SyntheticDataGeneratedDataset() {
           <thead>
             <tr>
               <Th>{t("columns.id")}</Th>
-              {syntheticDocuments?.[0]?.entities.map((entity) => (
-                <Th key={entity.entity_type}>{entity.entity_type}</Th>
+              {syntheticDocuments?.[0]?.entities.map((entity, entityIndex) => (
+                <Th key={`${entity.entity_type}-${entityIndex}`}>
+                  {entity.entity_type}
+                </Th>
               ))}
             </tr>
           </thead>
@@ -127,8 +129,10 @@ export default function SyntheticDataGeneratedDataset() {
             {visibleDocuments?.map((doc, rowIndex) => (
               <Tr key={doc.id}>
                 <Td>{rowIndex + 1}</Td>
-                {doc.entities.map((entity) => (
-                  <Td key={`${doc.id}-${entity.entity_type}`}>
+                {doc.entities.map((entity, entityIndex) => (
+                  <Td
+                    key={`${doc.id}-${rowIndex}-${entityIndex}-${entity.entity_type}`}
+                  >
                     {entity.value}
                   </Td>
                 ))}
