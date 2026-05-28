@@ -515,5 +515,60 @@
     "description": "Nutzen Sie de-identifizierte Daten, um realistische synthetische Datensätze für Tests und Entwicklung zu erstellen",
     "button": "Synthetische Daten generieren",
     "newDocument": "Neues Dokument"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "actions": {
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    },
+    "avatar": {
+      "changeLabel": "Ändern",
+      "changeHint": "Klicken Sie, um ein neues Avatar hochzuladen"
+    },
+    "fields": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "company": "Unternehmen",
+      "timezone": "Zeitzone",
+      "workflowTour": "Workflow-Tour"
+    },
+    "tour": {
+      "title": "Anleitungen",
+      "takeTour": "Anleitung starten",
+      "dashboard": "Dashboard",
+      "deidentification": "De-Identifikation",
+      "results": "Ergebnisse",
+      "synthetic": "Synthetische Daten"
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "dailyUsage": "Tägliche Nutzung",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} verwendet",
+      "resetsIn": "Zurückgesetzt in {{time}}",
+      "features": "Enthaltene Funktionen",
+      "upgradeCta": "Auf Pro upgraden",
+      "none": "Kein aktives Abonnement",
+      "tagline": {
+        "free": "Beginnen Sie mit der Standard-De-Identifikation",
+        "pro": "Unbegrenzte De-Identifikation mit allen Premium-Funktionen"
+      },
+      "status": {
+        "active": "Aktiv",
+        "cancelled": "Gekündigt",
+        "expired": "Abgelaufen"
+      }
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "theme": "Design",
+      "themeDark": "Dunkel",
+      "themeLight": "Hell",
+      "timezone": "Zeitzone",
+      "timezonePlaceholder": "Zeitzone auswählen"
+    }
   }
 }

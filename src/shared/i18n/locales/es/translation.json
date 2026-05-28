@@ -515,5 +515,60 @@
     "description": "Use datos desidentificados para crear conjuntos de datos sintéticos realistas para pruebas y desarrollo",
     "button": "Generar datos sintéticos",
     "newDocument": "Nuevo documento"
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "actions": {
+      "edit": "Editar",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    },
+    "avatar": {
+      "changeLabel": "Cambiar",
+      "changeHint": "Haga clic para subir un nuevo avatar"
+    },
+    "fields": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "company": "Empresa",
+      "timezone": "Zona horaria",
+      "workflowTour": "Tour de flujo de trabajo"
+    },
+    "tour": {
+      "title": "Guías",
+      "takeTour": "Iniciar guía",
+      "dashboard": "Panel de control",
+      "deidentification": "Desidentificación",
+      "results": "Resultados",
+      "synthetic": "Datos sintéticos"
+    },
+    "subscription": {
+      "title": "Suscripción",
+      "dailyUsage": "Uso diario",
+      "usageValue": "{{used}} / {{limit}}",
+      "unlimited": "{{used}} utilizado",
+      "resetsIn": "Se reinicia en {{time}}",
+      "features": "Funciones incluidas",
+      "upgradeCta": "Actualizar a Pro",
+      "none": "Sin suscripción activa",
+      "tagline": {
+        "free": "Comience con la desidentificación estándar",
+        "pro": "Desidentificación ilimitada con todas las funciones premium"
+      },
+      "status": {
+        "active": "Activo",
+        "cancelled": "Cancelado",
+        "expired": "Expirado"
+      }
+    },
+    "settings": {
+      "title": "Configuración",
+      "theme": "Tema",
+      "themeDark": "Oscuro",
+      "themeLight": "Claro",
+      "timezone": "Zona horaria",
+      "timezonePlaceholder": "Seleccionar zona horaria"
+    }
   }
 }

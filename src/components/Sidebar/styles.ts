@@ -28,7 +28,8 @@ export const SidebarRoot = styled("aside", {
     backgroundColor: theme.palette.background.default,
     boxShadow: colors.boxShadow,
     overflow: "hidden",
-    transition: "width 0.25s ease, min-width 0.25s ease",
+    transition:
+      "width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
 
     [theme.breakpoints.up("md")]: {
       width: SIDEBAR_WIDTH,
@@ -86,7 +87,8 @@ export const SidebarTextBlock = styled(Box, {
   opacity: $isMobileOpen ? 1 : 0,
   visibility: $isMobileOpen ? "visible" : "hidden",
   whiteSpace: "nowrap",
-  transition: "opacity 0.2s ease, visibility 0.2s ease",
+  transition:
+    "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
 
   [theme.breakpoints.up("md")]: {
     opacity: 1,
@@ -113,7 +115,8 @@ export const SidebarSectionTitle = styled(Typography, {
   opacity: $isMobileOpen ? 1 : 0,
   visibility: $isMobileOpen ? "visible" : "hidden",
   whiteSpace: "nowrap",
-  transition: "opacity 0.2s ease, visibility 0.2s ease",
+  transition:
+    "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
 
   [theme.breakpoints.up("md")]: {
     opacity: 1,
@@ -153,7 +156,8 @@ export const SidebarNavItem = styled(NavLink, {
       whiteSpace: "nowrap",
       opacity: $isMobileOpen ? 1 : 0,
       visibility: $isMobileOpen ? "visible" : "hidden",
-      transition: "opacity 0.2s ease, visibility 0.2s ease",
+      transition:
+        "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     },
 
     [theme.breakpoints.up("md")]: {
@@ -197,11 +201,54 @@ export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   padding: theme.spacing(3),
 
   display: "flex",
-  gap: theme.spacing(2),
-
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "center",
   alignItems: "center",
+  gap: theme.spacing(2),
+  rowGap: theme.spacing(3),
+
   minHeight: theme.spacing(14),
+
+  [theme.breakpoints.up("md")]: {
+    flexWrap: "nowrap",
+    justifyContent: "flex-start",
+    rowGap: theme.spacing(2),
+  },
 }));
+
+export const SidebarProfileLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "$isMobileOpen",
+})<{ $isMobileOpen?: boolean }>(({ theme, $isMobileOpen }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: $isMobileOpen ? "flex-start" : "center",
+  gap: theme.spacing(2),
+  flex: $isMobileOpen ? 1 : "0 0 auto",
+  minWidth: 0,
+  textDecoration: "none",
+  color: "inherit",
+  borderRadius: theme.shape.borderRadius,
+  padding: theme.spacing(1),
+  margin: theme.spacing(-1),
+  transition: "background-color 0.15s",
+
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+  },
+
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "flex-start",
+    flex: 1,
+  },
+}));
+
+export const SidebarProfileAvatar = styled("img")({
+  width: "100%",
+  height: "100%",
+  borderRadius: "50%",
+  objectFit: "cover",
+});
 
 export const SidebarProfileIcon = styled("div")(({ theme }) => ({
   width: theme.spacing(10),
@@ -217,19 +264,28 @@ export const SidebarProfileIcon = styled("div")(({ theme }) => ({
   color: theme.palette.common.white,
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: theme.typography.fontSize14,
-
-  [theme.breakpoints.down("md")]: {
-    display: "none",
-  },
 }));
 
-export const SidebarProfileTextContainer = styled("div")(({ theme }) => ({
+export const SidebarProfileTextContainer = styled("div", {
+  shouldForwardProp: (prop) => prop !== "$isMobileOpen",
+})<{ $isMobileOpen?: boolean }>(({ theme, $isMobileOpen }) => ({
   display: "flex",
   flexDirection: "column",
-  flex: 1,
+  flex: $isMobileOpen ? 1 : 0,
   minWidth: 0,
-  [theme.breakpoints.down("md")]: {
-    display: "none",
+  maxWidth: $isMobileOpen ? "100%" : 0,
+  overflow: "hidden",
+  opacity: $isMobileOpen ? 1 : 0,
+  transform: $isMobileOpen ? "translateX(0)" : "translateX(-8px)",
+  transition:
+    "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+  willChange: "opacity, max-width, transform",
+
+  [theme.breakpoints.up("md")]: {
+    flex: 1,
+    maxWidth: "100%",
+    opacity: 1,
+    transform: "translateX(0)",
   },
 }));
 
@@ -263,6 +319,7 @@ export const SidebarExitIcon = styled("svg")(({ theme }) => ({
   flexShrink: 0,
   cursor: "pointer",
   borderRadius: 8,
+  display: "block",
 
   "&:hover": {
     backgroundColor: theme.palette.background.softGray,

@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 import { clearTokens } from "features/Auth/utils/authTokens";
 import { AUTH_STATUS } from "constants/auth";
 import { authService } from "services/auth";
@@ -44,6 +48,14 @@ const authSlice = createSlice({
       state.registered = false;
       clearTokens();
     },
+    setUser(state, action: PayloadAction<User>) {
+      state.user = action.payload;
+    },
+    updateAvatarUrl(state, action: PayloadAction<string>) {
+      if (state.user) {
+        state.user = { ...state.user, avatarUrl: action.payload };
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchSession.fulfilled, (state, action) => {
@@ -63,5 +75,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, setUser, updateAvatarUrl } = authSlice.actions;
 export default authSlice.reducer;

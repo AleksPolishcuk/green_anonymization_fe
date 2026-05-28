@@ -12,6 +12,7 @@ import { NotFound } from "pages/NotFoundPage";
 import PricingPage from "pages/PricingPage";
 import DeidentificationPage from "pages/DeidentificationPage";
 import SyntheticDataPage from "pages/SyntheticDataPage";
+import ProfilePage from "pages/ProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +80,14 @@ export const router = createBrowserRouter([
     element: (
       <WorkspaceLayout>
         <SyntheticDataPage />
+      </WorkspaceLayout>
+    ),
+  },
+  {
+    path: "profile",
+    element: (
+      <WorkspaceLayout>
+        <ProfilePage />
       </WorkspaceLayout>
     ),
   },
