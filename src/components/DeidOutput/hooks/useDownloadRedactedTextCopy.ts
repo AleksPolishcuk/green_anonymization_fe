@@ -1,6 +1,4 @@
 import { type TextSegment } from "components/DeidOutput/utils/parsers";
-import jsPDF from "jspdf";
-import { Document, Packer, Paragraph } from "docx";
 
 export const useDownloadRedactedTextCopy = () => {
   const segmentsToText = (segments: TextSegment[]): string => {
@@ -34,7 +32,12 @@ export const useDownloadRedactedTextCopy = () => {
     URL.revokeObjectURL(url);
   };
 
-  const downloadAsPdf = (segments: TextSegment[], filename: string): void => {
+  const downloadAsPdf = async (
+    segments: TextSegment[],
+    filename: string,
+  ): Promise<void> => {
+    const { default: jsPDF } = await import("jspdf");
+
     const text = segmentsToText(segments);
     const doc = new jsPDF();
     doc.setFontSize(9);
@@ -43,7 +46,11 @@ export const useDownloadRedactedTextCopy = () => {
     doc.save(`${filename}.pdf`);
   };
 
-  const downloadAsDocx = (segments: TextSegment[], filename: string): void => {
+  const downloadAsDocx = async (
+    segments: TextSegment[],
+    filename: string,
+  ): Promise<void> => {
+    const { Document, Packer, Paragraph } = await import("docx");
     const text = segmentsToText(segments);
     const doc = new Document({
       sections: [
