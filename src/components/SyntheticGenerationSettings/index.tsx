@@ -1,4 +1,4 @@
-import { Pagination, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { AutoAwesomeOutlined } from "@mui/icons-material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
@@ -55,6 +55,7 @@ import {
   GenerateButton,
   SecureText,
   EmptyState,
+  StyledPagination,
 } from "./styles";
 
 export default function SyntheticGenerationSettings() {
@@ -79,6 +80,8 @@ export default function SyntheticGenerationSettings() {
     handleIncrease,
     handleProModalClose,
     handleGenerate,
+    handleRecordsCountChange,
+    handleRecordsCountBlur,
   } = useSyntheticGenerationSettings();
 
   const user = useAppSelector((state) => state.auth.user);
@@ -141,10 +144,12 @@ export default function SyntheticGenerationSettings() {
           ))}
 
           {documentsTotalPages > 1 && (
-            <Pagination
+            <StyledPagination
               count={documentsTotalPages}
               page={documentsPage}
               onChange={handleDocumentsPageChange}
+              siblingCount={0}
+              boundaryCount={1}
             />
           )}
         </Card>
@@ -336,7 +341,13 @@ export default function SyntheticGenerationSettings() {
               <RemoveRoundedIcon />
             </CounterButton>
 
-            <CounterValue>{recordsCount}</CounterValue>
+            <CounterValue
+              type="number"
+              value={recordsCount}
+              max={maxRecordsCount}
+              onChange={(e) => handleRecordsCountChange(e.target.value)}
+              onBlur={handleRecordsCountBlur}
+            />
 
             <CounterButton type="button" onClick={handleIncrease}>
               <AddRoundedIcon />
