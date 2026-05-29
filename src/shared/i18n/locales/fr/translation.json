@@ -451,6 +451,8 @@
   "limitReached": {
     "title": "Limite quotidienne atteinte",
     "message": "Vous avez utilisé les {{limit}} documents d'aujourd'hui.",
+    "editsTitle": "Limite quotidienne de modifications atteinte",
+    "editsMessage": "Vous avez utilisé les {{limit}} réanalyses d'aujourd'hui.",
     "upgrade": "Passer à Pro",
     "close": "Fermer",
     "resetFallback": "Votre limite se renouvelle demain."

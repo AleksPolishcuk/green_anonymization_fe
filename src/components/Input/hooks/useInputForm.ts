@@ -3,7 +3,10 @@ import { useForm, useWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { ValidationError } from "yup";
 
-import { DAILY_LIMIT_REACHED_CODE } from "constants/PricingPage";
+import {
+  DAILY_LIMIT_REACHED_CODE,
+  DAILY_EDIT_LIMIT_REACHED_CODE,
+} from "constants/PricingPage";
 import { INPUT_SECTION_CONSTANTS } from "constants/DeidPage";
 import { inputFormSchema } from "constants/validations";
 import { useAppDispatch, useAppSelector } from "store/hooks";
@@ -13,6 +16,8 @@ import {
   setOriginalText,
   setRedactedText,
 } from "store/slices/documentSlice";
+import { incrementEditsUsedToday } from "store/slices/pricingSlice";
+import { ApiError } from "services/api/typing/common";
 import { inputService } from "services/input";
 import type { InputFormValues } from "components/Input/types";
 
@@ -25,10 +30,14 @@ export const useInputForm = () => {
     (state) => state.document.selectedFramework,
   );
   const storedText = useAppSelector((state) => state.document.originalText);
+  const existingDocumentId = useAppSelector(
+    (state) => state.document.document?.id ?? null,
+  );
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isLimitReached, setIsLimitReached] = useState(false);
+  const [isEditLimitReached, setIsEditLimitReached] = useState(false);
 
   const { control, handleSubmit, formState, reset, setValue } =
     useForm<InputFormValues>({
@@ -89,10 +98,24 @@ export const useInputForm = () => {
 
       const selectedFrameworkCode = selectedFramework.code;
       const payload = data.file
-        ? { selectedFrameworkCode, file: data.file, text: null }
-        : { selectedFrameworkCode, text: data.text, file: null };
+        ? {
+            selectedFrameworkCode,
+            file: data.file,
+            text: null,
+            documentId: existingDocumentId,
+          }
+        : {
+            selectedFrameworkCode,
+            text: data.text,
+            file: null,
+            documentId: existingDocumentId,
+          };
 
       const analysis = await inputService.submitForm(payload);
+
+      if (existingDocumentId) {
+        dispatch(incrementEditsUsedToday());
+      }
 
       dispatch(setOriginalText(analysis.originalText));
       dispatch(setRedactedText(analysis.anonymizedText));
@@ -106,12 +129,16 @@ export const useInputForm = () => {
         setSubmitSuccess(false);
       }, INPUT_SECTION_CONSTANTS.SUBMIT_SUCCESS_TIMEOUT);
     } catch (error) {
-      const apiErr = error as { status?: number; message?: unknown };
-      if (
-        apiErr.status === 403 &&
-        JSON.stringify(apiErr.message ?? "").includes(DAILY_LIMIT_REACHED_CODE)
-      ) {
-        setIsLimitReached(true);
+      if (error instanceof ApiError && error.status === 403) {
+        if (error.code === DAILY_EDIT_LIMIT_REACHED_CODE) {
+          setIsEditLimitReached(true);
+        } else if (error.code === DAILY_LIMIT_REACHED_CODE) {
+          setIsLimitReached(true);
+        } else if (existingDocumentId) {
+          setIsEditLimitReached(true);
+        } else {
+          setIsLimitReached(true);
+        }
         return;
       }
     } finally {
@@ -129,7 +156,9 @@ export const useInputForm = () => {
     isFileUploaded,
     isSubmitDisabled,
     isLimitReached,
+    isEditLimitReached,
     handleFileChange,
     clearLimitReached: () => setIsLimitReached(false),
+    clearEditLimitReached: () => setIsEditLimitReached(false),
   };
 };

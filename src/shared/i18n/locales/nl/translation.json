@@ -451,6 +451,8 @@
   "limitReached": {
     "title": "Daglimiet bereikt",
     "message": "U heeft alle {{limit}} documenten van vandaag gebruikt.",
+    "editsTitle": "Dagelijks bewerkingslimiet bereikt",
+    "editsMessage": "U heeft alle {{limit}} heranalyses van vandaag gebruikt.",
     "upgrade": "Upgrade naar Pro",
     "close": "Sluiten",
     "resetFallback": "Uw limiet wordt morgen vernieuwd."

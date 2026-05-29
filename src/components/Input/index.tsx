@@ -46,8 +46,10 @@ export default function Input() {
     isSubmitDisabled,
     isSubmitting,
     isLimitReached,
+    isEditLimitReached,
     handleFileChange,
     clearLimitReached,
+    clearEditLimitReached,
   } = useInputForm();
 
   const { errors } = formState;
@@ -166,6 +168,11 @@ export default function Input() {
       </InputSectionStack>
 
       <LimitReachedModal open={limitModalOpen} onClose={closeLimitModal} />
+      <LimitReachedModal
+        open={isEditLimitReached}
+        onClose={clearEditLimitReached}
+        variant="edits"
+      />
     </InputSectionRoot>
   );
 }

@@ -19,38 +19,47 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 let isRefreshing = false;
 let refreshPromise: Promise<string | null> | null = null;
 
-const parseErrorResponse = (data: unknown): string => {
+const parseErrorResponse = (
+  data: unknown,
+): { message: string; code?: string } => {
   if (!data || typeof data !== "object") {
-    return "An unexpected error occurred";
+    return { message: "An unexpected error occurred" };
   }
 
   const errorData = data as Record<string, unknown>;
+  const code = typeof errorData.code === "string" ? errorData.code : undefined;
 
   if (Array.isArray(errorData.message)) {
-    return errorData.message.join(", ");
+    return { message: errorData.message.join(", "), code };
   }
 
   if (typeof errorData.message === "string") {
-    return errorData.message;
+    return { message: errorData.message, code };
   }
 
   if (typeof errorData.error === "string") {
-    return errorData.error;
+    return { message: errorData.error, code };
   }
 
-  return "An unexpected error occurred";
+  return { message: "An unexpected error occurred", code };
 };
 
-const createApiError = (message: string, status: number): ApiError => {
-  return new ApiError(message, status);
+const createApiError = (
+  message: string,
+  status: number,
+  code?: string,
+): ApiError => {
+  return new ApiError(message, status, code);
 };
 
 const handleApiError = (error: AxiosError): never => {
   const status = error.response?.status || 500;
-  const backendMessage = parseErrorResponse(error.response?.data);
+  const { message: backendMessage, code } = parseErrorResponse(
+    error.response?.data,
+  );
   const userMessage = getErrorMessage(status, backendMessage);
 
-  throw createApiError(userMessage, status);
+  throw createApiError(userMessage, status, code);
 };
 
 const axiosInstance: AxiosInstance = axios.create({
@@ -136,6 +145,10 @@ const request = async <T>(
     const response = await promise;
     return response.data as T;
   } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
+
     if (error instanceof AxiosError) {
       handleApiError(error);
     }

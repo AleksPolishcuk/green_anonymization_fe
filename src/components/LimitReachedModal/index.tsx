@@ -21,15 +21,17 @@ import { useLimitInfo } from "./hooks/useResetTime";
 type LimitReachedModalProps = {
   open: boolean;
   onClose: () => void;
+  variant?: "documents" | "edits";
 };
 
 export const LimitReachedModal = ({
   open,
   onClose,
+  variant = "documents",
 }: LimitReachedModalProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { resetTimeLabel, dailyLimit } = useLimitInfo();
+  const { resetTimeLabel, dailyLimit, dailyEditLimit } = useLimitInfo();
 
   const handleUpgrade = () => {
     navigate(PRICING_ROUTE);
@@ -48,9 +50,15 @@ export const LimitReachedModal = ({
         </ModalIconBadge>
 
         <ModalTextGroup>
-          <ModalTitle>{t("limitReached.title")}</ModalTitle>
+          <ModalTitle>
+            {variant === "edits"
+              ? t("limitReached.editsTitle")
+              : t("limitReached.title")}
+          </ModalTitle>
           <ModalMessage>
-            {t("limitReached.message", { limit: dailyLimit })}
+            {variant === "edits"
+              ? t("limitReached.editsMessage", { limit: dailyEditLimit })
+              : t("limitReached.message", { limit: dailyLimit })}
           </ModalMessage>
         </ModalTextGroup>
       </ModalHeader>
