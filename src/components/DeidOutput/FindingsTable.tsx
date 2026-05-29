@@ -5,14 +5,12 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Pagination,
 } from "@mui/material";
+import { AppPagination } from "shared/ui/AppPagination";
 
 import {
   DESELECT_CONFIRM_SHOWN_KEY,
   FINDINGS_PAGE_SIZE,
-  PAGINATION_BOUNDARY_COUNT,
-  PAGINATION_SIBLING_COUNT,
   headerSpriteRef,
 } from "constants/MainPages";
 import { BaseModal } from "components/BaseModal";
@@ -180,13 +178,10 @@ export const FindingsTable = ({
 
             {totalPages > 1 && (
               <PaginationBar>
-                <Pagination
+                <AppPagination
                   count={totalPages}
                   page={currentPage}
                   onChange={(_, page) => setPage(page)}
-                  siblingCount={PAGINATION_SIBLING_COUNT}
-                  boundaryCount={PAGINATION_BOUNDARY_COUNT}
-                  sx={{ "& .MuiPagination-ul": { flexWrap: "nowrap" } }}
                 />
               </PaginationBar>
             )}

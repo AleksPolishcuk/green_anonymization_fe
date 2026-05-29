@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Pagination } from "@mui/material";
+import { AppPagination } from "shared/ui/AppPagination";
 import {
   TableCard,
   TableHeader,
@@ -23,12 +23,7 @@ import {
   DropdownItem,
 } from "./syntheticDataGeneratedDataset.styles";
 import { PaginationBar } from "shared/ui/PaginationBar";
-import {
-  FINDINGS_PAGE_SIZE,
-  PAGINATION_BOUNDARY_COUNT,
-  PAGINATION_SIBLING_COUNT,
-  headerSpriteRef,
-} from "constants/MainPages";
+import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticDataContents } from "./useSyntheticDataContents";
 import { usePagination } from "components/DeidOutput/hooks/usePagination";
@@ -150,13 +145,10 @@ export default function SyntheticDataGeneratedDataset() {
 
       {totalPages > 1 && (
         <PaginationBar>
-          <Pagination
+          <AppPagination
             count={totalPages}
             page={currentPage}
             onChange={(_, page) => setPage(page)}
-            siblingCount={PAGINATION_SIBLING_COUNT}
-            boundaryCount={PAGINATION_BOUNDARY_COUNT}
-            sx={{ "& .MuiPagination-ul": { flexWrap: "nowrap" } }}
           />
         </PaginationBar>
       )}

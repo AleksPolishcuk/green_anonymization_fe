@@ -148,8 +148,6 @@ export default function SyntheticGenerationSettings() {
               count={documentsTotalPages}
               page={documentsPage}
               onChange={handleDocumentsPageChange}
-              siblingCount={0}
-              boundaryCount={1}
             />
           )}
         </Card>

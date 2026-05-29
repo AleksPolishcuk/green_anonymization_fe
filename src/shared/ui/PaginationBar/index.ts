@@ -7,5 +7,4 @@ export const PaginationBar = styled("div")(({ theme }) => ({
   gap: theme.spacing(2),
   padding: theme.spacing(3, 4),
   borderTop: `1px solid ${theme.palette.background.softGray}`,
-  overflowX: "auto",
 }));
