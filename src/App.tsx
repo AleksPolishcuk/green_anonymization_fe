@@ -6,7 +6,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/en-gb";
 import { RouterProvider } from "react-router-dom";
 import { CssBaseline, useMediaQuery } from "@mui/material";
-
 import { ADAPTER_LOCALE } from "constants/DashboardPage";
 import { PageLoader } from "shared/ui/PageLoader";
 import { darkTheme, lightTheme } from "shared/theme/theme";
