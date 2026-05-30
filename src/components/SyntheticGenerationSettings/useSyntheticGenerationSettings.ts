@@ -26,6 +26,8 @@ export const useSyntheticGenerationSettings = () => {
   const [documents, setDocuments] = useState<DocumentListItem[]>([]);
   const [documentsPage, setDocumentsPage] = useState(1);
   const [documentsTotal, setDocumentsTotal] = useState(0);
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const [selectedDocument, setSelectedDocument] =
     useState<DocumentDetails | null>(null);
@@ -56,6 +58,14 @@ export const useSyntheticGenerationSettings = () => {
   const documentsTotalPages = Math.ceil(documentsTotal / DOCUMENTS_PAGE_LIMIT);
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [search]);
+
+  useEffect(() => {
     const loadData = async () => {
       try {
         setIsLoadingDocument(true);
@@ -77,6 +87,7 @@ export const useSyntheticGenerationSettings = () => {
         const response = await documentsService.getDocuments({
           page: documentsPage,
           limit: DOCUMENTS_PAGE_LIMIT,
+          search: debouncedSearch,
         });
 
         setDocuments(response.items);
@@ -89,7 +100,7 @@ export const useSyntheticGenerationSettings = () => {
     };
 
     void loadData();
-  }, [documentId, documentsPage]);
+  }, [documentId, documentsPage, debouncedSearch]);
 
   const handleSelectDocument = (id: string) => {
     setSearchParams({
@@ -180,10 +191,16 @@ export const useSyntheticGenerationSettings = () => {
     setRecordsCount(normalized);
   };
 
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    setDocumentsPage(1);
+  };
+
   return {
     documents,
     documentsPage,
     documentsTotalPages,
+    search,
     selectedDocument,
     recordsCount,
     maxRecordsCount,
@@ -201,5 +218,6 @@ export const useSyntheticGenerationSettings = () => {
     handleGenerate,
     handleRecordsCountChange,
     handleRecordsCountBlur,
+    handleSearchChange,
   };
 };
