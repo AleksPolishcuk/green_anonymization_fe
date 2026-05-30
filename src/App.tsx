@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 import { Provider, useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/en-gb";
+
+import { ADAPTER_LOCALE } from "constants/DashboardPage";
 import { RouterProvider } from "react-router-dom";
 import { CssBaseline, useMediaQuery } from "@mui/material";
 
@@ -25,8 +30,13 @@ const AppContent = () => {
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        adapterLocale={ADAPTER_LOCALE}
+      >
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </LocalizationProvider>
     </ThemeProvider>
   );
 };

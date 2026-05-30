@@ -55,8 +55,15 @@ export interface DashboardStats {
   recentActivity: RecentActivityItem[];
 }
 
+export type PresetDays = 7 | 14 | 30;
+
+export type DashboardPeriod =
+  | { type: "preset"; days: PresetDays }
+  | { type: "custom"; from: string; to: string };
+
 export type DashboardState = {
   data: DashboardStats;
+  period: DashboardPeriod;
   loading: boolean;
   error: string | null;
 };

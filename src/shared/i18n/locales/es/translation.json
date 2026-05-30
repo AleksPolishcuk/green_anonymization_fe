@@ -358,6 +358,16 @@
       "subtitle": "Seguimiento de métricas de desidentificación, tendencias de cumplimiento y estadísticas de procesamiento",
       "startButton": "Iniciar desidentificación"
     },
+    "filter": {
+      "days7": "7 días",
+      "days14": "14 días",
+      "month": "Mes",
+      "selectDate": "Seleccionar fecha",
+      "dateRange": "Rango de fechas",
+      "from": "Desde",
+      "to": "Hasta",
+      "apply": "Aplicar"
+    },
     "sidebar": {
       "analytics": "Análisis",
       "settings": "Configuración",
@@ -397,6 +407,8 @@
       "recentActivity": {
         "title": "Actividad reciente",
         "subtitle": "Últimos documentos procesados",
+        "subtitleDays": "Últimos {{days}} días",
+        "subtitleRange": "{{from}} – {{to}}",
         "entities": "{{count}} entidades",
         "newDeId": "Nueva desidentificación →"
       },

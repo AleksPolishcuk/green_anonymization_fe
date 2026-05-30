@@ -28,6 +28,14 @@ export const ChartsLayout = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const LoaderWrapper = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "60vh",
+  width: "100%",
+});
+
 export const ChartRow = styled(Box, {
   shouldForwardProp: (prop) => prop !== "$cols",
 })<{ $cols?: string }>(({ theme, $cols = "1fr 1fr" }) => ({

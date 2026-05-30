@@ -358,6 +358,16 @@
       "subtitle": "Volg de-identificatiemetrieken, compliancetrends en verwerkingsstatistieken",
       "startButton": "De-identificatie starten"
     },
+    "filter": {
+      "days7": "7 dagen",
+      "days14": "14 dagen",
+      "month": "Maand",
+      "selectDate": "Datum selecteren",
+      "dateRange": "Datumbereik",
+      "from": "Van",
+      "to": "Tot",
+      "apply": "Toepassen"
+    },
     "sidebar": {
       "analytics": "Analyses",
       "settings": "Instellingen",
@@ -397,6 +407,8 @@
       "recentActivity": {
         "title": "Recente activiteit",
         "subtitle": "Laatst verwerkte documenten",
+        "subtitleDays": "Laatste {{days}} dagen",
+        "subtitleRange": "{{from}} – {{to}}",
         "entities": "{{count}} entiteiten",
         "newDeId": "Nieuwe de-identificatie →"
       },
