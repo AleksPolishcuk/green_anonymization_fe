@@ -1,5 +1,7 @@
 export const PRICING_CTA_ROUTE = "/sign-in";
 export const DAILY_LIMIT_REACHED_CODE = "DAILY_LIMIT_REACHED";
+export const DAILY_EDIT_LIMIT_REACHED_CODE = "DAILY_EDIT_LIMIT_REACHED";
+export const DEFAULT_DAILY_EDIT_LIMIT = 3;
 export const PRICING_ROUTE = "/pricing";
 export const FREE_PLAN_ID = "free";
 export const PRO_PLAN_ID = "pro";

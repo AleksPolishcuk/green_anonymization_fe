@@ -519,6 +519,8 @@
   "limitReached": {
     "title": "Daily limit reached",
     "message": "You’ve used all {{limit}} documents for today.",
+    "editsTitle": "Daily edit limit reached",
+    "editsMessage": "You’ve used all {{limit}} re-analyses for today.",
     "upgrade": "Upgrade to Pro",
     "close": "Close",
     "resetFallback": "Your limit resets tomorrow."

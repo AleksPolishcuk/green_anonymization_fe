@@ -1,5 +1,6 @@
-import { Box, Button, Pagination, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { AppPagination } from "shared/ui/AppPagination";
 import {
   CHIP_COLOR_PRESETS,
   deidColors,
@@ -486,7 +487,7 @@ export const EmptyState = styled(Box)(({ theme }) => ({
   padding: theme.spacing(6),
 }));
 
-export const StyledPagination = styled(Pagination)(({ theme }) => ({
+export const StyledPagination = styled(AppPagination)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   marginTop: theme.spacing(6),

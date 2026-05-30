@@ -15,9 +15,10 @@ export const inputService = {
 
     formData.append("selectedFrameworkCode", data.selectedFrameworkCode);
 
-    return apiClient.post<InputFormResponse, FormData>(
-      "/processing/anonymize",
-      formData,
-    );
+    const url = data.documentId
+      ? `/processing/anonymize?documentId=${data.documentId}`
+      : "/processing/anonymize";
+
+    return apiClient.post<InputFormResponse, FormData>(url, formData);
   },
 };

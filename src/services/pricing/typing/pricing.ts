@@ -35,6 +35,8 @@ export interface CurrentSubscription {
   plan: SubscriptionPlan;
   usedToday: number;
   dailyLimit: number | null;
+  editsUsedToday: number;
+  dailyEditLimit: number | null;
   resetAt?: string | null;
 }
 
