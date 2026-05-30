@@ -178,9 +178,9 @@ export const useDeidOutput = () => {
 
   const handleDownload = useCallback(
     (format: "txt" | "pdf" | "docx") => {
-      if (format == "txt") {
+      if (format === "txt") {
         handleDownloadText();
-      } else if (format == "pdf") {
+      } else if (format === "pdf") {
         handleDownloadPdf();
       } else if (format === "docx") {
         handleDownloadDocx();

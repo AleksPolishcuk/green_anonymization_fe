@@ -16,11 +16,13 @@ const BasePagination = styled(Pagination)({
 export const AppPagination = ({
   siblingCount = PAGINATION_SIBLING_COUNT,
   boundaryCount = PAGINATION_BOUNDARY_COUNT,
+  className,
   ...props
 }: PaginationProps) => (
   <BasePagination
     siblingCount={siblingCount}
     boundaryCount={boundaryCount}
+    className={className}
     {...props}
   />
 );
