@@ -12,6 +12,23 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react-phone-input-2"],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (id.includes("recharts")) return "vendor-charts";
+          if (id.includes("@mui/icons-material")) return "vendor-mui-icons";
+          if (id.includes("@mui/")) return "vendor-mui";
+          if (id.includes("react-router")) return "vendor-router";
+          if (id.includes("@reduxjs/") || id.includes("react-redux"))
+            return "vendor-redux";
+          if (id.includes("react-dom") || id.includes("react/"))
+            return "vendor-react";
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       components: path.resolve(__dirname, "src/components"),

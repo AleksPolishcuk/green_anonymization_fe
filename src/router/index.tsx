@@ -1,18 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import HomePage from "pages/HomePage";
-import ContactUsPage from "pages/ContactUsPage";
-import { ComplianceSection } from "features/ComplianceSection";
 import { MainLayout, WorkspaceLayout } from "Layouts";
-import AuthCallback from "pages/AuthCallback";
-import Dashboard from "pages/Dashboard";
-import Register from "pages/Register";
-import SignIn from "pages/SignIn";
-import { NotFound } from "pages/NotFoundPage";
-import PricingPage from "pages/PricingPage";
-import DeidentificationPage from "pages/DeidentificationPage";
-import SyntheticDataPage from "pages/SyntheticDataPage";
-import ProfilePage from "pages/ProfilePage";
+
+import {
+  AuthCallback,
+  ComplianceSection,
+  ContactUsPage,
+  Dashboard,
+  DeidentificationPage,
+  HomePage,
+  NotFound,
+  PricingPage,
+  ProfilePage,
+  Register,
+  SignIn,
+  SyntheticDataPage,
+} from "./lazyPages";
 
 export const router = createBrowserRouter([
   {
