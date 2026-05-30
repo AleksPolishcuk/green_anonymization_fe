@@ -539,7 +539,9 @@
     },
     "selectDocument": {
       "title": "Select a source document",
-      "description": "Choose one of your de-identified documents to generate synthetic data."
+      "description": "Choose one of your de-identified documents to generate synthetic data.",
+      "placeholder": "Search documents...",
+      "noResults": "No documents found for “{{search}}”"
     },
     "emptyState": {
       "title": "No documents available",

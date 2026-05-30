@@ -56,6 +56,8 @@ import {
   SecureText,
   EmptyState,
   StyledPagination,
+  DocumentsSearchField,
+  NoDocumentsText,
 } from "./styles";
 
 export default function SyntheticGenerationSettings() {
@@ -66,6 +68,7 @@ export default function SyntheticGenerationSettings() {
     documents,
     documentsPage,
     documentsTotalPages,
+    search,
     selectedDocument,
     recordsCount,
     maxRecordsCount,
@@ -82,6 +85,7 @@ export default function SyntheticGenerationSettings() {
     handleGenerate,
     handleRecordsCountChange,
     handleRecordsCountBlur,
+    handleSearchChange,
   } = useSyntheticGenerationSettings();
 
   const user = useAppSelector((state) => state.auth.user);
@@ -97,65 +101,14 @@ export default function SyntheticGenerationSettings() {
 
   const frameworkName = getFrameworkName(selectedDocument?.chosenCompliance);
 
-  if (isLoadingDocument) {
-    return (
-      <SectionRoot>
-        <Card>
-          <Loader />
-        </Card>
-      </SectionRoot>
-    );
+  const isInitialLoading =
+    isLoadingDocument && !documents.length && !search.trim();
+
+  if (isInitialLoading) {
+    return <Loader />;
   }
 
-  if (!selectedDocument && documents.length > 0) {
-    return (
-      <SectionRoot $fullWidth>
-        <Card>
-          <CardHeader>
-            <CardHeaderIcon>
-              <DescriptionOutlinedIcon />
-            </CardHeaderIcon>
-
-            <CardHeaderText>
-              <CardTitle>{t("syntheticData.selectDocument.title")}</CardTitle>
-
-              <CardSubtitle>
-                {t("syntheticData.selectDocument.description")}
-              </CardSubtitle>
-            </CardHeaderText>
-          </CardHeader>
-
-          {documents.map((item) => (
-            <SourceDocumentSelect
-              key={item.id}
-              onClick={() => handleSelectDocument(item.id)}
-              role="button"
-            >
-              <DocumentIconBox>
-                <DescriptionOutlinedIcon />
-              </DocumentIconBox>
-
-              <DocumentName>{item.fileName}</DocumentName>
-
-              <StatusBadge>
-                {getFrameworkName(item.chosenCompliance)}
-              </StatusBadge>
-            </SourceDocumentSelect>
-          ))}
-
-          {documentsTotalPages > 1 && (
-            <StyledPagination
-              count={documentsTotalPages}
-              page={documentsPage}
-              onChange={handleDocumentsPageChange}
-            />
-          )}
-        </Card>
-      </SectionRoot>
-    );
-  }
-
-  if (error || !selectedDocument) {
+  if (error) {
     return (
       <SectionRoot $fullWidth>
         <Card>
@@ -176,6 +129,66 @@ export default function SyntheticGenerationSettings() {
               {t("syntheticData.emptyState.button")}
             </GenerateButton>
           </EmptyState>
+        </Card>
+      </SectionRoot>
+    );
+  }
+
+  if (!selectedDocument) {
+    return (
+      <SectionRoot $fullWidth>
+        <Card>
+          <CardHeader>
+            <CardHeaderIcon>
+              <DescriptionOutlinedIcon />
+            </CardHeaderIcon>
+
+            <CardHeaderText>
+              <CardTitle>{t("syntheticData.selectDocument.title")}</CardTitle>
+
+              <CardSubtitle>
+                {t("syntheticData.selectDocument.description")}
+              </CardSubtitle>
+            </CardHeaderText>
+          </CardHeader>
+          <DocumentsSearchField
+            fullWidth
+            size="small"
+            placeholder={t("syntheticData.selectDocument.placeholder")}
+            value={search}
+            onChange={(e) => handleSearchChange(e.target.value)}
+          />
+          {documents.length === 0 && search.trim() ? (
+            <NoDocumentsText>
+              {t("syntheticData.selectDocument.noResults", { search })}
+            </NoDocumentsText>
+          ) : (
+            documents.map((item) => (
+              <SourceDocumentSelect
+                key={item.id}
+                onClick={() => handleSelectDocument(item.id)}
+                role="button"
+              >
+                <DocumentIconBox>
+                  <DescriptionOutlinedIcon />
+                </DocumentIconBox>
+
+                <DocumentName>{item.fileName}</DocumentName>
+
+                <StatusBadge>
+                  {getFrameworkName(item.chosenCompliance)}
+                </StatusBadge>
+              </SourceDocumentSelect>
+            ))
+          )}
+
+          {documents.length > 0 && documentsTotalPages > 1 && (
+            <StyledPagination
+              count={documentsTotalPages}
+              page={documentsPage}
+              onChange={handleDocumentsPageChange}
+            />
+          )}
         </Card>
       </SectionRoot>
     );

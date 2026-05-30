@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { AppPagination } from "shared/ui/AppPagination";
 import {
@@ -82,6 +82,35 @@ export const CardTitle = styled(Typography)(({ theme }) => ({
 
 export const CardSubtitle = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(0.5),
+  fontSize: theme.typography.fontSize14,
+  color: theme.palette.text.secondary,
+}));
+
+export const DocumentsSearchField = styled(TextField)(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+
+  "& .MuiOutlinedInput-root": {
+    borderRadius: theme.spacing(3),
+    backgroundColor: theme.palette.background.default,
+    fontSize: theme.typography.fontSize14,
+
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.divider,
+    },
+
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: CHIP_COLOR_PRESETS.cyan.border,
+    },
+
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: CHIP_COLOR_PRESETS.cyan.border,
+    },
+  },
+}));
+
+export const NoDocumentsText = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  textAlign: "center",
   fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
 }));
