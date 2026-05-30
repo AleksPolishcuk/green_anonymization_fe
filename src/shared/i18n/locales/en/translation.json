@@ -433,6 +433,16 @@
       "subtitle": "Track de-identification metrics, compliance trends, and processing statistics",
       "startButton": "Start De-Identification"
     },
+    "filter": {
+      "days7": "7 days",
+      "days14": "14 days",
+      "month": "Month",
+      "selectDate": "Select Date",
+      "dateRange": "Date Range",
+      "from": "From",
+      "to": "To",
+      "apply": "Apply"
+    },
     "sidebar": {
       "analytics": "Analytics",
       "settings": "Settings",
@@ -472,6 +482,8 @@
       "recentActivity": {
         "title": "Recent Activity",
         "subtitle": "Latest processed documents",
+        "subtitleDays": "Last {{days}} days",
+        "subtitleRange": "{{from}} – {{to}}",
         "entities": "{{count}} entities",
         "newDeId": "New De-Identification →"
       },

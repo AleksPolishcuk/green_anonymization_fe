@@ -365,6 +365,16 @@
       "subtitle": "Monitora le metriche di de-identificazione, le tendenze di conformità e le statistiche di elaborazione",
       "startButton": "Avvia de-identificazione"
     },
+    "filter": {
+      "days7": "7 giorni",
+      "days14": "14 giorni",
+      "month": "Mese",
+      "selectDate": "Seleziona data",
+      "dateRange": "Intervallo date",
+      "from": "Dal",
+      "to": "Al",
+      "apply": "Applica"
+    },
     "sidebar": {
       "analytics": "Analisi",
       "settings": "Impostazioni",
@@ -404,6 +414,8 @@
       "recentActivity": {
         "title": "Attività recente",
         "subtitle": "Ultimi documenti elaborati",
+        "subtitleDays": "Ultimi {{days}} giorni",
+        "subtitleRange": "{{from}} – {{to}}",
         "entities": "{{count}} entità",
         "newDeId": "Nuova de-identificazione →"
       },

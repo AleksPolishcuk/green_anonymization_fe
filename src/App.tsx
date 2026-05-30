@@ -1,11 +1,14 @@
 import { Suspense, useEffect, useRef } from "react";
 import { Provider, useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/en-gb";
 import { RouterProvider } from "react-router-dom";
 import { CssBaseline, useMediaQuery } from "@mui/material";
 
+import { ADAPTER_LOCALE } from "constants/DashboardPage";
 import { PageLoader } from "shared/ui/PageLoader";
-
 import { darkTheme, lightTheme } from "shared/theme/theme";
 import { store, type RootState } from "./store";
 import { router } from "./router";
@@ -27,10 +30,15 @@ const AppContent = () => {
 
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <Suspense fallback={<PageLoader />}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        adapterLocale={ADAPTER_LOCALE}
+      >
+        <CssBaseline />
+        <Suspense fallback={<PageLoader />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </LocalizationProvider>
     </ThemeProvider>
   );
 };
