@@ -143,3 +143,78 @@ export const BottomLinkText = styled("span")(({ theme }) => ({
   textDecoration: "underline",
   color: theme.palette.text.primary,
 }));
+
+export const OAuthButton = styled(Button)(({ theme }) => ({
+  position: "relative",
+
+  width: "100%",
+  height: 50,
+
+  justifyContent: "center",
+
+  paddingLeft: theme.spacing(4),
+  paddingRight: theme.spacing(4),
+
+  borderRadius: theme.shape.borderRadius,
+  border: `1px solid ${theme.palette.divider}`,
+
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.background.paper : "#FFFFFF",
+
+  color: theme.palette.text.primary,
+
+  textTransform: "none",
+
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightSemiBold,
+  fontSize: theme.typography.fontSize16, // was 14
+
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0 2px 8px rgba(0,0,0,.25)"
+      : "0 1px 2px rgba(0,0,0,.08)",
+
+  transition: theme.transitions.create(
+    ["background-color", "border-color", "box-shadow", "transform"],
+    {
+      duration: 180,
+    },
+  ),
+
+  "&:hover": {
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? alpha(theme.palette.background.paper, 0.9)
+        : "#FAFAFA",
+
+    borderColor: theme.palette.primary.main,
+
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? "0 6px 16px rgba(0,0,0,.35)"
+        : "0 4px 12px rgba(0,0,0,.12)",
+
+    transform: "translateY(-1px)",
+  },
+
+  "&:active": {
+    transform: "translateY(0)",
+  },
+}));
+
+export const OAuthProviderIcon = styled("svg")(({ theme }) => ({
+  position: "absolute",
+  left: theme.spacing(4),
+
+  width: 22,
+  height: 22,
+
+  display: "block",
+  flexShrink: 0,
+}));
+export const OAuthButtonContent = styled("span")({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});

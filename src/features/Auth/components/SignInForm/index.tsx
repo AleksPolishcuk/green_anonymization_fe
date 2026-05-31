@@ -9,6 +9,9 @@ import {
   BottomText,
   BottomLinkText,
   EmailIcon,
+  OAuthButton,
+  OAuthButtonContent,
+  OAuthProviderIcon,
 } from "./styles";
 import EmailStatus from "features/Auth/components/EmailStatus";
 import { Trans, useTranslation } from "react-i18next";
@@ -22,7 +25,13 @@ import { headerSpriteRef } from "constants/MainPages";
 export default function SignInForm() {
   const { t } = useTranslation();
   const form = useEmailLoginForm();
-
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  const handleGoogleSubmit = () => {
+    window.location.href = `${API_URL}/auth/google`;
+  };
+  const handleMicrosoftSubmit = () => {
+    window.location.href = `${API_URL}/auth/microsoft`;
+  };
   return (
     <>
       <SigninHeading>{t("signIn.form.heading")}</SigninHeading>
@@ -73,17 +82,26 @@ export default function SignInForm() {
               <use href={headerSpriteRef("right-arrow-icon")} />
             </RightArrowIcon>
           </SubmitButton>
-          <SubmitButton
-            type="submit"
-            disabled={form.isSubmitDisabled}
-            fullWidth
-          >
-            <span>{t("signIn.form.submitGoogle")}</span>
-            <RightArrowIcon>
-              <use href={headerSpriteRef("right-arrow-icon")} />
-            </RightArrowIcon>
-          </SubmitButton>
         </form>
+        <OAuthButton type="button" fullWidth onClick={handleGoogleSubmit}>
+          <OAuthProviderIcon>
+            <use href={headerSpriteRef("google")} />
+          </OAuthProviderIcon>
+
+          <OAuthButtonContent>
+            {t("signIn.form.submitGoogle")}
+          </OAuthButtonContent>
+        </OAuthButton>
+
+        <OAuthButton type="button" fullWidth onClick={handleMicrosoftSubmit}>
+          <OAuthProviderIcon>
+            <use href={headerSpriteRef("microsoft")} />
+          </OAuthProviderIcon>
+
+          <OAuthButtonContent>
+            {t("signIn.form.submitMicrosoft")}
+          </OAuthButtonContent>
+        </OAuthButton>
 
         <EmailStatus form={form} />
       </SigninFormBox>

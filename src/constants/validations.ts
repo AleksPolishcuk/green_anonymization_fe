@@ -74,10 +74,7 @@ export const inputFormSchema = yup.object({
     .transform((v) => (v?.trim() === "" ? null : v))
     .when("file", {
       is: (file: File | null) => !file,
-      then: (schema) =>
-        schema
-          .required("input.form.errors.required")
-          .max(5000, "input.form.errors.messageMaxLength"),
+      then: (schema) => schema.required("input.form.errors.required"),
       otherwise: (schema) => schema.nullable(),
     }),
 
