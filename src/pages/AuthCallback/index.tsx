@@ -1,4 +1,4 @@
-import { setTokens } from "features/Auth/utils/authTokens";
+import { setTokens } from "components/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "services/auth";

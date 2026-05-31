@@ -3,7 +3,7 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import { clearTokens } from "features/Auth/utils/authTokens";
+import { clearTokens } from "components/Auth/utils/authTokens";
 import { AUTH_STATUS } from "constants/auth";
 import { authService } from "services/auth";
 import type { AuthState, SessionResponse } from "store/types/auth";

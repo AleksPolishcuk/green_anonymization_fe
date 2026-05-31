@@ -10,7 +10,7 @@ import { darkTheme, lightTheme } from "shared/theme/theme";
 import { store, type RootState } from "./store";
 import { router } from "./router";
 import { fetchSession } from "store/slices/authSlice";
-import { getAccessToken } from "features/Auth/utils/authTokens";
+import { getAccessToken } from "components/Auth/utils/authTokens";
 
 const AppContent = () => {
   const mode = useSelector((state: RootState) => state.theme.mode);

@@ -6,8 +6,8 @@ import {
   LeftContent,
   RightContent,
 } from "./styles";
-import RegisterForm from "features/Auth/components/RegisterForm";
-import RegisterHero from "features/Auth/components/RegisterHero";
+import RegisterForm from "components/Auth/RegisterForm";
+import RegisterHero from "components/Auth/RegisterHero";
 import { Loader } from "shared/ui/Loader";
 
 export default function Register() {

@@ -6,7 +6,7 @@ import {
   heroRevealDuration,
 } from "constants/auth";
 import { styled } from "@mui/material/styles";
-import { fadeUp } from "features/Auth/components/styles";
+import { fadeUp } from "components/Auth/styles";
 
 export const Stats = styled("ul")(({ theme }) => ({
   display: "flex",

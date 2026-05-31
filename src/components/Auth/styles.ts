@@ -12,7 +12,7 @@ import {
   paragraphDelay,
 } from "constants/auth";
 import { cardShadows } from "constants/MainPages";
-import staggerItem from "features/Auth/utils/staggerItem";
+import staggerItem from "components/Auth/utils/staggerItem";
 
 export const fadeUp = keyframes`
   from {

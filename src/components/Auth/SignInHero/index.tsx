@@ -7,7 +7,7 @@ import {
   ShieldIcon,
   ShieldLogo,
   WelcomeHeading,
-} from "features/Auth/components/styles";
+} from "components/Auth/styles";
 
 export default function SignInHero() {
   const { t } = useTranslation();
