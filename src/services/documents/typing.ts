@@ -3,6 +3,7 @@ import type { Entity } from "store/types/document";
 export type DocumentsQueryParams = {
   page?: number;
   limit?: number;
+  search?: string;
 };
 
 export type DocumentListItem = {

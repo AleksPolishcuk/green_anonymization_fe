@@ -396,48 +396,6 @@ export const ActionsBar = styled("div")(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.background.softGray}`,
 }));
 
-export const PaginationBar = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: theme.spacing(2),
-  padding: theme.spacing(3, 4),
-  borderTop: `1px solid ${theme.palette.background.softGray}`,
-}));
-
-export const PaginationButton = styled("button")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: theme.spacing(1),
-  padding: theme.spacing(1.5, 3),
-  borderRadius: theme.spacing(2),
-  border: `1px solid ${theme.palette.background.softGray}`,
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.color.charcoal,
-  fontFamily: theme.typography.fontFamily,
-  fontSize: theme.typography.fontSize12,
-  fontWeight: theme.typography.fontWeightMedium,
-  cursor: "pointer",
-  transition: "background-color 0.2s ease",
-  "& svg": {
-    fontSize: theme.typography.fontSize16,
-    flexShrink: 0,
-  },
-  "&:hover:not(:disabled)": {
-    backgroundColor: theme.palette.background.softGray,
-  },
-  "&:disabled": {
-    cursor: "not-allowed",
-    opacity: 0.4,
-  },
-}));
-
-export const PaginationInfo = styled("span")(({ theme }) => ({
-  fontSize: theme.typography.fontSize12,
-  color: theme.palette.color.grayDark,
-  userSelect: "none",
-}));
-
 export const ActionButton = styled("button")(({ theme }) => ({
   display: "flex",
   alignItems: "center",

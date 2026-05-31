@@ -12,10 +12,19 @@ export const documentsService = {
   async getDocuments(
     params: DocumentsQueryParams = {},
   ): Promise<DocumentsListResponse> {
-    const { page = 1, limit = 20 } = params;
+    const { page = 1, limit = 20, search } = params;
+
+    const query = new URLSearchParams({
+      page: String(page),
+      limit: String(limit),
+    });
+
+    if (search?.trim()) {
+      query.set("search", search.trim());
+    }
 
     return apiClient.get<DocumentsListResponse>(
-      `/documents?page=${page}&limit=${limit}`,
+      `/documents?${query.toString()}`,
     );
   },
 

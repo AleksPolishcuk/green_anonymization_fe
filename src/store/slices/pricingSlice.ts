@@ -82,7 +82,13 @@ const initialState: PricingState = {
 export const pricingSlice = createSlice({
   name: "pricing",
   initialState,
-  reducers: {},
+  reducers: {
+    incrementEditsUsedToday: (state) => {
+      if (state.current) {
+        state.current.editsUsedToday += 1;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPlans.pending, (state) => {
@@ -124,5 +130,7 @@ export const pricingSlice = createSlice({
       });
   },
 });
+
+export const { incrementEditsUsedToday } = pricingSlice.actions;
 
 export default pricingSlice.reducer;

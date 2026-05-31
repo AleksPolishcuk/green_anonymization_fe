@@ -349,6 +349,8 @@ export const MIME_TYPES = {
 } as const;
 
 export const FINDINGS_PAGE_SIZE = 10;
+export const PAGINATION_SIBLING_COUNT = 0;
+export const PAGINATION_BOUNDARY_COUNT = 1;
 export const DEID_OUTPUT_FILENAME = "de-identified-output";
 export const DESELECT_CONFIRM_SHOWN_KEY = "deid_deselect_confirm_shown";
 export const ACCURACY_PERCENT_MULTIPLIER = 100;

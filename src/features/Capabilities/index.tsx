@@ -26,7 +26,7 @@ export const Capabilities = () => {
     <CapabilitiesSection id="solution">
       <SectionContainer>
         <TitleSectionBlock>
-          <Subtitle variant="h5">{t("capabilities.subtitle")}</Subtitle>
+          <Subtitle>{t("capabilities.subtitle")}</Subtitle>
           <SectionTitle variant="h3">{t("capabilities.title")}</SectionTitle>
           <Typography variant="body1" color="text.secondary">
             {t("capabilities.description")}

@@ -7,6 +7,7 @@ import {
   COMPLIANCE_FRAMEWORKS,
   DEID_OUTPUT_FILENAME,
 } from "constants/MainPages";
+import { DEFAULT_DAILY_EDIT_LIMIT } from "constants/PricingPage";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import {
   toggleEntitySelected,
@@ -33,8 +34,18 @@ export const useDeidOutput = () => {
     anonymizedText,
     document,
   } = useAppSelector((s) => s.document);
+  const dailyEditLimit = useAppSelector(
+    (s) => s.pricing.current?.dailyEditLimit ?? DEFAULT_DAILY_EDIT_LIMIT,
+  );
+  const editsUsedToday = useAppSelector(
+    (s) => s.pricing.current?.editsUsedToday ?? 0,
+  );
+
+  const isEditLimitExhausted =
+    dailyEditLimit !== null && editsUsedToday >= dailyEditLimit;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [editLimitModalOpen, setEditLimitModalOpen] = useState(false);
 
   const originalText = rawOriginalText ?? "";
   const piiEntities = useMemo(() => rawPiiEntities ?? [], [rawPiiEntities]);
@@ -135,8 +146,12 @@ export const useDeidOutput = () => {
   }, [downloadAsDocx, redactedSegments]);
 
   const handleBack = useCallback(() => {
+    if (isEditLimitExhausted) {
+      setEditLimitModalOpen(true);
+      return;
+    }
     dispatch(prevDeidStep());
-  }, [dispatch]);
+  }, [dispatch, isEditLimitExhausted]);
 
   const handleCreateNewDocument = useCallback(async () => {
     if (document?.id && anonymizedText) {
@@ -163,9 +178,9 @@ export const useDeidOutput = () => {
 
   const handleDownload = useCallback(
     (format: "txt" | "pdf" | "docx") => {
-      if (format == "txt") {
+      if (format === "txt") {
         handleDownloadText();
-      } else if (format == "pdf") {
+      } else if (format === "pdf") {
         handleDownloadPdf();
       } else if (format === "docx") {
         handleDownloadDocx();
@@ -192,5 +207,7 @@ export const useDeidOutput = () => {
     handleBack,
     handleCreateNewDocument,
     handleDownload,
+    editLimitModalOpen,
+    handleCloseEditLimitModal: () => setEditLimitModalOpen(false),
   };
 };

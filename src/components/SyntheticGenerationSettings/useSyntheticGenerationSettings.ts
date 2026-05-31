@@ -26,11 +26,11 @@ export const useSyntheticGenerationSettings = () => {
   const [documents, setDocuments] = useState<DocumentListItem[]>([]);
   const [documentsPage, setDocumentsPage] = useState(1);
   const [documentsTotal, setDocumentsTotal] = useState(0);
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const [selectedDocument, setSelectedDocument] =
     useState<DocumentDetails | null>(null);
-
-  const [recordsCount, setRecordsCount] = useState(DEFAULT_RECORDS_COUNT);
 
   const [isPreviewExpanded, setIsPreviewExpanded] = useState(false);
 
@@ -46,6 +46,10 @@ export const useSyntheticGenerationSettings = () => {
     ? MAX_RECORDS_COUNT_PRO
     : MAX_RECORDS_COUNT_FREE;
 
+  const [recordsCount, setRecordsCount] = useState<number | "">(
+    Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount),
+  );
+
   const documentId = useMemo(
     () => searchParams.get("documentId"),
     [searchParams],
@@ -54,8 +58,12 @@ export const useSyntheticGenerationSettings = () => {
   const documentsTotalPages = Math.ceil(documentsTotal / DOCUMENTS_PAGE_LIMIT);
 
   useEffect(() => {
-    setRecordsCount(Math.min(DEFAULT_RECORDS_COUNT, maxRecordsCount));
-  }, [maxRecordsCount]);
+    const timeout = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [search]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -79,6 +87,7 @@ export const useSyntheticGenerationSettings = () => {
         const response = await documentsService.getDocuments({
           page: documentsPage,
           limit: DOCUMENTS_PAGE_LIMIT,
+          search: debouncedSearch,
         });
 
         setDocuments(response.items);
@@ -91,7 +100,7 @@ export const useSyntheticGenerationSettings = () => {
     };
 
     void loadData();
-  }, [documentId, documentsPage]);
+  }, [documentId, documentsPage, debouncedSearch]);
 
   const handleSelectDocument = (id: string) => {
     setSearchParams({
@@ -104,17 +113,26 @@ export const useSyntheticGenerationSettings = () => {
   };
 
   const handleDecrease = () => {
-    setRecordsCount((prev) => Math.max(MIN_RECORDS_COUNT, prev - 1));
+    setRecordsCount((prev) => {
+      const value = prev === "" ? MIN_RECORDS_COUNT : prev;
+
+      return Math.max(MIN_RECORDS_COUNT, value - 1);
+    });
   };
 
   const handleIncrease = () => {
-    if (recordsCount >= maxRecordsCount && !hasSyntheticData) {
-      setProModalOpen(true);
+    const value = recordsCount === "" ? MIN_RECORDS_COUNT : recordsCount;
 
+    if (value >= maxRecordsCount && !hasSyntheticData) {
+      setProModalOpen(true);
       return;
     }
 
-    setRecordsCount((prev) => Math.min(maxRecordsCount, prev + 1));
+    setRecordsCount((prev) => {
+      const current = prev === "" ? MIN_RECORDS_COUNT : prev;
+
+      return Math.min(maxRecordsCount, current + 1);
+    });
   };
 
   const handleProModalClose = () => setProModalOpen(false);
@@ -127,14 +145,14 @@ export const useSyntheticGenerationSettings = () => {
 
       const response = await syntheticDataService.generate({
         documentId: selectedDocument.id,
-        count: recordsCount,
+        count: recordsCount === "" ? MIN_RECORDS_COUNT : recordsCount,
       });
 
       dispatch(
         setSyntheticData({
           syntheticDocuments: response.syntheticDocuments,
           documentId: selectedDocument.id,
-          recordsCount,
+          recordsCount: recordsCount === "" ? MIN_RECORDS_COUNT : recordsCount,
         }),
       );
     } finally {
@@ -142,10 +160,47 @@ export const useSyntheticGenerationSettings = () => {
     }
   };
 
+  const handleRecordsCountChange = (value: string) => {
+    if (value === "") {
+      setRecordsCount("");
+      return;
+    }
+
+    const numericValue = Number(value);
+
+    if (!Number.isInteger(numericValue)) {
+      return;
+    }
+
+    if (numericValue > maxRecordsCount) {
+      setRecordsCount(maxRecordsCount);
+      return;
+    }
+
+    setRecordsCount(numericValue);
+  };
+
+  const handleRecordsCountBlur = () => {
+    const numericValue = recordsCount === "" ? MIN_RECORDS_COUNT : recordsCount;
+
+    const normalized = Math.min(
+      Math.max(numericValue, MIN_RECORDS_COUNT),
+      maxRecordsCount,
+    );
+
+    setRecordsCount(normalized);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    setDocumentsPage(1);
+  };
+
   return {
     documents,
     documentsPage,
     documentsTotalPages,
+    search,
     selectedDocument,
     recordsCount,
     maxRecordsCount,
@@ -161,5 +216,8 @@ export const useSyntheticGenerationSettings = () => {
     handleIncrease,
     handleProModalClose,
     handleGenerate,
+    handleRecordsCountChange,
+    handleRecordsCountBlur,
+    handleSearchChange,
   };
 };

@@ -205,7 +205,7 @@ export const SidebarProfileContainer = styled("div")(({ theme }) => ({
   flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
-  gap: theme.spacing(2),
+
   rowGap: theme.spacing(3),
 
   minHeight: theme.spacing(14),
@@ -223,7 +223,7 @@ export const SidebarProfileLink = styled(Link, {
   display: "flex",
   alignItems: "center",
   justifyContent: $isMobileOpen ? "flex-start" : "center",
-  gap: theme.spacing(2),
+
   flex: $isMobileOpen ? 1 : "0 0 auto",
   minWidth: 0,
   textDecoration: "none",
@@ -240,6 +240,7 @@ export const SidebarProfileLink = styled(Link, {
   [theme.breakpoints.up("md")]: {
     justifyContent: "flex-start",
     flex: 1,
+    gap: theme.spacing(2),
   },
 }));
 

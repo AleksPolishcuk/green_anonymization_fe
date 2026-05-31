@@ -1,5 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { AppPagination } from "shared/ui/AppPagination";
 import {
   CHIP_COLOR_PRESETS,
   deidColors,
@@ -81,6 +82,35 @@ export const CardTitle = styled(Typography)(({ theme }) => ({
 
 export const CardSubtitle = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(0.5),
+  fontSize: theme.typography.fontSize14,
+  color: theme.palette.text.secondary,
+}));
+
+export const DocumentsSearchField = styled(TextField)(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+
+  "& .MuiOutlinedInput-root": {
+    borderRadius: theme.spacing(3),
+    backgroundColor: theme.palette.background.default,
+    fontSize: theme.typography.fontSize14,
+
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: theme.palette.divider,
+    },
+
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: CHIP_COLOR_PRESETS.cyan.border,
+    },
+
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: CHIP_COLOR_PRESETS.cyan.border,
+    },
+  },
+}));
+
+export const NoDocumentsText = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(3),
+  textAlign: "center",
   fontSize: theme.typography.fontSize14,
   color: theme.palette.text.secondary,
 }));
@@ -375,11 +405,27 @@ export const CounterButton = styled("button")(({ theme }) => ({
   },
 }));
 
-export const CounterValue = styled(Typography)(({ theme }) => ({
-  textAlign: "center",
-  fontSize: theme.typography.fontSize28,
-  fontWeight: theme.typography.fontWeightBold,
+export const CounterValue = styled("input")(({ theme }) => ({
+  width: 80,
+  height: 44,
+  margin: "0 auto",
+  border: "none",
+  borderRadius: theme.spacing(2.5),
+  backgroundColor: theme.palette.background.paper,
   color: theme.palette.text.primary,
+  textAlign: "center",
+  fontSize: theme.typography.fontSize18,
+  fontWeight: theme.typography.fontWeightSemiBold,
+
+  "&:focus": {
+    outline: `1px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2,
+  },
+
+  "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button": {
+    appearance: "none",
+    margin: 0,
+  },
 }));
 
 export const CounterHelper = styled(Typography)(({ theme }) => ({
@@ -468,4 +514,27 @@ export const EmptyState = styled(Box)(({ theme }) => ({
   gap: theme.spacing(2),
   textAlign: "center",
   padding: theme.spacing(6),
+}));
+
+export const StyledPagination = styled(AppPagination)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(6),
+
+  "& .MuiPaginationItem-root": {
+    fontSize: theme.typography.fontSize11,
+    borderRadius: theme.shape.borderRadius,
+    fontWeight: theme.typography.fontWeightMedium,
+    color: theme.palette.text.secondary,
+  },
+
+  "& .Mui-selected": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+  },
+  [theme.breakpoints.up("md")]: {
+    "& .MuiPaginationItem-root": {
+      fontSize: theme.typography.fontSize14,
+    },
+  },
 }));

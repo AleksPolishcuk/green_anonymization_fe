@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type UsePaginationParams<T> = {
   items: T[];
@@ -19,20 +19,11 @@ export const usePagination = <T>({
     [items, safePage, pageSize],
   );
 
-  const goNext = useCallback(() => {
-    setCurrentPage((p) => Math.min(p + 1, totalPages));
-  }, [totalPages]);
-
-  const goPrev = useCallback(() => {
-    setCurrentPage((p) => Math.max(p - 1, 1));
-  }, []);
-
   return {
     visibleItems,
     currentPage: safePage,
     totalPages,
-    goNext,
-    goPrev,
+    setPage: setCurrentPage,
     startIndex: (safePage - 1) * pageSize,
   };
 };

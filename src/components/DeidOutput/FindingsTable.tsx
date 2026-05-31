@@ -6,7 +6,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { AppPagination } from "shared/ui/AppPagination";
 
 import {
   DESELECT_CONFIRM_SHOWN_KEY,
@@ -16,6 +16,7 @@ import {
 import { BaseModal } from "components/BaseModal";
 import { ProFeatureModal } from "components/ProFeatureModal";
 import { useFeatureAccess } from "shared/hooks/useFeatureAccess";
+import { PaginationBar } from "shared/ui/PaginationBar";
 import type { Entity } from "store/types/document";
 
 import {
@@ -36,9 +37,6 @@ import {
   ToggleButton,
   CollapseArrow,
   SpriteIconSvg,
-  PaginationBar,
-  PaginationButton,
-  PaginationInfo,
 } from "./analysisStyles";
 import { usePagination } from "./hooks/usePagination";
 
@@ -94,8 +92,7 @@ export const FindingsTable = ({
     visibleItems: visibleEntities,
     currentPage,
     totalPages,
-    goNext,
-    goPrev,
+    setPage,
     startIndex,
   } = usePagination({
     items: entities,
@@ -181,23 +178,11 @@ export const FindingsTable = ({
 
             {totalPages > 1 && (
               <PaginationBar>
-                <PaginationButton onClick={goPrev} disabled={currentPage === 1}>
-                  <ChevronLeft />
-                  {t("findingsTable.pagination.previous")}
-                </PaginationButton>
-                <PaginationInfo>
-                  {t("findingsTable.pagination.page", {
-                    current: currentPage,
-                    total: totalPages,
-                  })}
-                </PaginationInfo>
-                <PaginationButton
-                  onClick={goNext}
-                  disabled={currentPage === totalPages}
-                >
-                  {t("findingsTable.pagination.next")}
-                  <ChevronRight />
-                </PaginationButton>
+                <AppPagination
+                  count={totalPages}
+                  page={currentPage}
+                  onChange={(_, page) => setPage(page)}
+                />
               </PaginationBar>
             )}
           </>

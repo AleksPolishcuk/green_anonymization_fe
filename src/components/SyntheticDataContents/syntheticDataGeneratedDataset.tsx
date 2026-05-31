@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { AppPagination } from "shared/ui/AppPagination";
 import {
   TableCard,
   TableHeader,
@@ -21,11 +21,9 @@ import {
   TableHeaderColumnButtons,
   Dropdown,
   DropdownItem,
-  PaginationBar,
-  PaginationButton,
-  PaginationInfo,
 } from "./syntheticDataGeneratedDataset.styles";
-import { headerSpriteRef, FINDINGS_PAGE_SIZE } from "constants/MainPages";
+import { PaginationBar } from "shared/ui/PaginationBar";
+import { FINDINGS_PAGE_SIZE, headerSpriteRef } from "constants/MainPages";
 import { useAppSelector } from "store/hooks";
 import { useSyntheticDataContents } from "./useSyntheticDataContents";
 import { usePagination } from "components/DeidOutput/hooks/usePagination";
@@ -37,10 +35,6 @@ export default function SyntheticDataGeneratedDataset() {
   const { t } = useTranslation("translation", {
     keyPrefix: "syntheticDataGeneratedDataset",
   });
-  const { t: tFindingsTable } = useTranslation("translation", {
-    keyPrefix: "deidOutput.findingsTable",
-  });
-
   const { syntheticDocuments } = useAppSelector((state) => state.syntheticData);
   const { handleRegenerate, handleDownload, handleTableDownload } =
     useSyntheticDataContents();
@@ -49,8 +43,7 @@ export default function SyntheticDataGeneratedDataset() {
     visibleItems: visibleDocuments,
     currentPage,
     totalPages,
-    goNext,
-    goPrev,
+    setPage,
     startIndex,
   } = usePagination({
     items: syntheticDocuments || [],
@@ -152,23 +145,11 @@ export default function SyntheticDataGeneratedDataset() {
 
       {totalPages > 1 && (
         <PaginationBar>
-          <PaginationButton onClick={goPrev} disabled={currentPage === 1}>
-            <ChevronLeft />
-            {tFindingsTable("pagination.previous")}
-          </PaginationButton>
-          <PaginationInfo>
-            {tFindingsTable("pagination.page", {
-              current: currentPage,
-              total: totalPages,
-            })}
-          </PaginationInfo>
-          <PaginationButton
-            onClick={goNext}
-            disabled={currentPage === totalPages}
-          >
-            {tFindingsTable("pagination.next")}
-            <ChevronRight />
-          </PaginationButton>
+          <AppPagination
+            count={totalPages}
+            page={currentPage}
+            onChange={(_, page) => setPage(page)}
+          />
         </PaginationBar>
       )}
 

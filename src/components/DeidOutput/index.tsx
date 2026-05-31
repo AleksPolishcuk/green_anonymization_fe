@@ -10,6 +10,7 @@ import {
   AccuracyBadge,
   SpriteIconSvg,
 } from "./analysisStyles";
+import { LimitReachedModal } from "components/LimitReachedModal";
 import { FindingsTable } from "./FindingsTable";
 import { useDeidOutput } from "./hooks/useDeidOutput";
 import {
@@ -56,6 +57,8 @@ export default function DeidOutputSection() {
     anchorEl,
     setAnchorEl,
     handleDownload,
+    editLimitModalOpen,
+    handleCloseEditLimitModal,
   } = useDeidOutput();
 
   return (
@@ -180,6 +183,11 @@ export default function DeidOutputSection() {
         />
       )}
       <CtaSynthetycBlock />
+      <LimitReachedModal
+        open={editLimitModalOpen}
+        onClose={handleCloseEditLimitModal}
+        variant="edits"
+      />
     </DeidOutputSectionRoot>
   );
 }
