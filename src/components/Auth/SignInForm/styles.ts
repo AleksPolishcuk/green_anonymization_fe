@@ -148,7 +148,7 @@ export const OAuthButton = styled(Button)(({ theme }) => ({
   position: "relative",
 
   width: "100%",
-  height: theme.spacing(12.5), // 50px
+  height: theme.spacing(12.5),
 
   justifyContent: "center",
 
