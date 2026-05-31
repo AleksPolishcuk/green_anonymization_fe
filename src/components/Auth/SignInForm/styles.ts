@@ -148,7 +148,7 @@ export const OAuthButton = styled(Button)(({ theme }) => ({
   position: "relative",
 
   width: "100%",
-  height: 50,
+  height: theme.spacing(12.5), // 50px
 
   justifyContent: "center",
 
@@ -159,7 +159,9 @@ export const OAuthButton = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
 
   backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.background.paper : "#FFFFFF",
+    theme.palette.mode === "dark"
+      ? theme.palette.background.paper
+      : theme.palette.background.paper,
 
   color: theme.palette.text.primary,
 
@@ -167,12 +169,12 @@ export const OAuthButton = styled(Button)(({ theme }) => ({
 
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightSemiBold,
-  fontSize: theme.typography.fontSize16, // was 14
+  fontSize: theme.typography.fontSize16,
 
   boxShadow:
     theme.palette.mode === "dark"
-      ? "0 2px 8px rgba(0,0,0,.25)"
-      : "0 1px 2px rgba(0,0,0,.08)",
+      ? (theme.shadows?.[2] ?? "0 2px 8px rgba(0,0,0,.25)")
+      : (theme.shadows?.[1] ?? "0 1px 2px rgba(0,0,0,.08)"),
 
   transition: theme.transitions.create(
     ["background-color", "border-color", "box-shadow", "transform"],
@@ -185,7 +187,7 @@ export const OAuthButton = styled(Button)(({ theme }) => ({
     backgroundColor:
       theme.palette.mode === "dark"
         ? alpha(theme.palette.background.paper, 0.9)
-        : "#FAFAFA",
+        : theme.palette.action.hover,
 
     borderColor: theme.palette.primary.main,
 
@@ -206,15 +208,18 @@ export const OAuthProviderIcon = styled("svg")(({ theme }) => ({
   position: "absolute",
   left: theme.spacing(4),
 
-  width: 22,
-  height: 22,
+  width: theme.spacing(5.5),
+  height: theme.spacing(5.5),
 
   display: "block",
   flexShrink: 0,
+
+  color: theme.palette.text.secondary,
 }));
-export const OAuthButtonContent = styled("span")({
+
+export const OAuthButtonContent = styled("span")(() => ({
   width: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-});
+}));
