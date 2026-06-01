@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { fetchDashboard } from "store/slices/dashboardSlice";
 import {
   CHART_ROW_COLS_EQUAL,
   CHART_ROW_COLS_WIDE,
 } from "constants/DashboardPage";
+import { Loader } from "shared/ui/Loader";
 import { ComplianceDonut } from "components/Dashboard/charts/ComplianceDonut";
 import { ConfidenceScoreChart } from "components/Dashboard/charts/ConfidenceScoreChart";
 import { DashboardHeader } from "components/Dashboard/charts/DashboardHeader";
+import { DateRangeFilter } from "components/Dashboard/charts/DateRangeFilter";
 import { DeIdMethodChart } from "components/Dashboard/charts/DeIdMethodChart";
 import { EntityTypesChart } from "components/Dashboard/charts/EntityTypesChart";
 import { ProcessingHistoryChart } from "components/Dashboard/charts/ProcessingHistoryChart";
@@ -19,41 +18,28 @@ import { SubscriptionUsage } from "components/Dashboard/charts/SubscriptionUsage
 import {
   ChartsLayout,
   ChartRow,
+  LoaderWrapper,
   MainContent,
 } from "components/Dashboard/styles";
-import { Loader } from "shared/ui/Loader";
+
+import { useDashboard } from "./hooks/useDashboard";
 
 export const Dashboard = () => {
-  const dispatch = useAppDispatch();
-  const { data, loading, error } = useAppSelector((state) => state.dashboard);
+  const { data, error, period, isInitialLoad } = useDashboard();
 
-  useEffect(() => {
-    dispatch(fetchDashboard());
-  }, [dispatch]);
-
-  if (loading) {
+  if (isInitialLoad) {
     return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        minHeight="100vh"
-      >
+      <LoaderWrapper>
         <Loader />
-      </Box>
+      </LoaderWrapper>
     );
   }
 
   if (error) {
     return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        minHeight="60vh"
-      >
+      <LoaderWrapper>
         <Typography color="error">{error}</Typography>
-      </Box>
+      </LoaderWrapper>
     );
   }
 
@@ -61,27 +47,28 @@ export const Dashboard = () => {
     <MainContent data-tour="dashboard">
       <DashboardHeader />
 
+      <DateRangeFilter />
+
       <SubscriptionUsage />
-      <div>
-        <StatCards data={data.statCards} />
 
-        <ChartsLayout>
-          <ChartRow $cols={CHART_ROW_COLS_WIDE}>
-            <EntityTypesChart data={data.entityTypes} />
-            <ComplianceDonut data={data.complianceFrameworks} />
-          </ChartRow>
+      <StatCards data={data.statCards} />
 
-          <ChartRow $cols={CHART_ROW_COLS_EQUAL}>
-            <ProcessingHistoryChart data={data.processingHistory} />
-            <DeIdMethodChart data={data.deIdMethods} />
-          </ChartRow>
+      <ChartsLayout>
+        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
+          <EntityTypesChart data={data.entityTypes} />
+          <ComplianceDonut data={data.complianceFrameworks} />
+        </ChartRow>
 
-          <ChartRow $cols={CHART_ROW_COLS_WIDE}>
-            <ConfidenceScoreChart data={data.confidenceScores} />
-            <RecentActivity data={data.recentActivity} />
-          </ChartRow>
-        </ChartsLayout>
-      </div>
+        <ChartRow $cols={CHART_ROW_COLS_EQUAL}>
+          <ProcessingHistoryChart data={data.processingHistory} />
+          <DeIdMethodChart data={data.deIdMethods} />
+        </ChartRow>
+
+        <ChartRow $cols={CHART_ROW_COLS_WIDE}>
+          <ConfidenceScoreChart data={data.confidenceScores} />
+          <RecentActivity data={data.recentActivity} period={period} />
+        </ChartRow>
+      </ChartsLayout>
     </MainContent>
   );
 };

@@ -1,16 +1,21 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 
-import type { DashboardState } from "store/types/dashboard";
+import { DEFAULT_PERIOD_DAYS } from "constants/DashboardPage";
+import type { DashboardPeriod, DashboardState } from "store/types/dashboard";
 import { analyticsService } from "services/analytics";
 import { mapDashboard } from "services/analytics/mapDashboard";
 
 export const fetchDashboard = createAsyncThunk<
   ReturnType<typeof mapDashboard>,
-  void,
+  DashboardPeriod,
   { rejectValue: string }
->("dashboard/fetch", async (_, { rejectWithValue }) => {
+>("dashboard/fetch", async (period, { rejectWithValue }) => {
   try {
-    const dto = await analyticsService.getDashboard();
+    const dto = await analyticsService.getDashboard(period);
     return mapDashboard(dto);
   } catch (err) {
     return rejectWithValue(
@@ -18,6 +23,11 @@ export const fetchDashboard = createAsyncThunk<
     );
   }
 });
+
+const DEFAULT_PERIOD: DashboardPeriod = {
+  type: "preset",
+  days: DEFAULT_PERIOD_DAYS,
+};
 
 const initialState: DashboardState = {
   data: {
@@ -29,6 +39,7 @@ const initialState: DashboardState = {
     confidenceScores: [],
     recentActivity: [],
   },
+  period: DEFAULT_PERIOD,
   loading: false,
   error: null,
 };
@@ -36,7 +47,11 @@ const initialState: DashboardState = {
 export const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
-  reducers: {},
+  reducers: {
+    setPeriod: (state, action: PayloadAction<DashboardPeriod>) => {
+      state.period = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDashboard.pending, (state) => {
@@ -53,5 +68,7 @@ export const dashboardSlice = createSlice({
       });
   },
 });
+
+export const { setPeriod } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

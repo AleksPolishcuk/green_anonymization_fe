@@ -365,6 +365,16 @@
       "subtitle": "Verfolgen Sie De-Identifikationsmetriken, Compliance-Trends und Verarbeitungsstatistiken",
       "startButton": "De-Identifikation starten"
     },
+    "filter": {
+      "days7": "7 Tage",
+      "days14": "14 Tage",
+      "month": "Monat",
+      "selectDate": "Datum auswählen",
+      "dateRange": "Datumsbereich",
+      "from": "Von",
+      "to": "Bis",
+      "apply": "Anwenden"
+    },
     "sidebar": {
       "analytics": "Analysen",
       "settings": "Einstellungen",
@@ -404,6 +414,8 @@
       "recentActivity": {
         "title": "Letzte Aktivität",
         "subtitle": "Zuletzt verarbeitete Dokumente",
+        "subtitleDays": "Letzte {{days}} Tage",
+        "subtitleRange": "{{from}} – {{to}}",
         "entities": "{{count}} Entitäten",
         "newDeId": "Neue De-Identifikation →"
       },

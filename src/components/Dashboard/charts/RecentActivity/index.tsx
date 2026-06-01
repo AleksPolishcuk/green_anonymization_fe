@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { ACTIVITY_SUCCESS_SPRITE_ID } from "constants/DashboardPage";
 import { headerRoutes, headerSpriteRef } from "constants/MainPages";
-import type { RecentActivityItem } from "store/types/dashboard";
+import type {
+  DashboardPeriod,
+  RecentActivityItem,
+} from "store/types/dashboard";
+
+import { usePeriodSubtitle } from "../../hooks/usePeriodSubtitle";
 
 import {
   ChartCard,
@@ -25,10 +30,12 @@ import { useRecentActivityScroll } from "components/Dashboard/hooks/useRecentAct
 
 type Props = {
   data: RecentActivityItem[];
+  period: DashboardPeriod;
 };
 
-export const RecentActivity = ({ data }: Props) => {
+export const RecentActivity = ({ data, period }: Props) => {
   const { t } = useTranslation();
+  const subtitle = usePeriodSubtitle(period);
   const navigate = useNavigate();
   const { listRef, canScrollMore, handleScroll } = useRecentActivityScroll();
 
@@ -39,9 +46,7 @@ export const RecentActivity = ({ data }: Props) => {
   return (
     <ChartCard $tall>
       <ChartTitle>{t("dashboard.charts.recentActivity.title")}</ChartTitle>
-      <ChartSubtitle>
-        {t("dashboard.charts.recentActivity.subtitle")}
-      </ChartSubtitle>
+      <ChartSubtitle>{subtitle}</ChartSubtitle>
 
       {data.length === 0 ? (
         <ChartEmptyState />
