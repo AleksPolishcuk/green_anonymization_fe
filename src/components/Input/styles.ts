@@ -227,11 +227,11 @@ export const TextInput = styled(TextField, {
 
       paddingRight: theme.spacing(12),
 
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize: theme.spacing(2.5),
         lineHeight: theme.spacing(5),
 
-        padding: theme.spacing(2, 4),
+        padding: 0,
         paddingRight: theme.spacing(6),
       },
     },
@@ -498,6 +498,9 @@ export const InputPlayIcon = styled("svg")(({ theme }) => ({
   display: "block",
   fill: "none",
   stroke: theme.palette.common.white,
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
 export const InputArrowIcon = styled("svg")(({ theme }) => ({
@@ -506,6 +509,9 @@ export const InputArrowIcon = styled("svg")(({ theme }) => ({
   display: "block",
   fill: "none",
   stroke: theme.palette.common.white,
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
 export const Estimate = styled("span")(({ theme }) => ({

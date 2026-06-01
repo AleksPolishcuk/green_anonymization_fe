@@ -12,6 +12,16 @@ type FormValues = {
 export const useEmailLoginForm = () => {
   const { t } = useTranslation();
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+  const handleGoogleSubmit = () => {
+    window.location.href = `${API_URL}/auth/google`;
+  };
+
+  const handleMicrosoftSubmit = () => {
+    window.location.href = `${API_URL}/auth/microsoft`;
+  };
+
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -87,5 +97,7 @@ export const useEmailLoginForm = () => {
     error,
     loading,
     isSubmitDisabled,
+    handleGoogleSubmit,
+    handleMicrosoftSubmit,
   };
 };

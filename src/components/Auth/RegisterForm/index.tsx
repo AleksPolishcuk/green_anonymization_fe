@@ -1,5 +1,5 @@
 import { InputAdornment } from "@mui/material";
-import { useRegisterForm } from "features/Auth/hooks/useRegisterForm";
+import { useRegisterForm } from "components/Auth/RegisterForm/useRegisterForm";
 import { Controller } from "react-hook-form";
 import { Loader } from "shared/ui/Loader";
 import {
@@ -11,7 +11,7 @@ import {
   SuccessStatusDescriptionText,
   ErrorStatusIcon,
   ErrorStatusDescriptionText,
-} from "features/Auth/components/EmailStatus/styles";
+} from "components/Auth/EmailStatus/styles";
 import {
   RegisterHeading,
   RegisterFormBox,
@@ -27,7 +27,7 @@ import {
   FormInputField,
   RightArrowIcon,
   SubmitButton,
-} from "features/Auth/components/styles";
+} from "components/Auth/styles";
 import { headerSpriteRef } from "constants/MainPages";
 
 export default function RegisterForm() {

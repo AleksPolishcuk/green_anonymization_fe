@@ -15,7 +15,7 @@ import {
   ShieldIcon,
   ShieldLogo,
   WelcomeHeading,
-} from "features/Auth/components/styles";
+} from "components/Auth/styles";
 
 export default function RegisterHero() {
   const { t } = useTranslation();

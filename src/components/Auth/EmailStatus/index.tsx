@@ -10,7 +10,7 @@ import {
   ErrorStatusIcon,
   ErrorStatusDescriptionText,
 } from "./styles";
-import type { useEmailLoginForm } from "features/Auth/hooks/useEmailLoginForm";
+import type { useEmailLoginForm } from "components/Auth/SignInForm/useEmailLoginForm";
 import { useTranslation } from "react-i18next";
 import { headerSpriteRef } from "constants/MainPages";
 

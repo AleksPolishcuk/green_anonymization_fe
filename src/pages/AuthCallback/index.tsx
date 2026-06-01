@@ -1,4 +1,4 @@
-import { setTokens } from "features/Auth/utils/authTokens";
+import { setTokens } from "components/Auth/utils/authTokens";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "services/auth";
@@ -11,14 +11,12 @@ export default function AuthCallback() {
     const run = async () => {
       try {
         const token = new URLSearchParams(window.location.search).get("token");
-
         if (!token) {
           navigate("/sign-in");
           return;
         }
 
         const data = await authService.verify(token);
-
         if (!data?.accessToken || !data?.refreshToken) {
           navigate("/sign-in");
           return;
@@ -27,7 +25,6 @@ export default function AuthCallback() {
         setTokens(data.accessToken, data.refreshToken);
 
         const session = await authService.getSession();
-
         if (!session.registered) {
           navigate("/register");
           return;

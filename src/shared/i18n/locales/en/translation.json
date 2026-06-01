@@ -206,6 +206,8 @@
       "emailLabel": "Email",
       "emailPlaceholder": "john.doe@example.com",
       "submitButton": "Sign In",
+      "submitGoogle": "Sign In With Google",
+      "submitMicrosoft": "Sign In With Microsoft",
       "validation": {},
       "status": {
         "successTitle": "Email Sent!",

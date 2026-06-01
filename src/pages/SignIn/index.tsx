@@ -5,8 +5,8 @@ import {
   RightContent,
   RightSection,
 } from "./styles";
-import SignInHero from "features/Auth/components/SignInHero";
-import SignInForm from "features/Auth/components/SignInForm";
+import SignInHero from "components/Auth/SignInHero";
+import SignInForm from "components/Auth/SignInForm";
 
 export default function SignIn() {
   return (

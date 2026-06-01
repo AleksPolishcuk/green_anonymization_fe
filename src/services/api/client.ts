@@ -12,7 +12,7 @@ import {
   getAccessToken,
   getRefreshToken,
   setTokens,
-} from "features/Auth/utils/authTokens";
+} from "components/Auth/utils/authTokens";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 

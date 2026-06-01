@@ -1,8 +1,8 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
-import staggerItem from "features/Auth/utils/staggerItem";
-import { submitButtonStyles } from "features/Auth/components/styles";
+import staggerItem from "components/Auth/utils/staggerItem";
+import { submitButtonStyles } from "components/Auth/styles";
 
-export const SigninHeading = styled(Typography)(({ theme }) => ({
+export const RegisterHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),
 
   margin: 0,
@@ -17,18 +17,9 @@ export const SigninHeading = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const SigninSubtext = styled(Typography)(({ theme }) => ({
+export const RegisterFormBox = styled(Box)(({ theme }) => ({
   ...staggerItem(320),
 
-  margin: 0,
-  fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.fontWeightRegular,
-  fontSize: theme.typography.fontSize14,
-  lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.text.secondary,
-}));
-
-export const SigninFormBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(4),
@@ -40,9 +31,34 @@ export const SigninFormBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const EmailLabel = styled("label")(({ theme }) => ({
+export const FieldWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(2),
+}));
+
+export const NamesRow = styled(Box)(({ theme }) => ({
+  ...staggerItem(420),
+
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: theme.spacing(3),
+
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "1fr",
+  },
+}));
+
+export const CompanyRow = styled(Box)(({ theme }) => ({
+  ...staggerItem(520),
+
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(2),
+}));
+
+export const NameLabel = styled("label")(({ theme }) => ({
   display: "inline-block",
-  paddingBottom: theme.spacing(2),
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize14,
@@ -50,46 +66,54 @@ export const EmailLabel = styled("label")(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-export const EmailIcon = styled("svg")(({ theme }) => ({
+export const CompanyIcon = styled("svg")(({ theme }) => ({
   width: theme.spacing(4.5),
   height: theme.spacing(4.5),
   display: "block",
   fill: "none",
-
-  color:
-    theme.palette.mode === "dark"
-      ? theme.palette.text.secondary
-      : theme.palette.background.mediumGray,
+  color: theme.palette.background.mediumGray,
 }));
 
-export const SigninBtn = styled(Button)(({ theme }) => ({
+export const PersonIcon = styled("svg")(({ theme }) => ({
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
+  display: "block",
+  fill: "none",
+  opacity: 1,
+  color: theme.palette.background.mediumGray,
+}));
+
+export const RegisterButton = styled(Button)(({ theme }) => ({
+  ...staggerItem(620),
+
   width: "100%",
   minHeight: theme.spacing(13),
   padding: theme.spacing(0, 4),
   borderRadius: theme.spacing(3.5),
-  backgroundColor: theme.palette.primary.main,
 
-  boxShadow: `0px 4px 14px 0px ${alpha(
+  backgroundColor: theme.palette.primary.main,
+  boxShadow: `0px ${theme.spacing(1)} ${theme.spacing(3.5)} 0px ${alpha(
     theme.palette.accent.blue,
-    theme.palette.mode === "dark" ? 0.45 : 0.3,
+    0.3,
   )}`,
 
   color: theme.palette.color.white,
+
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   gap: theme.spacing(2),
+
   fontFamily: theme.typography.fontFamily,
   fontWeight: theme.typography.fontWeightSemiBold,
   fontSize: theme.typography.fontSize16,
   lineHeight: theme.typography.lineHeight150,
+
   textTransform: "none",
 
   transition: theme.transitions.create(
     ["transform", "box-shadow", "background-color"],
-    {
-      duration: theme.transitions.duration.shorter,
-    },
+    { duration: theme.transitions.duration.shorter },
   ),
 
   "&.Mui-disabled": {
@@ -106,10 +130,9 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: theme.palette.color.darkBlue,
     transform: "translateY(-2px)",
-
-    boxShadow: `0px 10px 20px 0px ${alpha(
+    boxShadow: `0px ${theme.spacing(2.5)} ${theme.spacing(5)} 0px ${alpha(
       theme.palette.accent.blue,
-      theme.palette.mode === "dark" ? 0.5 : 0.3,
+      0.3,
     )}`,
   },
 
@@ -118,28 +141,10 @@ export const SigninBtn = styled(Button)(({ theme }) => ({
   },
 
   "&:focus-visible": {
-    outline: `${theme.spacing(0.75)} solid ${alpha(theme.palette.primary.main, 0.4)}`,
+    outline: `${theme.spacing(0.75)} solid ${alpha(
+      theme.palette.primary.main,
+      0.4,
+    )}`,
     outlineOffset: theme.spacing(0.5),
   },
-}));
-
-export const BottomText = styled("span")(({ theme }) => ({
-  display: "block",
-  margin: 0,
-  padding: 0,
-  textAlign: "center",
-  fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.fontWeightRegular,
-  fontSize: theme.typography.fontSize12,
-  lineHeight: theme.typography.lineHeight150,
-  color: theme.palette.text.secondary,
-
-  [theme.breakpoints.down("md")]: {
-    marginTop: theme.spacing(8),
-  },
-}));
-
-export const BottomLinkText = styled("span")(({ theme }) => ({
-  textDecoration: "underline",
-  color: theme.palette.text.primary,
 }));
