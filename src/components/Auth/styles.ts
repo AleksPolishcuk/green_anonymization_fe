@@ -122,8 +122,7 @@ export const RightArrowIcon = styled("svg")(({ theme }) => ({
   height: theme.spacing(4),
   display: "block",
   fill: "none",
-
-  color: theme.palette.common.white,
+  color: "currentColor",
 }));
 
 export const submitButtonStyles = {
