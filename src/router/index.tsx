@@ -95,6 +95,22 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: "/terms",
+    element: (
+      <MainLayout>
+        <NotFound />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/privacy",
+    element: (
+      <MainLayout>
+        <NotFound />
+      </MainLayout>
+    ),
+  },
+  {
     path: "*",
     element: (
       <MainLayout>

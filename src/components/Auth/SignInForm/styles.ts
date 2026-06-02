@@ -1,6 +1,7 @@
 import { alpha, Box, Button, styled, Typography } from "@mui/material";
 import staggerItem from "components/Auth/utils/staggerItem";
 import { submitButtonStyles } from "components/Auth/styles";
+import { Link } from "react-router-dom";
 
 export const SigninHeading = styled(Typography)(({ theme }) => ({
   ...staggerItem(200),
@@ -139,7 +140,7 @@ export const BottomText = styled("span")(({ theme }) => ({
   },
 }));
 
-export const BottomLinkText = styled("span")(({ theme }) => ({
+export const BottomLinkText = styled(Link)(({ theme }) => ({
   textDecoration: "underline",
   color: theme.palette.text.primary,
 }));

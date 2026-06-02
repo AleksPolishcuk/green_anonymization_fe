@@ -107,10 +107,10 @@ export default function SignInForm() {
       {!form.loading && !form.status && !form.error && (
         <BottomText>
           <Trans
-            i18nKey={t("signIn.form.bottomText")}
+            i18nKey="signIn.form.bottomText"
             components={{
-              terms: <BottomLinkText as="span" />,
-              privacy: <BottomLinkText as="span" />,
+              terms: <BottomLinkText to="/terms" />,
+              privacy: <BottomLinkText to="/privacy" />,
             }}
           />
         </BottomText>
