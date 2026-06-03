@@ -399,7 +399,7 @@
       },
       "processingHistory": {
         "title": "Verarbeitungsverlauf",
-        "subtitle": "Dokument- und Entitätstrends — letzte 7 Tage",
+        "subtitle": "Dokument- und Entitätstrends",
         "documents": "Dokumente",
         "entities": "Entitäten"
       },

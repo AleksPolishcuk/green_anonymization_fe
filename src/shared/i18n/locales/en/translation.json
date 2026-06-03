@@ -469,7 +469,7 @@
       },
       "processingHistory": {
         "title": "Processing History",
-        "subtitle": "Document and entity trends — last 7 days",
+        "subtitle": "Document and entity trends",
         "documents": "Documents",
         "entities": "Entities"
       },

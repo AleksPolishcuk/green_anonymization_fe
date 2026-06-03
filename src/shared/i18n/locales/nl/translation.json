@@ -399,7 +399,7 @@
       },
       "processingHistory": {
         "title": "Verwerkingsgeschiedenis",
-        "subtitle": "Document- en entiteitstrends — afgelopen 7 dagen",
+        "subtitle": "Document- en entiteitstrends",
         "documents": "Documenten",
         "entities": "Entiteiten"
       },
