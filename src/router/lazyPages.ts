@@ -20,3 +20,8 @@ export const DeidentificationPage = lazy(
 );
 export const SyntheticDataPage = lazy(() => import("pages/SyntheticDataPage"));
 export const ProfilePage = lazy(() => import("pages/ProfilePage"));
+export const AppErrorPage = lazy(() =>
+  import("pages/AppErrorPage").then((m) => ({
+    default: m.AppErrorPage,
+  })),
+);
