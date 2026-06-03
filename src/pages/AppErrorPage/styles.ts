@@ -100,15 +100,3 @@ export const HomeButton = styled(BaseButton)(({ theme }) => ({
 }));
 
 export const RefreshButton = styled(BaseButton)(() => ({}));
-
-export const DebugText = styled("pre")(({ theme }) => ({
-  marginTop: theme.spacing(8),
-  padding: theme.spacing(4),
-  maxWidth: 900,
-  width: "100%",
-  overflow: "auto",
-  textAlign: "left",
-  fontSize: 12,
-  borderRadius: theme.shape.borderRadius,
-  background: theme.palette.background.paper,
-}));

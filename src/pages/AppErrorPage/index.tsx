@@ -11,6 +11,7 @@ import {
   SubtitleText,
   TitleText,
 } from "./styles";
+import { Container } from "@mui/material";
 
 export const AppErrorPage = () => {
   const { t } = useTranslation();
@@ -18,30 +19,32 @@ export const AppErrorPage = () => {
 
   return (
     <ErrorSection>
-      <ShieldBackground />
+      <Container>
+        <ShieldBackground />
 
-      <Content>
-        <SubtitleText variant="h5">{t("errorPage.subtitle")}</SubtitleText>
+        <Content>
+          <SubtitleText variant="h5">{t("errorPage.subtitle")}</SubtitleText>
 
-        <TitleText variant="h2">{t("errorPage.title")}</TitleText>
+          <TitleText variant="h2">{t("errorPage.title")}</TitleText>
 
-        <DescriptionText variant="body1" color="text.secondary">
-          {t("errorPage.description")}
-        </DescriptionText>
+          <DescriptionText variant="body1" color="text.secondary">
+            {t("errorPage.description")}
+          </DescriptionText>
 
-        <Actions>
-          <RefreshButton
-            variant="outlined"
-            onClick={() => window.location.reload()}
-          >
-            {t("errorPage.refresh")}
-          </RefreshButton>
+          <Actions>
+            <RefreshButton
+              variant="outlined"
+              onClick={() => window.location.reload()}
+            >
+              {t("errorPage.refresh")}
+            </RefreshButton>
 
-          <HomeButton variant="contained" onClick={() => navigate("/")}>
-            {t("errorPage.goHome")}
-          </HomeButton>
-        </Actions>
-      </Content>
+            <HomeButton variant="contained" onClick={() => navigate("/")}>
+              {t("errorPage.goHome")}
+            </HomeButton>
+          </Actions>
+        </Content>
+      </Container>
     </ErrorSection>
   );
 };
