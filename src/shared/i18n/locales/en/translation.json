@@ -696,5 +696,12 @@
     "settingsDescription": "Choose how many synthetic records you want to generate.",
     "datasetTitle": "Start generating synthetic data",
     "datasetDescription": "Receive the generated dataset and download the archive."
+  },
+  "errorPage": {
+    "subtitle": "Oops!",
+    "title": "Something went wrong",
+    "description": "We encountered an unexpected issue while loading this page. Please refresh the page or return to the homepage.",
+    "refresh": "Refresh page",
+    "goHome": "Return home"
   }
 }
