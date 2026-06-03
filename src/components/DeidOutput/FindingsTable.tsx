@@ -106,7 +106,7 @@ export const FindingsTable = ({
         onClose={handleProModalClose}
         messageKey="customRules"
       />
-      <TableCard>
+      <TableCard data-tour="entities-list">
         <TableHeader onClick={() => setExpanded((prev) => !prev)}>
           <TableHeaderLeft>
             <TableIconWrapper>
