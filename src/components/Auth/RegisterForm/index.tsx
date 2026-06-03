@@ -25,6 +25,8 @@ import {
 import { useTranslation } from "react-i18next";
 import {
   FormInputField,
+  GoHomeButton,
+  HomeArrowIconWrapper,
   RightArrowIcon,
   SubmitButton,
 } from "components/Auth/styles";
@@ -37,6 +39,13 @@ export default function RegisterForm() {
 
   return (
     <>
+      <GoHomeButton to="/">
+        <HomeArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
+          <use href={headerSpriteRef("icon-IconArrow")} />
+        </HomeArrowIconWrapper>
+        Home
+      </GoHomeButton>
+
       <RegisterHeading> {t("register.heading")}</RegisterHeading>
       <RegisterFormBox>
         <form onSubmit={form.handleSubmit(form.onSubmit)} noValidate>
