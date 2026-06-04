@@ -13,6 +13,7 @@ import {
 } from "constants/auth";
 import { cardShadows } from "constants/MainPages";
 import staggerItem from "components/Auth/utils/staggerItem";
+import { Link } from "react-router-dom";
 
 export const fadeUp = keyframes`
   from {
@@ -277,4 +278,48 @@ export const FormInputField = styled(TextField)(({ theme }) => ({
     color: theme.palette.text.secondary,
     opacity: 1,
   },
+}));
+
+export const GoHomeButton = styled(Link)(({ theme }) => ({
+  position: "absolute",
+  top: theme.spacing(4),
+  left: theme.spacing(4),
+  zIndex: 10,
+
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  padding: theme.spacing(1, 1.5),
+
+  textDecoration: "none",
+  textTransform: "none",
+
+  fontSize: theme.typography.fontSize16,
+  fontWeight: theme.typography.fontWeightMedium,
+
+  borderRadius: theme.spacing(2),
+
+  backgroundColor: "transparent",
+  color: theme.palette.common.white,
+
+  transition: theme.transitions.create(
+    ["background-color", "border-color", "transform"],
+    { duration: 180 },
+  ),
+
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+    transform: "translateY(-1px)",
+  },
+}));
+
+export const HomeArrowIconWrapper = styled("svg")(({ theme }) => ({
+  width: 13,
+  height: 13,
+  marginRight: theme.spacing(1.25),
+  display: "block",
+  fill: "none",
+  color: "currentColor",
+  transform: "scaleX(-1)",
 }));

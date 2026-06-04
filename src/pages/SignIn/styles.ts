@@ -21,7 +21,7 @@ export const LeftSection = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   padding: theme.spacing(6),
-
+  position: "relative",
   background:
     theme.palette.mode === "dark"
       ? "linear-gradient(135deg, #081654 0%, #155dfc 50%, #020617 100%)"

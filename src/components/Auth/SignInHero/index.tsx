@@ -4,6 +4,8 @@ import { StatItem, StatLabel, Stats, StatValue } from "./styles";
 import { headerSpriteRef } from "constants/MainPages";
 import {
   EnterpriseParagraph,
+  GoHomeButton,
+  HomeArrowIconWrapper,
   ShieldIcon,
   ShieldLogo,
   WelcomeHeading,
@@ -13,6 +15,13 @@ export default function SignInHero() {
   const { t } = useTranslation();
   return (
     <>
+      <GoHomeButton to="/">
+        <HomeArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
+          <use href={headerSpriteRef("icon-IconArrow")} />
+        </HomeArrowIconWrapper>
+        {t("signIn.home")}
+      </GoHomeButton>
+
       <ShieldLogo>
         <ShieldIcon>
           <use href={headerSpriteRef("shield-icon")} />
