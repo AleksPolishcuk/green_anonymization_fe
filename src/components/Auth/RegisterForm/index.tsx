@@ -43,7 +43,7 @@ export default function RegisterForm() {
         <HomeArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
           <use href={headerSpriteRef("icon-IconArrow")} />
         </HomeArrowIconWrapper>
-        Home
+        {t("register.home")}
       </GoHomeButton>
 
       <RegisterHeading> {t("register.heading")}</RegisterHeading>
