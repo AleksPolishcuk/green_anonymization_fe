@@ -182,6 +182,7 @@
   },
   "signIn": {
     "hero": {
+      "home": "Home",
       "title1": "Welcome back to",
       "title2": "Clinical Data Studio",
       "description": "Enterprise-grade PII detection and anonymization for healthcare data.<lineBreak />Protect patient privacy while preserving analytical value.",

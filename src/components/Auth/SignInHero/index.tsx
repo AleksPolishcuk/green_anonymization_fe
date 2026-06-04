@@ -19,7 +19,7 @@ export default function SignInHero() {
         <HomeArrowIconWrapper viewBox="0 0 32 32" aria-hidden="true">
           <use href={headerSpriteRef("icon-IconArrow")} />
         </HomeArrowIconWrapper>
-        {t("signIn.home")}
+        {t("signIn.hero.home")}
       </GoHomeButton>
 
       <ShieldLogo>
