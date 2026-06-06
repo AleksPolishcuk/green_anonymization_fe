@@ -2,10 +2,7 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux)
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=nestjs)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql)
-![AWS](https://img.shields.io/badge/AWS_S3-FF9900?logo=amazonaws)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker)
+
 
 Enterprise-grade platform for healthcare data anonymization and synthetic data generation.
 
